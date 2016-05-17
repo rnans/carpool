@@ -1,8 +1,8 @@
-package fp.db;
+package su.db;
 import java.sql.*;
 import javax.sql.*;
 import javax.naming.*;
-public class FpDB {
+public class sudb {
 	static DataSource ds;
 	static{
 		try{
