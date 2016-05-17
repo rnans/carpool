@@ -12,6 +12,7 @@
 			expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize">
@@ -37,6 +38,15 @@
       <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
    </bean>
 	<!-- services -->
+	
+	<bean id="empController" class="su.controller.EmpController"></bean>
+	
+	<bean id="empDao" class="su.emp.model.EmpDAOImple">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
+	
 	
 	
 	<!-- view -->
