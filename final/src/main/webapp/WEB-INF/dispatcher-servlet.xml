@@ -8,8 +8,7 @@
 	
 	<!-- configs -->
 	<context:component-scan base-package="su" use-default-filters="false">
-		<context:include-filter type="annotation" 
-			expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 	
@@ -39,7 +38,7 @@
    </bean>
 	<!-- services -->
 	
-	<bean id="empController" class="su.controller.EmpController"></bean>
+	
 	
 	<bean id="empDao" class="su.emp.model.EmpDAOImple">
 		<constructor-arg>
