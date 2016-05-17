@@ -4,7 +4,8 @@
   <artifactId>final</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>final</name>
+  <name>carpool</name>
+  <description>carpool</description>
   
   <properties>
   	<spring.version>3.2.4.RELEASE</spring.version>
@@ -162,4 +163,5 @@
 	
 	
   </dependencies>
+
 </project>
