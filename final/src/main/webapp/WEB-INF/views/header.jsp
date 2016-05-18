@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <header>
 	<div><a href="login.do">로그인</a> | <a href="memberJoin.do">회원가입</a></div>
 	<div></div>
