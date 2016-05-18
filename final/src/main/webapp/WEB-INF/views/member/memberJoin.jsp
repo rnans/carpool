@@ -58,7 +58,8 @@ function idCheckResult(){
 							이메일 : <input type="text" name="email">
 							@
 									<input type="text" name="email2">
-							<select name="email2">
+									
+							<select>
 								<option value="">직접입력</option>
 								<option value="naver.com">네이버</option>
 								<option value="daum.net">다음</option>
@@ -71,8 +72,8 @@ function idCheckResult(){
 								  <input type="radio" name="sex" value="여자">여자
 						</li>
 						<li>
-							차랑소유여부 : <input type="radio" name="carhave">있음
-									    <input type="radio" name="carhave">없음
+							차랑소유여부 : <input type="radio" name="carhave" value="있음">있음
+									    <input type="radio" name="carhave" value="없음">없음
 						</li>
 					</ul>
 					<p>

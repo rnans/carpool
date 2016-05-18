@@ -38,9 +38,7 @@
    </bean>
 	<!-- services -->
 	
-	
-	
-	<bean id="empDao" class="su.emp.model.EmpDAOImple">
+	<bean id="memberDao" class="su.member.model.MemberDAOImple">
 		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>

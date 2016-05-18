@@ -11,6 +11,7 @@ public class MemberDTO {
 	private String birth;
 	private String phonenum;
 	private String addr;
+	private String fullemail;
 	private String email;
 	private String email2;
 	private String sex;
@@ -22,8 +23,10 @@ public class MemberDTO {
 		super();
 	}
 
+	
+
 	public MemberDTO(int idx, String id, String pwd, String name, String birth, String phonenum, String addr,
-			String email, String email2, String sex, String grade, String carhave, Date joindate) {
+			String fullemail, String email, String email2, String sex, String grade, String carhave, Date joindate) {
 		super();
 		this.idx = idx;
 		this.id = id;
@@ -32,6 +35,7 @@ public class MemberDTO {
 		this.birth = birth;
 		this.phonenum = phonenum;
 		this.addr = addr;
+		this.fullemail = fullemail;
 		this.email = email;
 		this.email2 = email2;
 		this.sex = sex;
@@ -39,6 +43,8 @@ public class MemberDTO {
 		this.carhave = carhave;
 		this.joindate = joindate;
 	}
+
+
 
 	public int getIdx() {
 		return idx;
@@ -142,6 +148,14 @@ public class MemberDTO {
 
 	public void setJoindate(Date joindate) {
 		this.joindate = joindate;
+	}
+
+	public String getFullemail() {
+		return fullemail;
+	}
+
+	public void setFullemail(String email, String email2) {
+		this.fullemail = email+"@"+email2;
 	}
 	
 	

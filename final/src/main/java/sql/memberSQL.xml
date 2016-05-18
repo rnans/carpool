@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.member">
 	<insert id="memberJoin" parameterType="su.member.model.MemberDTO">
-		insert into userinfo values(userinfo_idx.nextval,#{name},#{email},#{dept})
+		insert into userinfo values(userinfo_idx.nextval,#{id},#{pwd},#{name},#{birth},
+		#{phonenum},#{addr},#{fullemail},#{sex},'일반',#{carhave},sysdate)
 	</insert>
 	
 </mapper>
