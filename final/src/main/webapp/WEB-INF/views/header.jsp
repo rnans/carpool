@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script>
+function loginOpen(){
+	window.open('login.do', 'login', 'width=500 height=400 left=500 top=200');
+}
+</script>
 <header>
-	<div><a href="login.do">로그인</a> | <a href="memberJoin.do">회원가입</a></div>
+	<div><a href="javascript:loginOpen()">로그인</a> | <a href="memberJoin.do">회원가입</a></div>
 	<div></div>
 	<ul>
 		<li><a>카풀</a></li>
