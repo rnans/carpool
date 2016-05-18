@@ -8,7 +8,11 @@
 <body>
 <h1>카폴 리스트 보기</h1>
 <table>
-
+	<thead>
+		<tr>
+			<th></th>
+		</tr>
+	</thead>
 </table>
 </body>
 </html>
