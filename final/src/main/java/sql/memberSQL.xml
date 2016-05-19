@@ -8,7 +8,7 @@
 		#{phonenum},#{addr},#{fullemail},#{sex},'일반',#{carhave},sysdate)
 	</insert>
 	
-	<select id="idCheck" parameterType="su.member.model.MemberDTO" resultType="su.member.model.MemberDTO">
+	<select id="idCheck" parameterType="su.member.model.MemberDTO" resultType="String">
 		select id from userinfo where id=#{id}
 	</select>
 	
