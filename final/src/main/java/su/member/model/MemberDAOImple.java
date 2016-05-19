@@ -28,14 +28,17 @@ public class MemberDAOImple implements MemberDAO {
 	/**아이디 중복체크*/
 	public boolean idCheck(String id) {
 
-		MemberDTO dto = sqlMap.selectOne("idCheck", id);
+		String userid = sqlMap.selectOne("idCheck", id);
 		
-		if(dto.getId()!=id){
+		if(userid==null||userid.equals("")){
 			return false;
-		}else{
-			return true;
 		}
-
+		else if(userid.equals(id)){
+			return true;
+		}else{
+			return false;
+		}
+		
 		
 	}
 	
