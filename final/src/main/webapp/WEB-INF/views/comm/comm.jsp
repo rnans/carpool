@@ -193,7 +193,7 @@ input, textarea {
 <hr>
 <a href="comm.do">comm</a>
 <a href="sche.do">일정</a>
-<a href="commAd.do">관리</a>
+<a href="calendar.do">관리</a>
 
 <h2 class="menu_title">커뮤니티</h2>
 
