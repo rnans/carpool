@@ -1,14 +1,13 @@
 package su.member.model;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class MemberDAOImple implements MemberDAO {
 
-	private Connection conn;
-	private PreparedStatement ps;
-	private ResultSet rs;
 	
 	private SqlSessionTemplate sqlMap;
 
@@ -24,6 +23,52 @@ public class MemberDAOImple implements MemberDAO {
 		dto.setFullemail(dto.getEmail(), dto.getEmail2());
 		int count = sqlMap.insert("memberJoin", dto);
 		return count;
+	}
+	
+	/**아이디 중복체크*/
+	public boolean idCheck(String id) {
+
+		MemberDTO dto = sqlMap.selectOne("idCheck", id);
+		
+		if(dto.getId()!=id){
+			return false;
+		}else{
+			return true;
+		}
+
+		
+	}
+	
+	/**로그인*/
+	public int login(String id, String pwd) {
+		String userid = id;
+		String userpwd = pwd;
+		Map map = new HashMap();
+		map.put("id", userid);
+		map.put("pwd", userpwd);
+		MemberDTO dto=sqlMap.selectOne("memberLogin",map);
+		
+		if(dto.getPwd().equals("")||dto.getPwd()==null)
+		{
+			return 2;
+		}
+		else if(dto.getPwd().equals(pwd))
+		{
+			return 1;
+		}
+		else
+		{
+			return 3;
+		}
+		
+	}
+	
+	/**회원 이름 가져오는거*/
+	public String getUserInfo(String id) {
+		
+		MemberDTO dto = sqlMap.selectOne("memberInfo", id);
+		String result=dto.getName();
+		return result;
 	}
 
 }
