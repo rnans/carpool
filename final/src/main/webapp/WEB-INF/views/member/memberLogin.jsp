@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function loginClose(){
+	window.self.close();
+}
+</script>
 </head>
 <body>
 	<section>
@@ -21,6 +26,7 @@
 						</p>
 						<div>
 							<input type="submit" value="로그인">	
+							<input type="button" value="닫기" onclick="loginClose()">
 						</div>
 						<div>
 							<a>ID찾기</a> / <a>비밀번호찾기</a>

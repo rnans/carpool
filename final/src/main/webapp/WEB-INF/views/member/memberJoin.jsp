@@ -8,7 +8,7 @@
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
 function idCheck(){
-	var id = document.join.id.value;
+	var id = document.memberJoin.id.value;
 	var params = 'id='+id;
 	sendRequest('idCheck.do', params, idCheckResult, 'POST');
 }
@@ -39,7 +39,7 @@ function idCheckResult(){
 							비밀번호 : <input type="password" name="pwd">	
 						</li>
 						<li>
-							비밀번호확인 : <input type="password" name="pwd">
+							비밀번호확인 : <input type="password" name="pwd2">
 							<span id=""></span> <!-- ajax 비밀번호확인용 -->
 						</li>
 						<li>
