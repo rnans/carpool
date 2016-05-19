@@ -49,7 +49,7 @@
 
 <tr>
  <td>${oneandone.idx }</td>
- <c:url var="noticeContent" value="noticeContent.do">
+ <c:url var="oneandoneContent" value="oneandoneContent.do">
  <c:param name="idx">${oneandone.idx }</c:param>
  </c:url>
  <td>${oneandone.writer }</td>
