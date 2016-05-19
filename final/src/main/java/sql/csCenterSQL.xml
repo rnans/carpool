@@ -31,6 +31,10 @@
 	<select id="totalCnt2" resultType="int">
 		select count(*) from oneandone
 	</select>
+	<select id="oneandoneContent" resultType="su.csCenter.model.CsoneandoneDTO">
+		select * from oneandone where
+		idx=#{idx}
+	</select>
 	
 </mapper>
 

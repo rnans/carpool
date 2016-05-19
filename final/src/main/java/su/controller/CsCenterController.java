@@ -86,7 +86,15 @@ public class CsCenterController {
 		mav.setViewName("csCenter/oneAndOne");
 		return mav;
 	}
-
+	//1:1문의 보기
+   @RequestMapping("/oneandoneContent.do")
+   public ModelAndView oneandoneContent(int idx){
+	   List<CsoneandoneDTO> list=csoneandoneDao.oneandoneContent(idx);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("csCenter/oneandoneContent");
+		return mav;
+   }
 	
 	@RequestMapping("useGuideList.do")
 	public String useGuideList(){

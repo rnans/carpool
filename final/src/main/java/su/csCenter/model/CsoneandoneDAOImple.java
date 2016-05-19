@@ -29,6 +29,11 @@ public class CsoneandoneDAOImple implements CsoneandoneDAO {
 		 int count=sqlMap.selectOne("totalCnt2");
 			return count;
 	 }
+		public List<CsoneandoneDTO> oneandoneContent(int idx){
+			 List<CsoneandoneDTO> list=
+					   sqlMap.selectList("oneandoneContent",idx);
+			   return list;
+		}
 	}
 
 

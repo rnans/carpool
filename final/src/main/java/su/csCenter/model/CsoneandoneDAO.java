@@ -6,4 +6,5 @@ public interface CsoneandoneDAO {
 
 	public List<CsoneandoneDTO> oneandoneList(int cp,int ls);
 	 public int oneandoneTotalCnt();
+	 public List<CsoneandoneDTO> oneandoneContent(int idx);
 }
