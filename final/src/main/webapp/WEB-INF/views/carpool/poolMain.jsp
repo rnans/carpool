@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카폴 서비스 메인 페이지</title>
+<title>카풀 서비스 메인 페이지</title>
 </head>
 <body>
+<%@ include file="../header.jsp" %>
+<%@ include file="poolSubmenu.jsp" %>
 <section>
 <article>
 <div id="search">
@@ -26,13 +28,13 @@
 </div>
 </article>
 <div id="recommand">
-추천 검색 영역
+<%@ include file="poolRecomm.jsp" %>
 </div>
 <div id="tab">
 <a href="#">단기</a><a href="#">정기</a>
 </div>
 <div id="list">
-리스트 영역
+<%@ include file="poolList.jsp" %>
 </div>
 </section>
 </body>

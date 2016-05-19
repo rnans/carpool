@@ -9,11 +9,9 @@
 <body>
 <fieldset>
 		<legend>카풀 등록</legend>
-		<input type="radio"  name="uhung" value="탈게요">탈께요
-		<input type="radio" name="uhung" value="타세요">타세요
+		<a href="poolMemberAdd.do">탈께요</a>
+		<a href="poolMasterAdd.do">타세요</a>
 		<br>
-		<br>
-		<input type="submit" value="다음"> 
 	</fieldset>
 </body>
 </html>
