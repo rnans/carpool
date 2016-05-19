@@ -41,6 +41,7 @@ public class MemberController {
 		String msg=result>0?"카풀서비스 가입에 성공하셨습니다.":"회원가입에 실패하였습니다.";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
+		mav.addObject("loc", "/index.do");
 		mav.setViewName("member/memberMsg");
 		return mav;
 	}
@@ -66,7 +67,9 @@ public class MemberController {
 			mav.setViewName("member/login_ok");	
 		}else{
 			mav.addObject("msg", "아이디가 없거나 비밀번호가 잘못되었습니다.");
+			mav.addObject("loc", "/memberLogin");
 			mav.setViewName("member/memberMsg");
+			
 		}
 		return mav;
 	}
