@@ -43,6 +43,19 @@
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
+		<bean id="csNoticeDao" class="su.csCenter.model.CsNoticeDAOImple">	
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
+	<bean id="csoneandoneDao" class="su.csCenter.model.CsoneandoneDAOImple">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
+	
+	
+	
 	
 	
 	
