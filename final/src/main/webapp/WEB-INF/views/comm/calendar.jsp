@@ -53,7 +53,7 @@ int today=1;
     </td>
     <td id="link_to_month_view">
       <form action="calendarView.do" method="post">
-        <input type="submit" value="<%=intYear%> <%=monthName%> <%=today %> " class="submit_button">
+        <input type="submit" value="<%=intYear%> <%=monthName%>" class="submit_button">
         <input type="hidden" name="month" value="<%=intMonth%>">
         <input type="hidden" name="year"  value="<%=intYear%>">
       </form>
