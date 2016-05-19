@@ -6,6 +6,8 @@
 <configuration>
 	<mappers>
 		<mapper resource="sql/memberSQL.xml"/>
+		<mapper resource="sql/csCenterSQL.xml"/>
 	</mappers>
+	
 </configuration>
 
