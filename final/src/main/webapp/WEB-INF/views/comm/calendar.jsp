@@ -14,55 +14,30 @@
 <body id="regular_page">
 
 <div id="calendar_main_div">
-<table border="1" cellspacing="0" cellpadding="4" id="calendar_table">
-  <tr>
-    <td width="100%" colspan="7" class="month_year_header">
-      <%=monthName%>, <%=intYear%>
-    </td>
-  </tr>
-  <tr class="week_header_row">
-    <th width="14%" class="th_day_cell day">Sun</th>
-    <th width="14%" class="th_day_cell day">Mon</th>
-    <th width="14%" class="th_day_cell day">Tue</th>
-    <th width="14%" class="th_day_cell day">Wed</th>
-    <th width="14%" class="th_day_cell day">Thu</th>
-    <th width="15%" class="th_day_cell day">Fri</th>
-    <th width="15%" class="th_day_cell day">Sat</th>
-  </tr>
 <%
-{
+int today=1;
   Month aMonth = Month.getMonth( Integer.parseInt(currentMonthString), Integer.parseInt(currentYearString) );
   int [][] days = aMonth.getDays();
   for( int i=0; i<aMonth.getNumberOfWeeks(); i++ )
-  {
-    %><tr class="week_data_row"><%
+  {   
     for( int j=0; j<7; j++ )
-    {
-      if( days[i][j] == 0 )
-      {
-        %><td class="empty_day_cell">&nbsp;</td><%
-      }
-      else
-      {
+    {     
         // this is "today"
         if( currentDayInt == days[i][j] && currentMonthInt == aMonth.getMonth() && currentYearInt == aMonth.getYear() )
         {
-          %><td class="today_cell"><%=days[i][j]%></td><%
+        today= days[i][j];
         }
         else
         {
-          %><td style="font-family:verdana, arial; font-size: 9px; color: #333333" class="day_cell"><%=days[i][j]%></td><%
+          
         }
-      } // end outer if
+      
     } // end for
     %>
-    </tr>
-  <%}
-}
-%>
-</table>
 
-<%-- end of "calendar_div" --%>
+  <%}
+
+%>    
 </div>
 
 <!-- navigation links -->
@@ -78,7 +53,7 @@
     </td>
     <td id="link_to_month_view">
       <form action="calendarView.do" method="post">
-        <input type="submit" value="  Full-Screen Print View  " class="submit_button">
+        <input type="submit" value="<%=intYear%> <%=monthName%> <%=today %> " class="submit_button">
         <input type="hidden" name="month" value="<%=intMonth%>">
         <input type="hidden" name="year"  value="<%=intYear%>">
       </form>
