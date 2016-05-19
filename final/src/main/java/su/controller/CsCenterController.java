@@ -14,6 +14,8 @@ import su.csCenter.model.*;
 public class CsCenterController {
 	@Autowired
 	private CsNoticeDAO csnoticeDao;
+	
+	@Autowired
 	private CsoneandoneDAO csoneandoneDao;
 	
 	public CsoneandoneDAO getCsoneandoneDao() {
@@ -94,6 +96,6 @@ public class CsCenterController {
 	public String oneAndOneWriteForm(){
 		return "csCenter/oneAndOneWriteForm";
 	}
-	}
+}
 	
 
