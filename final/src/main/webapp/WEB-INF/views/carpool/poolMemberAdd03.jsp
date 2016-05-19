@@ -31,64 +31,76 @@
 
 
 </style>
+<script>
+window.onload=function()
+{
+	var s=location.href;
+	var t=s.slice(s.indexOf('?'+1),s.length);
+	window.alert(s);
+}
+</script>
 </head>
 <body>
 <h2>카풀등록 페이지05_01</h2>
+
 	<div id="div1">
 		<h3>단기 등록</h3>
 	</div>
 	
 	<div id="div2">
 		<form name="f" action="#">
-	
+		<input type="hidden" name="aim" value="${aim}">
+		<input type="hidden" name="startspot" value="${startspot}">
+		<input type="hidden" name="endspot" value="${endspot}">
+		<input type="hidden" name="route" value="${route}"> 
 		타입>
 		<input type="button" value="단기">
 		<input type="button" value="정기"><br>
-		출발일시><select>
+		출발일시><select name="sy">
 				<option>2016</option>
 			</select>년
-			<select>
+			<select name="sm">
 				<option>1</option>
 				<option>2</option>
 				<option>3</option>
 				<option>4</option>
 				<option>5</option>
 			</select>월
-			<select>
+			<select name="sd">
 				<option>1</option>
 				<option>2</option>
 				<option>3</option>
 				<option>4</option>
 				<option>5</option>
 			</select>일<br>
-			<select>
+			<select name="sapm">
 				<option>오전</option>
 				<option>오후</option>
 			</select>
-			<select>
+			<select name="sh">
 				<option>1</option>
 				<option>2</option>
 				<option>3</option>
 			</select>시
-			<select>
+			<select name="sm">
 				<option>10</option>
 				<option>30</option>
-				<option>59</option>
+				<option>00</option>
 			</select>분<br>
 			
 			
-		인원 ><select>
+		인원 ><select name="mannum">
 				<option>1</option>
 				<option>2</option>
 				<option>3</option>
 		   </select>명        /
-		성별><select>
-				<option>남</option>
-				<option>여</option>
-				<option>트렌스</option>
+		성별><select name="gender">
+				<option>남성만</option>
+				<option>여성만</option>
+				<option>상관없음</option>
 		  </select><br>
-		흡연여부><input type="radio" name="ss" value="흡연">흡연
-		  	 <input type="radio" name="ss" value="비흡연">비흡연
+		흡연여부><input type="radio" name="smoking" value="흡연">흡연
+		  	 <input type="radio" name="smoking" value="비흡연">비흡연
 		<p>
 			<input type="button" name="back" value="이전">
 			<input type="button" name="next" value="다음">
@@ -102,45 +114,50 @@
 		</table>
 	</div>
 
+
 	<fieldset>
+
 		<legend>정기 등록</legend>
+		<form name="termup" action="poolMemberAdd04.do">
 		<fieldset>
+
 			<legend>세부 정보</legend>	
+			
 			<div id="div1">	
-			유형:<input type="radio"  name="uhung" value="단기">단기
-		<input type="radio" name="uhung" value="장기">장기
+			유형:<input type="radio"  name="type" value="단기">단기
+		<input type="radio" name="type" value="장기">장기
 		<br>
 		</div>
 		<div id="div2">
 		기간:
-		<select>
+		<select name="lsy">
             <option>2016</option>
          </select>년
-         <select>
+         <select name="lsm">
             <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
             <option>5</option>
          </select>월
-         <select>
+         <select name="lsd">
             <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
             <option>5</option>
          </select>일       ~ 
-		<select>
+		<select name="ley">
             <option>2016</option>
          </select>년
-         <select>
+         <select name="lem">
             <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
             <option>5</option>
          </select>월
-         <select>
+         <select name="led">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -149,41 +166,41 @@
          </select>일
          <br>
          시간:
-          <select>
+          <select name="lapm">
             <option>오전</option>
             <option>오후</option>
          </select>
-         <select>
+         <select name="lh">
             <option>1</option>
             <option>2</option>
             <option>3</option>
          </select>시
-         <select>
+         <select name="lm">
             <option>10</option>
             <option>30</option>
             <option>59</option>
          </select>분
          <br>
-         반복:<input type="checkbox" value="월">월
-         <input type="checkbox" value="화">화
-         <input type="checkbox" value="수">수
-         <input type="checkbox" value="목">목
-         <input type="checkbox" value="금">금
-         <input type="checkbox" value="토">토
-         <input type="checkbox" value="일">일
+         반복:<input type="checkbox" name="days" value="월">월
+         <input type="checkbox"  name="days" value="화">화
+         <input type="checkbox"  name="days" value="수">수
+         <input type="checkbox"  name="days" value="목">목
+         <input type="checkbox"  name="days" value="금">금
+         <input type="checkbox"  name="days" value="토">토
+         <input type="checkbox"  name="days" value="일">일
          <br>
-         요금:<input type="text" value="1000">원
+         요금:<input type="text" name="pay" value="1000">원
          <br>
-      흡연여부:<input type="radio" name="smoke" value="흡연">흡연
-            <input type="radio" name="Smoke" value="비흡연">비흡연
+      흡연여부:<input type="radio" name="smoking" value="흡연">흡연
+            <input type="radio" name="smoking" value="비흡연">비흡연
             <br>
-         인원:<select>
+         인원:<select name="mannum">
             <option>1</option>
             <option>2</option>
             <option>3</option>
          </select>명  
          <br>
-         희망성별: <select>
+         성별: <select name="gender">
             <option>혼성</option>
             <option>남성만</option>
             <option>여성만</option>
@@ -193,6 +210,7 @@
 		<br>
 	<input type="button" value="이전"> 
 			<input type="submit" value="다음">
+	</form>
 	</fieldset>
 	
 </body>

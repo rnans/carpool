@@ -63,7 +63,7 @@
 							 
 					<li>유효기간:<input type="text" name="my" size="5">/
 							 <input type="text" name="my" size="5"></li>
-					<li>CVV:<input type="text name="cvv" size="5"></li>	
+					<li>CVV:<input type="text" name="cvv" size="5"></li>	
 					<li><select>
 								<option>개인</option>	
 								<option>법인</option>	
