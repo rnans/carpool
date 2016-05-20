@@ -105,23 +105,28 @@ line-height: 21.56px; font-size: 14px; padding: 16px 20px 0px;">&nbsp;</div></di
 </div>
 </div>
 
+<c:if test="${empty list}">
+	<td colspan="4" align="center">
+		등록된 게시글이 없습니다.
+	</td>
+</c:if>		
+
 <div data-viewname="DPostLayoutView">
 <div class="cPost " data-uiselector="postMainWrap">
-<div data-uiselector="lyShare" class="lyMenu" style="width:220px;display:none;"></div>
 <div class="postMain" data-uiselector="postRegion">
-
+<c:forEach var="bbs" items="${list}"> 
 <div data-viewname="DPostItemView">
 
 <div class="postWriter"> 
 <a href="#" data-uiselector="Img">
 <img class="profileImg" src="http://s.cmstatic.net/webclient/dres/20160419171121/images/template/profile_60x60.gif" alt="남구문"></a>
-<div class="profileText"> <span class="textName"> <strong class="name onlyName">남구문</strong> </span>
-<div class="textTime"> 5월 11일</div></div></div> 
-<div class="postBody"> <div class="postText"> <p class="txtBody" data-uiselector="txtBody">213</p></div></div></div></div>
-
-<div class="postFunction _openPostDetail" data-uiselector="postFunctionWrap">
-<button type="button" class="postToggle" data-icon="dselect-up" data-uiselector="postDetailClose" style="display:none;">내용 접기</button>  
-</div></div></div>
+<div class="profileText"> <span class="textName"> <strong class="name onlyName">${bbs.id }</strong> </span>
+<div class="textTime">${bbs.writedate }</div></div></div> 
+<div class="postBody"> <div class="postText"> <p class="txtBody" data-uiselector="txtBody">${bbs.content }</p></div>
+</div></div>
+</c:forEach>
+</div>
+</div></div>
 
 <hr>
 footer
