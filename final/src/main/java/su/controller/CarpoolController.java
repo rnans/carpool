@@ -43,7 +43,7 @@ public class CarpoolController
 	}
 	@RequestMapping(value = "/poolMasterAdd01.do", method = RequestMethod.POST)
 	public ModelAndView poolUserInfo(){
-		
+		asd
 	}
 	
 	@RequestMapping("/poolMemberAdd.do")
