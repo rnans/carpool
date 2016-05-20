@@ -46,7 +46,7 @@
 	
 	<div id="div2">
 		<legend>결제</legend>
-			<form>
+			<form name="f" action="poolMemberAddConfirm.do">
 				<ul>
 					<li>카드종류:<select>
 								<option>국민</option>							
