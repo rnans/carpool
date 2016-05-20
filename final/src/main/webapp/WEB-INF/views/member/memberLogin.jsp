@@ -29,7 +29,7 @@ function loginClose(){
 							<input type="button" value="닫기" onclick="loginClose()">
 						</div>
 						<div>
-							<a>ID찾기</a> / <a>비밀번호찾기</a>
+							<a href="idFind.do">ID찾기</a> / <a href="pwFind.do">비밀번호찾기</a>
 						</div>
 				</fieldset>
 			</form>
