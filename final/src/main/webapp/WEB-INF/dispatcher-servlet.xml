@@ -53,7 +53,11 @@
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
-	
+	<bean id="poolDao" class="su.pool.model.PoolDAOImple">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
 	
 	
 	
