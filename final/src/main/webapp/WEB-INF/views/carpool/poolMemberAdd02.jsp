@@ -55,15 +55,15 @@
 	<div id="div2">
 		<form name="geoInfo" action="poolMemberAdd03.do">
 	
-		유형><select id="type" name="aim">
+		유형<select id="type" name="aim">
 			<option value="출/퇴근">출/퇴근</option>
 			<option value="드라이브">드라이브</option>
 			<option value="좋은 만남">좋은만남</option>
 			<option value="명절">명절</option>
 		  </select><br>
-		출발지><input type="text" id="ss" name="startspot"><br>
-		경유지><input type="text" id="r" name="route"><br>
-		목적지><input type="text" id="es" name="endspot"><br>
+		출발지<input type="text" id="ss" name="startspot"><br>
+		경유지<input type="text" id="r" name="route"><br>
+		목적지<input type="text" id="es" name="endspot"><br>
 	
 		<p>
 			<input type="button" name="back" value="이전" onclick="location.href='poolMemberAdd.do'">

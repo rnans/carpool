@@ -3,6 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.poolSQL">
+	<select id="getUserInfo" parameterType="String" resultType="su.member.model.MemberDTO">
+		select * from userinfo where id=#{id}
+	</select>
+
 	<insert id="poolMemberAdd" parameterType="su.pool.model.PoolDTO">
 		insert into reservationlist 
 		values(

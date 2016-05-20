@@ -37,11 +37,25 @@
 
 
 </style>
+<script>
+function viewNextPage()
+{
+	var f=document.getElementById("form");
+	var pc=document.getElementById("content");
+	
+	if(pc.value==null)
+	{
+		pc.value=" ";
+	}
+	f.submit();
+	
+}
+</script>
 </head>
 <body>
 <h2>카풀등록 페이지6</h2>
 
-<form name="f" action="poolMemberAdd05.do">
+<form id="form" name="f" action="poolMemberAdd05.do">
 	<div id="div1">
 		<img src="1234.jpg" border="100"><br>
 		<input type="button" name="pf" value="프로필사진수정" align="center">
@@ -57,7 +71,7 @@
 			
 		<tfoot>
 			<tr>
-				<th><textarea name="pluscontent" rows="5" cols="50"></textarea> </th>
+				<th><textarea id="content" name="pluscontent" rows="5" cols="50"></textarea> </th>
 				<td></td>
 			</tr>
 		</tfoot>
@@ -99,7 +113,7 @@
 	
 			<p>
 				<input type="button" value="이전">
-				<input type="submit" value="등록">
+				<input type="button" value="등록" onclick="viewNextPage()">
 			</p>
 
 	</div>

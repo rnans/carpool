@@ -31,49 +31,109 @@
 
 
 </style>
+<script>
+
+window.onload=function(){
+var d = new Date();
+
+var yearEl=document.getElementById('yearEl');
+var monthEl=document.getElementById('monthEl');
+var dayEl=document.getElementById('dayEl');
+var hourEl=document.getElementById("hourEl");
+	
+	for(var i=d.getFullYear();i<d.getFullYear()+5;i++)
+	{
+	
+	yearEl.innerHTML+='<option>'+i+'</option>';
+	
+	}
+	
+	for(var i=1;i<=12;i++)
+	{
+		monthEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
+	
+	
+	}
+	
+	setDays();
+	
+	for(var i=1;i<=12;i++)
+	{
+		hourEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
+
+	}
+	
+	document.getElementById("term").style.visibility = "hidden";
+	document.getElementById("short").style.visibility = "hidden";
+ }
+ 
+function setDays(){
+	var days=30;
+		
+	if(monthEl.value==1||monthEl.value==3||monthEl.value==5||monthEl.value==7||monthEl.value==8||monthEl.value==10||monthEl.value==12)
+	{
+		days=31;
+	}
+	else if(monthEl.value==2)
+	{
+		days=29;
+	}
+	else
+	{
+		
+	}
+		
+	for(var i=1;i<=days;i++)
+	{
+	
+		dayEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
+
+	}
+
+}
+
+
+function viewShort()
+{
+	document.getElementById("term").style.visibility = "hidden";
+	document.getElementById("short").style.visibility = "visible";
+}
+
+function viewTerm()
+{
+	document.getElementById("short").style.visibility = "hidden";
+	document.getElementById("term").style.visibility = "visible";
+}
+</script>
 </head>
 <body>
 <h2>카풀등록 페이지05_01</h2>
 
-	<input type="button" value="단기">
-		<input type="button" value="정기">
+	<input type="button" value="단기" onclick="viewShort()">
+		<input type="button" value="정기" onclick="viewTerm()">
 	
 	<div id="div2">
 		<h3>프로필</h3>
 	</div>
+	<div id="short">
 		<form name="shortup" action="poolMemberAdd04.do">
-		타입>
+		타입><input type="hidden" name="type" value="단기">
 		<br>
-		출발일시><select name="sy">
-				<option>2016</option>
+		출발일시><select id="yearEl" name="sy">
 			</select>년
-			<select name="sm">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
+			<select id="monthEl" name="sm" onchange="setDays()">
 			</select>월
-			<select name="sd">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
+			<select id="dayEl" name="sd">
 			</select>일<br>
 			<select name="sapm">
 				<option>오전</option>
 				<option>오후</option>
 			</select>
-			<select name="sh">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
+			<select id="hourEl" name="sh">
 			</select>시
 			<select name="sm">
-				<option>10</option>
-				<option>30</option>
 				<option>00</option>
+				<option>30</option>
 			</select>분<br>
 			
 			
@@ -94,28 +154,21 @@
 			<input type="submit" name="next" value="다음">
 		</p>
 		</form>
-	</div>
-	
+		
+			
 	<div id="div3">
 		<legend>지도API</legend>
 		<table width="500" height="400" border="1">
 		</table>
 	</div>
+	
+	</div>
 
 
-	<fieldset>
 
-		<legend>정기 등록</legend>
+	<div id="term">
 		<form name="termup" action="poolMemberAdd04.do">
-		<fieldset>
-
-			<legend>세부 정보</legend>	
-			
-			<div id="div1">	
-			유형:<input type="radio"  name="type" value="단기">단기
-		<input type="radio" name="type" value="장기">장기
-		<br>
-		</div>
+		<input type="hidden" name="type" value="정기">
 		<div id="div2">
 		기간:
 		<select name="lsy">
@@ -194,12 +247,12 @@
             <option>여성만</option>
          </select>
 		</div>
-		</fieldset>
+
 		<br>
 	<input type="button" value="이전"> 
 			<input type="submit" value="다음">
 	</form>
-	</fieldset>
-	
+
+	</div>
 </body>
 </html>

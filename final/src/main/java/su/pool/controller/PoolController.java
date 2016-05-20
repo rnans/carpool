@@ -1,4 +1,4 @@
-package su.controller;
+package su.pool.controller;
 
 import java.util.HashMap;
 
@@ -15,12 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 import su.pool.model.PoolDAO;
 import su.pool.model.PoolDTO;
 
+import su.member.model.*;
+
 @Controller
-public class CarpoolController 
+public class PoolController 
 {
 	@Autowired
 	private PoolDAO poolDao;
-	
 	
 	public PoolDAO getPoolDao() {
 		return poolDao;
@@ -36,22 +37,32 @@ public class CarpoolController
 		return "carpool/poolMain";
 	}
 	
-	@RequestMapping(value = "/poolMasterAdd01.do", method = RequestMethod.GET)
-	public String viewMasterAddPage()
-	{
-		return "carpool/poolMasterAdd01";
-	}
-	@RequestMapping(value = "/poolMasterAdd01.do", method = RequestMethod.POST)
-	public ModelAndView poolUserInfo(){
-		asd
-	}
-	
 	@RequestMapping("/poolMemberAdd.do")
-	public String viewMemberAddPage()
+	public ModelAndView viewMasterAddPage(HttpSession session)
 	{
-		return "carpool/poolMemberAdd01";
+		String userid=(String)session.getAttribute("sid");		
+		
+		MemberDTO dto=poolDao.getAllUserInfo(userid);
+				
+		ModelAndView mav=new ModelAndView();
+		
+		
+		
+		if(dto==null)
+		{
+			String msg="로그인 후에 이용 가능합니다.";
+			mav.setViewName("carpool/poolMsg");
+			mav.addObject(msg,"msg");
+		}
+		else
+		{
+			mav.setViewName("carpool/poolMemberAdd01");
+			mav.addObject("dto",dto);
+		}
+		return mav;
 	}
 	
+
 	@RequestMapping("/poolAdd.do")
 	public String viewCarpoolAddPage()
 	{
