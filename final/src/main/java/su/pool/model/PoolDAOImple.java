@@ -13,6 +13,6 @@ public class PoolDAOImple implements PoolDAO {
 	
 	public int poolMemberAdd(PoolDTO dto) 
 	{
-		return sqlMap.insert("poolMemberAdd");
+		return sqlMap.insert("poolMemberAdd",dto);
 	}	
 }
