@@ -45,8 +45,12 @@ public class MemberDTO {
 		this.carhave = carhave;
 		this.joindate = joindate;
 	}
-
-
+	
+	public MemberDTO(String id, String pwd) {
+		super();
+		this.id = id;
+		this.pwd = pwd;
+	}
 
 
 	public int getIdx() {
