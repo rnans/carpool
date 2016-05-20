@@ -35,10 +35,6 @@
 <body>
 <h2>카풀등록 페이지05_01</h2>
 
-	<!-- <div id="div1"><span id="sev">우왕</span><input type="button" value="삭제" onclick="del()">
-		<h3>프로필</h3>
-	</div> -->
-	
 	<input type="button" value="단기">
 		<input type="button" value="정기">
 	
@@ -46,10 +42,6 @@
 		<h3>프로필</h3>
 	</div>
 		<form name="shortup" action="poolMemberAdd04.do">
-		<input type="hidden" name="aim" value="${aim}">
-		<input type="hidden" name="startspot" value="${startspot}">
-		<input type="hidden" name="endspot" value="${endspot}">
-		<input type="hidden" name="route" value="${route}"> 
 		타입>
 		<br>
 		출발일시><select name="sy">
