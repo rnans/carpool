@@ -1,0 +1,179 @@
+@CHARSET "utf-8";
+
+.searchWrap {
+    position: relative;
+    z-index: 100;
+    margin-bottom: 16px;
+}
+.gSrOnly {
+    overflow: hidden!important;
+    position: absolute!important;
+    top: 0!important;
+    left: 0!important;
+    width: 1px!important;
+    height: 1px!important;
+    font-size: 0!important;
+    line-height: 0!important;
+}
+.uInputSearch {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 36px;
+    padding: 0 45px 0 15px;
+    border: 1px solid #DDD;
+    border-radius: 2px;
+    background: #FDFDFD;
+}
+.uInputSearch input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    line-height: 36px;
+    padding: 0;
+    background: 0 0;
+}
+
+.uInputSearch button{
+    width: 45px;
+    height: 30px;
+    text-align: center;
+    color: #666;
+    line-height: 30px;
+    font-size: 14px;     
+}
+<!--  -->
+.cPostWrite {
+    position: relative;
+    padding-bottom: 52px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;
+}
+.writeWrap {
+    margin-bottom: 15px;  
+    border-bottom: 1px solid #D5D5D5; 
+}
+
+.cPostWrite .writeWrap {
+    min-height: 73px;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+.cPostWrite .buttonArea ul {
+    float: left;
+    margin: 0 0 0 9px;
+}
+
+.cPostWrite .buttonArea li {
+    position: relative;
+    float: left;
+    font-size: 20px;
+    color: #B5B5B8;
+}
+
+.cPostWrite .mentions, .cPostWrite textarea {
+    overflow: hidden;
+    padding: 16px 20px 0;
+    border: 1px;
+    line-height: 1.54;
+    font-size: 14px;
+    vertical-align: top;
+    word-wrap: break-word;
+    white-space: pre-wrap;       
+}
+
+div {
+    display: block;
+}
+.cPostWrite .buttonArea .buttonSubmit {
+    float: right;
+    margin: 10px 7px 0 0;
+    text-align: right;
+    font-size: 0;
+}
+
+.cPostWrite .mentions-input textarea {
+    position: absolute;
+}
+
+.cPostWrite textarea {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: -1px;
+    min-height: 75px;
+    background: 0 0;
+    resize: none;
+}
+
+input, textarea {
+    color: #333;
+    border-radius: 0;
+    outline: 0;
+}
+
+<!---->
+
+.noticeWrap {
+    margin-bottom: 15px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;
+}
+.noticeWrap .tit {
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+}
+.noticeWrap .notice>li {
+    position: relative;
+    font-size: 14px;
+}
+.noticeWrap .notice>li>a {
+    display: block;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+    word-break: normal;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    position: relative;
+    height: 52px;
+    padding: 0 43px 0 20px;
+    border-bottom: 1px solid #eee;
+    line-height: 50px;
+    color: #333;
+}
+
+<!---->
+.postWrap .cPost {
+    margin-bottom: 15px;
+}
+.cPost {
+    position: relative;
+    background: #fff;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+}
+.cPost .postFunction .postSet {
+    overflow: hidden;
+    position: relative;
+    text-indent: -400px;
+    border: 0;
+    width: 20px;
+    height: 20px;
+    background: 0 0;
+}
