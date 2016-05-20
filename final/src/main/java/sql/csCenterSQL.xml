@@ -16,7 +16,13 @@
 		select * from notice where
 		idx=#{idx}
 	</select>
+	<insert id="noticeAdd" parameterType="su.csCenter.model.CsNoticeDTO">
+		insert into notice
+		values(notice_idx.nextval,#{writer},sysdate,#{subject},#{content},0)
+	</insert>
 	
+	
+	<!-- oneandone -->
 	 <update id="noticereadnum" parameterType="su.csCenter.model.CsoneandoneDTO">
      update notice set readnum=readnum+1 where idx=#{idx}
      </update>
@@ -25,7 +31,7 @@
 	select * from
    (select rownum as rnum,a.* from
    (select * from oneandone order by idx desc)a)b
-   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and writer=#{id}
 	</select>
 	
 	<select id="totalCnt2" resultType="int">
@@ -35,6 +41,10 @@
 		select * from oneandone where
 		idx=#{idx}
 	</select>
+	<insert id="oneandoneAdd" parameterType="su.csCenter.model.CsoneandoneDTO">
+		insert into oneandone
+		values(oneandone_idx.nextval,#{writer},#{type},sysdate,#{subject},#{content},'답변대기',0)
+	</insert>
 	
 </mapper>
 
