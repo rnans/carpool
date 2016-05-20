@@ -2,6 +2,7 @@ package su.member.model;
 
 import java.sql.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,6 +12,7 @@ public class MemberDAOImple implements MemberDAO {
 	
 	private SqlSessionTemplate sqlMap;
 
+	
 	public MemberDAOImple(SqlSessionTemplate sqlMap) {
 		super();
 		this.sqlMap = sqlMap;
@@ -44,25 +46,25 @@ public class MemberDAOImple implements MemberDAO {
 	
 	/**로그인*/
 	public int login(String id, String pwd) {
-		String userid = id;
-		String userpwd = pwd;
-		Map map = new HashMap();
-		map.put("id", userid);
-		map.put("pwd", userpwd);
-		MemberDTO dto=sqlMap.selectOne("memberLogin",map);
 		
-		if(dto.getPwd().equals("")||dto.getPwd()==null)
-		{
-			return 2;
-		}
-		else if(dto.getPwd().equals(pwd))
-		{
-			return 1;
-		}
-		else
-		{
+		Map map = new HashMap();
+		map.put("id", id);
+		map.put("pwd", pwd);
+			
+		List<MemberDTO> list=sqlMap.selectList("memberLogin", map);
+		
+		if(list.size()==0){
 			return 3;
 		}
+		if(list.get(0).getId().equals(id)){
+			String dbpwd = list.get(0).getPwd();
+	         if(dbpwd.equals(pwd)){
+	            return 1;
+	         }else if(dbpwd==null || dbpwd.equals("")){
+	            return 2;
+	         }
+	      }
+			  return 3;	       
 		
 	}
 	
