@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,10 +36,14 @@ public class CarpoolController
 		return "carpool/poolMain";
 	}
 	
-	@RequestMapping("/poolMasterAdd.do")
+	@RequestMapping(value = "/poolMasterAdd01.do", method = RequestMethod.GET)
 	public String viewMasterAddPage()
 	{
 		return "carpool/poolMasterAdd01";
+	}
+	@RequestMapping(value = "/poolMasterAdd01.do", method = RequestMethod.POST)
+	public ModelAndView poolUserInfo(){
+		
 	}
 	
 	@RequestMapping("/poolMemberAdd.do")
