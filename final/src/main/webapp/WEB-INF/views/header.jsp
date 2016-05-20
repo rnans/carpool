@@ -1,10 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<script src="https://code.jquery.com/jquery-2.2.3.js"></script>
+
 <script>
 function loginOpen(){
 	window.open('login.do', 'login', 'width=500 height=400 left=500 top=200');
 }
+
+////////jquery/////////
+$(document).ready(function(){
+	$("#chageaboo").mouseenter(function(){
+		$(this).append(" <li id='chageaboo2'><a href='#'>home</a>&nbsp&nbsp<a href='cost.do'>cost</a>&nbsp&nbsp<a hrf='graph.do'>graph</a></li>");	
+	});
+	
+	$("#chageaboo").mouseleave(function(){
+		$(this).children("#chageaboo2").remove();
+	});
+	
+});
 </script>
 <header>
 
@@ -21,7 +36,7 @@ function loginOpen(){
 
 	<ul>
 		<li><a href="poolMain.do">카풀</a></li>
-		<li><a href="carBookInfo.do">차계부</a></li>
+		<li><a href="carBookInfo.do" id="chageaboo">차계부</a></li>
 		<li><a href="comm.do">커뮤니티</a></li>
 		<li><a href="csCenter.do">고객센터</a></li>
 	</ul>
