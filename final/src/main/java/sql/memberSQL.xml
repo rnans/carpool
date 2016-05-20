@@ -19,4 +19,12 @@
 	<select id="memberInfo" parameterType="su.member.model.MemberDTO" resultType="su.member.model.MemberDTO">
 		select name from userinfo where id=#{id}
 	</select>
+	
+	<select id="idFind" parameterType="Map" resultType="su.member.model.MemberDTO">
+		select id from userinfo where name=#{name} and phonenum=#{phonenum}
+	</select>
+	
+	<select id="pwFind" parameterType="Map" resultType="su.member.model.MemberDTO">
+		select pwd from userinfo where id=#{id} and phonenum=#{phonenum}
+	</select>
 </mapper>
