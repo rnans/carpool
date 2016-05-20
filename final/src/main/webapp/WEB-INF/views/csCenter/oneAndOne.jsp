@@ -8,9 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-헤더부분 
+<%@include file="../header.jsp" %>
+<div>헤더부분 </div>
 <hr>
 <h2>1:1문의</h2>
+<div> 왼쪽 메뉴바
 <table border="1">
 <thead>
 <tr>
@@ -27,6 +29,7 @@
 </tr>
 </thead>
 </table>
+</div>
 <table border="1">
 <thead>
 <tr>

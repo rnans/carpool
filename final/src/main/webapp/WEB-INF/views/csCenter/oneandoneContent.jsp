@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="../header.jsp" %>
 <div>헤더</div>
 <hr>
 <c:if test="${empty list }">
@@ -31,7 +32,7 @@
 </tr> 
 </thead>
 </table>
-</div>
+ </div>
 </section>
 <section>
 
@@ -54,7 +55,7 @@
 </tr>
 </tbody>
 </table>
-<a href="csCenter.do">이전페이지로</a>
+<a href="oneAndOne.do">이전페이지로</a>
 </section>
 <hr>
 <div>풋</div>

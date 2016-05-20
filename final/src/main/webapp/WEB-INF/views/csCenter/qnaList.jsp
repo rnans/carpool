@@ -7,8 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-헤더부분 <hr>
+<div>헤더부분</div>
+<%@include file="../header.jsp" %>
+ <hr>
 <h2>자주묻는질문(Q&A)</h2>
+<div>왼쪽메뉴바
 <table border="1">
 <thead>
 <tr>
@@ -25,6 +28,7 @@
 </tr>
 </thead>
 </table>
+</div>
 <div>qna제목1             -----클릭시 (제목과 내용을박는다)</div>
 <div> 제목1 내용출력</div>
 <hr>

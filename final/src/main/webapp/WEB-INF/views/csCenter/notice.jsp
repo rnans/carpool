@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-헤더부분
+<%@include file="../header.jsp" %>
+<div>헤더부분</div>
 <hr>
 <h2>공지사항</h2>
 <table border="1">
@@ -65,6 +66,8 @@
  </tr>
  </tfoot>
 </table>
+<a href="noticeWriteForm.do">글쓰기</a>
+<a href="admintest.do">관리자페이지 테스트</a>
 <hr>
 풋부분
 </body>
