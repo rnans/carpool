@@ -31,8 +31,7 @@ function idCheckResult(){
 					<legend>회원가입</legend>
 					<ul>
 						<li>
-							ID : <input type="text" name="id">
-							<input type="button" value="중복체크" onclick="idCheck()">
+							ID : <input type="text" name="id" onblur="idCheck()">
 							<span id="idmsg"></span> <!-- ajax 아이디체크용 -->
 						</li>
 						<li>
