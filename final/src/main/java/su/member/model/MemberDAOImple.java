@@ -75,5 +75,35 @@ public class MemberDAOImple implements MemberDAO {
 		String result=dto.getName();
 		return result;
 	}
+	
+	/**ID 찾기*/
+	public String idFind(String name, String phonenum) {
+		
+		Map map = new HashMap();
+		map.put("name", name);
+		map.put("phonenum", phonenum);
+		
+		MemberDTO dto = sqlMap.selectOne("idFind", map);
+		
+		if(name==null || name.equals("") || phonenum==null || phonenum.equals("")){
+			return null;
+		}
+		String result = dto.getId();
+		return result;
+	}
+	
+	/**PW 찾기*/
+	public String pwFind(String id, String phonenum) {
+		
+		Map map = new HashMap();
+		map.put("id", id);
+		map.put("phonenum", phonenum);
+		
+		MemberDTO dto = sqlMap.selectOne("pwFind", map);
+		
+		
+		String result = dto.getPwd();
+		return result;
+	}
 
 }
