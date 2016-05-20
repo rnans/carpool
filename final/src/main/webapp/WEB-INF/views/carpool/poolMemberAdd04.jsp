@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,17 +37,11 @@
 
 
 </style>
-<script>
-window.onload=function()
-{
-	
-	window.alert(document.getElementById('t').value);
-}
-</script>
 </head>
 <body>
 <h2>카풀등록 페이지6</h2>
-	
+
+<form name="f" action="poolMemberAdd05.do">
 	<div id="div1">
 		<img src="1234.jpg" border="100"><br>
 		<input type="button" name="pf" value="프로필사진수정" align="center">
@@ -54,48 +49,43 @@ window.onload=function()
 	
 	<div id="div2">
 	
-	<input type="hidden" name="starttime" value="${starttime}">
-	<input type="hidden" name="aim" value="${aim}">
-	<input type="hidden" name="startspot" value="${startspot}">
-	<input type="hidden" name="endspot" value="${endspot}">
-	<input type="hidden" name="route" value="${route}"> 
-	<input type="hidden" name="mannum" value="${mannum }">
-	<input type="hidden" name="gender" value="${gender }">
-		<table border="1">
-			<thead>
+	<table border="1">
+		
 			
-				<th>출발지></th>
-				<td>${startspot }</td>
-				<th>경유지></th>
-				<td>${route }</td>
-				<th>도착지></th>
-				<td>${endspot}</td>
-			
-			</thead>
+				
+	
 			
 		<tfoot>
 			<tr>
-				<th>비고</th>
+				<th><textarea name="pluscontent" rows="5" cols="50"></textarea> </th>
 				<td></td>
 			</tr>
 		</tfoot>
 			
 			<tbody>
+			<tr>
+				<th>출발지></th>
+					<td>${sessionScope.data.startspot }</td>
+					<th>경유지></th>
+					<td>${sessionScope.data.route }</td>
+					<th>도착지></th>
+					<td>${sessionScope.data.endspot}</td>
+			</tr>
 				<tr>
 					<th>목적></th>
-					<td>${aim }</td>
+					<td>${sessionScope.data.aim }</td>
 				</tr>
 				<tr>
 					<th>인원></th>
-					<td>${mannum }</td>
+					<td>${sessionScope.data.mannum }</td>
 					<th>성별></th>
-					<td>${gender }</td>
+					<td>${sessionScope.data.gender }</td>
 					<th>흡연></th>
-					<td>${smoking }</td>
+					<td>${sessionScope.data.smoking }</td>
 				</tr>
 				<tr>
 					<th>출발일시></th>
-					<td>${starttime }</td>
+					<td>${sessionScope.data.starttime }</td>
 				</tr>
 			</tbody>
 		</table>
@@ -106,13 +96,13 @@ window.onload=function()
 		<fieldset>
 			<img src="123.jpg" border="200"><br>
 		</fieldset>
-		<form>
+	
 			<p>
-				<input type="button" value="등록">
 				<input type="button" value="이전">
+				<input type="submit" value="등록">
 			</p>
-		</form>
-	</div>
 
+	</div>
+	</form>
 </body>
 </html>
