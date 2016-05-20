@@ -37,25 +37,39 @@ window.onload=function()
 	var s=location.href;
 	var t=s.slice(s.indexOf('?'+1),s.length);
 	window.alert(s);
+	
+	
+}
+
+function del()
+{
+	var div=document.getElementById('div1');
+	var span=document.getElementById('sev');
+	div.removeChild(span);
 }
 </script>
 </head>
 <body>
 <h2>카풀등록 페이지05_01</h2>
 
-	<div id="div1">
-		<h3>단기 등록</h3>
-	</div>
+	<!-- <div id="div1"><span id="sev">우왕</span><input type="button" value="삭제" onclick="del()">
+		<h3>프로필</h3>
+	</div> -->
+	
+	<input type="button" value="단기">
+		<input type="button" value="정기">
 	
 	<div id="div2">
-		<form name="f" action="#">
+	<div id="div1"><span id="sev">우왕</span><input type="button" value="삭제" onclick="del()">
+		<h3>프로필</h3>
+	</div>
+		<form name="shortup" action="poolMemberAdd04.do">
 		<input type="hidden" name="aim" value="${aim}">
 		<input type="hidden" name="startspot" value="${startspot}">
 		<input type="hidden" name="endspot" value="${endspot}">
 		<input type="hidden" name="route" value="${route}"> 
 		타입>
-		<input type="button" value="단기">
-		<input type="button" value="정기"><br>
+		<br>
 		출발일시><select name="sy">
 				<option>2016</option>
 			</select>년
@@ -103,7 +117,7 @@ window.onload=function()
 		  	 <input type="radio" name="smoking" value="비흡연">비흡연
 		<p>
 			<input type="button" name="back" value="이전">
-			<input type="button" name="next" value="다음">
+			<input type="submit" name="next" value="다음">
 		</p>
 		</form>
 	</div>

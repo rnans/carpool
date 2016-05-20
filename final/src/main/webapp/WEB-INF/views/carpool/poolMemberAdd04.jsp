@@ -36,24 +36,40 @@
 
 
 </style>
+<script>
+window.onload=function()
+{
+	
+	window.alert(document.getElementById('t').value);
+}
+</script>
 </head>
 <body>
 <h2>카풀등록 페이지6</h2>
+	
 	<div id="div1">
 		<img src="1234.jpg" border="100"><br>
 		<input type="button" name="pf" value="프로필사진수정" align="center">
 	</div>
 	
 	<div id="div2">
+	
+	<input type="hidden" name="starttime" value="${starttime}">
+	<input type="hidden" name="aim" value="${aim}">
+	<input type="hidden" name="startspot" value="${startspot}">
+	<input type="hidden" name="endspot" value="${endspot}">
+	<input type="hidden" name="route" value="${route}"> 
+	<input type="hidden" name="mannum" value="${mannum }">
+	<input type="hidden" name="gender" value="${gender }">
 		<table border="1">
 			<thead>
 			
 				<th>출발지></th>
-				<td>경기도 안양시 달안동주민센터</td>
+				<td>${startspot }</td>
 				<th>경유지></th>
-				<td>경기도 과천시 중앙동</td>
+				<td>${route }</td>
 				<th>도착지></th>
-				<td>서울 특별시 서초구 강남대로</td>
+				<td>${endspot}</td>
 			
 			</thead>
 			
@@ -67,17 +83,19 @@
 			<tbody>
 				<tr>
 					<th>목적></th>
-					<td>출/퇴근</td>
+					<td>${aim }</td>
 				</tr>
 				<tr>
 					<th>인원></th>
-					<td>2명</td>
+					<td>${mannum }</td>
+					<th>성별></th>
+					<td>${gender }</td>
 					<th>흡연></th>
-					<td>흡연</td>
+					<td>${smoking }</td>
 				</tr>
 				<tr>
 					<th>출발일시></th>
-					<td>16년02월29일 오전10시20분</td>
+					<td>${starttime }</td>
 				</tr>
 			</tbody>
 		</table>
@@ -87,14 +105,11 @@
 		<legend>지도API</legend>
 		<fieldset>
 			<img src="123.jpg" border="200"><br>
-			출발지:<br>
-			경유지:<br>
-			도착지:<br>
 		</fieldset>
 		<form>
 			<p>
-				<input type="button" value="등록하기">
-				<input type="button" value="이전화면">
+				<input type="button" value="등록">
+				<input type="button" value="이전">
 			</p>
 		</form>
 	</div>
