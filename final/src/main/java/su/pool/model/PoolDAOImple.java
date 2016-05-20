@@ -11,4 +11,8 @@ public class PoolDAOImple implements PoolDAO {
 		this.sqlMap = sqlMap;
 	}
 	
+	public int poolMemberAdd(PoolDTO dto) 
+	{
+		return sqlMap.insert("poolMemberAdd");
+	}	
 }
