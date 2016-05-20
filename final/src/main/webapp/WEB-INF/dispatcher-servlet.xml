@@ -58,6 +58,11 @@
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean> 
+	<bean id="CarCostDao" class="su.carCost.model.CarCostDAOImple">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
 	
 	
 	
