@@ -111,4 +111,51 @@ public class MemberController {
 		
 		return "redirect:/index.do";
 	}
+	
+	/**아이디 찾기 폼이동*/
+	@RequestMapping(value="/idFind.do", method=RequestMethod.GET)
+	public String idFindForm(){
+		return "member/idFind";
+	}
+	
+	/**아이디 찾기*/
+	@RequestMapping(value="/idFind.do", method=RequestMethod.POST)
+	public ModelAndView idFind(@RequestParam(value="name", required=false)String name, 
+			@RequestParam(value="phonenum", required=false)String phonenum){
+		ModelAndView mav = new ModelAndView();
+		String id = memberDao.idFind(name, phonenum);
+		
+		if(name==null || name.equals("") || phonenum==null || phonenum.equals("")){
+			mav.addObject("msg", "이름 및 전화번호를 제대로 입력해주세요.");
+			mav.addObject("loc", "idFind.do");
+			mav.setViewName("member/memberMsg");
+		}else{
+			mav.addObject("msg", "회원님의 ID는 "+id+"입니다.");
+			mav.addObject("loc", "login.do");
+			mav.setViewName("member/memberMsg");
+			
+		}
+				
+		return mav;
+	}
+	
+	/**비밀번호 찾기 폼이동*/
+	@RequestMapping(value="/pwFind.do", method=RequestMethod.GET)
+	public String pwFindForm(){
+		return "member/pwFind";
+	}
+	
+	/**비밀번호 찾기*/
+	@RequestMapping(value="/pwFind.do", method=RequestMethod.POST)
+	public ModelAndView pwFind(@RequestParam(value="id", required=false)String id,
+			@RequestParam(value="phonenum", required=false)String phonenum){
+		
+		ModelAndView mav = new ModelAndView();
+		String pwd = memberDao.pwFind(id, phonenum);
+		mav.addObject("msg", "회원님의 비밀번호는 "+pwd+"입니다."	);
+		mav.addObject("loc", "login.do");
+		mav.setViewName("member/memberMsg");
+		
+		return mav;
+	}
 }
