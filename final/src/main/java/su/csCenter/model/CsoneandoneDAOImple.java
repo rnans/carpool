@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class CsoneandoneDAOImple implements CsoneandoneDAO {
@@ -15,10 +17,12 @@ public class CsoneandoneDAOImple implements CsoneandoneDAO {
 		super();
 		this.sqlMap = sqlMap;
 	}
-	public List<CsoneandoneDTO> oneandoneList(int cp,int ls){
+	public List<CsoneandoneDTO> oneandoneList(int cp,int ls ,String id){
+		
 		int startnum=(cp-1)*ls+1;
 		int endnum=cp*ls;
 		Map map=new HashMap();
+		map.put("id", id);
 		map.put("startnum", startnum);
 		map.put("endnum", endnum);
 		List<CsoneandoneDTO> list=
@@ -34,6 +38,10 @@ public class CsoneandoneDAOImple implements CsoneandoneDAO {
 					   sqlMap.selectList("oneandoneContent",idx);
 			   return list;
 		}
+		 public int oneandoneAdd(CsoneandoneDTO dto){
+			 int count=sqlMap.insert("oneandoneAdd", dto);
+			 return count;	 		
+		 }
 	}
 
 

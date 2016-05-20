@@ -1,19 +1,18 @@
 package su.csCenter.model;
 
-import java.util.Date;
 
 public class CsNoticeDTO {
 
 	private int idx;
 	private String writer;
-	private Date writedate;
+	private String writedate;
 	private String subject;
 	private String content;
 	private int readnum;
 	public CsNoticeDTO() {
 		super();
 	}
-	public CsNoticeDTO(int idx, String writer, Date writedate, String subject, String content, int readnum) {
+	public CsNoticeDTO(int idx, String writer, String writedate, String subject, String content, int readnum) {
 		super();
 		this.idx = idx;
 		this.writer = writer;
@@ -34,10 +33,10 @@ public class CsNoticeDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getWritedate() {
+	public String getWritedate() {
 		return writedate;
 	}
-	public void setWritedate(Date writedate) {
+	public void setWritedate(String writedate) {
 		this.writedate = writedate;
 	}
 	public String getSubject() {
@@ -59,5 +58,6 @@ public class CsNoticeDTO {
 		this.readnum = readnum;
 	}
 	
+
 	
 }
