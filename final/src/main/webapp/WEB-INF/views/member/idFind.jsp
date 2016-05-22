@@ -19,7 +19,7 @@ function idFindClose(){
 					<legend>ID 찾기</legend>
 						<ul>
 							<li>이름 : <input type="text" name="name"></li>
-							<li>번호 : <input type="text" name="phonenum"></li>
+							<li>전화번호 : <input type="text" name="phonenum"></li>
 						</ul>
 						<div>
 							<input type="submit" value="ID 찾기">

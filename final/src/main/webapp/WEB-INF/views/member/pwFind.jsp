@@ -19,7 +19,7 @@ function pwFindClose(){
 					<legend>비밀번호 찾기</legend>
 						<ul>
 							<li>ID : <input type="text" name="id"></li>
-							<li>번호 : <input type="text" name="phonenum"></li>
+							<li>전화번호 : <input type="text" name="phonenum"></li>
 						</ul>
 						<div>
 							<input type="submit" value="비밀번호 찾기">
