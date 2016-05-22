@@ -125,7 +125,7 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		String id = memberDao.idFind(name, phonenum);
 		
-		if(name==null || name.equals("") || phonenum==null || phonenum.equals("")){
+		if(id==null){
 			mav.addObject("msg", "이름 및 전화번호를 제대로 입력해주세요.");
 			mav.addObject("loc", "idFind.do");
 			mav.setViewName("member/memberMsg");
@@ -152,9 +152,17 @@ public class MemberController {
 		
 		ModelAndView mav = new ModelAndView();
 		String pwd = memberDao.pwFind(id, phonenum);
-		mav.addObject("msg", "회원님의 비밀번호는 "+pwd+"입니다."	);
-		mav.addObject("loc", "login.do");
-		mav.setViewName("member/memberMsg");
+		
+		if(pwd==null){
+			mav.addObject("msg", "아이디 및 전화번호를 제대로 입력해주세요.");
+			mav.addObject("loc", "pwFind.do");
+			mav.setViewName("member/memberMsg");
+		}else{
+			mav.addObject("msg", "회원님의 비밀번호는 "+pwd+"입니다."	);
+			mav.addObject("loc", "login.do");
+			mav.setViewName("member/memberMsg");
+		}
+		
 		
 		return mav;
 	}
