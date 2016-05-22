@@ -85,7 +85,7 @@ public class MemberDAOImple implements MemberDAO {
 		
 		MemberDTO dto = sqlMap.selectOne("idFind", map);
 		
-		if(name==null || name.equals("") || phonenum==null || phonenum.equals("")){
+		if(dto==null){
 			return null;
 		}
 		String result = dto.getId();
@@ -101,6 +101,9 @@ public class MemberDAOImple implements MemberDAO {
 		
 		MemberDTO dto = sqlMap.selectOne("pwFind", map);
 		
+		if(dto==null){
+			return null;
+		}
 		
 		String result = dto.getPwd();
 		return result;
