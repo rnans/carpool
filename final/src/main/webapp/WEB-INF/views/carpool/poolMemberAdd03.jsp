@@ -117,9 +117,9 @@ function viewTerm()
 	</div>
 	<div id="short">
 		<form name="shortup" action="poolMemberAdd04.do">
-		타입><input type="hidden" name="type" value="단기">
+		타입<input type="hidden" name="type" value="단기">
 		<br>
-		출발일시><select id="yearEl" name="sy">
+		출발일시<select id="yearEl" name="sy">
 			</select>년
 			<select id="monthEl" name="sm" onchange="setDays()">
 			</select>월
@@ -137,17 +137,17 @@ function viewTerm()
 			</select>분<br>
 			
 			
-		인원 ><select name="mannum">
+		인원<select name="mannum">
 				<option>1</option>
 				<option>2</option>
 				<option>3</option>
 		   </select>명        /
-		성별><select name="gender">
+		성별<select name="gender">
 				<option>남성만</option>
 				<option>여성만</option>
 				<option>상관없음</option>
 		  </select><br>
-		흡연여부><input type="radio" name="smoking" value="흡연">흡연
+		흡연여부<input type="radio" name="smoking" value="흡연">흡연
 		  	 <input type="radio" name="smoking" value="비흡연">비흡연
 		<p>
 			<input type="button" name="back" value="이전">
@@ -157,8 +157,8 @@ function viewTerm()
 		
 			
 	<div id="div3">
-		<legend>지도API</legend>
 		<table width="500" height="400" border="1">
+		지도 API
 		</table>
 	</div>
 	
@@ -170,7 +170,7 @@ function viewTerm()
 		<form name="termup" action="poolMemberAdd04.do">
 		<input type="hidden" name="type" value="정기">
 		<div id="div2">
-		기간:
+		기간
 		<select name="lsy">
             <option>2016</option>
          </select>년
@@ -206,7 +206,7 @@ function viewTerm()
             <option>5</option>
          </select>일
          <br>
-         시간:
+         시간
           <select name="lapm">
             <option>오전</option>
             <option>오후</option>
@@ -222,7 +222,7 @@ function viewTerm()
             <option>59</option>
          </select>분
          <br>
-         반복:<input type="checkbox" name="days" value="월">월
+         반복<input type="checkbox" name="days" value="월">월
          <input type="checkbox"  name="days" value="화">화
          <input type="checkbox"  name="days" value="수">수
          <input type="checkbox"  name="days" value="목">목
@@ -230,18 +230,18 @@ function viewTerm()
          <input type="checkbox"  name="days" value="토">토
          <input type="checkbox"  name="days" value="일">일
          <br>
-         요금:<input type="text" name="pay" value="1000">원
+         요금<input type="text" name="pay" value="1000">원
          <br>
-      흡연여부:<input type="radio" name="smoking" value="흡연">흡연
+      흡연여부<input type="radio" name="smoking" value="흡연">흡연
             <input type="radio" name="smoking" value="비흡연">비흡연
             <br>
-         인원:<select name="mannum">
+         인원<select name="mannum">
             <option>1</option>
             <option>2</option>
             <option>3</option>
          </select>명  
          <br>
-         성별: <select name="gender">
+         성별<select name="gender">
             <option>혼성</option>
             <option>남성만</option>
             <option>여성만</option>

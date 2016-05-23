@@ -26,6 +26,10 @@ public class PoolDTO
 	private String location;
 	
 	
+	public PoolDTO() {
+		super();
+	}
+
 
 	public PoolDTO(int idx, String userid, String aim, String startspot, String endspot, String route,
 			String startcoordi, String endcoordi, String routecoordi, String starttime, int mannum, String gender,

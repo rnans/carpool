@@ -1,7 +1,8 @@
 package su.pool.model;
 
-import java.util.List;
 import java.util.*;
+
+import su.csCenter.model.CsNoticeDTO;
 import su.member.model.*;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -32,5 +33,36 @@ public class PoolDAOImple implements PoolDAO {
 		MemberDTO dto=(MemberDTO)list.get(0);
 		
 		return dto;
+	}
+	
+	 public int getTotalCnt(){
+		 int count=sqlMap.selectOne("sql.poolSQL.totalCnt");
+			return count;
+	 }
+	 
+	 public List viewAllList(int cp, int ls) {
+		 int startnum=(cp-1)*ls+1;
+		 int endnum=cp*ls;
+		 
+		 Map map=new HashMap();
+		 map.put("startnum", startnum);
+		 map.put("endnum", endnum);
+		 List<PoolDTO> list= sqlMap.selectList("viewAllList",map);
+
+		 return list;
+	}
+	 
+	 public PoolDTO viewEachContent(int idx) {
+			
+			List list=sqlMap.selectList("viewEachContent", idx);
+			
+			if(list==null)
+			{
+				return null;
+			}
+			
+			PoolDTO dto=(PoolDTO)list.get(0);
+			
+			return dto;
 	}
 }

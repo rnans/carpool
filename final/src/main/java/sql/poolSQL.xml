@@ -33,4 +33,66 @@
 		'test',
 		'서울')
 	</insert>
+	
+	<select id="totalCnt" resultType="int">
+		select count(*) from reservationlist
+	</select>
+	
+	<select id="viewAllList" parameterType="Map" resultType="su.pool.model.PoolDTO">
+		select 
+			idx,
+			userid,
+			aim,
+			startspot,
+			endspot,
+			route,
+			startcoordi,
+			endcoordi,
+			routecoordi,
+			to_char(starttime,'YYYY-MM-DD'),
+			mannum,
+			gender,
+			pay,
+			smoking,
+			pluscontent,
+			to_char(writedate,'yyyy-mm-dd'),
+			status,
+			type,
+			to_char(startdate,'yyyy-mm-dd'),
+			to_char(enddate,'yyyy-mm-dd'),
+			days,
+			location 
+		from
+	   (select rownum as rnum,a.* from
+	   (select * from reservationlist order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	
+	<select id="viewEachContent" parameterType="int" resultType="su.pool.model.PoolDTO">
+		select 
+			idx,
+			userid,
+			aim,
+			startspot,
+			endspot,
+			route,
+			startcoordi,
+			endcoordi,
+			routecoordi,
+			to_char(starttime,'YYYY-MM-DD'),
+			mannum,
+			gender,
+			pay,
+			smoking,
+			pluscontent,
+			to_char(writedate,'yyyy-mm-dd'),
+			status,
+			type,
+			to_char(startdate,'yyyy-mm-dd'),
+			to_char(enddate,'yyyy-mm-dd'),
+			days,
+			location 
+		from reservationlist where idx=#{idx}
+	</select>
+	
 </mapper>

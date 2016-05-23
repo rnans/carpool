@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,20 +19,33 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td colspan="5">목록이 없습니다</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td colspan="5">페이징 영역</td>
-		</tr>
-	</tbody>
+<c:if test="${empty list }">
+<tr>
+ <td colspan="5" align="center">작성된 글이 없습니다.</td>
+</tr>
+ </c:if>
+		
+<c:forEach var="dtos" items="${list }">
+
+<tr>
+ <c:url var="poolEachContent" value="poolEachContent.do">
+ <c:param name="idx">${dtos.idx }</c:param>
+ </c:url>
+
+ <td>${dtos.idx }</td>
+ <td><a href="${poolEachContent }">${dtos.startspot}</a></td>
+ <td>${dtos.endspot }</td>
+ <td>${dtos.type }</td>
+ <td>${dtos.mannum }/${dtos.pay }</td>
+
+</tr>
+ </c:forEach>
+</tbody>
+<tfoot>
+<tr>
+ <td colspan="5" align="center">${pageStr }</td>
+ </tr>
+ </tfoot>
 </table>
 </body>
 </html>
