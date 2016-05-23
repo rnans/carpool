@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
     window.alert('${msg}');
-    location.href='notice.do';
+    location.href='adminNoticeList.do';
 </script>

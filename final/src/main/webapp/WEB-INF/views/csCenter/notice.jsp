@@ -66,8 +66,7 @@
  </tr>
  </tfoot>
 </table>
-<a href="noticeWriteForm.do">글쓰기</a>
-<a href="admintest.do">관리자페이지 테스트</a>
+<a href="adminNoticeList.do">관리자페이지 테스트</a>
 <hr>
 풋부분
 </body>
