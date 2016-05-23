@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,12 @@
 	
 	<div id="div2">
 		<legend>결제</legend>
-			<form name="f" action="poolMemberAddConfirm.do">
+			<c:if test="${sessionScope.data.type eq '단기' }">
+			<form name="f" action="poolMemberAddConfirm.do" method="get">
+			</c:if>
+			<c:if test="${sessionScope.data.type eq '정기' }">
+			<form name="f" action="poolMemberAddConfirm.do" method="post">
+			</c:if>
 				<ul>
 					<li>카드종류:<select>
 								<option>국민</option>							

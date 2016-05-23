@@ -51,7 +51,7 @@ window.onload=function()
 			<br>
 			酒捞叼 <input type="text" name="id" value="${dto.id }">
 			<br>
-			林家 <input type="text" name="addr" value="${dto.addr} }">
+			林家 <input type="text" name="addr" value="${dto.addr}">
 			<br>
 			捞皋老 <input type="text" name="email" value="${dto.email}">
 			<br>

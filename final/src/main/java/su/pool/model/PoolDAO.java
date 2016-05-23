@@ -5,7 +5,9 @@ import su.member.model.*;
 
 public interface PoolDAO 
 {
-	public int poolMemberAdd(PoolDTO dto);
+	public int poolMemberShortAdd(PoolDTO dto);
+	
+	public int poolMemberLongAdd(PoolDTO dto);
 	
 	public MemberDTO getAllUserInfo(String userid);
 	

@@ -16,14 +16,20 @@ public class PoolDAOImple implements PoolDAO {
 		this.sqlMap = sqlMap;
 	}
 	
-	public int poolMemberAdd(PoolDTO dto) 
+	public int poolMemberShortAdd(PoolDTO dto) 
 	{
-		return sqlMap.insert("poolMemberAdd",dto);
+		return sqlMap.insert("poolMemberShortAdd",dto);
 	}
 	
-	public MemberDTO getAllUserInfo(String userid) {
+	public int poolMemberLongAdd(PoolDTO dto) 
+	{
+		return sqlMap.insert("poolMemberLongAdd",dto);
+	}
+	
+	public MemberDTO getAllUserInfo(String userid) 
+	{
 		
-		List list=sqlMap.selectList("getUserInfo", userid);
+		List list=sqlMap.selectList("sql.poolSQL.getUserInfo", userid);
 		
 		if(list==null)
 		{

@@ -3,4 +3,5 @@
 <!DOCTYPE html>
 <script>
 window.alert('${msg}');
+location.href='login.do';
 </script>

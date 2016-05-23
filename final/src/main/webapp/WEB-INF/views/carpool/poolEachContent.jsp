@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +31,10 @@ function showEdit()
 <div>경유지 ${dto.route }</div>
 <div>도착지 ${dto.endspot }</div>
 <div>출발 일시 ${dto.starttime }</div>
+<c:if test="${dto.type eq '정기' }">
+<div>종료 일시 ${dto.enddate }</div>
+<div>반복 ${dto.days }</div>
+</c:if>
 <div>목적 ${dto.aim }</div>
 <div>인원 ${dto.mannum }</div>
 <div>비용 ${dto.pay }</div>

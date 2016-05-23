@@ -42,6 +42,12 @@ function viewNextPage()
 {
 	var f=document.getElementById("form");
 	var pc=document.getElementById("content");
+	var type='${sessionScope.data.type}'
+	
+	if(type=='정기')
+	{
+		f.method='POST';
+	}
 	
 	if(pc.value==null)
 	{
@@ -55,7 +61,7 @@ function viewNextPage()
 <body>
 <h2>카풀등록 페이지6</h2>
 
-<form id="form" name="f" action="poolMemberAdd05.do">
+<form id="form" name="f" action="poolMemberAddConfirm.do" method="get">
 	<div id="div1">
 		<img src="1234.jpg" border="100"><br>
 		<input type="button" name="pf" value="프로필사진수정" align="center">
@@ -78,28 +84,38 @@ function viewNextPage()
 			
 			<tbody>
 			<tr>
-				<th>출발지></th>
+				<th>출발지</th>
 					<td>${sessionScope.data.startspot }</td>
-					<th>경유지></th>
+					<th>경유지</th>
 					<td>${sessionScope.data.route }</td>
-					<th>도착지></th>
+					<th>도착지</th>
 					<td>${sessionScope.data.endspot}</td>
 			</tr>
 				<tr>
-					<th>목적></th>
+					<th>목적</th>
 					<td>${sessionScope.data.aim }</td>
 				</tr>
 				<tr>
-					<th>인원></th>
+					<th>인원</th>
 					<td>${sessionScope.data.mannum }</td>
-					<th>성별></th>
+					<th>성별</th>
 					<td>${sessionScope.data.gender }</td>
-					<th>흡연></th>
+					<th>흡연</th>
 					<td>${sessionScope.data.smoking }</td>
 				</tr>
 				<tr>
-					<th>출발일시></th>
-					<td>${sessionScope.data.starttime }</td>
+					<c:if test="${sessionScope.data.type eq '단기'}">	
+					<th>출발일시</th>
+					<td>${sessionScope.data.starttime}</td>
+					</c:if>
+					<c:if test="${sessionScope.data.type eq '정기'}">
+					<th>출발일시</th>
+					<td>${sessionScope.data.starttime}</td>
+					<th>종료일시</th>
+					<td>${sessionScope.data.enddate }</td>
+					<th>반복</th>
+					<td>${sessionScope.data.days }</td>
+					</c:if>
 				</tr>
 			</tbody>
 		</table>

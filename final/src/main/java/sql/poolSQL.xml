@@ -7,11 +7,11 @@
 		select * from userinfo where id=#{id}
 	</select>
 
-	<insert id="poolMemberAdd" parameterType="su.pool.model.PoolDTO">
+	<insert id="poolMemberShortAdd" parameterType="su.pool.model.PoolDTO">
 		insert into reservationlist 
 		values(
 		reservationlist_idx.nextval,
-		'test',
+		#{userid},
 		#{aim},
 		#{startspot},
 		#{endspot},
@@ -22,15 +22,41 @@
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		#{mannum},
 		#{gender},
-		0,
+		#{pay},
 		#{smoking},
 		#{pluscontent},
 		sysdate,
+		'모집중',
+		#{type},
+		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		'test',
+		'서울')
+	</insert>
+ 	<insert id="poolMemberLongAdd" parameterType="su.pool.model.PoolDTO">
+		insert into reservationlist 
+		values(
+		reservationlist_idx.nextval,
+		#{userid},
+		#{aim},
+		#{startspot},
+		#{endspot},
+		#{route},
 		'test',
 		'test',
+		'test',
+		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		#{mannum},
+		#{gender},
+		#{pay},
+		#{smoking},
+		#{pluscontent},
 		sysdate,
-		sysdate,
-		'test',
+		'모집중',
+		#{type},
+		to_date(#{startdate},'yyyy-mm-dd'),
+		to_date(#{enddate},'yyyy-mm-dd'),
+		#{days},
 		'서울')
 	</insert>
 	
@@ -49,17 +75,17 @@
 			startcoordi,
 			endcoordi,
 			routecoordi,
-			to_char(starttime,'YYYY-MM-DD'),
+			to_char(starttime,'YYYY-MM-DD HH24:Mi') starttime,
 			mannum,
 			gender,
 			pay,
 			smoking,
 			pluscontent,
-			to_char(writedate,'yyyy-mm-dd'),
+			to_char(writedate,'yyyy-mm-dd') writedate,
 			status,
 			type,
-			to_char(startdate,'yyyy-mm-dd'),
-			to_char(enddate,'yyyy-mm-dd'),
+			to_char(startdate,'yyyy-mm-dd') startdate,
+			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
 			location 
 		from
@@ -79,17 +105,17 @@
 			startcoordi,
 			endcoordi,
 			routecoordi,
-			to_char(starttime,'YYYY-MM-DD'),
+			to_char(starttime,'YYYY-MM-DD HH24:MI') starttime,
 			mannum,
 			gender,
 			pay,
 			smoking,
 			pluscontent,
-			to_char(writedate,'yyyy-mm-dd'),
+			to_char(writedate,'yyyy-mm-dd') writedate,
 			status,
 			type,
-			to_char(startdate,'yyyy-mm-dd'),
-			to_char(enddate,'yyyy-mm-dd'),
+			to_char(startdate,'yyyy-mm-dd') startdate,
+			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
 			location 
 		from reservationlist where idx=#{idx}
