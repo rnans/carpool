@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import su.adminMember.model.AdminMemberDAO;
@@ -44,9 +46,15 @@ public class AdminMemberController {
 	}
 	
 	/**회원탈퇴*/
-	public ModelAndView memberDel(){
-		ModelAndView mav = new ModelAndView();
+	@RequestMapping("/memberDel.do")
+	public ModelAndView memberDel(@RequestParam("idx")int idx){
 		
+		ModelAndView mav = new ModelAndView();
+		int count = adMemberDao.MemberDel(idx);
+		
+		String result=count>0?"회원삭제성공":"회원삭제실패";
+		mav.addObject("msg", result);
+		mav.setViewName("admin/adminMsg");
 		return mav;
 	}
 }
