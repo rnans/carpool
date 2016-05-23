@@ -42,7 +42,7 @@ public class carPoolController {
 		if (dto == null) {
 			String msg = "로그인 후에 이용 가능합니다.";
 			mav.setViewName("carpool/poolMsg");
-			mav.addObject(msg, "msg");
+			mav.addObject("msg", msg);
 		} else {
 			mav.setViewName("carpool/poolMasterAdd01");
 			mav.addObject("dto", dto);
@@ -58,33 +58,31 @@ public class carPoolController {
 
 		ModelAndView mav = new ModelAndView();
 
-		if (dto == null) {
-			String msg = "로그인 후에 이용 가능합니다.";
-			mav.setViewName("carpool/poolMsg");
-			mav.addObject(msg, "msg");
-		} else {
+		
 			mav.setViewName("carpool/poolMasterAdd02");
 			mav.addObject("dto", dto);
-		}
+		
 		return mav;
 		
 	}
 	@RequestMapping("/poolMasterAdd03.do")
 	public String viewMasterAddPage3(){
 		
-		return "carpool/poolmasterAdd03";
+		return "carpool/poolMasterAdd03";
 		
 	}
 
 	@RequestMapping("/poolMasterAdd04.do")
 	public ModelAndView viewMemberAddPage3(HttpServletRequest req, HttpSession session) {
+		String carpoolname=req.getParameter("carPoolName");
 		String aim = req.getParameter("object");
 		String startspot = req.getParameter("startAddr");
 		String endspot = req.getParameter("endAddr");
 		String route = req.getParameter("passAddr");
 
 		HashMap<String, String> data = new HashMap<String, String>();
-
+		
+		data.put("carpoolname", carpoolname);
 		data.put("aim", aim);
 		data.put("startspot", startspot);
 		data.put("endspot", endspot);
@@ -94,92 +92,80 @@ public class carPoolController {
 
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("carpool/poolMasterAdd03");
+		mav.setViewName("carpool/poolMasterAdd04");
 
 		return mav;
 	}
 
-	/*@RequestMapping("/poolMemberAdd04.do")
+	@RequestMapping("/poolMasterAdd05.do")
 	public ModelAndView viewMemberAddPage4(HttpServletRequest req, HttpSession session) {
-		String uhung = req.getParameter("uhung");
-		String start = req.getParameter("startAddr");
-		String pass = req.getParameter("passAddr");
-		String end = req.getParameter("endAddr");
-
-		String sh = req.getParameter("sh");
-		int h = Integer.parseInt(sh);
-
-		if (req.getParameter("sapm").equals("오후")) {
-			h += 12;
+		String maxnum=req.getParameter("mannum");
+		String hopesex=req.getParameter("hopesex");
+		String smoking=req.getParameter("smoking");
+		String pay=req.getParameter("pay");
+		String carpooltype=req.getParameter("type");
+		
+		String carpoolname=req.getParameter("carPoolName");
+		String object = req.getParameter("object");
+		String startAddr = req.getParameter("startAddr");
+		String endAddr = req.getParameter("endAddr");
+		String passAddr = req.getParameter("passAddr");
+		
+		String validity=null;
+		String starttime=null;
+		
+		if(carpooltype.equals("단기")){
+			
+			String sh = req.getParameter("sh");
+			int h = Integer.parseInt(sh);
+			 starttime =  h + ":" + req.getParameter("sm");
+			if (req.getParameter("sapm").equals("오후")) {
+				h += 12;
+			}
+		validity= req.getParameter("sy") + '-' + req.getParameter("sm") + '-' + req.getParameter("sd");
+		
+		}else{
+			
+			String lh = req.getParameter("lh");
+			int h = Integer.parseInt(lh);
+			 starttime =  h + ":" + req.getParameter("lm");
+			if (req.getParameter("lapm").equals("오후")) {
+				h += 12;
+			}
+			validity= req.getParameter("lsy") + '-' + req.getParameter("lsm") + '-' + req.getParameter("lsd")+"~"+req.getParameter("lsy2") + '-' + req.getParameter("lsm2") + '-' + req.getParameter("lsd2");
+			
 		}
-
-		String starttime = req.getParameter("sy") + '-' + req.getParameter("sm") + '-' + req.getParameter("sd") + " "
-				+ h + ":" + req.getParameter("sm");
-
 		HashMap<String, String> data = (HashMap<String, String>) session.getAttribute("data");
 
-		data.put("mannum", mannum);
-		data.put("gender", gender);
+		data.put("maxnum", maxnum);
+		data.put("hopesex", hopesex);
 		data.put("smoking", smoking);
 		data.put("starttime", starttime);
+		data.put("validity", validity);
+		data.put("pay", pay);
+		
+		data.put("carpoolname", carpoolname);
+		data.put("object", object);
+		data.put("startAddr", startAddr);
+		data.put("endAddr", endAddr);
+		data.put("passAddr", passAddr);
+		
 
 		session.setAttribute("data", data);
 
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("carpool/poolMemberAdd04");
+		mav.setViewName("carpool/poolMasterAdd05");
 
 		return mav;
 	}
-	@RequestMapping("/poolMemberAdd04.do")
-	public ModelAndView viewMemberAddPage44(HttpServletRequest req, HttpSession session) {
-		String uhung = req.getParameter("uhung");
-		String start = req.getParameter("startAddr");
-		String pass = req.getParameter("passAddr");
-		String end = req.getParameter("endAddr");
-
-		String sh = req.getParameter("sh");
-		int h = Integer.parseInt(sh);
-
-		if (req.getParameter("sapm").equals("오후")) {
-			h += 12;
-		}
-
-		String starttime = req.getParameter("sy") + '-' + req.getParameter("sm") + '-' + req.getParameter("sd") + " "
-				+ h + ":" + req.getParameter("sm");
-
-		HashMap<String, String> data = (HashMap<String, String>) session.getAttribute("data");
-
-		data.put("mannum", mannum);
-		data.put("gender", gender);
-		data.put("smoking", smoking);
-		data.put("starttime", starttime);
-
-		session.setAttribute("data", data);
-
-		ModelAndView mav = new ModelAndView();
-
-		mav.setViewName("carpool/poolMemberAdd04");
+	
+	@RequestMapping("/poolMasterAdd06.do")
+	public ModelAndView viewMemberAddPage5(String userid) {
+		
 
 		return mav;
 	}
-
-	@RequestMapping("/poolMemberAdd05.do")
-	public ModelAndView viewMemberAddPage5(HttpServletRequest req, HttpSession session) {
-		String pluscontent = req.getParameter("pluscontent");
-
-		HashMap<String, String> data = (HashMap<String, String>) session.getAttribute("data");
-
-		data.put("pluscontent", pluscontent);
-
-		session.setAttribute("data", data);
-
-		ModelAndView mav = new ModelAndView();
-
-		mav.setViewName("carpool/poolMemberAdd05");
-
-		return mav;
-	}*/
 
 	/*@RequestMapping("/poolMemberAddConfirm.do")
 	public ModelAndView AddConfirm(HttpSession session) {

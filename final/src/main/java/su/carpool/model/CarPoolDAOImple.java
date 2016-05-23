@@ -24,14 +24,15 @@ public class CarPoolDAOImple implements CarPoolDAO {
 
 	public MemberDTO getUserInfo(String userid) {
 
-		List<MemberDTO> list = sqlMap.selectList("getUserInfo", userid);
-
-		if (list == null) {
+		if (userid == null) {
 			return null;
-		}
-
+		}else{
+		List<MemberDTO> list = sqlMap.selectList("getUserInfo", userid);
 		MemberDTO dto = (MemberDTO) list.get(0);
 
 		return dto;
+		}
+
+
 	}
 }

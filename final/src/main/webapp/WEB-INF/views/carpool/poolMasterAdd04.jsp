@@ -30,6 +30,7 @@
 }
 
 
+
 </style>
 <script>
 
@@ -48,7 +49,7 @@ var hourEl=document.getElementById("hourEl");
 	
 	}
 	
-	for(var i=1;i<=12;i++)
+	for(var i=1;i<=12;i++)	
 	{
 		monthEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
 	
@@ -116,16 +117,21 @@ function viewTerm()
 		<h3>프로필</h3>
 	</div>
 	<div id="short">
-		<form name="shortup" action="poolMemberAdd04.do">
+		<form name="shortup" action="poolMasterAdd05.do">
+		<input type="hidden" name="carPoolName" value="${carpoolname }">
+		<input type="hidden" name="object" value="${aim }">
+		<input type="hidden" name="startAddr" value="${startspot }">
+		<input type="hidden" name="endAddr" value="${endspot }">
+		<input type="hidden" name="passAddr" value="${route }">
 		타입><input type="hidden" name="type" value="단기">
 		<br>
-		출발일시><select id="yearEl" name="sy">
+		출발날짜><select id="yearEl" name="sy">
 			</select>년
 			<select id="monthEl" name="sm" onchange="setDays()">
 			</select>월
 			<select id="dayEl" name="sd">
 			</select>일<br>
-			<select name="sapm">
+			출발시간><select name="sapm">
 				<option>오전</option>
 				<option>오후</option>
 			</select>
@@ -142,11 +148,13 @@ function viewTerm()
 				<option>2</option>
 				<option>3</option>
 		   </select>명        /
-		성별><select name="gender">
+		희망성별><select name="hopesex">
 				<option>남성만</option>
 				<option>여성만</option>
 				<option>상관없음</option>
 		  </select><br>
+		  요금:<input type="text" name="pay" value="1000">원
+         <br>
 		흡연여부><input type="radio" name="smoking" value="흡연">흡연
 		  	 <input type="radio" name="smoking" value="비흡연">비흡연
 		<p>
@@ -167,68 +175,62 @@ function viewTerm()
 
 
 	<div id="term">
-		<form name="termup" action="poolMemberAdd04.do">
+		<form name="termup" action="poolMasterAdd05.do">
+		<input type="hidden" name="carPoolName" value="${carpoolname }">
+		<input type="hidden" name="object" value="${aim }">
+		<input type="hidden" name="startAddr" value="${startspot }">
+		<input type="hidden" name="endAddr" value="${endspot }">
+		<input type="hidden" name="passAddr" value="${route }">
 		<input type="hidden" name="type" value="정기">
 		<div id="div2">
-		기간:
-		<select name="lsy">
-            <option>2016</option>
-         </select>년
-         <select name="lsm">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-         </select>월
-         <select name="lsd">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-         </select>일       ~ 
-		<select name="ley">
-            <option>2016</option>
-         </select>년
-         <select name="lem">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-         </select>월
-         <select name="led">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-         </select>일
+		기간:<select id="yearEl" name="lsy">
+			</select>년
+			<select id="monthEl" name="lsm" onchange="setDays()">
+			</select>월
+			<select id="dayEl" name="lsd">
+			</select>일<br> 
+			~
+			<select id="yearEl" name="lsy2">
+			</select>년
+			<select id="monthEl" name="lsm2" onchange="setDays()">
+			</select>월
+			<select id="dayEl" name="lsd2">
+			</select>일<br>
+			
+			출발시간:<select name="lapm">
+				<option>오전</option>
+				<option>오후</option>
+			</select>
+			<select id="hourEl" name="lh">
+			</select>시
+			<select name="lm">
+				<option>00</option>
+				<option>30</option>
+			</select>분<br>
+			
+			
+			
+			<select name="lapm">
+				<option>오전</option>
+				<option>오후</option>
+			</select>
+			<select id="hourEl" name="lh">
+			</select>시
+			<select name="lm">
+				<option>00</option>
+				<option>30</option>
+			</select>분<br>
+		
+		
+		
          <br>
-         시간:
-          <select name="lapm">
-            <option>오전</option>
-            <option>오후</option>
-         </select>
-         <select name="lh">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-         </select>시
-         <select name="lm">
-            <option>10</option>
-            <option>30</option>
-            <option>59</option>
-         </select>분
-         <br>
-         반복:<input type="checkbox" name="days" value="월">월
-         <input type="checkbox"  name="days" value="화">화
-         <input type="checkbox"  name="days" value="수">수
-         <input type="checkbox"  name="days" value="목">목
-         <input type="checkbox"  name="days" value="금">금
-         <input type="checkbox"  name="days" value="토">토
-         <input type="checkbox"  name="days" value="일">일
+         반복:<input type="checkbox" name="1" value="월">월
+         <input type="checkbox"  name="2" value="화">화
+         <input type="checkbox"  name="3" value="수">수
+         <input type="checkbox"  name="4" value="목">목
+         <input type="checkbox"  name="5" value="금">금
+         <input type="checkbox"  name="6" value="토">토
+         <input type="checkbox"  name="7" value="일">일
          <br>
          요금:<input type="text" name="pay" value="1000">원
          <br>
@@ -239,9 +241,8 @@ function viewTerm()
             <option>1</option>
             <option>2</option>
             <option>3</option>
-         </select>명  
-         <br>
-         성별: <select name="gender">
+         </select>명 /
+         희망성별: <select name="hopesex">
             <option>혼성</option>
             <option>남성만</option>
             <option>여성만</option>

@@ -7,5 +7,6 @@
 	<select id="getCarInfo" parameterType="String"
 		resultType="su.carpool.model.CarPoolDTO">
 		select * from carpoolinfo where id=#{id}
+		
 	</select>
 </mapper>

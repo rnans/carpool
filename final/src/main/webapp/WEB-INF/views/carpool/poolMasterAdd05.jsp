@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,48 +37,58 @@
 
 
 </style>
+
 </head>
 <body>
 <h2>카풀등록 페이지6</h2>
+
+<form  name="carPoolJoin" action="poolMasterAdd06.do">
 	<div id="div1">
 		<img src="1234.jpg" border="100"><br>
 		<input type="button" name="pf" value="프로필사진수정" align="center">
 	</div>
 	
 	<div id="div2">
-		<table border="1">
-			<thead>
+	
+	<table border="1">
+		
 			
-				<th>출발지></th>
-				<td>경기도 안양시 달안동주민센터</td>
-				<th>경유지></th>
-				<td>경기도 과천시 중앙동</td>
-				<th>도착지></th>
-				<td>서울 특별시 서초구 강남대로</td>
-			
-			</thead>
+				
+	
 			
 		<tfoot>
 			<tr>
-				<th>비고</th>
+				<th><textarea  name="poolContent" rows="5" cols="50"></textarea> </th>
 				<td></td>
 			</tr>
 		</tfoot>
 			
 			<tbody>
+			<tr>
+				<th>출발지></th>
+					<td>${sessionScope.data.startAddr }</td>
+					<th>경유지></th>
+					<td>${sessionScope.data.passAddr }</td>
+					<th>도착지></th>
+					<td>${sessionScope.data.endAddr}</td>
+			</tr>
 				<tr>
 					<th>목적></th>
-					<td>출/퇴근</td>
+					<td>${sessionScope.data.object }</td>
 				</tr>
 				<tr>
 					<th>인원></th>
-					<td>2명</td>
+					<td>${sessionScope.data.maxnum }</td>
+					<th>희망성별></th>
+					<td>${sessionScope.data.hopesex }</td>
+					<th>성별></th>
+					<td>${sessionScope.data.hopesex }</td>
 					<th>흡연></th>
-					<td>흡연</td>
+					<td>${sessionScope.data.smoking }</td>
 				</tr>
 				<tr>
 					<th>출발일시></th>
-					<td>16년02월29일 오전10시20분</td>
+					<td>${sessionScope.data.validity }/${sessionScope.data.starttime }</td>
 				</tr>
 			</tbody>
 		</table>
@@ -87,17 +98,14 @@
 		<legend>지도API</legend>
 		<fieldset>
 			<img src="123.jpg" border="200"><br>
-			출발지:<br>
-			경유지:<br>
-			도착지:<br>
 		</fieldset>
-		<form>
+	
 			<p>
-				<input type="button" value="등록하기">
-				<input type="button" value="이전화면">
+				<input type="button" value="이전">
+				<input type="button" value="등록" onclick="viewNextPage()">
 			</p>
-		</form>
-	</div>
 
+	</div>
+	</form>
 </body>
 </html>
