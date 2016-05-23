@@ -6,7 +6,7 @@
 	<select id="memberInfo" resultType="su.adminMember.model.AdminMemberDTO">
 		select * from userinfo order by idx desc
 	</select>
-	<delete id="memberDel">
-		delete * from userinfo where idx=#{idx}
+	<delete id="memberDel" parameterType="su.adminMember.model.AdminMemberDTO">
+		delete from userinfo where idx=#{idx}
 	</delete>
 </mapper>
