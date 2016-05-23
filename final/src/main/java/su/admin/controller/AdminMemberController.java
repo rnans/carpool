@@ -40,9 +40,14 @@ public class AdminMemberController {
 	
 	/**회원탈퇴 확인 폼*/
 	@RequestMapping("/memberDelForm.do")
-	public String memberDelForm(){
+	public ModelAndView memberDelForm(@RequestParam("idx")int idx){
 		
-		return "admin/memberDel";
+		ModelAndView mav = new ModelAndView();
+		AdminMemberDTO dto = adMemberDao.memberList(idx);
+		
+		mav.addObject("dto", dto);
+		mav.setViewName("admin/memberDel");
+		return mav;
 	}
 	
 	/**회원탈퇴*/
@@ -50,11 +55,38 @@ public class AdminMemberController {
 	public ModelAndView memberDel(@RequestParam("idx")int idx){
 		
 		ModelAndView mav = new ModelAndView();
-		int count = adMemberDao.MemberDel(idx);
+		int count = adMemberDao.memberDel(idx);
 		
 		String result=count>0?"회원삭제성공":"회원삭제실패";
 		mav.addObject("msg", result);
 		mav.setViewName("admin/adminMsg");
+		return mav;
+	}
+	
+	/**관리자권한 부여 폼*/
+	@RequestMapping("/adminAddForm.do")
+	public ModelAndView adminAddForm(@RequestParam("idx")int idx){
+		
+		ModelAndView mav = new ModelAndView();
+		AdminMemberDTO dto = adMemberDao.memberList(idx);
+		
+		mav.addObject("dto", dto);
+		mav.setViewName("admin/adminAdd");
+		return mav;
+	}
+	
+	/**관리자권한 부여*/
+	@RequestMapping("/adminAdd.do")
+	public ModelAndView adminAdd(@RequestParam(value="idx", required=false)int idx,
+			@RequestParam(value="grade", required=false)String grade){
+		
+		ModelAndView mav = new ModelAndView();
+		int count = adMemberDao.adminAdd(idx, grade);
+		
+		String result = count>0?"등급 변경 성공":"등급 변경 실패";
+		mav.addObject("msg", result);
+		mav.setViewName("admin/adminMsg");
+		
 		return mav;
 	}
 }
