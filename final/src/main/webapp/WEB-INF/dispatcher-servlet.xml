@@ -94,6 +94,15 @@
          <ref bean="sqlSessionTemplate"/>
       </constructor-arg>
    </bean>
+   
+   <bean id="csqnaDao" class="su.csCenter.model.CsQnaDAOImple">
+      <constructor-arg>
+          <ref bean="sqlSessionTemplate"/>
+      </constructor-arg>
+   </bean>
+   
+ 
+   
 	
 	
 	<!-- view -->
