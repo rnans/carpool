@@ -64,6 +64,15 @@
 		select count(*) from reservationlist
 	</select>
 	
+	<select id="shortTotalCnt" resultType="int">
+		select count(*) from reservationlist where type='단기'
+	</select>
+	
+	
+	<select id="longTotalCnt" resultType="int">
+		select count(*) from reservationlist where type='정기'
+	</select>
+	
 	<select id="viewAllList" parameterType="Map" resultType="su.pool.model.PoolDTO">
 		select 
 			idx,
@@ -91,6 +100,66 @@
 		from
 	   (select rownum as rnum,a.* from
 	   (select * from reservationlist order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	
+	<select id="viewShortList" parameterType="Map" resultType="su.pool.model.PoolDTO">
+		select 
+			idx,
+			userid,
+			aim,
+			startspot,
+			endspot,
+			route,
+			startcoordi,
+			endcoordi,
+			routecoordi,
+			to_char(starttime,'YYYY-MM-DD HH24:Mi') starttime,
+			mannum,
+			gender,
+			pay,
+			smoking,
+			pluscontent,
+			to_char(writedate,'yyyy-mm-dd') writedate,
+			status,
+			type,
+			to_char(startdate,'yyyy-mm-dd') startdate,
+			to_char(enddate,'yyyy-mm-dd') enddate,
+			days,
+			location 
+		from
+	   (select rownum as rnum,a.* from
+	   (select * from reservationlist where type='단기' order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	
+	<select id="viewLongList" parameterType="Map" resultType="su.pool.model.PoolDTO">
+		select 
+			idx,
+			userid,
+			aim,
+			startspot,
+			endspot,
+			route,
+			startcoordi,
+			endcoordi,
+			routecoordi,
+			to_char(starttime,'YYYY-MM-DD HH24:Mi') starttime,
+			mannum,
+			gender,
+			pay,
+			smoking,
+			pluscontent,
+			to_char(writedate,'yyyy-mm-dd') writedate,
+			status,
+			type,
+			to_char(startdate,'yyyy-mm-dd') startdate,
+			to_char(enddate,'yyyy-mm-dd') enddate,
+			days,
+			location 
+		from
+	   (select rownum as rnum,a.* from
+	   (select * from reservationlist where type='정기' order by idx desc)a)b
 	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
 	
@@ -160,4 +229,7 @@
 		where idx=#{idx}
 	</update>
 	
+	<delete id="poolDel" parameterType="int">
+		delete from reservationlist where idx=#{idx}
+	</delete>
 </mapper>

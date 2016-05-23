@@ -13,6 +13,12 @@ function showEdit()
 	
 	location.href='poolEditForm.do'+param;
 }
+function runDel()
+{
+	var param='?idx='+document.getElementById('idx').value;
+	
+	location.href='poolDel.do'+param;
+}
 </script>
 </head>
 <body>
@@ -45,7 +51,7 @@ function showEdit()
 <%@ include file="poolRateList.jsp" %>
 </div>
 <div><input type="button" value="찜하기"><input type="button" value="예약하기"></div>
-<div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="showEdit()"><input type="button" value="삭제하기" onclick="delPool.do"></div>
+<div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="showEdit()"><input type="button" value="삭제하기" onclick="runDel()"></div>
 </div>
 </article>
 </section>

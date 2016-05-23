@@ -434,4 +434,72 @@ public class PoolController
 		
 		return mav;
 	}
+	
+	@RequestMapping("/poolDel.do")
+	public ModelAndView runDel(HttpSession session, HttpServletRequest req)
+	{
+		String id=(String)session.getAttribute("sid");
+		int idx=Integer.parseInt(req.getParameter("idx"));
+		
+		PoolDTO dto=poolDao.viewEachContent(idx);
+		
+		ModelAndView mav=new ModelAndView();
+		
+		if(id.equals(dto.getUserid()))
+		{
+			int count=poolDao.poolDel(idx);
+			
+			String msg=count>0?"성공":"실패";
+			
+			mav.addObject("msg",msg);
+			
+			mav.setViewName("/carpool/poolMsg");
+			
+			return mav;
+		}
+		else
+		{
+			String msg="자신이 쓴 글만 지울 수 있습니다.";
+			
+			mav.addObject("msg",msg);
+			
+			mav.setViewName("/carpool/poolMsg");
+			
+			return mav;
+		}
+	}
+	
+	@RequestMapping("/shortPoolList.do")
+	public ModelAndView viewShortPoolList(@RequestParam(value="cp",defaultValue="1")int cp){
+			int totalCnt=poolDao.getShortTotalCnt();
+			int listSize=10;
+			int pageSize=5;
+			List<PoolDTO> list=poolDao.viewShortList(cp,listSize);
+			String pageStr=
+				su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+			ModelAndView mav=new ModelAndView();
+			mav.addObject("list", list);
+			mav.addObject("pageStr",pageStr);
+			mav.setViewName("carpool/poolList");
+			return mav;
+		
+		
+	}
+	
+	@RequestMapping("/longPoolList.do")
+	public ModelAndView viewLongPoolList(@RequestParam(value="cp",defaultValue="1")int cp){
+			int totalCnt=poolDao.getLongTotalCnt();
+			int listSize=10;
+			int pageSize=5;
+			List<PoolDTO> list=poolDao.viewLongList(cp,listSize);
+			String pageStr=
+				su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+			ModelAndView mav=new ModelAndView();
+			mav.addObject("list", list);
+			mav.addObject("pageStr",pageStr);
+			mav.setViewName("carpool/poolList");
+			return mav;
+		
+		
+	}
 }

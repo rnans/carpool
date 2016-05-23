@@ -32,7 +32,7 @@
 <%@ include file="poolRecomm.jsp" %>
 </div>
 <div id="tab">
-<a href="#">단기</a><a href="#">정기</a>
+
 </div>
 <div id="list">
 <c:import url="/poolList.do"></c:import>

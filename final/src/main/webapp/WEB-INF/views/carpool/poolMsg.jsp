@@ -3,5 +3,5 @@
 <!DOCTYPE html>
 <script>
 window.alert('${msg}');
-location.href='login.do';
+location.href='poolMain.do';
 </script>

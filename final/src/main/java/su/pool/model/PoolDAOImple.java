@@ -36,6 +36,11 @@ public class PoolDAOImple implements PoolDAO {
 		return sqlMap.update("poolMemberShortEdit",dto);
 	}
 	
+	public int poolDel(int idx)
+	{
+		return sqlMap.delete("poolDel",idx);
+	}
+	
 	public MemberDTO getAllUserInfo(String userid) 
 	{
 		
@@ -56,6 +61,16 @@ public class PoolDAOImple implements PoolDAO {
 			return count;
 	 }
 	 
+	 public int getLongTotalCnt() {
+		 int count=sqlMap.selectOne("sql.poolSQL.shortTotalCnt");
+			return count;
+	}
+	 
+	 public int getShortTotalCnt() {
+		 int count=sqlMap.selectOne("sql.poolSQL.longTotalCnt");
+			return count;
+	}
+	 
 	 public List viewAllList(int cp, int ls) {
 		 int startnum=(cp-1)*ls+1;
 		 int endnum=cp*ls;
@@ -64,6 +79,30 @@ public class PoolDAOImple implements PoolDAO {
 		 map.put("startnum", startnum);
 		 map.put("endnum", endnum);
 		 List<PoolDTO> list= sqlMap.selectList("viewAllList",map);
+
+		 return list;
+	}
+	 
+	 public List viewLongList(int cp, int ls) {
+		 int startnum=(cp-1)*ls+1;
+		 int endnum=cp*ls;
+		 
+		 Map map=new HashMap();
+		 map.put("startnum", startnum);
+		 map.put("endnum", endnum);
+		 List<PoolDTO> list= sqlMap.selectList("viewLongList",map);
+
+		 return list;
+	}
+	 
+	 public List viewShortList(int cp, int ls) {
+		 int startnum=(cp-1)*ls+1;
+		 int endnum=cp*ls;
+		 
+		 Map map=new HashMap();
+		 map.put("startnum", startnum);
+		 map.put("endnum", endnum);
+		 List<PoolDTO> list= sqlMap.selectList("viewShortList",map);
 
 		 return list;
 	}
