@@ -45,7 +45,7 @@ function showEdit()
 <%@ include file="poolRateList.jsp" %>
 </div>
 <div><input type="button" value="찜하기"><input type="button" value="예약하기"></div>
-<div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="showEdit()"><input type="button" value="삭제하기"></div>
+<div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="showEdit()"><input type="button" value="삭제하기" onclick="delPool.do"></div>
 </div>
 </article>
 </section>

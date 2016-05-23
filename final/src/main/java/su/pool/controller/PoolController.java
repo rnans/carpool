@@ -231,8 +231,6 @@ public class PoolController
 		String pluscontent=req.getParameter("pluscontent");
 		String type=data.get("type");
 		
-		System.out.println(userid+aim+startspot+endspot+route+starttime+mannum+gender+pay+smoking+pluscontent+type);
-		
 		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, type);
 		
 		int count=poolDao.poolMemberShortAdd(dto);
@@ -317,22 +315,97 @@ public class PoolController
 	}
 	
 	@RequestMapping("/poolEditForm.do")
-	public ModelAndView viewEditForm(@RequestParam(value="idx")int idx)
+	public ModelAndView viewEditForm(@RequestParam(value="idx")int idx, HttpSession session)
 	{
+		String id=(String)session.getAttribute("sid");
+		
 		PoolDTO dto=poolDao.viewEachContent(idx);
 		
 		ModelAndView mav=new ModelAndView();
-		
-		mav.addObject("dto",dto);
-		
-		mav.setViewName("carpool/poolEdit");
+				
+		if(id.equals(dto.getUserid()))
+		{
+			mav.addObject("dto",dto);
+			
+			mav.setViewName("carpool/poolEdit");
+		}
+		else
+		{
+			mav.setViewName("redirect:carpool/poolMain");
+		}
 		
 		return mav;
 	}
 
-	/*@RequestMapping("/poolEdit.do")
-	public ModelAndView poolEdit(HttpRequest req)
+	@RequestMapping(value="/poolEdit.do",method=RequestMethod.GET)
+	public ModelAndView poolShortEdit(HttpServletRequest req, HttpSession session)
 	{
+		int idx=Integer.parseInt(req.getParameter("idx"));
+		String userid=(String)session.getAttribute("sid");
+		String aim=req.getParameter("aim");
+		String startspot=req.getParameter("startspot");
+		String endspot=req.getParameter("endspot");
+		String route=req.getParameter("route");
+		int mannum=Integer.parseInt(req.getParameter("mannum"));
+		String gender=req.getParameter("gender");
+		String smoking=req.getParameter("smoking");
+		String starttime=req.getParameter("starttime");
+		int pay=Integer.parseInt(req.getParameter("pay"));
+		String pluscontent=req.getParameter("pluscontent");
+		String type=req.getParameter("type");
 		
-	}*/
+		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, type);
+		
+		int count=poolDao.poolMemberShortEdit(dto);
+		
+		String msg=count>0?"성공":"실패";
+		
+		
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("msg", msg);
+		
+		mav.setViewName("carpool/poolMsg");
+		
+		System.out.println(idx);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/poolEdit.do",method=RequestMethod.POST)
+	public ModelAndView poolLongEdit(HttpSession session, HttpServletRequest req)
+	{
+		int idx=Integer.parseInt(req.getParameter("idx"));
+		String userid=(String)session.getAttribute("sid");
+		String aim=req.getParameter("aim");
+		String startspot=req.getParameter("startspot");
+		String endspot=req.getParameter("endspot");
+		String route=req.getParameter("route");
+		int mannum=Integer.parseInt(req.getParameter("mannum"));
+		String gender=req.getParameter("gender");
+		String smoking=req.getParameter("smoking");
+		String starttime=req.getParameter("starttime");
+		int pay=Integer.parseInt(req.getParameter("pay"));
+		String pluscontent=req.getParameter("pluscontent");
+		String type=req.getParameter("type");
+		String startdate=req.getParameter("startdate");
+		String enddate=req.getParameter("enddate");
+		String days=req.getParameter("days");
+		
+		System.out.println(startdate+enddate+idx);
+		
+		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, type, startdate, enddate, days);
+		
+		int count=poolDao.poolMemberLongEdit(dto);
+		
+		String msg=count>0?"성공":"실패";
+
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("msg", msg);
+		
+		mav.setViewName("carpool/poolMsg");
+		
+		return mav;
+	}
 }

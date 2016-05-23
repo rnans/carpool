@@ -164,7 +164,53 @@ else
 		{
 			apmEl.value='오후';
 		}
-			
+	
+	var days='${dto.days}';
+	
+	var arrDays=days.split(' ');
+	
+	var monEl=document.getElementById('mon');
+	var tueEl=document.getElementById('tue');
+	var wedEl=document.getElementById('wed');
+	var thuEl=document.getElementById('thu');
+	var friEl=document.getElementById('fri');
+	var satEl=document.getElementById('sat');
+	var sunEl=document.getElementById('sun');
+	
+	for(var i=0;i<arrDays.length;i++)
+	{
+		if(arrDays[i]==monEl.value)
+		{
+			monEl.checked=true;
+		}
+		else if(arrDays[i]==tueEl.value)
+		{
+			tueEl.checked=true;
+		}
+		else if(arrDays[i]==wedEl.value)
+		{
+			wedEl.checked=true;
+		}
+		else if(arrDays[i]==thuEl.value)
+		{
+			thuEl.checked=true;
+		}
+		else if(arrDays[i]==friEl.value)
+		{
+			friEl.checked=true;
+		}
+		else if(arrDays[i]==satEl.value)
+		{
+			satEl.checked=true;
+		}
+		else if(arrDays[i]==sunEl.value)
+		{
+			sunEl.checked=true;
+		}
+	}
+	
+	
+	
 }
 
 	var smoke='${dto.smoking}'
@@ -340,6 +386,92 @@ function setDays2(){
 
 }
 
+function sendPoolEdit(){
+	var f=document.getElementById('f');
+	
+	var shortEl=document.getElementById('short');
+	var longEl=document.getElementById('long');
+	
+	
+	
+	if(shortEl.checked)
+	{
+		var yearEl=document.getElementById('yearEl');
+		var monthEl=document.getElementById('monthEl');
+		var dayEl=document.getElementById('dayEl');
+		var hourEl=document.getElementById('hourEl');
+		var miEl=document.getElementById('smi');
+		
+		var starttime=yearEl.value+'-'+monthEl.value+'-'+dayEl.value+' '+hourEl.value+':'+miEl.value;
+		
+		f.innerHTML+='<input type="hidden" value="'+starttime+'" name="starttime">';
+		f.submit();
+	}
+	else if(longEl.checked)
+	{
+		var yearEl=document.getElementById('lsy');
+		var monthEl=document.getElementById('lsm');
+		var dayEl=document.getElementById('lsd');
+		
+		var yearEl2=document.getElementById('ley');
+		var monthEl2=document.getElementById('lem');
+		var dayEl2=document.getElementById('led');
+		
+		var hourEl=document.getElementById('lh');
+		var miEl=document.getElementById('lmi');
+		
+		var monEl=document.getElementById('mon');
+		var tueEl=document.getElementById('tue');
+		var wedEl=document.getElementById('wed');
+		var thuEl=document.getElementById('thu');
+		var friEl=document.getElementById('fri');
+		var satEl=document.getElementById('sat');
+		var sunEl=document.getElementById('sun');
+		
+		var days='';
+		
+		if(monEl.checked)
+		{
+			days+='월 ';
+		}
+		else if(tueEl.checked)
+		{
+			days+='화 ';
+		}
+		else if(wueEl.checked)
+		{
+			days+='수 ';
+		}
+		else if(thuEl.checked)
+		{
+			days+='목 '
+		}
+		else if(friEl.checked)
+		{
+			days+='금 '
+		}
+		else if(satEl.checked)
+		{
+			days+='토 '
+		}
+		else if(sunEl.checked)
+		{
+			days+='일'
+		}
+		
+		var startdate=yearEl.value+'-'+monthEl.value+'-'+dayEl.value;
+		var enddate=yearEl2.value+'-'+monthEl2.value+'-'+dayEl2.value
+		
+		
+		var starttime=yearEl.value+'-'+monthEl.value+'-'+dayEl.value+' '+hourEl.value+':'+miEl.value;
+		f.innerHTML+='<input type="hidden" value="'+starttime+'" name="starttime">';
+		f.innerHTML+='<input type="hidden" value="'+startdate+'" name="startdate">';
+		f.innerHTML+='<input type="hidden" value="'+enddate+'" name="enddate">';
+		f.innerHTML+='<input type="hidden" value="'+days+'" name="days">';
+		f.submit();
+	}
+	
+}
 </script>
 </head>
 <body>
@@ -350,7 +482,7 @@ function setDays2(){
 </article>
 <article>
 <div>
-<form name="poolEdit" action="pooleditForm.do">
+<form id="f" name="poolEdit" action="poolEdit.do">
 <input type="hidden" id="sdate" value="${dto.starttime}">
 <input type="hidden" name="idx" value="${dto.idx}">
 <h1>(타세요 / 태워주세요 태그) 카폴 수정하기</h1>
@@ -374,7 +506,7 @@ function setDays2(){
 			</select>
 			<select id="hourEl" name="sh">
 			</select>시
-			<select name="sm">
+			<select id="smi" name="smi">
 				<option>00</option>
 				<option>30</option>
 			</select>분<br>
@@ -407,6 +539,14 @@ function setDays2(){
             <option value="00">00</option>
             <option value="30">30</option>
          </select>분
+         <br>
+         반복<input type="checkbox" id="mon" name="mon" value="월">월
+         <input type="checkbox"  id="tue" name="tue" value="화">화
+         <input type="checkbox"  id="wed" name="wed" value="수">수
+         <input type="checkbox"  id="thu" name="thu" value="목">목
+         <input type="checkbox"  id="fri" name="fri" value="금">금
+         <input type="checkbox"  id="sat" name="sat" value="토">토
+         <input type="checkbox"  id="sun" name="sun" value="일">일
          </div>
 		</c:if>
 <div>인원<select name="mannum">
@@ -429,13 +569,16 @@ function setDays2(){
 			<option value="좋은 만남">좋은만남</option>
 			<option value="명절">명절</option>
 		  </select></div>
-<div>비용<input type="text" name="pay" value="${dto.pay }"></div>
+<div>요금<input type="text" name="pay" value="${dto.pay }"></div>
 
 <div>지도 API 영역</div>
-
+<div>비고
+<textarea rows="5" cols="50" name="pluscontent">
+${dto.pluscontent }</textarea>
+</div>
 <div>평점 게시판 영역
 </div>
-<div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="poolEdit.do"></div>
+<div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="sendPoolEdit();"></div>
 </form>
 </div>
 

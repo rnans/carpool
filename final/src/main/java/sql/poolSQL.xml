@@ -121,4 +121,44 @@
 		from reservationlist where idx=#{idx}
 	</select>
 	
+	<update id="poolMemberShortEdit" parameterType="su.pool.model.PoolDTO">
+		update reservationlist set
+		 
+		userid=#{userid},
+		aim=#{aim},
+		startspot=#{startspot},
+		endspot=#{endspot},
+		route=#{route},
+		starttime=TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		mannum=#{mannum},
+		gender=#{gender},
+		pay=#{pay},
+		smoking=#{smoking},
+		pluscontent=#{pluscontent},
+		type=#{type},
+		startdate=TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		enddate=TO_date(#{starttime},'yyyy-mm-dd hh24:mi') 
+		where idx=#{idx}
+	</update>
+	
+	<update id="poolMemberLongEdit" parameterType="su.pool.model.PoolDTO">
+		update reservationlist set
+		 
+		userid=#{userid},
+		aim=#{aim},
+		startspot=#{startspot},
+		endspot=#{endspot},
+		route=#{route},
+		starttime=TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		mannum=#{mannum},
+		gender=#{gender},
+		pay=#{pay},
+		smoking=#{smoking},
+		pluscontent=#{pluscontent},
+		type=#{type},
+		startdate=TO_date(#{startdate},'yyyy-mm-dd'),
+		enddate=TO_date(#{enddate},'yyyy-mm-dd') 
+		where idx=#{idx}
+	</update>
+	
 </mapper>

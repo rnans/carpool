@@ -16,4 +16,8 @@ public interface PoolDAO
 	public List viewAllList(int cp, int listSize);
 	
 	public PoolDTO viewEachContent(int idx);
+	
+	public int poolMemberShortEdit(PoolDTO dto);
+	
+	public int poolMemberLongEdit(PoolDTO dto);
 }

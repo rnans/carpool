@@ -26,6 +26,16 @@ public class PoolDAOImple implements PoolDAO {
 		return sqlMap.insert("poolMemberLongAdd",dto);
 	}
 	
+	public int poolMemberLongEdit(PoolDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.update("poolMemberLongEdit",dto);
+	}
+	
+	public int poolMemberShortEdit(PoolDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.update("poolMemberShortEdit",dto);
+	}
+	
 	public MemberDTO getAllUserInfo(String userid) 
 	{
 		
