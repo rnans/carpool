@@ -37,24 +37,23 @@
 <section>
 
 <h2>1:1문의내역</h2>
-<table border="1" width="500">
-<thead>
-<tr>
-   <td>번호</td>
-   <td>내용</td>
-   <td>문의일시</td>
-   <td>답변상태</td>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>${list[0].idx}</td>
-<td>${list[0].content}</td>
-<td>${list[0].writedate }</td>
-<td>${list[0].state}</td>
-</tr>
-</tbody>
-</table>
+
+<fieldset>
+
+<legend>1:1문의 내역</legend>
+<ul>
+ <li>번호:<input type="text" name="idx" value="${list[0].idx}">
+     작성날짜:<input type="text" name="writedate" value="${list[0].writedate }"></li>
+  <li>문의유형<input type="text" name="type" value="${list[0].type }">
+  제목:<input type="text" name="subject" value="${list[0].subject }"></li>
+  <li>내용:</li>
+</ul>
+<textarea name="content" cols="40" rows="10" value="${list[0].content}" readonly="readonly">${list[0].content} </textarea><br>
+<div>답변:<br>
+<textarea name="answer" cols="40" rows="10">${list[0].answer} </textarea></div><br>
+</fieldset>
+
+
 <a href="oneAndOne.do">이전페이지로</a>
 </section>
 <hr>

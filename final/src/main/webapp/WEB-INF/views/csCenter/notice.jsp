@@ -8,8 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="../header.jsp" %>
+
 <div>헤더부분</div>
+<%@include file="../header.jsp" %>
 <hr>
 <h2>공지사항</h2>
 <table border="1">

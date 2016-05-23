@@ -42,7 +42,7 @@
 제목:<input type="text" name="subject" value="${list[0].subject}" readonly="readonly"> <br>
 글쓴이:<input type="text" name="writer" value="${list[0].writer}" readonly="readonly"> 
 <br>
-<textarea name="content" cols="55" rows="25" value="${list[0].content}" readonly="readonly"> </textarea><br>
+<textarea name="content" cols="55" rows="25" value="${list[0].content}" readonly="readonly">${list[0].content} </textarea><br>
 <a href="csCenter.do">이전페이지로</a>
 </fieldset>
 </section>
