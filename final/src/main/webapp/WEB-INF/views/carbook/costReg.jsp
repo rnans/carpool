@@ -7,15 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form name="costReg" action="costReg.do" method="post">
 <fieldset>
 	<legend>비용등록</legend>
-	리터당금액<input type="text" name=oilcost><br>
-	주유금액<input type="text" ><br>
-	주유리터<input type="text"><br>
-	총 누적 주행거리<input type="text"><br>
-	주유날짜<input type="text"><br>
-	장소<input type="text"><br>
-	메모<textarea rows="10" cols="70" name="content"></textarea>
+	<select name="category">
+		<option>유형</option>
+		<option>주유</option>
+		<option>정비</option>
+		<option>물품구입</option>
+	</select><br>
+	날짜 <input type="text" name="costday"><br>
+	금액<input type="text" name="cost"><br>
+	주행거리<input type="text" name="km"><br>
+	비고<textarea rows="10" cols="20" name="bigo">
+	</textarea><br>
+	<input type="submit" value="등록">
+	<input type="button" value="취소">
 </fieldset>
+</form>
 </body>
 </html>

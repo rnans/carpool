@@ -9,7 +9,27 @@
 <body>
 <fieldset>
 	<legend>차량등록</legend>
-	하하하
+	사진등록
+	<div>
+	차종<select name=car1>
+	<option>국내</option>
+	<option>해외</option>
+		</select><br>
+	<select name=car2>
+	<option>회사명</option>
+	<option>BMW</option>
+	<option>현대</option>
+		</select><br>
+	<select name=car3>
+	<option>차종</option>
+	<option>모닝</option>
+	<option>벤츠</option>
+		</select><br>
+	차번호<input type="text" name="carnum"><br>
+	공인연비<input type="text" name="oil"><br>
+	</div>
+	<input type="submit" value="등록">
+	<input type="button" value="취소">
 </fieldset>
 </body>
 </html>
