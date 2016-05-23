@@ -20,10 +20,10 @@
 <thead>
 <tr>
    <th>번호</th>
-   <th>제목</th>
    <th>작성자</th>
+   <th>제목</th>
    <th>작성일</th>
-   <th>조회수</th>
+   <th>비고</th>
 </tr>
 </thead>
 <tbody>
@@ -37,13 +37,14 @@
 
 <tr>
  <td>${notice.idx }</td>
- <c:url var="noticeContent" value="noticeContent.do">
+  <td>${notice.writer }</td>
+ <c:url var="noticeContent" value="NoticeUpdate.do">
  <c:param name="idx">${notice.idx }</c:param>
  </c:url>
  <td><a href="${noticeContent}">${notice.subject}</a></td>
- <td>${notice.writer }</td>
  <td>${notice.writedate }</td>
- <td>${notice.readnum }</td>
+
+ <td><a href="NoticeDelete.do?idx=${notice.idx }">삭제</a></td>
 </tr>
  </c:forEach>
 </tbody>
