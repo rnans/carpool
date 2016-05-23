@@ -24,6 +24,7 @@ public class MemberDAOImple implements MemberDAO {
 		
 		dto.setFullemail(dto.getEmail(), dto.getEmail2());
 		int count = sqlMap.insert("memberJoin", dto);
+		
 		return count;
 	}
 	
