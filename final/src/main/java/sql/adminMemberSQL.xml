@@ -6,7 +6,16 @@
 	<select id="memberInfo" resultType="su.adminMember.model.AdminMemberDTO">
 		select * from userinfo order by idx desc
 	</select>
+	
+	<select id="memberList" resultType="su.adminMember.model.AdminMemberDTO">
+		select * from userinfo where idx=#{idx}
+	</select>
+	
 	<delete id="memberDel" parameterType="su.adminMember.model.AdminMemberDTO">
 		delete from userinfo where idx=#{idx}
 	</delete>
+
+	<update id="adminAdd" parameterType="su.adminMember.model.AdminMemberDTO">
+		update userinfo set grade=#{grade} where idx=#{idx}
+	</update>
 </mapper>
