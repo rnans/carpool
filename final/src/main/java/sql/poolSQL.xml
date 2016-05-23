@@ -155,7 +155,8 @@
 		pluscontent=#{pluscontent},
 		type=#{type},
 		startdate=TO_date(#{startdate},'yyyy-mm-dd'),
-		enddate=TO_date(#{enddate},'yyyy-mm-dd') 
+		enddate=TO_date(#{enddate},'yyyy-mm-dd'),
+		days=#{days} 
 		where idx=#{idx}
 	</update>
 	

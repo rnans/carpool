@@ -118,17 +118,16 @@ public class PoolController
 		String gender=req.getParameter("gender");
 		String smoking=req.getParameter("smoking");
 		String type=req.getParameter("type");
-		String sh=req.getParameter("sh");
 		String pay=req.getParameter("pay");
+		
+		String sh=req.getParameter("sh");
+		
 		int h=Integer.parseInt(sh);
 		
 		if(req.getParameter("sapm").equals("오후"))
 		{
 			h+=12;
 		}
-		
-		String test=req.getParameter("sm");
-		System.out.println(test);
 				
 		String starttime=req.getParameter("sy")+'-'+req.getParameter("sm")+'-'+req.getParameter("sd")+" "+h+":"+req.getParameter("smi");
 		
@@ -157,8 +156,10 @@ public class PoolController
 		String gender=req.getParameter("gender");
 		String smoking=req.getParameter("smoking");
 		String type=req.getParameter("type");
-		String lh=req.getParameter("lh");
+		
 		String pay=req.getParameter("pay");
+		
+		String lh=req.getParameter("lh");
 		int h=Integer.parseInt(lh);
 		
 		if(req.getParameter("lapm").equals("오후"))
@@ -169,11 +170,10 @@ public class PoolController
 		String starttime=req.getParameter("lsy")+'-'+req.getParameter("lsm")+'-'+req.getParameter("lsd")+" "+h+":"+req.getParameter("lmi");
 		String startdate=req.getParameter("lsy")+'-'+req.getParameter("lsm")+'-'+req.getParameter("lsd");
 		String enddate=req.getParameter("ley")+'-'+req.getParameter("lem")+'-'+req.getParameter("led");
-		String days=req.getParameter("mon")+' '+req.getParameter("tue")+' '+req.getParameter("wed")+' '+req.getParameter("thu")+' '+req.getParameter("fri")+' '+req.getParameter("sat")+' '+req.getParameter("sun");
+		String days=req.getParameter("mon")+req.getParameter("tue")+req.getParameter("wed")+req.getParameter("thu")+req.getParameter("fri")+req.getParameter("sat")+req.getParameter("sun");
 		
 		days=days.replace("null", "");
-		
-		System.out.println(type);
+	
 		HashMap<String, String> data=(HashMap<String, String>)session.getAttribute("data");
 		
 		data.put("mannum", mannum);
@@ -349,18 +349,25 @@ public class PoolController
 		int mannum=Integer.parseInt(req.getParameter("mannum"));
 		String gender=req.getParameter("gender");
 		String smoking=req.getParameter("smoking");
-		String starttime=req.getParameter("starttime");
+		
 		int pay=Integer.parseInt(req.getParameter("pay"));
 		String pluscontent=req.getParameter("pluscontent");
 		String type=req.getParameter("type");
 		
+		String sh=req.getParameter("sh");
+		
+		int h=Integer.parseInt(sh);
+		
+		if(req.getParameter("sapm").equals("오후"))
+		{
+			h+=12;
+		}
+				
+		String starttime=req.getParameter("sy")+'-'+req.getParameter("sm")+'-'+req.getParameter("sd")+" "+h+":"+req.getParameter("smi");
 
-		System.out.println(starttime+"/"+smoking+"/"+type);
-		
 		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, type);
-		
-		
-		
+
+			
 		int count=poolDao.poolMemberShortEdit(dto);
 		
 		String msg=count>0?"성공":"실패";
@@ -388,15 +395,27 @@ public class PoolController
 		int mannum=Integer.parseInt(req.getParameter("mannum"));
 		String gender=req.getParameter("gender");
 		String smoking=req.getParameter("smoking");
-		String starttime=req.getParameter("starttime");
 		int pay=Integer.parseInt(req.getParameter("pay"));
 		String pluscontent=req.getParameter("pluscontent");
 		String type=req.getParameter("type");
-		String startdate=req.getParameter("startdate");
-		String enddate=req.getParameter("enddate");
-		String days=req.getParameter("days");
+				
+		String lh=req.getParameter("lh");
+		int h=Integer.parseInt(lh);
 		
-		System.out.println(enddate+"/"+smoking+"/"+type);
+		if(req.getParameter("lapm").equals("오후"))
+		{
+			h+=12;
+		}
+		
+		String starttime=req.getParameter("lsy")+'-'+req.getParameter("lsm")+'-'+req.getParameter("lsd")+" "+h+":"+req.getParameter("lmi");
+		String startdate=req.getParameter("lsy")+'-'+req.getParameter("lsm")+'-'+req.getParameter("lsd");
+		String enddate=req.getParameter("ley")+'-'+req.getParameter("lem")+'-'+req.getParameter("led");
+		String days=req.getParameter("mon")+req.getParameter("tue")+req.getParameter("wed")+req.getParameter("thu")+req.getParameter("fri")+req.getParameter("sat")+req.getParameter("sun");
+		
+		days=days.replace("null", "");
+
+				
+		System.out.println(idx+"/"+enddate+"/"+smoking+"/"+type+"/"+days);
 		
 		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, type, startdate, enddate, days);
 		

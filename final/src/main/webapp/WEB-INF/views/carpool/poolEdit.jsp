@@ -388,114 +388,7 @@ function setDays2()
 
 }
 
-function sendPoolEdit()
-{
-	var f=document.getElementById('f');
-	
-	var shortEl=document.getElementById('short');
-	var longEl=document.getElementById('long');
-	
-	var smokingEl=document.getElementById('smoke');
-	var nonsmokingEl=document.getElementById('nonsmoke');
-	
-	if(smokingEl.checked)
-	{
-		f.innerHTML+='<input type="hidden" value="'+smokingEl.value+'" name="smoking">';
-	}
-	else
-	{
-		f.innerHTML+='<input type="hidden" value="'+nonsmokingEl.value+'" name="smoking">';
-	}
-	
-	
-	if(shortEl.checked)
-	{
-		var yEl=document.getElementById('yearEl');
-		var mEl=document.getElementById('monthEl');
-		var dEl=document.getElementById('dayEl');
-		var hEl=document.getElementById('hourEl');
-		var miEl=document.getElementById('smi');
-		
-		var stime=yEl.value+'-'+mEl.value+'-'+dEl.value+' '+hEl.value+':'+mi.value;
-		
-		
-		
-		f.innerHTML+='<input type="hidden" value="'+stime+'" name="starttime">';
-		f.innerHTML+='<input type="hidden" value="'+shortEl.value+'" name="type">';
-		f.submit();
-	}
-	else if(longEl.checked)
-	{
-		var yEl=document.getElementById('lsy');
-		var mEl=document.getElementById('lsm');
-		var dEl=document.getElementById('lsd');
-		
-		var yEl2=document.getElementById('ley');
-		var mEl2=document.getElementById('lem');
-		var dEl2=document.getElementById('led');
-		
-		var hEl=document.getElementById('lh');
-		var miEl=document.getElementById('lmi');
-		
-		var monEl=document.getElementById('mon');
-		var tueEl=document.getElementById('tue');
-		var wedEl=document.getElementById('wed');
-		var thuEl=document.getElementById('thu');
-		var friEl=document.getElementById('fri');
-		var satEl=document.getElementById('sat');
-		var sunEl=document.getElementById('sun');
-		
-		
-		var days='';
-			
-		if(monEl.checked)
-		{
-			days+='월 ';
-		}
-		if(tueEl.checked)
-		{
-			days+='화 ';
-		}
-		if(wedEl.checked)
-		{
-			days+='수 ';
-		}
-		if(thuEl.checked)
-		{
-			days+='목 '
-		}
-		if(friEl.checked)
-		{
-			days+='금 '
-		}
-		if(satEl.checked)
-		{
-			days+='토 '
-		}
-		if(sunEl.checked)
-		{
-			days+='일'
-		}
-		
-		var sdate=yEl.value+'-'+mEl.value+'-'+dEl.value;
-		var edate=yEl2.value+'-'+mEl2.value+'-'+dEl2.value
-		
-		
-		var stime=yEl.value+'-'+mEl.value+'-'+dEl.value+' '+hEl.value+':'+miEl.value;
-		
-		
-		
-		f.innerHTML+='<input type="hidden" value="'+stime+'" name="starttime">';
-		f.innerHTML+='<input type="hidden" value="'+sdate+'" name="startdate">';
-		f.innerHTML+='<input type="hidden" value="'+edate+'" name="enddate">';
-		f.innerHTML+='<input type="hidden" value="'+days+'" name="days">';
-		f.innerHTML+='<input type="hidden" value="'+longEl.value+'" name="type">';
-		
-		f.method="POST";
-		f.submit();
-	}
-	
-}
+
 </script>
 </head>
 <body>
@@ -506,6 +399,8 @@ function sendPoolEdit()
 </article>
 <article>
 <div>
+<c:if test="${dto.type eq '단기' }">
+<div id="shortForm">
 <form id="f" name="poolEdit" action="poolEdit.do" method="GET">
 <input type="hidden" id="sdate" value="${dto.starttime}">
 <input type="hidden" name="idx" value="${dto.idx}">
@@ -517,8 +412,7 @@ function sendPoolEdit()
 <div>타입<input type="radio" id="short" name="type" value="단기">단기 
 		<input type="radio" id="long" name="type" value="정기">정기
 		</div>
-		<c:if test="${dto.type eq '단기' }">
-		<div id="shortForm">
+		
 		출발일시<select id="yearEl" name="sy">
 			</select>년
 			<select id="monthEl" name="sm" onchange="setDays()">
@@ -535,10 +429,59 @@ function sendPoolEdit()
 				<option>00</option>
 				<option>30</option>
 			</select>분<br>
+
+<div>인원<select name="mannum">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+		   </select>명
+		   </div>
+		<div>성별<select id=gender name="gender">
+				<option value="남성만">남성만</option>
+				<option value="여성만">여성만</option>
+				<option value="상관없음">상관없음</option>
+		  </select></div>
+<div>흡연여부<input type="radio" id="smoke" name="smoking" value="흡연">흡연
+		  	 <input type="radio" id="nonsmoke" name="smoking" value="비흡연">비흡연
+</div>
+<div>목적<select id="aim" name="aim">
+			<option value="출/퇴근">출/퇴근</option>
+			<option value="드라이브">드라이브</option>
+			<option value="좋은 만남">좋은만남</option>
+			<option value="명절">명절</option>
+		  </select></div>
+<div>요금<input type="text" name="pay" value="${dto.pay }"></div>
+
+<div>지도 API 영역</div>
+<div>비고
+<textarea rows="5" cols="50" name="pluscontent">
+${dto.pluscontent}</textarea>
+</div>
+<div>평점 게시판 영역
+</div>
+<div><input type="button" value="목록보기"><input type="submit" value="수정하기"></div>
+</form>
+</div>
+</c:if>
+</div>
+
+<div>
+<c:if test="${dto.type eq '정기' }">
+<div id="longterm">
+<form id="f2" name="poolEdit" action="poolEdit.do" method="POST">
+<input type="hidden" id="sdate" value="${dto.starttime}">
+<input type="hidden" name="idx" value="${dto.idx}">
+<h1>(타세요 / 태워주세요 태그) 카폴 수정하기</h1>
+<div>프로필 사진 영역</div>
+<div>출발지 <input type="text" name="startspot" value="${dto.startspot }"></div>
+<div>경유지 <input type="text" name="route" value="${dto.route }"></div>
+<div>도착지 <input type="text" name="endspot" value="${dto.endspot }"></div>
+<div>타입<input type="radio" id="short" name="type" value="단기">단기 
+		<input type="radio" id="long" name="type" value="정기">정기
 		</div>
-		</c:if>
-		<c:if test="${dto.type eq '정기' }">
-		<div id="longForm">
+
+
+		<div>
 		기간
 		<select id="lsy" name="lsy">
          </select>년
@@ -573,7 +516,7 @@ function sendPoolEdit()
          <input type="checkbox"  id="sat" name="sat" value="토">토
          <input type="checkbox"  id="sun" name="sun" value="일">일
          </div>
-		</c:if>
+         
 <div>인원<select name="mannum">
 				<option>1</option>
 				<option>2</option>
@@ -599,14 +542,17 @@ function sendPoolEdit()
 <div>지도 API 영역</div>
 <div>비고
 <textarea rows="5" cols="50" name="pluscontent">
-${dto.pluscontent }</textarea>
+${dto.pluscontent}</textarea>
 </div>
 <div>평점 게시판 영역
 </div>
-<div><input type="button" value="목록보기"><input type="submit" value="수정하기" onclick="sendPoolEdit();"></div>
-</form>
-</div>
-
+<div><input type="button" value="목록보기"><input type="submit" value="수정하기"></div>
+         
+         
+         </form>
+         </div>
+		</c:if>
+		</div>
 </article>
 </section>
 </body>
