@@ -8,10 +8,11 @@ public class CarCostDTO {
 	private String bigo;
 	private String cost;
 	private String km;
+	private String id;
 	public CarCostDTO() {
 		super();
 	}
-	public CarCostDTO(int idx, String costday, String category, String bigo, String cost, String km) {
+	public CarCostDTO(int idx, String costday, String category, String bigo, String cost, String km, String id) {
 		super();
 		this.idx = idx;
 		this.costday = costday;
@@ -19,6 +20,7 @@ public class CarCostDTO {
 		this.bigo = bigo;
 		this.cost = cost;
 		this.km = km;
+		this.id = id;
 	}
 	public int getIdx() {
 		return idx;
@@ -56,5 +58,12 @@ public class CarCostDTO {
 	public void setKm(String km) {
 		this.km = km;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	
 }
