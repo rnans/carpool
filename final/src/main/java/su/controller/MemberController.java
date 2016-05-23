@@ -37,13 +37,19 @@ public class MemberController {
 	@RequestMapping(value="/memberJoin.do", method=RequestMethod.POST)
 	public ModelAndView memberJoin(MemberDTO dto){
 		
-		int result = memberDao.memberJoin(dto);
-		String msg=result>0?"카풀서비스 가입에 성공하셨습니다.":"회원가입에 실패하였습니다.";
 		ModelAndView mav = new ModelAndView();
+		
+		int result = memberDao.memberJoin(dto);
+		
+		String msg = result>0?"카풀서비스 가입에 성공하셨습니다.":"회원가입에 실패하셨습니다.";
+		
 		mav.addObject("msg", msg);
 		mav.addObject("loc", "index.do");
 		mav.setViewName("member/memberMsg");
+		
 		return mav;
+		
+		
 	}
 	
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
