@@ -354,7 +354,12 @@ public class PoolController
 		String pluscontent=req.getParameter("pluscontent");
 		String type=req.getParameter("type");
 		
+
+		System.out.println(starttime+"/"+smoking+"/"+type);
+		
 		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, type);
+		
+		
 		
 		int count=poolDao.poolMemberShortEdit(dto);
 		
@@ -366,8 +371,7 @@ public class PoolController
 		mav.addObject("msg", msg);
 		
 		mav.setViewName("carpool/poolMsg");
-		
-		System.out.println(idx);
+	
 		
 		return mav;
 	}
@@ -392,9 +396,12 @@ public class PoolController
 		String enddate=req.getParameter("enddate");
 		String days=req.getParameter("days");
 		
-		System.out.println(startdate+enddate+idx);
+		System.out.println(enddate+"/"+smoking+"/"+type);
 		
 		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, type, startdate, enddate, days);
+		
+		
+		
 		
 		int count=poolDao.poolMemberLongEdit(dto);
 		

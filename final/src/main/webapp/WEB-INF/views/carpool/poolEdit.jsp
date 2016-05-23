@@ -7,148 +7,65 @@
 <meta charset="UTF-8">
 <title>파티풀 수정하기</title>
 <script>
-
-window.onload=function(){
-var d = new Date();
-
-var yearEl=document.getElementById('yearEl');
-var monthEl=document.getElementById('monthEl');
-var dayEl=document.getElementById('dayEl');
-var hourEl=document.getElementById("hourEl");
-
-var sDate='${dto.starttime}';
-var sYear=sDate.substring(0,4);
-var sMonth=sDate.substring(5,7);
-var sDays=sDate.substring(8,10);
-var sHour=sDate.substring(11,13);
-
-var type='${dto.type}';
-
-if(type=='단기')
+window.onload=function()
 {
-
-	for(var i=sYear;i<d.getFullYear()+5;i++)
-	{
+	var d = new Date();
 	
-		if(i==sYear)
-		{
-			yearEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>'
-		}
-		else
-		{
-			yearEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
-		}
-	}
+	var yearEl=document.getElementById('yearEl');
+	var monthEl=document.getElementById('monthEl');
+	var dayEl=document.getElementById('dayEl');
+	var hourEl=document.getElementById("hourEl");
 	
-	for(var i=1;i<=12;i++)
-	{
-		if(i==sMonth)
-		{
-			monthEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>'
-		}
-		else
-		{
-			monthEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
-		}
-	
-	}
-	
-	setDays();
-	
-	for(var i=1;i<=12;i++)
-	{
-		if(sHour-12>0)
-		{
-			if(i==(sHour-12))
-			{
-				hourEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>';
-			}
-			hourEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
-		}
-		else if(i==sHour)
-		{
-			hourEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>';
-		}
-		else
-		{
-			hourEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
-		}
-	}
-	
-	var sapmEl=document.getElementById('sapm');
-	
-	if((sHour-12)>=0)
-	{
-		sapmEl.value='오후';
-	}
-/* 	}
-	document.getElementById("term").style.visibility = "hidden";
-	document.getElementById("short").style.visibility = "hidden";
-	 */
-
-}
-else
-{
-	var sDate='${dto.startdate}';
+	var sDate='${dto.starttime}';
 	var sYear=sDate.substring(0,4);
 	var sMonth=sDate.substring(5,7);
 	var sDays=sDate.substring(8,10);
+	var sHour=sDate.substring(11,13);
 	
-	var eDate='${dto.enddate}';
-	var eYear=eDate.substring(0,4);
-	var eMonth=eDate.substring(5,7);
-	var eDays=eDate.substring(8,10);
-	
-	
-	
-	var yearEl=document.getElementById('lsy');
-	var monthEl=document.getElementById('lsm');
-	
-	var yearEl2=document.getElementById('ley');
-	var monthEl2=document.getElementById('lem');
-
-
-	var hourEl=document.getElementById("lh");
+	var type='${dto.type}';
 		
-		for(var i=d.getFullYear();i<d.getFullYear()+5;i++)
+	if(type=='단기')
+	{
+	
+		for(var i=sYear;i<d.getFullYear()+5;i++)
 		{
 		
-			yearEl.innerHTML+='<option>'+i+'</option>';
-			yearEl2.innerHTML+='<option>'+i+'</option>';
+			if(i==sYear)
+			{
+				yearEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>'
+			}
+			else
+			{
+				yearEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
+			}
 		}
-				
+		
 		for(var i=1;i<=12;i++)
 		{
 			if(i==sMonth)
 			{
-				monthEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>';
-				
+				monthEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>'
 			}
-			if(i==eMonth)
+			else
 			{
-				monthEl2.innerHTML+='<option value="'+i+'" selected>'+i+'</option>';	
+				monthEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
 			}
-			monthEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
-			monthEl2.innerHTML+='<option value="'+i+'">'+i+'</option>';
 		
 		}
 		
-		
-		
-		setDays2();
-		setDays3();
+		setDays();
 		
 		for(var i=1;i<=12;i++)
 		{
-			if(d.getHours()-12>0)
+			if(sHour-12>0)
 			{
-				if(i==(d.getHours()-12))
+				if(i==(sHour-12))
 				{
 					hourEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>';
 				}
 				hourEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
 			}
-			else if(i==d.getHours())
+			else if(i==sHour)
 			{
 				hourEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>';
 			}
@@ -158,60 +75,143 @@ else
 			}
 		}
 		
-		var apmEl=document.getElementById('lapm');
+		var sapmEl=document.getElementById('sapm');
 		
-		if((d.getHours()-12)>=0)
+		if((sHour-12)>=0)
 		{
-			apmEl.value='오후';
+			sapmEl.value='오후';
 		}
+	/* 	
+		document.getElementById("term").style.visibility = "hidden";
+		document.getElementById("short").style.visibility = "hidden";
+		 */
 	
-	var days='${dto.days}';
-	
-	var arrDays=days.split(' ');
-	
-	var monEl=document.getElementById('mon');
-	var tueEl=document.getElementById('tue');
-	var wedEl=document.getElementById('wed');
-	var thuEl=document.getElementById('thu');
-	var friEl=document.getElementById('fri');
-	var satEl=document.getElementById('sat');
-	var sunEl=document.getElementById('sun');
-	
-	for(var i=0;i<arrDays.length;i++)
-	{
-		if(arrDays[i]==monEl.value)
-		{
-			monEl.checked=true;
-		}
-		else if(arrDays[i]==tueEl.value)
-		{
-			tueEl.checked=true;
-		}
-		else if(arrDays[i]==wedEl.value)
-		{
-			wedEl.checked=true;
-		}
-		else if(arrDays[i]==thuEl.value)
-		{
-			thuEl.checked=true;
-		}
-		else if(arrDays[i]==friEl.value)
-		{
-			friEl.checked=true;
-		}
-		else if(arrDays[i]==satEl.value)
-		{
-			satEl.checked=true;
-		}
-		else if(arrDays[i]==sunEl.value)
-		{
-			sunEl.checked=true;
-		}
 	}
+	else
+	{
+		var sDate='${dto.startdate}';
+		var sYear=sDate.substring(0,4);
+		var sMonth=sDate.substring(5,7);
+		var sDays=sDate.substring(8,10);
+		
+		var eDate='${dto.enddate}';
+		var eYear=eDate.substring(0,4);
+		var eMonth=eDate.substring(5,7);
+		var eDays=eDate.substring(8,10);
+		
+		
+		
+		var yearEl=document.getElementById('lsy');
+		var monthEl=document.getElementById('lsm');
+		
+		var yearEl2=document.getElementById('ley');
+		var monthEl2=document.getElementById('lem');
 	
 	
-	
-}
+		var hourEl=document.getElementById("lh");
+			
+			for(var i=d.getFullYear();i<d.getFullYear()+5;i++)
+			{
+			
+				yearEl.innerHTML+='<option>'+i+'</option>';
+				yearEl2.innerHTML+='<option>'+i+'</option>';
+			}
+					
+			for(var i=1;i<=12;i++)
+			{
+				if(i==sMonth)
+				{
+					monthEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>';
+					
+				}
+				if(i==eMonth)
+				{
+					monthEl2.innerHTML+='<option value="'+i+'" selected>'+i+'</option>';	
+				}
+				monthEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
+				monthEl2.innerHTML+='<option value="'+i+'">'+i+'</option>';
+			
+			}
+			
+			
+			
+			setDays2();
+			setDays3();
+			
+			for(var i=1;i<=12;i++)
+			{
+				if(d.getHours()-12>0)
+				{
+					if(i==(d.getHours()-12))
+					{
+						hourEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>';
+					}
+					hourEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
+				}
+				else if(i==d.getHours())
+				{
+					hourEl.innerHTML+='<option value="'+i+'" selected>'+i+'</option>';
+				}
+				else
+				{
+					hourEl.innerHTML+='<option value="'+i+'">'+i+'</option>';
+				}
+			}
+			
+			var apmEl=document.getElementById('lapm');
+			
+			if((d.getHours()-12)>=0)
+			{
+				apmEl.value='오후';
+			}
+		
+		var days='${dto.days}';
+		
+		var arrDays=days.split(' ');
+		
+		var monEl=document.getElementById('mon');
+		var tueEl=document.getElementById('tue');
+		var wedEl=document.getElementById('wed');
+		var thuEl=document.getElementById('thu');
+		var friEl=document.getElementById('fri');
+		var satEl=document.getElementById('sat');
+		var sunEl=document.getElementById('sun');
+		
+		for(var i=0;i<arrDays.length;i++)
+		{
+			if(arrDays[i]==monEl.value)
+			{
+				monEl.checked=true;
+			}
+			else if(arrDays[i]==tueEl.value)
+			{
+				tueEl.checked=true;
+			}
+			else if(arrDays[i]==wedEl.value)
+			{
+				wedEl.checked=true;
+			}
+			else if(arrDays[i]==thuEl.value)
+			{
+				thuEl.checked=true;
+			}
+			else if(arrDays[i]==friEl.value)
+			{
+				friEl.checked=true;
+			}
+			else if(arrDays[i]==satEl.value)
+			{
+				satEl.checked=true;
+			}
+			else if(arrDays[i]==sunEl.value)
+			{
+				sunEl.checked=true;
+			}
+		}
+		
+		
+		
+	}
 
 	var smoke='${dto.smoking}'
 	var smokingEl=document.getElementById('smoke');
@@ -258,9 +258,10 @@ else
 		var longEl=document.getElementById('long');
 		longEl.checked=true;
 	}
- }
+}
  
-function setDays(){
+function setDays()
+{
 	var days=30;
 	
 	var sDate='${dto.starttime}';
@@ -292,8 +293,7 @@ function setDays(){
 		
 
 	}
-	
-	
+		
 
 }
 
@@ -310,7 +310,8 @@ function viewTerm()
 	document.getElementById("term").style.visibility = "visible";
 } */
 
-function setDays3(){
+function setDays3()
+{
 	var days=30;
 	
 	var sDate='${dto.enddate}';
@@ -348,7 +349,8 @@ function setDays3(){
 
 }
 
-function setDays2(){
+function setDays2()
+{
 	var days=30;
 	
 	var sDate='${dto.startdate}';
@@ -386,38 +388,53 @@ function setDays2(){
 
 }
 
-function sendPoolEdit(){
+function sendPoolEdit()
+{
 	var f=document.getElementById('f');
 	
 	var shortEl=document.getElementById('short');
 	var longEl=document.getElementById('long');
 	
+	var smokingEl=document.getElementById('smoke');
+	var nonsmokingEl=document.getElementById('nonsmoke');
+	
+	if(smokingEl.checked)
+	{
+		f.innerHTML+='<input type="hidden" value="'+smokingEl.value+'" name="smoking">';
+	}
+	else
+	{
+		f.innerHTML+='<input type="hidden" value="'+nonsmokingEl.value+'" name="smoking">';
+	}
 	
 	
 	if(shortEl.checked)
 	{
-		var yearEl=document.getElementById('yearEl');
-		var monthEl=document.getElementById('monthEl');
-		var dayEl=document.getElementById('dayEl');
-		var hourEl=document.getElementById('hourEl');
+		var yEl=document.getElementById('yearEl');
+		var mEl=document.getElementById('monthEl');
+		var dEl=document.getElementById('dayEl');
+		var hEl=document.getElementById('hourEl');
 		var miEl=document.getElementById('smi');
 		
-		var starttime=yearEl.value+'-'+monthEl.value+'-'+dayEl.value+' '+hourEl.value+':'+miEl.value;
+		var stime=yEl.value+'-'+mEl.value+'-'+dEl.value+' '+hEl.value+':'+mi.value;
 		
-		f.innerHTML+='<input type="hidden" value="'+starttime+'" name="starttime">';
+		
+		
+		f.innerHTML+='<input type="hidden" value="'+stime+'" name="starttime">';
+		f.innerHTML+='<input type="hidden" value="'+shortEl.value+'" name="type">';
 		f.submit();
 	}
 	else if(longEl.checked)
 	{
-		var yearEl=document.getElementById('lsy');
-		var monthEl=document.getElementById('lsm');
-		var dayEl=document.getElementById('lsd');
+		var yEl=document.getElementById('lsy');
+		var mEl=document.getElementById('lsm');
+		var dEl=document.getElementById('lsd');
 		
-		var yearEl2=document.getElementById('ley');
-		var monthEl2=document.getElementById('lem');
-		var dayEl2=document.getElementById('led');
+		var yEl2=document.getElementById('ley');
+		var mEl2=document.getElementById('lem');
+		var dEl2=document.getElementById('led');
 		
-		var hourEl=document.getElementById('lh');
+		var hEl=document.getElementById('lh');
 		var miEl=document.getElementById('lmi');
 		
 		var monEl=document.getElementById('mon');
@@ -428,46 +445,53 @@ function sendPoolEdit(){
 		var satEl=document.getElementById('sat');
 		var sunEl=document.getElementById('sun');
 		
-		var days='';
 		
+		var days='';
+			
 		if(monEl.checked)
 		{
 			days+='월 ';
 		}
-		else if(tueEl.checked)
+		if(tueEl.checked)
 		{
 			days+='화 ';
 		}
-		else if(wueEl.checked)
+		if(wedEl.checked)
 		{
 			days+='수 ';
 		}
-		else if(thuEl.checked)
+		if(thuEl.checked)
 		{
 			days+='목 '
 		}
-		else if(friEl.checked)
+		if(friEl.checked)
 		{
 			days+='금 '
 		}
-		else if(satEl.checked)
+		if(satEl.checked)
 		{
 			days+='토 '
 		}
-		else if(sunEl.checked)
+		if(sunEl.checked)
 		{
 			days+='일'
 		}
 		
-		var startdate=yearEl.value+'-'+monthEl.value+'-'+dayEl.value;
-		var enddate=yearEl2.value+'-'+monthEl2.value+'-'+dayEl2.value
+		var sdate=yEl.value+'-'+mEl.value+'-'+dEl.value;
+		var edate=yEl2.value+'-'+mEl2.value+'-'+dEl2.value
 		
 		
-		var starttime=yearEl.value+'-'+monthEl.value+'-'+dayEl.value+' '+hourEl.value+':'+miEl.value;
-		f.innerHTML+='<input type="hidden" value="'+starttime+'" name="starttime">';
-		f.innerHTML+='<input type="hidden" value="'+startdate+'" name="startdate">';
-		f.innerHTML+='<input type="hidden" value="'+enddate+'" name="enddate">';
+		var stime=yEl.value+'-'+mEl.value+'-'+dEl.value+' '+hEl.value+':'+miEl.value;
+		
+		
+		
+		f.innerHTML+='<input type="hidden" value="'+stime+'" name="starttime">';
+		f.innerHTML+='<input type="hidden" value="'+sdate+'" name="startdate">';
+		f.innerHTML+='<input type="hidden" value="'+edate+'" name="enddate">';
 		f.innerHTML+='<input type="hidden" value="'+days+'" name="days">';
+		f.innerHTML+='<input type="hidden" value="'+longEl.value+'" name="type">';
+		
+		f.method="POST";
 		f.submit();
 	}
 	
@@ -482,15 +506,16 @@ function sendPoolEdit(){
 </article>
 <article>
 <div>
-<form id="f" name="poolEdit" action="poolEdit.do">
+<form id="f" name="poolEdit" action="poolEdit.do" method="GET">
 <input type="hidden" id="sdate" value="${dto.starttime}">
 <input type="hidden" name="idx" value="${dto.idx}">
 <h1>(타세요 / 태워주세요 태그) 카폴 수정하기</h1>
 <div>프로필 사진 영역</div>
-<div>출발지 <input type="text" name="startSpot" value="${dto.startspot }"></div>
+<div>출발지 <input type="text" name="startspot" value="${dto.startspot }"></div>
 <div>경유지 <input type="text" name="route" value="${dto.route }"></div>
-<div>도착지 <input type="text" name="endSpot" value="${dto.endspot }"></div>
-<div>타입<input type="radio" id="short" name="type" value="단기">단기 <input type="radio" id="long" name="type" value="정기">정기
+<div>도착지 <input type="text" name="endspot" value="${dto.endspot }"></div>
+<div>타입<input type="radio" id="short" name="type" value="단기">단기 
+		<input type="radio" id="long" name="type" value="정기">정기
 		</div>
 		<c:if test="${dto.type eq '단기' }">
 		<div id="shortForm">
@@ -517,13 +542,13 @@ function sendPoolEdit(){
 		기간
 		<select id="lsy" name="lsy">
          </select>년
-         <select id="lsm" name="lsm" onchange="setDays()">
+         <select id="lsm" name="lsm" onchange="setDays2()">
          </select>월
          <select id="lsd" name="lsd">
          </select>일       ~ 
 		<select id="ley" name="ley">
          </select>년
-         <select id="lem" name="lem" onchange="setDays2()">
+         <select id="lem" name="lem" onchange="setDays3()">
          </select>월
          <select id="led" name="led">
          </select>일
@@ -578,7 +603,7 @@ ${dto.pluscontent }</textarea>
 </div>
 <div>평점 게시판 영역
 </div>
-<div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="sendPoolEdit();"></div>
+<div><input type="button" value="목록보기"><input type="submit" value="수정하기" onclick="sendPoolEdit();"></div>
 </form>
 </div>
 
