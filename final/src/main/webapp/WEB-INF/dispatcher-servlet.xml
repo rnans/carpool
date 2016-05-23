@@ -36,6 +36,7 @@
    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
    </bean>
+   
 	<!-- services -->
 	
 	<bean id="memberDao" class="su.member.model.MemberDAOImple">
@@ -43,31 +44,42 @@
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
-		<bean id="csNoticeDao" class="su.csCenter.model.CsNoticeDAOImple">	
+	
+	<bean id="csNoticeDao" class="su.csCenter.model.CsNoticeDAOImple">	
 		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
+	
 	<bean id="csoneandoneDao" class="su.csCenter.model.CsoneandoneDAOImple">
 		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
+	
 	<bean id="poolDao" class="su.pool.model.PoolDAOImple">
 		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean> 
+	
 	<bean id="CarCostDao" class="su.carCost.model.CarCostDAOImple">
 		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
+	
 	<bean id="commDao" class="su.comm.model.commDAOImple">
 		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean> 
+	
+	<bean id="adMemberDao" class="su.adminMember.model.AdminMemberDAOImple">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
 	
 	
 	
