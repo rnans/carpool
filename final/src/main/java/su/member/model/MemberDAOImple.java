@@ -71,7 +71,7 @@ public class MemberDAOImple implements MemberDAO {
 	/**회원 이름 가져오는거*/
 	public String getUserInfo(String id) {
 		
-		MemberDTO dto = sqlMap.selectOne("memberInfo", id);
+		MemberDTO dto = sqlMap.selectOne("sql.member.memberInfo", id);
 		String result=dto.getName();
 		return result;
 	}
