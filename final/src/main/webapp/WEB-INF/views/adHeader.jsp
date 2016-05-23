@@ -8,9 +8,9 @@
 		<div>-회원알림설정관리</div>
 	</div>
 	<div>고객센터관리
-		<div>-공지사항</div>
-		<div>-Q&A</div>
-		<div>-1:1문의</div>
+		<div><a href="adminNoticeList.do">-공지사항</a></div>
+		<div><a href="adminQnaList.do">-Q&A</a></div>
+		<div><a href="adminOneAndOne.do">-1:1문의</a></div>
 		<div>-이용안내</div>
 	</div>
 	<div>카풀게시물관리
