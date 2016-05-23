@@ -5,6 +5,6 @@
     <mapper namespace="sql.carcost">
     	<insert id="CarCost" parameterType="su.carCost.model.CarCostDTO">
     		insert into carcost values(carcost_idx.nextval,
-    		#{costday},#{category},#{bigo},#{cost},#{km})
+    		#{id},#{category},#{costday},#{cost},#{km},#{bigo})
     	</insert>
     </mapper>

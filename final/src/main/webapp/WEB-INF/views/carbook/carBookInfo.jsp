@@ -5,16 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-function opencostReg(){
-	window.open('costReg.do','costReg.do','width=350,height=450');
-}
-function opencarReg(){
-	window.open('carReg.do','carReg.do','width=350, height=450');
-}
-</script>
 </head>
 <body>
+<%@include file="../header.jsp"%>
+<script>
+function opencostReg(){
+	window.open('costReg.do?id=${sid}','costReg.do','width=350,height=450');
+}
+function opencarReg(){
+	window.open('carReg.do?id=${sid}','carReg.do','width=350, height=450');
+}
+</script>
+<hr>
 <div>
 <select name=carnum>
 	<option>12경기1234</option>
@@ -23,7 +25,7 @@ function opencarReg(){
 <a href="javascript:opencostReg()">비용입력</a>
 </div>
 <div>
-home cost 그래프
+
 차량사진
 <fieldset>
 	<legend>차량정보</legend>

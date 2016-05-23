@@ -5,31 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
+<form name="carReg" action="carReg.do" method="post">
 <fieldset>
 	<legend>차량등록</legend>
 	사진등록
 	<div>
-	차종<select name=car1>
+	차종<select name=carkind1>
 	<option>국내</option>
 	<option>해외</option>
 		</select><br>
-	<select name=car2>
+	<select name=carkind2>
 	<option>회사명</option>
 	<option>BMW</option>
 	<option>현대</option>
 		</select><br>
-	<select name=car3>
+	<select name=carkind3>
 	<option>차종</option>
 	<option>모닝</option>
 	<option>벤츠</option>
 		</select><br>
 	차번호<input type="text" name="carnum"><br>
-	공인연비<input type="text" name="oil"><br>
+	공인연비<input type="text" name="oilcost"><br>
 	</div>
 	<input type="submit" value="등록">
-	<input type="button" value="취소">
+	<input type="button" value="취소" onclick="javascript:window.self.close()">
+	<input type="hidden" name="id" value="${ sid }">
 </fieldset>
+</form>
 </body>
 </html>

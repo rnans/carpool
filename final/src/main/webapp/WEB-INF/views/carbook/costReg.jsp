@@ -21,8 +21,9 @@
 	주행거리<input type="text" name="km"><br>
 	비고<textarea rows="10" cols="20" name="bigo">
 	</textarea><br>
+	<input type="hidden" name="id" value="${ sid }">
 	<input type="submit" value="등록">
-	<input type="button" value="취소">
+	<input type="button" value="취소" onclick="javascript:window.self.close()">
 </fieldset>
 </form>
 </body>
