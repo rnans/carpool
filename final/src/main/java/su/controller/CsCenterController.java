@@ -101,20 +101,7 @@ public class CsCenterController {
         }
     
 	}
-	@RequestMapping("/noticeWriteForm")
-	public String noticeWriteForm(){
-		return "csCenter/noticeWrite";
-	}
-	//공지사항 글쓰기
-	@RequestMapping("/noticeWrite.do")
-	public ModelAndView noticeAdd(CsNoticeDTO dto){
-		int result=csnoticeDao.noticeAdd(dto);
-		String msg=result>0?"공지사항글쓰기성공":"공지사항글쓰기실패";
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("msg", msg);
-		mav.setViewName("csCenter/noticeMsg");
-		return mav;
-	}
+
 	//1:1문의 보기
    @RequestMapping("/oneandoneContent.do")
    public ModelAndView oneandoneContent(int idx){
@@ -143,10 +130,7 @@ public class CsCenterController {
 	public String oneAndOneWriteForm(){
 		return "csCenter/oneAndOneWriteForm";
 	}
-	@RequestMapping("admintest.do")
-	public String admintest(){
-		return "admin/noticeList";
-	}
 }
+
 	
 
