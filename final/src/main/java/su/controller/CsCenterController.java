@@ -21,7 +21,17 @@ public class CsCenterController {
 	
 	@Autowired
 	private CsoneandoneDAO csoneandoneDao;
+	@Autowired
+	private CsQnaDAO csqnaDao;
 	
+	public CsQnaDAO getCsqnaDao() {
+		return csqnaDao;
+	}
+
+	public void setCsqnaDao(CsQnaDAO csqnaDao) {
+		this.csqnaDao = csqnaDao;
+	}
+
 	public CsoneandoneDAO getCsoneandoneDao() {
 		return csoneandoneDao;
 	}
@@ -70,11 +80,21 @@ public class CsCenterController {
 		return mav;
 	}
 		
-	
+	//qna 리스트
 	@RequestMapping("/qnaList.do")
-		public String qndList(){
-			return "csCenter/qnaList";
-		}
+	public ModelAndView qnaList(@RequestParam(value="cp",defaultValue="1")int cp){
+		int totalCnt=csqnaDao.qnaTotalCnt();
+		int listSize=10;
+		int pageSize=5;
+		List<CsQnaDTO> list=csqnaDao.qnaList(cp,listSize);
+		String pageStr=
+			su.Page.SuPage.makePage("qnaList.do", totalCnt, listSize, pageSize, cp);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("pageStr",pageStr);
+		mav.setViewName("csCenter/qnaList");
+		return mav;
+	}
 	//1:1문의 리스트
 	@RequestMapping("/oneAndOne.do")
 	public ModelAndView oneandoneList(@RequestParam(value="cp",defaultValue="1")int cp,  HttpSession session){
@@ -130,6 +150,7 @@ public class CsCenterController {
 	public String oneAndOneWriteForm(){
 		return "csCenter/oneAndOneWriteForm";
 	}
+	
 }
 
 	
