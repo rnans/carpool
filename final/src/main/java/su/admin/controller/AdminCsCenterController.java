@@ -22,6 +22,7 @@ public class AdminCsCenterController {
 	public void setCsnoticeDao(CsNoticeDAO csnoticeDao) {
 		this.csnoticeDao = csnoticeDao;
 	}
+	//공지사항 창띄우기
 	@RequestMapping("/adminNoticeList.do")
 	public ModelAndView noticeList(@RequestParam(value="cp",defaultValue="1")int cp){
 		int totalCnt=csnoticeDao.noticeTotalCnt();
@@ -36,5 +37,53 @@ public class AdminCsCenterController {
 		mav.setViewName("admin/noticeList");
 		return mav;
 	}
+	//공지사항 수정
+	@RequestMapping("/NoticeUpdate.do")
+	public ModelAndView noticeContent(int idx){
+		int result =csnoticeDao.noticeReadnum(idx);
+		List<CsNoticeDTO> list=csnoticeDao.noticeContent(idx);
+		
+ 		ModelAndView mav=new ModelAndView();
+ 		mav.addObject("result",result);
+		mav.addObject("list", list);
+		mav.setViewName("admin/adminNoticeContent");
+		return mav;
 	}
+	@RequestMapping("/NoticeUpdate_ok.do")
+	public ModelAndView noticeUpdate(CsNoticeDTO dto){
+		int result=csnoticeDao.noticeUpdate(dto);
+		String msg=result>0?"수정성공!":"수정실패!";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg",msg);
+		mav.setViewName("admin/noticeMsg");
+		return mav;
+	}
+	//공지사항 삭제
+	@RequestMapping("/NoticeDelete.do")
+	public ModelAndView noticeDelete(int idx){
+		 int result=csnoticeDao.noitceDelete(idx);
+		 String msg=result>0?"공지사항글삭제성공!":"공지사항글삭제실패!";
+		  ModelAndView mav=new ModelAndView();
+		  mav.addObject("msg",msg);
+		  mav.setViewName("admin/noticeMsg");
+		  return mav;
+	}
+	//공지사항 글쓰기
+	@RequestMapping("/noticeWriteForm")
+	public String noticeWriteForm(){
+		return "admin/noticeWrite";
+	}
+	
+		@RequestMapping("/noticeWrite.do")
+		public ModelAndView noticeAdd(CsNoticeDTO dto){
+			int result=csnoticeDao.noticeAdd(dto);
+			String msg=result>0?"공지사항글쓰기성공":"공지사항글쓰기실패";
+			ModelAndView mav=new ModelAndView();
+			mav.addObject("msg", msg);
+			mav.setViewName("admin/noticeMsg");
+			return mav;
+		}
+	
+}
+
 
