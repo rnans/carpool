@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import su.csCenter.model.*;
 @Controller
-public class AdimCsCenterController {
+public class AdminCsCenterController {
 
 	@Autowired
 	private CsNoticeDAO csnoticeDao;
