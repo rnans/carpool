@@ -9,6 +9,7 @@
 		<mapper resource="sql/csCenterSQL.xml"/>
 		<mapper resource="sql/poolSQL.xml"/>
 		<mapper resource="sql/commSQL.xml"/>
+		<mapper resource="sql/adminMemberSQL.xml"/>
 	</mappers>
 	
 </configuration>
