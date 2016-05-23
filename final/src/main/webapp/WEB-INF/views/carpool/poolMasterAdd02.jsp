@@ -28,14 +28,15 @@
 <body>
 	<fieldset>
 		<legend>카풀 등록</legend>
+		<form name="carInfo" action="poolMasterAdd03.do">
 		<fieldset>
 			<legend>차량 정보</legend>
 			<div id="div1">
-			차종:<input type="text" name="carKind" value="랜드로바"> 
+			차종:<input type="text" name="carKind" value="${dto.carKind }" readonly> 
 			<br>
-			차 번호:<input type="text" name="carNum" value="양123">
+			차 번호:<input type="text" name="carNum" value="${dto.carNum }"readonly>
 			<br>
-			차주:<input type="text" name="carMaster" value="서울">
+			차주:<input type="text" name="carMaster" value="${dto.carMaster }"readonly>
 			<br>
 			인증된 차량 입니다.
 			<br>
@@ -52,8 +53,10 @@
 			</div>
 		</fieldset>
 		<br>
-		<input type="button" value="이전"> 
+		<input type="button" value="취소" onclick="poolMasterAdd01.do">
+			<input type="button" value="수정" onclick="poolAdd01Edit.do">  
 			<input type="submit" value="다음"> 
+			</form>
 	</fieldset>
 </body>
 </html>

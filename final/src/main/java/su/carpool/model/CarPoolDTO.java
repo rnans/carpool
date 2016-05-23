@@ -3,209 +3,244 @@ package su.carpool.model;
 public class CarPoolDTO 
 {
 	private int idx;
-	private String userid;
-	private String aim;
-	private String startspot;
-	private String endspot;
-	private String route;
-	private String startcoordi;
-	private String endcoordi;
-	private String routecoordi;
-	private String starttime;
-	private int mannum;
-	private String gender;
-	private int pay;
-	private String smoking;
-	private String pluscontent;
-	private String wirtedate;
-	private String status;
-	private String type;
-	private String startdate;
-	private String enddate;
-	private String days;
+	private String name;
+	private String id;	
+	private String age;
+	private String sex;	
+	private String email;
+	private String phoneNum;
+	private String carMaster;	
+	private String carKind;
+	private String carNum;	
+	private String carPoolName;
+	private String maxNum;
+	private String carPoolType;
+	private String object;
 	private String location;
+	private String startAddr;
+	private String endAddr;
+	private String passAddr;
+	private String startTime;
+	private String day;
+	private String price;
+	private String smoking;
+	private String intro;
 	
-	
-
-	public CarPoolDTO(int idx, String userid, String aim, String startspot, String endspot, String route,
-			String startcoordi, String endcoordi, String routecoordi, String starttime, int mannum, String gender,
-			int pay, String smoking, String pluscontent, String wirtedate, String status, String type, String startdate,
-			String enddate, String days, String location) {
+	public CarPoolDTO(int idx, String name, String id, String age, String sex, String email, String phoneNum,
+			String carMaster, String carKind, String carNum, String carPoolName, String maxNum, String carPoolType,
+			String object, String location, String startAddr, String endAddr, String passAddr, String startTime,
+			String day, String price, String smoking, String intro) {
 		super();
 		this.idx = idx;
-		this.userid = userid;
-		this.aim = aim;
-		this.startspot = startspot;
-		this.endspot = endspot;
-		this.route = route;
-		this.startcoordi = startcoordi;
-		this.endcoordi = endcoordi;
-		this.routecoordi = routecoordi;
-		this.starttime = starttime;
-		this.mannum = mannum;
-		this.gender = gender;
-		this.pay = pay;
-		this.smoking = smoking;
-		this.pluscontent = pluscontent;
-		this.wirtedate = wirtedate;
-		this.status = status;
-		this.type = type;
-		this.startdate = startdate;
-		this.enddate = enddate;
-		this.days = days;
+		this.name = name;
+		this.id = id;
+		this.age = age;
+		this.sex = sex;
+		this.email = email;
+		this.phoneNum = phoneNum;
+		this.carMaster = carMaster;
+		this.carKind = carKind;
+		this.carNum = carNum;
+		this.carPoolName = carPoolName;
+		this.maxNum = maxNum;
+		this.carPoolType = carPoolType;
+		this.object = object;
 		this.location = location;
-	}
-
-
-	public CarPoolDTO(String aim, String startspot, String endspot, String route, String starttime, int mannum,
-			String gender, String smoking, String pluscontent) {
-		super();
-		this.aim = aim;
-		this.startspot = startspot;
-		this.endspot = endspot;
-		this.route = route;
-		this.starttime = starttime;
-		this.mannum = mannum;
-		this.gender = gender;
+		this.startAddr = startAddr;
+		this.endAddr = endAddr;
+		this.passAddr = passAddr;
+		this.startTime = startTime;
+		this.day = day;
+		this.price = price;
 		this.smoking = smoking;
-		this.pluscontent = pluscontent;
+		this.intro = intro;
 	}
-
 
 	public int getIdx() {
 		return idx;
 	}
+
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	public String getUserid() {
-		return userid;
+
+	public String getName() {
+		return name;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getAim() {
-		return aim;
+
+	public String getId() {
+		return id;
 	}
-	public void setAim(String aim) {
-		this.aim = aim;
+
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getStartspot() {
-		return startspot;
+
+	public String getAge() {
+		return age;
 	}
-	public void setStartspot(String startspot) {
-		this.startspot = startspot;
+
+	public void setAge(String age) {
+		this.age = age;
 	}
-	public String getEndspot() {
-		return endspot;
+
+	public String getSex() {
+		return sex;
 	}
-	public void setEndspot(String endspot) {
-		this.endspot = endspot;
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
-	public String getRoute() {
-		return route;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setRoute(String route) {
-		this.route = route;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getStartcoordi() {
-		return startcoordi;
+
+	public String getPhoneNum() {
+		return phoneNum;
 	}
-	public void setStartcoordi(String startcoordi) {
-		this.startcoordi = startcoordi;
+
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
 	}
-	public String getEndcoordi() {
-		return endcoordi;
+
+	public String getCarMaster() {
+		return carMaster;
 	}
-	public void setEndcoordi(String endcoordi) {
-		this.endcoordi = endcoordi;
+
+	public void setCarMaster(String carMaster) {
+		this.carMaster = carMaster;
 	}
-	public String getRoutecoordi() {
-		return routecoordi;
+
+	public String getCarKind() {
+		return carKind;
 	}
-	public void setRoutecoordi(String routecoordi) {
-		this.routecoordi = routecoordi;
+
+	public void setCarKind(String carKind) {
+		this.carKind = carKind;
 	}
-	public String getStarttime() {
-		return starttime;
+
+	public String getCarNum() {
+		return carNum;
 	}
-	public void setStarttime(String starttime) {
-		this.starttime = starttime;
+
+	public void setCarNum(String carNum) {
+		this.carNum = carNum;
 	}
-	public int getMannum() {
-		return mannum;
+
+	public String getCarPoolName() {
+		return carPoolName;
 	}
-	public void setMannum(int mannum) {
-		this.mannum = mannum;
+
+	public void setCarPoolName(String carPoolName) {
+		this.carPoolName = carPoolName;
 	}
-	public String getGender() {
-		return gender;
+
+	public String getMaxNum() {
+		return maxNum;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+
+	public void setMaxNum(String maxNum) {
+		this.maxNum = maxNum;
 	}
-	public int getPay() {
-		return pay;
+
+	public String getCarPoolType() {
+		return carPoolType;
 	}
-	public void setPay(int number) {
-		this.pay = number;
+
+	public void setCarPoolType(String carPoolType) {
+		this.carPoolType = carPoolType;
 	}
-	public String getSmoking() {
-		return smoking;
+
+	public String getObject() {
+		return object;
 	}
-	public void setSmoking(String smoking) {
-		this.smoking = smoking;
+
+	public void setObject(String object) {
+		this.object = object;
 	}
-	public String getPluscontent() {
-		return pluscontent;
-	}
-	public void setPluscontent(String pluscontent) {
-		this.pluscontent = pluscontent;
-	}
-	public String getWirtedate() {
-		return wirtedate;
-	}
-	public void setWirtedate(String wirtedate) {
-		this.wirtedate = wirtedate;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getStartdate() {
-		return startdate;
-	}
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
-	}
-	public String getEnddate() {
-		return enddate;
-	}
-	public void setEnddate(String enddate) {
-		this.enddate = enddate;
-	}
-	public String getDays() {
-		return days;
-	}
-	public void setDays(String days) {
-		this.days = days;
-	}
+
 	public String getLocation() {
 		return location;
 	}
+
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
+	public String getStartAddr() {
+		return startAddr;
+	}
+
+	public void setStartAddr(String startAddr) {
+		this.startAddr = startAddr;
+	}
+
+	public String getEndAddr() {
+		return endAddr;
+	}
+
+	public void setEndAddr(String endAddr) {
+		this.endAddr = endAddr;
+	}
+
+	public String getPassAddr() {
+		return passAddr;
+	}
+
+	public void setPassAddr(String passAddr) {
+		this.passAddr = passAddr;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getSmoking() {
+		return smoking;
+	}
+
+	public void setSmoking(String smoking) {
+		this.smoking = smoking;
+	}
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
 	
-	
+
 	
 }
 

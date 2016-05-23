@@ -39,21 +39,18 @@
 	</div>
 	
 	<div id="div2">
-		<form name="f" action="#">
+		<form name="location" action="poolMasterAdd04.do">
 	
-		유형><select>
-			<option>출/퇴근</option>
-			<option>드라이브</option>
-			<option>좋은만남</option>
-			<option>명절</option>
-		  </select><br>
-		출발지><input type="text" name="start"><br>
-		경유지><input type="text" name="route"><br>
-		목적지><input type="text" name="end"><br>
+		유형:<input type="text" name="uhung"> ex)출/퇴근,여행
+		<br>
+		출발지:<input type="text" name="startAddr" value="강남역"><br>
+		경유지:<input type="text" name="passAddr" value="역삼역"><br>
+		목적지:<input type="text" name="endAddr" value="선릉역"><br>
 	
 		<p>
-			<input type="button" name="back" value="이전">
-			<input type="button" name="next" value="다음">
+			<input type="button" value="취소" onclick="poolAdd.do">
+			<input type="button" value="수정" onclick="poolAdd01Edit.do">  
+			<input type="submit" value="다음"> 
 		</p>
 		</form>
 	</div>
