@@ -57,6 +57,45 @@
 		insert into oneandone
 		values(oneandone_idx.nextval,#{writer},#{type},sysdate,#{subject},#{content},'답변대기',0)
 	</insert>
+	   <select id="adminoneandoneList" parameterType="Map" resultType="su.csCenter.model.CsoneandoneDTO">
+	select * from
+   (select rownum as rnum,a.* from
+   (select * from oneandone order by idx desc)a)b
+   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	 <update id="oneandoneAnswer" parameterType="su.csCenter.model.CsoneandoneDTO">
+		update oneandone set state='답변완료', answer=#{answer} where idx=#{idx}
+	</update>
+	 <delete id="oneandoneDelete" parameterType="su.csCenter.model.CsoneandoneDTO">
+       delete from oneandone where idx=#{idx}
+      </delete>
+	
+	<!-- qna -->
+	 <select id="qnaList" parameterType="Map" resultType="su.csCenter.model.CsQnaDTO">
+	select * from
+   (select rownum as rnum,a.* from
+   (select * from qna order by idx desc)a)b
+   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+		<select id="totalCnt3" resultType="int">
+		select count(*) from qna
+	</select>
+	<insert id="qnaAdd" parameterType="su.csCenter.model.CsQnaDTO">
+		insert into qna
+		values(qna_idx.nextval,#{subject},#{content},sysdate)
+	</insert>
+	  <update id="qnaUpdate" parameterType="su.csCenter.model.CsQnaDTO">
+		update qna set
+		subject=#{subject},content=#{content},writedate=to_date(#{writedate},'yyyy-mm-dd hh24:mi:ss')
+		where idx=#{idx}
+	</update>
+	<select id="qnaContent" resultType="su.csCenter.model.CsQnaDTO">
+		select idx,to_char(writedate,'yyyy-mm-dd hh24:mi:ss') writedate, subject, content from qna where
+		idx=#{idx}
+	</select>
+	 <delete id="qnaDelete" parameterType="su.csCenter.model.CsQnaDTO">
+       delete from qna where idx=#{idx}
+      </delete>
 	
 </mapper>
 
