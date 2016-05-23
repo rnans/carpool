@@ -12,9 +12,8 @@
 <div>헤더</div>
 <hr>
 <h2>공지사항 글쓰기</h2>
-<form action="noticeWrite.do">
+<form action="qnaWrite_ok.do">
 <ul>
-<li>작성자:<input type="text" name="writer" value="관리자" readonly="readonly"></li>
 <li>제목:<input type="text" name="subject" ></li>
 <li>내용</li>
 </ul>

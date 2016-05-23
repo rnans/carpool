@@ -14,21 +14,19 @@
 
 <section>
 <fieldset>
-<legend>공지사항</legend>
-<form action="NoticeUpdate_ok.do">
+<legend>QnA</legend>
+<form action="qnaUpdate_ok.do">
 글번호:<input type="text" name="idx" value="${list[0].idx}" readonly="readonly" >
-작성날짜:<input type="text" name="writedate" value="${list[0].writedate}"><br>
-글쓴이:<input type="text" name="writer" value="${list[0].writer}"  > 
-조회수:<input type="text" name="readnum" value="${list[0].readnum}" readonly="readonly"><br>
+작성날짜:<input type="text" name="writedate" value="${list[0].writedate }"><br>
 제목:<input type="text" name="subject" value="${list[0].subject}" > <br>
-내용:
-<br>
+내용:<br>
 <textarea name="content" cols="55" rows="25" value="${list[0].content}" > ${list[0].content}</textarea><br>
 <input type="submit" value="수정하기">
-<a href="adminNoticeList.do">이전페이지로</a>
+<a href="adminQnaList.do">이전페이지로</a>
 </form>
 </fieldset>
 </section>
-
+<hr>
+<div>풋부분</div>
 </body>
 </html>

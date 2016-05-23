@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,20 +8,21 @@
 </head>
 <body>
 <div>헤더부분</div>
+<%@include file="../header.jsp" %>
 <%@include file="../adHeader.jsp" %>
 <section>
 <h2>고객센터관리</h2>
-<a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="oneandoneList.do">3.1:1문의</a> |<a href="useguideList.do">4.이용안내</a>
-<h4>공지사항</h4>
+<a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="useguideList.do">4.이용안내</a>
+<h4>Q&A</h4>
 </section>
 <section>
 <table border="1" width="800" height="150" >
 <thead>
 <tr>
    <th>번호</th>
-   <th>작성자</th>
    <th>제목</th>
-   <th>작성일</th>
+   <th>내용</th>
+   <th>작성날짜</th>
    <th>비고</th>
 </tr>
 </thead>
@@ -33,17 +33,17 @@
 </tr>
  </c:if>
 
-<c:forEach var="notice" items="${list }">
+<c:forEach var="qna" items="${list }">
 
 <tr>
- <td>${notice.idx }</td>
-  <td>${notice.writer }</td>
- <c:url var="noticeContent" value="NoticeUpdate.do">
- <c:param name="idx">${notice.idx }</c:param>
+ <td>${qna.idx }</td>
+ <c:url var="qnaContent" value="qnaUpdate.do">
+ <c:param name="idx">${qna.idx }</c:param>
  </c:url>
- <td><a href="${noticeContent}">${notice.subject}</a></td>
- <td>${notice.writedate }</td>
- <td><a href="NoticeDelete.do?idx=${notice.idx }">삭제</a></td>
+ <td><a href="${qnaContent}">${qna.subject }</a></td>
+ <td>${qna.content}</td>
+ <td>${qna.writedate }</td>
+ <td><a href="QnaDelete.do?idx=${qna.idx }">삭제</a></td>
 </tr>
  </c:forEach>
 </tbody>
@@ -53,7 +53,7 @@
  </tr>
  </tfoot>
 </table>
-<a href="noticeWriteForm.do">글쓰기</a>
+<a href="qnaWrite.do">글쓰기</a>
 </section>
 <hr>
 <footer>푸터</footer>
