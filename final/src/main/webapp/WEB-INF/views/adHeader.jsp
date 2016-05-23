@@ -3,9 +3,9 @@
 <header>
 	<hr>
 	<div>회원관리
-		<div>-회원정보관리</div>
+		<div>-<a href="memberInfo.do">회원정보관리</a></div>
 		<div>-<a href="memberCarInfo.do">회원차량관리</a></div>
-		<div>-회원알림설정관리</div>
+		<div>-<a href="memberAlarm.do">회원알림설정관리</a></div>
 	</div>
 	<div>고객센터관리
 		<div><a href="adminNoticeList.do">-공지사항</a></div>
