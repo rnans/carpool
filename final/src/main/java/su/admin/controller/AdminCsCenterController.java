@@ -201,7 +201,7 @@ public class AdminCsCenterController {
 				  ModelAndView mav=new ModelAndView();
 				  mav.addObject("msg",msg);
 				  mav.setViewName("admin/oneandoneMsg");
-				  return mav;
+				  return mav; 
 		  }
 	
 }
