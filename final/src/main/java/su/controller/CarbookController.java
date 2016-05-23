@@ -10,6 +10,7 @@ import su.carCost.model.*;
 
 @Controller
 public class CarbookController {
+	
 	@Autowired
 	private CarCostDAO CarCostDao;
 
@@ -20,6 +21,8 @@ public class CarbookController {
 	public void setCarCostDao(CarCostDAO carCostDao) {
 		CarCostDao = carCostDao;
 	}
+	
+
 
 	@RequestMapping("carBookInfo.do")
 	public String carBookInfo(){
@@ -31,6 +34,7 @@ public class CarbookController {
 	public String costReg(){
 		return "carbook/costReg";
 	}
+
 	//비용등록
 	@RequestMapping(value="/costReg.do",method=RequestMethod.POST)
 	public ModelAndView costRegAdd(CarCostDTO dto){
@@ -41,10 +45,7 @@ public class CarbookController {
 		mav.setViewName("carbook/costMsg");
 		return mav;
 	}
-	@RequestMapping("/carReg.do")
-	public String carReg(){
-		return "carbook/carReg";
-	}
+
 	
 	@RequestMapping("/cost.do")
 	public String cost(){
