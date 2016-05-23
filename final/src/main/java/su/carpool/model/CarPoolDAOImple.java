@@ -15,7 +15,11 @@ public class CarPoolDAOImple implements CarPoolDAO {
 		super();
 		this.sqlMap = sqlMap;
 	}
-	public CarPoolDTO get
+	
+	public CarPoolDTO getCarInfo(String userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public MemberDTO getUserInfo(String userid) {
 
