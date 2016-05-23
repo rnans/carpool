@@ -41,4 +41,12 @@ public class CsNoticeDAOImple implements CsNoticeDAO {
 		  int count=sqlMap.update("noticeAdd", dto);
 		  return count;
 	  }
+	  public int noticeUpdate(CsNoticeDTO dto){
+		  int count=sqlMap.update("noticeUpdate",dto);
+		   return count;
+	  }
+	  public int noitceDelete(int idx){
+			int count=sqlMap.delete("noticeDelete", idx);
+			return count;
+	  }
 }

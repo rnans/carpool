@@ -9,4 +9,6 @@ public interface CsNoticeDAO {
 	 public List<CsNoticeDTO> noticeContent(int idx);
 	  public int noticeReadnum(int idx);
 	  public int noticeAdd(CsNoticeDTO dto);
+	  public int noticeUpdate(CsNoticeDTO dto);
+	  public int noitceDelete(int idx);
 }
