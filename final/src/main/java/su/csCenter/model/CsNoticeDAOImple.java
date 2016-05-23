@@ -25,7 +25,7 @@ public class CsNoticeDAOImple implements CsNoticeDAO {
 				return list;
 	}
 	 public int noticeTotalCnt(){
-		 int count=sqlMap.selectOne("totalCnt");
+		 int count=sqlMap.selectOne("sql.CsCenter.totalCnt");
 			return count;
 	 }
 	public List<CsNoticeDTO> noticeContent(int idx){
@@ -45,7 +45,7 @@ public class CsNoticeDAOImple implements CsNoticeDAO {
 		  int count=sqlMap.update("noticeUpdate",dto);
 		   return count;
 	  }
-	  public int noitceDelete(int idx){
+	  public int noticeDelete(int idx){
 			int count=sqlMap.delete("noticeDelete", idx);
 			return count;
 	  }

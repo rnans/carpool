@@ -30,7 +30,7 @@ public class CsoneandoneDAOImple implements CsoneandoneDAO {
 				return list;
 	}
 	 public int oneandoneTotalCnt(){
-		 int count=sqlMap.selectOne("totalCnt2");
+		 int count=sqlMap.selectOne("sql.CsCenter.totalCnt2");
 			return count;
 	 }
 		public List<CsoneandoneDTO> oneandoneContent(int idx){
@@ -42,6 +42,26 @@ public class CsoneandoneDAOImple implements CsoneandoneDAO {
 			 int count=sqlMap.insert("oneandoneAdd", dto);
 			 return count;	 		
 		 }
+		 public List<CsoneandoneDTO> adminoneandoneList(int cp,int ls){
+				
+				int startnum=(cp-1)*ls+1;
+				int endnum=cp*ls;
+				Map map=new HashMap();
+			
+				map.put("startnum", startnum);
+				map.put("endnum", endnum);
+				List<CsoneandoneDTO> list=
+						sqlMap.selectList("adminoneandoneList",map);
+						return list;
+			}
+		 public int oneandoneAnswer(CsoneandoneDTO dto){
+			 int count=sqlMap.update("oneandoneAnswer",dto);
+			   return count;
+		  }
+		 public int oneandoneDelete(int idx){
+				int count=sqlMap.delete("oneandoneDelete", idx);
+				return count;
+		  }
 	}
 
 

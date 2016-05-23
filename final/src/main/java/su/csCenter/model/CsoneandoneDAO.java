@@ -10,4 +10,7 @@ public interface CsoneandoneDAO {
 	 public int oneandoneTotalCnt();
 	 public List<CsoneandoneDTO> oneandoneContent(int idx);
 	 public int oneandoneAdd(CsoneandoneDTO dto);
+	 public List<CsoneandoneDTO> adminoneandoneList(int cp,int ls);
+	 public int oneandoneAnswer(CsoneandoneDTO dto);
+	 public int oneandoneDelete(int idx);
 }
