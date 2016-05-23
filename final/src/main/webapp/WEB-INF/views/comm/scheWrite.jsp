@@ -13,7 +13,22 @@ int [][] days = aMonth.getDays();
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+var check=null;
+function seldate(check){
+	var date=check;	
+	
+	var b= document.getElementById('date');
+	b.value=date;
+	
+}
+</script>
 <style>
+A:link {color:black;text-decoration: none}
+A:active {color:green; font-family:serif;text-decoration: none}
+A:visited {color:black;text-decoration: none}
+A:hover {font-weight:bold;}
+
 .lyContent {
     overflow: hidden;
     position: relative;
@@ -25,7 +40,7 @@ int [][] days = aMonth.getDays();
     
 }
 .lyContent header {
-    p    position: relative;
+    position: relative;
     height: 33px;
     padding: 0 0 0 20px;
     line-height: 6px;
@@ -70,22 +85,32 @@ int [][] days = aMonth.getDays();
 }
 
 .inputDate {
-    position: relative;
     display: inline-block;
+	overflow: visible;
+    position: relative;
     height: 32px;
-    width: 106px;
-    padding: 0 5px;
+    width: 100px;
+    padding: 0 0px;
     margin-right: 4px;
     border: 1px solid #ddd;
-    border-radius: 2px;
     background: #fff;
 }
+
 .inputDate input {
     width: 100%;
     height: 100%;
     line-height: 30px;
     border: 0;
-    padding: 0;
+    padding: 0 10px;
+}
+
+.inputDate2 {
+	display: inline-block;
+}
+
+.date {
+    position: relative;
+    z-index: 20;
 }
 
 .buttonCalendar {
@@ -96,21 +121,18 @@ int [][] days = aMonth.getDays();
     width: 14px;
     height: 14px;
 }
-
-
 .calendarPicker {
-    position: absolute;
-    top: 36px;
+    position: relative;
+    top: 3px;
     left: 0;
     z-index: 100;
     width: 206px;
-    padding-bottom: 33px;
+    padding-bottom: 13px;
     border-width: 1px;
     border-style: solid;
     background: #fff;
     box-shadow: 0 0 4px rgba(0,0,0,.15);
     border-color: #ff5b72!important;
-
 }
 .month {
     position: relative;
@@ -141,6 +163,37 @@ int [][] days = aMonth.getDays();
     height: 22px;
     padding: 0 5px;
 }
+.calendar {
+	position: relative;
+    margin: 7px auto 0;
+    font-size: 11px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.calendar td {
+    padding: 0 5px 0 3px;
+    text-align: center;
+
+}
+
+.calendarMake .title {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.date .gClearfix {
+    margin-bottom: 14px;
+}
+
 
 </style>
 
@@ -148,65 +201,89 @@ int [][] days = aMonth.getDays();
 
 <article class="lyContent" data-viewtype="edge" style="width:488px">
 <header><h1>일정 만들기</h1></header>
-<div class="main"></div>
 <div class="calendarMake">
 
-
-<div class="uInput"> 
-<input type="text" name="subject" placeholder=" 일정 제목" maxlength="50">
-</div>
-<div class="uTextarea">
-<textarea name="content" placeholder="일정 설명" maxlength="250"></textarea>
-</div>
-
-<div class="inputDate"> 
-<input type="text" title="시작 요일" data-uiselector="startDateInput" maxlength="10"> 
-<button type="button" class="buttonCalendar" data-icon="calendar2" data-uiselector="startDateSelectorOpenButton">달력보기
-</button>
+	<div class="uInput"> 
+		<input type="text" name="subject" placeholder=" 일정 제목" maxlength="50">
+	</div>
+	
+	<div class="uTextarea">
+		<textarea name="content" placeholder="일정 설명" maxlength="250"></textarea>
+	</div>
 
 
-</div>
-</div>
+	<div class="date">
+	<strong class="title">날짜</strong>
+	
+		<div class="gClearfix"> 
+			<div class="inputDate"> 
+				<input type="text" title="시작 요일" id="date" maxlength="10"> 
+				<button type="button" class="buttonCalendar">달력보기
+				</button>
+			</div>
+			<div class="inputDate2">-</div>
+			<div class="inputDate"> 
+				<input type="text" title="시작 요일" id="date" maxlength="10"> 
+				<button type="button" class="buttonCalendar">달력보기
+				</button>
+			</div>
+		</div>
+			
+		<div class="gClearfix"> <span class="title">반복 등록</span>
+			<span class="day"><input type="checkbox" value="월">월</span>
+			<span class="day"><input type="checkbox" value="화">화</span>
+			<span class="day"><input type="checkbox" value="수">수</span>
+			<span class="day"><input type="checkbox" value="목">목</span>
+			<span class="day"><input type="checkbox" value="금">금</span>
+			<span class="day"><input type="checkbox" value="토">토</span>
+			<span class="day"><input type="checkbox" value="일">일</span>
+		</div>
+		
+		<div data-viewname="CalendarView" data-skinfactor="border" class="calendarPicker">
+		
+			<div class="month"> 
+				<button type="button" class="prevMonth" >
+				<span class="gSrOnly"><</span></button> 
+				<strong class="monthTxt" data-skinfactor="color"><%=currentYearString%>년 <%=Integer.parseInt(currentMonthString)+1 %>월</strong> 
+				<button type="button" class="nextMonth" >
+				<span class="gSrOnly">></span></button> 
+			</div>
+			
+			<table class="calendar">
+			<tbody>
+			<%
+			 
+			  for( int i=0; i<aMonth.getNumberOfWeeks(); i++ )
+			  {%>
+			    <tr>
+			    <%
+			    for( int j=0; j<7; j++ )
+			    {
+			      if( days[i][j] == 0 )
+			      {%>
+			        <td class="empty_day_cell">&nbsp;</td>
+			      <%}
+			      else
+			      {
+			    	  
+			      %>
+			        <td style="font-family:verdana, arial; font-size: 12px; align="left" valign="top" class="day_cell">
+			        <a href="javascript:seldate('<%=currentYearString%>-<%=Integer.parseInt(currentMonthString)+1 %>-<%=days[i][j]%>')"
+			         id="<%=days[i][j]%>" style="<%if(currentDayInt==days[i][j]){%>color:red; <%}%>"><%=days[i][j]%></a></td>
+			      <%
+			      }
+			    } // end for %>
+			    </tr>
+			  <%}
+			%>
+			</tbody>
+			</table>			
+		</div>
+		
+		</div>
+	</div> <!-- date class -->
 </article>
-<div data-uiselector="startDateSelectorRegion">
-<div data-viewname="CalendarView" data-skinfactor="border" class="calendarPicker">
 
-<div class="month"> 
-<button type="button" class="prevMonth" >
-<span class="gSrOnly"><</span></button> 
-<strong class="monthTxt" data-skinfactor="color"><%=currentYearString%>년 <%=Integer.parseInt(currentMonthString)+1 %>월</strong> 
-<button type="button" class="nextMonth" >
-<span class="gSrOnly">></span></button> 
-</div>
-
-<table class="calendar">
-<%
- 
-  for( int i=0; i<aMonth.getNumberOfWeeks(); i++ )
-  {%>
-    <tr>
-    <%
-    for( int j=0; j<7; j++ )
-    {
-      if( days[i][j] == 0 )
-      {%>
-        <td class="empty_day_cell">&nbsp;</td>
-      <%}
-      else
-      {
-      %>
-        <td style="font-family:verdana, arial; font-size: 14px; color: #333333" align="left" valign="top" class="day_cell"><%=days[i][j]%></td>
-      <%
-      }
-    } // end for %>
-    </tr>
-  <%}
-%></table>
-<div class="footerPicker"> 
-<button type="button" class="today" data-uiselector="todayButton">오늘</button></div>
-</div>
-
-</div>
 
 
 
