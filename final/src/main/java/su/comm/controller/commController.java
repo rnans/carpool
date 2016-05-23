@@ -80,6 +80,14 @@ public class commController {
 		
 	}
 	
+	@RequestMapping("scheWrite.do")
+	public String scheWrite(){
+		
+		return "comm/scheWrite";
+		
+	}
+	
+	
 	@RequestMapping("commWrite.do")
 	public ModelAndView commWrite(commBBSDTO dto){		
 			
