@@ -10,6 +10,11 @@ public class MypageDAOImple implements MypageDAO {
 
 	private SqlSessionTemplate sqlMap;
 	
+	public MypageDAOImple(SqlSessionTemplate sqlMap) {
+		super();
+		this.sqlMap = sqlMap;
+	}
+	
 	public MemberDTO getAllUserInfo(String userid) {
 		List list=sqlMap.selectList("getUserInfo", userid);
 		

@@ -89,7 +89,11 @@
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
-	
+	<bean id="mypageDao" class="su.mypage.model.MypageDAOImple">
+      <constructor-arg>
+         <ref bean="sqlSessionTemplate"/>
+      </constructor-arg>
+   </bean>
 	
 	
 	<!-- view -->
