@@ -5,5 +5,7 @@ import java.util.List;
 public interface AdminMemberDAO {
 
 	public List<AdminMemberDTO> memberinfo();
-	public int MemberDel(int idx);
+	public AdminMemberDTO memberList(int idx);
+	public int memberDel(int idx);
+	public int adminAdd(int idx, String grade);
 }
