@@ -1,5 +1,3 @@
-<%-- TODO: CLEAN UP THE PAGE TAG ABOVE --%>
-
 <%@ page import="su.comm.controller.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -11,7 +9,39 @@
   <link rel="StyleSheet" href="calendar.css" type="text/css" media="screen" />
 </head>
 
-<body id="regular_page">
+<script type="text/javascript" src="js/httpRequest.js"></script>
+<script type="text/javascript">
+function show(){	
+	var month=document.now.month.value;
+	var year=document.now.year.value;
+	var params='month='+month+'&'+'year='+year;
+	sendRequest('calendarView.do', params, showResult, 'GET');
+}
+
+function showResult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var result = XHR.responseText;
+			span.innerHTML=result;
+		}
+	}
+}
+
+function write(){	
+	window.open('scheWrite.do','','width=520, height=700')
+}
+
+
+
+</script>
+
+<body>
+
+<%@include file="../header.jsp"%>
+<hr>
+<a href="comm.do">comm</a>
+<a href="calendar.do">일정</a>
+<a href="calendar.do">관리</a>
 
 <div id="calendar_main_div">
 <%
@@ -52,8 +82,8 @@ int today=1;
       </form>
     </td>
     <td id="link_to_month_view">
-      <form action="calendarView.do" method="post">
-        <input type="submit" value="<%=intYear%> <%=monthName%>" class="submit_button">
+      <form action="calendarView.do" name="now" method="post">
+        <input type="button" value="<%=intYear%> <%=monthName%>" class="submit_button" onclick="show()">
         <input type="hidden" name="month" value="<%=intMonth%>">
         <input type="hidden" name="year"  value="<%=intYear%>">
       </form>
@@ -67,7 +97,9 @@ int today=1;
     </td>
   </tr>
 </table>
-  <!-- navigation links end -->
+
+<p id="span"></p>
+
 
 </body>
 </html>

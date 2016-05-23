@@ -13,12 +13,7 @@ int [][] days = aMonth.getDays();
 <head>
   <title>calendar</title>
 </head>
-<script>
-function show(){	
-	window.open('','','width=320, height=400')
-}
 
-</script>
 <style>
 A:link {color: #1f3174; text-decoration: none}
 A:active {color: #1f3174; text-decoration: none}
@@ -63,7 +58,7 @@ A:hover {color: #3366cc; text-decoration: underline}
       else
       {
       %>
-        <td style="font-family:verdana, arial; font-size: 9px; color: #333333" align="left" valign="top" class="day_cell"><a href="javascript:show()"><%=days[i][j]%></a></td>
+        <td style="font-family:verdana, arial; font-size: 9px; color: #333333" align="left" valign="top" class="day_cell"><a href="javascript:write()"><%=days[i][j]%></a></td>
       <%
       }
     } // end for %>
