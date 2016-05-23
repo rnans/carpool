@@ -25,7 +25,7 @@ function loginClose(){
 							<input type="checkbox" name="saveid"> ID기억하기
 						</p>
 						<div>
-							<input type="submit" value="로그인">	
+							<input type="submit" value="로그인">
 							<input type="button" value="닫기" onclick="loginClose()">
 						</div>
 						<div>
