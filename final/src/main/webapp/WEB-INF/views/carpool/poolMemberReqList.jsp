@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>내가 쓴 예약 요청 글 목록</h1>
-<form name="selForm" action="reqToMember.do">
+<form name="selForm" action="uptoMaster.do">
 <table>
 	<thead>
 		<tr>
@@ -31,12 +31,9 @@
 <c:forEach var="dtos" items="${list }">
 
 <tr>
- <c:url var="poolEachContent" value="poolEachContent.do">
- <c:param name="idx">${dtos.idx }</c:param>
- </c:url>
  <td><input type="radio" id="ra{dtos.idx}" name="idx" value="${dtos.idx}"></td>
  <td>${dtos.idx }</td>
- <td><a href="${poolEachContent }">${dtos.startspot}</a></td>
+ <td>${dtos.startspot}</td>
  <td>${dtos.endspot }</td>
  <td>${dtos.termtype }</td>
  <td>${dtos.mannum }/${dtos.pay }</td>

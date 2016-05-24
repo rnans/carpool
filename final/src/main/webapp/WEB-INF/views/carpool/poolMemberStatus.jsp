@@ -35,7 +35,7 @@
  </c:url>
 
  <td>${dtos.idx }</td>
- <td><a href="${poolEachContent }">${dtos.startspot}</a></td>
+ <td>${dtos.startspot}</a></td>
  <td>${dtos.endspot }</td>
  <td>${dtos.type }</td>
  <td>${dtos.mannum }/${dtos.pay }</td>

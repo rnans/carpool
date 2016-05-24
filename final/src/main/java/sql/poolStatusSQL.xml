@@ -3,16 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.poolStatusSQL">
-	<select id="viewOwnMemberPool" parameterType="String" resultType="su.pool.model.PoolDateDTO">
-	select * from reservationlist where userid=#{id}
+	<select id="getOwnPoolByIdx" parameterType="int" resultType="su.pool.model.PoolDateDTO">
+	select * from reservationlist where idx=#{idx}
+	</select>
+	<select id="viewOwnMemberPool" parameterType="map" resultType="su.pool.model.PoolDateDTO">
+	select * from
+	 (select rownum as rnum,a.* from
+	   (select * from reservationlist where userid=#{id} and pooltype='탈래요' order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
 	<select id="viewOwnMasterPool" parameterType="String" resultType="su.pool.model.PoolDateDTO">
-	select * from reservationlist where userid=#{id}
+	select * from
+	 (select rownum as rnum,a.* from
+	   (select * from reservationlist where userid=#{id} and pooltype='타세요' order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
-	<select id="getOwnMemberPoolTotalCnt">
+	<select id="getOwnMemberPoolTotalCnt" parameterType="String" resultType="int">
 	select count(*) from (select * from reservationlist where userid=#{id})
 	</select>
-	<select id="getOwnMasterPoolTotalCnt">
+	<select id="getOwnMasterPoolTotalCnt" parameterType="String" resultType="int">
 	select count(*) from (select * from reservationlist where userid=#{id})
 	</select>
 	<select id="getMembers" parameterType="int" resultType="String">
@@ -41,7 +50,7 @@
 		' '
 	)
 	</insert>
-	<insert id="inToMemberStatus" parameterType="su.pool.model.PoolMemberStatusDTO">
+	<insert id="intoMemberStatus" parameterType="su.pool.model.PoolMemberStatusDTO">
 	insert into poolmemberstatus
 	(
 		idx,
@@ -59,10 +68,10 @@
 		1
 	)
 	</insert>
-	<update id="upToMasterStatus" parameterType="su.pool.model.PoolMasterStatusDTO">
-	update set poolmasterstatus 
+	<update id="uptoMasterStatus" parameterType="su.pool.model.PoolMasterStatusDTO">
+	update poolmasterstatus set 
 	nowmans=nowmans+#{nowmans},
-	member=member+'/'+#{member}
+	members=members||'-'||#{members}
 	where addidx=#{addidx}
 	</update>
 </mapper>

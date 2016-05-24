@@ -111,7 +111,6 @@
    		<ref bean="sqlSessionTemplate"/>
    	</constructor-arg>
    </bean>
-   
     <bean id="carInfoDao" class="su.carinfo.model.carInfoDAOImple">
    	<constructor-arg>
    		<ref bean="sqlSessionTemplate"/>

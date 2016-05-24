@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,9 @@ import su.pool.model.PoolDTO;
 import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolStatusDAO;
+import su.pool.model.*;
 
+@Controller
 public class PoolStatusController 
 {
 	
@@ -45,20 +48,16 @@ public class PoolStatusController
 	public ModelAndView requestToMasterPage(@RequestParam(value="idx")String idx,@RequestParam(value="cp", defaultValue="1")int cp,HttpSession session)
 	{
 		String id=(String)session.getAttribute("sid");
-		int totalCnt=poolStatusDao.getOwnMemberTotalCnt();
+
+		int totalCnt=poolStatusDao.getOwnMemberTotalCnt(id);
 		int aimidx=Integer.parseInt(idx);
-		
-		System.out.println("우헤헤헤헿");
 		
 		ModelAndView mav=new ModelAndView();
 		
 		if(totalCnt==0)
 		{
 			PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(id, aimidx);
-			
-			String members=poolStatusDao.getMembers(aimidx);
-			
-			PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx,"1",members);
+			PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx, "1", id);
 			
 			int count=poolStatusDao.makeMemberStatus(memberDto);
 			int count2=poolStatusDao.reqToMaster(masterDto);
@@ -77,16 +76,43 @@ public class PoolStatusController
 			
 			mav.addObject("list", list);
 			mav.addObject("pageStr",pageStr);
+			mav.addObject("aimidx",aimidx);
 			mav.setViewName("carpool/poolMemberReqList");
 		}
 		return mav;
+	}
+	
+	
+	public ModelAndView requestToMaster(@RequestParam(value="idx")String idx,@RequestParam(value="idx")String aimidx,HttpSession session)
+	{
+		String id=(String)session.getAttribute("sid");
+
+		int ownidx=Integer.parseInt(idx);
+		int addidx=Integer.parseInt(aimidx);
+		
+		List lists=poolStatusDao.getOwnPoolByIdx(ownidx);
+		PoolDateDTO dto=(PoolDateDTO)lists.get(0);
+		
+		PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(id, addidx);
+		
+		int count=poolStatusDao.makeMemberStatus(memberDto);
+		
+		
+		
+		int mans=dto.getMannum();
+		
+		PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(id, aimidx);
+		
+		PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx, "1", id);
+		
+		ModelAndView mav=new ModelAndView();
 	}
 	
 	@RequestMapping("/reqToMemberPage.do")
 	public ModelAndView requestToMemberPage(@RequestParam(value="cp", defaultValue="1")int cp,HttpSession session)
 	{
 		String id=(String)session.getAttribute("sid");
-		int totalCnt=poolStatusDao.getOwnMasterTotalCnt();
+		int totalCnt=poolStatusDao.getOwnMasterTotalCnt(id);
 		int listSize=10;
 		int pageSize=5;
 		List<PoolDTO> list=poolStatusDao.viewOwnMasterPoolList(cp,listSize,id);
@@ -130,7 +156,7 @@ public class PoolStatusController
 	{
 		String id=(String)session.getAttribute("sid");
 		
-		int totalCnt=poolStatusDao.getOwnMemberTotalCnt();
+		int totalCnt=poolStatusDao.getOwnMemberTotalCnt(id);
 		int listSize=10;
 		int pageSize=5;
 		List<PoolDTO> list=poolStatusDao.viewOwnMemberPoolList(cp,listSize,id);
@@ -148,7 +174,7 @@ public class PoolStatusController
 	{
 		String id=(String)session.getAttribute("sid");
 		
-		int totalCnt=poolStatusDao.getOwnMasterTotalCnt();
+		int totalCnt=poolStatusDao.getOwnMasterTotalCnt(id);
 		int listSize=10;
 		int pageSize=5;
 		List<PoolDTO> list=poolStatusDao.viewOwnMasterPoolList(cp, listSize, id);

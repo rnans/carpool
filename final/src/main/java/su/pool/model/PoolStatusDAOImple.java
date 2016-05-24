@@ -19,14 +19,19 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getOwnMasterTotalCnt() {
+	public int getOwnMasterTotalCnt(String id) {
 		// TODO Auto-generated method stub
-		return sqlMap.selectOne("sql.poolStatusSQL.getOwnMasterPoolTotalCnt");
+		return sqlMap.selectOne("sql.poolStatusSQL.getOwnMasterPoolTotalCnt",id);
 	}
 	
-	public int getOwnMemberTotalCnt() {
+	public int getOwnMemberTotalCnt(String id) {
 		// TODO Auto-generated method stub
-		return sqlMap.selectOne("sql.poolStatusSQL.getOwnMemberPoolTotalCnt");
+		return sqlMap.selectOne("sql.poolStatusSQL.getOwnMemberPoolTotalCnt",id);
+	}
+	
+	public List getOwnPoolByIdx(int idx) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("getOwnPoolByIdx",idx);
 	}
 	
 	public int makeMasterStatus(PoolMasterStatusDTO dto) {
@@ -61,6 +66,7 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		 Map map=new HashMap();
 		 map.put("startnum", startnum);
 		 map.put("endnum", endnum);
+		 map.put("id", id);
 		 List<PoolDTO> list= sqlMap.selectList("viewOwnMasterPool",map);
 
 		 return list;
@@ -73,6 +79,7 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		 Map map=new HashMap();
 		 map.put("startnum", startnum);
 		 map.put("endnum", endnum);
+		 map.put("id", id);
 		 List<PoolDTO> list= sqlMap.selectList("viewOwnMemberPool",map);
 
 		 return list;
