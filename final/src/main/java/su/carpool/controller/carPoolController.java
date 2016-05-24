@@ -160,12 +160,12 @@ public class carPoolController {
 		return mav;
 	}
 	
-	@RequestMapping("/poolMasterAdd06.do")
+	/*@RequestMapping("/poolMasterAdd06.do")
 	public ModelAndView viewMemberAddPage5(String userid) {
 		
 
 		return mav;
-	}
+	}*/
 
 	/*@RequestMapping("/poolMemberAddConfirm.do")
 	public ModelAndView AddConfirm(HttpSession session) {
