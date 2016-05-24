@@ -45,32 +45,41 @@ header
 <h2>마이프로필</h2>
 		
 		<div id="div1">
-		<img src="1234.jpg" border="100"><br>
-		<input type="button" name="pf" value="프로필사진수정">
+		<form name="upload" action="upload.do" method="post" enctype="multipart/form-date">
+		<img src="" border="100" ><br>
+		<input type="file" name="upload" value="">
+		</form>
 		</div>
+		
+
+	
+	
+	
 	
 	<div id="div2">
-	<legend>프로필수정</legend>
-			<form name="myprofile" action="myPage.jsp">
+	<legend>${dto.name}님 프로필수정</legend>
+			<form name="myprofile" action="myProfileUpdate.do">
+		
 				<ul>
-					<li>아이디:
-						<input type="text" name="id" size="7" value="chornr">
-						성별:
-						<input type="text" name="se" size="5" value="남자">	
+				<li>아이디:
+						<input type="text" name="id" value="${dto.id}" readonly>
+						이름:
+						<input type="text" name="name" value="${dto.name} "></li>
+					<li>성별:
+						<input type="radio" name="sex" value="남성" id="male">남성
+						<input type="radio" name="sex" value="여성" id="female">여성
 					</li>
 					
-					<li>생년월일:<input type="text" name="cnum" size="5" value="900111">-
-							 <input type="text" name="cnum" size="5" value="1000111"></li>
+					<li>생년월일:<input type="text" name="birth" value="${dto.birth }"></li>
 							 
-					<li>전화번호:<input type="text" name="my" size="5" value="010">-
-							 <input type="text" name="my" size="5" value="8888">-
-							 <input type="text" name="my" size="5" value="9999">
-							 </li>
-					<li>소개:</li>
-					<textarea rows="5" cols="50">hi</textarea>	
+					<li>전화번호:<input type="text" name="phonenum" value="${dto.phonenum }"></li>
+					<li>주소:<input type="text" name="addr" value="${dto.addr} "></li>
+					<li>email:<input type="text" name="email" value="${dto.email }"></li>
+					
+					
 				<p>
-					<input type="reset" name="reset" value="다시작성">
-					<input type="submit" name="up" value="수정하기">
+					<input type="reset" value="다시작성">
+					<input type="submit" value="수정하기">
 				</p>
 				
 				</ul>
