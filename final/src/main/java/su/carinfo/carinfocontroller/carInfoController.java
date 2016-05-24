@@ -64,7 +64,7 @@ public class carInfoController
 		
 	}
 	@RequestMapping(value = "/carUpdate.do", method = RequestMethod.GET)
-	public ModelAndView carUpdateForm() {
+	public ModelAndView carUpdateForm(HttpSession session) {
 		
 		String userid=(String)session.getAttribute("sid");	
 		List<carInfoDTO> lists = carInfoDao.carList(userid);
