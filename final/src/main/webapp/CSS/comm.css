@@ -1,5 +1,9 @@
 @CHARSET "utf-8";
 
+:lang(ko) {
+    font-family: Arial,"Noto Sans KR","맑은고딕","Malgun Gothic","돋움",Dotum,"Helvetica Neue",Helvetica,AppleSDGothicNeo,sans-serif,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Segoe UI Symbol","Android Emoji",EmojiSymbols;
+}
+
 .searchWrap {
     position: relative;
     z-index: 100;
@@ -159,6 +163,9 @@ input, textarea {
 }
 
 <!---->
+.postout {
+	margin-bottom: 15px;
+}
 .postWrap .cPost {
     margin-bottom: 15px;
 }
