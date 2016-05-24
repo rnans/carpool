@@ -3,8 +3,10 @@ package su.pool.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import su.pool.model.PoolDAO;
 import su.pool.model.PoolMasterStatusDTO;
@@ -55,6 +57,11 @@ public class PoolStatusController
 		PoolMasterStatusDTO dto=new PoolMasterStatusDTO(addidx, masterid, mans, nowmans, status, members);
 		
 		int count=poolStatusDao.reqToMember(dto);
+		
+		ModelAndView mav=new ModelAndView();
+		
+		return mav;
+		
 	}
 	
 }
