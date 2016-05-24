@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +19,16 @@ function loginClose(){
 				<fieldset>
 					<legend>로그인</legend>
 						<ul>
-							<li>ID : <input type="text" name="id"></li>
+							<li>ID : <input type="text" name="id" value="${saveid}"></li>
 							<li>비밀번호 : <input type="password" name="pwd"></li>
 						</ul>
 						<p>
-							<input type="checkbox" name="saveid"> ID기억하기
+							<c:if test="${!empty saveid}">
+								<input type="checkbox" name="saveid" value="on" checked> ID기억하기
+							</c:if>
+							<c:if test="${empty saveid}">
+								<input type="checkbox" name="saveid" value="on"> ID기억하기
+							</c:if>
 						</p>
 						<div>
 							<input type="submit" value="로그인">

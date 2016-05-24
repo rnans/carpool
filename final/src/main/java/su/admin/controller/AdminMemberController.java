@@ -38,7 +38,7 @@ public class AdminMemberController {
 		return mav;
 	}
 	
-	/**회원탈퇴 확인 폼*/
+	/**회원삭제 확인 폼*/
 	@RequestMapping("/memberDelForm.do")
 	public ModelAndView memberDelForm(@RequestParam("idx")int idx){
 		
@@ -50,7 +50,7 @@ public class AdminMemberController {
 		return mav;
 	}
 	
-	/**회원탈퇴*/
+	/**회원삭제*/
 	@RequestMapping("/memberDel.do")
 	public ModelAndView memberDel(@RequestParam("idx")int idx){
 		
@@ -63,7 +63,7 @@ public class AdminMemberController {
 		return mav;
 	}
 	
-	/**관리자권한 부여 폼*/
+	/**grade 변경 폼*/
 	@RequestMapping("/adminAddForm.do")
 	public ModelAndView adminAddForm(@RequestParam("idx")int idx){
 		
@@ -75,7 +75,7 @@ public class AdminMemberController {
 		return mav;
 	}
 	
-	/**관리자권한 부여*/
+	/**grade 변경*/
 	@RequestMapping("/adminAdd.do")
 	public ModelAndView adminAdd(@RequestParam(value="idx", required=false)int idx,
 			@RequestParam(value="grade", required=false)String grade){

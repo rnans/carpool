@@ -22,7 +22,7 @@ public class AdminMemberDAOImple implements AdminMemberDAO {
 		return list;
 	}
 	
-	/**삭제 할때 쓰는 거*/
+	/**삭제, 등급변경 할때 쓰는 거*/
 	public AdminMemberDTO memberList(int idx) {
 		
 		AdminMemberDTO dto = sqlMap.selectOne("memberList", idx);

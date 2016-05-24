@@ -111,6 +111,12 @@
       </constructor-arg>
    </bean>
    
+   <bean id="adUserPoolDao" class="su.adminPool.model.AdminUserPoolDAOImple">
+   	<constructor-arg>
+   		<ref bean="sqlSessionTemplate"/>
+   	</constructor-arg>
+   </bean>
+   
  
    
 	

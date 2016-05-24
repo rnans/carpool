@@ -1,9 +1,12 @@
 package su.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,22 +54,33 @@ public class MemberController {
 		
 		
 	}
-	
+	/**로그인 폼 이동 및 아이디 기억하기*/
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
-	public String loginForm(){
-		return "member/memberLogin";
+	public ModelAndView loginForm(@CookieValue(value="saveid",required=false)String saveid){
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("saveid", saveid);
+		mav.setViewName("member/memberLogin");
+		return mav;
 	}
 	
 	/**로그인*/
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public ModelAndView login(@RequestParam(value="id", required=false)String id, 
-			@RequestParam(value="pwd", required=false)String pwd, HttpSession session){
+			@RequestParam(value="pwd", required=false)String pwd, HttpSession session, HttpServletResponse resp){
+		
+		
 		
 		ModelAndView mav = new ModelAndView();
 		int result = memberDao.login(id, pwd);
 		
 		if(result==1){
 			String name = memberDao.getUserInfo(id);
+			
+			Cookie ck = new Cookie("saveid", id);
+			ck.setMaxAge(60*60*24);
+			resp.addCookie(ck);
+			
 			session.setAttribute("sname", name);
 			session.setAttribute("sid", id);
 			mav.addObject("name", name);
