@@ -3,5 +3,5 @@
 <script>
 window.alert('${msg}');
 window.self.close();
-location.href='comm.do';
+opener.location.reload();
 </script>

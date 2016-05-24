@@ -220,7 +220,7 @@ tbody {
 	
 		<div class="gClearfix"> 
 			<div class="inputDate"> 
-				<input type="text" name="stratday" title="시작 요일" id="date" maxlength="10"> 
+				<input type="text" name="startday" title="시작 요일" id="date" maxlength="10"> 
 				<button type="button" class="buttonCalendar">달력보기
 				</button>
 			</div>
@@ -272,7 +272,8 @@ tbody {
 			      %>
 			        <td style="font-family:verdana, arial; font-size: 12px; align="left" valign="top" class="day_cell">
 			        <a href="javascript:seldate('<%=currentYearString%>-<%=Integer.parseInt(currentMonthString)+1 %>-<%=days[i][j]%>')"
-			         id="<%=days[i][j]%>" style="<%if(currentDayInt==days[i][j]){%>color:red; <%}%>"><%=days[i][j]%></a></td>
+			         id="<%=days[i][j]%>" style="<%if(currentDayInt==days[i][j]){%>color:red; <%}%>"><%=days[i][j]%></a>			         
+			         </td>
 			      <%
 			      }
 			    } // end for %>
@@ -280,7 +281,7 @@ tbody {
 			  <%}
 			%>
 			</tbody>
-			</table>			
+			</table>
 		</div>
 		
 		</div>

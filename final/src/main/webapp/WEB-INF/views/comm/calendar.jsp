@@ -1,7 +1,34 @@
+<%@page import="java.time.Year"%>
 <%@ page import="su.comm.controller.*"%>
+<%@ page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="calendarCommon.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%
+int today=1;
+  Month aMonth = Month.getMonth( Integer.parseInt(currentMonthString), Integer.parseInt(currentYearString) );
+  int [][] days = aMonth.getDays();
+  for( int i=0; i<aMonth.getNumberOfWeeks(); i++ )
+  {   
+    for( int j=0; j<7; j++ )
+    {     
+        // this is "today"
+        if( currentDayInt == days[i][j] && currentMonthInt == aMonth.getMonth() && currentYearInt == aMonth.getYear() )
+        {
+        today= days[i][j];
+        }
+        else
+        {
+          
+        }
+      
+    } // end for
+    %>
+
+  <%}
+
+%>    
 <html>
 <head>
   <title>devdaily.com calendar</title>
@@ -10,6 +37,10 @@
 
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script type="text/javascript">
+
+window.onload=function(){
+	<%String temp=intYear+"-"+(intMonth+1)+"-";%>
+}
 
 function show(){		
 	var month=document.now.month.value;
@@ -104,32 +135,14 @@ position: absolute;
 </div>
 
 <div id="calendar_main_div">
-<%
-int today=1;
-  Month aMonth = Month.getMonth( Integer.parseInt(currentMonthString), Integer.parseInt(currentYearString) );
-  int [][] days = aMonth.getDays();
-  for( int i=0; i<aMonth.getNumberOfWeeks(); i++ )
-  {   
-    for( int j=0; j<7; j++ )
-    {     
-        // this is "today"
-        if( currentDayInt == days[i][j] && currentMonthInt == aMonth.getMonth() && currentYearInt == aMonth.getYear() )
-        {
-        today= days[i][j];
-        }
-        else
-        {
-          
-        }
-      
-    } // end for
-    %>
 
-  <%}
-
-%>    
 </div>
 
+
+<c:forEach var="bbs" items="${list}">
+ 	${bbs.startday}
+</c:forEach>
+<%=temp %>
 <div id="span"><div id="calendarview">
 <table width=580 border=0 cellspacing=1 cellpadding=3 bgcolor="#999999" id="calendar_table">
   <tr>
@@ -149,6 +162,7 @@ int today=1;
   <td width=82 class=verdana_b><font color=#666666>Fri</font></td>
   <td width=82 class=verdana_b><font color=#6666CC>Sat</font></td>
  </tr>
+ 
 <%
  
   for( int i=0; i<aMonth.getNumberOfWeeks(); i++ )
@@ -162,16 +176,31 @@ int today=1;
         <td class="empty_day_cell">&nbsp;</td>
       <%}
       else
-      {
-          %>
-          <td style="font-family:verdana, arial; font-size: 9px; color: #333333" align="left" valign="top" class="day_cell">
-          <div class="daytd"> <a href="javascript:write();"><%=days[i][j]%></a></div></td>
+      {        
+        %>
+         <td style=" font-family:verdana, arial; font-size: 9px; color: #333333" align="left" valign="top" class="day_cell">
+          <div class="daytd" style="<%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%>background-color:pink; <%}%>"> 
+          
+          <a href="javascript:write();"><%=days[i][j]%></a><br><br>
+		  <c:forEach var="bbs" items="${list}">	
+			<c:set var="day2" value="<%=temp+days[i][j]%>"></c:set>
+		 	<c:if test="${bbs.startday==day2}">
+		 	${bbs.id}-${bbs.subject}
+		 	</c:if>
+			</c:forEach>		  
+			<%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%><br>핑쿠는 오늘 <%}%>
+		  </div>
+          </td>
+
+          
         <%
       }
     } // end for %>
     </tr>
-  <%}
+  <%
+  }
 %>
+
 </table>
 </div>
 </div>
@@ -188,6 +217,13 @@ int today=1;
         <input type="hidden" name="year" value="<%=nextYear%>">
      </form>
  </div>
+ 
+ <c:if test="${empty list}">
+	<td colspan="4" align="center">
+		등록된 게시글이 없습니다.
+	</td>
+</c:if>		
+ 
 </body>
 </html>
 
