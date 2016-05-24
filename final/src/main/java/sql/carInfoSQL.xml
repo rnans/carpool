@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sql.carInfo">
+	<select id="carList" parameterType="String" resultType="su.carinfo.model.carInfoDTO">
+		select * from carInfo where id=#{userid}
+	</select>
+	<insert id="carAdd" parameterType="su.carinfo.model.carInfoDTO">
+		insert into carInfo
+		values(carInfo_idx.nextval,
+		#{id},#{driver},#{carId},#{carType},#{confirmPhoto},${confirm})
+	</insert>
+</mapper>
