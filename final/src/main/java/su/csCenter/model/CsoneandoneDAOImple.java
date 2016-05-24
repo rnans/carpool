@@ -62,6 +62,18 @@ public class CsoneandoneDAOImple implements CsoneandoneDAO {
 				int count=sqlMap.delete("oneandoneDelete", idx);
 				return count;
 		  }
+		 public List<CsoneandoneDTO> oneandoneSearch(int cp,int ls,String search){
+				
+				int startnum=(cp-1)*ls+1;
+				int endnum=cp*ls;
+				Map map=new HashMap();
+				map.put("search", search);
+				map.put("startnum", startnum);
+				map.put("endnum", endnum);
+				List<CsoneandoneDTO> list=
+						sqlMap.selectList("oneandoneSearch",map);
+						return list;
+			}
 	}
 
 

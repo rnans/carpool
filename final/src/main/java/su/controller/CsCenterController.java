@@ -23,11 +23,19 @@ public class CsCenterController {
 	private CsoneandoneDAO csoneandoneDao;
 	@Autowired
 	private CsQnaDAO csqnaDao;
+	@Autowired
+	private CsuseGuideDAO csuseguideDao;
+
 	
+	public CsuseGuideDAO getCsuseguideDao() {
+		return csuseguideDao;
+	}
+	public void setCsuseguideDao(CsuseGuideDAO csuseguideDao) {
+		this.csuseguideDao = csuseguideDao;
+	}
 	public CsQnaDAO getCsqnaDao() {
 		return csqnaDao;
 	}
-
 	public void setCsqnaDao(CsQnaDAO csqnaDao) {
 		this.csqnaDao = csqnaDao;
 	}
@@ -142,15 +150,27 @@ public class CsCenterController {
 		mav.setViewName("csCenter/oneandoneMsg");
 		return mav;
    }
-	@RequestMapping("useGuideList.do")
-	public String useGuideList(){
-		return "csCenter/useGuideList";
-	}
+
 	@RequestMapping("oneAndOneWriteForm.do")
 	public String oneAndOneWriteForm(){
 		return "csCenter/oneAndOneWriteForm";
 	}
+	//이용안내 리스트
+	 @RequestMapping("/useGuideList.do")
+	  public ModelAndView adminuseguideList(@RequestParam(value="cp",defaultValue="1")int cp){
+		  int totalCnt=csuseguideDao.useguideTotalCnt();
+			int listSize=10;
+			int pageSize=5;
+			List<CsuseGuideDTO> list=csuseguideDao.useguideList(cp,listSize);
+			String pageStr=
+				su.Page.SuPage.makePage("useGuideList.do", totalCnt, listSize, pageSize, cp);
+			ModelAndView mav=new ModelAndView();
+			mav.addObject("list", list);
+			mav.addObject("pageStr",pageStr);
+			mav.setViewName("csCenter/useGuideList");
+			return mav;
 	
+    }
 }
 
 	
