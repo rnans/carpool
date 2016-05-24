@@ -41,7 +41,7 @@
 		' '
 	)
 	</insert>
-	<insert id="inToMember" parameterType="su.pool.model.PoolMemberStatusDTO">
+	<insert id="inToMemberStatus" parameterType="su.pool.model.PoolMemberStatusDTO">
 	insert into poolmemberstatus
 	(
 		idx,
@@ -59,4 +59,10 @@
 		1
 	)
 	</insert>
+	<update id="upToMasterStatus" parameterType="su.pool.model.PoolMasterStatusDTO">
+	update set poolmasterstatus 
+	nowmans=nowmans+#{nowmans},
+	member=member+'/'+#{member}
+	where addidx=#{addidx}
+	</update>
 </mapper>

@@ -48,6 +48,8 @@ public class PoolStatusController
 		int totalCnt=poolStatusDao.getOwnMemberTotalCnt();
 		int aimidx=Integer.parseInt(idx);
 		
+		System.out.println("우헤헤헤헿");
+		
 		ModelAndView mav=new ModelAndView();
 		
 		if(totalCnt==0)
@@ -56,10 +58,14 @@ public class PoolStatusController
 			
 			String members=poolStatusDao.getMembers(aimidx);
 			
-			PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx, members);
+			PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx,"1",members);
 			
-			poolStatusDao.reqToMember(memberDto);
-			poolStatusDao.reqToMaster(masterDto);
+			int count=poolStatusDao.makeMemberStatus(memberDto);
+			int count2=poolStatusDao.reqToMaster(masterDto);
+			
+			String msg=count+count2>=2?"성공":"실패";
+			mav.addObject("msg",msg);
+			mav.setViewName("carpool/poolMsg");
 		}
 		else
 		{

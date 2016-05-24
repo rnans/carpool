@@ -25,11 +25,11 @@ public class PoolMasterStatusDTO
 
 
 
-	public PoolMasterStatusDTO(int addidx, String masterid, String mans) {
+	public PoolMasterStatusDTO(int addidx, String nowmans, String members) {
 		super();
 		this.addidx = addidx;
-		this.masterid = masterid;
-		this.mans = mans;
+		this.nowmans = nowmans;
+		this.members = members;
 	}
 
 

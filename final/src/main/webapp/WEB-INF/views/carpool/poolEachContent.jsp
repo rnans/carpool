@@ -27,7 +27,7 @@ function request()
 	if(poolType=='타세요')
 	{
 		var param='?idx='+document.getElementById('idx').value+'&memberid='+'${sessionScope.sid}';
-		window.open('reqToMaster.do'+param,'reqListPopup','width=480 height=320');
+		window.open('reqToMasterPage.do'+param,'reqListPopup','width=480 height=320');
 	}	
 	else if(poolType=='탈래요')
 	{

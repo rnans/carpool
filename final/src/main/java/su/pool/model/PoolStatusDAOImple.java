@@ -34,9 +34,14 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		return sqlMap.insert("intoMasterStatus",dto);
 	}
 	
+	public int makeMemberStatus(PoolMemberStatusDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.insert("intoMemberStatus",dto);
+	}
+	
 	public int reqToMaster(PoolMasterStatusDTO dto) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlMap.update("uptoMasterStatus",dto);
 	}
 	
 	public int reqToMember(PoolMemberStatusDTO dto) {
@@ -44,7 +49,7 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		return 0;
 	}
 	
-	public int getMembers(int addidx) {
+	public String getMembers(int addidx) {
 		// TODO Auto-generated method stub
 		return sqlMap.selectOne("getMembers",addidx);
 	}

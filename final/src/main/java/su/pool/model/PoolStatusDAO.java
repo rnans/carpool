@@ -19,4 +19,6 @@ public interface PoolStatusDAO
 	public int reqToMember(PoolMemberStatusDTO dto);
 	
 	public int makeMasterStatus(PoolMasterStatusDTO dto);
+	
+	public int makeMemberStatus(PoolMemberStatusDTO dto);
 }
