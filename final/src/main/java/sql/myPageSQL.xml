@@ -2,8 +2,22 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="sql.mypage">
-	<select id="getUserInfo" parameterType="String" resultType="su.member.model.MemberDTO">
-		select * from userinfo where id=#{sid}
+<mapper namespace="sql.myPage">
+	<select id="UserInfo" parameterType="String" resultType="su.member.model.MemberDTO">
+		select * from userinfo where id=#{id}
 	</select>
+	<update id="ProfileUpdate" parameterType="su.mypage.model.MypageDTO">
+		update userinfo set 
+        name=#{name},
+		birth=#{birth},
+		phonenum=#{phonenum},
+		addr=#{addr},
+		email=#{email},
+		sex=#{sex}
+		where id=#{id}
+	</update>
+	<update id="PwdUpdate" parameterType="su.mypage.model.MypageDTO">
+		update userinfo set
+		pwd=#{pwd} where id=#{id}
+	</update>
 </mapper>
