@@ -38,6 +38,15 @@ public class AdminCsCenterController {
 	public void setCsoneandoneDao(CsoneandoneDAO csoneandoneDao) {
 		this.csoneandoneDao = csoneandoneDao;
 	}
+	@Autowired
+	private CsuseGuideDAO csuseguideDao;
+	
+	public CsuseGuideDAO getCsuseguideDao() {
+		return csuseguideDao;
+	}
+	public void setCsuseguideDao(CsuseGuideDAO csuseguideDao) {
+		this.csuseguideDao = csuseguideDao;
+	}
 	//공지사항 창띄우기
 	@RequestMapping("/adminNoticeList.do")
 	public ModelAndView noticeList(@RequestParam(value="cp",defaultValue="1")int cp){
@@ -203,6 +212,64 @@ public class AdminCsCenterController {
 				  mav.setViewName("admin/oneandoneMsg");
 				  return mav; 
 		  }
+		  //이용안내 리스트
+		  @RequestMapping("/adminuseguideList.do")
+		  public ModelAndView adminuseguideList(@RequestParam(value="cp",defaultValue="1")int cp){
+			  int totalCnt=csuseguideDao.useguideTotalCnt();
+				int listSize=10;
+				int pageSize=5;
+				List<CsuseGuideDTO> list=csuseguideDao.useguideList(cp,listSize);
+				String pageStr=
+					su.Page.SuPage.makePage("adminuseguideList.do", totalCnt, listSize, pageSize, cp);
+				ModelAndView mav=new ModelAndView();
+				mav.addObject("list", list);
+				mav.addObject("pageStr",pageStr);
+				mav.setViewName("admin/adminuseguideList");
+				return mav;
+		  }
+		  //이용안내 글쓰기
+			@RequestMapping("/useguideWrite.do")
+			public String useguideWrite(){
+				return "admin/useguideWrite";
+			}
+			@RequestMapping("/useguideWrite_ok.do")
+			public ModelAndView useguideAdd(CsuseGuideDTO dto){
+				int result=csuseguideDao.useguideAdd(dto);
+				String msg=result>0?"이용안내글쓰기성공":"이용안내글쓰기실패";
+				ModelAndView mav=new ModelAndView();
+				mav.addObject("msg", msg);
+				mav.setViewName("admin/useguideMsg");
+				return mav;
+			}
+			//qna수정
+			@RequestMapping("/useguideUpdate_ok.do")
+			public ModelAndView useguideUpdate(CsuseGuideDTO dto){
+				int result=csuseguideDao.useguideUpdate(dto);
+				String msg=result>0?"수정성공!":"수정실패!";
+				ModelAndView mav=new ModelAndView();
+				mav.addObject("msg",msg);
+				mav.setViewName("admin/useguideMsg");
+				return mav;
+			}
+			//이용안내 수정본문 불러오기
+			@RequestMapping("/useguideUpdate.do")
+			public ModelAndView useguidecontent(int idx){
+				List<CsuseGuideDTO> list=csuseguideDao.useguideContent(idx);
+		 		ModelAndView mav=new ModelAndView();
+				mav.addObject("list", list);
+				mav.setViewName("admin/useguideUpdate");
+				return mav;
+			}
+			//이용안내글삭제
+			@RequestMapping("/useguideDelete.do")
+			public ModelAndView useguideDelete(int idx){
+				 int result=csuseguideDao.useguideDelete(idx);
+				 String msg=result>0?"이용안내글삭제성공!":"이용안내글삭제실패!";
+				  ModelAndView mav=new ModelAndView();
+				  mav.addObject("msg",msg);
+				  mav.setViewName("admin/useguideMsg");
+				  return mav;
+			}
 	
 }
 
