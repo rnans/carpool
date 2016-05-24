@@ -115,12 +115,21 @@
 	</select>
 	
 	<select id="shortTotalCnt" resultType="int">
-		select count(*) from reservationlist where type='단기'
+		select count(*) from reservationlist where termtype='단기'
 	</select>
 	
 	
 	<select id="longTotalCnt" resultType="int">
-		select count(*) from reservationlist where type='정기'
+		select count(*) from reservationlist where termtype='정기'
+	</select>
+	
+	<select id="masterTotalCnt" resultType="int">
+		select count(*) from reservationlist where pooltype='타세요'
+	</select>
+	
+	
+	<select id="memberTotalCnt" resultType="int">
+		select count(*) from reservationlist where pooltype='탈래요'
 	</select>
 	
 	<select id="viewAllList" parameterType="Map" resultType="su.pool.model.PoolDTO">
@@ -143,6 +152,7 @@
 			to_char(writedate,'yyyy-mm-dd') writedate,
 			status,
 			termtype,
+			pooltype,
 			to_char(startdate,'yyyy-mm-dd') startdate,
 			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
@@ -173,13 +183,14 @@
 			to_char(writedate,'yyyy-mm-dd') writedate,
 			status,
 			termtype,
+			pooltype,
 			to_char(startdate,'yyyy-mm-dd') startdate,
 			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
 			location 
 		from
 	   (select rownum as rnum,a.* from
-	   (select * from reservationlist where type='단기' order by idx desc)a)b
+	   (select * from reservationlist where termtype='단기' order by idx desc)a)b
 	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
 	
@@ -203,13 +214,77 @@
 			to_char(writedate,'yyyy-mm-dd') writedate,
 			status,
 			termtype,
+			pooltype,
 			to_char(startdate,'yyyy-mm-dd') startdate,
 			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
 			location 
 		from
 	   (select rownum as rnum,a.* from
-	   (select * from reservationlist where type='정기' order by idx desc)a)b
+	   (select * from reservationlist where termtype='정기' order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	
+	
+	<select id="viewMemberList" parameterType="Map" resultType="su.pool.model.PoolDTO">
+		select 
+			idx,
+			userid,
+			aim,
+			startspot,
+			endspot,
+			route,
+			startcoordi,
+			endcoordi,
+			routecoordi,
+			to_char(starttime,'YYYY-MM-DD HH24:Mi') starttime,
+			mannum,
+			gender,
+			pay,
+			smoking,
+			pluscontent,
+			to_char(writedate,'yyyy-mm-dd') writedate,
+			status,
+			termtype,
+			pooltype,
+			to_char(startdate,'yyyy-mm-dd') startdate,
+			to_char(enddate,'yyyy-mm-dd') enddate,
+			days,
+			location 
+		from
+	   (select rownum as rnum,a.* from
+	   (select * from reservationlist where pooltype='탈래요' order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	
+	<select id="viewMasterList" parameterType="Map" resultType="su.pool.model.PoolDTO">
+		select 
+			idx,
+			userid,
+			aim,
+			startspot,
+			endspot,
+			route,
+			startcoordi,
+			endcoordi,
+			routecoordi,
+			to_char(starttime,'YYYY-MM-DD HH24:Mi') starttime,
+			mannum,
+			gender,
+			pay,
+			smoking,
+			pluscontent,
+			to_char(writedate,'yyyy-mm-dd') writedate,
+			status,
+			termtype,
+			pooltype,
+			to_char(startdate,'yyyy-mm-dd') startdate,
+			to_char(enddate,'yyyy-mm-dd') enddate,
+			days,
+			location 
+		from
+	   (select rownum as rnum,a.* from
+	   (select * from reservationlist where pooltype='타세요' order by idx desc)a)b
 	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
 	
@@ -233,6 +308,7 @@
 			to_char(writedate,'yyyy-mm-dd') writedate,
 			status,
 			termtype,
+			pooltype,
 			to_char(startdate,'yyyy-mm-dd') startdate,
 			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
@@ -240,7 +316,7 @@
 		from reservationlist where idx=#{idx}
 	</select>
 	
-	<update id="poolMemberShortEdit" parameterType="su.pool.model.PoolDTO">
+	<update id="poolShortEdit" parameterType="su.pool.model.PoolDTO">
 		update reservationlist set 
 		userid=#{userid},
 		aim=#{aim},
@@ -259,7 +335,7 @@
 		where idx=#{idx}
 	</update>
 	
-	<update id="poolMemberLongEdit" parameterType="su.pool.model.PoolDTO">
+	<update id="poolLongEdit" parameterType="su.pool.model.PoolDTO">
 		update reservationlist set 
 		userid=#{userid},
 		aim=#{aim},
@@ -282,4 +358,8 @@
 	<delete id="poolDel" parameterType="int">
 		delete from reservationlist where idx=#{idx}
 	</delete>
+	
+	<select id="getMasterIdx" parameterType="String" resultType="int">
+		select idx from reservationlist where poolname=#{poolname}
+	</select>
 </mapper>

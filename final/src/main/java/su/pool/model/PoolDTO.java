@@ -17,7 +17,7 @@ public class PoolDTO
 	private int pay;
 	private String smoking;
 	private String pluscontent;
-	private String wirtedate;
+	private String writedate;
 	private String status;
 	private String pooltype;
 	private String startdate;
@@ -36,7 +36,7 @@ public class PoolDTO
 	
 	public PoolDTO(int idx, String userid, String aim, String startspot, String endspot, String route,
 			String startcoordi, String endcoordi, String routecoordi, String starttime, int mannum, String gender,
-			int pay, String smoking, String pluscontent, String wirtedate, String status, String pooltype,
+			int pay, String smoking, String pluscontent, String writedate, String status, String pooltype,
 			String startdate, String enddate, String days, String location, String termtype, int caridx,
 			String poolname) {
 		super();
@@ -55,7 +55,7 @@ public class PoolDTO
 		this.pay = pay;
 		this.smoking = smoking;
 		this.pluscontent = pluscontent;
-		this.wirtedate = wirtedate;
+		this.writedate = writedate;
 		this.status = status;
 		this.pooltype = pooltype;
 		this.startdate = startdate;
@@ -206,6 +206,52 @@ public class PoolDTO
 		this.termtype = termtype;
 	}
 
+	public PoolDTO(int idx, String userid, String aim, String startspot, String endspot, String route, String starttime,
+			int mannum, String gender, int pay, String smoking, String pluscontent, String pooltype, String startdate,
+			String enddate, String days, String termtype) {
+		super();
+		this.idx = idx;
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.route = route;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.termtype = termtype;
+	}
+
+
+
+	public PoolDTO(int idx, String userid, String aim, String startspot, String endspot, String route, String starttime,
+			int mannum, String gender, int pay, String smoking, String pluscontent, String startdate, String enddate,
+			String termtype) {
+		super();
+		this.idx = idx;
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.route = route;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.termtype = termtype;
+	}
+
 
 
 	public int getIdx() {
@@ -328,12 +374,12 @@ public class PoolDTO
 		this.pluscontent = pluscontent;
 	}
 
-	public String getWirtedate() {
-		return wirtedate;
+	public String getWritedate() {
+		return writedate;
 	}
 
-	public void setWirtedate(String wirtedate) {
-		this.wirtedate = wirtedate;
+	public void setWritedate(String writedate) {
+		this.writedate = writedate;
 	}
 
 	public String getStatus() {

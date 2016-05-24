@@ -22,7 +22,7 @@ window.onload=function()
 	var sDays=sDate.substring(8,10);
 	var sHour=sDate.substring(11,13);
 	
-	var type='${dto.type}';
+	var type='${dto.termtype}';
 		
 	if(type=='단기')
 	{

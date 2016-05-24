@@ -11,7 +11,7 @@
 <table>
 	<thead>
 		<tr>
-			<th>프로필</th>
+			<th>번호</th>
 			<th>출발</th>
 			<th>도착</th>
 			<th>유형</th>

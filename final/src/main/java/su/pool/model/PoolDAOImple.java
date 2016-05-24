@@ -36,19 +36,24 @@ public class PoolDAOImple implements PoolDAO {
 		return sqlMap.insert("poolMasterLongAdd",dto);
 	}
 	
-	public int poolMemberLongEdit(PoolDTO dto) {
+	public int poolLongEdit(PoolDTO dto) {
 		// TODO Auto-generated method stub
-		return sqlMap.update("poolMemberLongEdit",dto);
+		return sqlMap.update("poolLongEdit",dto);
 	}
 	
-	public int poolMemberShortEdit(PoolDTO dto) {
+	public int poolShortEdit(PoolDTO dto) {
 		// TODO Auto-generated method stub
-		return sqlMap.update("poolMemberShortEdit",dto);
+		return sqlMap.update("poolShortEdit",dto);
 	}
 	
 	public int poolDel(int idx)
 	{
 		return sqlMap.delete("poolDel",idx);
+	}
+	
+	public int getMasterIdx(String poolname) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectOne("getMasterIdx",poolname);
 	}
 	
 	public MemberDTO getAllUserInfo(String userid) 
@@ -78,6 +83,16 @@ public class PoolDAOImple implements PoolDAO {
 	 
 	 public int getShortTotalCnt() {
 		 int count=sqlMap.selectOne("sql.poolSQL.longTotalCnt");
+			return count;
+	}
+	 
+	 public int getMasterTotalCnt() {
+		 int count=sqlMap.selectOne("sql.poolSQL.masterTotalCnt");
+			return count;
+	}
+	 
+	 public int getMemberTotalCnt() {
+		 int count=sqlMap.selectOne("sql.poolSQL.memberTotalCnt");
 			return count;
 	}
 	 
@@ -117,17 +132,41 @@ public class PoolDAOImple implements PoolDAO {
 		 return list;
 	}
 	 
+	 public List viewMemberList(int cp, int ls) {
+		 int startnum=(cp-1)*ls+1;
+		 int endnum=cp*ls;
+		 
+		 Map map=new HashMap();
+		 map.put("startnum", startnum);
+		 map.put("endnum", endnum);
+		 List<PoolDTO> list= sqlMap.selectList("viewMemberList",map);
+
+		 return list;
+	} 
+	 
+	 public List viewMasterList(int cp, int ls) {
+		 int startnum=(cp-1)*ls+1;
+		 int endnum=cp*ls;
+		 
+		 Map map=new HashMap();
+		 map.put("startnum", startnum);
+		 map.put("endnum", endnum);
+		 List<PoolDTO> list= sqlMap.selectList("viewMasterList",map);
+
+		 return list;
+	} 
+	 
 	 public PoolDTO viewEachContent(int idx) {
 			
-			List list=sqlMap.selectList("viewEachContent", idx);
+		List list=sqlMap.selectList("viewEachContent", idx);
+		
+		if(list==null)
+		{
+			return null;
+		}
 			
-			if(list==null)
-			{
-				return null;
-			}
+		PoolDTO dto=(PoolDTO)list.get(0);
 			
-			PoolDTO dto=(PoolDTO)list.get(0);
-			
-			return dto;
+		return dto;
 	}
 }

@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.poolStatusSQL">
-	<select id="viewOwnMemberPool" parameterType="String" resultType="su.pool.model.PoolDTO">
+	<select id="viewOwnMemberPool" parameterType="String" resultType="su.pool.model.PoolDateDTO">
 	select * from reservationlist where userid=#{id}
 	</select>
-	<select id="viewOwnMasterPool" parameterType="String" resultType="su.pool.model.PoolDTO">
+	<select id="viewOwnMasterPool" parameterType="String" resultType="su.pool.model.PoolDateDTO">
 	select * from reservationlist where userid=#{id}
 	</select>
 	<select id="getOwnMemberPoolTotalCnt">
@@ -15,8 +15,11 @@
 	<select id="getOwnMasterPoolTotalCnt">
 	select count(*) from (select * from reservationlist where userid=#{id})
 	</select>
-	
-	<insert id="addToMaster" parameterType="su.pool.model.PoolMasterStatusDTO">
+	<select id="getMembers" parameterType="int" resultType="String">
+	select members from poolmasterstatus where addidx=#{addidx}
+	</select>
+
+	<insert id="intoMasterStatus" parameterType="su.pool.model.PoolMasterStatusDTO">
 	insert into poolmasterstatus
 	(
 		idx,
@@ -33,17 +36,17 @@
 		#{addidx},
 		#{masterid},
 		#{mans},
-		#{nowmans},
-		#{status},
-		#{members}
+		0,
+		'모집중',
+		' '
 	)
 	</insert>
-	<insert id="addToMember" parameterType="su.pool.model.PoolMemberStatusDTO">
+	<insert id="inToMember" parameterType="su.pool.model.PoolMemberStatusDTO">
 	insert into poolmemberstatus
 	(
 		idx,
 		memberid,
-		ownidx,
+		aimidx,
 		status,
 		mans
 	) 
@@ -51,9 +54,9 @@
 	(
 		poolmasterstatus_idx.nextval,
 		#{memberid},
-		#{ownidx},
-		#{status},
-		#{mans}
+		#{aimidx},
+		'예약 요청 중',
+		1
 	)
 	</insert>
 </mapper>

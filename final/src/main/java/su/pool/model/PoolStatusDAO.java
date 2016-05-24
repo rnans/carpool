@@ -4,9 +4,19 @@ import java.util.*;
 
 public interface PoolStatusDAO 
 {
-	public int reqToMember(PoolMasterStatusDTO dto);
+	public int getOwnMemberTotalCnt();
 	
-	public int addToMember(PoolMasterStatusDTO dto);
+	public int getOwnMasterTotalCnt();
 	
-	public List viewOwnMemberPoolList(String id);
+	public String getMembers(int addidx);
+	
+	public List viewOwnMemberPoolList(int cp, int ls, String id);
+	
+	public List viewOwnMasterPoolList(int cp, int ls, String id);
+	
+	public int reqToMaster(PoolMasterStatusDTO dto);
+	
+	public int reqToMember(PoolMemberStatusDTO dto);
+	
+	public int makeMasterStatus(PoolMasterStatusDTO dto);
 }

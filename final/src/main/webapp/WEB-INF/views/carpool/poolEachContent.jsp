@@ -21,11 +21,21 @@ function runDel()
 }
 function request()
 {
+	var poolType='${dto.pooltype}';
+	var param='';
+	
+	if(poolType=='타세요')
+	{
+		var param='?idx='+document.getElementById('idx').value+'&memberid='+'${sessionScope.sid}';
+		window.open('reqToMaster.do'+param,'reqListPopup','width=480 height=320');
+	}	
+	else if(poolType=='탈래요')
+	{
+		var param='?idx='+document.getElementById('idx').value+'&masterid='+'${sessionScope.sid}';
+		window.open('reqToMember.do'+param,'reqListPopup2','width=480 height=320');
+	}
 	
 	
-	var param='?idx='+document.getElementById('idx').value+'&memberid='+'${dto.userid}';
-	
-	location.href='reqToMember.do'+param;
 }
 
 </script>
@@ -59,7 +69,7 @@ function request()
 <div>평점 게시판 영역
 <%@ include file="poolRateList.jsp" %>
 </div>
-<div><input type="button" value="찜하기"><input type="button" value="예약하기" onclick="reqeust()"></div>
+<div><input type="button" value="찜하기"><input type="button" value="예약하기" onclick="request()"></div>
 <div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="showEdit()"><input type="button" value="삭제하기" onclick="runDel()"></div>
 </div>
 </article>

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import su.pool.model.PoolDAO;
 import su.pool.model.PoolDTO;
 import su.pool.model.PoolMasterStatusDTO;
+import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolStatusDAO;
 
 public class PoolStatusController 
@@ -40,6 +41,59 @@ public class PoolStatusController
 		this.poolStatusDao = poolStatusDao;
 	}
 
+	@RequestMapping("/reqToMasterPage.do")
+	public ModelAndView requestToMasterPage(@RequestParam(value="idx")String idx,@RequestParam(value="cp", defaultValue="1")int cp,HttpSession session)
+	{
+		String id=(String)session.getAttribute("sid");
+		int totalCnt=poolStatusDao.getOwnMemberTotalCnt();
+		int aimidx=Integer.parseInt(idx);
+		
+		ModelAndView mav=new ModelAndView();
+		
+		if(totalCnt==0)
+		{
+			PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(id, aimidx);
+			
+			String members=poolStatusDao.getMembers(aimidx);
+			
+			PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx, members);
+			
+			poolStatusDao.reqToMember(memberDto);
+			poolStatusDao.reqToMaster(masterDto);
+		}
+		else
+		{
+			int listSize=10;
+			int pageSize=5;
+			List<PoolDTO> list=poolStatusDao.viewOwnMemberPoolList(cp,listSize,id);
+			String pageStr=
+				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+			
+			mav.addObject("list", list);
+			mav.addObject("pageStr",pageStr);
+			mav.setViewName("carpool/poolMemberReqList");
+		}
+		return mav;
+	}
+	
+	@RequestMapping("/reqToMemberPage.do")
+	public ModelAndView requestToMemberPage(@RequestParam(value="cp", defaultValue="1")int cp,HttpSession session)
+	{
+		String id=(String)session.getAttribute("sid");
+		int totalCnt=poolStatusDao.getOwnMasterTotalCnt();
+		int listSize=10;
+		int pageSize=5;
+		List<PoolDTO> list=poolStatusDao.viewOwnMasterPoolList(cp,listSize,id);
+		String pageStr=
+			su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("pageStr",pageStr);
+		mav.setViewName("carpool/poolMasterReqList");
+				
+		return mav;
+	}
+	
 	@RequestMapping("/reqToMember.do")
 	public ModelAndView requestToMember(@RequestParam(value="idx")int idx, @RequestParam(value="memberid")String memberid, HttpSession session)
 	{
@@ -59,23 +113,41 @@ public class PoolStatusController
 		
 		PoolMasterStatusDTO dto=new PoolMasterStatusDTO(addidx, masterid, mans, nowmans, status, members);
 		
-		int count=poolStatusDao.reqToMember(dto);
-		
 		ModelAndView mav=new ModelAndView();
 		
 		return mav;
 		
 	}
 	
-	@RequestMapping("/viewOwnMemberPoolList")
-	public ModelAndView viewOwnMemberPool(@RequestParam(value="cp", defaultValue="1")int cp)
+	@RequestMapping("/ownMemberPoolList")
+	public ModelAndView viewOwnMemberPool(@RequestParam(value="cp", defaultValue="1")int cp, HttpSession session)
 	{
-		int totalCnt=poolDao.getTotalCnt();
+		String id=(String)session.getAttribute("sid");
+		
+		int totalCnt=poolStatusDao.getOwnMemberTotalCnt();
 		int listSize=10;
 		int pageSize=5;
-		List<PoolDTO> list=poolDao.viewAllList(cp,listSize);
+		List<PoolDTO> list=poolStatusDao.viewOwnMemberPoolList(cp,listSize,id);
 		String pageStr=
-			su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+			su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("pageStr",pageStr);
+		mav.setViewName("carpool/poolList");
+		return mav;
+	}
+	
+	@RequestMapping("/ownMasterPoolList")
+	public ModelAndView viewOwnMasterPool(@RequestParam(value="cp", defaultValue="1")int cp, HttpSession session)
+	{
+		String id=(String)session.getAttribute("sid");
+		
+		int totalCnt=poolStatusDao.getOwnMasterTotalCnt();
+		int listSize=10;
+		int pageSize=5;
+		List<PoolDTO> list=poolStatusDao.viewOwnMasterPoolList(cp, listSize, id);
+		String pageStr=
+			su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("pageStr",pageStr);

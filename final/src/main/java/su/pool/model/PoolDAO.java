@@ -21,19 +21,29 @@ public interface PoolDAO
 	
 	public int getLongTotalCnt();
 	
+	public int getMasterTotalCnt();
+	
+	public int getMemberTotalCnt();
+	
+	public int getMasterIdx(String poolname);
+	
 	public List viewAllList(int cp, int listSize);
 	
 	public List viewShortList(int cp, int listSize);
 	
 	public List viewLongList(int cp, int listSize);
 	
+	public List viewMemberList(int cp, int ls);
+	
+	public List viewMasterList(int cp, int ls);
+	
 	public PoolDTO viewEachContent(int idx);
 	
-	public int poolMemberShortEdit(PoolDTO dto);
+	public int poolShortEdit(PoolDTO dto);
 	
-	public int poolMemberLongEdit(PoolDTO dto);
+	public int poolLongEdit(PoolDTO dto);
 	
 	public int poolDel(int idx);
 	
-
+	
 }

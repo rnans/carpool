@@ -17,9 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import su.pool.model.PoolDAO;
 import su.pool.model.PoolDTO;
+import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolStatusDAO;
-import su.carpool.model.CarPoolDTO;
 import su.member.model.*;
 
 @Controller
@@ -494,7 +494,15 @@ public class PoolController
 		
 		int count=poolDao.poolMasterShortAdd(dto);
 		
-		String msg=count>0?"성공":"실패";
+		int addidx=poolDao.getMasterIdx(poolname);
+		
+		
+		PoolMasterStatusDTO mDto=new PoolMasterStatusDTO(addidx, userid, ""+mannum);
+		
+		
+		int count2=poolStatusDao.makeMasterStatus(mDto);
+		
+		String msg=count+count2>0?"성공":"실패";
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -534,7 +542,15 @@ public class PoolController
 		
 		int count=poolDao.poolMasterLongAdd(dto);
 		
-		String msg=count>0?"성공":"실패";
+		int addidx=poolDao.getMasterIdx(poolname);
+		
+		
+		PoolMasterStatusDTO mDto=new PoolMasterStatusDTO(addidx, userid, ""+mannum);
+		
+		
+		int count2=poolStatusDao.makeMasterStatus(mDto);
+		
+		String msg=count+count2>2?"성공":"실패";
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -614,7 +630,7 @@ public class PoolController
 		
 		int pay=Integer.parseInt(req.getParameter("pay"));
 		String pluscontent=req.getParameter("pluscontent");
-		String termtype=req.getParameter("type");
+		String termtype=req.getParameter("termtype");
 		
 		String sh=req.getParameter("sh");
 		
@@ -630,7 +646,7 @@ public class PoolController
 		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, termtype);
 
 			
-		int count=poolDao.poolMemberShortEdit(dto);
+		int count=poolDao.poolShortEdit(dto);
 		
 		String msg=count>0?"성공":"실패";
 		
@@ -681,7 +697,7 @@ public class PoolController
 		
 		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, startdate, enddate, days, termtype);
 				
-		int count=poolDao.poolMemberLongEdit(dto);
+		int count=poolDao.poolLongEdit(dto);
 		
 		String msg=count>0?"성공":"실패";
 
@@ -751,6 +767,40 @@ public class PoolController
 			int listSize=10;
 			int pageSize=5;
 			List<PoolDTO> list=poolDao.viewLongList(cp,listSize);
+			String pageStr=
+				su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+			ModelAndView mav=new ModelAndView();
+			mav.addObject("list", list);
+			mav.addObject("pageStr",pageStr);
+			mav.setViewName("carpool/poolList");
+			return mav;
+		
+		
+	}
+	
+	@RequestMapping("/poolMemberList.do")
+	public ModelAndView viewPoolMemberList(@RequestParam(value="cp",defaultValue="1")int cp){
+			int totalCnt=poolDao.getMemberTotalCnt();
+			int listSize=10;
+			int pageSize=5;
+			List<PoolDTO> list=poolDao.viewMemberList(cp,listSize);
+			String pageStr=
+				su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+			ModelAndView mav=new ModelAndView();
+			mav.addObject("list", list);
+			mav.addObject("pageStr",pageStr);
+			mav.setViewName("carpool/poolList");
+			return mav;
+		
+		
+	}
+	
+	@RequestMapping("/poolMasterList.do")
+	public ModelAndView viewPoolMasterList(@RequestParam(value="cp",defaultValue="1")int cp){
+			int totalCnt=poolDao.getMasterTotalCnt();
+			int listSize=10;
+			int pageSize=5;
+			List<PoolDTO> list=poolDao.viewMasterList(cp,listSize);
 			String pageStr=
 				su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
 			ModelAndView mav=new ModelAndView();
