@@ -100,6 +100,11 @@
           <ref bean="sqlSessionTemplate"/>
       </constructor-arg>
    </bean>
+    <bean id="csuseguideDao" class="su.csCenter.model.CsuseGuideDAOImple">
+      <constructor-arg>
+          <ref bean="sqlSessionTemplate"/>
+      </constructor-arg>
+   </bean>
    
  
    
