@@ -6,6 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+var idx=null;
+function QnaDeleteForm(){
+	var param="?idx="+idx;
+	window.open('QnaDelete.do'+param,'QnaDeleteForm','width=500 height=400 left=500 top=200');
+}
+</script>
 <body>
 <div>헤더부분</div>
 <%@include file="../header.jsp" %>
@@ -15,6 +22,7 @@
 <a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="adminuseguideList.do">4.이용안내</a>
 <h4>Q&A</h4>
 </section>
+
 <section>
 <table border="1" width="800" height="150" >
 <thead>
@@ -43,7 +51,9 @@
  <td><a href="${qnaContent}">${qna.subject }</a></td>
  <td>${qna.content}</td>
  <td>${qna.writedate }</td>
- <td><a href="QnaDelete.do?idx=${qna.idx }">삭제</a></td>
+ <td><input type="button" value="글삭제" onclick="javascript:idx='${qna.idx}';QnaDeleteForm();"></td>
+ 
+
 </tr>
  </c:forEach>
 </tbody>

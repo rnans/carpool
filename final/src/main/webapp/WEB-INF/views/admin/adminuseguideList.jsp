@@ -6,6 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+var idx=null;
+function useguideDeleteForm(){
+	var param="?idx="+idx;
+	window.open('useguideDelete.do'+param,'useguideDeleteForm','width=500 height=400 left=500 top=200');
+}
+</script>
 <body>
 <div>헤더부분</div>
 <%@include file="../header.jsp" %>
@@ -43,7 +50,8 @@
  <td><a href="${useguideContent}">${useguide.subject }</a></td>
  <td>${useguide.content}</td>
  <td>${useguide.writedate }</td>
- <td><a href="useguideDelete.do?idx=${useguide.idx }">삭제</a></td>
+ <td><input type="button" value="글삭제" onclick="javascript:idx='${useguide.idx}';useguideDeleteForm();"></td>
+ 
 </tr>
  </c:forEach>
 </tbody>

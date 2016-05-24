@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+var idx=null;
+function noticeDelForm(){
+	var param="?idx="+idx;
+	window.open('noticeDelete.do'+param,'noticeDelForm','width=500 height=400 left=500 top=200');
+}
+</script>
 <body>
 <div>헤더부분</div>
 <%@include file="../adHeader.jsp" %>
@@ -43,7 +50,8 @@
  </c:url>
  <td><a href="${noticeContent}">${notice.subject}</a></td>
  <td>${notice.writedate }</td>
- <td><a href="NoticeDelete.do?idx=${notice.idx }">삭제</a></td>
+ <td><input type="button" value="글삭제" onclick="javascript:idx='${notice.idx}';noticeDelForm();"></td>
+ 
 </tr>
  </c:forEach>
 </tbody>

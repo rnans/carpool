@@ -6,36 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script>
-var idx=null;
-function oneandoneDelForm(){
-	var param="?idx="+idx;
-	window.open('oneandoneDelete.do'+param,'oneandoneDelForm','width=500 height=400 left=500 top=200');
-}
-</script>
 <body>
-<%@include file="../header.jsp" %>
-<%@include file="../adHeader.jsp" %>
-<div>헤더부분 </div>
-<hr>
-<section>
-<h2>고객센터관리</h2>
-<a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="adminuseguideList.do">4.이용안내</a>
-<h4>1:1문의내역</h4>
-</section>
-<form action="oneandoneSearch.do">
-<select name="select">
-<option>작성자</option>
-<option>문의유형</option>
-<option>답변현황</option>
- </select>
- <input type="text" name="search">
- <input type="submit" value="검색">
- </form>
-<section>
-
-
 <table border="1">
+<%@include file="../header.jsp" %>
 <thead>
 <tr>
    <th>번호</th>
@@ -65,7 +38,7 @@ function oneandoneDelForm(){
  <td><a href="${oneandoneAnswer}">${oneandone.subject}</a></td>
  <td>${oneandone.writedate }</td>
  <td>${oneandone.state }</td>
- <td> <input type="button" value="글삭제" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"></td>
+ <td><a href="oneandoneDelete.do?idx=${oneandone.idx }">삭제</a></td>
  
 </tr>
  </c:forEach>
