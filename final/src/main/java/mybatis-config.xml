@@ -13,6 +13,7 @@
 		<mapper resource="sql/carCostSQL.xml"/>
 		<mapper resource="sql/carBookInfoSQL.xml"/>
 		<mapper resource="sql/adminPoolSQL.xml"/>
+		<mapper resource="sql/carPoolSQL.xml"/>
 	</mappers>
 	
 </configuration>
