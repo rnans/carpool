@@ -96,6 +96,33 @@
 	 <delete id="qnaDelete" parameterType="su.csCenter.model.CsQnaDTO">
        delete from qna where idx=#{idx}
       </delete>
+      <!-- USEGUIDE -->
+      
+       <select id="useguideList" parameterType="Map" resultType="su.csCenter.model.CsuseGuideDTO">
+	select * from
+   (select rownum as rnum,a.* from
+   (select * from useguide order by idx desc)a)b
+   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	<select id="totalCnt4" resultType="int">
+		select count(*) from useguide
+	</select>
+	<insert id="useguideAdd" parameterType="su.csCenter.model.CsuseGuideDTO">
+		insert into useguide
+		values(useguide_idx.nextval,#{subject},#{content},sysdate)
+	</insert>
+	 <update id="useguideUpdate" parameterType="su.csCenter.model.CsuseGuideDTO">
+		update useguide set
+		subject=#{subject},content=#{content},writedate=to_date(#{writedate},'yyyy-mm-dd hh24:mi:ss')
+		where idx=#{idx}
+	</update>
+	<select id="useguideContent" resultType="su.csCenter.model.CsuseGuideDTO">
+		select idx,to_char(writedate,'yyyy-mm-dd hh24:mi:ss') writedate, subject, content from useguide where
+		idx=#{idx}
+	</select>
+	 <delete id="useguideDelete" parameterType="su.csCenter.model.CsuseGuideDTO">
+       delete from useguide where idx=#{idx}
+      </delete>
 	
 </mapper>
 
