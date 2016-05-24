@@ -1,7 +1,9 @@
 package su.carinfo.model;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.web.servlet.ModelAndView;
+
 
 public class carInfoDAOImple implements carInfoDAO {
 
@@ -13,10 +15,18 @@ public class carInfoDAOImple implements carInfoDAO {
 		this.sqlMap = sqlMap;
 	}
 	
-	public ModelAndView carAdd(carInfoDTO dto) {
+	public int carAdd(carInfoDTO dto) {
 		
-		sqlMap.insert("carAdd", dto);
-		return null;
+		int result=sqlMap.insert("carAdd", dto);
+		
+		return result;
+	}
+	
+	public List<carInfoDTO> carList(String userid) {
+		
+		 List<carInfoDTO> dto=sqlMap.selectList("carList", userid);
+		 
+		return dto;
 	}
 
 }

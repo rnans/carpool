@@ -1,9 +1,8 @@
 package su.carinfo.carinfocontroller;
 
-import java.util.HashMap;
+
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,21 +16,74 @@ import org.springframework.web.servlet.ModelAndView;
 
 import su.pool.model.PoolDAO;
 import su.pool.model.PoolDTO;
+import su.carinfo.model.carInfoDAO;
+import su.carinfo.model.carInfoDTO;
 import su.member.model.*;
 
 @Controller
 public class carInfoController 
 {
 	@Autowired
-	private PoolDAO poolDao;
+	private carInfoDAO carInfoDao;
 	
-	public PoolDAO getPoolDao() {
-		return poolDao;
+	public carInfoDAO getCarInfoDao() {
+		return carInfoDao;
 	}
 
-	public void setPoolDao(PoolDAO poolDao) {
-		this.poolDao = poolDao;
+	public void setCarInfoDao(carInfoDAO carInfoDao) {
+		this.carInfoDao = carInfoDao;
 	}
 
-	
+	@RequestMapping(value = "/carAdd.do", method = RequestMethod.GET)
+	public String carAddForm() {
+		return "carManage/carAdd";
+	}
+
+	@RequestMapping(value = "/carAdd.do", method = RequestMethod.POST)
+	public ModelAndView carAdd(carInfoDTO dto){
+		
+		int result = carInfoDao.carAdd(dto);
+		String msg = result > 0 ? "차량등록 성공" : "차량등록 실패";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("gopage", "carList.do");
+		mav.setViewName("carManage/carMsg");
+		return mav;
+		
+	}
+	@RequestMapping("/carList.do")
+	public ModelAndView carList(HttpSession session){
+		
+		String userid=(String)session.getAttribute("sid");		
+		
+		List<carInfoDTO> lists = carInfoDao.carList(userid);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", lists);
+		mav.setViewName("carManage/carList");
+		return mav;
+		
+	}
+	@RequestMapping(value = "/carUpdate.do", method = RequestMethod.GET)
+	public ModelAndView carUpdateForm() {
+		
+		String userid=(String)session.getAttribute("sid");	
+		List<carInfoDTO> lists = carInfoDao.carList(userid);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", lists);
+		mav.setViewName("carManage/carList");
+		return mav;
+	}
+
+	@RequestMapping(value = "/carUpdate.do", method = RequestMethod.POST)
+	public ModelAndView carUpdate(carInfoDTO dto){
+		
+		int result = carInfoDao.carAdd(dto);
+		String msg = result > 0 ? "차량등록 성공" : "차량등록 실패";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("gopage", "carList.do");
+		mav.setViewName("carManage/carMsg");
+		return mav;
+		
+	}
 }

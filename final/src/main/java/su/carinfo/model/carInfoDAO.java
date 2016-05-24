@@ -1,8 +1,9 @@
 package su.carinfo.model;
 
-import org.springframework.web.servlet.ModelAndView;
+import java.util.List;
 
 public interface carInfoDAO {
 
-	public ModelAndView carAdd(carInfoDTO dto);
+	public int carAdd(carInfoDTO dto);
+	public List<carInfoDTO> carList(String userid);
 }
