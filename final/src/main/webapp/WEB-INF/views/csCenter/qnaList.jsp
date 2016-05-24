@@ -6,7 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
+<script type="text/javascript">
+$(function(){
+  $('.btn_show').click(function(){
+    $('.btn_word').show();
+  });
+  $('.btn_hide').click(function(){
+    $('.btn_word').hide();
+  });
+});
+</script>
 <body>
 <div>헤더부분</div>
 <%@include file="../header.jsp" %>
@@ -31,26 +41,21 @@
 </table>
 <section>
 <table border="1" width="800" height="150" >
-<thead>
-<tr>
-   <th>제목</th>
-   </tr>
-   <tr>
-   <th>내용</th>
-   </tr>
-</thead>
+
 <tbody>
 <c:if test="${empty list }">
 <tr>
  <td colspan="2" align="center">작성된 글이 없습니다.</td>
 </tr>
  </c:if>
-<c:forEach var="qna" items="${list }">
+<c:forEach var="qna" items="${list }" >
 <tr>
- <td>${qna.subject}</td>
+ <td><button class="btn_show" style="padding:10px,10px ">제목:${qna.subject}</button>
+ <button class="btn_hide" style="padding:5px">닫기</button>
+ </td>
  </tr>
  <tr>
- <td>${qna.content}</td>
+ <td><div class="btn_word">내용:${qna.content}</div></td>
 </tr>
  </c:forEach>
 </tbody>
