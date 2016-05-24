@@ -29,6 +29,7 @@ A:active {color:green; font-family:serif;text-decoration: none}
 A:visited {color:black;text-decoration: none}
 A:hover {font-weight:bold;}
 
+
 .lyContent {
     overflow: hidden;
     position: relative;
@@ -203,6 +204,8 @@ tbody {
 <header><h1>일정 만들기</h1></header>
 <div class="calendarMake">
 
+<form action="scheWrite.do" method="post">
+
 	<div class="uInput"> 
 		<input type="text" name="subject" placeholder=" 일정 제목" maxlength="50">
 	</div>
@@ -217,26 +220,26 @@ tbody {
 	
 		<div class="gClearfix"> 
 			<div class="inputDate"> 
-				<input type="text" title="시작 요일" id="date" maxlength="10"> 
+				<input type="text" name="stratday" title="시작 요일" id="date" maxlength="10"> 
 				<button type="button" class="buttonCalendar">달력보기
 				</button>
 			</div>
 			<div class="inputDate2">-</div>
 			<div class="inputDate"> 
-				<input type="text" title="시작 요일" id="date" maxlength="10"> 
+				<input type="text" name="endday" title="끝 요일" id="date" maxlength="10"> 
 				<button type="button" class="buttonCalendar">달력보기
 				</button>
 			</div>
 		</div>
 			
 		<div class="gClearfix"> <span class="title">반복 등록</span>
-			<span class="day"><input type="checkbox" value="월">월</span>
-			<span class="day"><input type="checkbox" value="화">화</span>
-			<span class="day"><input type="checkbox" value="수">수</span>
-			<span class="day"><input type="checkbox" value="목">목</span>
-			<span class="day"><input type="checkbox" value="금">금</span>
-			<span class="day"><input type="checkbox" value="토">토</span>
-			<span class="day"><input type="checkbox" value="일">일</span>
+			<span class="day"><input type="checkbox"  name="banbok" value="월">월</span>
+			<span class="day"><input type="checkbox" name="banbok" value="화">화</span>
+			<span class="day"><input type="checkbox" name="banbok" value="수">수</span>
+			<span class="day"><input type="checkbox" name="banbok" value="목">목</span>
+			<span class="day"><input type="checkbox" name="banbok" value="금">금</span>
+			<span class="day"><input type="checkbox" name="banbok" value="토">토</span>
+			<span class="day"><input type="checkbox" name="banbok" value="일">일</span>
 		</div>
 		
 		<div data-viewname="CalendarView" data-skinfactor="border" class="calendarPicker">
@@ -246,7 +249,7 @@ tbody {
 				<span class="gSrOnly"><</span></button> 
 				<strong class="monthTxt" data-skinfactor="color"><%=currentYearString%>년 <%=Integer.parseInt(currentMonthString)+1 %>월</strong> 
 				<button type="button" class="nextMonth" >
-				<span class="gSrOnly">></span></button> 
+				<span class="gSrOnly">></span></button>
 			</div>
 			
 			<table class="calendar">
@@ -281,6 +284,9 @@ tbody {
 		</div>
 		
 		</div>
+		<input type="hidden" name="id" value="${sid}">
+		<input type="submit" Value="완료">
+		</form>
 	</div> <!-- date class -->
 </article>
 

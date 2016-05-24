@@ -110,11 +110,11 @@ line-height: 21.56px; font-size: 14px; padding: 16px 20px 0px;">&nbsp;</div></di
 		등록된 게시글이 없습니다.
 	</td>
 </c:if>		
-
-<div data-viewname="DPostLayoutView">
+<c:forEach var="bbs" items="${list}"> 
+<div data-viewname="DPostLayoutView" class="postout">
 <div class="cPost " data-uiselector="postMainWrap">
 <div class="postMain" data-uiselector="postRegion">
-<c:forEach var="bbs" items="${list}"> 
+
 <div data-viewname="DPostItemView">
 
 <div class="postWriter"> 
@@ -124,10 +124,11 @@ line-height: 21.56px; font-size: 14px; padding: 16px 20px 0px;">&nbsp;</div></di
 <div class="textTime">${bbs.writedate }</div></div></div> 
 <div class="postBody"> <div class="postText"> <p class="txtBody" data-uiselector="txtBody">${bbs.content }</p></div>
 </div></div>
-</c:forEach>
-</div>
-</div></div>
 
+</div>
+
+</div></div>
+</c:forEach>
 <hr>
 footer
 
