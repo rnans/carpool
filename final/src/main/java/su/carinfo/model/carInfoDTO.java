@@ -14,6 +14,34 @@ public class carInfoDTO {
 	public carInfoDTO() {
 		super();
 	}
+	
+	
+
+	public carInfoDTO(String id, String driver, String carId, String carNum, String carType, String confirmPhoto) {
+		super();
+		this.id = id;
+		this.driver = driver;
+		this.carId = carId;
+		this.carNum = carNum;
+		this.carType = carType;
+		this.confirmPhoto = confirmPhoto;
+	}
+
+
+
+	public carInfoDTO(int idx, String id, String driver, String carId, String carNum, String carType,
+			String confirmPhoto, String confirm) {
+		super();
+		this.idx = idx;
+		this.id = id;
+		this.driver = driver;
+		this.carId = carId;
+		this.carNum = carNum;
+		this.carType = carType;
+		this.confirmPhoto = confirmPhoto;
+		this.confirm = confirm;
+	}
+
 	public int getIdx() {
 		return idx;
 	}

@@ -11,12 +11,12 @@
 <legend>차량수정</legend>
 <form  name="carUpdate" action="carUpdate.do" method="post">
 <div>
-<input type="hidden" name="id" value="${sid }">
-운전자 이름:<input type="text" name="driver">
+<input type="hidden" name="idx" value="${list.idx }">
+운전자 이름:<input type="text" name="driver" value="${list.driver }">
 <br>
-차 번호:<input type="text" name="carNum">
+차 번호:<input type="text" name="carNum" value="${list.carNum }">
 <br>
-차종:<input type="text" name="carType">
+차종:<input type="text" name="carType" value="${list.carType }">
 </div>
 
 <div>

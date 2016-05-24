@@ -43,7 +43,7 @@ function carUp(){
 				</form>
 			</c:forEach>
 			<tr>
-			<td colspan="6" align="right"><input type="button" value="등록"></td>
+			<td colspan="6" align="right"><input type="button" value="등록" onclick="location.href='carAdd.do'"></td>
 			</tr>
 
 		</table>

@@ -5,5 +5,6 @@ import java.util.List;
 public interface carInfoDAO {
 
 	public int carAdd(carInfoDTO dto);
-	public List<carInfoDTO> carList(String userid);
+	public List<carInfoDTO> carAllList(String userid);
+	public List<carInfoDTO> carList(int idx);
 }

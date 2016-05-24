@@ -3,6 +3,7 @@ package su.carinfo.carinfocontroller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class carInfoController
 		
 		String userid=(String)session.getAttribute("sid");		
 		
-		List<carInfoDTO> lists = carInfoDao.carList(userid);
+		List<carInfoDTO> lists = carInfoDao.carAllList(userid);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", lists);
 		mav.setViewName("carManage/carList");
@@ -64,13 +65,13 @@ public class carInfoController
 		
 	}
 	@RequestMapping(value = "/carUpdate.do", method = RequestMethod.GET)
-	public ModelAndView carUpdateForm(HttpSession session) {
+	public ModelAndView carUpdateForm(HttpServletRequest req) {
 		
-		String userid=(String)session.getAttribute("sid");	
-		List<carInfoDTO> lists = carInfoDao.carList(userid);
+		int idx=(Integer.parseInt(req.getParameter("idx")));
+		List<carInfoDTO> list = carInfoDao.carList(idx);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", lists);
-		mav.setViewName("carManage/carList");
+		mav.addObject("list", list);
+		mav.setViewName("carManage/carUpdate");
 		return mav;
 	}
 
@@ -78,7 +79,7 @@ public class carInfoController
 	public ModelAndView carUpdate(carInfoDTO dto){
 		
 		int result = carInfoDao.carAdd(dto);
-		String msg = result > 0 ? "차량등록 성공" : "차량등록 실패";
+		String msg = result > 0 ? "차량수정 성공" : "차량수정 실패";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("gopage", "carList.do");

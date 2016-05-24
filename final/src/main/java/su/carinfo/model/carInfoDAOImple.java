@@ -14,19 +14,28 @@ public class carInfoDAOImple implements carInfoDAO {
 		super();
 		this.sqlMap = sqlMap;
 	}
-	
+	//차량등록
 	public int carAdd(carInfoDTO dto) {
 		
 		int result=sqlMap.insert("carAdd", dto);
 		
 		return result;
 	}
-	
-	public List<carInfoDTO> carList(String userid) {
+	//등록한 모든차량
+	public List<carInfoDTO> carAllList(String userid) {
 		
 		 List<carInfoDTO> dto=sqlMap.selectList("carList", userid);
 		 
 		return dto;
 	}
-
+	//차량수정(idx가 같은 데이터)
+	public List<carInfoDTO> carList(int idx) {
+		
+		List<carInfoDTO> dto=sqlMap.selectOne("carUpdate1", idx);
+		 
+		
+		
+		return dto;
+	}
+	
 }
