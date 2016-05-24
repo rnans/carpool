@@ -69,6 +69,12 @@
 	 <delete id="oneandoneDelete" parameterType="su.csCenter.model.CsoneandoneDTO">
        delete from oneandone where idx=#{idx}
       </delete>
+    <select id="oneandoneSearch" parameterType="Map" resultType="su.csCenter.model.CsoneandoneDTO">
+	select * from
+   (select rownum as rnum,a.* from
+   (select * from oneandone order by idx desc)a)b
+   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and type=#{search}
+   	</select>
 	
 	<!-- qna -->
 	 <select id="qnaList" parameterType="Map" resultType="su.csCenter.model.CsQnaDTO">
@@ -123,6 +129,5 @@
 	 <delete id="useguideDelete" parameterType="su.csCenter.model.CsuseGuideDTO">
        delete from useguide where idx=#{idx}
       </delete>
-	
 </mapper>
 
