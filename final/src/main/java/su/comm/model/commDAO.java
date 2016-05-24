@@ -7,4 +7,7 @@ public interface commDAO {
 	
 	public List<commBBSDTO> bbsList(); 
 
+	public int scheWrite(scheDTO dto);
+	
+	public List<scheDTO> scheList();
 }

@@ -17,15 +17,29 @@ public class commDAOImple implements commDAO {
 		this.sqlMap = sqlMap;
 	}
 
+	//comm 글쓰기
 	public int commWrite(commBBSDTO dto) {
 		
 		int count =sqlMap.insert("commWrite",dto);
 		return count;
 	}
-	
+	//글 띄우기
 	public List<commBBSDTO> bbsList(){
 		
 		List<commBBSDTO> list=sqlMap.selectList("bbsList");		
+		return list;
+	}
+	
+	public int scheWrite(scheDTO dto) {
+			System.out.println(dto.getStartday());
+			int count =sqlMap.insert("scheWrite", dto);
+			return count;
+		}
+	
+	//스케쥴글 띄우기
+	public List<scheDTO> scheList(){
+		
+		List<scheDTO> list=sqlMap.selectList("scheList");		
 		return list;
 	}
 
