@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,32 +53,40 @@ header
 		<img src="1234.jpg" border="100"><br>
 		
 		</div>
-			<form>
-			<legend>마이페이지</legend>
+			<form name="f" action="myProfile.do">
+			<legend>${dto.name}님 정보</legend>
 				<ul>
+				
 					<li>아이디:
-						<input type="text" name="id" size="7" value="${dto.id}">
+						<input type="text" name="id" size="7" value="${dto.id}" readonly>
+						이름:
+						<input type="text" name="name" value="${dto.name} ">
 						성별:
-						<input type="radio" name="se" size="5" value="남성">
-						<input type="radio" name="se" value="여성">	
+						<input type="radio" name="sex" value="남성" id="male">남성
+						<input type="radio" name="sex" value="여성" id="female" >여성
+						
 					</li>
 					
-					<li>생년월일:<input type="text" name="birthday" size="5" value="${dto.birth }"></li>
+					<li>생년월일:<input type="text" name="birth" value="${dto.birth }"></li>
 							 
-					<li>전화번호:<input type="text" name="phonenumber" size="5" value="${dto.phonenum }"></li>
-					<li>소개:</li>
-					<textarea rows="5" cols="50" readonly>hi</textarea>
-					
+					<li>전화번호:<input type="text" name="phonenum" value="${dto.phonenum }"></li>
+					<li>주소:<input type="text" name="addr" value="${dto.addr} "></li>
+					<li>email:<input type="text" name="email" value="${dto.email }"></li>
+				
+					<li><input type="submit" value="프로필수정"></li>
+					<li><a href="pwdUpdate.do">비밀번호변경</a></li>
+					<li><a href="">회원탈퇴</a></li>
 				</ul>
+					
 			</form>
 	</div>
 	<div id="div3">
 		<fieldset>
 			<form>
 				<a href="myPage.jsp"><input type="button" name="mypage" value="마이페이지"></a><br>
-				<a href="myProfile.jsp"><input type="button" name="myprofile" value="내프로필수정"></a><br>
+				<a href="myProfile.do"><input type="button" name="myprofile" value="내프로필수정"></a><br>
 				<a href="notiSetting.jsp"><input type="button" name="notiSetting" value="알람설정"></a><br>
-				<a href="passChange.jsp"><input type="button" name="passchange" value="비밀번호변경"></a><br>
+				<a href="pwdUpdate.do"><input type="button" name="passchange" value="비밀번호변경"></a><br>
 				<a href="userPayInfo.jsp"><input type="button" name="userpayInfo" value="결제정보"></a><br>
 				<input type="button" name="mypage" value="이용내역"><br>
 				<input type="button" name="mypage" value="소속카풀"><br>
