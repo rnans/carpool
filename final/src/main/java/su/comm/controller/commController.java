@@ -3,10 +3,13 @@ package su.comm.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import su.comm.model.commBBSDTO;
 import su.comm.model.commDAO;
+import su.comm.model.scheDTO;
+
 import java.util.*;
 
 import javax.servlet.http.HttpSession;
@@ -57,43 +60,41 @@ public class commController {
 		
 		return "comm/commmsg";
 		
-	}
+	}	
 	
-	@RequestMapping("sche.do")
-	public String sche(){
+	@RequestMapping("commWrite.do")
+	public ModelAndView commWrite(commBBSDTO dto){					
 		
-		return "comm/sche";
+		int count=commDao.commWrite(dto);
+		
+		String msg=count>0?"글 작성 성공":"글 작성 실패";
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.setViewName("comm/commmsg");
+		return mav;
 		
 	}
 	
 	@RequestMapping("calendar.do")
-	public String calendar(){
+	public ModelAndView calendar(){
+		ModelAndView mav=new ModelAndView();
+		List<scheDTO> list=commDao.scheList();			
+		mav.addObject("list", list);
+		mav.setViewName("comm/calendar");
+		return mav;
 		
-		return "comm/calendar";
-		
-	}
-	
-	@RequestMapping("calendarView.do")
-	public String calendarView(){
-		
-		return "comm/calendarMonthPrintView";
-		
-	}
+	}	
 	
 	@RequestMapping("scheWrite.do")
-	public String scheWrite(){
-		
+	public String scheWritego(){
 		return "comm/scheWrite";
-		
 	}
 	
-	
-	@RequestMapping("commWrite.do")
-	public ModelAndView commWrite(commBBSDTO dto){		
-			
+	@RequestMapping(value="scheWrite.do", method=RequestMethod.POST)
+	public ModelAndView scheWrite(scheDTO dto){
 		
-		int count=commDao.commWrite(dto);
-		
+		int count=commDao.scheWrite(dto);
 		String msg=count>0?"글 작성 성공":"글 작성 실패";
 		
 		ModelAndView mav=new ModelAndView();
