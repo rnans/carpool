@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sql.poolStatusSQL">
+	<insert id="addToMaster" parameterType="su.pool.model.PoolMasterStatusDTO">
+	insert into poolmasterstatus
+	(
+		idx,
+		addidx,
+		masterid,
+		mans,
+		nowmans,
+		status,
+		members
+	) 
+	values
+	(
+		poolmasterstatus_idx.nextval,
+		#{addidx},
+		#{masterid},
+		#{mans},
+		#{nowmans},
+		#{status},
+		#{members}
+	)
+	</insert>
+	<insert id="addToMember" parameterType="su.pool.model.PoolMemberStatusDTO">
+	insert into poolmemberstatus
+	(
+		idx,
+		memberid,
+		masterid,
+		mans,
+		nowmans,
+		status,
+		members
+	) 
+	values
+	(
+		poolmasterstatus_idx.nextval,
+		#{addidx},
+		#{masterid},
+		#{mans},
+		#{nowmans},
+		#{status},
+		#{members}
+	)
+	</insert>
+</mapper>

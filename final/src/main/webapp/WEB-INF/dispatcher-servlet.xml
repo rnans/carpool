@@ -105,6 +105,11 @@
           <ref bean="sqlSessionTemplate"/>
       </constructor-arg>
    </bean>
+   <bean id="poolStatusDao" class="su.pool.model.PoolStatusDAOImple">
+      <constructor-arg>
+          <ref bean="sqlSessionTemplate"/>
+      </constructor-arg>
+   </bean>
    
  
    

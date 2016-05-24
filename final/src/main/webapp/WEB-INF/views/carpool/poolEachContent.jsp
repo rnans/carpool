@@ -19,6 +19,15 @@ function runDel()
 	
 	location.href='poolDel.do'+param;
 }
+function request()
+{
+	
+	
+	var param='?idx='+document.getElementById('idx').value+'&memberid='+'${dto.userid}';
+	
+	location.href='reqToMember.do'+param;
+}
+
 </script>
 </head>
 <body>
@@ -28,7 +37,7 @@ function runDel()
 <div id="profile">유저 프로필 영역</div>
 </article>
 <article>
-<div>
+<div id="viewContent">
 <h1>(타세요 / 태워주세요 태그) 카폴 상세 보기</h1>
 <input type="hidden" id="idx" name="idx" value="${dto.idx}">
 <div>프로필 사진 영역</div>
@@ -50,8 +59,13 @@ function runDel()
 <div>평점 게시판 영역
 <%@ include file="poolRateList.jsp" %>
 </div>
-<div><input type="button" value="찜하기"><input type="button" value="예약하기"></div>
+<div><input type="button" value="찜하기"><input type="button" value="예약하기" onclick="reqeust()"></div>
 <div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="showEdit()"><input type="button" value="삭제하기" onclick="runDel()"></div>
+</div>
+</article>
+<article>
+<div>
+
 </div>
 </article>
 </section>
