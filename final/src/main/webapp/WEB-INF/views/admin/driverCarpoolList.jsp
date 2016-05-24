@@ -5,12 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script>
+<title>Insert title here</title><script>
 var idx = null;
-function userPoolDelForm(){
+function driverPoolDelForm(){
 	var param = "?idx="+idx;
-	window.open('userPoolDelForm.do'+param,'userPoolDelForm','width=500 height=400 left=500 top=200');
+	window.open('driverPoolDelForm.do'+param,'driverPoolDelForm','width=500 height=400 left=500 top=200');
 }
 </script>
 </head>
@@ -18,7 +17,7 @@ function userPoolDelForm(){
 <div>헤더</div>
 <%@include file="../adHeader.jsp" %>
 <section>
-	<article><!-- 이용자 카풀 등록 목록보기 -->
+	<article><!-- 드라이버 카풀 등록 목록보기 -->
 		<table border="1" cellspacing="0" width="1000">
 			<thead>
 				<tr>
@@ -47,7 +46,7 @@ function userPoolDelForm(){
 			<tbody>
 				<c:if test="${empty lists}">
 					<tr>
-						<td colspan="19" align="center">등록된 이용자 카풀이 없습니다.</td>
+						<td colspan="19" align="center">등록된 드라이버 카풀이 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:forEach var="list" items="${lists}">
@@ -72,7 +71,7 @@ function userPoolDelForm(){
 					<td>${list.pluscontent}</td>
 					<td>${list.writedate}</td>
 					<td>
-						<input type="button" value="카풀삭제" onclick="javascript:idx='${list.idx}';userPoolDelForm();">
+						<input type="button" value="카풀삭제" onclick="javascript:idx='${list.idx}';driverPoolDelForm();">
 					</td>
 				</tr>
 				</c:forEach>
@@ -81,7 +80,7 @@ function userPoolDelForm(){
 			<tfoot>
 				<tr>
 					<td colspan="20" align="center">
-						${pageStr} 
+						${pageStr}
 					</td>
 				</tr>
 			</tfoot>
@@ -89,5 +88,4 @@ function userPoolDelForm(){
 	</article>
 </section>
 <footer>풋</footer>
-</body>
 </html>

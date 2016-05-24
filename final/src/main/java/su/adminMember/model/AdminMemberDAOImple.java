@@ -16,17 +16,22 @@ public class AdminMemberDAOImple implements AdminMemberDAO {
 	}
 
 	/**전체회원 목록보기*/
-	public List<AdminMemberDTO> memberinfo() {
+	public List<AdminMemberDTO> memberinfo(int cp, int ls) {
+		int startnum = (cp-1)*ls+1;
+		int endnum = cp*ls;
+		Map map = new HashMap();
+		map.put("startnum", startnum);
+		map.put("endnum", endnum);
 		
-		List<AdminMemberDTO> list = sqlMap.selectList("sql.adminMember.memberInfo");
+		List<AdminMemberDTO> list = sqlMap.selectList("sql.adminMember.memberInfo", map);
 		return list;
 	}
 	
-	/**삭제, 등급변경 할때 쓰는 거*/
-	public AdminMemberDTO memberList(int idx) {
+	/**페이징*/
+	public int memberTotalCnt() {
 		
-		AdminMemberDTO dto = sqlMap.selectOne("memberList", idx);
-		return dto;
+		int count = sqlMap.selectOne("sql.adminMember.memberTotalCnt");
+		return count;
 	}
 	
 	/**회원탈퇴*/

@@ -3,5 +3,31 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.adminPool">
+	<select id="userPoolList" parameterType="Map" resultType="su.adminPool.model.AdminUserPoolDTO">
+	select * from
+   (select rownum as rnum,a.* from
+   (select * from reservationlist order by idx desc)a)b
+   where pooltype='탈래요' and rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} 
+	</select>
+	
+	<select id="userTotalCnt" resultType="int">
+		select count(*) from reservationlist where pooltype='탈래요'
+	</select>
+	
+	<select id="driverPoolList" parameterType="Map" resultType="su.adminPool.model.AdminUserPoolDTO">
+	select * from
+   (select rownum as rnum,a.* from
+   (select * from reservationlist order by idx desc)a)b
+   where pooltype='타세요' and rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} 
+
+	</select>
+	
+	<select id="driverTotalCnt" resultType="int">
+		select count(*) from reservationlist where pooltype='타세요'
+	</select>
+	
+	<delete id="adminPoolDel" parameterType="su.adminPool.model.AdminUserPoolDTO">
+		delete from reservationlist where idx=#{idx}
+	</delete>
 	
 </mapper>

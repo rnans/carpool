@@ -1,5 +1,7 @@
 package su.adminPool.model;
 
+import java.sql.Date;
+
 public class AdminUserPoolDTO {
 	
 	private int idx;
@@ -17,13 +19,16 @@ public class AdminUserPoolDTO {
 	private int pay;
 	private String smoking;
 	private String pluscontent;
-	private String wirtedate;
+	private Date writedate;
 	private String status;
-	private String type;
+	private String pooltype;
 	private String startdate;
 	private String enddate;
 	private String days;
 	private String location;
+	private String termtype;
+	private int caridx;
+	private String poolname;
 	
 	public AdminUserPoolDTO() {
 		super();
@@ -31,8 +36,9 @@ public class AdminUserPoolDTO {
 
 	public AdminUserPoolDTO(int idx, String userid, String aim, String startspot, String endspot, String route,
 			String startcoordi, String endcoordi, String routecoordi, String starttime, int mannum, String gender,
-			int pay, String smoking, String pluscontent, String wirtedate, String status, String type, String startdate,
-			String enddate, String days, String location) {
+			int pay, String smoking, String pluscontent, Date writedate, String status, String pooltype,
+			String startdate, String enddate, String days, String location, String termtype, int caridx,
+			String poolname) {
 		super();
 		this.idx = idx;
 		this.userid = userid;
@@ -49,13 +55,16 @@ public class AdminUserPoolDTO {
 		this.pay = pay;
 		this.smoking = smoking;
 		this.pluscontent = pluscontent;
-		this.wirtedate = wirtedate;
+		this.writedate = writedate;
 		this.status = status;
-		this.type = type;
+		this.pooltype = pooltype;
 		this.startdate = startdate;
 		this.enddate = enddate;
 		this.days = days;
 		this.location = location;
+		this.termtype = termtype;
+		this.caridx = caridx;
+		this.poolname = poolname;
 	}
 
 	public int getIdx() {
@@ -178,12 +187,12 @@ public class AdminUserPoolDTO {
 		this.pluscontent = pluscontent;
 	}
 
-	public String getWirtedate() {
-		return wirtedate;
+	public Date getWritedate() {
+		return writedate;
 	}
 
-	public void setWirtedate(String wirtedate) {
-		this.wirtedate = wirtedate;
+	public void setWritedate(Date writedate) {
+		this.writedate = writedate;
 	}
 
 	public String getStatus() {
@@ -194,12 +203,12 @@ public class AdminUserPoolDTO {
 		this.status = status;
 	}
 
-	public String getType() {
-		return type;
+	public String getPooltype() {
+		return pooltype;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setPooltype(String pooltype) {
+		this.pooltype = pooltype;
 	}
 
 	public String getStartdate() {
@@ -233,8 +242,31 @@ public class AdminUserPoolDTO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
-	
+
+	public String getTermtype() {
+		return termtype;
+	}
+
+	public void setTermtype(String termtype) {
+		this.termtype = termtype;
+	}
+
+	public int getCaridx() {
+		return caridx;
+	}
+
+	public void setCaridx(int caridx) {
+		this.caridx = caridx;
+	}
+
+	public String getPoolname() {
+		return poolname;
+	}
+
+	public void setPoolname(String poolname) {
+		this.poolname = poolname;
+	}
+
 	
 	
 }

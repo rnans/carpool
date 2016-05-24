@@ -118,6 +118,12 @@
    	</constructor-arg>
    </bean>
    
+   <bean id="adCarInfoDao" class="su.adminMember.model.AdminCarInfoDAOImple">
+   		<constructor-arg>
+   			<ref bean="sqlSessionTemplate"/>
+   		</constructor-arg>
+   </bean>
+   
  
    
 	

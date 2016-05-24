@@ -50,9 +50,6 @@ function adminAddForm(){
 				<c:forEach var="list" items="${lists}" >
 					<tr>
 						<td>${list.idx}</td>
-						<c:url var="memberDelUrl" value="memberDelForm.do">
-							<c:param name="idx">${list.idx}</c:param>
-						</c:url>
 						<td>${list.name}</td>
 						<td>${list.id}</td>
 						<td>${list.addr }</td>
@@ -75,7 +72,9 @@ function adminAddForm(){
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="11" align="center">페이징</td>
+					<td colspan="11" align="center">
+					${pageStr}
+					</td>
 				</tr>
 			</tfoot>
 		</table>

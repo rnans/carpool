@@ -3,9 +3,9 @@
 <header>
 	<hr>
 	<div>회원관리
-		<div>-<a href="memberInfo.do">회원정보관리</a></div>
-		<div>-<a href="memberCarInfo.do">회원차량관리</a></div>
-		<div>-<a href="memberAlarm.do">회원알림설정관리</a></div>
+		<div><a href="memberInfo.do">-회원정보관리</a></div>
+		<div><a href="memberCarInfo.do">-회원차량관리</a></div>
+		<div><a href="memberAlarm.do">-회원알림설정관리</a></div>
 	</div>
 	<div>고객센터관리
 		<div><a href="adminNoticeList.do">-공지사항</a></div>
@@ -14,8 +14,8 @@
 		<div>-이용안내</div>
 	</div>
 	<div>카풀게시물관리
-		<div>-드라이버</div>
-		<div>-사용자</div>
+		<div><a href="driverPoolList.do">-드라이버</a></div>
+		<div><a href="userPoolList.do">-사용자</a></div>
 	</div>
 	<div>예약및결제관리
 		<div>-예약관리</div>

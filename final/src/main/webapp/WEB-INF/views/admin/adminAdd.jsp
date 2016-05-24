@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +14,9 @@ function addCancel(){
 <body>
 	<section>
 		<article>
-		<c:set var="dto" value="${dto}"></c:set>
-			<form name="adminAdd" action="adminAdd.do?idx="${dto.idx}>
-			<input type="hidden" name="idx" value="${dto.idx}">
+		
+			<form name="adminAdd" action="adminAdd.do?idx="${idx}>
+			<input type="hidden" name="idx" value="${idx}">
 				<fieldset>
 					<legend>등급 변경(일반/관리자)</legend>
 					<div>

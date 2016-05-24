@@ -2,6 +2,8 @@ package su.admin.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import su.adminMember.model.AdminCarInfoDAO;
+import su.adminMember.model.AdminCarInfoDTO;
 import su.adminMember.model.AdminMemberDAO;
 import su.adminMember.model.AdminMemberDTO;
 
@@ -18,6 +22,9 @@ public class AdminMemberController {
 	@Autowired
 	private AdminMemberDAO adMemberDao;
 	
+	@Autowired
+	private AdminCarInfoDAO adCarInfoDao;
+	
 	public AdminMemberDAO getAdMemberDao() {
 		return adMemberDao;
 	}
@@ -26,26 +33,39 @@ public class AdminMemberController {
 		this.adMemberDao = adMemberDao;
 	}
 	
+	public AdminCarInfoDAO getAdCarInfoDao() {
+		return adCarInfoDao;
+	}
+
+	public void setAdCarInfoDao(AdminCarInfoDAO adCarInfoDao) {
+		this.adCarInfoDao = adCarInfoDao;
+	}
+
 	/**모든 회원 보기*/
 	@RequestMapping("/memberInfo.do")
-	public ModelAndView memberInfo(){
+	public ModelAndView memberInfo(@RequestParam(value="cp", defaultValue="1")int cp){
+		
+		int totalCnt = adMemberDao.memberTotalCnt();
+		int listSize = 20;
+		int pageSize = 5;
 		
 		ModelAndView mav = new ModelAndView();
-		List<AdminMemberDTO> list = adMemberDao.memberinfo();
+		List<AdminMemberDTO> list = adMemberDao.memberinfo(cp, listSize);
+		String pageStr = su.Page.SuPage.makePage("memberInfo", totalCnt, listSize, pageSize, cp);
 		
 		mav.addObject("lists", list);
+		mav.addObject("pageStr", pageStr);
 		mav.setViewName("admin/memberInfo");
 		return mav;
 	}
 	
 	/**회원삭제 확인 폼*/
 	@RequestMapping("/memberDelForm.do")
-	public ModelAndView memberDelForm(@RequestParam("idx")int idx){
-		
+	public ModelAndView memberDelForm(HttpServletRequest req){
+		int idx = Integer.parseInt(req.getParameter("idx"));
 		ModelAndView mav = new ModelAndView();
-		AdminMemberDTO dto = adMemberDao.memberList(idx);
 		
-		mav.addObject("dto", dto);
+		mav.addObject("idx", idx);
 		mav.setViewName("admin/memberDel");
 		return mav;
 	}
@@ -65,12 +85,12 @@ public class AdminMemberController {
 	
 	/**grade 변경 폼*/
 	@RequestMapping("/adminAddForm.do")
-	public ModelAndView adminAddForm(@RequestParam("idx")int idx){
+	public ModelAndView adminAddForm(HttpServletRequest req){
 		
+		int idx = Integer.parseInt(req.getParameter("idx"));
 		ModelAndView mav = new ModelAndView();
-		AdminMemberDTO dto = adMemberDao.memberList(idx);
 		
-		mav.addObject("dto", dto);
+		mav.addObject("idx", idx);
 		mav.setViewName("admin/adminAdd");
 		return mav;
 	}
@@ -89,4 +109,26 @@ public class AdminMemberController {
 		
 		return mav;
 	}
+	
+	////////////////////////////////////////////등록된 차 관리/////////////////////////////////////////////////
+	/**등록된 차 목록보기*/
+	@RequestMapping("memberCarInfo.do")
+	public ModelAndView memberCarInfo(@RequestParam(value="cp", defaultValue="1")int cp){
+		int totalCnt = adCarInfoDao.carInfoTotalCnt();
+		int listSize = 20;
+		int pageSize = 5;
+		
+		List<AdminCarInfoDTO> list = adCarInfoDao.memberCarInfo(cp, listSize);
+		String pageStr = su.Page.SuPage.makePage("memberCarInfo.do", totalCnt, listSize, pageSize, cp);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("pageStr", pageStr);
+		mav.addObject("lists", list);
+		
+		mav.setViewName("admin/memberCarInfo");
+		
+		return mav;
+		
+		
+	}
+	
 }

@@ -3,12 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.adminMember">
-	<select id="memberInfo" resultType="su.adminMember.model.AdminMemberDTO">
-		select * from userinfo order by idx desc
+	<!-- member -->
+	<select id="memberInfo" parameterType="Map" resultType="su.adminMember.model.AdminMemberDTO">
+		select * from
+	   (select rownum as rnum,a.* from
+	   (select * from userinfo order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} 
 	</select>
 	
-	<select id="memberList" resultType="su.adminMember.model.AdminMemberDTO">
-		select * from userinfo where idx=#{idx}
+	<select id="memberTotalCnt" resultType="int">
+		select count(*) from userinfo
 	</select>
 	
 	<delete id="memberDel" parameterType="su.adminMember.model.AdminMemberDTO">
@@ -18,4 +22,16 @@
 	<update id="adminAdd" parameterType="su.adminMember.model.AdminMemberDTO">
 		update userinfo set grade=#{grade} where idx=#{idx}
 	</update>
+	
+	<!-- carinfo -->
+	<select id="memberCarInfo" parameterType="Map" resultType="su.adminMember.model.AdminCarInfoDTO">
+		select * from
+	   (select rownum as rnum,a.* from
+	   (select * from carinfo order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} 
+	</select>
+	
+	<select id="carInfoTotalCnt" resultType="int">
+		select count(*) from carinfo
+	</select>
 </mapper>
