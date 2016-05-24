@@ -2,6 +2,7 @@ package su.admin.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,14 +84,22 @@ public class AdminCsCenterController {
 		mav.setViewName("admin/csMsg");
 		return mav;
 	}
+	@RequestMapping("/noticeDelete.do")
+	public ModelAndView noticeDeleteDelete(HttpServletRequest req){
+		int idx=(Integer.parseInt(req.getParameter("idx")));
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("idx", idx);
+		mav.setViewName("admin/noticeDel");
+		return mav;
+	}
 	//공지사항 삭제
-	@RequestMapping("/NoticeDelete.do")
+	@RequestMapping("/noticeDelete_ok.do")
 	public ModelAndView noticeDelete(int idx){
 		 int result=csnoticeDao.noticeDelete(idx);
 		 String msg=result>0?"공지사항글삭제성공!":"공지사항글삭제실패!";
 		  ModelAndView mav=new ModelAndView();
 		  mav.addObject("msg",msg);
-		  mav.setViewName("admin/csMsg");
+		  mav.setViewName("admin/adminMsg");
 		  return mav;
 	}
 	//공지사항 글쓰기
@@ -159,12 +168,20 @@ public class AdminCsCenterController {
 		}
 		//qna삭제
 		@RequestMapping("/QnaDelete.do")
-		public ModelAndView qnaDelete(int idx){
+		public ModelAndView qnaDelete(HttpServletRequest req){
+			int idx=(Integer.parseInt(req.getParameter("idx")));
+			ModelAndView mav=new ModelAndView();
+			mav.addObject("idx", idx);
+			mav.setViewName("admin/qnaDel");
+			return mav;
+		}
+		@RequestMapping("/QnaDelele_ok.do")
+		public ModelAndView qnaDelete_ok(int idx){
 			 int result=csqnaDao.qnaDelete(idx);
 			 String msg=result>0?"QnA글삭제성공!":"QnA글삭제실패!";
 			  ModelAndView mav=new ModelAndView();
 			  mav.addObject("msg",msg);
-			  mav.setViewName("admin/qnaMsg");
+			  mav.setViewName("admin/adminMsg");
 			  return mav;
 		}
 		//1:1문의 리스트
@@ -183,6 +200,22 @@ public class AdminCsCenterController {
 			mav.setViewName("admin/adminOneAndOne");
 			  return mav;
 	        }
+		//1:1문의 리스트
+				@RequestMapping("/oneandoneSearch.do")
+				public ModelAndView oneandoneList(@RequestParam(value="cp",defaultValue="1")int cp,HttpServletRequest req){
+			        String search=req.getParameter("search");
+			    	ModelAndView mav=new ModelAndView();
+					int totalCnt=csoneandoneDao.oneandoneTotalCnt();
+					int listSize=10;
+					int pageSize=5;
+					List<CsoneandoneDTO> list=csoneandoneDao.oneandoneSearch(cp,listSize,search);
+					String pageStr=
+						su.Page.SuPage.makePage("oneandoneSearch.do", totalCnt, listSize, pageSize, cp);
+					mav.addObject("list", list);
+					mav.addObject("pageStr",pageStr);
+					mav.setViewName("admin/test");
+					  return mav;
+			        }
 		//1:1문의 본문보기
 		  @RequestMapping("/oneandoneAnswer.do")
 		   public ModelAndView oneandoneContent(int idx){  
@@ -202,14 +235,24 @@ public class AdminCsCenterController {
 				mav.setViewName("admin/oneandoneMsg");
 				return mav;
 		  }
+		  
 		  //1:1문의 삭제
+		  
 		  @RequestMapping("/oneandoneDelete.do")
-		  public ModelAndView oneandoneDelete(int idx){
+			public ModelAndView oneandoneDelete(HttpServletRequest req){
+				int idx=(Integer.parseInt(req.getParameter("idx")));
+				ModelAndView mav=new ModelAndView();
+				mav.addObject("idx", idx);
+				mav.setViewName("admin/oneandoneDel");
+				return mav;
+			}
+		  @RequestMapping("/oneandoneDelete_ok.do")
+		  public ModelAndView oneandoneDelete_ok(int idx){
 			  int result=csoneandoneDao.oneandoneDelete(idx);
 				 String msg=result>0?"1:1문의글삭제성공!":"1:1문의글삭제실패!";
 				  ModelAndView mav=new ModelAndView();
 				  mav.addObject("msg",msg);
-				  mav.setViewName("admin/oneandoneMsg");
+				  mav.setViewName("admin/adminMsg");
 				  return mav; 
 		  }
 		  //이용안내 리스트
@@ -260,14 +303,23 @@ public class AdminCsCenterController {
 				mav.setViewName("admin/useguideUpdate");
 				return mav;
 			}
+			
 			//이용안내글삭제
 			@RequestMapping("/useguideDelete.do")
-			public ModelAndView useguideDelete(int idx){
+			public ModelAndView useguideDelete(HttpServletRequest req){
+				int idx=(Integer.parseInt(req.getParameter("idx")));
+				ModelAndView mav=new ModelAndView();
+				mav.addObject("idx", idx);
+				mav.setViewName("admin/useguideDel");
+				return mav;
+			}
+			@RequestMapping("/useguideDelete_ok.do")
+			public ModelAndView useguideDelete_ok(int idx){
 				 int result=csuseguideDao.useguideDelete(idx);
 				 String msg=result>0?"이용안내글삭제성공!":"이용안내글삭제실패!";
 				  ModelAndView mav=new ModelAndView();
 				  mav.addObject("msg",msg);
-				  mav.setViewName("admin/useguideMsg");
+				  mav.setViewName("admin/adminMsg");
 				  return mav;
 			}
 	
