@@ -4,5 +4,12 @@ import su.member.model.MemberDTO;
 
 public interface MypageDAO {
 
-	public MemberDTO getAllUserInfo(String userid);
+	public MemberDTO getAllUserInfo(String sid);
+	
+	public int myProfileUpdate(MypageDTO dto);
+	
+	
+	
+	
+	
 }

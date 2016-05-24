@@ -1,60 +1,70 @@
 package su.mypage.model;
 
+import java.sql.Date;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class MypageDTO {
-	private int idx;
-	private String userid;
-	private String aim;
-	private String startspot;
-	private String endspot;
-	private String route;
-	private String startcoordi;
-	private String endcoordi;
-	private String routecoordi;
-	private String starttime;
-	private int mannum;
-	private String gender;
-	private int pay;
-	private String smoking;
-	private String pluscontent;
-	private String wirtedate;
-	private String status;
-	private String type;
-	private String startdate;
-	private String enddate;
-	private String days;
-	private String location;
 	
+	private int idx;
+	private String id;
+	private String pwd;
+	private String pwd2;
+	private String name;
+	private String birth;
+	private String phonenum;
+	private String addr;
+	private String fullemail;
+	private String email;
+	private String email2;
+	private String sex;
+	private String grade;
+	private String carhave;
+	private Date joindate;
+	
+	
+	
+
+
+
+
 	public MypageDTO() {
 		super();
 	}
 
-	public MypageDTO(int idx, String userid, String aim, String startspot, String endspot, String route,
-			String startcoordi, String endcoordi, String routecoordi, String starttime, int mannum, String gender,
-			int pay, String smoking, String pluscontent, String wirtedate, String status, String type, String startdate,
-			String enddate, String days, String location) {
+
+
+	public MypageDTO(String id, String name, String birth, String phonenum, String addr, String email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.birth = birth;
+		this.phonenum = phonenum;
+		this.addr = addr;
+		this.email = email;
+	}
+
+
+
+	public MypageDTO(int idx, String id, String pwd, String pwd2, String name, String birth, String phonenum,
+			String addr, String fullemail, String email, String email2, String sex, String grade, String carhave,
+			Date joindate) {
 		super();
 		this.idx = idx;
-		this.userid = userid;
-		this.aim = aim;
-		this.startspot = startspot;
-		this.endspot = endspot;
-		this.route = route;
-		this.startcoordi = startcoordi;
-		this.endcoordi = endcoordi;
-		this.routecoordi = routecoordi;
-		this.starttime = starttime;
-		this.mannum = mannum;
-		this.gender = gender;
-		this.pay = pay;
-		this.smoking = smoking;
-		this.pluscontent = pluscontent;
-		this.wirtedate = wirtedate;
-		this.status = status;
-		this.type = type;
-		this.startdate = startdate;
-		this.enddate = enddate;
-		this.days = days;
-		this.location = location;
+		this.id = id;
+		this.pwd = pwd;
+		this.pwd2 = pwd2;
+		this.name = name;
+		this.birth = birth;
+		this.phonenum = phonenum;
+		this.addr = addr;
+		this.fullemail = fullemail;
+		this.email = email;
+		this.email2 = email2;
+		this.sex = sex;
+		this.grade = grade;
+		this.carhave = carhave;
+		this.joindate = joindate;
 	}
 
 	public int getIdx() {
@@ -65,172 +75,116 @@ public class MypageDTO {
 		this.idx = idx;
 	}
 
-	public String getUserid() {
-		return userid;
+	public String getId() {
+		return id;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public String getAim() {
-		return aim;
+	public String getPwd() {
+		return pwd;
 	}
 
-	public void setAim(String aim) {
-		this.aim = aim;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
-	public String getStartspot() {
-		return startspot;
+	public String getPwd2() {
+		return pwd2;
 	}
 
-	public void setStartspot(String startspot) {
-		this.startspot = startspot;
+	public void setPwd2(String pwd2) {
+		this.pwd2 = pwd2;
 	}
 
-	public String getEndspot() {
-		return endspot;
+	public String getName() {
+		return name;
 	}
 
-	public void setEndspot(String endspot) {
-		this.endspot = endspot;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getRoute() {
-		return route;
+	public String getBirth() {
+		return birth;
 	}
 
-	public void setRoute(String route) {
-		this.route = route;
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 
-	public String getStartcoordi() {
-		return startcoordi;
+	public String getPhonenum() {
+		return phonenum;
 	}
 
-	public void setStartcoordi(String startcoordi) {
-		this.startcoordi = startcoordi;
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum;
 	}
 
-	public String getEndcoordi() {
-		return endcoordi;
+	public String getAddr() {
+		return addr;
 	}
 
-	public void setEndcoordi(String endcoordi) {
-		this.endcoordi = endcoordi;
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 
-	public String getRoutecoordi() {
-		return routecoordi;
+	public String getFullemail() {
+		return fullemail;
 	}
 
-	public void setRoutecoordi(String routecoordi) {
-		this.routecoordi = routecoordi;
+	public void setFullemail(String fullemail) {
+		this.fullemail = fullemail;
 	}
 
-	public String getStarttime() {
-		return starttime;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setStarttime(String starttime) {
-		this.starttime = starttime;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public int getMannum() {
-		return mannum;
+	public String getEmail2() {
+		return email2;
 	}
 
-	public void setMannum(int mannum) {
-		this.mannum = mannum;
+	public void setEmail2(String email2) {
+		this.email2 = email2;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getSex() {
+		return sex;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
-	public int getPay() {
-		return pay;
+	public String getGrade() {
+		return grade;
 	}
 
-	public void setPay(int pay) {
-		this.pay = pay;
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 
-	public String getSmoking() {
-		return smoking;
+	public String getCarhave() {
+		return carhave;
 	}
 
-	public void setSmoking(String smoking) {
-		this.smoking = smoking;
+	public void setCarhave(String carhave) {
+		this.carhave = carhave;
 	}
 
-	public String getPluscontent() {
-		return pluscontent;
+	public Date getJoindate() {
+		return joindate;
 	}
 
-	public void setPluscontent(String pluscontent) {
-		this.pluscontent = pluscontent;
-	}
-
-	public String getWirtedate() {
-		return wirtedate;
-	}
-
-	public void setWirtedate(String wirtedate) {
-		this.wirtedate = wirtedate;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getStartdate() {
-		return startdate;
-	}
-
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
-	}
-
-	public String getEnddate() {
-		return enddate;
-	}
-
-	public void setEnddate(String enddate) {
-		this.enddate = enddate;
-	}
-
-	public String getDays() {
-		return days;
-	}
-
-	public void setDays(String days) {
-		this.days = days;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
+	public void setJoindate(Date joindate) {
+		this.joindate = joindate;
 	}
 	
 	

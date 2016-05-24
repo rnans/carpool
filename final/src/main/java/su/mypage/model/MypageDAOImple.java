@@ -15,9 +15,9 @@ public class MypageDAOImple implements MypageDAO {
 		this.sqlMap = sqlMap;
 	}
 	
-	public MemberDTO getAllUserInfo(String userid) {
-		List list=sqlMap.selectList("getUserInfo", userid);
-		
+	public MemberDTO getAllUserInfo(String sid) {
+		List list=sqlMap.selectList("UserInfo", sid);
+
 		if(list==null)
 		{
 			return null;
@@ -27,5 +27,29 @@ public class MypageDAOImple implements MypageDAO {
 		
 		return dto;
 	}
+
+
+
+	public int myProfileUpdate(MypageDTO dto) {
+		int count=sqlMap.update("ProfileUpdate",dto);
+		return count;
+	}
+
+	public int userPwdUpdate(String userpwd) {
+		
+		int count=sqlMap.update("userPwdUpdate", userpwd);
+		return count;
+	}
+
+
+
+
+
+
+	
+	
+	
+
+	
 
 }
