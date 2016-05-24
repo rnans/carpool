@@ -36,6 +36,10 @@ window.onload=function()
 	{
 		male.checked=true;
 	}
+	else if(sex=="여자")
+	{
+		female.checked=true;
+	}
 }
 </script>
 </head>
@@ -70,8 +74,8 @@ window.onload=function()
 			
 			<input type="file">
 			</div>
-			<input type="button" value="취소" onclick="poolAdd.do">
-			<input type="button" value="수정" onclick="poolAdd01Edit.do">  
+			<input type="button" value="취소" onclick="location.href='poolAdd'">
+			<input type="button" value="수정" onclick="edifProfile()">  
 			<input type="submit" value="다음"> 
 			</form>
 		</fieldset>

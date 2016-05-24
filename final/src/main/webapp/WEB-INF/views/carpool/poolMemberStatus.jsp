@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<section>
-<article>
-<h1>예약 진행 상황 보기</h1>
-<div id="tab">
-<a href="poolMasterList.do">파티 오너</a>
-<a href="poolMemberList.do">파티 멤버</a>
-<div>
-<h2>나에게 들어온 요청 목록</h2>
-<div>
+<h1>내가 작성한 탈게요 글 목록</h1>
 <table>
 	<thead>
 		<tr>
@@ -25,13 +17,13 @@
 			<th>도착</th>
 			<th>유형</th>
 			<th>인원/금액</th>
-			<th>수락/거절</th>
+			<th>수정/삭제</th>
 		</tr>
 	</thead>
 	<tbody>
 <c:if test="${empty list }">
 <tr>
- <td colspan="6" align="center">나에게 들어온 요청이 없습니다.</td>
+ <td colspan="6" align="center">작성된 글이 없습니다.</td>
 </tr>
  </c:if>
 		
@@ -47,7 +39,7 @@
  <td>${dtos.endspot }</td>
  <td>${dtos.type }</td>
  <td>${dtos.mannum }/${dtos.pay }</td>
-
+ <td><a href="">수정</a> <a href="">삭제</a></td>
 </tr>
  </c:forEach>
 </tbody>
@@ -57,10 +49,5 @@
  </tr>
  </tfoot>
 </table>
-</div>
-</div>
-</div>
-</article>
-</section>
 </body>
 </html>

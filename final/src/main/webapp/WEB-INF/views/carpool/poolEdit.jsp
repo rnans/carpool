@@ -409,7 +409,7 @@ function viewLong()
 </article>
 <article>
 <div>
-<c:if test="${dto.type eq '단기' }">
+<c:if test="${dto.termtype eq '단기' }">
 <div id="shortTerm">
 <form id="f" name="poolEdit" action="poolEdit.do" method="GET">
 <input type="hidden" id="sdate" value="${dto.starttime}">
@@ -419,8 +419,8 @@ function viewLong()
 <div>출발지 <input type="text" name="startspot" value="${dto.startspot }"></div>
 <div>경유지 <input type="text" name="route" value="${dto.route }"></div>
 <div>도착지 <input type="text" name="endspot" value="${dto.endspot }"></div>
-<div>타입<input type="radio" id="short" name="type" value="단기" onclick="viewShort()">단기 
-		<input type="radio" id="long" name="type" value="정기" onclick="viewLong()">정기
+<div>타입<input type="radio" id="short" name="termtype" value="단기" onclick="viewShort()">단기 
+		<input type="radio" id="long" name="termtype" value="정기" onclick="viewLong()">정기
 		</div>
 		
 		출발일시<select id="yearEl" name="sy">
@@ -476,7 +476,7 @@ ${dto.pluscontent}</textarea>
 </div>
 
 <div>
-<c:if test="${dto.type eq '정기' }">
+<c:if test="${dto.termtype eq '정기' }">
 <div id="longTerm">
 <form id="f2" name="poolEdit" action="poolEdit.do" method="POST">
 <input type="hidden" id="sdate" value="${dto.starttime}">
@@ -486,8 +486,8 @@ ${dto.pluscontent}</textarea>
 <div>출발지 <input type="text" name="startspot" value="${dto.startspot }"></div>
 <div>경유지 <input type="text" name="route" value="${dto.route }"></div>
 <div>도착지 <input type="text" name="endspot" value="${dto.endspot }"></div>
-<div>타입<input type="radio" id="short" name="type" value="단기">단기 
-		<input type="radio" id="long" name="type" value="정기">정기
+<div>타입<input type="radio" id="short" name="termtype" value="단기">단기 
+		<input type="radio" id="long" name="termtype" value="정기">정기
 		</div>
 
 

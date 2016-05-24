@@ -1,5 +1,7 @@
 package su.pool.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import su.pool.model.PoolDAO;
+import su.pool.model.PoolDTO;
 import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolStatusDAO;
 
@@ -64,4 +67,19 @@ public class PoolStatusController
 		
 	}
 	
+	@RequestMapping("/viewOwnMemberPoolList")
+	public ModelAndView viewOwnMemberPool(@RequestParam(value="cp", defaultValue="1")int cp)
+	{
+		int totalCnt=poolDao.getTotalCnt();
+		int listSize=10;
+		int pageSize=5;
+		List<PoolDTO> list=poolDao.viewAllList(cp,listSize);
+		String pageStr=
+			su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("pageStr",pageStr);
+		mav.setViewName("carpool/poolList");
+		return mav;
+	}
 }

@@ -104,11 +104,11 @@ function viewNextPage()
 					<td>${sessionScope.data.smoking }</td>
 				</tr>
 				<tr>
-					<c:if test="${sessionScope.data.type eq '단기'}">	
+					<c:if test="${sessionScope.data.termtype eq '단기'}">	
 					<th>출발일시</th>
 					<td>${sessionScope.data.starttime}</td>
 					</c:if>
-					<c:if test="${sessionScope.data.type eq '정기'}">
+					<c:if test="${sessionScope.data.termtype eq '정기'}">
 					<th>출발일시</th>
 					<td>${sessionScope.data.starttime}</td>
 					<th>종료일시</th>
@@ -129,7 +129,7 @@ function viewNextPage()
 	
 			<p>
 				<input type="button" value="이전">
-				<input type="button" value="등록" onclick="viewNextPage()">
+				<input type="button" value="완료" onclick="viewNextPage()">
 			</p>
 
 	</div>

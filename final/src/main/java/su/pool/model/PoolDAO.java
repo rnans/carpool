@@ -9,6 +9,10 @@ public interface PoolDAO
 	
 	public int poolMemberLongAdd(PoolDTO dto);
 	
+	public int poolMasterShortAdd(PoolDTO dto);
+	
+	public int poolMasterLongAdd(PoolDTO dto);
+	
 	public MemberDTO getAllUserInfo(String userid);
 	
 	public int getTotalCnt();
@@ -30,4 +34,6 @@ public interface PoolDAO
 	public int poolMemberLongEdit(PoolDTO dto);
 	
 	public int poolDel(int idx);
+	
+
 }

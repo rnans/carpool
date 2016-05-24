@@ -37,12 +37,31 @@
 
 
 </style>
-
+<script>
+function viewNextPage()
+{
+	var f=document.getElementById("form");
+	var pc=document.getElementById("content");
+	var type='${sessionScope.data.type}'
+	
+	if(type=='정기')
+	{
+		f.method='POST';
+	}
+	
+	if(pc.value==null)
+	{
+		pc.value=" ";
+	}
+	f.submit();
+	
+}
+</script>
 </head>
 <body>
 <h2>카풀등록 페이지6</h2>
 
-<form  name="carPoolJoin" action="poolMasterAdd06.do">
+<form id="form" name="f" action="poolMasterAdd06.do" method="get">
 	<div id="div1">
 		<img src="1234.jpg" border="100"><br>
 		<input type="button" name="pf" value="프로필사진수정" align="center">
@@ -58,37 +77,45 @@
 			
 		<tfoot>
 			<tr>
-				<th><textarea  name="poolContent" rows="5" cols="50"></textarea> </th>
+				<th><textarea id="content" name="pluscontent" rows="5" cols="50"></textarea> </th>
 				<td></td>
 			</tr>
 		</tfoot>
 			
 			<tbody>
 			<tr>
-				<th>출발지></th>
-					<td>${sessionScope.data.startAddr }</td>
-					<th>경유지></th>
-					<td>${sessionScope.data.passAddr }</td>
-					<th>도착지></th>
-					<td>${sessionScope.data.endAddr}</td>
+				<th>출발지</th>
+					<td>${sessionScope.data.startspot }</td>
+					<th>경유지</th>
+					<td>${sessionScope.data.route }</td>
+					<th>도착지</th>
+					<td>${sessionScope.data.endspot}</td>
 			</tr>
 				<tr>
-					<th>목적></th>
-					<td>${sessionScope.data.object }</td>
+					<th>목적</th>
+					<td>${sessionScope.data.aim }</td>
 				</tr>
 				<tr>
-					<th>인원></th>
-					<td>${sessionScope.data.maxnum }</td>
-					<th>희망성별></th>
-					<td>${sessionScope.data.hopesex }</td>
-					<th>성별></th>
-					<td>${sessionScope.data.hopesex }</td>
-					<th>흡연></th>
+					<th>인원</th>
+					<td>${sessionScope.data.mannum }</td>
+					<th>성별</th>
+					<td>${sessionScope.data.gender }</td>
+					<th>흡연</th>
 					<td>${sessionScope.data.smoking }</td>
 				</tr>
 				<tr>
-					<th>출발일시></th>
-					<td>${sessionScope.data.validity }/${sessionScope.data.starttime }</td>
+					<c:if test="${sessionScope.data.termtype eq '단기'}">	
+					<th>출발일시</th>
+					<td>${sessionScope.data.starttime}</td>
+					</c:if>
+					<c:if test="${sessionScope.data.termtype eq '정기'}">
+					<th>출발일시</th>
+					<td>${sessionScope.data.starttime}</td>
+					<th>종료일시</th>
+					<td>${sessionScope.data.enddate }</td>
+					<th>반복</th>
+					<td>${sessionScope.data.days }</td>
+					</c:if>
 				</tr>
 			</tbody>
 		</table>

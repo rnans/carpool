@@ -24,6 +24,17 @@ public class PoolMemberStatusDTO {
 		this.status = status;
 		this.mans = mans;
 	}
+	
+	
+	
+	public PoolMemberStatusDTO(String memberid, int ownidx, String status, String mans) {
+		super();
+		this.memberid = memberid;
+		this.ownidx = ownidx;
+		this.status = status;
+		this.mans = mans;
+	}
+
 	public int getIdx() {
 		return idx;
 	}

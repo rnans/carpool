@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <style>
 #div1{
@@ -32,11 +32,11 @@ window.onload=function()
 	var male=document.getElementById('male');
 	
 	
-	if(sex=="ë‚¨ì")
+	if(sex=="³²ÀÚ")
 	{
 		male.checked=true;
 	}
-	if(sex=="ì—¬ì")
+	else if(sex=="¿©ÀÚ")
 	{
 		female.checked=true;
 	}
@@ -46,40 +46,41 @@ window.onload=function()
 <body>
 
 	<fieldset>
-		<legend>ì¹´í’€ ë“±ë¡</legend>
-		<form name="userInfo" action="poolMasterAdd02.do">
+		<legend>Ä«Ç® µî·Ï</legend>
 		<fieldset>
-			<legend>ê°œì¸ ì •ë³´</legend>
+			<legend>°³ÀÎ Á¤º¸</legend>
+			<form name="userInfo" action="poolMasterAdd02.do">
 			<div id="div1">
-			ì´ë¦„:<input type="text" name="name" value="${dto.name }" readonly> 
+			ÀÌ¸§ <input type="text" name="name" value="${dto.name }"> 
 			<br>
-			ì•„ì´ë””:<input type="text" name="id" value="${dto.id }"readonly>
+			¾ÆÀÌµğ <input type="text" name="id" value="${dto.id }">
 			<br>
-			ì£¼ì†Œ:<input type="text" name="addr" value="${dto.addr }"readonly>
+			ÁÖ¼Ò <input type="text" name="addr" value="${dto.addr}">
 			<br>
-			ì´ë©”ì¼:<input type="text" name="email" value="${dto.email }"readonly>
+			ÀÌ¸ŞÀÏ <input type="text" name="email" value="${dto.email}">
 			<br>
-			ìƒë…„ì›”ì¼<input type="text" name="birthday" value="${dto.birth }"readonly>
+			»ı³â¿ùÀÏ <input type="text" name="birthday" value="${dto.birth }">
 			<br>
-			ì „í™”ë²ˆí˜¸:<input type="text" name="phonenumber" value="${dto.phonenum }"readonly>
+			ÀüÈ­¹øÈ£ <input type="text" name="phonenumber" value="${dto.phonenum }">
 			<br>
-			ì„±ë³„:<input type="radio"  name="sex" value="ë‚¨ì„±" id="male"readonly>ë‚¨ì„±
-			<input type="radio" name="sex" value="ì—¬ì„±" id="female"readonly>ì—¬ì„±
+			¼ºº° <input type="radio"  name="sex" value="³²¼º" id="male">³²¼º
+			<input type="radio" name="sex" value="¿©¼º" id="female">¿©¼º
 			<br>
 			</div>
 			<div id="div2">
-			<img src='ì´ë¯¸ì§€ ê²½ë¡œëª…' width="100" height="100"/>
+			<img src='ÀÌ¹ÌÁö °æ·Î¸í' width="100" height="100"/>
 			<br>
 			
 			
 			<input type="file">
 			</div>
+			<input type="button" value="Ãë¼Ò" onclick="location.href='poolAdd'">
+			<input type="button" value="¼öÁ¤" onclick="edifProfile()">  
+			<input type="submit" value="´ÙÀ½"> 
+			</form>
 		</fieldset>
 		<br>
-		<input type="button" value="ì·¨ì†Œ" onclick="poolAdd.do">
-			<input type="button" value="ìˆ˜ì •" onclick="poolAdd01Edit.do">  
-			<input type="submit" value="ë‹¤ìŒ"> 
-			</form>
+		
 	</fieldset>
 </body>
 </html>

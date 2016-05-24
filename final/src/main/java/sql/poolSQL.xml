@@ -6,9 +6,9 @@
 	<select id="getUserInfo" parameterType="String" resultType="su.member.model.MemberDTO">
 		select * from userinfo where id=#{id}
 	</select>
-
 	<insert id="poolMemberShortAdd" parameterType="su.pool.model.PoolDTO">
-		insert into reservationlist 
+		insert into reservationlist
+		(idx,userid,aim,startspot,endspot,route,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate) 
 		values(
 		reservationlist_idx.nextval,
 		#{userid},
@@ -16,25 +16,23 @@
 		#{startspot},
 		#{endspot},
 		#{route},
-		'test',
-		'test',
-		'test',
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		#{mannum},
-		#{gender},
 		#{pay},
 		#{smoking},
 		#{pluscontent},
+		#{gender},
 		sysdate,
 		'모집중',
-		#{type},
+		#{pooltype},
+		#{termtype},
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
-		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
-		'test',
-		'서울')
+		TO_date(#{starttime},'yyyy-mm-dd hh24:mi')
+		)
 	</insert>
  	<insert id="poolMemberLongAdd" parameterType="su.pool.model.PoolDTO">
-		insert into reservationlist 
+		insert into reservationlist
+		(idx,userid,aim,startspot,endspot,route,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,days) 
 		values(
 		reservationlist_idx.nextval,
 		#{userid},
@@ -42,23 +40,75 @@
 		#{startspot},
 		#{endspot},
 		#{route},
-		'test',
-		'test',
-		'test',
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		#{mannum},
-		#{gender},
 		#{pay},
 		#{smoking},
 		#{pluscontent},
+		#{gender},
 		sysdate,
 		'모집중',
-		#{type},
-		to_date(#{startdate},'yyyy-mm-dd'),
-		to_date(#{enddate},'yyyy-mm-dd'),
-		#{days},
-		'서울')
+		#{pooltype},
+		#{termtype},
+		TO_date(#{startdate},'yyyy-mm-dd'),
+		TO_date(#{enddate},'yyyy-mm-dd'),
+		#{days}
+		)
 	</insert>
+	<insert id="poolMasterShortAdd" parameterType="su.pool.model.PoolDTO">
+		insert into reservationlist
+		(idx,userid,aim,startspot,endspot,route,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,poolname,caridx) 
+		values(
+		reservationlist_idx.nextval,
+		#{userid},
+		#{aim},
+		#{startspot},
+		#{endspot},
+		#{route},
+		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		#{mannum},
+		#{pay},
+		#{smoking},
+		#{pluscontent},
+		#{gender},
+		sysdate,
+		'모집중',
+		#{pooltype},
+		#{termtype},
+		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		#{poolname},
+		#{caridx}
+		)
+	</insert>
+ 	<insert id="poolMasterLongAdd" parameterType="su.pool.model.PoolDTO">
+		insert into reservationlist
+		(idx,userid,aim,startspot,endspot,route,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,days,poolname,caridx) 
+		values(
+		reservationlist_idx.nextval,
+		#{userid},
+		#{aim},
+		#{startspot},
+		#{endspot},
+		#{route},
+		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		#{mannum},
+		#{pay},
+		#{smoking},
+		#{pluscontent},
+		#{gender},
+		sysdate,
+		'모집중',
+		#{pooltype},
+		#{termtype},
+		TO_date(#{startdate},'yyyy-mm-dd'),
+		TO_date(#{enddate},'yyyy-mm-dd'),
+		#{days},
+		#{poolname},
+		#{caridx}
+		)
+	</insert>
+	
 	
 	<select id="totalCnt" resultType="int">
 		select count(*) from reservationlist
@@ -92,7 +142,7 @@
 			pluscontent,
 			to_char(writedate,'yyyy-mm-dd') writedate,
 			status,
-			type,
+			termtype,
 			to_char(startdate,'yyyy-mm-dd') startdate,
 			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
@@ -122,7 +172,7 @@
 			pluscontent,
 			to_char(writedate,'yyyy-mm-dd') writedate,
 			status,
-			type,
+			termtype,
 			to_char(startdate,'yyyy-mm-dd') startdate,
 			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
@@ -152,7 +202,7 @@
 			pluscontent,
 			to_char(writedate,'yyyy-mm-dd') writedate,
 			status,
-			type,
+			termtype,
 			to_char(startdate,'yyyy-mm-dd') startdate,
 			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
@@ -182,7 +232,7 @@
 			pluscontent,
 			to_char(writedate,'yyyy-mm-dd') writedate,
 			status,
-			type,
+			termtype,
 			to_char(startdate,'yyyy-mm-dd') startdate,
 			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
@@ -203,7 +253,7 @@
 		pay=#{pay},
 		smoking=#{smoking},
 		pluscontent=#{pluscontent},
-		type=#{type},
+		termtype=#{termtype},
 		startdate=TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		enddate=TO_date(#{starttime},'yyyy-mm-dd hh24:mi') 
 		where idx=#{idx}
@@ -222,7 +272,7 @@
 		pay=#{pay},
 		smoking=#{smoking},
 		pluscontent=#{pluscontent},
-		type=#{type},
+		termtype=#{termtype},
 		startdate=TO_date(#{startdate},'yyyy-mm-dd'),
 		enddate=TO_date(#{enddate},'yyyy-mm-dd'),
 		days=#{days} 

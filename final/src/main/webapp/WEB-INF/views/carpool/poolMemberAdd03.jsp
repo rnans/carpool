@@ -284,7 +284,7 @@ function viewTerm()
 	</div>
 	<div id="short">
 		<form name="shortup" action="poolMemberAdd04.do" method="get">
-		타입<input type="hidden" name="type" value="단기">
+		타입<input type="hidden" name="termtype" value="단기">
 		<br>
 		출발일시<select id="yearEl" name="sy">
 			</select>년
@@ -336,7 +336,7 @@ function viewTerm()
 
 	<div id="term">
 		<form name="termup" action="poolMemberAdd04.do" method="post">
-		<input type="hidden" name="type" value="정기">
+		<input type="hidden" name="termtype" value="정기">
 		<div id="div2">
 		기간
 		<select id="lsy" name="lsy">

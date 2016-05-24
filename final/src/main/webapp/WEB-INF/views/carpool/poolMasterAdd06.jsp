@@ -11,18 +11,19 @@
 <body>
 <fieldset>
 <legend>카풀 등록</legend>
-<fieldset>
-		<legend>커뮤니티 정보</legend>
-		카풀명:<input type="text" value="카풀 01"> 
+<form name="poolNameform" action="poolMasterAddConfirm.do">
+		카풀명:<input type="text" name="poolname" placeholder="카폴 이름을 입력하세요."> 
 		<br>
 		소개글
 		<br>
 		<input type="text" value="ㅎㅇ"> 
 		<br>
-	</fieldset>
+
 	<br>
 	<input type="button" value="이전"> 
-			<input type="submit" value="다음"> 
-			</fieldset>
+			<input type="submit" value="완료">
+			</form> 
+</fieldset>
+			
 </body>
 </html>

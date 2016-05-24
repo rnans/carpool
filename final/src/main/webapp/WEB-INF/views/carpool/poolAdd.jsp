@@ -10,7 +10,7 @@
 <%@ include file="../header.jsp" %>
 <fieldset>
 		<legend>카풀 등록</legend>
-		<a href="poolMemberAdd.do">탈께요</a>
+		<a href="poolMemberAdd.do">탈래요</a>
 		<a href="poolMasterAdd.do">타세요</a>
 		<br>
 	</fieldset>
