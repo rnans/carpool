@@ -4,14 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.comm">
 
-	<select id="commWrite" parameterType="su.comm.model.commBBSDTO">
+	<insert id="commWrite" parameterType="su.comm.model.commBBSDTO">
 		insert into commbbs values(comm_idx.nextval, 'test',
         #{id},  #{content},  sysdate)
-	</select>
+	</insert>
 	
 	<select id="bbsList" resultType="su.comm.model.commBBSDTO">
 			select * from commBBS
 	</select>
-	
-</mapper>
 
+	<insert id="scheWrite" parameterType="su.comm.model.scheDTO">
+		insert into schedule values(schedule_idx.nextval,  #{id}, 'test', 
+		#{subject, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, #{startday, jdbcType=VARCHAR},  #{endday, jdbcType=VARCHAR}, #{banbok, jdbcType=VARCHAR}, sysdate)
+	</insert>
+	
+	<select id="scheList" resultType="su.comm.model.scheDTO">
+			select * from schedule
+	</select>
+	
+
+</mapper>
