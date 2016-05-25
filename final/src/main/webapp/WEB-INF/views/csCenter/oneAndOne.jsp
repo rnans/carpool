@@ -30,6 +30,7 @@
 </thead>
 </table>
 </div>
+<div>로그인해야지  들어올수있습니다.</div>
 <table border="1">
 <thead>
 <tr>

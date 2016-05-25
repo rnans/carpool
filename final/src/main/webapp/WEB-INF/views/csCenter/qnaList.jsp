@@ -6,17 +6,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
-<script type="text/javascript">
-$(function(){
-  $('.btn_show').click(function(){
-    $('.btn_word').show();
-  });
-  $('.btn_hide').click(function(){
-    $('.btn_word').hide();
-  });
-});
-</script>
+<script src="/final2/js/jquery-1.12.4.min"></script>
+<script language="javascript">
+
+function QnaShow(qna) {
+ 
+$('.tr').css('display','none');
+	
+ var obj=document.getElementById(qna);
+	 
+ obj.style.display = "block";
+}
+</script> 
+
 <body>
 <div>헤더부분</div>
 <%@include file="../header.jsp" %>
@@ -50,13 +52,11 @@ $(function(){
  </c:if>
 <c:forEach var="qna" items="${list }" >
 <tr>
- <td><button class="btn_show" style="padding:10px,10px ">제목:${qna.subject}</button>
- <button class="btn_hide" style="padding:5px">닫기</button>
- </td>
+  <td><a href="javascript:QnaShow('qna${qna.idx }')">${qna.subject }</a></td>
  </tr>
- <tr>
- <td><div class="btn_word">내용:${qna.content}</div></td>
-</tr>
+ <tr class="tr" id="qna${qna.idx}" style="display:none;">
+   <td>${qna.content }</td>
+ </tr>
  </c:forEach>
 </tbody>
 <tfoot>

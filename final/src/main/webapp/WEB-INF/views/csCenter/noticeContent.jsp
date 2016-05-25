@@ -38,11 +38,11 @@
 <legend>공지사항</legend>
 글번호:<input type="text" name="idx" value="${list[0].idx}" readonly="readonly">
 작성날짜:<input type="text" name="writedate" value="${list[0].writedate }" readonly="readonly"><br>
+글쓴이:<input type="text" name="writer" value="${list[0].writer}" readonly="readonly"> 
 조회수:<input type="text" name="readnum" value="${list[0].readnum}" readonly="readonly"><br>
 제목:<input type="text" name="subject" value="${list[0].subject}" readonly="readonly"> <br>
-글쓴이:<input type="text" name="writer" value="${list[0].writer}" readonly="readonly"> 
 <br>
-<textarea name="content" cols="55" rows="25" value="${list[0].content}" readonly="readonly">${list[0].content} </textarea><br>
+<textarea name="content" cols="55" rows="25"  readonly="readonly">${list[0].content} </textarea><br>
 <a href="csCenter.do">이전페이지로</a>
 </fieldset>
 </section>

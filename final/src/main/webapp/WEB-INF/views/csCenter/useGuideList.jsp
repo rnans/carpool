@@ -6,6 +6,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script src="/final2/js/jquery-1.12.4.min"></script>
+<script language="javascript">
+
+function UseGuideShow(useguide) {
+ 
+$('.tr').css('display','none');
+	
+ var obj=document.getElementById(useguide);
+	 
+ obj.style.display = "block";
+}
+</script> 
+
 <body>
 <div>헤더부분</div>
 <%@include file="../header.jsp" %>
@@ -38,11 +51,11 @@
  </c:if>
 <c:forEach var="useguide" items="${list }">
 <tr>
- <td>제목:${useguide.subject}</td>
+  <td><a href="javascript:UseGuideShow('useguide${useguide.idx }')">${useguide.subject }</a></td>
  </tr>
- <tr>
- <td>내용:${useguide.content}</td>
-</tr>
+ <tr class="tr" id="useguide${useguide.idx}" style="display:none;">
+   <td>${useguide.content }</td>
+ </tr>
  </c:forEach>
 </tbody>
 <tfoot>
