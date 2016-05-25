@@ -5,91 +5,120 @@ public class carInfoDTO {
 	private int idx;
 	private String id;
     private String driver;
-    private String carId;
-    private String carNum;
-    private String carType;
-    private String confirmPhoto;
+    private String carid;
+    private String carnum;
+    private String cartype;
+    private String confirmphoto;
     private String confirm;
     
 	public carInfoDTO() {
 		super();
 	}
-	
-	
 
-	public carInfoDTO(String id, String driver, String carId, String carNum, String carType, String confirmPhoto) {
+	public carInfoDTO(int idx) {
+		super();
+		this.idx = idx;
+	}
+
+	public carInfoDTO(int idx, String driver, String carnum, String cartype, String confirmphoto) {
+		super();
+		this.idx = idx;
+		this.driver = driver;
+		this.carnum = carnum;
+		this.cartype = cartype;
+		this.confirmphoto = confirmphoto;
+	}
+
+	public carInfoDTO(String id, String driver, String carid, String carnum, String cartype, String confirmphoto) {
 		super();
 		this.id = id;
 		this.driver = driver;
-		this.carId = carId;
-		this.carNum = carNum;
-		this.carType = carType;
-		this.confirmPhoto = confirmPhoto;
+		this.carid = carid;
+		this.carnum = carnum;
+		this.cartype = cartype;
+		this.confirmphoto = confirmphoto;
 	}
 
-
-
-	public carInfoDTO(int idx, String id, String driver, String carId, String carNum, String carType,
-			String confirmPhoto, String confirm) {
+	public carInfoDTO(int idx, String id, String driver, String carid, String carnum, String cartype,
+			String confirmphoto, String confirm) {
 		super();
 		this.idx = idx;
 		this.id = id;
 		this.driver = driver;
-		this.carId = carId;
-		this.carNum = carNum;
-		this.carType = carType;
-		this.confirmPhoto = confirmPhoto;
+		this.carid = carid;
+		this.carnum = carnum;
+		this.cartype = cartype;
+		this.confirmphoto = confirmphoto;
 		this.confirm = confirm;
 	}
 
 	public int getIdx() {
 		return idx;
 	}
+
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getDriver() {
 		return driver;
 	}
+
 	public void setDriver(String driver) {
 		this.driver = driver;
 	}
-	public String getCarId() {
-		return carId;
+
+	public String getCarid() {
+		return carid;
 	}
-	public void setCarId(String carId) {
-		this.carId = carId;
+
+	public void setCarid(String carid) {
+		this.carid = carid;
 	}
-	public String getCarNum() {
-		return carNum;
+
+	public String getCarnum() {
+		return carnum;
 	}
-	public void setCarNum(String carNum) {
-		this.carNum = carNum;
+
+	public void setCarnum(String carnum) {
+		this.carnum = carnum;
 	}
-	public String getCarType() {
-		return carType;
+
+	public String getCartype() {
+		return cartype;
 	}
-	public void setCarType(String carType) {
-		this.carType = carType;
+
+	public void setCartype(String cartype) {
+		this.cartype = cartype;
 	}
-	public String getConfirmPhoto() {
-		return confirmPhoto;
+
+	public String getConfirmphoto() {
+		return confirmphoto;
 	}
-	public void setConfirmPhoto(String confirmPhoto) {
-		this.confirmPhoto = confirmPhoto;
+
+	public void setConfirmphoto(String confirmphoto) {
+		this.confirmphoto = confirmphoto;
 	}
+
 	public String getConfirm() {
 		return confirm;
 	}
+
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
 	}
+	
+	
+
+	
 	
     
 }

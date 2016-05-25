@@ -65,13 +65,12 @@ public class carInfoController
 		
 	}
 	@RequestMapping(value = "/carUpdate.do", method = RequestMethod.GET)
-	public ModelAndView carUpdateForm(HttpServletRequest req) {
+	public ModelAndView carUpdateForm(carInfoDTO dto) {
 		
-		int idx=(Integer.parseInt(req.getParameter("idx")));
-		System.out.println(idx);
-		List<carInfoDTO> list = carInfoDao.carList(idx);
+		carInfoDTO idxList = carInfoDao.carList(dto);
+		System.out.println(dto.getIdx());
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", list);
+		mav.addObject("idxList", idxList);
 		mav.setViewName("carManage/carUpdate");
 		return mav;
 	}
@@ -79,7 +78,7 @@ public class carInfoController
 	@RequestMapping(value = "/carUpdate.do", method = RequestMethod.POST)
 	public ModelAndView carUpdate(carInfoDTO dto){
 		
-		int result = carInfoDao.carAdd(dto);
+		int result = carInfoDao.carUpdate(dto);
 		String msg = result > 0 ? "차량수정 성공" : "차량수정 실패";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
@@ -88,5 +87,15 @@ public class carInfoController
 		return mav;
 		
 	}
-	
+	@RequestMapping("/carDel.do")
+	public ModelAndView carDel(carInfoDTO dto){
+		
+		int result=carInfoDao.carDel(dto);
+		String msg = result > 0 ? "차량삭제 성공" : "차량삭제 실패";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("gopage", "carList.do");
+		mav.setViewName("carManage/carMsg");
+		return mav;
+}
 }

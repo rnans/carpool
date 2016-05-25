@@ -29,13 +29,26 @@ public class carInfoDAOImple implements carInfoDAO {
 		return dto;
 	}
 	//차량수정(idx가 같은 데이터)
-	public List<carInfoDTO> carList(int idx) {
+	public carInfoDTO carList(carInfoDTO dto) {
 		
-		List<carInfoDTO> dto=sqlMap.selectList("carIdxList", idx);
+		carInfoDTO dto2=sqlMap.selectOne("carIdxList", dto);
 		 
 		
 		
-		return dto;
+		return dto2;
+	}
+	//차량수정
+	public int carUpdate(carInfoDTO dto){
+		int count =sqlMap.update("carUpdate", dto);
+		
+		return count;
 	}
 	
+	//차량삭제
+		public int carDel(carInfoDTO dto) {
+			
+			int count=sqlMap.delete("carDel", dto);
+			 
+			return count;
+}
 }

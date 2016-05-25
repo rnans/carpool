@@ -6,5 +6,7 @@ public interface carInfoDAO {
 
 	public int carAdd(carInfoDTO dto);
 	public List<carInfoDTO> carAllList(String userid);
-	public List<carInfoDTO> carList(int idx);
+	public carInfoDTO carList(carInfoDTO dto);
+	public int carUpdate(carInfoDTO dto);
+	public int carDel(carInfoDTO dto);
 }

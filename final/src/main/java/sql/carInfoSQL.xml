@@ -8,13 +8,15 @@
 	</select>
 	<insert id="carAdd" parameterType="su.carinfo.model.carInfoDTO">
 		insert into carInfo
-		values(carInfo_idx.nextval,
-		#{id},#{driver},'0',#{carNum},#{carType},#{confirmPhoto},0)
+		values(carInfo_idx.nextval,#{id},#{driver},'0',#{carnum},#{cartype},#{confirmphoto},0)
 	</insert>
-	<select id="carIdxList" parameterType="Integer" resultType="su.carinfo.model.carInfoDTO">
+	<select id="carIdxList" parameterType="su.carinfo.model.carInfoDTO" resultType="su.carinfo.model.carInfoDTO">
 		select * from carInfo where idx=#{idx}
 	</select>
-	<update id="carUpdate2" parameterType="su.carinfo.model.carInfoDTO">
-		update carInfo set driver=#{driver} carNum=#{carNum} carType=#{carType} confirmPhoto=#{confimPhoto} where idx=#{idx}
+	<update id="carUpdate" parameterType="su.carinfo.model.carInfoDTO">
+		update carInfo set driver=#{driver}, carNum=#{carnum}, carType=#{cartype}, confirmPhoto=#{confirmphoto}, confirm=0 where idx=#{idx}
 	</update>
+	<delete id="carDel" parameterType="Integer">
+		delete from carInfo where idx=#{idx} 
+	</delete>
 </mapper>

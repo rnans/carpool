@@ -25,14 +25,24 @@
 				</tr>
 			</c:if>
 			<c:forEach var="dto" items="${list }">
-			<input type="hidden" name="idx" value="${dto.idx}">
 			
 				<tr>
 					<td>${dto.driver }</td>
-					<td>${dto.carNum }</td>
-					<td>${dto.carType }</td>
+					<td>${dto.carnum }</td>
+					<td>${dto.cartype }</td>
 					<td>${dto.confirm }</td>
-					<td colspan="2"><form action="carUpdate.do"><input type="button" value="수정"></form>|<input type="button" value="삭제" onclick="location.href='carDel.do?idx=${dto.idx}'"></td>
+					
+					<td colspan="2">
+					<form action="carUpdate.do">
+					<input type="hidden" name="idx" value="${dto.idx}">
+					<input type="submit" value="수정">
+					</form>
+					<form action="carDel.do">
+					<input type="hidden" name="idx" value="${dto.idx}">
+					<input type="submit" value="삭제">
+					</form>
+					</td>
+					
 				</tr>
 				
 			</c:forEach>

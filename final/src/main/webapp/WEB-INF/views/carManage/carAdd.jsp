@@ -14,13 +14,13 @@
 <input type="hidden" name="id" value="${sid }">
 운전자 이름:<input type="text" name="driver">
 <br>
-차 번호:<input type="text" name="carNum">
+차 번호:<input type="text" name="carnum">
 <br>
-차종:<input type="text" name="carType">
+차종:<input type="text" name="cartype">
 </div>
 
 <div>
-<input type="hidden" name="confirmPhoto" value="사진없음">
+<input type="hidden" name="confirmphoto" value="사진없음">
 <img src='이미지 경로명' width="100" height="100"/>
 <br>
 <input type="file">
