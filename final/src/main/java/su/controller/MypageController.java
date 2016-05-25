@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,7 +34,7 @@ public class MypageController {
 		this.mypageDao = mypageDao;
 	}
 	
-
+	/**마이페이지 프로필정보*/
 	@RequestMapping("/myPage.do")
 	public ModelAndView mypage(HttpSession session,HttpServletRequest req){
 		String id=(String)session.getAttribute("sid");
@@ -45,7 +46,7 @@ public class MypageController {
 	}
 
 	
-	
+	/**마이 프로필 수정*/
 	@RequestMapping("/myProfile.do")
 	public ModelAndView myProfile(MypageDTO dto,HttpServletRequest req){
 		
@@ -66,16 +67,51 @@ public class MypageController {
 		return mav;
 	}
 	
-
-
 	
-
-
+	
 
 	
 	
+	/**비밀번호 변경폼*/
+	@RequestMapping(value="pwdUpdateForm.do",method=RequestMethod.GET)
+	public ModelAndView pwdUpdateForm(MypageDTO dto,HttpSession session){
+		
+		String id=(String)session.getAttribute("sid");
+		ModelAndView mav=new ModelAndView();
+		MemberDTO dto1=mypageDao.getAllUserInfo(id);
+
+	
+		mav.addObject("dto", dto1);
+		mav.setViewName("mypage/pwdUpdate");
+		return mav;
+		
+		
+	}
+	/**비밀번호 변경*/
+	@RequestMapping("/pwdUpdate.do")
+	public ModelAndView PwdUpdate(MypageDTO dto,HttpServletRequest req){
+		
+		int result=mypageDao.pwdUpdate(dto);
+		String msg=result>0?"비밀번호수정 완료!":"실패!";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.setViewName("mypage/UpdateMsg");
+		return mav;
+	}
 	
 	
 	
 	
-}
+}	
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+
