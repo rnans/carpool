@@ -35,11 +35,20 @@ public class MypageDAOImple implements MypageDAO {
 		return count;
 	}
 
-	public int userPwdUpdate(String userpwd) {
+	
+	
+	
+
+	public int pwdUpdate(MypageDTO dto) {
+
 		
-		int count=sqlMap.update("userPwdUpdate", userpwd);
+		int count=sqlMap.update("PwdUpdate", dto);
 		return count;
 	}
+
+
+
+
 
 
 
