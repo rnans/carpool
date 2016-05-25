@@ -2,7 +2,6 @@ package su.comm.model;
 
 public class commBBSDTO {
 
-
 	private int idx;
 	private String commid;
 	private String id;
