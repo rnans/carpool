@@ -84,6 +84,7 @@ public class AdminCsCenterController {
 		mav.setViewName("admin/csMsg");
 		return mav;
 	}
+	//공지사항 삭제
 	@RequestMapping("/noticeDelete.do")
 	public ModelAndView noticeDeleteDelete(HttpServletRequest req){
 		int idx=(Integer.parseInt(req.getParameter("idx")));
@@ -91,8 +92,7 @@ public class AdminCsCenterController {
 		mav.addObject("idx", idx);
 		mav.setViewName("admin/noticeDel");
 		return mav;
-	}
-	//공지사항 삭제
+	}	
 	@RequestMapping("/noticeDelete_ok.do")
 	public ModelAndView noticeDelete(int idx){
 		 int result=csnoticeDao.noticeDelete(idx);

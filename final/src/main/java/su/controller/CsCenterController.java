@@ -4,15 +4,19 @@ import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import su.csCenter.model.*;
+import su.member.model.MemberDAO;
 
 @Controller
 public class CsCenterController {
@@ -25,6 +29,16 @@ public class CsCenterController {
 	private CsQnaDAO csqnaDao;
 	@Autowired
 	private CsuseGuideDAO csuseguideDao;
+	@Autowired
+	private MemberDAO memberDao;
+
+	public MemberDAO getMemberDao() {
+		return memberDao;
+	}
+
+	public void setMemberDao(MemberDAO memberDao) {
+		this.memberDao = memberDao;
+	}
 
 	
 	public CsuseGuideDAO getCsuseguideDao() {
@@ -113,7 +127,6 @@ public class CsCenterController {
 	       	mav.addObject("msg", msg);
 	       	mav.setViewName("csCenter/oneandonefailMsg");
 	        return mav;
-	 
     	}else{
 		int totalCnt=csoneandoneDao.oneandoneTotalCnt();
 		int listSize=10;
@@ -129,7 +142,6 @@ public class CsCenterController {
         }
     
 	}
-
 	//1:1문의 보기
    @RequestMapping("/oneandoneContent.do")
    public ModelAndView oneandoneContent(int idx){
