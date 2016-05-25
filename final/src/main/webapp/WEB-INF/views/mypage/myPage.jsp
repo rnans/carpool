@@ -50,36 +50,39 @@ header
 	<div id="div2">
 		
 		<div id="div1">
-		<img src="1234.jpg" border="100"><br>
-		
+			<fieldset>
+				<img src="/star.jpg" border="100"><br>
+			</fieldset>
 		</div>
+		
 			<form name="f" action="myProfile.do">
-			<legend>${dto.name}님 정보</legend>
-				<ul>
+			<fieldset>
+				<legend>${dto.name}님 정보</legend>
+					<ul>
 				
-					<li>아이디:
-						<input type="text" name="id" size="7" value="${dto.id}" readonly>
-						이름:
-						<input type="text" name="name" value="${dto.name} ">
-						성별:
-						<input type="radio" name="sex" value="남성" id="male">남성
-						<input type="radio" name="sex" value="여성" id="female" >여성
+						<li>아이디:
+							<input type="text" name="id" size="7" value="${dto.id}" readonly>
+							이름:
+							<input type="text" name="name" value="${dto.name} "></li>
+						<li>성별:
+							<input type="radio" name="sex" value="남성" id="male">남성
+							<input type="radio" name="sex" value="여성" id="female" >여성
+						</li>
 						
-					</li>
+						<li>생년월일:<input type="text" name="birth" value="${dto.birth }"></li>
+								 
+						<li>전화번호:<input type="text" name="phonenum" value="${dto.phonenum }"></li>
+						<li>주소:<input type="text" name="addr" value="${dto.addr} "></li>
+						<li>email:<input type="text" name="email" value="${dto.email }"></li>
 					
-					<li>생년월일:<input type="text" name="birth" value="${dto.birth }"></li>
-							 
-					<li>전화번호:<input type="text" name="phonenum" value="${dto.phonenum }"></li>
-					<li>주소:<input type="text" name="addr" value="${dto.addr} "></li>
-					<li>email:<input type="text" name="email" value="${dto.email }"></li>
-				
-					<li><input type="submit" value="프로필수정"></li>
-					<li><a href="pwdUpdate.do">비밀번호변경</a></li>
-					<li><a href="">회원탈퇴</a></li>
-				</ul>
-					
+						<li><input type="submit" value="프로필수정"></li>
+						<li><a href="pwdUpdateForm.do">비밀번호변경</a></li>
+						<li><a href="">회원탈퇴</a></li>
+					</ul>
+				</fieldset>	
 			</form>
 	</div>
+	
 	<div id="div3">
 		<fieldset>
 			<form>
