@@ -6,9 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import su.comm.model.carpoolinfoDTO;
 import su.comm.model.commBBSDTO;
 import su.comm.model.commDAO;
+import su.comm.model.commDTO;
 import su.comm.model.scheDTO;
+import su.member.model.MemberDTO;
 
 import java.util.*;
 
@@ -105,10 +108,14 @@ public class commController {
 	}
 	
 	@RequestMapping("commMember.do")
-	public ModelAndView commMember(){
+	public ModelAndView commMember(HttpSession session){
+		String id=(String)session.getAttribute("sid");
+		String poolname="test";
+		List<carpoolinfoDTO> list2=commDao.commMemberList(poolname);
 		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("comm/commMember");
+		mav.addObject("memberlist", list2);
 		return mav;
 		
 	}
