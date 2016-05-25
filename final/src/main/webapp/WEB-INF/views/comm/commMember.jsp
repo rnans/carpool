@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE>
 <html>
 <head>
@@ -82,7 +83,7 @@ A:hover {color: #3366cc; text-decoration: underline}
 .uInputSearch {
     position: relative;
     display: inline-block;
-    width: 90%;
+    width: 95%;
     height: 36px;
     padding: 0 45px 0 15px;
     border: 1px solid #DDD;
@@ -128,6 +129,7 @@ A:hover {color: #3366cc; text-decoration: underline}
 .memberSection .cThumbList {
     /* margin-bottom: -1px; */
     border: 1px solid #D5D5D5;
+      padding: 0 20px;
 }
 
 .cThumbList li {
@@ -179,7 +181,8 @@ A:hover {color: #3366cc; text-decoration: underline}
 }
 .cThumbList .side {
     width: 120px;
-    text-align: right;
+    text-align: center;
+    
 }
 
 .cThumbList .side .setting {
@@ -187,11 +190,44 @@ A:hover {color: #3366cc; text-decoration: underline}
     height: 20px;
     font-size: 20px;
     color: #ccc;
+    
 }
 .icon-a-setting02:after, .icon-setting02:before, [data-icon-a=setting02]:after, [data-icon=setting02]:before {
     content: "\e996";
 }
 
+.titleSetting {
+    overflow: hidden;
+    height: 30px;
+    line-height: 28px;
+    font-size: 13px;
+    padding-left: 18px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    background: #f9f9fa;
+}
+.settingList {
+    padding: 0 20px;
+}
+
+.settingList .listWrap, .settingList .side {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.settingList li {
+    display: table;
+    table-layout: fixed;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    /* border-top: 1px solid #f0f0f0; */
+}
+.settingList .side{
+width: 200px;
+    text-align: center;
+}
 </style>
 <body>
 <%@include file="../header.jsp"%>
@@ -226,26 +262,61 @@ A:hover {color: #3366cc; text-decoration: underline}
 <div data-uiselector="memberListWrap">
 	<div data-viewname="DMemberListView">
 	
+
+<c:if test="${empty memberlist}">
+
+		등록된 커뮤니티가 없습니다.
+
+</c:if>		
+<c:if test="!(${empty memberlist})">
 	<div class="subTitle"> <strong>멤버</strong></div> 
+	</c:if>
+	<c:forEach var="member" items="${memberlist}">
 	<ul class="cThumbList" data-uiselector="memberList" data-type="type3"> 
-	<li data-user_no="26077250" data-user_name="남구문"><div class="profile">
+	<li><div class="profile">
 	<a href="#"><img data-uiselector="profileImg" src="http://s.cmstatic.net/webclient/dres/20160524170024/images/template/profile_60x60.gif" alt="남구문"></a>
 	</div>
 	
 	<div class="nameArea"> 
-	<strong class="name">남구문</strong>   
-	<span class="labelAuth">리더</span>    
-	<span class="subtxt">010-4712-5977</span> </div>
+	<strong class="name">${member.name }</strong>   
+	<c:if test="${member.grade==0}"><span class="labelAuth">리더</span> </c:if>   
+	<span class="subtxt">${member.phonenum }</span> </div>
+	<div class="setting">임시 </div>
 	<div class="side"> 
 	<button data-uiselector="btnSetting" type="button" class="setting" data-icon="setting02">
 	<span class="gSrOnly">설정</span></button></div>
 	</li>    
-	</ul>    
+	</ul>
+	 </c:forEach>    
 	</div>
 </div>
 </div>
-</div> 
 
+<div class=""><!-- 설정 -->
+<h3 class="titleSetting">밴드 정보 관리</h3>
+	<ul class="settingList setSmall">
+		<li>
+			<div class="listWrap"> 
+			<span class="name">밴드 이름 및 커버 설정</span>
+			</div>
+			<div class="side"> 
+			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
+			</div>
+		</li>
+	</ul>
+</div> <!-- member div -->
+<h3 class="titleSetting">나가기</h3>
+	<ul class="settingList setSmall">
+		<li>
+			<div class="listWrap"> 
+			<span class="name">밴드 이름 및 커버 설정</span>
+			</div>
+			<div class="side"> 
+			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
+			</div>
+		</li>
+	</ul>
+</div><!-- 설정 닫기 -->
 </section>
 
 
