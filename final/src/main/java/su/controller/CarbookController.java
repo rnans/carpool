@@ -95,16 +95,16 @@ public class CarbookController {
 		return mav;
 	}
 	//비용등록수정
-	@RequestMapping("/costUpdate2.do")
-	public ModelAndView costUpdate2(CarCostDTO dto,HttpServletRequest req){
-		
-		int result=CarCostDao.(dto);
-		String msg=result>0?"수정완료":"수정실패";
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("msg", msg);
-		mav.setViewName("mypage/costMsg");
-		return mav;
-	}
+//	@RequestMapping("/costUpdate2.do")
+//	public ModelAndView costUpdate2(CarCostDTO dto,HttpServletRequest req){
+//		
+//		int result=CarCostDao.(dto);
+//		String msg=result>0?"수정완료":"수정실패";
+//		ModelAndView mav=new ModelAndView();
+//		mav.addObject("msg", msg);
+//		mav.setViewName("mypage/costMsg");
+//		return mav;
+//	}
 	
 	@RequestMapping("/cost.do")
 	public String cost(){
