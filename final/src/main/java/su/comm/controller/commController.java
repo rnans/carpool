@@ -103,5 +103,14 @@ public class commController {
 		return mav;
 		
 	}
+	
+	@RequestMapping("commMember.do")
+	public ModelAndView commMember(){
+		
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("comm/commMember");
+		return mav;
+		
+	}
 
 }
