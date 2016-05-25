@@ -19,31 +19,39 @@ function show(){
 }
 
 </script>
+<style>
 
+body{
+    box-sizing: border-box;
+}
+</style>
 <body>
 <%@include file="../header.jsp"%>
 <hr>
-<a href="comm.do">comm</a>
-<a href="calendar.do">일정</a>
-<a href="calendar.do">관리</a>
+<div id="lnb" data-skin="skin5">
+<ul class="_joinedLnb"> 
+<li><span><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></span></li>
+<li><a href="calendar.do" class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
+<li><a href="commMember.do" data-skinfactor="tBorder color" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
+</ul> 
+</div>
 
-<h2 class="menu_title">커뮤니티</h2>
+<h2 class="menu_title" style="position: relative; z-index: 100; margin-bottom: 16px; text-align: center;">커뮤니티</h2>
 
-<div class="searchWrap" data-uiselector="postSearchWrap" data-status="true">
-	<form data-uiselector="searchForm" autocomplete="off">
+<div class="searchWrap" data-status="true">
+	<form autocomplete="off" action="">
 	<h2 class="gSrOnly">검색 입력 폼</h2>
-	<div class="uInputSearch" data-uiselector="inputSearchWrap"> 
+	<div class="uInputSearch"> 
 	<label class="gSrOnly" for="input_search">이름, 글내용, 해시태그로 검색</label> 
-	<input type="text" id="input_search" placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" autocomplete="off" data-uiselector="searchTxt"> 
+	<input type="text" id="input_search" placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name=""> 
 	
-	 <button type="button">검색</button>
+	 <Span style=""><button type="button" class="searchbutton">검색</button></Span>
 	</div>
 	</form>
 </div>
 
 <div class="writeWrap" data-uiselector="postWriteRegion">
 <form name="write" action="commWrite.do">
-<!-- sid 받을 예정 -->
 <div data-viewname="DPostWriteLayoutView" class="cPostWrite">
 <h3 class="gSrOnly"></h3>
 <div class="writeWrap" data-uiselector="mentionListParent"> 
@@ -56,12 +64,6 @@ class="postWrite _use_keyup_event" maxlength="10000" placeholder="멤버들에�
 ></textarea>
 <input type="hidden" name="id" value="${sid}">
 
-<div style="position: absolute; display: none; word-wrap: break-word; 
-white-space: pre-wrap; border: 0px none rgb(51, 51, 51); font-weight: 400; 
-width: 518px; font-family: Arial, 'Noto Sans KR', 맑은고딕, 'Malgun Gothic', 돋움, Dotum, 'Helvetica Neue', Helvetica, 
-AppleSDGothicNeo, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', 'Android Emoji', EmojiSymbols; 
-line-height: 21.56px; font-size: 14px; padding: 16px 20px 0px;">&nbsp;</div></div>
-<div data-uiselector="snippetRegion"></div>
 <div class="cMentionsList " style="display: none;">
 <ul style="display: none;"></ul></div></div>
 <div class="buttonArea">
@@ -93,7 +95,7 @@ line-height: 21.56px; font-size: 14px; padding: 16px 20px 0px;">&nbsp;</div></di
    </div>
 
    </div> <div class="cPreview" data-uiselector="attachPreviewRegion"></div><div data-uiselector="selectStickerRegion"></div></div>
-   </form></div>
+   </div></form></div>
 
 <div data-uiselector="bandNoticeRegion"><div data-viewname="DBandBoardNoticeView" class="noticeWrap" style="display: block;">
 <h2 class="tit"> 공지사항 </h2>

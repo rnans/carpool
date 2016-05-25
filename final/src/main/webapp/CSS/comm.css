@@ -4,10 +4,50 @@
     font-family: Arial,"Noto Sans KR","맑은고딕","Malgun Gothic","돋움",Dotum,"Helvetica Neue",Helvetica,AppleSDGothicNeo,sans-serif,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Segoe UI Symbol","Android Emoji",EmojiSymbols;
 }
 
+#lnb li {
+    float: left;
+    position: relative;
+    min-width: 112px;
+    text-align: center;
+    list-style: none;
+}
+#lnb a, #daytd a {
+    display: block;
+    width: 100%;
+    padding: 0 5px;
+    line-height: 36px;
+    font-size: 14px;
+}
+
+#lnb {
+    z-index: 1900;
+    width: 100%;
+    min-width: 1024px;
+    height: 36px;
+    left: 0;
+    top: 46px;
+    background: pink;
+    text-align: center;
+}
+#lnb ul {
+    overflow: hidden;
+    display: inline-block;
+    height: 100%;
+}
+button, dd, dl, dt, fieldset, ol, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+A:link {color: #1f3174; text-decoration: none}
+A:active {color: #1f3174; text-decoration: none}
+A:visited {color: #1f3174; text-decoration: none}
+A:hover {color: #3366cc; text-decoration: underline}
+
 .searchWrap {
     position: relative;
     z-index: 100;
-    margin-bottom: 16px;
+    margin-bottom: 26px;
 }
 .gSrOnly {
     overflow: hidden!important;
@@ -20,14 +60,15 @@
     line-height: 0!important;
 }
 .uInputSearch {
+	
     position: relative;
-    display: inline-block;
-    width: 100%;
+    width: 95%;
     height: 36px;
     padding: 0 45px 0 15px;
     border: 1px solid #DDD;
     border-radius: 2px;
     background: #FDFDFD;
+    text-align: right;
 }
 .uInputSearch input {
     width: 100%;
@@ -43,8 +84,9 @@
     height: 30px;
     text-align: center;
     color: #666;
-    line-height: 30px;
     font-size: 14px;     
+    position:relative;
+	float:right; 
 }
 <!--  -->
 .cPostWrite {

@@ -79,6 +79,7 @@ function write(){
     display: inline-block;
     height: 100%;
 }
+
 button, dd, dl, dt, fieldset, ol, p, ul {
     margin: 0;
     padding: 0;
@@ -108,18 +109,31 @@ A:hover {color: #3366cc; text-decoration: underline}
 .cal_black { font-family:verdana, arial; font-size: 9px; color: #333333 }
 .daytd{
     position: relative;
-    width: 70px;
-    height: 71px;
+    width: 123px;
+    height: 100px;
     padding: 4px 9px;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
 }
 .calendarview{
 position: absolute;
-
-
 }
-
+#calendar_table{
+ width:60% ;
+ border:1;
+  cellspacing:1; 
+  cellpadding:3;
+  background-color:pink;
+  margin:0px auto;
+ 
+}
+.uSectionTitle {
+    font-size: 16px;
+    line-height: 16px;
+    color: #222;
+    padding-bottom: 15px;
+    text-align: left;
+}
 
 </style>
 <body>
@@ -130,21 +144,14 @@ position: absolute;
 <ul class="_joinedLnb"> 
 <li><span><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></span></li>
 <li><a href="calendar.do" class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
-<li><a href="calendar.do" data-skinfactor="tBorder color" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
+<li><a href="commMember.do" data-skinfactor="tBorder color" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
 </ul> 
 </div>
 
-<div id="calendar_main_div">
+<h1 class="uSectionTitle">일정</h1>
 
-</div>
-
-
-<c:forEach var="bbs" items="${list}">
- 	${bbs.startday}
-</c:forEach>
-<%=temp %>
 <div id="span"><div id="calendarview">
-<table width=580 border=0 cellspacing=1 cellpadding=3 bgcolor="#999999" id="calendar_table">
+<table id="calendar_table">
   <tr>
      <td colspan="7" align=centerheight=25>
       <a href="javascript:document.getElementById('prev').click();"><font color=#FFFFFF>◀</font></a> 
@@ -179,7 +186,7 @@ position: absolute;
       {        
         %>
          <td style=" font-family:verdana, arial; font-size: 9px; color: #333333" align="left" valign="top" class="day_cell">
-          <div class="daytd" style="<%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%>background-color:pink; <%}%>"> 
+          <div class="daytd" style="<%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%>background-color:#FFEBFF; <%}%>"> 
           
           <a href="javascript:write();"><%=days[i][j]%></a><br><br>
 		  <c:forEach var="bbs" items="${list}">	
