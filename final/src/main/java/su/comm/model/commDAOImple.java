@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import su.adminMember.model.AdminMemberDTO;
+
 public class commDAOImple implements commDAO {
 	
 	
@@ -42,5 +44,13 @@ public class commDAOImple implements commDAO {
 		List<scheDTO> list=sqlMap.selectList("scheList");		
 		return list;
 	}
+	
+	//커뮤니티 member
+	public List<AdminMemberDTO> commMemberList() {
+
+		List<AdminMemberDTO> list = sqlMap.selectList("sql.adminMember.memberInfo");
+		return list;
+	}
+	
 
 }
