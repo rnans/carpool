@@ -22,7 +22,6 @@ $(document).ready(function(){
 });
 </script>
 <header>
-
 	<c:if test="${!empty sessionScope.sid}">
 		<div>
 			${sessionScope.sid}님 로그인 | <a href="logout.do">로그아웃</a>
@@ -35,21 +34,20 @@ $(document).ready(function(){
 	</c:if>
 	
 	
-	<c:choose>
-		<c:when test="${sessionScope.grade eq '관리자'}">
-			<ul>
+	<ul>
+		<c:if test="${sessionScope.grade eq '관리자'}">
+			
 				<li><a href="memberInfo.do">관리자페이지</a></li>
-			</ul>
-		</c:when>
-		<c:otherwise>
-			<ul>
+		
+		</c:if>
+		
 				<li><a href="poolMain.do">카풀</a></li>
 				<li><a href="carBookInfo.do" id="chageaboo">차계부</a></li>
 				<li><a href="comm.do">커뮤니티</a></li>
 				<li><a href="csCenter.do">고객센터</a></li>
 			</ul>
-		</c:otherwise>
-	</c:choose>
+		
+	
 	
 
 </header>
