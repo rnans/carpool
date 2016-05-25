@@ -11,7 +11,6 @@ import su.comm.model.commBBSDTO;
 import su.comm.model.commDAO;
 import su.comm.model.commDTO;
 import su.comm.model.scheDTO;
-import su.member.model.MemberDTO;
 
 import java.util.*;
 
