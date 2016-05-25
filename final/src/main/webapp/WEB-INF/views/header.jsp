@@ -42,6 +42,7 @@ $(document).ready(function(){
 		</c:if>
 		
 				<li><a href="poolMain.do">카풀</a></li>
+				<li><a href="carList.do">차량관리</a></li>
 				<li><a href="carBookInfo.do" id="chageaboo">차계부</a></li>
 				<li><a href="comm.do">커뮤니티</a></li>
 				<li><a href="csCenter.do">고객센터</a></li>

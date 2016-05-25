@@ -3,25 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <mapper namespace="sql.carcost">
-    	<insert id="CarCost" parameterType="su.carCost.model.CarCostDTO">
-    		insert into carcost values(carcost_idx.nextval,
-    		#{id},#{category},#{costday},#{cost},#{km},#{bigo})
-    	</insert>
-    	
-    	<select id="CostList" parameterType="id" resultType="su.carCost.model.CarCostDTO">
-    		select*from carcost #{category},#{costday},#{cost},#{km},#{bigo} where=#{id}
-    	</select>
-    	
-    	<delete id="CostDel" parameterType="su.carCost.model.CarCostDTO">
-			delete from carcost where idx=#{idx}
-		</delete>
-
-		<select id="CostUpdate1" parameterType="String" resultType="su.carCost.model.CarCostDTO">
-			select * from carcost #{category},#{costday},#{cost},#{km},#{bigo} where idx=#{idx}
-		</select>
-
-		<update id="CostUpdate2" parameterType="su.carCost.model.CarCostDTO">
-			update carcost set category=#{category},costday=#{costday},
-			cost=#{cost},km=#{km},bigo=#{bigo} where idx=#{idx}
-		</update>
+       <insert id="CarCost" parameterType="su.carCost.model.CarCostDTO">
+          insert into carcost values(carcost_idx.nextval,
+          #{id},#{category},#{costday},#{cost},#{km},#{bigo})
+       </insert>
     </mapper>

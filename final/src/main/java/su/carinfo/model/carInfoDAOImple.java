@@ -31,7 +31,7 @@ public class carInfoDAOImple implements carInfoDAO {
 	//차량수정(idx가 같은 데이터)
 	public List<carInfoDTO> carList(int idx) {
 		
-		List<carInfoDTO> dto=sqlMap.selectOne("carUpdate1", idx);
+		List<carInfoDTO> dto=sqlMap.selectList("carIdxList", idx);
 		 
 		
 		

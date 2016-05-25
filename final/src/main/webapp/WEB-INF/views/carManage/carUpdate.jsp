@@ -11,7 +11,7 @@
 <legend>차량수정</legend>
 <form  name="carUpdate" action="carUpdate.do" method="post">
 <div>
-<input type="hidden" name="idx" value="${list.idx }">
+<input type="hidden" name="id" value="${sid }">
 운전자 이름:<input type="text" name="driver" value="${list.driver }">
 <br>
 차 번호:<input type="text" name="carNum" value="${list.carNum }">
@@ -28,7 +28,7 @@
 
 <br>
 	<input type="button" value="취소">
-	<input type="submit" value="등록">
+	<input type="submit" value="수정">
 
 	</form>
 	</fieldset>

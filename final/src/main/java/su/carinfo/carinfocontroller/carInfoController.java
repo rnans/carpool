@@ -68,6 +68,7 @@ public class carInfoController
 	public ModelAndView carUpdateForm(HttpServletRequest req) {
 		
 		int idx=(Integer.parseInt(req.getParameter("idx")));
+		System.out.println(idx);
 		List<carInfoDTO> list = carInfoDao.carList(idx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
@@ -87,4 +88,5 @@ public class carInfoController
 		return mav;
 		
 	}
+	
 }
