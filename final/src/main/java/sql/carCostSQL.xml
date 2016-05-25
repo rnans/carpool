@@ -7,4 +7,26 @@
           insert into carcost values(carcost_idx.nextval,
           #{id},#{category},#{costday},#{cost},#{km},#{bigo})
        </insert>
+       <select id="CarCostList" resultType="su.carCost.model.CarCostDTO">
+       select * from carcost where id=#{id}
+       </select>
+       <select id="CarCostContent" resultType="su.carCost.model.CarCostDTO">
+       select * from carcost where idx=#{idx}
+       </select>
+       <update id="CarCostUpdate" parameterType="su.carCost.model.CarCostDTO">
+		update carcost set
+	     category=#{category},
+	     costday=#{costday},
+	     cost=#{cost},
+	     km=#{km},
+	     bigo=#{bigo}
+		where idx=#{idx}
+	</update>
+	 <delete id="CarCostDelete" parameterType="su.carCost.model.CarCostDTO">
+       delete from carcost where idx=#{idx}
+      </delete>
+      <insert id="CarCostAdd" parameterType="su.carCost.model.CarCostDTO">
+		insert into carcost
+		values(carcost_idx.nextval,#{id},#{category},#{costday},#{cost},#{km},#{bigo})
+	</insert>
     </mapper>
