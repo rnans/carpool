@@ -58,21 +58,16 @@ public class MemberController {
 	}
 	/**로그인 폼 이동 및 아이디 기억하기*/
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
-	public ModelAndView loginForm(@CookieValue(value="saveid",required=false)String saveid){
+	public String loginForm(){
 		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("saveid", saveid);
-		mav.setViewName("member/memberLogin");
-		return mav;
+		return "member/memberLogin";
 	}
 	
 	/**로그인*/
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public ModelAndView login(@RequestParam(value="id", required=false)String id, 
-			@RequestParam(value="pwd", required=false)String pwd, HttpSession session, HttpServletResponse resp){
-		
-		
-		
+			@RequestParam(value="pwd", required=false)String pwd, HttpSession session){
+			
 		ModelAndView mav = new ModelAndView();
 		int result = memberDao.login(id, pwd);
 		
@@ -80,10 +75,6 @@ public class MemberController {
 			List<MemberDTO> dto= memberDao.getUserInfo(id);
 			String name = dto.get(0).getName();
 			String grade = dto.get(0).getGrade();
-			
-			Cookie ck = new Cookie("saveid", id);
-			ck.setMaxAge(60*60*24);
-			resp.addCookie(ck);
 			
 			session.setAttribute("sname", name);
 			session.setAttribute("sid", id);
