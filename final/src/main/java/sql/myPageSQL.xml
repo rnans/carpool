@@ -16,8 +16,10 @@
 		sex=#{sex}
 		where id=#{id}
 	</update>
+	
 	<update id="PwdUpdate" parameterType="su.mypage.model.MypageDTO">
 		update userinfo set
-		pwd=#{pwd} where id=#{id}
+		pwd=#{pwd}
+		where id=#{id}
 	</update>
 </mapper>
