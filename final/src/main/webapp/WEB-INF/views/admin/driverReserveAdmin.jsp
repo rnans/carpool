@@ -8,6 +8,7 @@
 </head>
 <body>
 <div>헤더</div>
+<%@include file="../header.jsp" %>
 <%@include file="../adHeader.jsp" %>
 <section>
 	<article>
