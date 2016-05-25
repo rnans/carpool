@@ -24,13 +24,10 @@ public class CarBookInfoController {
 			CarBookInfoDao = carBookInfoDao;
 		}
 
-		@RequestMapping("/carReg.do")
-		public String carReg(){
-			return "carbook/carReg";
-		}
+		
 		
 		//차량등록
-		@RequestMapping(value="/carReg.do",method=RequestMethod.POST)
+		@RequestMapping("/carReg.do")
 		public ModelAndView carRegadd(CarBookInfoDTO dto){
 			int result=CarBookInfoDao.carAdd(dto);
 			String msg=result>0?"등록완료!":"등록실패!";
