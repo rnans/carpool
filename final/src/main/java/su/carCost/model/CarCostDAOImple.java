@@ -39,18 +39,18 @@ public class CarCostDAOImple implements CarCostDAO {
 	}
 	
 	//비용수정 값 가져오기
-	public CarCostDTO costUpdate1(String idx) {
-		List list=sqlMap.selectList("UserInfo", idx);
-
-		if(list==null)
-		{
-			return null;
-		}
-		
-		MemberDTO dto=(MemberDTO)list.get(0);
-		
-		return dto;
-	}
+//	public CarCostDTO costUpdate1(String idx) {
+//		List list=sqlMap.selectList("UserInfo", idx);
+//
+//		if(list==null)
+//		{
+//			return null;
+//		}
+//		
+//		MemberDTO dto=(MemberDTO)list.get(0);
+//		
+//		return dto;
+//	}
 	
 	//비용수정
 	public int costUpdate1(CarCostDTO dto) {
