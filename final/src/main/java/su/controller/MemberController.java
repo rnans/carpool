@@ -1,5 +1,7 @@
 package su.controller;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -75,7 +77,9 @@ public class MemberController {
 		int result = memberDao.login(id, pwd);
 		
 		if(result==1){
-			String name = memberDao.getUserInfo(id);
+			List<MemberDTO> dto= memberDao.getUserInfo(id);
+			String name = dto.get(0).getName();
+			String grade = dto.get(0).getGrade();
 			
 			Cookie ck = new Cookie("saveid", id);
 			ck.setMaxAge(60*60*24);
@@ -83,6 +87,7 @@ public class MemberController {
 			
 			session.setAttribute("sname", name);
 			session.setAttribute("sid", id);
+			session.setAttribute("grade", grade);
 			mav.addObject("name", name);
 			mav.setViewName("member/login_ok");	
 		}else{

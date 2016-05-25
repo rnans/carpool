@@ -34,4 +34,8 @@
 	<select id="carInfoTotalCnt" resultType="int">
 		select count(*) from carinfo
 	</select>
+	
+	<delete id="memberCarDel" parameterType="su.adminMember.model.AdminCarInfoDTO">
+		delete from carinfo where idx=#{idx}
+	</delete>
 </mapper>

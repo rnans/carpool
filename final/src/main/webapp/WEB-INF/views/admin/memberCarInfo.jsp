@@ -6,13 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+var idx = null;
+function memberCarDelForm(){
+	var param = "?idx="+idx;
+	window.open('memberCarDelForm.do'+param,'memberCarDelForm','width=500 height=400 left=500 top=200');
+}
+</script>
 </head>
 <body>
 <div>헤더</div>
 <%@include file="../adHeader.jsp" %>
 <section>
 	<article>
-		<table border="1" cellspacing="0" width="500">
+		<table border="1" cellspacing="0" width="700">
 			<thead>
 				<tr>
 					<th>구분</th>
@@ -20,8 +27,9 @@
 					<th>아이디</th><!-- id -->
 					<th>차종</th><!-- cartype -->
 					<th>차번호</th><!-- carnum -->
-					<th>승인</th> <!-- confirm -->
-					<th>비고(승인취소)</th>
+					<th>승인여부</th> <!-- confirm -->
+					<th>승인</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -41,13 +49,16 @@
 					<td>${list.carnum}</td>
 					<td>${list.confirm}</td>
 					<td>승인만들기</td>
+					<td>
+						<input type="button" value="삭제" onclick="javascript:idx='${list.idx}';memberCarDelForm();">
+					</td>
 				</tr>
 			</c:forEach>
 				
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="7" align="center">
+					<td colspan="8" align="center">
 						${pageStr}
 					</td>
 				</tr>

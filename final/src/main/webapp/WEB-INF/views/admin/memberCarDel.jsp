@@ -14,10 +14,10 @@ function delCancel(){
 <body>
 	<section>
 		<article>
-			<form name="driverPoolDel" action="driverPoolDel.do?idx="${idx}>
+			<form name="memberCarDel" action="memberCarDel.do?idx="${idx}>
 			<input type="hidden" name="idx" value="${idx}">
 				<fieldset>
-					<legend>드라이버 카풀 삭제시키기</legend>
+					<legend>차량 정보 삭제시키기</legend>
 					<div> 정말 삭제 하시겠습니까?</div>
 					<input type="submit" value="삭제시키기">
 					<input type="button" value="취소" onclick="delCancel()">

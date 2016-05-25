@@ -67,8 +67,8 @@ function idCheckResult(){
 							</select>
 						</li>
 						<li>
-							성별 : <input type="radio" name="sex" value="남자">남자
-								  <input type="radio" name="sex" value="여자">여자
+							성별 : <input type="radio" name="sex" value="남성">남성
+								  <input type="radio" name="sex" value="여성">여성
 						</li>
 						<li>
 							차랑소유여부 : <input type="radio" name="carhave" value="있음">있음

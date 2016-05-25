@@ -27,7 +27,7 @@ function loginClose(){
 								<input type="checkbox" name="saveid" value="on" checked> ID기억하기
 							</c:if>
 							<c:if test="${empty saveid}">
-								<input type="checkbox" name="saveid" value="on"> ID기억하기
+								<input type="checkbox" name="saveid" value="off"> ID기억하기
 							</c:if>
 						</p>
 						<div>

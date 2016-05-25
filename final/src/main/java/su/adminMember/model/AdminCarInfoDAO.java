@@ -4,6 +4,10 @@ import java.util.List;
 
 public interface AdminCarInfoDAO {
 
-	List<AdminCarInfoDTO> memberCarInfo(int cp, int ls);
-	int carInfoTotalCnt();
+	public List<AdminCarInfoDTO> memberCarInfo(int cp, int ls);
+	public int carInfoTotalCnt();
+	
+	public int memberCarDel(int idx);
+	
+	
 }

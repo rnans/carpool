@@ -27,8 +27,16 @@ public class AdminCarInfoDAOImple implements AdminCarInfoDAO {
 		return list;
 	}
 	
+	/**페이징*/
 	public int carInfoTotalCnt() {
 		int count = sqlMap.selectOne("carInfoTotalCnt");
+		return count;
+	}
+	
+	/**등록된 차 삭제*/
+	public int memberCarDel(int idx) {
+		
+		int count = sqlMap.delete("memberCarDel", idx);
 		return count;
 	}
 

@@ -127,8 +127,33 @@ public class AdminMemberController {
 		mav.setViewName("admin/memberCarInfo");
 		
 		return mav;
+	}
+	
+	/**등록된 차정보 삭제 폼 이동*/
+	@RequestMapping("/memberCarDelForm.do")
+	public ModelAndView memberCarDelForm(HttpServletRequest req){
+		int idx = Integer.parseInt(req.getParameter("idx"));
+	
+		ModelAndView mav = new ModelAndView();
 		
+		mav.addObject("idx", idx);
+		mav.setViewName("admin/memberCarDel");
 		
+		return mav;	
+	}
+	
+	/**등록된 차정보 삭제*/
+	@RequestMapping("/memberCarDel.do")
+	public ModelAndView memberCarDel(@RequestParam("idx")int idx){
+		
+		int count = adCarInfoDao.memberCarDel(idx);
+		String msg = count>0?"차량 정보 삭제 성공!":"차량 정보 삭제 실패!"; 
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.setViewName("admin/adminMsg");
+		
+		return mav;
 	}
 	
 }

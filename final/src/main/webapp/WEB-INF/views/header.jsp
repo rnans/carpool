@@ -34,13 +34,22 @@ $(document).ready(function(){
 		</div>
 	</c:if>
 	
-
-	<ul>
-		<li><a href="memberInfo.do">관리자페이지</a></li>
-		<li><a href="poolMain.do">카풀</a></li>
-		<li><a href="carBookInfo.do" id="chageaboo">차계부</a></li>
-		<li><a href="comm.do">커뮤니티</a></li>
-		<li><a href="csCenter.do">고객센터</a></li>
-	</ul>
+	
+	<c:choose>
+		<c:when test="${sessionScope.grade eq '관리자'}">
+			<ul>
+				<li><a href="memberInfo.do">관리자페이지</a></li>
+			</ul>
+		</c:when>
+		<c:otherwise>
+			<ul>
+				<li><a href="poolMain.do">카풀</a></li>
+				<li><a href="carBookInfo.do" id="chageaboo">차계부</a></li>
+				<li><a href="comm.do">커뮤니티</a></li>
+				<li><a href="csCenter.do">고객센터</a></li>
+			</ul>
+		</c:otherwise>
+	</c:choose>
+	
 
 </header>
