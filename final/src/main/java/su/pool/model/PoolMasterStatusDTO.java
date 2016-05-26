@@ -3,13 +3,14 @@ package su.pool.model;
 public class PoolMasterStatusDTO 
 {
 	private int idx;
-	private int addidx;
+	private int aimidx;
 	private String masterid;
-	private String mans;
-	private String nowmans;
+	private int mans;
+	private int nowmans;
 	private String status;
 	private String members;
 	private String inmembers;
+	private int reqcount;
 	
 	public PoolMasterStatusDTO() {
 		super();
@@ -23,21 +24,30 @@ public class PoolMasterStatusDTO
 		this.members = members;
 	}
 
+	
 
 
-	public PoolMasterStatusDTO(int addidx, String nowmans, String members) {
+	public PoolMasterStatusDTO(String masterid, int aimidx, int mans) {
 		super();
-		this.addidx = addidx;
+		this.aimidx = aimidx;
+		this.masterid = masterid;
+		this.mans = mans;
+	}
+
+
+
+	public PoolMasterStatusDTO(int aimidx, int nowmans, String members) {
+		super();
+		this.aimidx = aimidx;
 		this.nowmans = nowmans;
 		this.members = members;
 	}
 
 
-
-	public PoolMasterStatusDTO(int addidx, String masterid, String mans, String nowmans, String status,
+	public PoolMasterStatusDTO(int aimidx, String masterid, int mans, int nowmans, String status,
 			String members) {
 		super();
-		this.addidx = addidx;
+		this.aimidx = aimidx;
 		this.masterid = masterid;
 		this.mans = mans;
 		this.nowmans = nowmans;
@@ -47,10 +57,10 @@ public class PoolMasterStatusDTO
 
 
 
-	public PoolMasterStatusDTO(int addidx, String masterid, String mans, String nowmans, String status, String members,
+	public PoolMasterStatusDTO(int aimidx, String masterid, int mans, int nowmans, String status, String members,
 			String inmembers) {
 		super();
-		this.addidx = addidx;
+		this.aimidx = aimidx;
 		this.masterid = masterid;
 		this.mans = mans;
 		this.nowmans = nowmans;
@@ -61,11 +71,11 @@ public class PoolMasterStatusDTO
 
 
 
-	public PoolMasterStatusDTO(int idx, int addidx, String masterid, String mans, String nowmans, String status,
+	public PoolMasterStatusDTO(int idx, int aimidx, String masterid, int mans, int nowmans, String status,
 			String members, String inmembers) {
 		super();
 		this.idx = idx;
-		this.addidx = addidx;
+		this.aimidx = aimidx;
 		this.masterid = masterid;
 		this.mans = mans;
 		this.nowmans = nowmans;
@@ -73,53 +83,113 @@ public class PoolMasterStatusDTO
 		this.members = members;
 		this.inmembers = inmembers;
 	}
+
+
+
 	public int getIdx() {
 		return idx;
 	}
+
+
+
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	public int getAddidx() {
-		return addidx;
+
+
+
+	public int getAimidx() {
+		return aimidx;
 	}
-	public void setAddidx(int addidx) {
-		this.addidx = addidx;
+
+
+
+	public void setAimidx(int aimidx) {
+		this.aimidx = aimidx;
 	}
+
+
+
 	public String getMasterid() {
 		return masterid;
 	}
+
+
+
 	public void setMasterid(String masterid) {
 		this.masterid = masterid;
 	}
-	public String getMans() {
+
+
+
+	public int getMans() {
 		return mans;
 	}
-	public void setMans(String mans) {
+
+
+
+	public void setMans(int mans) {
 		this.mans = mans;
 	}
-	public String getNowmans() {
+
+
+
+	public int getNowmans() {
 		return nowmans;
 	}
-	public void setNowmans(String nowmans) {
+
+
+
+	public void setNowmans(int nowmans) {
 		this.nowmans = nowmans;
 	}
+
+
+
 	public String getStatus() {
 		return status;
 	}
+
+
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+
+
 	public String getMembers() {
 		return members;
 	}
+
+
+
 	public void setMembers(String members) {
 		this.members = members;
 	}
+
+
+
 	public String getInmembers() {
 		return inmembers;
 	}
+
+
+
 	public void setInmembers(String inmembers) {
 		this.inmembers = inmembers;
+	}
+
+
+
+	public int getReqcount() {
+		return reqcount;
+	}
+
+
+
+	public void setReqcount(int reqcount) {
+		this.reqcount = reqcount;
 	}
 	
 	

@@ -8,11 +8,19 @@ public interface PoolStatusDAO
 	
 	public int getOwnMasterTotalCnt(String id);
 	
+	public int getOwnMemReqTotalCnt(String id);
+	
+	public int getOwnMasReqTotalCnt(String id);
+	
 	public String getMembers(int addidx);
 	
 	public List viewOwnMemberPoolList(int cp, int ls, String id);
 	
 	public List viewOwnMasterPoolList(int cp, int ls, String id);
+	
+	public List viewOwnMemReqPoolList(int cp, int ls, String id);
+	
+	public List viewOwnMasReqPoolList(int cp, int ls, String id);
 	
 	public List getOwnPoolByIdx(int idx);
 	
@@ -23,4 +31,6 @@ public interface PoolStatusDAO
 	public int makeMasterStatus(PoolMasterStatusDTO dto);
 	
 	public int makeMemberStatus(PoolMemberStatusDTO dto);
+	
+	public int accAllMembers(int idx);
 }

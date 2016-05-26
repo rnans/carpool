@@ -11,7 +11,19 @@
 <body>
 <fieldset>
 <legend>카풀 등록</legend>
-<form name="poolNameform" action="poolMasterAddConfirm.do">
+<script>
+window.onload=function()
+{
+	var type='${sessionScope.data.termtype}';
+	
+	var f=document.getElementById('f');
+	if(type=='정기')
+	{
+		f.method='POST';
+	}
+}
+</script>
+<form id="f" name="poolNameform" action="poolMasterAddConfirm.do">
 		카풀명:<input type="text" name="poolname" placeholder="카폴 이름을 입력하세요."> 
 		<br>
 		소개글

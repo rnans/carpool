@@ -12,11 +12,23 @@
 	   (select * from reservationlist where userid=#{id} and pooltype='탈래요' order by idx desc)a)b
 	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
-	<select id="viewOwnMasterPool" parameterType="String" resultType="su.pool.model.PoolDateDTO">
-	select * from
-	 (select rownum as rnum,a.* from
-	   (select * from reservationlist where userid=#{id} and pooltype='타세요' order by idx desc)a)b
-	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	<select id="viewOwnMasterPool" parameterType="map" resultType="su.pool.model.PoolDateDTO">
+	select * from (select rownum as rnum,a.* from (select * from reservationlist where userid=#{id} and pooltype='타세요' order by idx desc)a)b 
+	where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	<select id="viewOwnMasReqPool" parameterType="map" resultType="su.pool.model.PoolMasterStatusDTO">
+	select * from 
+	(select rownum as rnum,a.* from 
+	(select * from poolmasterstatus
+	where masterid=#{id} and reqcount<![CDATA[>=]]>1 order by idx desc)a)b 
+	where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	<select id="viewOwnMemReqPool" parameterType="map" resultType="su.pool.model.PoolMemberStatusDTO">
+	select * from 
+	(select rownum as rnum,a.* from 
+	(select * from poolmemberstatus 
+	where memberid like #{id} order by idx desc)a)b 
+	where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
 	<select id="getOwnMemberPoolTotalCnt" parameterType="String" resultType="int">
 	select count(*) from (select * from reservationlist where userid=#{id})
@@ -27,27 +39,34 @@
 	<select id="getMembers" parameterType="int" resultType="String">
 	select members from poolmasterstatus where addidx=#{addidx}
 	</select>
-
+	<select id="getOwnMemReqPoolTotalCnt" parameterType="String" resultType="int">
+	select count(*) from poolmemberstatus where memberid=#{id}
+	</select>
+	<select id="getOwnMasReqPoolTotalCnt" parameterType="String" resultType="int">
+	select count(*) from poolmasterstatus where masterid=#{id}
+	</select>
 	<insert id="intoMasterStatus" parameterType="su.pool.model.PoolMasterStatusDTO">
 	insert into poolmasterstatus
 	(
 		idx,
-		addidx,
+		aimidx,
 		masterid,
 		mans,
 		nowmans,
 		status,
-		members
+		members,
+		reqcount
 	) 
 	values
 	(
 		poolmasterstatus_idx.nextval,
-		#{addidx},
+		#{aimidx},
 		#{masterid},
 		#{mans},
 		0,
 		'모집중',
-		' '
+		' ',
+		0
 	)
 	</insert>
 	<insert id="intoMemberStatus" parameterType="su.pool.model.PoolMemberStatusDTO">
@@ -64,14 +83,28 @@
 		poolmasterstatus_idx.nextval,
 		#{memberid},
 		#{aimidx},
-		'예약 요청 중',
+		'수락 대기 중',
 		1
 	)
 	</insert>
 	<update id="uptoMasterStatus" parameterType="su.pool.model.PoolMasterStatusDTO">
 	update poolmasterstatus set 
 	nowmans=nowmans+#{nowmans},
-	members=members||'-'||#{members}
-	where addidx=#{addidx}
+	members=members||'-'||#{members},
+	reqcount=reqcount+1
+	where aimidx=#{aimidx}
+	</update>
+	<update id="uptoMemberStatus" parameterType="su.pool.model.PoolMemberStatusDTO" >
+	update poolmemberstatus set
+	ownidx=#{ownidx},
+	mans=#{mans}
+	where aimidx=#{aimidx}
+	</update>
+	<update id="accAllMembers" parameterType="int">
+	update poolmasterstatus set
+	members='-',
+	inmembers=members,
+	reqcount=0
+	where idx=#{idx}
 	</update>
 </mapper>

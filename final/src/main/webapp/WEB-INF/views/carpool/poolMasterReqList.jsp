@@ -9,7 +9,8 @@
 </head>
 <body>
 <h1>내가 개설한 파티 목록</h1>
-<form name="selForm" action="reqToMember.do">
+<form name="selForm" action="upToMember.do">
+<input type="hidden" name="aimidx" value="${aimidx}">
 <table>
 	<thead>
 		<tr>

@@ -7,7 +7,7 @@ public class PoolMemberStatusDTO {
 	private int ownidx;
 	private int aimidx;
 	private String status;
-	private String mans;
+	private int mans;
 	
 	
 	
@@ -33,8 +33,19 @@ public class PoolMemberStatusDTO {
 	}
 
 
+	
 
-	public PoolMemberStatusDTO(int idx, String memberid, int ownidx, int aimidx, String status, String mans) {
+	public PoolMemberStatusDTO(String memberid, int ownidx, int aimidx, int mans) {
+		super();
+		this.memberid = memberid;
+		this.ownidx = ownidx;
+		this.aimidx = aimidx;
+		this.mans = mans;
+	}
+
+
+
+	public PoolMemberStatusDTO(int idx, String memberid, int ownidx, int aimidx, String status, int mans) {
 		super();
 		this.idx = idx;
 		this.memberid = memberid;
@@ -46,7 +57,7 @@ public class PoolMemberStatusDTO {
 	
 	
 	
-	public PoolMemberStatusDTO(String memberid, int ownidx, String status, String mans) {
+	public PoolMemberStatusDTO(String memberid, int ownidx, String status, int mans) {
 		super();
 		this.memberid = memberid;
 		this.ownidx = ownidx;
@@ -84,10 +95,10 @@ public class PoolMemberStatusDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getMans() {
+	public int getMans() {
 		return mans;
 	}
-	public void setMans(String mans) {
+	public void setMans(int mans) {
 		this.mans = mans;
 	}
 	

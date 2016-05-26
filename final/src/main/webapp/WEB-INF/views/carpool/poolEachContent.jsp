@@ -24,6 +24,8 @@ function request()
 	var poolType='${dto.pooltype}';
 	var param='';
 	
+	window.alert(poolType);
+	
 	if(poolType=='타세요')
 	{
 		var param='?idx='+document.getElementById('idx').value;
@@ -31,8 +33,8 @@ function request()
 	}	
 	else if(poolType=='탈래요')
 	{
-		var param='?idx='+document.getElementById('idx').value+'&masterid='+'${sessionScope.sid}';
-		window.open('reqToMember.do'+param,'reqListPopup2','width=480 height=320');
+		var param='?idx='+document.getElementById('idx').value+'&memberid='+'${sessionScope.sid}';
+		window.open('reqToMemberPage.do'+param,'reqListPopup2','width=480 height=320');
 	}
 	
 	

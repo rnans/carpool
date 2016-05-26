@@ -88,12 +88,6 @@ public class PoolController
 		return "carpool/poolAdd";
 	}
 	
-	@RequestMapping("/poolStatus.do")
-	public String viewPoolStatusPage()
-	{
-		return "carpool/poolStatus";
-	}
-	
 	@RequestMapping("/poolMasterAdd.do")
 	public ModelAndView viewMasterAddPage(HttpSession session) {
 		String userid = (String) session.getAttribute("sid");
@@ -226,7 +220,13 @@ public class PoolController
 		if(req.getParameter("sapm").equals("오후"))
 		{
 			h+=12;
+			
+			if(h==24)
+			{
+				h=0;
+			}
 		}
+		
 				
 		String starttime=req.getParameter("sy")+'-'+req.getParameter("sm")+'-'+req.getParameter("sd")+" "+h+":"+req.getParameter("smi");
 		
@@ -264,8 +264,13 @@ public class PoolController
 		if(req.getParameter("sapm").equals("오후"))
 		{
 			h+=12;
+			if(h==24)
+			{
+				h=0;
+			}
 		}
-				
+		
+		
 		String starttime=req.getParameter("sy")+'-'+req.getParameter("sm")+'-'+req.getParameter("sd")+" "+h+":"+req.getParameter("smi");
 		
 		HashMap<String, String> data=(HashMap<String, String>)session.getAttribute("data");
@@ -302,7 +307,12 @@ public class PoolController
 		if(req.getParameter("lapm").equals("오후"))
 		{
 			h+=12;
+			if(h==24)
+			{
+				h=0;
+			}
 		}
+		
 		
 		String starttime=req.getParameter("lsy")+'-'+req.getParameter("lsm")+'-'+req.getParameter("lsd")+" "+h+":"+req.getParameter("lmi");
 		String startdate=req.getParameter("lsy")+'-'+req.getParameter("lsm")+'-'+req.getParameter("lsd");
@@ -348,7 +358,12 @@ public class PoolController
 		if(req.getParameter("lapm").equals("오후"))
 		{
 			h+=12;
+			if(h==24)
+			{
+				h=0;
+			}
 		}
+		
 		
 		String starttime=req.getParameter("lsy")+'-'+req.getParameter("lsm")+'-'+req.getParameter("lsd")+" "+h+":"+req.getParameter("lmi");
 		String startdate=req.getParameter("lsy")+'-'+req.getParameter("lsm")+'-'+req.getParameter("lsd");
@@ -472,6 +487,7 @@ public class PoolController
 	@RequestMapping(value="/poolMasterAddConfirm.do",method=RequestMethod.GET)
 	public ModelAndView MasterShortAddConfirm(HttpSession session, HttpServletRequest req)
 	{
+		System.out.println("GET");
 		HashMap<String, String> data=(HashMap<String, String>)session.getAttribute("data");
 		
 		String userid=(String)session.getAttribute("sid");
@@ -493,16 +509,14 @@ public class PoolController
 		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype, caridx, poolname);
 		
 		int count=poolDao.poolMasterShortAdd(dto);
-		
+
 		int addidx=poolDao.getMasterIdx(poolname);
 		
-		
-		PoolMasterStatusDTO mDto=new PoolMasterStatusDTO(addidx, userid, ""+mannum);
-		
+		PoolMasterStatusDTO mDto=new PoolMasterStatusDTO(userid, addidx, mannum);
 		
 		int count2=poolStatusDao.makeMasterStatus(mDto);
-		
-		String msg=count+count2>0?"성공":"실패";
+
+		String msg=count+count2>=2?"성공":"실패";
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -517,6 +531,7 @@ public class PoolController
 	@RequestMapping(value="/poolMasterAddConfirm.do",method=RequestMethod.POST)
 	public ModelAndView MasterTermAddConfirm(HttpSession session, HttpServletRequest req)
 	{
+		System.out.println("POST");
 		HashMap<String, String> data=(HashMap<String, String>)session.getAttribute("data");
 		
 		String userid=(String)session.getAttribute("sid");
@@ -539,18 +554,17 @@ public class PoolController
 		int caridx=Integer.parseInt(data.get("caridx"));
 	
 		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, startdate, enddate, days, termtype, caridx, poolname);
-		
+
 		int count=poolDao.poolMasterLongAdd(dto);
-		
+		System.out.println(poolname);
 		int addidx=poolDao.getMasterIdx(poolname);
+		System.out.println(addidx);
 		
-		
-		PoolMasterStatusDTO mDto=new PoolMasterStatusDTO(addidx, userid, ""+mannum);
-		
+		PoolMasterStatusDTO mDto=new PoolMasterStatusDTO(userid, addidx, mannum);
 		
 		int count2=poolStatusDao.makeMasterStatus(mDto);
-		
-		String msg=count+count2>2?"성공":"실패";
+
+		String msg=count+count2>=2?"성공":"실패";
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -639,6 +653,10 @@ public class PoolController
 		if(req.getParameter("sapm").equals("오후"))
 		{
 			h+=12;
+			if(h==24)
+			{
+				h=0;
+			}
 		}
 				
 		String starttime=req.getParameter("sy")+'-'+req.getParameter("sm")+'-'+req.getParameter("sd")+" "+h+":"+req.getParameter("smi");
@@ -683,6 +701,10 @@ public class PoolController
 		if(req.getParameter("lapm").equals("오후"))
 		{
 			h+=12;
+			if(h==24)
+			{
+				h=0;
+			}
 		}
 		
 		String starttime=req.getParameter("lsy")+'-'+req.getParameter("lsm")+'-'+req.getParameter("lsd")+" "+h+":"+req.getParameter("lmi");
