@@ -21,8 +21,8 @@ function addCancel(){
 					<legend>등급 변경(일반/관리자)</legend>
 					<div>
 						<select name="grade">
-							<option value="관리자">관리자<option>
-							<option value="일반">일반<option>
+							<option value="관리자">관리자</option>
+							<option value="일반">일반</option>
 						</select>
 					</div>
 					<input type="submit" value="등급바꾸기">

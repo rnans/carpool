@@ -20,8 +20,8 @@ function delCancel(){
 					<legend>차량 승인하기</legend>
 					<div>
 						<select name="confirm">
-							<option value="인증">승인<option>
-							<option value="미인증">승인취소<option>
+							<option value="1">승인</option>
+							<option value="0">승인취소</option>
 						</select>
 					</div>
 					<input type="submit" value="확인">
