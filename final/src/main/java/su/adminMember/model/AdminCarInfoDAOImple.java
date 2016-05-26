@@ -39,5 +39,16 @@ public class AdminCarInfoDAOImple implements AdminCarInfoDAO {
 		int count = sqlMap.delete("memberCarDel", idx);
 		return count;
 	}
+	
+	/**등록된 차 인증*/
+	public int memberCarOk(int idx, String confirm) {
+		
+		Map map = new HashMap();
+		map.put("idx", idx);
+		map.put("confirm", confirm);
+		
+		int count = sqlMap.update("memberCarOk", map);
+		return count;
+	}
 
 }

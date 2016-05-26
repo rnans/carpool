@@ -8,6 +8,6 @@ public interface AdminCarInfoDAO {
 	public int carInfoTotalCnt();
 	
 	public int memberCarDel(int idx);
-	
+	public int memberCarOk(int idx, String confirm);
 	
 }
