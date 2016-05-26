@@ -19,6 +19,7 @@ import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolStatusDAO;
 import su.pool.model.*;
+import su.member.model.*;
 
 @Controller
 public class PoolStatusController 
@@ -286,15 +287,43 @@ public class PoolStatusController
 	}
 	
 	@RequestMapping("/accAll.do")
-	public ModelAndView accetAllMembers(@RequestParam(value="idx")int idx)
+	public ModelAndView accetAllMembers(@RequestParam(value="idx")int idx, @RequestParam(value="aimidx")int aimidx, String members)
 	{
 		int count=poolStatusDao.accAllMembers(idx);
 		
+		int count2=poolStatusDao.chgAllMemStatus(idx,aimidx);
+		
+		String member[]=members.split("-");
+		
+		
+		System.out.println(member.length);
+		
+		for(int i=0;i<member.length;i++)
+		{
+			System.out.println(member[i]);
+		}
+		
+		List lists=poolDao.getPoolInfo(aimidx);
+		
+		for(int i=1;i<member.length;i++){
+		
+			
+			
+			MemberDTO user=poolDao.getAllUserInfo(member[i]);
+			
+			PoolDateDTO pDto=(PoolDateDTO)lists.get(0);
+			
+			PoolInfoDTO dto=new PoolInfoDTO(member[i], pDto.getPoolname(), pDto.getTermtype(), " ", user.getName(), user.getPhonenum(), user.getEmail(), user.getSex(), user.getBirth(), 1);
+					
+			poolStatusDao.makeCarpoolInfo(dto);
+		
+		}
 		
 		ModelAndView mav=new ModelAndView();
 		
+		String msg=count+count2>=2?"'성공'":"'실패'";
 		
-		
+		mav.addObject("msg",msg);
 		mav.setViewName("redirect:poolMasReqList.do");
 		
 		return mav;
@@ -307,6 +336,17 @@ public class PoolStatusController
 		System.out.println("1번쿼리 수행됨");
 		int count2=poolStatusDao.chgMemStatus(idx, members, aimidx);
 		System.out.println("2번쿼리 수행됨");
+		
+		MemberDTO user=poolDao.getAllUserInfo(members);
+		
+		PoolDateDTO pDto=(PoolDateDTO)poolDao.getPoolInfo(aimidx).get(0);
+		
+		PoolInfoDTO dto=new PoolInfoDTO(members, pDto.getPoolname(), pDto.getTermtype(), " ", user.getName(), user.getPhonenum(), user.getEmail(), user.getSex(), user.getBirth(), 1);
+				
+		
+		poolStatusDao.makeCarpoolInfo(dto);
+		
+		
 		ModelAndView mav=new ModelAndView();
 		String msgEl="";
 		String msg=count+count2>=2?"'성공'":"'실패'";
@@ -400,4 +440,6 @@ public class PoolStatusController
 		
 		return mav;
 	}
+	
+	
 }

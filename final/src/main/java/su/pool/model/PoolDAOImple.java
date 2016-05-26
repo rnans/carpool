@@ -61,12 +61,15 @@ public class PoolDAOImple implements PoolDAO {
 		
 		List list=sqlMap.selectList("sql.poolSQL.getUserInfo", userid);
 		
-		if(list==null)
+		MemberDTO dto=new MemberDTO();
+		
+		if(list==null||list.equals(""))
 		{
 			return null;
 		}
+	
+		dto=(MemberDTO)list.get(0);
 		
-		MemberDTO dto=(MemberDTO)list.get(0);
 		
 		return dto;
 	}

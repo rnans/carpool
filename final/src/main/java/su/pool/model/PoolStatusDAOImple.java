@@ -146,6 +146,15 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		return sqlMap.update("chgMemStatus",map);
 	}
 	
+	public int chgAllMemStatus(int idx, int aimidx) {
+		Map map=new HashMap();
+		
+		map.put("aimidx", aimidx);
+		map.put("idx", idx);
+		
+		return sqlMap.update("chgAllMemStatus",map);
+	}
+	
 	public int delMemReq(PoolMemberStatusDTO dto) {
 		// TODO Auto-generated method stub
 		return sqlMap.delete("delMemReq",dto);

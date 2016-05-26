@@ -121,6 +121,13 @@
 	and 
 	aimidx = (select aimidx from poolmasterstatus where aimidx=#{aimidx})
  	</update>
+ 	<update id="chgAllMemStatus" parameterType="map">
+ 	update poolmemberstatus set
+ 	status='예약 완료'
+ 	where aimidx=#{aimidx}
+ 	and
+ 	status='수락 대기 중'
+ 	</update>
  	<update id="chgMasStatus" parameterType="int">
  	update poolmasterstatus set
  	status='예약 완료'

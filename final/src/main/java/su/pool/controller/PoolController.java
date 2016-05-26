@@ -524,11 +524,10 @@ public class PoolController
 		
 		String s_caridx=""+caridx;
 		
-		PoolInfoDTO pInfoDto=new PoolInfoDTO(userid, poolname, termtype, s_caridx, memDto.getName() ,memDto.getPhonenum(), memDto.getEmail(), memDto.getSex(), memDto.getBirth(), 1);
+		PoolInfoDTO pInfoDto=new PoolInfoDTO(userid, poolname, termtype, s_caridx, memDto.getName() ,memDto.getPhonenum(), memDto.getEmail(), memDto.getSex(), memDto.getBirth(), 0);
 		
 		int count3=poolStatusDao.makeCarpoolInfo(pInfoDto);
-		
-		
+
 		String msg=count+count2+count3>=3?"성공":"실패";
 		
 		ModelAndView mav=new ModelAndView();

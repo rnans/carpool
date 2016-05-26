@@ -42,6 +42,8 @@ public interface PoolStatusDAO
 	
 	public int chgMemStatus(int idx, String members, int aimidx);
 	
+	public int chgAllMemStatus(int idx, int aimidx);
+	
 	public int delMemReq(PoolMemberStatusDTO dto);
 	
 	public int delMasReq(PoolMasterStatusDTO dto);
