@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ page import="su.comm.controller.*,java.util.*,java.io.*,java.sql.*"%>
 <%@ include file="calendarCommon.jsp" %>
 
@@ -16,11 +17,9 @@ int [][] days = aMonth.getDays();
 <script>
 var check=null;
 function seldate(check){
-	var date=check;	
-	
+	var date=check;		
 	var b= document.getElementById('date');
-	b.value=date;
-	
+	b.value=date;	
 }
 </script>
 <style>
@@ -29,7 +28,6 @@ A:active {color:green; font-family:serif;text-decoration: none}
 A:visited {color:black;text-decoration: none}
 A:hover {font-weight:bold;}
 
-
 .lyContent {
     overflow: hidden;
     position: relative;
@@ -37,12 +35,12 @@ A:hover {font-weight:bold;}
     min-width: 320px;
     margin: 5px auto;
     background: #FFF;
-    border-radius: 0px;
+    border-radius: 0px;    
     
 }
-.lyContent header {
+.lyContent header  {
     position: relative;
-    height: 33px;
+    height: 40px;
     padding: 0 0 0 20px;
     line-height: 6px;
     background: #FDFDFD;
@@ -52,6 +50,9 @@ A:hover {font-weight:bold;}
     font-weight: 700;
     color: #333;
     text-decoration: none!important;
+    text-align: center;
+    valign:center;
+    vertical-align: middle;
     }
 .calendarMake {
     padding: 10px 10px
@@ -90,11 +91,23 @@ A:hover {font-weight:bold;}
 	overflow: visible;
     position: relative;
     height: 32px;
-    width: 100px;
+    width: 102px;
     padding: 0 0px;
     margin-right: 4px;
     border: 1px solid #ddd;
     background: #fff;
+}
+.inputtime, .inputtime2{
+    display: inline-block;
+	overflow: visible;
+    position: relative;
+    height: 32px;
+    width: 105px;
+    padding: 0 0px;
+    margin-right: 4px;
+    border: 1px solid #ddd;
+    background: #fff;
+
 }
 
 .inputDate input {
@@ -104,6 +117,15 @@ A:hover {font-weight:bold;}
     border: 0;
     padding: 0 10px;
 }
+
+.inputtime select, .inputtime2 select {
+    width: 100%;
+    height: 100%;
+    line-height: 30px;
+    border: 0;
+    padding: 0 10px;
+}
+
 
 .inputDate2 {
 	display: inline-block;
@@ -194,6 +216,47 @@ tbody {
 .date .gClearfix {
     margin-bottom: 14px;
 }
+.btnArea {
+    padding: 15px;
+    text-align: center;
+}
+
+.btnLyClose {
+    right: 20px;
+    top: 15px;
+    width: 20px;
+    height: 15px;
+    color: #A1A1A9;
+    font-size: 14px;
+}
+.lyContent .btnLyClose {
+    overflow: hidden;
+    z-index: 1000;
+    position: absolute;
+ }
+.gSrOnly {
+    overflow: hidden!important;
+    position: absolute!important;
+    top: 0!important;
+    left: 0!important;
+    width: 1px!important;
+    height: 1px!important;
+    font-size: 0!important;
+    line-height: 0!important;
+}
+
+.uButton {
+    font-size: 13px;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+    border-radius: 2px;
+        height: 40px;
+            min-width: 100px;
+            background: #3cd370;
+            
+}
 
 
 </style>
@@ -220,15 +283,50 @@ tbody {
 	
 		<div class="gClearfix"> 
 			<div class="inputDate"> 
-				<input type="text" name="startday" title="시작 요일" id="date" maxlength="10"> 
+				<input type="text" name="startday" title="시작 요일" id="date" value="${day}" maxlength="10"> 
 				<button type="button" class="buttonCalendar">달력보기
 				</button>
+			</div>
+			<div class="inputtime"> 
+				<select name="stime" size="1" >				
+				<option>오전 12:00</option><option>오전 12:30</option><option>오전 01:00</option><option>오전 01:30</option>
+				<option>오전 02:00</option><option>오전 02:30</option><option>오전 03:00</option><option>오전 03:30</option>
+				<option>오전 04:00</option><option>오전 04:30</option><option>오전 05:00</option><option>오전 05:30</option>
+				<option>오전 06:00</option><option>오전 06:30</option><option>오전 07:00</option><option>오전 07:30</option>
+				<option>오전 08:00</option><option>오전 08:30</option><option>오전 09:00</option><option>오전 09:30</option>
+				<option>오전 10:00</option><option>오전 10:30</option><option>오전 11:00</option><option>오전 11:30</option>
+				
+				<option>오후 12:00</option><option>오후 12:30</option><option>오후 01:00</option><option>오후 01:30</option>
+				<option>오후 02:00</option><option>오후 02:30</option><option>오후 03:00</option><option>오후 03:30</option>
+				<option>오후 04:00</option><option>오후 04:30</option><option>오후 05:00</option><option>오후 05:30</option>
+				<option>오후 06:00</option><option>오후 06:30</option><option>오후 07:00</option><option>오후 07:30</option>
+				<option>오후 08:00</option><option>오후 08:30</option><option>오후 09:00</option><option>오후 09:30</option>
+				<option>오후 10:00</option><option>오후 10:30</option><option>오후 11:00</option><option>오후 11:30</option>
+				</select> 				
 			</div>
 			<div class="inputDate2">-</div>
 			<div class="inputDate"> 
 				<input type="text" name="endday" title="끝 요일" id="date" maxlength="10"> 
 				<button type="button" class="buttonCalendar">달력보기
 				</button>
+			</div>
+			<div class="inputtime2"> 
+				<select name="etime" size="1" >	
+					<option selected="selected"> </option>			
+					<option>오전 12:00</option><option>오전 12:30</option><option>오전 01:00</option><option>오전 01:30</option>
+					<option>오전 02:00</option><option>오전 02:30</option><option>오전 03:00</option><option>오전 03:30</option>
+					<option>오전 04:00</option><option>오전 04:30</option><option>오전 05:00</option><option>오전 05:30</option>
+					<option>오전 06:00</option><option>오전 06:30</option><option>오전 07:00</option><option>오전 07:30</option>
+					<option>오전 08:00</option><option>오전 08:30</option><option>오전 09:00</option><option>오전 09:30</option>
+					<option>오전 10:00</option><option>오전 10:30</option><option>오전 11:00</option><option>오전 11:30</option>
+					
+					<option>오후 12:00</option><option>오후 12:30</option><option>오후 01:00</option><option>오후 01:30</option>
+					<option>오후 02:00</option><option>오후 02:30</option><option>오후 03:00</option><option>오후 03:30</option>
+					<option>오후 04:00</option><option>오후 04:30</option><option>오후 05:00</option><option>오후 05:30</option>
+					<option>오후 06:00</option><option>오후 06:30</option><option>오후 07:00</option><option>오후 07:30</option>
+					<option>오후 08:00</option><option>오후 08:30</option><option>오후 09:00</option><option>오후 09:30</option>
+					<option>오후 10:00</option><option>오후 10:30</option><option>오후 11:00</option><option>오후 11:30</option>
+				</select> 
 			</div>
 		</div>
 			
@@ -245,10 +343,8 @@ tbody {
 		<div data-viewname="CalendarView" data-skinfactor="border" class="calendarPicker">
 		
 			<div class="month"> 
-				<button type="button" class="prevMonth" >
 				<span class="gSrOnly"><</span></button> 
-				<strong class="monthTxt" data-skinfactor="color"><%=currentYearString%>년 <%=Integer.parseInt(currentMonthString)+1 %>월</strong> 
-				<button type="button" class="nextMonth" >
+				<strong class="monthTxt" data-skinfactor="color"><%=currentYearString%>년 <%=Integer.parseInt(currentMonthString) %>월</strong> 
 				<span class="gSrOnly">></span></button>
 			</div>
 			
@@ -271,7 +367,7 @@ tbody {
 			    	  
 			      %>
 			        <td style="font-family:verdana, arial; font-size: 12px; align="left" valign="top" class="day_cell">
-			        <a href="javascript:seldate('<%=currentYearString%>-<%=Integer.parseInt(currentMonthString)+1 %>-<%=days[i][j]%>')"
+			        <a href="javascript:seldate('<%=currentYearString%>-<%=Integer.parseInt(currentMonthString) %>-<%=days[i][j]%>')"
 			         id="<%=days[i][j]%>" style="<%if(currentDayInt==days[i][j]){%>color:red; <%}%>"><%=days[i][j]%></a>			         
 			         </td>
 			      <%
@@ -286,7 +382,11 @@ tbody {
 		
 		</div>
 		<input type="hidden" name="id" value="${sid}">
-		<input type="submit" Value="완료">
+		<div class="btnArea"> 
+			<button type="submit" class="uButton uButtonPoint">완료</button>
+		</div>
+		<button data-uiselector="closeButton" type="button" class="btnLyClose" onclick="javascript:window.self.close();">
+		<span class="gSrOnly">레이어 닫기</span> X </button>
 		</form>
 	</div> <!-- date class -->
 </article>

@@ -42,6 +42,8 @@ window.onload=function(){
 	<%String temp=intYear+"-"+(intMonth+1)+"-";%>
 }
 
+var startdate="";
+
 function show(){		
 	var month=document.now.month.value;
 	var year=document.now.year.value;
@@ -59,7 +61,11 @@ function showResult(){
 }
 
 function write(){	
-	window.open('scheWrite.do','','width=520, height=700')
+	var month=<%=intMonth+1%>;
+	var day=startdate;
+	var year=<%=intYear%>;
+	var params='day='+day+'&'+'month='+month+'&year='+year;
+	window.open('scheWrite.do?'+params,'','width=450, height=529')
 }
 
 </script>
@@ -134,7 +140,59 @@ position: absolute;
     padding-bottom: 15px;
     text-align: left;
 }
+.scheduleList {
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;
+    margin-bottom: 5px;
+}
+.scheduleList h2{
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;  
+      
+    }
+.scheduleList .title{
+    padding: 5px 0 4px 20px;
+}
 
+.scheduleList ul {
+    border-top: 1px solid #E5E5E5;
+    padding: 0 20px;
+        margin: 0;
+}
+
+.scheduleList li {
+    position: relative;
+    padding: 13px 0 15px;
+}
+.scheduleList a {
+    display: block;
+    padding-left: 100px;
+}
+a:focus, a:hover {
+    color: #666;
+    text-decoration: none;
+}
+.scheduleList .time {
+    position: absolute;
+    top: 17px;
+    left: 0;
+    font-size: 18px;
+    color: #ff5b72!important;
+}
+.scheduleList .description {
+    position: relative;
+    font-size: 14px;
+    color: #333;
+    display: block;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+    word-break: normal;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+}
 </style>
 <body>
 
@@ -144,7 +202,7 @@ position: absolute;
 <ul class="_joinedLnb"> 
 <li><span><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></span></li>
 <li><a href="calendar.do" class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
-<li><a href="commMember.do" data-skinfactor="tBorder color" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
+<li><a href="commMember.do" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
 </ul> 
 </div>
 
@@ -187,8 +245,8 @@ position: absolute;
         %>
          <td style=" font-family:verdana, arial; font-size: 9px; color: #333333" align="left" valign="top" class="day_cell">
           <div class="daytd" style="<%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%>background-color:#FFEBFF; <%}%>"> 
-          
-          <a href="javascript:write();"><%=days[i][j]%></a><br><br>
+         
+          <a href="javascript:startdate=<%=days[i][j] %>;write();"><%=days[i][j]%></a><br><br>
 		  <c:forEach var="bbs" items="${list}">	
 			<c:set var="day2" value="<%=temp+days[i][j]%>"></c:set>
 		 	<c:if test="${bbs.startday==day2}">
@@ -230,6 +288,21 @@ position: absolute;
 		등록된 게시글이 없습니다.
 	</td>
 </c:if>		
+<br>
+<c:forEach var="bbs" items="${list}"> 
+<div class="scheduleList" style="display: block;">
+	<h2 class="title"> ${bbs.startday } </h2>
+	<ul>  
+	<li class="passDay">
+	 <a href="#" data-uiselector="scheduleItem" >   
+	 <span class="time">${bbs.stime }</span>
+	 <strong class="description">${bbs.subject } </strong>  
+	 <span class="name">${bbs.id }</span>
+	  </a></li>
+	 </ul>
+</div>
+</c:forEach>
+
  
 </body>
 </html>

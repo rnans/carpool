@@ -297,7 +297,23 @@ width: 200px;
 	<ul class="settingList setSmall">
 		<li>
 			<div class="listWrap"> 
-			<span class="name">밴드 이름 및 커버 설정</span>
+			<span class="name">카풀 이름 및 커버 설정</span>
+			</div>
+			<div class="side"> 
+			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
+			</div>
+		</li>
+		<li>
+			<div class="listWrap"> 
+			<span class="name">공지 사항 등록</span>
+			</div>
+			<div class="side"> 
+			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
+			</div>
+		</li>
+		<li>
+			<div class="listWrap"> 
+			<span class="name">기타 등등</span>
 			</div>
 			<div class="side"> 
 			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
@@ -309,7 +325,15 @@ width: 200px;
 	<ul class="settingList setSmall">
 		<li>
 			<div class="listWrap"> 
-			<span class="name">밴드 이름 및 커버 설정</span>
+			<span class="name">파티 탈퇴하기</span>
+			</div>
+			<div class="side"> 
+			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
+			</div>
+		</li>
+		<li>
+			<div class="listWrap"> 
+			<span class="name">파티 삭제하기</span>
 			</div>
 			<div class="side"> 
 			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
