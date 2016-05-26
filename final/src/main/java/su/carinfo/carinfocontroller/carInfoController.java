@@ -105,4 +105,9 @@ public class carInfoController
 		mav.setViewName("carManage/carMsg");
 		return mav;
 }
+	@RequestMapping("/carTest.do")
+	public String test(){
+		
+		return "carManage/test";
+	}
 }

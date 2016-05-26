@@ -130,11 +130,7 @@
           <ref bean="sqlSessionTemplate"/>
       </constructor-arg>
    </bean>
-    <bean id="yangVerMypageDao" class="su.mypage.yangvermodel.yangVerMypageDAOImple">
-      <constructor-arg>
-          <ref bean="sqlSessionTemplate"/>
-      </constructor-arg>
-   </bean>
+   
    
  
    

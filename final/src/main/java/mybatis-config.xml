@@ -14,7 +14,6 @@
 		<mapper resource="sql/carBookInfoSQL.xml"/>
 		<mapper resource="sql/adminPoolSQL.xml"/>
 		<mapper resource="sql/myPageSQL.xml"/>
-		<mapper resource="sql/yangVerMyPageSQL.xml"/>
 		<mapper resource="sql/carInfoSQL.xml"/>
 		<mapper resource="sql/poolStatusSQL.xml"/>
 		<mapper resource="sql/adminReserveSQL.xml"/>
