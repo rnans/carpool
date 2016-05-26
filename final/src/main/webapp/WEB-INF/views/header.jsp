@@ -40,7 +40,7 @@ $(document).ready(function(){
 				<li><a href="memberInfo.do">관리자페이지</a></li>
 		
 		</c:if>
-		
+				<li><a href="myPage.do">마이페이지</a></li>
 				<li><a href="poolMain.do">카풀</a></li>
 				<li><a href="carList.do">차량관리</a></li>
 				<li><a href="carBookInfo.do" id="chageaboo">차계부</a></li>
