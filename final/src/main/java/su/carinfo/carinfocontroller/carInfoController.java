@@ -55,12 +55,19 @@ public class carInfoController
 	@RequestMapping("/carList.do")
 	public ModelAndView carList(HttpSession session){
 		
-		String userid=(String)session.getAttribute("sid");		
-		
-		List<carInfoDTO> lists = carInfoDao.carAllList(userid);
+		String userid=(String)session.getAttribute("sid");	
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", lists);
-		mav.setViewName("carManage/carList");
+		if(userid==null){
+
+			mav.addObject("msg", "로그인후 이용가능합니다.");
+			mav.addObject("gopage", "index.do");
+			mav.setViewName("carManage/carMsg");
+			
+		}else{
+			List<carInfoDTO> lists = carInfoDao.carAllList(userid);
+			mav.addObject("list", lists);
+			mav.setViewName("carManage/carList");
+		}
 		return mav;
 		
 	}
