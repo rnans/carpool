@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="js/previewmodule.js"></script>
 <style>
 #div1{
 	float:left;
@@ -46,10 +47,10 @@ header
 		
 	<div id="div1">
 		<form name="upload" action="upload.do" method="post" enctype="multipart/form-date">
-			<fieldset>
-				<img src="1234.jpg" border="100" ><br>
-			</fieldset>
-				<input type="file" name="upload" value="">
+			<div id="preview">
+				
+			</div>
+				<input type="file" name="upload" onchange="previewImage(this,'preview',225,350)">
 				<input type="submit" value="사진올리깅">
 		</form>
 	</div>
