@@ -13,6 +13,13 @@ function memberCarDelForm(){
 	window.open('memberCarDelForm.do'+param,'memberCarDelForm','width=500 height=400 left=500 top=200');
 }
 </script>
+<script>
+var idx = null;
+function memberCarOkForm(){
+	var param = "?idx="+idx;
+	window.open('memberCarOkForm.do'+param, 'memberCarOkForm','width=500 height=400 left=500 top=200');
+}
+</script>
 </head>
 <body>
 <div>헤더</div>
@@ -48,7 +55,9 @@ function memberCarDelForm(){
 					<td>${list.cartype}</td>
 					<td>${list.carnum}</td>
 					<td>${list.confirm}</td>
-					<td>승인만들기</td>
+					<td>
+						<input type="button" value="승인" onclick="javascript:idx='${list.idx}';memberCarOkForm();">
+					</td>
 					<td>
 						<input type="button" value="삭제" onclick="javascript:idx='${list.idx}';memberCarDelForm();">
 					</td>
