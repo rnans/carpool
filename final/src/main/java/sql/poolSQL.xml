@@ -362,4 +362,11 @@
 	<select id="getMasterIdx" parameterType="String" resultType="int">
 		select idx from reservationlist where poolname=#{poolname}
 	</select>
+	
+	<update id="editPoolMans" parameterType="map">
+		update reservationlist set
+		mannum=#{mans} 
+		where idx=#{idx}
+	</update>
+	
 </mapper>

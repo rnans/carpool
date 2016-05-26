@@ -121,4 +121,25 @@
 	and 
 	aimidx = (select aimidx from poolmasterstatus where aimidx=#{aimidx})
  	</update>
+ 	<update id="chgMasStatus" parameterType="int">
+ 	update poolmasterstatus set
+ 	status='예약 완료'
+ 	where idx=#{idx} and mans=nowmans
+ 	</update>
+ 	<delete id="delMemReq" parameterType="su.pool.model.PoolMemberStatusDTO">
+ 	delete from poolMemberStatus where idx=#{idx}
+ 	</delete>
+ 	<delete id="delMasReq" parameterType="su.pool.model.PoolMasterStatusDTO">
+ 	delete from poolMasterStatus where idx=#{idx}
+ 	</delete>
+ 	<update id="editMemMans" parameterType="su.pool.model.PoolMemberStatusDTO">
+ 	update poolMemberStatus set
+ 	mans=#{mans}
+ 	where idx=#{idx}
+ 	</update>
+ 	<update id="editMasMans" parameterType="su.pool.model.PoolMasterStatusDTO">
+ 	update poolMasterStatus set
+ 	mans=#{mans}
+ 	where idx=#{idx}
+ 	</update>
 </mapper>

@@ -169,4 +169,15 @@ public class PoolDAOImple implements PoolDAO {
 			
 		return dto;
 	}
+	 
+	public int editPoolMans(int idx, int mans) {
+		Map map=new HashMap();
+		
+		map.put("idx", idx);
+		map.put("mans", mans);
+		 
+		return sqlMap.update("editPoolMans",map);
+	}
+		
+
 }

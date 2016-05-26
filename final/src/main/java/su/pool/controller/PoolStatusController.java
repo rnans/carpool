@@ -2,9 +2,11 @@ package su.pool.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -254,7 +256,7 @@ public class PoolStatusController
 		return mav;
 	}
 	@RequestMapping("/poolMasReqList.do")
-	public ModelAndView viewPoolMasStatusPage(@RequestParam(value="cp", defaultValue="1")int cp, HttpSession session)
+	public ModelAndView viewPoolMasStatusPage(@RequestParam(value="cp", defaultValue="1")int cp, HttpSession session, HttpServletRequest req)
 	{
 		String id=(String)session.getAttribute("sid");
 		
@@ -265,14 +267,19 @@ public class PoolStatusController
 		
 		
 		String pageStr2=
-				su.Page.SuPage.makePage("poolList.do", totalCnt2, ls2, pageSize2, cp);
+				su.Page.SuPage.makePage("poolMasReqList.do", totalCnt2, ls2, pageSize2, cp);
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("maslist", maslist);
 		mav.addObject("pageStr",pageStr2);
-		mav.setViewName("carpool/poolList");
-	
 		
+		String msgEl=(String)req.getAttribute("msgEl");
+		
+		if(msgEl==null||msgEl.equals("")){
+		
+		}else{
+		mav.addObject("msgEl",msgEl);
+		}
 		mav.setViewName("carpool/poolMasReqList");
 		
 		return mav;
@@ -294,7 +301,7 @@ public class PoolStatusController
 	}
 	
 	@RequestMapping("/accOne.do")
-	public ModelAndView accetOneMembers(@RequestParam(value="idx")int idx,@RequestParam(value="members")String members,@RequestParam(value="aimidx")int aimidx)
+	public ModelAndView accetOneMembers(@RequestParam(value="idx")int idx,@RequestParam(value="members")String members,@RequestParam(value="aimidx")int aimidx, HttpServletRequest req)
 	{
 		int count=poolStatusDao.accOneMember(idx,members);
 		System.out.println("1번쿼리 수행됨");
@@ -305,10 +312,91 @@ public class PoolStatusController
 		String msg=count+count2>=2?"'성공'":"'실패'";
 		
 		
-		msgEl="<script>window.alert("+msg+")</script>";
+		msgEl="window.alert("+msg+")";
+		
+		req.setAttribute("msgEl", msgEl);
 		
 		mav.addObject("msgEl",msgEl);
 		mav.setViewName("redirect:poolMasReqList.do");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/delMemReq.do")
+	public ModelAndView delMemReq(PoolMemberStatusDTO dto)
+	{
+		int count=poolStatusDao.delMemReq(dto);
+		
+		ModelAndView mav=new ModelAndView();
+		
+		String msg=count>0?"성공":"실패";
+		String url="/poolStatus.do";
+		
+		mav.addObject("msg", msg);
+		mav.addObject("url",url);
+		mav.setViewName("carpool/poolMsg");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/delMasReq.do")
+	public ModelAndView delMasReq(PoolMasterStatusDTO dto)
+	{
+		int count=poolStatusDao.delMasReq(dto);
+		
+		int count2=poolDao.poolDel(dto.getAimidx());
+		
+		ModelAndView mav=new ModelAndView();
+		
+		String msg=count+count2>1?"성공":"실패";
+		String url="/poolMasReqList.do";
+		
+		mav.addObject("msg", msg);
+		mav.addObject("url",url);
+		
+		mav.setViewName("carpool/poolMsg");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/editMemMans.do")
+	public ModelAndView editMemMans(PoolMemberStatusDTO dto)
+	{
+		int count=poolStatusDao.editMemMans(dto);
+		
+		System.out.println(dto.getAimidx());
+		int count2=poolDao.editPoolMans(dto.getAimidx(),dto.getMans());
+		
+		ModelAndView mav=new ModelAndView();
+		
+		String msg=count+count2>1?"성공":"실패";
+		String url="/poolMemReqList.do";
+		
+		mav.addObject("msg", msg);
+		mav.addObject("url",url);
+		
+		mav.setViewName("carpool/poolMsg");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/editMasMans.do")
+	public ModelAndView editMasMans(PoolMasterStatusDTO dto)
+	{
+		int count=poolStatusDao.editMasMans(dto);
+		
+		System.out.println(dto.getAimidx());
+		int count2=poolDao.editPoolMans(dto.getAimidx(),dto.getMans());
+		
+		ModelAndView mav=new ModelAndView();
+		
+		String msg=count+count2>1?"성공":"실패";
+		String url="/poolMemReqList.do";
+		
+		mav.addObject("msg", msg);
+		mav.addObject("url",url);
+		
+		mav.setViewName("carpool/poolMsg");
 		
 		return mav;
 	}

@@ -45,5 +45,5 @@ public interface PoolDAO
 	
 	public int poolDel(int idx);
 	
-	
+	public int editPoolMans(int idx, int mans);
 }

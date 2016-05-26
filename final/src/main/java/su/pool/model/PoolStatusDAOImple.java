@@ -145,4 +145,24 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		
 		return sqlMap.update("chgMemStatus",map);
 	}
+	
+	public int delMemReq(PoolMemberStatusDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.delete("delMemReq",dto);
+	}
+	
+	public int delMasReq(PoolMasterStatusDTO dto)
+	{
+		return sqlMap.delete("delMasReq",dto);
+	}
+	
+	public int editMasMans(PoolMasterStatusDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.update("editMasMans",dto);
+	}
+	
+	public int editMemMans(PoolMemberStatusDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.update("editMemMans",dto);
+	}
 }

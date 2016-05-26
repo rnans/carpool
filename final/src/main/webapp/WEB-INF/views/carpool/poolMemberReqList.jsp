@@ -10,7 +10,7 @@
 <body>
 <h1>내가 쓴 예약 요청 글 목록</h1>
 <form name="selForm" action="uptoMaster.do">
- <input type="hidden" name="aimidx" value="${aimidx}">
+<input type="hidden" name="aimidx" value="${aimidx}">
 <table>
 	<thead>
 		<tr>
