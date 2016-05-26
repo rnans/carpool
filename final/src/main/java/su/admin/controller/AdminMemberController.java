@@ -156,4 +156,32 @@ public class AdminMemberController {
 		return mav;
 	}
 	
+	/**회원 차 승인 폼*/
+	@RequestMapping("/memberCarOkForm.do")
+	public ModelAndView memberCarOkForm(HttpServletRequest req){
+		int idx = Integer.parseInt(req.getParameter("idx"));
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("idx", idx);
+		mav.setViewName("admin/memberCarOk");
+		
+		return mav;
+	}
+	
+	/**회원 차 승인*/
+	@RequestMapping("/memberCarOk.do")
+	public ModelAndView memberCarOk(@RequestParam(value="idx",required=false)int idx, 
+			@RequestParam(value="confirm",required=false)String confirm){
+		
+		
+		int result = adCarInfoDao.memberCarOk(idx, confirm);
+		String msg = result>0?"처리완료!":"처리실패!";
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.setViewName("admin/adminMsg");
+		
+		return mav;
+	}
+	
 }
