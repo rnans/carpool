@@ -38,4 +38,8 @@
 	<delete id="memberCarDel" parameterType="su.adminMember.model.AdminCarInfoDTO">
 		delete from carinfo where idx=#{idx}
 	</delete>
+	
+	<update id="memberCarOk" parameterType="Map">
+		update carinfo set confirm=#{confirm} where idx=#{idx}
+	</update>
 </mapper>
