@@ -16,6 +16,7 @@
 		<mapper resource="sql/myPageSQL.xml"/>
 		<mapper resource="sql/carInfoSQL.xml"/>
 		<mapper resource="sql/poolStatusSQL.xml"/>
+		<mapper resource="sql/adminReserveSQL.xml"/>
 	</mappers>
 	
 </configuration>
