@@ -186,33 +186,33 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 			<form name="memberJoin" action="memberJoin.do" method="post" class="form">
 				<fieldset>
 					<legend>회원가입</legend>
-					<font color="red">!</font>표시는 필수 입력사항입니다.
+					<font color="red">*</font>표시는 필수 입력사항입니다.
 					<ul>
 						<li>
-							<font color="red">!</font>ID : <input type="text" name="id" id="id" onblur="idCheck()" size="40" placeholder="영문+숫자 or 영문,숫자로 된 5~12 문자">
+							ID(<font color="red">*</font>) : <input type="text" name="id" id="id" onblur="idCheck()" size="40" placeholder="영문+숫자 or 영문,숫자로 된 5~12 문자">
 							<span id="idmsg"></span> <!-- ajax 아이디체크용 -->
 						</li>
 						<li>
-							<font color="red">!</font>비밀번호 : <input type="password" name="pwd" id="pwd" placeholder="영문+숫자 or 영문,숫자로 된 6~18 문자" size="40">	
+							비밀번호(<font color="red">*</font>) : <input type="password" name="pwd" id="pwd" placeholder="영문+숫자 or 영문,숫자로 된 6~18 문자" size="40">	
 						</li>
 						<li>
 							비밀번호확인 : <input type="password" name="pwd2" onblur="pwdCheck()" size="40">
 							<span id="pwdmsg"></span> <!-- ajax 비밀번호확인용 -->
 						</li>
 						<li>
-							<font color="red">!</font>이름 : <input type="text" name="name" id="name">
+							이름(<font color="red">*</font>) : <input type="text" name="name" id="name">
 						</li>
 						<li>
-							<font color="red">!</font>생년월일 : <input type="text" name="birth" id="birth" placeholder="ex) 900415 형식으로 입력해주세요." size="40">
+							생년월일(<font color="red">*</font>) : <input type="text" name="birth" id="birth" placeholder="ex) 900415 형식으로 입력해주세요." size="40">
 						</li>
 						<li>
-							<font color="red">!</font>연락처 : <input type="text" name="phonenum" id="phonenum" placeholder="ex) 01012345678 형식으로 입력해주세요." size="40">
+							연락처(<font color="red">*</font>) : <input type="text" name="phonenum" id="phonenum" placeholder="ex) 01012345678 형식으로 입력해주세요." size="40">
 						</li>
 						<li>
-							<font color="red">!</font>거주지역 : <input type="text" name="addr" id="addr" placeholder="ex) 경기안산 형식으로 입력해주세요." size="40">
+							거주지역(<font color="red">*</font>) : <input type="text" name="addr" id="addr" placeholder="ex) 경기안산 형식으로 입력해주세요." size="40">
 						</li>
 						<li>
-							<font color="red">!</font>이메일 : <input type="text" name="email" id="email">
+							이메일(<font color="red">*</font>) : <input type="text" name="email" id="email">
 							@
 									<input type="text" name="email2" value="" id="email2" readonly="true">
 									
@@ -226,12 +226,12 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 							</select>
 						</li>
 						<li>
-							<font color="red">!</font>성별 : 
+							성별(<font color="red">*</font>) : 
 								  <input type="radio" name="sex" id="sex" value="남성" checked>남성
 								  <input type="radio" name="sex" value="여성">여성
 						</li>
 						<li>
-							<font color="red">!</font>차랑소유여부 : 
+							차랑소유여부(<font color="red">*</font>) : 
 							      <input type="radio" name="carhave" id="carhave" value="있음" checked>있음
 								  <input type="radio" name="carhave" value="없음">없음
 						</li>
