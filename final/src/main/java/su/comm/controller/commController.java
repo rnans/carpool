@@ -73,7 +73,7 @@ public class commController {
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
-		mav.setViewName("comm/commmsg");
+		mav.setViewName("comm/commBBSmsg");
 		return mav;
 		
 	}

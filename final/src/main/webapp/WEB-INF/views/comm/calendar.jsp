@@ -65,7 +65,7 @@ function write(){
 	var day=startdate;
 	var year=<%=intYear%>;
 	var params='day='+day+'&'+'month='+month+'&year='+year;
-	window.open('scheWrite.do?'+params,'','width=450, height=529')
+	window.open('scheWrite.do?'+params,'','width=515, height=595')
 }
 
 </script>
@@ -159,7 +159,7 @@ position: absolute;
 .scheduleList ul {
     border-top: 1px solid #E5E5E5;
     padding: 0 20px;
-        margin: 0;
+    margin: 0;
 }
 
 .scheduleList li {
@@ -294,12 +294,13 @@ a:focus, a:hover {
 	<h2 class="title"> ${bbs.startday } </h2>
 	<ul>  
 	<li class="passDay">
-	 <a href="#" data-uiselector="scheduleItem" >   
+	 <a href="#" data-uiselector="scheduleItem">   
 	 <span class="time">${bbs.stime }</span>
 	 <strong class="description">${bbs.subject } </strong>  
 	 <span class="name">${bbs.id }</span>
 	  </a></li>
 	 </ul>
+	
 </div>
 </c:forEach>
 

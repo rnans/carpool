@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="bbsList" resultType="su.comm.model.commBBSDTO">
-			select * from commBBS
+			select * from commBBS order by idx desc
 	</select>
 
 	<insert id="scheWrite" parameterType="su.comm.model.scheDTO">

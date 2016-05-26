@@ -24,10 +24,50 @@ function show(){
 body{
     box-sizing: border-box;
 }
+.cPost{
+	display: table;
+    table-layout: fixed;
+    width: 100%;
+    padding-top: 3px;}
+.profileText{
+    
+	vertical-align: top;
+    border-bottom: 1px solid #E5E5E5;
+    margin: 0;
+    position: relative;
+    font-size: 14px;
+    color: #333;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+    word-break: normal;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+.postText{
+	display: inline-block;
+	wihth:90%;
+	margin-top: 7px;
+}
+.postBody{
+    position: relative;
+    padding: 0px 40px;
+    display: block;
+    min-height: 30px;
+
+}
+.updatebutton{
+	display: table-cell;
+	width:40px;
+    text-align: rigth;
+    	float: right;
+}
 </style>
 <body>
 <%@include file="../header.jsp"%>
 <hr>
+
 <div id="lnb" data-skin="skin5">
 <ul class="_joinedLnb"> 
 <li><span><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></span></li>
@@ -36,6 +76,8 @@ body{
 </ul> 
 </div>
 
+
+<div style="width:65%; margin: 0px auto;">
 <h2 class="menu_title" style="position: relative; z-index: 100; margin-bottom: 16px; text-align: center;">커뮤니티</h2>
 
 <div class="searchWrap" data-status="true">
@@ -45,14 +87,14 @@ body{
 	<label class="gSrOnly" for="input_search">이름, 글내용, 해시태그로 검색</label> 
 	<input type="text" id="input_search" placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name=""> 
 	
-	 <Span style=""><button type="button" class="searchbutton">검색</button></Span>
+	<button type="button" class="searchbutton">검색</button>
 	</div>
 	</form>
 </div>
 
 <div class="writeWrap" data-uiselector="postWriteRegion">
 <form name="write" action="commWrite.do">
-<div data-viewname="DPostWriteLayoutView" class="cPostWrite">
+<div  class="cPostWrite">
 <h3 class="gSrOnly"></h3>
 <div class="writeWrap" data-uiselector="mentionListParent"> 
 <div class="mentions-input _prevent_toggle" style="overflow-y:hidden !important">
@@ -70,34 +112,33 @@ class="postWrite _use_keyup_event" maxlength="10000" placeholder="멤버들에�
 <!-- 밑에  -->
 <ul>
 <li data-uiselector="attachItem"> 
-<label data-icon="write-camera-on" data-uiselector="btnAttachPhoto" class="js-fileapi-wrapper">
+<label class="js-fileapi-wrapper">
 <span class="gSrOnly">사진</span> 
 <input type="file" accept="image/*" name="attachment">
 </label>
 </li>
 <li data-uiselector="attachItem"> 
-<label data-icon="movie-on2" data-uiselector="btnAttachVideo" class="js-fileapi-wrapper">
+<label class="js-fileapi-wrapper">
 <span class="gSrOnly">동영상</span> 
 <input type="file" accept="video/*" name="attachment">
 </label>
 </li>
 <li data-uiselector="attachItem"> 
-<label data-icon="file-on" data-uiselector="btnAttachFile" class="js-fileapi-wrapper">
+<label class="js-fileapi-wrapper">
 <span class="gSrOnly">파일</span>
- <input type="file" multiple="" accept="*/*" name="attachment">
+ <input type="file" accept="*/*" name="attachment">
 </label>
 </li>
 </ul>   
 
    <div class="buttonSubmit"> 
-   <input type="reset"  value="취소">
    <input type="submit" value="게시">
    </div>
 
-   </div> <div class="cPreview" data-uiselector="attachPreviewRegion"></div><div data-uiselector="selectStickerRegion"></div></div>
+   </div> </div>
    </div></form></div>
 
-<div data-uiselector="bandNoticeRegion"><div data-viewname="DBandBoardNoticeView" class="noticeWrap" style="display: block;">
+<div style="width: 100%"><div class="noticeWrap" style="display: block;">
 <h2 class="tit"> 공지사항 </h2>
 <ul class="notice"> 
 <li data-uiselector="noticeListItem" data-icon="calendar-down">
@@ -117,22 +158,22 @@ class="postWrite _use_keyup_event" maxlength="10000" placeholder="멤버들에�
 <div class="cPost " data-uiselector="postMainWrap">
 <div class="postMain" data-uiselector="postRegion">
 
-<div data-viewname="DPostItemView">
-
-<div class="postWriter"> 
 <a href="#" data-uiselector="Img">
 <img class="profileImg" src="http://s.cmstatic.net/webclient/dres/20160419171121/images/template/profile_60x60.gif" alt="남구문"></a>
-<div class="profileText"> <span class="textName"> <strong class="name onlyName">${bbs.id }</strong> </span>
+<div class="profileText"> <span class="textName"> <strong class="name onlyName"><br><br>${bbs.id }</strong> </span>
 <div class="textTime">${bbs.writedate }</div></div></div> 
 <div class="postBody"> <div class="postText"> <p class="txtBody" data-uiselector="txtBody">${bbs.content }</p></div>
+	 <input type="button" class="updatebutton" value="삭제">
+	 <input type="button" class="updatebutton" value="수정">
+	 
 </div></div>
 
 </div>
 
-</div></div>
 </c:forEach>
 <hr>
 footer
+</div>
 
 
 
