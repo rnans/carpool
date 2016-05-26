@@ -5,15 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script> 
-function previewImage(obj) 
-{ 
-var dest    = document.getElementById("preview"); 
-dest.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + obj.value + "',sizingMethod=scale)"; 
-} 
-</script> 
-
-
+<script type="text/javascript" src="js/previewmodule.js">
+<script type="text/javascript">
+function getNameFromPath(strFilepath) {
+var objRE = new RegExp(/([^\/\\]+)$/);
+var strName = objRE.exec(strFilepath);
+if (strName == null) {
+   return null;
+}
+else {
+    return strName[0];
+}
+}
+</script>
 </head>
 <body>
 <fieldset>
@@ -27,17 +31,16 @@ dest.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" +
 <br>
 차종:<input type="text" name="cartype">
 </div>
-
-<input type="file" onchange="previewImage(this)"> 
-<br><br> 
-<div id="preview" style="width:100px; height:100px"></div> 
-
+<div id="getImage"></div>
 <div>
+<input type="file" size="50" onchange="previewImage(this,'getImage',200,200);">
+<br>
+</div>
 <input type="hidden" name="confirmphoto" value="사진없음">
+
 <!-- <img src='이미지 경로명' width="100" height="100"/>
 <br>
 <input type="file"> -->
-</div>
 
 <br>
 	<input type="button" value="취소">
