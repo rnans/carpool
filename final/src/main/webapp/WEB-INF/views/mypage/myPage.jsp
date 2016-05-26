@@ -86,17 +86,17 @@ header
 	<div id="div3">
 		<fieldset>
 			<form>
-				<a href="myPage.jsp"><input type="button" name="mypage" value="마이페이지"></a><br>
+				<a href="myPage.do"><input type="button" name="mypage" value="마이페이지"></a><br>
 				<a href="myProfile.do"><input type="button" name="myprofile" value="내프로필수정"></a><br>
-				<a href="notiSetting.jsp"><input type="button" name="notiSetting" value="알람설정"></a><br>
+				<a href="notiSetting.do"><input type="button" name="notiSetting" value="알람설정"></a><br>
 				<a href="pwdUpdate.do"><input type="button" name="passchange" value="비밀번호변경"></a><br>
-				<a href="userPayInfo.jsp"><input type="button" name="userpayInfo" value="결제정보"></a><br>
+				<a href="userPayInfo.do"><input type="button" name="userpayInfo" value="결제정보"></a><br>
 				<input type="button" name="mypage" value="이용내역"><br>
 				<input type="button" name="mypage" value="소속카풀"><br>
-				<a href="favorite.jsp"><input type="button" name="mypage" value="즐겨찾기"></a><br>
-				<a href="regList.jsp"><input type="button" name="register" value="등록한글"></a><br>
+				<a href="favorite.do"><input type="button" name="mypage" value="즐겨찾기"></a><br>
+				<a href="regList.do"><input type="button" name="register" value="등록한글"></a><br>
 				<input type="button" name="mypage" value="평가한글"><br>
-				<a href="memberleave.jsp"><input type="button" name="mypage" value="회원탈퇴"></a><br>
+				<a href="memberleave.do"><input type="button" name="mypage" value="회원탈퇴"></a><br>
 			</form>
 		</fieldset>
 	</div>
