@@ -155,4 +155,20 @@
  	<select id="getMemReqByIdx" parameterType="int">
  	select * from poolmemberstatus where aimidx=#{aimidx}
  	</select>
+ 	<insert id="makePoolInfo" parameterType="su.pool.model.PoolInfoDTO">
+ 	insert into carpoolinfo values
+ 	(
+ 		carpoolinfo_idx.nextval,
+ 		#{id},
+ 		#{poolname},
+ 		#{termtype},
+ 		#{caridx},
+ 		#{name},
+ 		#{phonenum},
+ 		#{email},
+ 		#{sex},
+ 		#{birth},
+ 		#{grade}
+ 	)
+ 	</insert>
 </mapper>

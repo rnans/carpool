@@ -34,6 +34,8 @@ public interface PoolStatusDAO
 	
 	public int makeMemberStatus(PoolMemberStatusDTO dto);
 	
+	public int makeCarpoolInfo(PoolInfoDTO dto);
+	
 	public int accAllMembers(int idx);
 	
 	public int accOneMember(int idx, String members);

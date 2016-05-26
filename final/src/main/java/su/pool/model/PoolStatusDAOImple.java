@@ -187,4 +187,9 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		// TODO Auto-generated method stub
 		return sqlMap.selectList("getMemReqByIdx",aimidx);
 	}
+	
+	public int makeCarpoolInfo(PoolInfoDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.insert("makePoolInfo",dto);
+	}
 }

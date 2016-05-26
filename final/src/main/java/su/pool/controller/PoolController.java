@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import su.pool.model.PoolDAO;
 import su.pool.model.PoolDTO;
 import su.pool.model.PoolDateDTO;
+import su.pool.model.PoolInfoDTO;
 import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolStatusDAO;
@@ -519,7 +520,16 @@ public class PoolController
 		
 		int count2=poolStatusDao.makeMasterStatus(mDto);
 
-		String msg=count+count2>=2?"성공":"실패";
+		MemberDTO memDto=poolDao.getAllUserInfo(userid);
+		
+		String s_caridx=""+caridx;
+		
+		PoolInfoDTO pInfoDto=new PoolInfoDTO(userid, poolname, termtype, s_caridx, memDto.getName() ,memDto.getPhonenum(), memDto.getEmail(), memDto.getSex(), memDto.getBirth(), 1);
+		
+		int count3=poolStatusDao.makeCarpoolInfo(pInfoDto);
+		
+		
+		String msg=count+count2+count3>=3?"성공":"실패";
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -566,8 +576,17 @@ public class PoolController
 		PoolMasterStatusDTO mDto=new PoolMasterStatusDTO(userid, addidx, mannum);
 		
 		int count2=poolStatusDao.makeMasterStatus(mDto);
-
-		String msg=count+count2>=2?"성공":"실패";
+		
+		MemberDTO memDto=poolDao.getAllUserInfo(userid);
+		
+		String s_caridx=""+caridx;
+		
+		PoolInfoDTO pInfoDto=new PoolInfoDTO(userid, poolname, termtype, s_caridx, memDto.getName() ,memDto.getPhonenum(), memDto.getEmail(), memDto.getSex(), memDto.getBirth(), 1);
+		
+		int count3=poolStatusDao.makeCarpoolInfo(pInfoDto);
+		
+		
+		String msg=count+count2+count3>=3?"성공":"실패";
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -680,10 +699,14 @@ public class PoolController
 		
 		if(pooltype.equals("탈래요"))
 		{
-			int totalCnt=poolStatusDao.getOwnMemberTotalCnt(userid);
+			List lists2=poolStatusDao.getMemReqByAimidx(idx);
 			
-			if(totalCnt>0)
+			if(lists2.get(0).equals("")||lists2.get(0)==null)
 			{
+				count2=1;
+
+			}
+			else{
 				count2=poolStatusDao.editMemMans(idx,mannum);
 			}
 		}
