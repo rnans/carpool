@@ -8,7 +8,7 @@
 	</select>
 	<insert id="carAdd" parameterType="su.carinfo.model.carInfoDTO">
 		insert into carInfo
-		values(carInfo_idx.nextval,#{id},#{driver},'0',#{carnum},#{cartype},#{confirmphoto},0)
+		values(carInfo_idx.nextval,#{id},#{driver},'0',#{carnum},#{cartype},#{confirmphoto},'0')
 	</insert>
 	<select id="carIdxList" parameterType="su.carinfo.model.carInfoDTO" resultType="su.carinfo.model.carInfoDTO">
 		select * from carInfo where idx=#{idx}

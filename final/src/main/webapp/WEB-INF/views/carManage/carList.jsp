@@ -30,7 +30,7 @@
 					<td>${dto.driver }</td>
 					<td>${dto.carnum }</td>
 					<td>${dto.cartype }</td>
-					<td>${dto.confirm }된 차량입니다.</td>
+					<td><c:if test="${dto.confirm eq 0 }">미인증된 차량입니다.</c:if><c:if test="${dto.confirm eq 1 }">인증된 차량입니다.</c:if></td>
 					
 					<td colspan="2">
 					<form action="carUpdate.do">
