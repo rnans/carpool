@@ -10,6 +10,10 @@
 <div>헤더</div>
 <%@include file="../header.jsp" %>
 <%@include file="../adHeader.jsp" %>
+<h2>예약 및 결제관리</h2>
+<h3>결제관리</h3>
+<a href="driverReserveList.do">1.드라이버예약</a> | <a href="memberReserveList.do">2.사용자예약</a> |<a href="payMentList.do">3.결제관리</a>
+
 <section>
 	<article>
 		<table border="1" cellspacing="0" width="500">

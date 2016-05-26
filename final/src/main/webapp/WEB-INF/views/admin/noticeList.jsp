@@ -16,6 +16,7 @@ function noticeDelForm(){
 </script>
 <body>
 <div>헤더부분</div>
+<%@include file="../header.jsp" %>
 <%@include file="../adHeader.jsp" %>
 <section>
 <h2>고객센터관리</h2>

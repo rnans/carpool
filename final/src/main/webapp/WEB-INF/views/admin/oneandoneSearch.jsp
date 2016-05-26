@@ -23,17 +23,8 @@ function oneandoneDelForm(){
 <a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="adminuseguideList.do">4.이용안내</a>
 <h4>1:1문의내역</h4>
 </section>
-<form action="oneandoneSearch.do">
-<select name="select">
-<option value="writer">작성자</option>
-<option value="type">문의유형</option>
-<option value="status">답변현황</option>
- </select>
- <input type="text" name="search">
- <input type="submit" value="검색">
- </form>
-<section>
 
+<section>
 
 <table border="1">
 <thead>
@@ -54,7 +45,7 @@ function oneandoneDelForm(){
 </tr>
  </c:if>
 
-<c:forEach var="oneandone" items="${list }">
+<c:forEach var="oneandone" items="${list}">
 <tr>
  <td>${oneandone.idx }</td>
  <c:url var="oneandoneAnswer" value="oneandoneAnswer.do">
