@@ -69,11 +69,23 @@
 	 <delete id="oneandoneDelete" parameterType="su.csCenter.model.CsoneandoneDTO">
        delete from oneandone where idx=#{idx}
       </delete>
-    <select id="oneandoneSearch" parameterType="Map" resultType="su.csCenter.model.CsoneandoneDTO">
+    <select id="oneandoneTypeSearch" parameterType="Map" resultType="su.csCenter.model.CsoneandoneDTO">
 	select * from
    (select rownum as rnum,a.* from
    (select * from oneandone order by idx desc)a)b
    where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and type=#{search}
+   	</select>
+   	<select id="oneandoneWriterSearch" parameterType="Map" resultType="su.csCenter.model.CsoneandoneDTO">
+	select * from
+   (select rownum as rnum,a.* from
+   (select * from oneandone order by idx desc)a)b
+   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and writer=#{search}
+   	</select>
+   	<select id="oneandoneStateSearch" parameterType="Map" resultType="su.csCenter.model.CsoneandoneDTO">
+	select * from
+   (select rownum as rnum,a.* from
+   (select * from oneandone order by idx desc)a)b
+   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and state=#{search}
    	</select>
 	
 	<!-- qna -->

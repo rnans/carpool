@@ -62,7 +62,7 @@ public class CsoneandoneDAOImple implements CsoneandoneDAO {
 				int count=sqlMap.delete("oneandoneDelete", idx);
 				return count;
 		  }
-		 public List<CsoneandoneDTO> oneandoneSearch(int cp,int ls,String search){
+		 public List<CsoneandoneDTO> oneandoneTypeSearch(int cp,int ls,String search){
 				
 				int startnum=(cp-1)*ls+1;
 				int endnum=cp*ls;
@@ -71,9 +71,31 @@ public class CsoneandoneDAOImple implements CsoneandoneDAO {
 				map.put("startnum", startnum);
 				map.put("endnum", endnum);
 				List<CsoneandoneDTO> list=
-						sqlMap.selectList("oneandoneSearch",map);
+						sqlMap.selectList("oneandoneTypeSearch",map);
 						return list;
 			}
+		 public List<CsoneandoneDTO> oneandoneWriterSearch(int cp,int ls,String search){
+			 int startnum=(cp-1)*ls+1;
+				int endnum=cp*ls;
+				Map map=new HashMap();
+				map.put("search", search);
+				map.put("startnum", startnum);
+				map.put("endnum", endnum);
+				List<CsoneandoneDTO> list=
+						sqlMap.selectList("oneandoneWriterSearch",map);
+						return list;
+		 }
+		 public List<CsoneandoneDTO> oneandoneStateSearch(int cp,int ls,String search){
+			 int startnum=(cp-1)*ls+1;
+				int endnum=cp*ls;
+				Map map=new HashMap();
+				map.put("search", search);
+				map.put("startnum", startnum);
+				map.put("endnum", endnum);
+				List<CsoneandoneDTO> list=
+						sqlMap.selectList("oneandoneStateSearch",map);
+						return list;
+		 }
 	}
 
 

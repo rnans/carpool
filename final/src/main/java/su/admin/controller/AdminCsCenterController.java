@@ -203,17 +203,29 @@ public class AdminCsCenterController {
 		//1:1문의 리스트
 				@RequestMapping("/oneandoneSearch.do")
 				public ModelAndView oneandoneList(@RequestParam(value="cp",defaultValue="1")int cp,HttpServletRequest req){
-			        String search=req.getParameter("search");
+					 String select=req.getParameter("select");
+					String search=req.getParameter("search");
 			    	ModelAndView mav=new ModelAndView();
 					int totalCnt=csoneandoneDao.oneandoneTotalCnt();
 					int listSize=10;
 					int pageSize=5;
-					List<CsoneandoneDTO> list=csoneandoneDao.oneandoneSearch(cp,listSize,search);
+					
+					if(select.equals("type")){
+					List<CsoneandoneDTO> list=csoneandoneDao.oneandoneTypeSearch(cp,listSize,search);
+					mav.addObject("list", list);
+					}else if(select.equals("writer")){
+						List<CsoneandoneDTO> list=csoneandoneDao.oneandoneWriterSearch(cp,listSize,search);
+						mav.addObject("list", list);
+					}else if(select.equals("state")){
+						List<CsoneandoneDTO> list=csoneandoneDao.oneandoneStateSearch(cp,listSize,search);
+						mav.addObject("list", list);
+					}
+					
 					String pageStr=
 						su.Page.SuPage.makePage("oneandoneSearch.do", totalCnt, listSize, pageSize, cp);
-					mav.addObject("list", list);
+					
 					mav.addObject("pageStr",pageStr);
-					mav.setViewName("admin/test");
+					mav.setViewName("admin/oneandoneSearch");
 					  return mav;
 			        }
 		//1:1문의 본문보기
