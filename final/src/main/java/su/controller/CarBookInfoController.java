@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import su.carBookInfo.model.CarBookInfoDAO;
 import su.carBookInfo.model.CarBookInfoDTO;
+import su.carCost.model.CarCostDTO;
 
 
 @Controller
@@ -27,13 +28,22 @@ public class CarBookInfoController {
 		
 		
 		//차량등록
-		@RequestMapping("/carReg.do")
-		public ModelAndView carRegadd(CarBookInfoDTO dto){
-			int result=CarBookInfoDao.carAdd(dto);
-			String msg=result>0?"등록완료!":"등록실패!";
-			ModelAndView mav=new ModelAndView();
-			mav.addObject("msg", msg);
-			mav.setViewName("carbook/costMsg");
-			return mav;
-		}
+	
+		
+		
+		   //차량등록
+		   @RequestMapping("/carReg.do")
+		   public String carReg(){
+			   return "carbook/carReg";
+		   }
+		   @RequestMapping("/carReg_ok.do")
+		   public ModelAndView carReg_ok(CarBookInfoDTO dto){
+		      int result=CarBookInfoDao.carAdd(dto);
+		      String msg=result>0?"등록성공!":"등록실패!";
+		      ModelAndView mav=new ModelAndView();
+		      mav.addObject("msg", msg);
+		      mav.setViewName("carbook/costMsg");
+		      return mav;
+		    	  
+		   }
 }

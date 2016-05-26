@@ -7,4 +7,7 @@
     		insert into carbookinfo values(carbookinfo_idx.nextval,
     		#{id},#{carkind1},#{carkind2},#{carkind3},#{carnum},#{oilcost})
     	</insert>
+    	<select id="idCarnum" resultType="su.carBookInfo.model.CarBookInfoDTO">
+    	select carnum from carbookinfo where id=#{id}
+    	</select>
     </mapper>

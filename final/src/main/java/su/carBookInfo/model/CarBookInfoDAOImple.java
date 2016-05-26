@@ -1,5 +1,7 @@
 package su.carBookInfo.model;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class CarBookInfoDAOImple implements CarBookInfoDAO {
@@ -16,6 +18,10 @@ public class CarBookInfoDAOImple implements CarBookInfoDAO {
 		int count=sqlMap.insert("CarBookInfo", dto);
 		return count;
 	
+	}
+	public List<CarBookInfoDTO> idcarnum(String id){
+		List<CarBookInfoDTO> list=sqlMap.selectList("idCarnum", id);
+				return list;
 	}
 
 }

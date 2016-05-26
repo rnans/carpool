@@ -6,13 +6,15 @@ public class CarCostDTO {
 	private String costday;
 	private String category;
 	private String bigo;
-	private String cost;
-	private String km;
+	private int cost;
+	private int km;
 	private String id;
+	private String carnum;
 	public CarCostDTO() {
 		super();
 	}
-	public CarCostDTO(int idx, String costday, String category, String bigo, String cost, String km, String id) {
+	public CarCostDTO(int idx, String costday, String category, String bigo, int cost, int km, String id,
+			String carnum) {
 		super();
 		this.idx = idx;
 		this.costday = costday;
@@ -21,6 +23,7 @@ public class CarCostDTO {
 		this.cost = cost;
 		this.km = km;
 		this.id = id;
+		this.carnum = carnum;
 	}
 	public int getIdx() {
 		return idx;
@@ -46,16 +49,16 @@ public class CarCostDTO {
 	public void setBigo(String bigo) {
 		this.bigo = bigo;
 	}
-	public String getCost() {
+	public int getCost() {
 		return cost;
 	}
-	public void setCost(String cost) {
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
-	public String getKm() {
+	public int getKm() {
 		return km;
 	}
-	public void setKm(String km) {
+	public void setKm(int km) {
 		this.km = km;
 	}
 	public String getId() {
@@ -64,6 +67,12 @@ public class CarCostDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+	public String getCarnum() {
+		return carnum;
+	}
+	public void setCarnum(String carnum) {
+		this.carnum = carnum;
+	}
+
 	
 }

@@ -3,13 +3,18 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <mapper namespace="sql.carcost">
-       <insert id="CarCost" parameterType="su.carCost.model.CarCostDTO">
-          insert into carcost values(carcost_idx.nextval,
-          #{id},#{category},#{costday},#{cost},#{km},#{bigo})
-       </insert>
+       
+      <insert id="CarCostAdd" parameterType="su.carCost.model.CarCostDTO">
+		insert into carcost
+		values(carcost_idx.nextval,#{id},
+		#{category},#{costday},#{cost},#{km},#{bigo},#{carnum})
+	  </insert>
+       <!-- 비용 리스트 보기 -->
        <select id="CarCostList" resultType="su.carCost.model.CarCostDTO">
-       select * from carcost where id=#{id}
+       select * from carcost where id=#{id} order by idx desc
        </select>
+       
+       <!-- 비용수정 값 보여주기 -->
        <select id="CarCostContent" resultType="su.carCost.model.CarCostDTO">
        select * from carcost where idx=#{idx}
        </select>
@@ -20,13 +25,36 @@
 	     cost=#{cost},
 	     km=#{km},
 	     bigo=#{bigo}
+	     carnum=#{carnum}
 		where idx=#{idx}
-	</update>
-	 <delete id="CarCostDelete" parameterType="su.carCost.model.CarCostDTO">
+	  </update>
+	
+	  <delete id="CarCostDelete" parameterType="su.carCost.model.CarCostDTO">
        delete from carcost where idx=#{idx}
       </delete>
-      <insert id="CarCostAdd" parameterType="su.carCost.model.CarCostDTO">
-		insert into carcost
-		values(carcost_idx.nextval,#{id},#{category},#{costday},#{cost},#{km},#{bigo})
-	</insert>
+
+	
+	<select id="CarCostSum" parameterType="String" resultType="String">
+		select sum(cost) from carcost where carnum=#{carnum}
+    </select>
+    
+    <select id="CarKmSum" parameterType="String" resultType="String">
+		select sum(km) from carcost where carnum=#{carnum}
+    </select>
+
+    <select id="CarJooyuSum" parameterType="String" resultType="String">
+		select sum(cost) from carcost where carnum=#{carnum} and category='주유'
+    </select>
+      
+    <select id="CarJungbiSum" parameterType="String" resultType="String">
+		select sum(cost) from carcost where carnum=#{carnum} and category='정비'
+    </select>
+    
+    <select id="CarBuySum" parameterType="String" resultType="String">
+		select sum(cost) from carcost where carnum=#{carnum} and category='물품구입'
+    </select>
+     
+       
+       
+      
     </mapper>

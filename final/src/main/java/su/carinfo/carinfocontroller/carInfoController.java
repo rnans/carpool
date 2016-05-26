@@ -41,10 +41,18 @@ public class carInfoController
 	}
 
 	@RequestMapping(value = "/carAdd.do", method = RequestMethod.POST)
-	public ModelAndView carAdd(carInfoDTO dto){
+	public ModelAndView carAdd(carInfoDTO dto, HttpSession session){
+		
 		
 		int result = carInfoDao.carAdd(dto);
+		
+		if(result>0)
+		{
+			session.setAttribute("carnum",dto.getCarnum());
+		}
+		
 		String msg = result > 0 ? "차량등록 성공" : "차량등록 실패";
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("gopage", "carList.do");

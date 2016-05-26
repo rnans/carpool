@@ -38,4 +38,28 @@ public class CarCostDAOImple implements CarCostDAO {
 	   int count=sqlMap.insert("CarCostAdd", dto);
 	   return count;
    }
+   //컬럼 합산 값 보여주기
+   public String CarCostSum(String carnum){
+	   String costsum=sqlMap.selectOne("CarCostSum", carnum);
+	   return costsum;
+   }
+   public String CarKmSum(String carnum){
+	   String kmsum=sqlMap.selectOne("CarKmSum", carnum);
+	   return kmsum;
+   }
+   
+   public String CarJooyuSum(String carnum){
+	   String jooyusum=sqlMap.selectOne("CarJooyuSum", carnum);
+	   return jooyusum;
+   }
+   
+   public String CarJungbiSum(String carnum){
+	   String jungbisum=sqlMap.selectOne("CarJungbiSum", carnum);
+	   return jungbisum;
+   }
+   
+   public String CarBuySum(String carnum){
+	   String buysum=sqlMap.selectOne("CarBuySum", carnum);
+	   return buysum;
+   }
 }

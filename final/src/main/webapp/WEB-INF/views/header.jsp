@@ -12,7 +12,7 @@ function loginOpen(){
 ////////jquery/////////
 $(document).ready(function(){
 	$("#chageaboo").mouseenter(function(){
-		$(this).append(" <li id='chageaboo2'><a href='#'>home</a>&nbsp&nbsp<a href='cost.do'>cost</a>&nbsp&nbsp<a href='graph.do'>graph</a></li>");	
+		$(this).append(" <li id='chageaboo2'><a href='#'>home</a>&nbsp&nbsp<a href='cost.do?id=${sid}'>cost</a>&nbsp&nbsp<a href='graph.do'>graph</a></li>");	
 	});
 	
 	$("#chageaboo").mouseleave(function(){
@@ -43,7 +43,7 @@ $(document).ready(function(){
 				<li><a href="myPage.do">마이페이지</a></li>
 				<li><a href="poolMain.do">카풀</a></li>
 				<li><a href="carList.do">차량관리</a></li>
-				<li><a href="carBookInfo.do" id="chageaboo">차계부</a></li>
+				<li><a href="carBookInfo.do?id=${sid }" id="chageaboo">차계부</a></li>
 				<li><a href="comm.do">커뮤니티</a></li>
 				<li><a href="csCenter.do">고객센터</a></li>
 			</ul>
