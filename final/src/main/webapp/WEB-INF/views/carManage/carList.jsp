@@ -30,7 +30,7 @@
 					<td>${dto.driver }</td>
 					<td>${dto.carnum }</td>
 					<td>${dto.cartype }</td>
-					<td>${dto.confirm }</td>
+					<td>${dto.confirm }된 차량입니다.</td>
 					
 					<td colspan="2">
 					<form action="carUpdate.do">
