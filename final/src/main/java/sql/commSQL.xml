@@ -15,7 +15,7 @@
 
 	<insert id="scheWrite" parameterType="su.comm.model.scheDTO">
 		insert into schedule values(schedule_idx.nextval,  #{id}, 'test', 
-		#{subject, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, #{startday, jdbcType=VARCHAR},  #{endday, jdbcType=VARCHAR}, #{banbok, jdbcType=VARCHAR}, sysdate)
+		#{subject, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, #{startday, jdbcType=VARCHAR}, #{stime} ,  #{endday, jdbcType=VARCHAR}, #{etime} , #{banbok, jdbcType=VARCHAR}, sysdate)
 	</insert>
 	
 	<select id="scheList" resultType="su.comm.model.scheDTO">

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import su.comm.model.carpoolinfoDTO;
@@ -88,9 +89,24 @@ public class commController {
 	}	
 	
 	@RequestMapping("scheWrite.do")
-	public String scheWritego(){
-		return "comm/scheWrite";
+	public ModelAndView scheWritego(String day, 
+			@RequestParam(value = "month",required = false)String month,
+			@RequestParam(value = "year",required = false)String year	){
+		
+		String day2=year+"-"+month+"-"+day;
+		System.out.println(day2);
+		ModelAndView mav=new ModelAndView();			
+		mav.addObject("day", day2);
+		mav.setViewName("comm/scheWrite");	
+		return mav;
 	}
+	
+	
+//	@RequestMapping("scheWrite.do")
+//	public String scheWritego(){
+//		
+//		return "comm/scheWrite";
+//	}
 	
 	@RequestMapping(value="scheWrite.do", method=RequestMethod.POST)
 	public ModelAndView scheWrite(scheDTO dto){
