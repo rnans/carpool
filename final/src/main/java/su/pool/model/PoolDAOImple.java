@@ -95,6 +95,15 @@ public class PoolDAOImple implements PoolDAO {
 		 int count=sqlMap.selectOne("sql.poolSQL.memberTotalCnt");
 			return count;
 	}
+	
+	 public PoolDAOImple() {
+		// TODO Auto-generated constructor stub
+	}
+	 
+	 public List getPoolInfo(int idx) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("getPoolInfo", idx);
+	}
 	 
 	 public List viewAllList(int cp, int ls) {
 		 int startnum=(cp-1)*ls+1;

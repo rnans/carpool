@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.map.HashedMap;
+import org.apache.ibatis.datasource.pooled.PoolState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import su.pool.model.PoolDAO;
 import su.pool.model.PoolDTO;
+import su.pool.model.PoolDateDTO;
 import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolStatusDAO;
@@ -645,7 +648,7 @@ public class PoolController
 		int pay=Integer.parseInt(req.getParameter("pay"));
 		String pluscontent=req.getParameter("pluscontent");
 		String termtype=req.getParameter("termtype");
-		
+				
 		String sh=req.getParameter("sh");
 		
 		int h=Integer.parseInt(sh);
@@ -660,13 +663,36 @@ public class PoolController
 		}
 				
 		String starttime=req.getParameter("sy")+'-'+req.getParameter("sm")+'-'+req.getParameter("sd")+" "+h+":"+req.getParameter("smi");
-
+		
+			
 		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, termtype);
 
 			
 		int count=poolDao.poolShortEdit(dto);
 		
-		String msg=count>0?"성공":"실패";
+		int count2=0;
+		
+		List lists=poolDao.getPoolInfo(idx);
+		
+		PoolDateDTO pDto=(PoolDateDTO)lists.get(0);
+		
+		String pooltype=pDto.getPooltype();
+		
+		if(pooltype.equals("탈래요"))
+		{
+			int totalCnt=poolStatusDao.getOwnMemberTotalCnt(userid);
+			
+			if(totalCnt>0)
+			{
+				count2=poolStatusDao.editMemMans(idx,mannum);
+			}
+		}
+		else if(pooltype.equals("타세요"))
+		{
+			count2=poolStatusDao.editMasMans(idx,mannum);
+		}
+		
+		String msg=count+count2>1?"성공":"실패";
 		
 		
 		ModelAndView mav=new ModelAndView();
@@ -721,7 +747,35 @@ public class PoolController
 				
 		int count=poolDao.poolLongEdit(dto);
 		
-		String msg=count>0?"성공":"실패";
+
+		int count2=0;
+		
+		List lists=poolDao.getPoolInfo(idx);
+		
+		PoolDateDTO pDto=(PoolDateDTO)lists.get(0);
+		
+		String pooltype=pDto.getPooltype();
+		
+		if(pooltype.equals("탈래요"))
+		{
+			List lists2=poolStatusDao.getMemReqByAimidx(idx);
+			
+			if(lists2.get(0).equals("")||lists2.get(0)==null)
+			{
+				count2=1;
+
+			}
+			else{
+				count2=poolStatusDao.editMemMans(idx,mannum);
+			}
+		}
+		else if(pooltype.equals("타세요"))
+		{
+			count2=poolStatusDao.editMasMans(idx,mannum);
+		}
+
+		
+		String msg=count+count2>1?"성공":"실패";
 
 		ModelAndView mav=new ModelAndView();
 		

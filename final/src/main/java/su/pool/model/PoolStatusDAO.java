@@ -14,6 +14,8 @@ public interface PoolStatusDAO
 	
 	public String getMembers(int addidx);
 	
+	public List getMemReqByAimidx(int aimidx);
+	
 	public List viewOwnMemberPoolList(int cp, int ls, String id);
 	
 	public List viewOwnMasterPoolList(int cp, int ls, String id);
@@ -45,4 +47,8 @@ public interface PoolStatusDAO
 	public int editMemMans(PoolMemberStatusDTO dto);
 	
 	public int editMasMans(PoolMasterStatusDTO dto);
+	
+	public int editMemMans(int ownidx, int mans);
+	
+	public int editMasMans(int aimidx, int mans);
 }

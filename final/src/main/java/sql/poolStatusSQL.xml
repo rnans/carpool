@@ -142,4 +142,17 @@
  	mans=#{mans}
  	where idx=#{idx}
  	</update>
+ 	<update id="editMemMansByIdx" parameterType="map">
+ 	update poolMemberStatus set
+ 	mans=#{mans}
+ 	where ownidx=#{ownidx}
+ 	</update>
+ 	<update id="editMasMansByIdx" parameterType="map">
+ 	update poolMasterStatus set
+ 	mans=#{mans}
+ 	where aimidx=#{aimidx}
+ 	</update>
+ 	<select id="getMemReqByIdx" parameterType="int">
+ 	select * from poolmemberstatus where aimidx=#{aimidx}
+ 	</select>
 </mapper>

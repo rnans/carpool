@@ -165,4 +165,26 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		// TODO Auto-generated method stub
 		return sqlMap.update("editMemMans",dto);
 	}
+	
+	public int editMasMans(int aimidx, int mans) {
+		Map map=new HashMap();
+			
+		map.put("aimidx", aimidx);
+		map.put("mans", mans);
+		
+		return sqlMap.update("editMasMansByIdx",map);
+	}
+	
+	public int editMemMans(int ownidx, int mans) {
+		Map map=new HashMap();
+		
+		map.put("ownidx", ownidx);
+		map.put("mans", mans);
+		return sqlMap.update("editMemMansByIdx",map);
+	}
+	
+	public List getMemReqByAimidx(int aimidx) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("getMemReqByIdx",aimidx);
+	}
 }

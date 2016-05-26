@@ -369,4 +369,9 @@
 		where idx=#{idx}
 	</update>
 	
+	<select id="getPoolInfo" parameterType="int" resultType="su.pool.model.PoolDateDTO">
+		select * from reservationlist
+		where idx=#{idx}
+	</select>
+	
 </mapper>
