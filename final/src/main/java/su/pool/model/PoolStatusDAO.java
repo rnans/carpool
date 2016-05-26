@@ -33,4 +33,8 @@ public interface PoolStatusDAO
 	public int makeMemberStatus(PoolMemberStatusDTO dto);
 	
 	public int accAllMembers(int idx);
+	
+	public int accOneMember(int idx, String members);
+	
+	public int chgMemStatus(int idx, String members, int aimidx);
 }

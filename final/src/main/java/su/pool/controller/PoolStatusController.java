@@ -292,4 +292,24 @@ public class PoolStatusController
 		
 		return mav;
 	}
+	
+	@RequestMapping("/accOne.do")
+	public ModelAndView accetOneMembers(@RequestParam(value="idx")int idx,@RequestParam(value="members")String members,@RequestParam(value="aimidx")int aimidx)
+	{
+		int count=poolStatusDao.accOneMember(idx,members);
+		System.out.println("1번쿼리 수행됨");
+		int count2=poolStatusDao.chgMemStatus(idx, members, aimidx);
+		System.out.println("2번쿼리 수행됨");
+		ModelAndView mav=new ModelAndView();
+		String msgEl="";
+		String msg=count+count2>=2?"'성공'":"'실패'";
+		
+		
+		msgEl="<script>window.alert("+msg+")</script>";
+		
+		mav.addObject("msgEl",msgEl);
+		mav.setViewName("redirect:poolMasReqList.do");
+		
+		return mav;
+	}
 }

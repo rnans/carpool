@@ -31,10 +31,10 @@
 	where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
 	<select id="getOwnMemberPoolTotalCnt" parameterType="String" resultType="int">
-	select count(*) from (select * from reservationlist where userid=#{id})
+	select count(*) from (select * from reservationlist where userid=#{id} and pooltype='탈래요')
 	</select>
 	<select id="getOwnMasterPoolTotalCnt" parameterType="String" resultType="int">
-	select count(*) from (select * from reservationlist where userid=#{id})
+	select count(*) from (select * from reservationlist where userid=#{id} and pooltype='타세요')
 	</select>
 	<select id="getMembers" parameterType="int" resultType="String">
 	select members from poolmasterstatus where addidx=#{addidx}
@@ -65,7 +65,7 @@
 		#{mans},
 		0,
 		'모집중',
-		' ',
+		'-',
 		0
 	)
 	</insert>
@@ -107,4 +107,18 @@
 	reqcount=0
 	where idx=#{idx}
 	</update>
+	<update id="accOneMember" parameterType="map">
+	update poolmasterstatus set 
+	members=rtrim(members,'-'||#{members}),
+	inmembers=inmembers||'-'||#{members},
+	reqcount=reqcount-1
+	where idx=#{idx}
+	</update>
+	<update id="chgMemStatus" parameterType="map">
+	update poolmemberstatus set
+	status='예약 완료'
+	where memberid=#{members} 
+	and 
+	aimidx = (select aimidx from poolmasterstatus where aimidx=#{aimidx})
+ 	</update>
 </mapper>

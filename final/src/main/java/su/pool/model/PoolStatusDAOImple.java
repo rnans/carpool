@@ -125,4 +125,24 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		return sqlMap.update("accAllMembers",idx);
 	}
 	
+	public int accOneMember(int idx, String members) {
+		Map map=new HashMap();
+		
+		map.put("idx", idx);
+		map.put("members", members);
+		
+		System.out.println(idx);
+		System.out.println(members);
+		return sqlMap.update("accOneMember",map);
+	}
+	
+	public int chgMemStatus(int idx, String members, int aimidx) {
+		Map map=new HashMap();
+		
+		map.put("aimidx", aimidx);
+		map.put("idx", idx);
+		map.put("members", members);
+		
+		return sqlMap.update("chgMemStatus",map);
+	}
 }
