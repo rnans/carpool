@@ -32,13 +32,14 @@
 		<fieldset>
 			<legend>차량 정보</legend>
 			<div id="div1">
-			<input type="hidden" name="caridx" value="${dto.idx}30">
-			차종:<input type="text" name="carKind" value="${dto.carKind }" readonly> 
+			<input type="hidden" name="idx" value="${dto.idx }">
+
+			운전자 이름<input type="text" name="driver" value="${dto.driver }">
 			<br>
-			차 번호:<input type="text" name="carNum" value="${dto.carNum }"readonly>
+			차 번호<input type="text" name="carnum" value="${dto.carnum }">
 			<br>
-			차주:<input type="text" name="carMaster" value="${dto.carMaster }"readonly>
-			<br>
+			차종<input type="text" name="cartype" value="${dto.cartype }">
+
 			인증된 차량 입니다.
 			<br>
 			</div>

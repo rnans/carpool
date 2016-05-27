@@ -130,12 +130,12 @@
           <ref bean="sqlSessionTemplate"/>
       </constructor-arg>
    </bean>
-  	<bean id="wishpoollistDao" class="su.wishpool.model.WishpoolListDAOImple">
+  <!-- 	<bean id="wishpoollistDao" class="su.wishpool.model.WishpoolListDAOImple">
    		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>	   		
    		</constructor-arg>
     </bean>
- 
+  -->
    
 	
 	

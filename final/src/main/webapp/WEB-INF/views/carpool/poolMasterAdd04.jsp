@@ -35,8 +35,8 @@
 
 window.onload=function(){
 
-	document.getElementById("term").style.visibility = "hidden";
-	document.getElementById("short").style.visibility = "hidden";
+	document.getElementById("term").style.display = "none";
+	document.getElementById("short").style.display = "none";
  }
  
 function setDays(){
@@ -110,8 +110,8 @@ function setDays2(){
 
 function viewShort()
 {
-	document.getElementById("term").style.visibility = "hidden";
-	document.getElementById("short").style.visibility = "visible";
+	document.getElementById("term").style.diplay = "none";
+	document.getElementById("short").style.display = "block";
 	
 	var d = new Date();
 
@@ -206,8 +206,8 @@ function setDays3(){
 
 function viewTerm()
 {
-	document.getElementById("short").style.visibility = "hidden";
-	document.getElementById("term").style.visibility = "visible";
+	document.getElementById("short").style.display = "none";
+	document.getElementById("term").style.display = "block";
 	
 	var d = new Date();
 

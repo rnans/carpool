@@ -56,4 +56,5 @@ public interface PoolStatusDAO
 	
 	public int editMasMans(int aimidx, int mans);
 	
+	public int driverReserveDel(int idx);
 }

@@ -178,5 +178,7 @@
  		#{grade}
  	)
  	</insert>
- 
+ 		   <delete id="driverReserveDel" parameterType="su.pool.model.PoolMasterStatusDTO">
+       delete from poolmasterstatus where aimidx=#{idx}
+    </delete>
 </mapper>

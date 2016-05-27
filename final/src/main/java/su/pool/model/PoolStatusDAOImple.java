@@ -201,5 +201,7 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		// TODO Auto-generated method stub
 		return sqlMap.insert("makePoolInfo",dto);
 	}
-	
+	public int driverReserveDel(int idx){
+	       return sqlMap.delete("driverReserveDel",idx);
+	    }
 }

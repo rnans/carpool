@@ -373,5 +373,7 @@
 		select * from reservationlist
 		where idx=#{idx}
 	</select>
-	
+	<select id="getCarInfo" parameterType="string" resultType="su.carinfo.model.carInfoDTO">
+		select * from carinfo where id=#{id}
+	</select>
 </mapper>

@@ -99,6 +99,11 @@ public class PoolDAOImple implements PoolDAO {
 			return count;
 	}
 	
+	 public List getCarInfo(String id)
+	 {
+		 return sqlMap.selectList("getCarInfo",id);
+	 }
+	 
 	 public PoolDAOImple() {
 		// TODO Auto-generated constructor stub
 	}

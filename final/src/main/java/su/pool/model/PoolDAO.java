@@ -27,6 +27,8 @@ public interface PoolDAO
 	
 	public int getMasterIdx(String poolname);
 	
+	public List getCarInfo(String id);
+	
 	public List getPoolInfo(int idx);
 	
 	public List viewAllList(int cp, int listSize);

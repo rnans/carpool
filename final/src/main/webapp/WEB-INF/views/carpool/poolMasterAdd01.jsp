@@ -53,15 +53,15 @@ window.onload=function()
 			<div id="div1">
 			이름 <input type="text" name="name" value="${dto.name }"> 
 			<br>
-			아이디 <input type="text" name="id" value="${dto.id }">
+			아이디 <input type="hidden" name="id" value="${dto.id }">
 			<br>
-			주소 <input type="text" name="addr" value="${dto.addr}">
+			지역 <input type="text" name="addr" value="${dto.addr}">
 			<br>
-			이메일 <input type="text" name="email" value="${dto.email}">
+			이메일 <input type="email" name="email" value="${dto.email}">
 			<br>
-			생년월일 <input type="text" name="birthday" value="${dto.birth }">
+			생년월일 <input type="text" name="birth" value="${dto.birth }">
 			<br>
-			전화번호 <input type="text" name="phonenumber" value="${dto.phonenum }">
+			전화번호 <input type="tel" name="phonenum" value="${dto.phonenum }">
 			<br>
 			성별 <input type="radio"  name="sex" value="남성" id="male">남성
 			<input type="radio" name="sex" value="여성" id="female">여성

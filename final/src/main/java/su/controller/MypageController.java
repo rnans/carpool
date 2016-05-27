@@ -17,11 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import su.file.model.UploadDTO;
+//import su.file.model.UploadDTO;
 import su.member.model.MemberDTO;
 import su.mypage.model.MypageDAO;
 import su.mypage.model.MypageDTO;
-import su.mypage.model.NotiSettingDTO;
+/*import su.mypage.model.NotiSettingDTO;*/k
 
 
 import java.io.File;
@@ -86,7 +86,7 @@ public class MypageController {
 	
 //uplaod	
 	
-	@RequestMapping(value="/upload.do",method=RequestMethod.POST)
+	/*@RequestMapping(value="/upload.do",method=RequestMethod.POST)
 	public String upload(UploadDTO dto, MultipartHttpServletRequest req, HttpServletRequest request){
 	 
 		
@@ -99,7 +99,7 @@ public class MypageController {
 	      
 	      return "mypage/myProfile";
 			
-	}
+	}*/
 	
 	@RequestMapping("/myProfileUpdate.do")
 	public ModelAndView myProfileUpdate(MypageDTO dto,HttpServletRequest req){
