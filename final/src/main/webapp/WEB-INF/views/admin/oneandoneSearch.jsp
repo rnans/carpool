@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
 <script>
 var idx=null;
 function oneandoneDelForm(){
@@ -13,19 +9,6 @@ function oneandoneDelForm(){
 	window.open('oneandoneDelete.do'+param,'oneandoneDelForm','width=500 height=400 left=500 top=200');
 }
 </script>
-<body>
-<%@include file="../header.jsp" %>
-<%@include file="../adHeader.jsp" %>
-<div>헤더부분 </div>
-<hr>
-<section>
-<h2>고객센터관리</h2>
-<a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="adminuseguideList.do">4.이용안내</a>
-<h4>1:1문의내역</h4>
-</section>
-
-<section>
-
 <table border="1">
 <thead>
 <tr>
@@ -67,8 +50,3 @@ function oneandoneDelForm(){
  </tr>
  </tfoot>
 </table>
-</section>
-<hr>
-풋부분
-</body>
-</html>
