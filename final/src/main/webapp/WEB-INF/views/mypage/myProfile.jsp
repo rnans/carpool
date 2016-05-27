@@ -46,11 +46,11 @@ header
 <h2>마이프로필</h2>
 		
 	<div id="div1">
-		<form name="upload" action="upload.do" method="post" enctype="multipart/form-date">
+		<form name="up" action="upload.do" method="post" enctype="multipart/form-date">
 			<div id="preview">
 				
 			</div>
-				<input type="file" name="upload" onchange="previewImage(this,'preview',225,350)">
+				<input type="file" name="filename" onchange="previewImage(this,'preview',225,300)">
 				<input type="submit" value="사진올리깅">
 		</form>
 	</div>

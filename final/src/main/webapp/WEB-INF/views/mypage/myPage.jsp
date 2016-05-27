@@ -93,7 +93,7 @@ header
 				<a href="userPayInfo.do"><input type="button" name="userpayInfo" value="결제정보"></a><br>
 				<input type="button" name="mypage" value="이용내역"><br>
 				<input type="button" name="mypage" value="소속카풀"><br>
-				<a href="favorite.do"><input type="button" name="mypage" value="즐겨찾기"></a><br>
+				<a href="wishPoolList.do"><input type="button" name="wishpoollist" value="즐겨찾기"></a><br>
 				<a href="regList.do"><input type="button" name="register" value="등록한글"></a><br>
 				<input type="button" name="mypage" value="평가한글"><br>
 				<a href="memberleave.do"><input type="button" name="mypage" value="회원탈퇴"></a><br>
