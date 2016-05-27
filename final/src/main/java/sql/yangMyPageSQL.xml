@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sql.yangMyPage">
+	<select id="allPayInfo" parameterType="String" resultType="su.yangmypage.model.yangMypageDTO">
+	select * from userpayinfo where userid=#{userid}
+	</select>
+	<insert id="userPayAdd" parameterType="su.yangmypage.model.yangMypageDTO">
+	insert into userpayinfo values(userpayinfo_idx.nextval,#{userid},#{cardtype1},#{cardnum},#{cardterm},#{cardname},#{cvv},#{cardtype2},#{cardid})
+	</insert>
+</mapper>

@@ -41,6 +41,12 @@
 
 
 </style>
+<script>
+function userPayInfo(){
+	
+	
+}
+</script>
 </head>
 <body id="bb">
 header
@@ -53,50 +59,48 @@ header
 		</div>-->
 	
 	<div id="div2">
-			<legend>회원결제정보</legend>
-			<form name="myprofile">
+			<legend>회원결제등록</legend>
+			<form name="userPayAdd" action="userPayAdd.do" method="post">
 				<table border="1" cellspacing="0" align="center">
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>카드아이디</th>
-							<th>카드종류</th>
-							<th>카드번호</th>
-							<th>유효기간</th>
-							<th>개인/법인</th>
-						</tr>	
-					</thead>
-				<tfoot>
 					
-				</tfoot>
-					<tbody>
-						<c:if test="${empty dto}">
-				<tr>
-					<td colspan="6">등록된 결제정보가 없습니다.</td>
-				</tr>
-			</c:if>
-			<c:forEach var="dto" items="${dto }">
-				<tr>
-					<td>${dto.idx }</td>
-					<td>${dto.cardid }</td>
-					<td>${dto.cardtype1 }</td>
-					<td>${dto.cardnum} }</td>
-					<td>${dto.cardterm }</td>
-					<td>${dto.cardtype2 }</td>
-					<td colspan="2">
-					<form action="carUpdate.do">
-					<input type="hidden" name="idx" value="${dto.idx}">
-					<input type="submit" value="수정">
-					</form>
-					<form action="carDel.do">
-					<input type="hidden" name="idx" value="${dto.idx}">
-					<input type="submit" value="삭제">
-					</form>
-					</td>
-						</tr>
-						</c:forEach>
 						<tr>
-						<td colspan="6" align="right"><a href="userPayAddPage.do"><input type="button" value="등록"></a></td>
+							<td>카드종류</td>
+							<td><select name="cardtype1">
+            <option value="신한">신한</option>
+            <option value="농협">농협</option>
+             <option value="우리">우리</option>
+              <option value="국민">국민</option>
+            </select></td>
+						</tr>	
+								<tr>
+							<td>카드번호</td>
+							<td colspan="5"><input type="text" name="cardnum1">-<input type="text" name="cardnum2">-<input type="text" name="cardnum3">-<input type="text" name="cardnum4"></td>
+						</tr>
+						<tr>
+						<td>유효기간</td>
+						<td><input type="text" name="cardterm1">월/<input type="text" name="cardterm2">년</td>
+						</tr>
+						<tr>
+						<td>카드상이름</td>
+						<td><input type="text" name="cardname"></td>
+						</tr>
+						<tr>
+						<td>cvv</td>
+						<td><input type="text" name="cvv"></td>
+						</tr>
+						<tr>
+						<td>개인/법인</td>
+						<td><select name="cardtype2">
+            <option>개인</option>
+            <option>법인</option>
+            </select></td>
+						</tr>
+						<tr>
+						<td>카드아이디</td>
+						<td><input type="text" name="cardid"></td>
+						</tr>
+						<tr>
+						<td colspan="6" align="right"><input type="submit" value="등록"></td>
 						</tr>
 					</tbody>
 				</table>

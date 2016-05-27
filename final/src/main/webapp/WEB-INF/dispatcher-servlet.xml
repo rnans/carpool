@@ -125,8 +125,12 @@
           <ref bean="sqlSessionTemplate"/>
       </constructor-arg>
    </bean>
-   
-   
+   <bean id="yangMyPageDao" class="su.yangmypage.model.yangMypageDAOImple">
+      <constructor-arg>
+          <ref bean="sqlSessionTemplate"/>
+      </constructor-arg>
+   </bean>
+  
  
    
 	
