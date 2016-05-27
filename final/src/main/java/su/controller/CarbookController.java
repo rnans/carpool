@@ -146,7 +146,9 @@ public ModelAndView costUpdate_ok(CarCostDTO dto){
    @RequestMapping("/carBookInfo.do")
    public ModelAndView CarCostSum(HttpSession session){
 	   
-	   String carnum=(String)session.getAttribute("carnum");
+	   String carnum2=(String)session.getAttribute("carnum");
+	   String carnum="12가1234";
+	   System.out.println(carnum);
 	   String id=(String)session.getAttribute("sid");
 	   String costsum=CarCostDao.CarCostSum(carnum);
 	   String kmsum=CarCostDao.CarKmSum(carnum);
