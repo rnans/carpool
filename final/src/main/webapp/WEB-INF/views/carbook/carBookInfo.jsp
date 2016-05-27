@@ -8,18 +8,46 @@
 </head>
 <body>
 <%@include file="../header.jsp"%>
+<script type="text/javascript" src="/final02/js/httpRequest.js"></script>
 <script>
+
+
 function opencostReg(){
-	window.open('costReg.do?id=${sid}','costReg.do','width=350,height=450');
+	
+	var sel=document.getElementById('sel');
+	var carnum;
+	for(var i=0;i<sel.options.length;i++)
+	{
+		if(sel.options[i].selected)
+		{
+			carnum=sel.options[i].value;
+			
+		}
+	}
+	var params='costsum=${costsum}&kmsum=${kmsum}&jooyusum=${jooyusum}&jungbisum=${jungbisum}&buysum=${buysum}';
+	
+	sendRequest("/carBookInfo.do",params,result,'post')
+	window.open('costReg.do?id=${sid}&carnum='+carnum,'costReg.do','width=350,height=450');
 }
 function opencarReg(){
-	window.open('carReg.do?id=${sid}','carReg.do','width=350, height=450');
+	window.open('carReg.do?id=${sid}','opencarReg','width=350, height=450');
+}
+function showResult(){//응답결과함수
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var txt=XHR.responseText;
+			window.alert(txt);
+		}
+	}
 }
 </script>
 <hr>
 <div>
-<select name=carnum>
-	<option>12경기1234</option>
+<select id=sel name=carnum>
+<c:forEach var="carn" items="${cnum }" >
+	<option value="${carn.carnum }">${carn.carnum}</option>
+</c:forEach>
+	
 </select>
 <a href="javascript:opencarReg()">차량등록</a>
 <a href="javascript:opencostReg()">비용입력</a>
@@ -29,19 +57,51 @@ function opencarReg(){
 차량사진
 <fieldset>
 	<legend>차량정보</legend>
-	기록시작일 2016-05-18<br>
-	시작주행거리 100km<br>
-	총 주행거리 10000km<br>
-	총 지출금액 100000원
+	<table border="1" width="400" height="100" >
+	<thead>
+	<tr>
+	<th>기록시작일</th>
+	<td><input type="text" name="날짜" value="날짜"></td>
+	</tr>
+		<c:set var="cost" value="${costsum}"/>
+		<c:set var="km" value="${kmsum}" />
+	
+	<tr>
+	<th>총 주행거리</th>
+	<td>${km}km</td>
+	</tr>
+	<tr>
+	<th>총 지출금액</th>
+	<td>${cost}원</td>
+	</tr>
+
+	</thead>
+</table>
 </fieldset>
 </div>
 <fieldset>
 	<legend>차계부</legend>
-	<select name=날짜>
-	<option>2016.05.05~2016.05.06</option>
-	</select><br>
-	주유비용 30000원<br>
-	기타비용 20000원
+	<table border="1" width="400" height="100" >
+	<tr>
+		<th>날짜</th>
+		<td></td>
+	</tr>
+		<c:set var="jooyu" value="${jooyusum}"/>
+		<c:set var="jungbi" value="${jungbisum}"/>
+		<c:set var="buy" value="${buysum}"/>
+	<tr>
+		<th>총 주유비용</th>
+		<td>${jooyu }원</td>
+	</tr>
+	<tr>
+		<th>총 정비비용</th>
+		<td>${jungbi }원</td>
+	</tr>
+	<tr>
+		<th>총 물품구입비용</th>
+		<td>${buy }원</td>
+	</tr>
+	</table>
 </fieldset>
 </body>
 </html>
