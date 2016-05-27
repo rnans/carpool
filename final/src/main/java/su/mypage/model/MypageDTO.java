@@ -1,6 +1,6 @@
 package su.mypage.model;
 
-import java.sql.Date;
+import java.sql.Date; 
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,6 +21,7 @@ public class MypageDTO {
 	private String grade;
 	private String carhave;
 	private Date joindate;
+	
 	
 	
 	
@@ -186,7 +187,9 @@ public class MypageDTO {
 	public void setJoindate(Date joindate) {
 		this.joindate = joindate;
 	}
-	
+
+
+
 	
 	
 }

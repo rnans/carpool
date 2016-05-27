@@ -1,5 +1,6 @@
 package su.mypage.model;
 
+import su.file.model.FileDTO;
 import su.member.model.MemberDTO;
 
 public interface MypageDAO {
@@ -10,6 +11,9 @@ public interface MypageDAO {
 	
 	public int pwdUpdate(MypageDTO dto);
 	
+	public int notiSetting(NotiSettingDTO dto);
 	
+	
+
 	
 }

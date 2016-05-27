@@ -46,6 +46,12 @@ public class MypageDAOImple implements MypageDAO {
 		return count;
 	}
 
+	public int notiSetting(NotiSettingDTO dto) {
+		
+		int count=sqlMap.insert("notiSetting", dto);
+		return count;
+	}
+
 
 
 
