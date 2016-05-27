@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<form name="carReg" action="carReg.do" method="post">
+<form action="carReg_ok.do">
 <fieldset>
 	<legend>차량등록</legend>
 	사진등록
