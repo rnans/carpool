@@ -9,13 +9,16 @@
 <script>
 var idx=null;
 function opencostReg(){
-   window.open('costReg.do?id=${sid}','costReg.do','width=350,height=450');
+	
+   window.open('costReg.do','opencostReg','width=350,height=450');
 }
 function update(){
-   window.open('costChange.do?idx='+idx,'','width=350,height=450');
+	var param="?idx="+idx;
+   window.open('costUpdate.do'+param,'update','width=350,height=450');
 }
-function costdel(){
-   window.open('costDel.do','costDel.do','width=350,height=450');
+function costDel(){
+	var param="?idx="+idx;
+   window.open('costDel.do'+param,'costDel','width=350,height=450');
 }
 </script>
 <body>
@@ -26,23 +29,23 @@ function costdel(){
    <tr>
       <th>유형</th>
       <th>날짜</th>
+      <th>비고</th>
       <th>금액</th>
       <th>주행거리</th>
-      <th>비고</th>
       <th>수정</th>
       <th>삭제</th>
    </tr>
 </thead>
 <tbody>
-   <c:forEach var="list" items="${lists}">
+   <c:forEach var="list" items="${list}">
                <tr>
                   <td>${list.category}</td>
                   <td>${list.costday}</td>
-                  <td>${list.cost}</td>
-                  <td>${list.km}</td>
                   <td>${list.bigo}</td>
-                  <td><input type="button" value="수정" onclick="idx=${list.idx};update();"></td>
-                  <td><input type="button" value="삭제" onclick="costDel()"></td>
+                  <td>${list.cost}원</td>
+                  <td>${list.km}km</td>
+                  <td><input type="button" value="수정" onclick="javascript:idx='${list.idx}';update();"></td>
+                  <td><input type="button" value="삭제" onclick="javascript:idx='${list.idx}';costDel();"></td>
                </tr>
    </c:forEach>
 </tbody>
