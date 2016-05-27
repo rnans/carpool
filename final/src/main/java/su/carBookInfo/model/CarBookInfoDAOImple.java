@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import su.carinfo.model.carInfoDTO;
+
 public class CarBookInfoDAOImple implements CarBookInfoDAO {
 
 	private SqlSessionTemplate sqlMap;	
@@ -22,6 +24,12 @@ public class CarBookInfoDAOImple implements CarBookInfoDAO {
 	public List<CarBookInfoDTO> idcarnum(String id){
 		List<CarBookInfoDTO> list=sqlMap.selectList("idCarnum", id);
 				return list;
+	}
+	
+	public List<carInfoDTO> carnum(String id){
+		List<carInfoDTO> carlist=sqlMap.selectList("getCarnum", id);
+		
+		return carlist;
 	}
 
 }
