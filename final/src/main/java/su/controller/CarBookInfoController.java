@@ -25,12 +25,8 @@ public class CarBookInfoController {
 			CarBookInfoDao = carBookInfoDao;
 		}
 
-		
-		
 		//차량등록
-	
-		
-		
+			
 		   //차량등록
 		   @RequestMapping("/carReg.do")
 		   public String carReg(){
