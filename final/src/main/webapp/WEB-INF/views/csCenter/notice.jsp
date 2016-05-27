@@ -16,7 +16,7 @@
 <table border="1">
 <thead>
 <tr>
-    <th><a href="notice.do">공지사항</a></th>
+    <th><a href="csCenter.do">공지사항</a></th>
 </tr>
 <tr>   
     <th><a href="qnaList.do">자주묻는질문(Q&A)</a></th> 
