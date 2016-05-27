@@ -18,8 +18,8 @@ public class CarCostDAOImple implements CarCostDAO {
       int count=sqlMap.insert("CarCost", dto);
       return count;
    }
-   public List<CarCostDTO> CarCostList(String id){
-	   List<CarCostDTO> list=sqlMap.selectList("CarCostList", id);
+   public List<CarCostDTO> CarCostList(String carnum){
+	   List<CarCostDTO> list=sqlMap.selectList("CarCostList", carnum);
 	   return list;
    }
    public List<CarCostDTO> CarCostContent(int idx){
