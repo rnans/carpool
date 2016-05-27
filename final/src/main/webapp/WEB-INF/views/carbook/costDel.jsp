@@ -14,7 +14,7 @@ function delCancel(){
 <body>
 	<section>
 		<article>
-			<form name="costDel" action="costDel.do?idx="${idx}>
+			<form  action="costDel_ok.do?idx="${idx}>
 			<input type="hidden" name="idx" value="${idx}">
 				<fieldset>
 					<legend>비용삭제</legend>
