@@ -24,7 +24,11 @@ import su.pool.model.PoolInfoDTO;
 import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolStatusDAO;
+import su.carinfo.model.carInfoDAO;
+import su.carinfo.model.carInfoDTO;
 import su.member.model.*;
+import su.mypage.model.MypageDAO;
+import su.mypage.model.MypageDTO;
 
 @Controller
 public class PoolController 
@@ -51,6 +55,30 @@ public class PoolController
 		this.poolStatusDao = poolStatusDao;
 	}
 	
+	@Autowired
+	private carInfoDAO carInfoDao;
+	
+	
+	
+	public carInfoDAO getCarInfoDao() {
+		return carInfoDao;
+	}
+
+	public void setCarInfoDao(carInfoDAO carInfoDao) {
+		this.carInfoDao = carInfoDao;
+	}
+
+	@Autowired
+	private MypageDAO myPageDao;
+	
+	public MypageDAO getMyPageDao() {
+		return myPageDao;
+	}
+
+	public void setMyPageDao(MypageDAO myPageDao) {
+		this.myPageDao = myPageDao;
+	}
+
 	@RequestMapping("/poolMain.do")
 	public String viewMainpage()
 	{
@@ -64,6 +92,7 @@ public class PoolController
 		
 
 		ModelAndView mav=new ModelAndView();
+		
 		
 		
 		try
@@ -116,27 +145,31 @@ public class PoolController
 		
 		String userid = (String) session.getAttribute("sid");
 
+		List lists=poolDao.getCarInfo(userid);
+
+		carInfoDTO dto=(carInfoDTO)lists.get(0);
 		
-
-		ModelAndView mav = new ModelAndView();
-
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("dto",dto);
 		
 		mav.setViewName("carpool/poolMasterAdd02");
-	
-		
+
 		return mav;
 		
 	}
 	@RequestMapping("/poolMasterAdd03.do")
-	public ModelAndView viewMasterAddPage3(HttpSession session,HttpServletRequest req){
+	public ModelAndView viewMasterAddPage3(HttpSession session,HttpServletRequest req,MypageDTO dto){
 		
-		String caridx=req.getParameter("caridx");
+		String caridx=req.getParameter("idx");
 		
 		HashMap<String, String> data=new HashMap<String, String>();
 		
 		data.put("caridx", caridx);
 		
 		session.setAttribute("data", data);
+		
+		int count=myPageDao.myProfileUpdate(dto);
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -147,9 +180,19 @@ public class PoolController
 	}
 	
 	@RequestMapping("/poolMemberAdd02.do")
-	public String viewMemberAddPage2()
+	public ModelAndView viewMemberAddPage2(HttpSession session, MypageDTO dto)
 	{
-		return "carpool/poolMemberAdd02";
+		String id=(String)session.getAttribute("sid");
+		
+		int count=myPageDao.myProfileUpdate(dto);
+		
+		
+		ModelAndView mav=new ModelAndView();
+		
+		mav.setViewName("carpool/poolMemberAdd02");
+
+		
+		return mav;
 	}
 	
 	

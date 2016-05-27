@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import su.member.model.MemberDTO;
 import su.mypage.model.MypageDAO;
 import su.mypage.model.MypageDTO;
-/*import su.mypage.model.NotiSettingDTO;*/k
+/*import su.mypage.model.NotiSettingDTO;*/
 
 
 import java.io.File;
