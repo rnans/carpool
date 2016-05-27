@@ -137,7 +137,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 			alert('생년월일을 입력해 주세요.');
 			birth.focus();
 			return false;
-		} else if(re_phonenum.test(val()) != true) { // 전화번호 검사
+		} else if(re_phonenum.test(phonenum.val()) != true) { // 전화번호 검사
 			alert('전화번호를 올바르게 입력해주세요.');
 			phonenum.focus();
 			return false;
@@ -209,7 +209,24 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 							연락처(<font color="red">*</font>) : <input type="text" name="phonenum" id="phonenum" placeholder="ex) 01012345678 형식으로 입력해주세요." size="40">
 						</li>
 						<li>
-							거주지역(<font color="red">*</font>) : <input type="text" name="addr" id="addr" placeholder="ex) 경기안산 형식으로 입력해주세요." size="40">
+							거주지역(<font color="red">*</font>) : 
+							<select name="addr">
+								<option value="서울특별시" selected>서울특별시</option>
+								<option value="부산광역시">부산광역시</option>
+								<option value="대구광역시">대구광역시</option>
+								<option value="인천광역시">인천광역시</option>
+								<option value="광주광역시">광주광역시</option>
+								<option value="대전광역시">대전광역시</option>
+								<option value="울산광역시">울산광역시</option>
+								<option value="세종특별자치시">세종특별자치시</option>								
+								<option value="경기도">경기도</option>
+								<option value="강원도">강원도</option>
+								<option value="충청도">충청도</option>
+								<option value="경상도">경상도</option>
+								<option value="전라도">전라도</option>
+								<option value="제주도">제주도</option>
+							</select>
+							
 						</li>
 						<li>
 							이메일(<font color="red">*</font>) : <input type="text" name="email" id="email">
