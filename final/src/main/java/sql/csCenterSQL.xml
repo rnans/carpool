@@ -63,6 +63,9 @@
    (select * from oneandone order by idx desc)a)b
    where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
+	<select id="adminoneandonetotalCnt"  resultType="int">
+		select count(*) from oneandone
+	  </select>
 	 <update id="oneandoneAnswer" parameterType="su.csCenter.model.CsoneandoneDTO">
 		update oneandone set state='답변완료', answer=#{answer} where idx=#{idx}
 	</update>

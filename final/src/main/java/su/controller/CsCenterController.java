@@ -70,12 +70,12 @@ public class CsCenterController {
 		this.csnoticeDao = csnoticeDao;
 	}
 
-	@RequestMapping("/csCenter.do")
-	public String csCenter(){
-		return "redirect:notice.do";
-	}
+//	@RequestMapping("/csCenter.do")
+//	public String csCenter(){
+//		return "redirect:notice.do";
+//	}
 	//공지사항 리스트
-	@RequestMapping("/notice.do")
+	@RequestMapping("/csCenter.do")
 		public ModelAndView noticeList(@RequestParam(value="cp",defaultValue="1")int cp){
 		int totalCnt=csnoticeDao.noticeTotalCnt();
 		int listSize=10;

@@ -16,4 +16,5 @@ public interface CsoneandoneDAO {
 	 public List<CsoneandoneDTO> oneandoneTypeSearch(int cp,int ls,String search);
 	 public List<CsoneandoneDTO> oneandoneWriterSearch(int cp,int ls,String search);
 	 public List<CsoneandoneDTO> oneandoneStateSearch(int cp,int ls,String search);
+	 public int adminoneandoneTotalCnt();
 }

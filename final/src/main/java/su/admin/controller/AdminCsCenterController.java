@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -186,16 +187,22 @@ public class AdminCsCenterController {
 		}
 		//1:1문의 리스트
 		@RequestMapping("/adminOneAndOne.do")
-		public ModelAndView oneandoneList(@RequestParam(value="cp",defaultValue="1")int cp,  HttpSession session){
-	        String sid=(String)session.getAttribute("sid");
+		public ModelAndView adminoneandoneList(@RequestParam(value="cp",defaultValue="1")int cp){
+
+	      
 	    	ModelAndView mav=new ModelAndView();
-			int totalCnt=csoneandoneDao.oneandoneTotalCnt();
+			int totalCnt=csoneandoneDao.adminoneandoneTotalCnt();
 			int listSize=10;
 			int pageSize=5;
-			List<CsoneandoneDTO> list=csoneandoneDao.adminoneandoneList(cp,listSize);
+			
+			
+					List<CsoneandoneDTO> list=csoneandoneDao.adminoneandoneList(cp,listSize);
+					mav.addObject("list", list);
+				
+				
 			String pageStr=
-				su.Page.SuPage.makePage("oneAndOne.do", totalCnt, listSize, pageSize, cp);
-			mav.addObject("list", list);
+				su.Page.SuPage.makePage("adminOneAndOne.do", totalCnt, listSize, pageSize, cp);
+		
 			mav.addObject("pageStr",pageStr);
 			mav.setViewName("admin/adminOneAndOne");
 			  return mav;
@@ -206,7 +213,7 @@ public class AdminCsCenterController {
 					 String select=req.getParameter("select");
 					String search=req.getParameter("search");
 			    	ModelAndView mav=new ModelAndView();
-					int totalCnt=csoneandoneDao.oneandoneTotalCnt();
+					int totalCnt=csoneandoneDao.adminoneandoneTotalCnt();
 					int listSize=10;
 					int pageSize=5;
 					
@@ -227,7 +234,7 @@ public class AdminCsCenterController {
 					mav.addObject("pageStr",pageStr);
 					mav.setViewName("admin/oneandoneSearch");
 					  return mav;
-			        }
+		        }
 		//1:1문의 본문보기
 		  @RequestMapping("/oneandoneAnswer.do")
 		   public ModelAndView oneandoneContent(int idx){  
