@@ -12,22 +12,25 @@
 <script>
 
 
+
 function opencostReg(){
 	
 	var sel=document.getElementById('sel');
-	var carnum;
+		
+	var carnum=null;
 	for(var i=0;i<sel.options.length;i++)
 	{
 		if(sel.options[i].selected)
 		{
-			carnum=sel.options[i].value;
-			
+			carnum=sel.options[i].value;			
 		}
 	}
-	var params='costsum=${costsum}&kmsum=${kmsum}&jooyusum=${jooyusum}&jungbisum=${jungbisum}&buysum=${buysum}';
+
+		
+	window.open('costReg.do','opencostReg','width=350,height=450');
 	
-	sendRequest("/carBookInfo.do",params,result,'post')
-	window.open('costReg.do?id=${sid}&carnum='+carnum,'costReg.do','width=350,height=450');
+	
+	
 }
 function opencarReg(){
 	window.open('carReg.do?id=${sid}','opencarReg','width=350, height=450');
@@ -47,7 +50,6 @@ function showResult(){//응답결과함수
 <c:forEach var="carn" items="${cnum }" >
 	<option value="${carn.carnum }">${carn.carnum}</option>
 </c:forEach>
-	
 </select>
 <a href="javascript:opencarReg()">차량등록</a>
 <a href="javascript:opencostReg()">비용입력</a>
