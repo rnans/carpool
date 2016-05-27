@@ -201,4 +201,5 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		// TODO Auto-generated method stub
 		return sqlMap.insert("makePoolInfo",dto);
 	}
+	
 }

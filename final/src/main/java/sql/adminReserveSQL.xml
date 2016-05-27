@@ -13,6 +13,9 @@
     	<select id="adminPoolDriverTotalCnt" resultType="int">
 		select count(*) from poolmasterstatus
 	</select>
+	<delete id="amdinDriverReserveDel" parameterType="su.adminReserve.model.AdminPoolMasterStatusDTO">
+	delete from poolmasterstatus where idx=#{idx}
+	</delete>
 	<!-- member -->
 	 <select id="adminPoolMemberList" parameterType="map" resultType="su.adminReserve.model.AdminPoolMemberStatusDTO">
         select * from
@@ -23,4 +26,8 @@
     	<select id="adminPoolMemberTotalCnt" resultType="int">
 		select count(*) from poolmemberstatus
 	</select>
+		<delete id="adminMemberReserveDel" parameterType="su.adminReserve.model.AdminPoolMemberStatusDTO">
+	delete from poolmemberstatus where idx=#{idx}
+	</delete>
+	
     </mapper>

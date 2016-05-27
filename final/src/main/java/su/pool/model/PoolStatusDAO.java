@@ -55,4 +55,5 @@ public interface PoolStatusDAO
 	public int editMemMans(int ownidx, int mans);
 	
 	public int editMasMans(int aimidx, int mans);
+	
 }

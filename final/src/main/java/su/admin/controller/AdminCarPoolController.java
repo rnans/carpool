@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import su.adminPool.model.AdminUserPoolDAO;
 import su.adminPool.model.AdminUserPoolDTO;
+import su.pool.model.PoolStatusDAO;
+
 
 @Controller
 public class AdminCarPoolController {
@@ -26,7 +28,18 @@ public class AdminCarPoolController {
 	public void setAdUserPoolDao(AdminUserPoolDAO adUserPoolDao) {
 		this.adUserPoolDao = adUserPoolDao;
 	}
+	@Autowired
+	private PoolStatusDAO poolStatusDao;
 	
+
+	public PoolStatusDAO getPoolStatusDao() {
+		return poolStatusDao;
+	}
+
+	public void setPoolStatusDao(PoolStatusDAO poolStatusDao) {
+		this.poolStatusDao = poolStatusDao;
+	}
+
 	/**유저 등록 카풀 전체보기*/
 	@RequestMapping("/userPoolList.do")
 	public ModelAndView userPoolList(@RequestParam(value="cp", defaultValue="1")int cp){
@@ -106,10 +119,16 @@ public class AdminCarPoolController {
 	public ModelAndView driverPoolDel(@RequestParam("idx")int idx){
 		ModelAndView mav = new ModelAndView();
 		int count = adUserPoolDao.userPoolDel(idx);
-		
 		String msg = count>0?"드라이버 카풀을 삭제하였습니다.!":"드라이버 카풀 삭제에 실패하였습니다.!";
+		
+		int count2 =poolStatusDao.driverReserveDel(idx);
+		
+		String msg2 = count2>0?"예약글도 삭제되었습니다..!":"예약글이 없습니다..!";
+		
+		 
 		mav.addObject("msg", msg);
-		mav.setViewName("admin/adminMsg");
+		mav.addObject("msg2", msg2);
+		mav.setViewName("admin/adminPoolMsg");
 		
 		return mav;
 	}

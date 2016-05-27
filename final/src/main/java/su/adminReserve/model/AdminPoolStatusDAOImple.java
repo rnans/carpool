@@ -45,5 +45,13 @@ public class AdminPoolStatusDAOImple implements AdminPoolStatusDAO {
 		int count = sqlMap.selectOne("adminPoolMemberTotalCnt");
 		return count;
 	}
+	public int adminDriverReserveDel(int idx){
+		int count = sqlMap.delete("amdinDriverReserveDel", idx);
+		return count;
+	}
+	public int adminMemberReserveDel(int idx){
+		int count = sqlMap.delete("adminMemberReserveDel", idx);
+		return count;
+	}
 
 }
