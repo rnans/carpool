@@ -109,8 +109,7 @@ import su.carinfo.model.carInfoDTO;
 	      ModelAndView mav=new ModelAndView();
 	      mav.addObject("msg", msg);
 	      mav.setViewName("carbook/costUpdateMsg");
-	      return mav;
-	    	  
+	      return mav;	    	  
 	   }
 	   
 	   //컬럼 합산값 보여주기
@@ -181,6 +180,22 @@ import su.carinfo.model.carInfoDTO;
 			mav.setViewName("carbook/carA");
 		return mav;
 	   }
+	   
+	   @RequestMapping("/costA.do")
+	   public ModelAndView costA(HttpSession session, HttpServletRequest req){
+		   
+		   String id=(String)session.getAttribute("sid");
+		   List<carInfoDTO> carlist=CarCostDao.carnum(id);
+		   String carnum=req.getParameter("carnum");
+		   
+		   
+		   List<CarCostDTO> list=CarCostDao.CarCostList(carnum);
+		   ModelAndView mav=new ModelAndView();
+		   mav.addObject("list", list);
+			mav.setViewName("carbook/costA");
+		return mav;
+	   }
+	   
 	   
 	   @RequestMapping("/graph.do")
 	   public String graph(){

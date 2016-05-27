@@ -58,6 +58,7 @@ public class CarCostDAOImple implements CarCostDAO {
    public String CarJungbiSum(String carnum){
 	   String jungbisum=sqlMap.selectOne("CarJungbiSum", carnum);
 	   return jungbisum;
+
    }
    
    public String CarBuySum(String carnum){

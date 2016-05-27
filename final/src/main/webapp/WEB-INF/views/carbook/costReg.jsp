@@ -18,7 +18,7 @@
 	</select><br>
 	날짜<input type="text" name="costday"><br>
 	비고<input type="text" name="bigo"><br>
-	금액<input type="text" name="cost">원<br>
+	금액<input type="number" name="cost">원<br>
 	주행거리<input type="text" name="km">km<br>
 	<input type="hidden" name="id" value="${ sid }">
 	<input type="hidden" name="carnum" value="${carnum }">
