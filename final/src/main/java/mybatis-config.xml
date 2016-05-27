@@ -11,7 +11,6 @@
 		<mapper resource="sql/commSQL.xml"/>
 		<mapper resource="sql/adminMemberSQL.xml"/>
 		<mapper resource="sql/carCostSQL.xml"/>
-		<mapper resource="sql/carBookInfoSQL.xml"/>
 		<mapper resource="sql/adminPoolSQL.xml"/>
 		<mapper resource="sql/myPageSQL.xml"/>
 		<mapper resource="sql/carInfoSQL.xml"/>
