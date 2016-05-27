@@ -1,5 +1,10 @@
 package su.controller;
 
+import java.io.File; 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;  
 
@@ -9,12 +14,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import su.file.model.UploadDTO;
 import su.member.model.MemberDTO;
 import su.mypage.model.MypageDAO;
 import su.mypage.model.MypageDTO;
+import su.mypage.model.NotiSettingDTO;
 
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.util.SystemPropertyUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 
 
@@ -48,12 +70,35 @@ public class MypageController {
 	
 	/**마이 프로필 수정*/
 	@RequestMapping("/myProfile.do")
-	public ModelAndView myProfile(MypageDTO dto,HttpServletRequest req){
+	public ModelAndView myProfile(MypageDTO dto){
 		
-		ModelAndView mav=new ModelAndView();
+//		MultipartFile upload=req.getFile("upload");         
+//	    String imgUpload = upload.getOriginalFilename();
+//	    dto1.setFilename(imgUpload);
+//	    copyInto(upload,request);	
+		
+		ModelAndView mav=new ModelAndView();		
+		
 		mav.addObject("dto", dto);
 		mav.setViewName("mypage/myProfile");
 		return mav;
+	}
+	
+//uplaod	
+	
+	@RequestMapping(value="/upload.do",method=RequestMethod.POST)
+	public String upload(UploadDTO dto, MultipartHttpServletRequest req, HttpServletRequest request){
+	 
+		
+		
+		
+		MultipartFile upload=req.getFile("upload");         
+	      String filename = upload.getOriginalFilename();
+	      dto.setFilename(filename);
+	      copyInto(upload,request);
+	      
+	      return "mypage/myProfile";
+			
 	}
 	
 	@RequestMapping("/myProfileUpdate.do")
@@ -66,10 +111,6 @@ public class MypageController {
 		mav.setViewName("mypage/UpdateMsg");
 		return mav;
 	}
-	
-	
-	
-
 	
 	
 	/**비밀번호 변경폼*/
@@ -98,7 +139,50 @@ public class MypageController {
 		mav.setViewName("mypage/UpdateMsg");
 		return mav;
 	}
+	/**알람설정*/
+
+//	
+//	@RequestMapping("/notiSetting.do")
+//	public ModelAndView notisetting(NotiSettingDTO dto,HttpServletRequest req){
+//		
+//
+//		ModelAndView mav=new ModelAndView();
+//		mav.addObject("dto", dto);
+//		mav.setViewName("mypage/notiSetting");
+//		return mav;
+//	}
 	
+	
+	
+	//파일복사관련
+	  private void copyInto(MultipartFile upload,HttpServletRequest request){
+	      
+		  String teamSrc_foods = "final02/src/main/webapp/img/";
+	      HttpSession session = request.getSession();
+	      String root = session.getServletContext().getRealPath("/");
+	      String teamSrc = root.substring(0, root.indexOf(".metadata")) + teamSrc_foods;
+	     
+	     String Src = teamSrc.replace("\\", "/");
+		  
+		  
+	      System.out.println("올린파일명:"+upload.getOriginalFilename());
+	      
+	      try {
+	         byte[] bytes=upload.getBytes();
+	         File outFile = new File(Src+upload.getOriginalFilename());
+	         FileOutputStream fos = new FileOutputStream(outFile);
+	         fos.write(bytes);
+	         fos.close();
+	      } catch (IOException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	   }
+	
+	
+	  
+	  
+	  
 	
 	
 	
