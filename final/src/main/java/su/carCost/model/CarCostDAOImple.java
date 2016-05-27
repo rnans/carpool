@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import su.carinfo.model.carInfoDTO;
+
 public class CarCostDAOImple implements CarCostDAO {
 
    private SqlSessionTemplate sqlMap;   
@@ -62,4 +64,10 @@ public class CarCostDAOImple implements CarCostDAO {
 	   String buysum=sqlMap.selectOne("CarBuySum", carnum);
 	   return buysum;
    }
+   public List<carInfoDTO> carnum(String id){
+		List<carInfoDTO> carlist=sqlMap.selectList("getCarnum", id);
+		
+		return carlist;
+	}
+   
 }

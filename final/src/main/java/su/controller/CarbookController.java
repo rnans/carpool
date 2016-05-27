@@ -10,10 +10,8 @@
 	import org.springframework.web.bind.annotation.RequestMapping;
 	import org.springframework.web.bind.annotation.RequestMethod;
 	import org.springframework.web.servlet.ModelAndView;
-	
-	import su.carBookInfo.model.CarBookInfoDAO;
-	import su.carBookInfo.model.CarBookInfoDTO;
 	import su.carCost.model.*;
+	
 import su.carinfo.model.carInfoDTO;
 	
 	@Controller
@@ -28,16 +26,7 @@ import su.carinfo.model.carInfoDTO;
 		public void setCarCostDao(CarCostDAO carCostDao) {
 			CarCostDao = carCostDao;
 		}
-		
-		@Autowired
-		private CarBookInfoDAO CarBookInfoDao;
-		
-		public CarBookInfoDAO getCarBookInfoDao() {
-			return CarBookInfoDao;
-		}	
-		public void setCarBookInfoDao(CarBookInfoDAO carBookInfoDao) {
-			CarBookInfoDao = carBookInfoDao;
-		}
+
 		
 	//수정
 	@RequestMapping("costUpdate.do")
@@ -73,11 +62,16 @@ import su.carinfo.model.carInfoDTO;
 	
 	   //리스트보여주기
 	   @RequestMapping("/cost.do")
-	   public ModelAndView CarCostList(String id,HttpServletRequest req){
-	     
-	      List<CarCostDTO> list=CarCostDao.CarCostList(id);
+	   public ModelAndView CarCostList(HttpSession session,HttpServletRequest req){
+	      
+		   String id=(String)session.getAttribute("sid");
+		   List<carInfoDTO> carlist=CarCostDao.carnum(id);
+		   String carnum=carlist.get(0).getCarnum(); 
+		   
+	      List<CarCostDTO> list=CarCostDao.CarCostList(carnum);
 		  ModelAndView mav=new ModelAndView();
 		  mav.addObject("list", list);
+		  mav.addObject("cnum", carlist);
 		  mav.setViewName("carbook/cost");
 	      return mav;
 	   }
@@ -148,9 +142,8 @@ import su.carinfo.model.carInfoDTO;
 	   public ModelAndView CarCostSum(HttpSession session){
 		   String id=(String)session.getAttribute("sid");
 
-		   List<carInfoDTO> carlist=CarBookInfoDao.carnum(id);
+		   List<carInfoDTO> carlist=CarCostDao.carnum(id);
 		   String carnum=carlist.get(0).getCarnum();
-		   System.out.println(carnum);
 	
 		   String costsum=CarCostDao.CarCostSum(carnum);
 		   String kmsum=CarCostDao.CarKmSum(carnum);
@@ -158,7 +151,7 @@ import su.carinfo.model.carInfoDTO;
 		   String jungbisum=CarCostDao.CarJungbiSum(carnum);
 		   String buysum=CarCostDao.CarBuySum(carnum);
 		   
-		  ModelAndView mav=new ModelAndView("yongJson");
+		  ModelAndView mav=new ModelAndView();
 		  mav.addObject("costsum", costsum);
 		mav.addObject("kmsum", kmsum);
 			mav.addObject("jooyusum", jooyusum);
@@ -169,6 +162,25 @@ import su.carinfo.model.carInfoDTO;
 			  
 		      return mav;
 	   }	   
+	   
+	   @RequestMapping("/carA.do")
+	   public ModelAndView carA(HttpServletRequest req){
+		   String carnum=req.getParameter("carnum");
+		   ModelAndView mav=new ModelAndView();
+		   		
+			String costsum = CarCostDao.CarCostSum(carnum);
+			String kmsum = CarCostDao.CarKmSum(carnum);
+			String jooyusum = CarCostDao.CarJooyuSum(carnum);
+			String jungbisum = CarCostDao.CarJungbiSum(carnum);
+			String buysum = CarCostDao.CarBuySum(carnum);
+			mav.addObject("costsum2", costsum);
+			mav.addObject("kmsum2", kmsum);
+			mav.addObject("jooyusum2", jooyusum);
+			mav.addObject("jungbisum2", jungbisum);
+			mav.addObject("buysum2", buysum);
+			mav.setViewName("carbook/carA");
+		return mav;
+	   }
 	   
 	   @RequestMapping("/graph.do")
 	   public String graph(){

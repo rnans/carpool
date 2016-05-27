@@ -2,9 +2,12 @@ package su.carCost.model;
 
 import java.util.List;
 
+import su.carinfo.model.carInfoDTO;
+
 public interface CarCostDAO {
 
    public int costAdd(CarCostDTO dto);
+   public List<carInfoDTO> carnum(String id);
    public List<CarCostDTO> CarCostList(String id);
    public List<CarCostDTO> CarCostContent(int idx);
    public int CarCostUpdate(CarCostDTO dto);
