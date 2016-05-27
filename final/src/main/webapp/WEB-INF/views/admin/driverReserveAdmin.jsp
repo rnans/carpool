@@ -6,6 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+var idx=null;
+function adminDriverReserveDel(){
+	var param="?idx="+idx;
+	window.open('adminDriverReserveDel.do'+param,'adminDriverReserveDel','width=500 height=400 left=500 top=200');
+}
+</script>
 <body>
 <div>헤더</div>
 <%@include file="../header.jsp" %>
@@ -41,7 +48,10 @@
 				<c:forEach var="list" items="${list}">
 				<tr>
 					<td>${list.idx }</td>
-					<td>${list.aimidx }</td>
+					<c:url var="aimidxContent" value="adminAimidxContent.do">
+          <c:param name="idx">${list.aimidx }</c:param>
+          </c:url>
+					<td><a href="${aimidxContent}" >${list.aimidx }</a></td>
 					<td>${list.masterid }</td>
 					<td>${list.mans }</td>
 					<td>${list.nowmans }</td>
@@ -49,7 +59,7 @@
 					<td>${list.members }</td>
 					<td>${list.inmembers }</td>
 					<td>${list.reqcount}</td>
-					<td>삭제</td>
+					<td><input type="button" value="글삭제" onclick="javascript:idx='${list.idx}';adminDriverReserveDel();"></td>
 				</tr>
 				</c:forEach>
 			</tbody>

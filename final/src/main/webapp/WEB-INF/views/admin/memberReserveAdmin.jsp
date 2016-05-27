@@ -6,6 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+var idx=null;
+function adminMemberReserveDel(){
+	var param="?idx="+idx;
+	window.open('adminMemberReserveDel.do'+param,'adminMemberReserveDel','width=500 height=400 left=500 top=200');
+}
+</script>
 <body>
 <div>헤더</div>
 <%@include file="../header.jsp" %>
@@ -41,7 +48,7 @@
 					<td>${list.aimidx }</td>
 					<td>${list.status }</td>
 					<td>${list.mans }</td>
-					<td>삭제</td>
+					<td><input type="button" value="글삭제" onclick="javascript:idx='${list.idx}';adminMemberReserveDel();"></td>
 				</tr>
 			</c:forEach>
 			</tbody>
@@ -49,6 +56,7 @@
 				<tr>
 					<td colspan="7" align="center">
 						${pageStr}
+						</td>
 				</tr>
 			</tfoot>
 		</table>
