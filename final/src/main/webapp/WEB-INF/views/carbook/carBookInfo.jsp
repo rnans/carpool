@@ -11,7 +11,29 @@
 <script type="text/javascript" src="/final02/js/httpRequest.js"></script>
 <script>
 
+function show(){		
+	var sel=document.getElementById('sel');
+	
+	var carnum=null;
+	for(var i=0;i<sel.options.length;i++)
+	{
+		if(sel.options[i].selected)
+		{
+			carnum=sel.options[i].value;			
+		}
+	}		
+	var params='carnum='+carnum
+	sendRequest('carA.do', params, showResult, 'GET');
+}
 
+function showResult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var result = XHR.responseText;
+			costdiv.innerHTML=result;
+		}
+	}
+}
 
 function opencostReg(){
 	
@@ -24,39 +46,24 @@ function opencostReg(){
 		{
 			carnum=sel.options[i].value;			
 		}
-	}
+	}		
+	window.open('costReg.do?carnum='+carnum,'opencostReg','width=350,height=450');
+	
+}
 
-		
-	window.open('costReg.do','opencostReg','width=350,height=450');
-	
-	
-	
-}
-function opencarReg(){
-	window.open('carReg.do?id=${sid}','opencarReg','width=350, height=450');
-}
-function showResult(){//응답결과함수
-	if(XHR.readyState==4){
-		if(XHR.status==200){
-			var txt=XHR.responseText;
-			window.alert(txt);
-		}
-	}
-}
 </script>
 <hr>
 <div>
-<select id=sel name=carnum>
-<c:forEach var="carn" items="${cnum }" >
-	<option value="${carn.carnum }">${carn.carnum}</option>
-</c:forEach>
-</select>
-<a href="javascript:opencarReg()">차량등록</a>
-<a href="javascript:opencostReg()">비용입력</a>
+	<select id=sel name=carnum onchange="show()">
+	<c:forEach var="carn" items="${cnum }" >
+		<option value="${carn.carnum }">${carn.carnum}</option>
+	</c:forEach>
+	</select>
+	<a href="javascript:opencostReg()">비용입력</a>
 </div>
-<div>
 
 차량사진
+<div id="costdiv">
 <fieldset>
 	<legend>차량정보</legend>
 	<table border="1" width="400" height="100" >
@@ -80,7 +87,7 @@ function showResult(){//응답결과함수
 	</thead>
 </table>
 </fieldset>
-</div>
+
 <fieldset>
 	<legend>차계부</legend>
 	<table border="1" width="400" height="100" >
@@ -105,5 +112,6 @@ function showResult(){//응답결과함수
 	</tr>
 	</table>
 </fieldset>
+</div>
 </body>
 </html>

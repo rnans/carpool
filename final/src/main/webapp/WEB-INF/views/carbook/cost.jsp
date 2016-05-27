@@ -8,10 +8,49 @@
 </head>
 <script>
 var idx=null;
+<script type="text/javascript" src="/final02/js/httpRequest.js"></script>
+<script>
+
+function show(){		
+	var sel=document.getElementById('sel');
+	
+	var carnum=null;
+	for(var i=0;i<sel.options.length;i++)
+	{
+		if(sel.options[i].selected)
+		{
+			carnum=sel.options[i].value;			
+		}
+	}		
+	var params='carnum='+carnum
+	sendRequest('carA.do', params, showResult, 'GET');
+}
+
+function showResult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var result = XHR.responseText;
+			costdiv.innerHTML=result;
+		}
+	}
+}
+
 function opencostReg(){
 	
-   window.open('costReg.do','opencostReg','width=350,height=450');
+	var sel=document.getElementById('sel');
+		
+	var carnum=null;
+	for(var i=0;i<sel.options.length;i++)
+	{
+		if(sel.options[i].selected)
+		{
+			carnum=sel.options[i].value;			
+		}
+	}		
+	window.open('costReg.do?carnum='+carnum,'opencostReg','width=350,height=450');
+	
 }
+
 function update(){
 	var param="?idx="+idx;
    window.open('costUpdate.do'+param,'update','width=350,height=450');
@@ -23,7 +62,16 @@ function costDel(){
 </script>
 <body>
 <%@include file="../header.jsp"%>
-<input type="button" name="plus" value="추가" onclick="opencostReg()"><br>
+<hr>
+<div>
+	<select id=sel name=carnum onchange="show()">
+	<c:forEach var="carn" items="${cnum }" >
+		<option value="${carn.carnum }">${carn.carnum}</option>
+	</c:forEach>
+	</select>
+	<a href="javascript:opencostReg()">비용입력</a>
+</div>
+<div id="costdiv">
 <table border="1" width="600" height="100" >
 <thead>
    <tr>
@@ -50,5 +98,6 @@ function costDel(){
    </c:forEach>
 </tbody>
 </table>
+</div>
 </body>
 </html>

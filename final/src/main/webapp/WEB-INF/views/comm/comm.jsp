@@ -123,24 +123,18 @@ body {
 						<div class="buttonArea">
 							<!-- 밑에  -->
 							<ul>
-								<li data-uiselector="attachItem">
-									<label class="js-fileapi-wrapper">
-										 <span class="gSrOnly">사진</span>
-										 <input type="file" accept="image/*" name="attachment">
-									</label>
-								</li>
-								<li data-uiselector="attachItem">
-									<label class="js-fileapi-wrapper"> 
-										<span class="gSrOnly">동영상</span>
+								<li data-uiselector="attachItem"><label
+									class="js-fileapi-wrapper"> <span class="gSrOnly">사진</span>
+										<input type="file" accept="image/*" name="attachment">
+								</label></li>
+								<li data-uiselector="attachItem"><label
+									class="js-fileapi-wrapper"> <span class="gSrOnly">동영상</span>
 										<input type="file" accept="video/*" name="attachment">
-									</label>
-								</li>
-								<li data-uiselector="attachItem">
-									<label class="js-fileapi-wrapper"> 
-										<span class="gSrOnly">파일</span>
+								</label></li>
+								<li data-uiselector="attachItem"><label
+									class="js-fileapi-wrapper"> <span class="gSrOnly">파일</span>
 										<input type="file" accept="*/*" name="attachment">
-									</label>
-								</li>
+								</label></li>
 							</ul>
 
 							<div class="buttonSubmit">
@@ -157,10 +151,8 @@ body {
 			<div class="noticeWrap" style="display: block;">
 				<h2 class="tit">공지사항</h2>
 				<ul class="notice">
-					<li>
-						<a href="#" data-index="0"> 공지사항 </a>
-						<div></div>
-					</li>
+					<li><a href="#" data-index="0"> 공지사항 </a>
+						<div></div></li>
 				</ul>
 			</div>
 		</div>
@@ -178,7 +170,7 @@ body {
 							alt="남구문"></a>
 						<div class="profileText">
 							<span class="textName"> <strong class="name onlyName"><br>
-								<br>${bbs.id }</strong>
+									<br>${bbs.id }</strong>
 							</span>
 							<div class="textTime">${bbs.writedate }</div>
 						</div>
