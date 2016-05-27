@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="costReg" action="costReg.do" method="post">
+<form  action="costReg_ok.do" >
 <fieldset>
 	<legend>비용등록</legend>
 	<select name="category">
@@ -16,12 +16,12 @@
 		<option>정비</option>
 		<option>물품구입</option>
 	</select><br>
-	날짜 <input type="text" name="costday"><br>
-	금액<input type="text" name="cost"><br>
-	주행거리<input type="text" name="km"><br>
-	비고<textarea rows="10" cols="20" name="bigo">
-	</textarea><br>
+	날짜<input type="text" name="costday"><br>
+	비고<input type="text" name="bigo"><br>
+	금액<input type="text" name="cost">원<br>
+	주행거리<input type="text" name="km">km<br>
 	<input type="hidden" name="id" value="${ sid }">
+	<input type="hidden" name="carnum" value="${carnum }">
 	<input type="submit" value="등록">
 	<input type="button" value="취소" onclick="javascript:window.self.close()">
 </fieldset>
