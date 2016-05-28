@@ -16,6 +16,24 @@
 	<delete id="amdinDriverReserveDel" parameterType="su.adminReserve.model.AdminPoolMasterStatusDTO">
 	delete from poolmasterstatus where idx=#{idx}
 	</delete>
+	    <select id="adminDriverIdList" parameterType="map" resultType="su.adminReserve.model.AdminPoolMasterStatusDTO">
+        select * from
+	   (select rownum as rnum,a.* from
+	   (select * from poolmasterstatus order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and masterid=#{search}
+	   </select> 
+	       <select id="adminDriverStatusList" parameterType="map" resultType="su.adminReserve.model.AdminPoolMasterStatusDTO">
+        select * from
+	   (select rownum as rnum,a.* from
+	   (select * from poolmasterstatus order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and status=#{search}
+	   </select>
+	       <select id="adminDriverAimidxList" parameterType="map" resultType="su.adminReserve.model.AdminPoolMasterStatusDTO">
+        select * from
+	   (select rownum as rnum,a.* from
+	   (select * from poolmasterstatus order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and aimidx=#{search}
+	   </select>
 	<!-- member -->
 	 <select id="adminPoolMemberList" parameterType="map" resultType="su.adminReserve.model.AdminPoolMemberStatusDTO">
         select * from

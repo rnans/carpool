@@ -79,6 +79,31 @@ public class AdminReserveController {
 		mav.setViewName("admin/adminAimidxContent");
 		return mav;
 	}
+	@RequestMapping("/adminDriverReserveSearch.do")
+	public ModelAndView adminDriverReserveSearch(@RequestParam(value="cp",defaultValue="1")int cp,HttpServletRequest req){
+		String select=req.getParameter("select");
+		String search=req.getParameter("search");
+		ModelAndView mav=new ModelAndView();
+		int totalCnt=adminPoolStatusDao.adminPoolDriverTotalCnt();
+		int listSize=10;
+		int pageSize=5;
+		if(select.equals("masterid")){
+			List<AdminPoolMasterStatusDTO> list=adminPoolStatusDao.adminDriveIdrList(cp, listSize, search);
+			mav.addObject("list", list);
+		}else if(select.equals("aimidx")){
+			List<AdminPoolMasterStatusDTO> list=adminPoolStatusDao.adminDriveAimidxrList(cp,listSize, search);
+			mav.addObject("list", list);
+		}else if(select.equals("status")){
+			List<AdminPoolMasterStatusDTO> list=adminPoolStatusDao.adminDriveStatusrList(cp, listSize, search);
+			mav.addObject("list", list);
+		}
+		String pageStr=
+			su.Page.SuPage.makePage("adminDriverReserveSearch.do", totalCnt, listSize, pageSize, cp);
+		mav.addObject("pageStr",pageStr);
+		mav.setViewName("admin/driverReserveSearch");
+		return mav;
+		
+	}
 	//사용자 예약 리스트
 	@RequestMapping("/memberReserveList.do")
 	public ModelAndView memberReserveList(@RequestParam(value="cp",defaultValue="1")int cp){

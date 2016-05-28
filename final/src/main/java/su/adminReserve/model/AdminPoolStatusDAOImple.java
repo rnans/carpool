@@ -7,6 +7,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import su.adminMember.model.AdminCarInfoDTO;
+import su.csCenter.model.CsoneandoneDTO;
 
 public class AdminPoolStatusDAOImple implements AdminPoolStatusDAO {
 
@@ -30,6 +31,40 @@ public class AdminPoolStatusDAOImple implements AdminPoolStatusDAO {
 		int count = sqlMap.selectOne("adminPoolDriverTotalCnt");
 		return count;
 	}
+	public List<AdminPoolMasterStatusDTO> adminDriveAimidxrList(int cp,int ls,String search){
+		 int startnum=(cp-1)*ls+1;
+			int endnum=cp*ls;
+			Map map=new HashMap();
+			map.put("search", search);
+			map.put("startnum", startnum);
+			map.put("endnum", endnum);
+			List<AdminPoolMasterStatusDTO> list=
+					sqlMap.selectList("adminDriverAimidxList",map);
+					return list;
+	}
+	public List<AdminPoolMasterStatusDTO> adminDriveIdrList(int cp,int ls,String search){
+		int startnum=(cp-1)*ls+1;
+		int endnum=cp*ls;
+		Map map=new HashMap();
+		map.put("search", search);
+		map.put("startnum", startnum);
+		map.put("endnum", endnum);
+		List<AdminPoolMasterStatusDTO> list=
+				sqlMap.selectList("adminDriverIdList",map);
+				return list;
+	}
+	public List<AdminPoolMasterStatusDTO> adminDriveStatusrList(int cp,int ls,String search){
+		int startnum=(cp-1)*ls+1;
+		int endnum=cp*ls;
+		Map map=new HashMap();
+		map.put("search", search);
+		map.put("startnum", startnum);
+		map.put("endnum", endnum);
+		List<AdminPoolMasterStatusDTO> list=
+				sqlMap.selectList("adminDriverStatusList",map);
+				return list;
+	}
+	
 	//멤버
 	public List<AdminPoolMemberStatusDTO> adminPoolMemberList(int cp,int ls){
 		int startnum = (cp-1)*ls+1;
