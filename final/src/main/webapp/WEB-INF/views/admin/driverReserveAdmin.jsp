@@ -6,11 +6,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
 var idx=null;
 function adminDriverReserveDel(){
 	var param="?idx="+idx;
 	window.open('adminDriverReserveDel.do'+param,'adminDriverReserveDel','width=500 height=400 left=500 top=200');
+}
+function show(){
+	var search=document.a.search.value;
+	var select=document.a.select.value;
+	
+	var params='select='+select+'&search='+search;
+	sendRequest('adminDriverReserveSearch.do', params, showResult, 'GET');
+}
+
+function showResult(){//응답결과함수
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var result=XHR.responseText;
+			spans.innerHTML=result;
+		}
+	}
 }
 </script>
 <body>
@@ -20,14 +37,27 @@ function adminDriverReserveDel(){
 <h2>예약 및 결제관리</h2>
 <h3>드라이버예약</h3>
 <a href="driverReserveList.do">1.드라이버예약</a> | <a href="memberReserveList.do">2.사용자예약</a> |<a href="payMentList.do">3.결제관리</a>
+<form name="a" action="adminDriverReserveSearch.do">
+
+<select name="select" id="select">
+<option value="masterid">작성자</option>
+<option value="status">예약상태</option>
+<option value="aimidx">예약된 게시물 글번호</option>
+ </select>
+ <input type="text" id="search" name="search">
+ <input type="button" value="검색" onclick="show()">
+ </form>
+
+
 <section>
-	<article>
+	
+	<div id="spans">
 		<table border="1" cellspacing="0" width="800" height="150" >
 			<thead>
 			
 				<tr>
 					<th>번호</th>
-					<th>예약글번호</th>
+					<th>예약된 게시물 글번호</th>
 					<th>드라이버아이디</th>
 					<th>구하는인원</th>
 					<th>현재인원</th>
@@ -72,7 +102,7 @@ function adminDriverReserveDel(){
 				</tr>
 			</tfoot>
 		</table>
-	</article>
+		</div>
 </section>
 <footer>풋</footer>
 </body>
