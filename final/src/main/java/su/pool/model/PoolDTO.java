@@ -68,6 +68,41 @@ public class PoolDTO
 	}
 
 
+	
+	public PoolDTO(int idx, String userid, String aim, String startspot, String endspot, String route,
+			String startcoordi, String endcoordi, String routecoordi, String starttime, int mannum, String gender,
+			int pay, String smoking, String pluscontent, String writedate, String status, String pooltype,
+			String startdate, String enddate, String days, String termtype, int caridx,
+			String poolname) {
+		super();
+		this.idx = idx;
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.route = route;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.routecoordi = routecoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.writedate = writedate;
+		this.status = status;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.termtype = termtype;
+		this.caridx = caridx;
+		this.poolname = poolname;
+	}
+
+	
+
 
 	public PoolDTO(String userid, String aim, String startspot, String endspot, String route, String starttime,
 			int mannum, String gender, int pay, String smoking, String pluscontent,

@@ -32,7 +32,7 @@
 		<fieldset>
 			<legend>차량 정보</legend>
 			<div id="div1">
-			<input type="hidden" name="idx" value="${dto.idx }">
+			<input type="hidden" name="idx" value="${dto.idx}">
 
 			운전자 이름<input type="text" name="driver" value="${dto.driver }">
 			<br>

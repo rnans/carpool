@@ -141,17 +141,19 @@ public class PoolController
 	}
 	
 	@RequestMapping("/poolMasterAdd02.do")
-	public ModelAndView viewMasterAddPage2(HttpSession session){
+	public ModelAndView viewMasterAddPage2(HttpSession session,HttpServletRequest req,MypageDTO dto){
 		
 		String userid = (String) session.getAttribute("sid");
 
+		int count=myPageDao.myProfileUpdate(dto);
+		
 		List lists=poolDao.getCarInfo(userid);
 
-		carInfoDTO dto=(carInfoDTO)lists.get(0);
+		carInfoDTO dto2=(carInfoDTO)lists.get(0);
 		
 		ModelAndView mav=new ModelAndView();
 		
-		mav.addObject("dto",dto);
+		mav.addObject("dto",dto2);
 		
 		mav.setViewName("carpool/poolMasterAdd02");
 
@@ -159,7 +161,7 @@ public class PoolController
 		
 	}
 	@RequestMapping("/poolMasterAdd03.do")
-	public ModelAndView viewMasterAddPage3(HttpSession session,HttpServletRequest req,MypageDTO dto){
+	public ModelAndView viewMasterAddPage3(HttpSession session,HttpServletRequest req){
 		
 		String caridx=req.getParameter("idx");
 		
@@ -168,8 +170,6 @@ public class PoolController
 		data.put("caridx", caridx);
 		
 		session.setAttribute("data", data);
-		
-		int count=myPageDao.myProfileUpdate(dto);
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -205,6 +205,9 @@ public class PoolController
 		String startspot=req.getParameter("startspot");
 		String endspot=req.getParameter("endspot");
 		String route=req.getParameter("route");
+		String startcoordi=req.getParameter("startcoordi");
+		String routecoordi=req.getParameter("routecoordi");
+		String endcoordi=req.getParameter("endcoordi");
 		
 		HashMap<String, String> data=new HashMap<String, String>();
 		
@@ -213,6 +216,9 @@ public class PoolController
 		data.put("endspot", endspot);
 		data.put("route", route);
 		data.put("pooltype", pooltype);
+		data.put("startcoordi", startcoordi);
+		data.put("routecoordi", routecoordi);
+		data.put("endcoordi",endcoordi);
 		data.put("userid", (String)session.getAttribute("sid"));		
 		
 		session.setAttribute("data", data);
@@ -476,6 +482,9 @@ public class PoolController
 		String pluscontent=req.getParameter("pluscontent");
 		String termtype=data.get("termtype");
 		String pooltype=data.get("pooltype");
+		String startcoordi=data.get("startcoordi");
+		String routecoordi=data.get("routecoordi");
+		String endcoordi=data.get("endcoordi");
 		
 		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype);
 		
