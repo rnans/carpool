@@ -22,13 +22,6 @@ public class MypageDTO {
 	private String carhave;
 	private Date joindate;
 	
-	
-	
-	
-
-
-
-
 	public MypageDTO() {
 		super();
 	}

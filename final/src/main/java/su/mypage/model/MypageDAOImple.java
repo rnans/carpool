@@ -46,23 +46,36 @@ public class MypageDAOImple implements MypageDAO {
 		return count;
 	}
 
-/*	public int notiSetting(NotiSettingDTO dto) {
-		
-		int count=sqlMap.insert("notiSetting", dto);
-		return count;
-	}
-*/
-
 	public MypageDAOImple() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**알람설정 정보보기*/
+	public MyAlarmDTO notiInfo(String id) {
+		
+		List<MyAlarmDTO> lists = sqlMap.selectList("myAlarmInfo", id);
+		
+		if(lists.size()==0){
+			return null;
+		}
+		
+		MyAlarmDTO dto = lists.get(0);
+
+		return dto;
+	}
 	
+	/**알람설정*/
+	public int notiSetting(MyAlarmDTO dto) {
+		
+		int count = sqlMap.insert("myAlarm", dto);
+		return count;
+	}
 	
-//	public int notiSetting(NotiSettingDTO dto) 
-//	{
-//		return 0;
-//	};
+	public int alarmUpdate(MyAlarmDTO dto) {
+		
+		int count = sqlMap.update("alarmUpdate", dto);
+		return count;
+	}
 
 
 

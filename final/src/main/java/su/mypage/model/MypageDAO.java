@@ -1,7 +1,10 @@
 package su.mypage.model;
 
 
+import java.util.List;
+
 import su.member.model.MemberDTO;
+import su.mypage.model.MyAlarmDTO;
 
 public interface MypageDAO {
 
@@ -11,7 +14,11 @@ public interface MypageDAO {
 	
 	public int pwdUpdate(MypageDTO dto);
 	
-	//public int notiSetting(NotiSettingDTO dto);
+	/**알람관련 기능*/
+	public MyAlarmDTO notiInfo(String id);
+	public int notiSetting(MyAlarmDTO dto);
+	public int alarmUpdate(MyAlarmDTO dto);
+	
 	
 	
 
