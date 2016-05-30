@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import su.mypage.model.MyAlarmDTO;
+
 public class AdminMemberDAOImple implements AdminMemberDAO {
 
 	private SqlSessionTemplate sqlMap;
@@ -48,6 +50,24 @@ public class AdminMemberDAOImple implements AdminMemberDAO {
 		map.put("grade", grade);
 		
 		int count = sqlMap.update("adminAdd", map);
+		return count;
+	}
+	
+	///////////////////////////////////////////////////회원 알림 관리 //////////////////////////////////////////
+	public List<MyAlarmDTO> memberAlarm(int cp, int ls) {
+		
+		int startnum = (cp-1)*ls+1;
+		int endnum = cp*ls;
+		Map map = new HashMap();
+		map.put("startnum", startnum);
+		map.put("endnum", endnum);
+		List<MyAlarmDTO> list = sqlMap.selectList("memberAlarm", map);
+				
+		return list;
+	}
+	
+	public int alarmTotalCnt() {
+		int count = sqlMap.selectOne("alarmTotalCnt");
 		return count;
 	}
 
