@@ -15,6 +15,7 @@ import su.adminMember.model.AdminCarInfoDAO;
 import su.adminMember.model.AdminCarInfoDTO;
 import su.adminMember.model.AdminMemberDAO;
 import su.adminMember.model.AdminMemberDTO;
+import su.mypage.model.MyAlarmDTO;
 
 @Controller
 public class AdminMemberController {
@@ -183,5 +184,22 @@ public class AdminMemberController {
 		
 		return mav;
 	}
-	
+	///////////////////////////////////회원 알림 관리/////////////////////////////////////////
+	@RequestMapping(value="memberAlarm.do", method=RequestMethod.GET)
+	public ModelAndView memberAlarm(@RequestParam(value="cp", defaultValue="1")int cp){
+		
+		int totalCnt = adMemberDao.alarmTotalCnt();
+		int listSize = 20;
+		int pageSize = 5;
+		
+		List<MyAlarmDTO> list = adMemberDao.memberAlarm(cp, listSize);
+		String pageStr = su.Page.SuPage.makePage("memberAlarm.do", totalCnt, listSize, pageSize, cp);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("pageStr", pageStr);
+		mav.addObject("lists", list);
+		
+		mav.setViewName("admin/memberAlarm");
+		
+		return mav;
+	}
 }
