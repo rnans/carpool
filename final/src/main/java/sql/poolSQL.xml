@@ -8,14 +8,13 @@
 	</select>
 	<insert id="poolMemberShortAdd" parameterType="su.pool.model.PoolDTO">
 		insert into reservationlist
-		(idx,userid,aim,startspot,endspot,route,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate) 
+		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,startcoordi,endcoordi) 
 		values(
 		reservationlist_idx.nextval,
 		#{userid},
 		#{aim},
 		#{startspot},
 		#{endspot},
-		#{route},
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		#{mannum},
 		#{pay},
@@ -27,19 +26,20 @@
 		#{pooltype},
 		#{termtype},
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
-		TO_date(#{starttime},'yyyy-mm-dd hh24:mi')
+		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		#{startcoordi},
+		#{endcoordi}
 		)
 	</insert>
  	<insert id="poolMemberLongAdd" parameterType="su.pool.model.PoolDTO">
 		insert into reservationlist
-		(idx,userid,aim,startspot,endspot,route,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,days) 
+		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,days,startcoordi,endcoordi) 
 		values(
 		reservationlist_idx.nextval,
 		#{userid},
 		#{aim},
 		#{startspot},
 		#{endspot},
-		#{route},
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		#{mannum},
 		#{pay},
@@ -52,19 +52,20 @@
 		#{termtype},
 		TO_date(#{startdate},'yyyy-mm-dd'),
 		TO_date(#{enddate},'yyyy-mm-dd'),
-		#{days}
+		#{days},
+		#{startcoordi},
+		#{endcoordi}
 		)
 	</insert>
 	<insert id="poolMasterShortAdd" parameterType="su.pool.model.PoolDTO">
 		insert into reservationlist
-		(idx,userid,aim,startspot,endspot,route,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,poolname,caridx) 
+		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,poolname,caridx,startcoordi,endcoordi) 
 		values(
 		reservationlist_idx.nextval,
 		#{userid},
 		#{aim},
 		#{startspot},
 		#{endspot},
-		#{route},
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		#{mannum},
 		#{pay},
@@ -78,19 +79,20 @@
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		#{poolname},
-		#{caridx}
+		#{caridx},
+		#{startcoordi},
+		#{endcoordi}
 		)
 	</insert>
  	<insert id="poolMasterLongAdd" parameterType="su.pool.model.PoolDTO">
 		insert into reservationlist
-		(idx,userid,aim,startspot,endspot,route,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,days,poolname,caridx) 
+		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,days,poolname,caridx,startcoordi,endcoordi) 
 		values(
 		reservationlist_idx.nextval,
 		#{userid},
 		#{aim},
 		#{startspot},
 		#{endspot},
-		#{route},
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		#{mannum},
 		#{pay},
@@ -105,7 +107,9 @@
 		TO_date(#{enddate},'yyyy-mm-dd'),
 		#{days},
 		#{poolname},
-		#{caridx}
+		#{caridx},
+		#{startcoordi},
+		#{endcoordi}
 		)
 	</insert>
 	

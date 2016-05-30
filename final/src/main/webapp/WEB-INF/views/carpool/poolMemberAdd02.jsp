@@ -37,13 +37,9 @@ input[type='text']
 		  </select><br>
 		출발지<input type="text" placeholder="출발지를 입력하세요."  id="ss" name="startspot"><br>
 		<input type="text" id="sc" name="startcoordi">
-		<div id="test"></div>
-		경유지<input type="text" placeholder="경유지를 입력하세요."  id="r" name="route"><br>
-		<input type="text" id="rc" name="routecoordi">
 		목적지<input type="text" placeholder="목적지를 입력하세요."  id="es" name="endspot"><br>
 		<input type="text" id="ec" name="endcoordi">
 		<p>
-		<input id="tBt" type="button" value="test" onclick="searchAddr()"> 
 			<input type="button" name="back" value="이전" onclick="location.href='poolMemberAdd.do'">
 			<input type="submit" name="next" value="다음">
 		</p>
@@ -62,12 +58,10 @@ input[type='text']
 	var id;
 	$('input').focus(function(e){
 		id=e.target.id
-
+		
 		initAutocomplete();
 	})
-	
-	
-	
+
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 		    center: new daum.maps.LatLng(37.50864, 127.03013), // 지도의 중심좌표
@@ -75,18 +69,17 @@ input[type='text']
 		    mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
 		}; 
 
+		// 지도를 생성한다 
 	var map = new daum.maps.Map(mapContainer, mapOption); 
 	
 	var markers=new Array();
 	var infowindows=new Array();
 	
-	var bounds=map.getBounds();
-
+	
 	var scoordis=document.getElementById('sc').value;
-	 var rcoordis=document.getElementById('rc').value;
 	 var ecoordis=document.getElementById('ec').value;
-
-
+	
+	 var bounds = new daum.maps.LatLngBounds(); 
  
 	function initAutocomplete() {
 				
@@ -97,7 +90,6 @@ input[type='text']
 		 
 		var sImgSrc='http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png'
 		var aImgSrc='http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_b.png'
-		var rImgSrc='http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/green_b.png'
 		
 		imgSrc = 'http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png', // 출발 마커이미지의 주소입니다    
 	    imgSize = new daum.maps.Size(50, 45), // 출발 마커이미지의 크기입니다 
@@ -117,23 +109,7 @@ input[type='text']
 			 title='도착지';
 			 imgSrc=aImgSrc;
 		 }
-		 else if(value=='r')
-		 {
-			 title='경유지';
-			 imgSrc=rImgSrc;
-		 }
-		 
-		 
-		 if(scoordis!=null||scoordis=="")
-		 {
-			 var scoordi=scoordis.split(',');
-			 
-			 for(var i=0;i<scoordis.length;i++)
-			 {
-				window.alert(scoordi[i]);
-			 }
-		}
-		 
+
 		 
 		// 마커 이미지를 생성합니다
 			var markerImg = new daum.maps.MarkerImage(imgSrc, imgSize, imgOption);
@@ -178,10 +154,6 @@ input[type='text']
 		   if(title=='출발지'){
 		    	document.getElementById('sc').value=location.toString();
 		   }
-		   else if(title=='경유지')
-		   {
-			    document.getElementById('rc').value=location.toString();			   
-		   }
 		   else if(title=='도착지')
 		   {
 			    document.getElementById('ec').value=location.toString();
@@ -202,8 +174,7 @@ input[type='text']
 		               title: title,
 		               image: markerImg
 		           });
-
-		           
+				
 		           bounds.extend(coords);
 		           map.setBounds(bounds);
 		           
@@ -212,18 +183,20 @@ input[type='text']
 		        	 if(title=='출발지'){
 		 		    	document.getElementById('sc').value=marker.getPosition();
 		 		   }
-		 		   else if(title=='경유지')
-		 		   {
-		 			    document.getElementById('rc').value=marker.getPosition();		   
-		 		   }
 		 		   else if(title=='도착지')
 		 		   {
 		 			    document.getElementById('ec').value=marker.getPosition();
 		 		   }
 		        	
-		        	 var geocoder = new daum.maps.services.Geocoder();
+		        	
 
 		        	 var coord = marker.getPosition();
+		        	 
+			           bounds.extend(coord);
+			           map.setBounds(bound);
+  			
+		        	 var geocoder = new daum.maps.services.Geocoder();
+		        	 
 		        	 var callback = function(status, result) {
 		        	     if (status === daum.maps.services.Status.OK) {
 		        	     
@@ -231,54 +204,45 @@ input[type='text']
 		        	    	 if(title=='출발지'){
 		 		 		    	document.getElementById('ss').value=result[0].jibunAddress.name;
 		 		 		   }
-		 		 		   else if(title=='경유지')
-		 		 		   {
-		 		 			    document.getElementById('r').value=result[0].jibunAddress.name;   
-		 		 		   }
-		 		 		   else if(title=='도착지')
+		 		 		    else if(title=='도착지')
 		 		 		   {
 		 		 			    document.getElementById('es').value=result[0].jibunAddress.name;
 		 		 		   }
 		 		        	
 		        	    	 
 		        	     }   
-		        	 };
 
+			           
+		        	 };
+		        	 var bounds = map.getBounds();
+	
 		        	 geocoder.coord2detailaddr(coord, callback);
-					
 		        	 
-		             bounds.extend(coord);
-			           map.setBounds(bounds);
-		   		})
-		                 
-		         
-		          
-		           
-		           
+		   		});
+		        
+		      
+   
 		           for(var i=0;i<markers.length;i++)
 		           {
 		            	if(markers[i].getTitle()==title)
 		            	{
 		            		markers[i].setMap(null);
-		            		infowindows[i].close();
+		            		/* infowindows[i].close(); */
 		            	 		
 		            	}
 		           } 
-		           
 		           markers.push(marker);
+		          
 		           
 		           // 인포윈도우로 장소에 대한 설명을 표시합니다
-		           var infowindow = new daum.maps.InfoWindow({
+		           /* var infowindow = new daum.maps.InfoWindow({
 		               content: '<div style="padding:5px;">'+title+'</div>'
 		           });
 		           infowindow.open(map, marker);
-		           infowindows.push(infowindow);
+		           infowindows.push(infowindow); */
 
-    
 		  });
-
-		}
-
+}
 </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJz53NRCX_RWtNSeoAbPveANaDjlQF1tU&libraries=places&callback=initAutocomplete"
         async defer></script>	

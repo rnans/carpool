@@ -149,6 +149,212 @@ public class PoolDTO
 
 	
 
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String startcoordi, String endcoordi,
+			String starttime, int mannum, String gender, int pay, String smoking, String pluscontent, String pooltype,
+			String startdate, String enddate, String days, String termtype, int caridx, String poolname) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.termtype = termtype;
+		this.caridx = caridx;
+		this.poolname = poolname;
+	}
+
+
+
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String startcoordi, String endcoordi,
+			String starttime, int mannum, String gender, int pay, String smoking, String pluscontent, String pooltype,
+			String termtype, int caridx, String poolname) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.termtype = termtype;
+		this.caridx = caridx;
+		this.poolname = poolname;
+	}
+
+
+
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String startcoordi, String endcoordi,
+			String starttime, int mannum, String gender, int pay, String smoking, String pluscontent, String pooltype,
+			String startdate, String enddate, String days, String termtype) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.termtype = termtype;
+	}
+
+
+
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String route, String startcoordi,
+			String endcoordi, String routecoordi, String starttime, int mannum, String gender, int pay, String smoking,
+			String pluscontent, String pooltype, String termtype) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.route = route;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.routecoordi = routecoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.termtype = termtype;
+	}
+
+	
+
+
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String startcoordi, String endcoordi,
+			String starttime, int mannum, String gender, int pay, String smoking, String pluscontent, String pooltype,
+			String termtype) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.termtype = termtype;
+	}
+
+
+
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String route, String startcoordi,
+			String endcoordi, String routecoordi, String starttime, int mannum, String gender, int pay, String smoking,
+			String pluscontent, String pooltype, String startdate, String enddate, String days, String termtype,
+			int caridx, String poolname) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.route = route;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.routecoordi = routecoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.termtype = termtype;
+		this.caridx = caridx;
+		this.poolname = poolname;
+	}
+
+
+
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String route, String startcoordi,
+			String endcoordi, String routecoordi, String starttime, int mannum, String gender, int pay, String smoking,
+			String pluscontent, String pooltype, String termtype, int caridx, String poolname) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.route = route;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.routecoordi = routecoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.termtype = termtype;
+		this.caridx = caridx;
+		this.poolname = poolname;
+	}
+
+
+
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String route, String startcoordi,
+			String endcoordi, String routecoordi, String starttime, int mannum, String gender, int pay, String smoking,
+			String pluscontent, String pooltype, String startdate, String enddate, String days, String termtype) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.route = route;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.routecoordi = routecoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.termtype = termtype;
+	}
+
+
+
 	public PoolDTO(String userid, String aim, String startspot, String endspot, String route, String starttime,
 			int mannum, String gender, int pay, String smoking, String pluscontent,
 			String pooltype, String termtype, int caridx, String poolname) {

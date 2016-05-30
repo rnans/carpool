@@ -204,9 +204,7 @@ public class PoolController
 		String aim=req.getParameter("aim");
 		String startspot=req.getParameter("startspot");
 		String endspot=req.getParameter("endspot");
-		String route=req.getParameter("route");
 		String startcoordi=req.getParameter("startcoordi");
-		String routecoordi=req.getParameter("routecoordi");
 		String endcoordi=req.getParameter("endcoordi");
 		
 		HashMap<String, String> data=new HashMap<String, String>();
@@ -214,10 +212,8 @@ public class PoolController
 		data.put("aim", aim);
 		data.put("startspot", startspot);
 		data.put("endspot", endspot);
-		data.put("route", route);
 		data.put("pooltype", pooltype);
 		data.put("startcoordi", startcoordi);
-		data.put("routecoordi", routecoordi);
 		data.put("endcoordi",endcoordi);
 		data.put("userid", (String)session.getAttribute("sid"));		
 		
@@ -237,16 +233,19 @@ public class PoolController
 		String aim=req.getParameter("aim");
 		String startspot=req.getParameter("startspot");
 		String endspot=req.getParameter("endspot");
-		String route=req.getParameter("route");
+		String startcoordi=req.getParameter("startcoordi");
+		String endcoordi=req.getParameter("endcoordi");
+		
 		
 		HashMap<String, String> data=(HashMap<String, String>)session.getAttribute("data");
 		
 		data.put("aim", aim);
 		data.put("startspot", startspot);
 		data.put("endspot", endspot);
-		data.put("route", route);
 		data.put("pooltype", pooltype);
 		data.put("userid", (String)session.getAttribute("sid"));		
+		data.put("startcoordi", startcoordi);
+		data.put("endcoordi",endcoordi);
 		
 		session.setAttribute("data", data);
 		
@@ -473,7 +472,6 @@ public class PoolController
 		String aim=data.get("aim");
 		String startspot=data.get("startspot");
 		String endspot=data.get("endspot");
-		String route=data.get("route");
 		int mannum=Integer.parseInt(data.get("mannum"));
 		String gender=data.get("gender");
 		String smoking=data.get("smoking");
@@ -483,10 +481,9 @@ public class PoolController
 		String termtype=data.get("termtype");
 		String pooltype=data.get("pooltype");
 		String startcoordi=data.get("startcoordi");
-		String routecoordi=data.get("routecoordi");
 		String endcoordi=data.get("endcoordi");
 		
-		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype);
+		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype);
 		
 		int count=poolDao.poolMemberShortAdd(dto);
 		
@@ -511,7 +508,6 @@ public class PoolController
 		String aim=data.get("aim");
 		String startspot=data.get("startspot");
 		String endspot=data.get("endspot");
-		String route=data.get("route");
 		int mannum=Integer.parseInt(data.get("mannum"));
 		String gender=data.get("gender");
 		String smoking=data.get("smoking");
@@ -523,9 +519,11 @@ public class PoolController
 		String startdate=data.get("startdate");
 		String enddate=data.get("enddate");
 		String days=data.get("days");
+		String startcoordi=data.get("startcoordi");
+		String endcoordi=data.get("endcoordi");
 		
-		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, startdate, enddate, days, termtype);
-				
+		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, startdate, enddate, days, termtype);
+		
 		int count=poolDao.poolMemberLongAdd(dto);
 		
 		String msg=count>0?"성공":"실패";
@@ -550,7 +548,6 @@ public class PoolController
 		String aim=data.get("aim");
 		String startspot=data.get("startspot");
 		String endspot=data.get("endspot");
-		String route=data.get("route");
 		int mannum=Integer.parseInt(data.get("mannum"));
 		String gender=data.get("gender");
 		String smoking=data.get("smoking");
@@ -561,8 +558,10 @@ public class PoolController
 		String pooltype=data.get("pooltype");
 		String poolname=req.getParameter("poolname");
 		int caridx=Integer.parseInt(data.get("caridx"));
+		String startcoordi=data.get("startcoordi");
+		String endcoordi=data.get("endcoordi");
 		
-		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype, caridx, poolname);
+		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype, caridx, poolname);
 		
 		int count=poolDao.poolMasterShortAdd(dto);
 
@@ -602,7 +601,6 @@ public class PoolController
 		String aim=data.get("aim");
 		String startspot=data.get("startspot");
 		String endspot=data.get("endspot");
-		String route=data.get("route");
 		int mannum=Integer.parseInt(data.get("mannum"));
 		String gender=data.get("gender");
 		String smoking=data.get("smoking");
@@ -616,9 +614,11 @@ public class PoolController
 		String days=data.get("days");
 		String poolname=req.getParameter("poolname");
 		int caridx=Integer.parseInt(data.get("caridx"));
-	
-		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, startdate, enddate, days, termtype, caridx, poolname);
-
+		String startcoordi=data.get("startcoordi");
+		String endcoordi=data.get("endcoordi");
+		
+		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, startdate, enddate, days, termtype, caridx, poolname);
+		
 		int count=poolDao.poolMasterLongAdd(dto);
 		System.out.println(poolname);
 		int addidx=poolDao.getMasterIdx(poolname);
@@ -656,7 +656,7 @@ public class PoolController
 		int pageSize=5;
 		List<PoolDTO> list=poolDao.viewAllList(cp,listSize);
 		String pageStr=
-			su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+			su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("pageStr",pageStr);
@@ -901,7 +901,7 @@ public class PoolController
 			int pageSize=5;
 			List<PoolDTO> list=poolDao.viewShortList(cp,listSize);
 			String pageStr=
-				su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list", list);
 			mav.addObject("pageStr",pageStr);
@@ -918,7 +918,7 @@ public class PoolController
 			int pageSize=5;
 			List<PoolDTO> list=poolDao.viewLongList(cp,listSize);
 			String pageStr=
-				su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list", list);
 			mav.addObject("pageStr",pageStr);
@@ -935,7 +935,7 @@ public class PoolController
 			int pageSize=5;
 			List<PoolDTO> list=poolDao.viewMemberList(cp,listSize);
 			String pageStr=
-				su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list", list);
 			mav.addObject("pageStr",pageStr);
@@ -952,7 +952,7 @@ public class PoolController
 			int pageSize=5;
 			List<PoolDTO> list=poolDao.viewMasterList(cp,listSize);
 			String pageStr=
-				su.Page.SuPage.makePage("poolMain.do", totalCnt, listSize, pageSize, cp);
+				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list", list);
 			mav.addObject("pageStr",pageStr);

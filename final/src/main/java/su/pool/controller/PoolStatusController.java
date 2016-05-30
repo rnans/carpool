@@ -242,7 +242,7 @@ public class PoolStatusController
 		List<PoolDTO> memlist=poolStatusDao.viewOwnMemReqPoolList(cp, ls, id);
 		
 		String pageStr=
-			su.Page.SuPage.makePage("poolList.do", totalCnt, ls, pageSize, cp);
+			su.Page.SuPage.makePage("poolStatus.do", totalCnt, ls, pageSize, cp);
 		
 	
 		ModelAndView mav=new ModelAndView();
