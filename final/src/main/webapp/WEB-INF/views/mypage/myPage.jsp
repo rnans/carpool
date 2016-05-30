@@ -15,6 +15,7 @@
 	margin: 5px;
 	margin-left: 5px;
 	
+	
 }
 #div2{
 	float:left;
@@ -38,7 +39,10 @@
 	width:1000px;
 	margin: 0px auto;
 }
-
+#imgchange{
+    width: 225px;
+    height: 300px;
+}
 </style>
 </head>
 <body id="bb">
@@ -51,13 +55,16 @@ header
 		
 		<div id="div1">
 			<fieldset>
-				<img src="/star.jpg" border="100"><br>
+				
+				<img style="width: 225px; height: 225px;" 
+				src="/final02/img/${list[0].filename}"><br>
+				
 			</fieldset>
 		</div>
 		
 			<form name="f" action="myProfile.do">
 			<fieldset>
-				<legend>${dto.name}님 정보</legend>
+				<legend>${dto.name}님 정보 </legend>
 					<ul>
 				
 						<li>아이디:
@@ -77,7 +84,8 @@ header
 					
 						<li><input type="submit" value="프로필수정"></li>
 						<li><a href="pwdUpdateForm.do">비밀번호변경</a></li>
-						<li><a href="">회원탈퇴</a></li>
+						<li><a href="wishPoolList.do">즐겨찾는카풀~</a></li>
+						<li><a href="memberleave.do">회원탈퇴</a></li>
 					</ul>
 				</fieldset>	
 			</form>
