@@ -51,7 +51,7 @@ header
 	
 	<div id="div2">
 			<legend>즐겨찾는카풀</legend>
-			<form name="myprofile">
+			<form name="wishpool">
 				<table border="1" cellspacing="0" align="center">
 					<thead>
 						<tr>
@@ -65,16 +65,16 @@ header
 					</thead>
 			<tfoot>
 					<tr>
-						<td colspan="6" align="center">
+						<td colspan="5" align="center">
 							 ${pageStr }
 						</td>
-						<td><a href="bbsWrite.do">글쓰기</a></td>
+						<td><a></a></td>
 					</tr>
 			</tfoot>
 			<tbody>
 		<c:if test="${empty lists }">
-				<td colspan="6" align="center">
-					등록된 게시글이 없습니다.
+				<td colspan="5" align="center">
+					등록된 즐겨찾기 가 없습니다.
 				</td>
 		</c:if>
 			<c:forEach var="dto" items="${lists }">
