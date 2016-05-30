@@ -8,6 +8,9 @@ public interface yangMypageDAO {
 
 	public List<yangMypageDTO> allPayInfo(String userid);
 	public int userPayAdd(yangMypageDTO dto);
-	
+	public int userPayUpdate(yangMypageDTO dto);
+	public yangMypageDTO idxPayInfo(int idx);
+	public int userPayDel(yangMypageDTO dto);
+	public List<yangMypageDTO> allCardInfo();
 	
 }

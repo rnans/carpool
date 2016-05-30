@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <script>
+location.href='${gopage}'; 
 window.alert('${msg}');
-location.href='${gopage}';
 </script>

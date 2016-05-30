@@ -22,16 +22,29 @@ public class yangMypageDAOImple implements yangMypageDAO {
 		return list;
 	}
 	public int userPayAdd(yangMypageDTO dto) {
-		
-		System.out.println(dto.getCardnum());
-		System.out.println(dto.getCvv());
-		System.out.println(dto.getCardid());
-		System.out.println(dto.getCardname());
-		System.out.println(dto.getCardterm());
-		System.out.println(dto.getCardtype1());
-		System.out.println(dto.getCardtype2());
-		
+	
 		int count=sqlMap.insert("userPayAdd",dto);
 		return count;
+	}
+	public yangMypageDTO idxPayInfo(int idx) {
+		
+		yangMypageDTO lists=(yangMypageDTO) sqlMap.selectOne("cardIdxList", idx);
+		return lists;
+	}
+
+	public int userPayUpdate(yangMypageDTO dto) {
+		int count=sqlMap.update("cardUpdate", dto);
+		
+		return count;
+	}
+	public int userPayDel(yangMypageDTO dto) {
+		
+		int count=sqlMap.delete("cardDel", dto);
+		return count;
+	}
+	public List<yangMypageDTO> allCardInfo() {
+
+		List<yangMypageDTO> list=sqlMap.selectList("cardNum");
+		return list;
 	}
 }

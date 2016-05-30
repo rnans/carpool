@@ -38,20 +38,36 @@
 	width:1000px;
 	margin: 0px auto;
 }
+
+
 </style>
 <script>
-function backPage(){
-	window.location.href = 'userPayInfo.do';
+window.onload=function(){
+	checkType1();
+	checkType2();
+	
 }
-</script>
-<c:if test="${!(empty msg)}">
-<script>
-var msg='${msg}';
+function checkType1(){
+	
+	var cardtype1=document.getElementById('cardtype1');
+	for(var i=0;i<cardtype1.length;i++)
+	{
+		if(cardtype1[i].value=='${dto.cardtype1}'){
 
-window.alert('${msg}');
-
-</script>
-</c:if>
+			cardtype1[i].selected=true;
+		}
+	}
+}
+function checkType2(){
+	
+	var cardtype2=document.getElementById('cardtype2');
+	for(var i=0;i<cardtype2.length;i++){
+		if(cardtype2[i].value=='${dto.cardtype2}'){
+			cardtype2[i].selected=true;
+		}
+	}
+}
+</script> 
 </head>
 <body id="bb">
 header
@@ -64,53 +80,53 @@ header
 		</div>-->
 	
 	<div id="div2">
-			<legend>회원결제등록</legend>
-			<form name="userPayAdd" action="userPayAdd.do" method="post">
+			<legend>회원결제수정</legend>
+			<form name="cardUpdate" action="cardUpdate.do" method="post">
+			<input type="hidden" name="idx" value="${dto.idx}">
 				<table border="1" cellspacing="0" align="center">
 					
 						<tr>
 							<td>카드종류</td>
-							<td><select name="cardtype1">
-			 <option value="선택" selected="selected">선택</option>				
+							<td><select id="cardtype1" name="cardtype1">
+			 <option value="선택">선택</option>				
             <option value="신한">신한</option>
-            <option value="농협">농협</option>
-             <option value="우리">우리</option>
-              <option value="국민">국민</option>
+            <option  value="농협">농협</option>
+             <option  value="우리">우리</option>
+              <option  value="국민">국민</option>
             </select></td>
 						</tr>	
 								<tr>
 							<td>카드번호</td>
-							<td colspan="5"><input type="text" name="cardnum1" value="${dto.cardnum1 }" style="width:40px;">-<input type="text" name="cardnum2" value="${dto.cardnum2 }" style="width:40px;">-<input type="text" name="cardnum3" value="${dto.cardnum3 }" style="width:40px;">-<input type="text" name="cardnum4" value="${dto.cardnum4 }" style="width:40px;"></td>
+							<td colspan="5"><input type="text" name="cardnum1" style="width:40px;" value="${dto.cardnum1}">-<input type="text" name="cardnum2" style="width:40px;" value="${dto.cardnum2}">-<input type="text" name="cardnum3" style="width:40px;" value="${dto.cardnum3}">-<input type="text" name="cardnum4" style="width:40px;" value="${dto.cardnum4}"></td>
 						</tr>
 						<tr>
 						<td>유효기간</td>
-						<td><input type="text" name="cardterm1" value="${dto.cardterm1}" style="width:20px;">월/<input type="text" name="cardterm2" value="${dto.cardterm2} " style="width:40px;">년</td>
+						<td><input type="text" name="cardterm1" style="width:20px;" value="${dto.cardterm1}">월/<input type="text" name="cardterm2" style="width:40px;" value="${dto.cardterm2}">년</td>
 						</tr>
 						<tr>
 						<td>카드상이름</td>
-						<td><input type="text" name="cardname" value="${dto.cardname} "></td>
+						<td><input type="text" name="cardname" value="${dto.cardname}"></td>
 						</tr>
 						<tr>
 						<td>cvv</td>
-						<td><input type="text" name="cvv" value="${dto.cvv}" style="width:30px;"></td>
+						<td><input type="text" name="cvv" style="width:30px;" value="${dto.cvv}"></td>
 						</tr>
 						<tr>
 						<td>개인/법인</td>
-						<td><select name="cardtype2">
-            <option>개인</option>
-            <option>법인</option>
+						<td><select name="cardtype2" id="cardtype2">
+            <option value="개인">개인</option>
+            <option value="법인">법인</option>
             </select></td>
 						</tr>
 						<tr>
 						<td>카드아이디</td>
-						<td><input type="text" name="cardid" value="${dto.cardid} "></td>
+						<td><input type="text" name="cardid" value="${dto.cardid}"></td>
 						</tr>
 						<tr>
-						<td colspan="2" align="right"><input type="button" value="취소" onclick="backPage()"><input type="submit" value="등록"></td>		
+						<td colspan="6" align="right"><input type="submit" value="수정"></td>
 						</tr>
 					</tbody>
 				</table>
-
 			</form>
 	</div>
 	<div id="div3">

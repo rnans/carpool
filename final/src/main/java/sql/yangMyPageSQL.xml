@@ -9,4 +9,16 @@
 	<insert id="userPayAdd" parameterType="su.yangmypage.model.yangMypageDTO">
 	insert into userpayinfo values(userpayinfo_idx.nextval,#{userid},#{cardtype1},#{cardnum},#{cardterm},#{cardname},#{cvv},#{cardtype2},#{cardid})
 	</insert>
+	<select id="cardIdxList" parameterType="Integer" resultType="su.yangmypage.model.yangMypageDTO">
+	select * from userpayinfo where idx=#{idx}
+	</select>
+	<update id="cardUpdate" parameterType="su.yangmypage.model.yangMypageDTO">
+	update userpayinfo set cardtype1=#{cardtype1}, cardnum=#{cardnum}, cardterm=#{cardterm}, cardname=#{cardname}, cvv=#{cvv}, cardtype2=#{cardtype2}, cardid=#{cardid} where idx=#{idx}
+	</update>
+	<delete id="cardDel" parameterType="su.yangmypage.model.yangMypageDTO">
+	delete from userpayinfo where idx=#{idx} 
+	</delete>
+	<select id="cardNum" resultType="su.yangmypage.model.yangMypageDTO">
+	select cardnum from userpayinfo 
+	</select>
 </mapper>

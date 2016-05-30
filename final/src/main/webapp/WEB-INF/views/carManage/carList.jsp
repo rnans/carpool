@@ -6,13 +6,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script>
+function carMain(idx){
+	
+	var param="?idx="+idx;
+	window.location.href = 'carMain.do'+param;
+}
+</script>
+<script>
+window.onload=function(){
+	checkMain();
+}
+function checkMain(){
+	
+	var cars=document.getElementsByName('carid');
+	
+	for(var i=0;i<cars.length;i++)
+	{
+		if(cars[i].value==1){
+			cars[i].checked=true;
+		}
+	}
+}
+</script> 
 </head>
 <body>
 	<fieldset>
 		<legend>차량관리</legend>
 		<table border="1">
 			<tr>
+				<th>대표차량</th>
 				<th>운전자</th>
 				<th>차량번호</th>
 				<th>차량종류</th>
@@ -21,12 +44,13 @@
 			</tr>
 			<c:if test="${empty list}">
 				<tr>
-					<td colspan="6">등록된 차량이 없습니다.</td>
+					<td colspan="7">등록된 차량이 없습니다.</td>
 				</tr>
 			</c:if>
 			<c:forEach var="dto" items="${list }">
 			
 				<tr>
+					<td><input type="radio" name="carid" value="${dto.carid }" onclick="carMain(${dto.idx})"></td>
 					<td>${dto.driver }</td>
 					<td>${dto.carnum }</td>
 					<td>${dto.cartype }</td>
@@ -47,7 +71,7 @@
 				
 			</c:forEach>
 			<tr>
-			<td colspan="6" align="right"><input type="button" value="등록" onclick="location.href='carAdd.do'"></td>
+			<td colspan="7" align="right"><input type="button" value="등록" onclick="location.href='carAdd.do'"></td>
 			</tr>
 
 		</table>

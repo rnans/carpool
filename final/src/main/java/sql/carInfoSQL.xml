@@ -19,4 +19,16 @@
 	<delete id="carDel" parameterType="Integer">
 		delete from carInfo where idx=#{idx} 
 	</delete>
+	<select id="carNumList" parameterType="su.carinfo.model.carInfoDTO" resultType="su.carinfo.model.carInfoDTO">
+	select * from carinfo where carnum=#{carnum}
+	</select>
+	<select id="userName" parameterType="String" resultType="su.member.model.MemberDTO">
+	select * from userinfo where id=#{userid}
+	</select>
+	<update id="carIdZero" parameterType="String">
+	update carinfo set carid='0' where id=#{userid}
+	</update>
+	<update id="carIdOne" parameterType="su.carinfo.model.carInfoDTO">
+	update carinfo set carid='1' where idx=#{idx}
+	</update>
 </mapper>

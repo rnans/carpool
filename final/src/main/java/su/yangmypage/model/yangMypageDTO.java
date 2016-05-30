@@ -15,11 +15,18 @@ public class yangMypageDTO {
 	private String cvv;
 	private String cardtype2;
 	private String cardid;
+	private String cardnum1;
+	private String cardnum2;
+	private String cardnum3;
+	private String cardnum4;
+	private String cardterm1;
+	private String cardterm2;
 	public yangMypageDTO() {
 		super();
 	}
 	public yangMypageDTO(int idx, String userid, String cardtype1, String cardnum, String cardterm, String cardname,
-			String cvv, String cardtype2, String cardid) {
+			String cvv, String cardtype2, String cardid, String cardnum1, String cardnum2, String cardnum3,
+			String cardnum4, String cardterm1, String cardterm2) {
 		super();
 		this.idx = idx;
 		this.userid = userid;
@@ -30,6 +37,12 @@ public class yangMypageDTO {
 		this.cvv = cvv;
 		this.cardtype2 = cardtype2;
 		this.cardid = cardid;
+		this.cardnum1 = cardnum1;
+		this.cardnum2 = cardnum2;
+		this.cardnum3 = cardnum3;
+		this.cardnum4 = cardnum4;
+		this.cardterm1 = cardterm1;
+		this.cardterm2 = cardterm2;
 	}
 	public int getIdx() {
 		return idx;
@@ -85,6 +98,41 @@ public class yangMypageDTO {
 	public void setCardid(String cardid) {
 		this.cardid = cardid;
 	}
-	
-	
+	public String getCardnum1() {
+		return cardnum1;
+	}
+	public void setCardnum1(String cardnum1) {
+		this.cardnum1 = cardnum1;
+	}
+	public String getCardnum2() {
+		return cardnum2;
+	}
+	public void setCardnum2(String cardnum2) {
+		this.cardnum2 = cardnum2;
+	}
+	public String getCardnum3() {
+		return cardnum3;
+	}
+	public void setCardnum3(String cardnum3) {
+		this.cardnum3 = cardnum3;
+	}
+	public String getCardnum4() {
+		return cardnum4;
+	}
+	public void setCardnum4(String cardnum4) {
+		this.cardnum4 = cardnum4;
+	}
+	public String getCardterm1() {
+		return cardterm1;
+	}
+	public void setCardterm1(String cardterm1) {
+		this.cardterm1 = cardterm1;
+	}
+	public String getCardterm2() {
+		return cardterm2;
+	}
+	public void setCardterm2(String cardterm2) {
+		this.cardterm2 = cardterm2;
+	}
+
 }
