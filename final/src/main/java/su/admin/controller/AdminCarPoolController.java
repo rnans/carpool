@@ -120,14 +120,13 @@ public class AdminCarPoolController {
 		ModelAndView mav = new ModelAndView();
 		int count = adUserPoolDao.userPoolDel(idx);
 		String msg = count>0?"드라이버 카풀을 삭제하였습니다.!":"드라이버 카풀 삭제에 실패하였습니다.!";
-		
+		if(count>0){
 		int count2 =poolStatusDao.driverReserveDel(idx);
-		
 		String msg2 = count2>0?"예약글도 삭제되었습니다..!":"예약글이 없습니다..!";
-		
-		 
-		mav.addObject("msg", msg);
 		mav.addObject("msg2", msg2);
+		}
+		mav.addObject("msg", msg);
+	
 		mav.setViewName("admin/adminPoolMsg");
 		
 		return mav;
