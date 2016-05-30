@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 //import su.file.model.UploadDTO;
 import su.member.model.MemberDTO;
+import su.mypage.model.MyAlarmDTO;
 import su.mypage.model.MypageDAO;
 import su.mypage.model.MypageDTO;
 /*import su.mypage.model.NotiSettingDTO;*/
@@ -139,18 +140,49 @@ public class MypageController {
 		mav.setViewName("mypage/UpdateMsg");
 		return mav;
 	}
-	/**알람설정*/
-
-//	
-//	@RequestMapping("/notiSetting.do")
-//	public ModelAndView notisetting(NotiSettingDTO dto,HttpServletRequest req){
-//		
-//
-//		ModelAndView mav=new ModelAndView();
-//		mav.addObject("dto", dto);
-//		mav.setViewName("mypage/notiSetting");
-//		return mav;
-//	}
+	
+	/**알람설정 폼이동*/
+	@RequestMapping(value="/notiSetting.do", method=RequestMethod.GET)
+	public ModelAndView notiSettingForm(MyAlarmDTO dto, @RequestParam("id")String id){
+		
+		ModelAndView mav = new ModelAndView();
+		
+		dto = mypageDao.notiInfo(id);
+		
+		mav.addObject("dto", dto);
+		mav.setViewName("mypage/notiSetting");
+		
+		return mav;
+	}
+	
+	/**알림설정하기*/
+	@RequestMapping(value="/notiSetting.do", method=RequestMethod.POST)
+	public ModelAndView notiSetting(MyAlarmDTO dto){
+		
+		
+		ModelAndView mav = new ModelAndView();
+		int result = mypageDao.notiSetting(dto);
+		
+		String msg = result>0?"알람설정완료!":"알람설정실패!";
+		mav.addObject("msg", msg);
+		mav.addObject("gopage", "myPage.do");
+		mav.setViewName("mypage/myPageMsg");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/alarmUpdate.do", method=RequestMethod.POST)
+	public ModelAndView alarmUpdate(MyAlarmDTO dto){
+		ModelAndView mav = new ModelAndView();
+		int result = mypageDao.alarmUpdate(dto);
+		
+		String msg = result>0?"알림변경완료!":"알림변경실패!";
+		mav.addObject("msg", msg);
+		mav.addObject("gopage", "myPage.do");
+		mav.setViewName("mypage/myPageMsg");
+		
+		return mav;
+	}
 	
 	
 	
