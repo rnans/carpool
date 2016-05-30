@@ -112,53 +112,64 @@ import su.carinfo.model.carInfoDTO;
 	      return mav;	    	  
 	   }
 	   
-	   //컬럼 합산값 보여주기
-	//   @RequestMapping("/carBookInfo.do")
-	//   public ModelAndView CarCostSum(String id,String carnum){
-	//	   
-	//	   String costsum=CarCostDao.CarCostSum(id);
-	//	   String kmsum=CarCostDao.CarKmSum(id);
-	//	   String jooyusum=CarCostDao.CarJooyuSum(id);
-	//	   String jungbisum=CarCostDao.CarJungbiSum(id);
-	//	   String buysum=CarCostDao.CarBuySum(id);
-	//	  List<CarBookInfoDTO> idcarnum=CarBookInfoDao.idcarnum(id);
-	//	  
-	//	  ModelAndView mav=new ModelAndView();
-	//		mav.addObject("costsum", costsum);
-	//		mav.addObject("kmsum", kmsum);
-	//		mav.addObject("jooyusum", jooyusum);
-	//		mav.addObject("jungbisum", jungbisum);
-	//		mav.addObject("buysum", buysum);
-	//		mav.addObject("cnum", idcarnum);
-	//		mav.setViewName("carbook/carBookInfo");
-	//		  
-	//	      return mav;
-	//   }
-	//   
+	
 	 //컬럼 합산값 보여주기
-	   
 	   @RequestMapping("/carBookInfo.do")
 	   public ModelAndView CarCostSum(HttpSession session){
 		   String id=(String)session.getAttribute("sid");
+		   
+		   ModelAndView mav=new ModelAndView();
+		   
+			if(id==null){
+				mav.addObject("msg", "로그인후 이용가능합니다.");
+				mav.addObject("gopage", "index.do");
+				mav.setViewName("carManage/carMsg");
+				
+			} else {
 
 		   List<carInfoDTO> carlist=CarCostDao.carnum(id);
+
+		   if(carlist.isEmpty()){
+					mav.addObject("msg", "차량등록 후 이용가능합니다. 차량등록 페이지로 이동합니다.");
+					mav.addObject("gopage", "carList.do");
+					mav.setViewName("carManage/carMsg");
+		
+		   } else {
+		   
 		   String carnum=carlist.get(0).getCarnum();
-	
 		   String costsum=CarCostDao.CarCostSum(carnum);
 		   String kmsum=CarCostDao.CarKmSum(carnum);
 		   String jooyusum=CarCostDao.CarJooyuSum(carnum);
 		   String jungbisum=CarCostDao.CarJungbiSum(carnum);
 		   String buysum=CarCostDao.CarBuySum(carnum);
 		   
-		  ModelAndView mav=new ModelAndView();
-		  mav.addObject("costsum", costsum);
-		mav.addObject("kmsum", kmsum);
+		   if(costsum==null){
+
+			   costsum = "0";
+		   }
+		   if(kmsum==null){
+			   kmsum = "0";
+		   }
+		   if(jooyusum==null){
+			   jooyusum = "0";
+		   }
+		   if(jungbisum==null){
+			   jungbisum = "0";
+		   }
+		   if(buysum==null){
+			   buysum = "0";
+		   }
+		   
+		  	mav.addObject("costsum", costsum);
+		  	mav.addObject("kmsum", kmsum);
 			mav.addObject("jooyusum", jooyusum);
 			mav.addObject("jungbisum", jungbisum);
 			mav.addObject("buysum", buysum);
 			mav.addObject("cnum", carlist);
 			mav.setViewName("carbook/carBookInfo");
-			  
+		   }
+		   
+			}
 		      return mav;
 	   }	   
 	   
@@ -172,6 +183,24 @@ import su.carinfo.model.carInfoDTO;
 			String jooyusum = CarCostDao.CarJooyuSum(carnum);
 			String jungbisum = CarCostDao.CarJungbiSum(carnum);
 			String buysum = CarCostDao.CarBuySum(carnum);
+			
+			if(costsum==null){
+
+				costsum = "0";
+			}
+			if(kmsum==null){
+				kmsum = "0";
+			}
+			if(jooyusum==null){
+				jooyusum = "0";
+			}
+			if(jungbisum==null){
+				jungbisum = "0";
+			}
+			if(buysum==null){
+				buysum = "0";
+			}
+			
 			mav.addObject("costsum2", costsum);
 			mav.addObject("kmsum2", kmsum);
 			mav.addObject("jooyusum2", jooyusum);
@@ -201,4 +230,41 @@ import su.carinfo.model.carInfoDTO;
 	   public String graph(){
 	      return "carbook/graph";
 	   }
-	}
+	   
+	 
+	   //test
+		   @RequestMapping("graphTest.do")
+		   public ModelAndView graphtest(HttpSession session){
+			   String id=(String)session.getAttribute("sid");
+			   List<carInfoDTO> carlist=CarCostDao.carnum(id);
+			   
+			   ModelAndView mav=new ModelAndView();
+			   String carnum=carlist.get(0).getCarnum();
+			   String costsum=CarCostDao.CarCostSum(carnum);
+			   String kmsum=CarCostDao.CarKmSum(carnum);
+			   String jooyusum=CarCostDao.CarJooyuSum(carnum);
+			   String jungbisum=CarCostDao.CarJungbiSum(carnum);
+			   String buysum=CarCostDao.CarBuySum(carnum);			
+			   
+			   mav.setViewName("carbook/graphTest");
+			   
+				mav.addObject("costsum", costsum);
+			  	mav.addObject("kmsum", kmsum);
+				mav.addObject("jooyusum", jooyusum);
+				mav.addObject("jungbisum", jungbisum);
+				mav.addObject("buysum", buysum);
+		      
+			   return mav;
+		   }
+	   
+/*//	 //그래프 보여주기
+//	   @RequestMapping("/graph.do")
+//	   public ModelAndView CarGraphList(String id,HttpServletRequest req){
+//	     
+//	      List<CarCostDTO> list=CarCostDao.GraphCostList(id);
+//		  ModelAndView mav=new ModelAndView();
+//		  mav.addObject("list", list);
+//		  mav.setViewName("carbook/graph");
+//	      return mav;
+//	   }
+*/	}

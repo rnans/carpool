@@ -17,10 +17,9 @@
 		<option>물품구입</option>
 	</select><br>
 	날짜 <input type="text" name="costday" value=${list[0].costday }><br>
-	금액<input type="text" name="cost" value=${list[0].cost }><br>
-	주행거리<input type="text" name="km" value=${list[0].km }><br>
-	비고<textarea rows="10" cols="20" name="bigo">${list[0].bigo }
-	</textarea><br>
+	비고<input type="text" name="bigo" value=${list[0].bigo }><br>
+	금액<input type="number" name="cost" value=${list[0].cost }><br>
+	주행거리<input type="number" name="km" value=${list[0].km }><br>
 	<input type="hidden" name="idx" value="${list[0].idx }">
 	<input type="submit" value="수정하기">
 	<input type="button" value="취소" onclick="javascript:window.self.close()">

@@ -50,8 +50,15 @@ function opencostReg(){
 	window.open('costReg.do?carnum='+carnum,'opencostReg','width=350,height=450');
 	
 }
+/* $(document).on(function(){
+	if($("#hiddenCost").val('')){
+		$("td[name=number]").text("0원");
+	}
+	
+}); */
 
 </script>
+<input type="hidden" id="hiddenId" value="${sid}"/>
 <hr>
 <div>
 	<select id=sel name=carnum onchange="show()">
@@ -77,11 +84,11 @@ function opencostReg(){
 	
 	<tr>
 	<th>총 주행거리</th>
-	<td>${km}km</td>
+	<td name="number">${km}km</td>
 	</tr>
 	<tr>
 	<th>총 지출금액</th>
-	<td>${cost}원</td>
+	<td name="number">${cost}원</td>
 	</tr>
 
 	</thead>
@@ -100,15 +107,15 @@ function opencostReg(){
 		<c:set var="buy" value="${buysum}"/>
 	<tr>
 		<th>총 주유비용</th>
-		<td>${jooyu }원</td>
+		<td name="number">${jooyu }원</td>
 	</tr>
 	<tr>
 		<th>총 정비비용</th>
-		<td>${jungbi }원</td>
+		<td name="number">${jungbi }원</td>
 	</tr>
 	<tr>
 		<th>총 물품구입비용</th>
-		<td>${buy }원</td>
+		<td name="number">${buy }원</td>
 	</tr>
 	</table>
 </fieldset>

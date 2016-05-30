@@ -12,7 +12,7 @@ function loginOpen(){
 ////////jquery/////////
 $(document).ready(function(){
 	$("#chageaboo").mouseenter(function(){
-		$(this).append(" <li id='chageaboo2'><a href='#'>home</a>&nbsp&nbsp<a href='cost.do?id=${sid}'>cost</a>&nbsp&nbsp<a href='graph.do'>graph</a></li>");	
+		$(this).append(" <li id='chageaboo2'><a href='#'>home</a>&nbsp&nbsp<a href='cost.do?id=${sid}'>cost</a>&nbsp&nbsp<a href='graph.do?id=${sid}'>graph</a></li>");	
 	});
 	
 	$("#chageaboo").mouseleave(function(){
