@@ -9,6 +9,7 @@ function oneandoneDelForm(){
 	window.open('oneandoneDelete.do'+param,'oneandoneDelForm','width=500 height=400 left=500 top=200');
 }
 </script>
+<div>
 <table border="1">
 <thead>
 <tr>
@@ -40,7 +41,6 @@ function oneandoneDelForm(){
  <td>${oneandone.writedate }</td>
  <td>${oneandone.state }</td>
  <td> <input type="button" value="글삭제" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"></td>
- 
 </tr>
  </c:forEach>
 </tbody>
@@ -50,3 +50,4 @@ function oneandoneDelForm(){
  </tr>
  </tfoot>
 </table>
+</div>

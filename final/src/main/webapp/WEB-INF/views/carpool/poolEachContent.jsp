@@ -19,6 +19,12 @@ function runDel()
 	
 	location.href='poolDel.do'+param;
 }
+var userid=null;
+function message(){
+
+	var param="?userid="+userid;
+	window.open('messageSend.do'+param,'messagesend','width=480 height=320');
+}
 function request()
 {
 	var poolType='${dto.pooltype}';
@@ -36,7 +42,7 @@ function request()
 		var param='?idx='+document.getElementById('idx').value+'&memberid='+'${sessionScope.sid}';
 		window.open('reqToMemberPage.do'+param,'reqListPopup2','width=480 height=320');
 	}
-	
+
 	
 }
 
@@ -74,6 +80,7 @@ function request()
 <div><input type="button" value="찜하기"><input type="button" value="예약하기" onclick="request()"></div>
 <div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="showEdit()"><input type="button" value="삭제하기" onclick="runDel()"></div>
 </div>
+<div><input type="button" value="쪽지보내기" onclick="javascript:userid='${dto.userid}';message();"></div>
 </article>
 <article>
 

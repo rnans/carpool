@@ -7,10 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="../adHeader.jsp" %>
+<div>헤더
 <%@include file="../header.jsp" %>
-<div>헤더</div>
+</div>
+<div>메뉴바
+<%@include file="../adHeader.jsp" %>
+</div>
 <hr>
+<div>
 <h2>이용안내 글쓰기</h2>
 <form action="useguideWrite_ok.do">
 <ul>
@@ -20,8 +24,8 @@
 <textarea name="content" rows="35" cols="70"></textarea><br>
 <input type="reset" value="다시작성">
 <input type="submit" value="글작성완료">
-
 </form>
+</div>
 <hr>
 <div>풋</div>
 </body>

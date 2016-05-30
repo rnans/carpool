@@ -14,15 +14,19 @@ function useguideDeleteForm(){
 }
 </script>
 <body>
-<div>헤더부분</div>
+<div>헤더
 <%@include file="../header.jsp" %>
+</div>
+<div>메뉴바
 <%@include file="../adHeader.jsp" %>
-<section>
+</div>
+<hr>
+<div>중간 메뉴바
 <h2>고객센터관리</h2>
 <a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="adminuseguideList.do">4.이용안내</a>
 <h4>이용안내</h4>
-</section>
-<section>
+</div>
+<div>
 <table border="1" width="800" height="150" >
 <thead>
 <tr>
@@ -62,7 +66,7 @@ function useguideDeleteForm(){
  </tfoot>
 </table>
 <a href="useguideWrite.do">글쓰기</a>
-</section>
+</div>
 <hr>
 <footer>푸터</footer>
 </html>

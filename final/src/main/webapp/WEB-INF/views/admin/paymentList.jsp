@@ -7,15 +7,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>헤더</div>
+<div>헤더
 <%@include file="../header.jsp" %>
+</div>
+<div>메뉴바
 <%@include file="../adHeader.jsp" %>
+</div>
+<div>중간메뉴바
 <h2>예약 및 결제관리</h2>
 <h3>결제관리</h3>
 <a href="driverReserveList.do">1.드라이버예약</a> | <a href="memberReserveList.do">2.사용자예약</a> |<a href="payMentList.do">3.결제관리</a>
-
+</div>
 <section>
 	<article>
+	<div>
 		<table border="1" cellspacing="0" width="500">
 			<thead>
 				<tr>
@@ -38,6 +43,7 @@
 				</tr>
 			</tfoot>
 		</table>
+		</div>
 	</article>
 </section>
 <footer>풋</footer>

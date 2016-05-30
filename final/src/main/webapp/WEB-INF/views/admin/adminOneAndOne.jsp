@@ -33,15 +33,18 @@ function showResult(){//응답결과함수
 }
 </script>
 <body>
+<div>헤더
 <%@include file="../header.jsp" %>
+</div>
+<div>메뉴바
 <%@include file="../adHeader.jsp" %>
-<div>헤더부분 </div>
+</div>
 <hr>
-<section>
+<div>중간메뉴바
 <h2>고객센터관리</h2>
 <a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="adminuseguideList.do">4.이용안내</a>
 <h4>1:1문의내역</h4>
-</section>
+</div>
 <form name="a" action="oneandoneSearch.do">
 
 <select name="select" id="select">
@@ -52,7 +55,7 @@ function showResult(){//응답결과함수
  <input type="text" id="search" name="search">
  <input type="button" value="검색" onclick="show()">
  </form>
-<section>
+
 
 <div id="span">
 <table border="1">
@@ -97,7 +100,7 @@ function showResult(){//응답결과함수
  </tfoot>
 </table>
 </div>
-</section>
+
 <hr>
 풋부분
 </body>

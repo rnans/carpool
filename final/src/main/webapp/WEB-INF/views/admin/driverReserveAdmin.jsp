@@ -31,12 +31,18 @@ function showResult(){//응답결과함수
 }
 </script>
 <body>
-<div>헤더</div>
+<div>헤더
 <%@include file="../header.jsp" %>
+</div>
+<div>메뉴바
 <%@include file="../adHeader.jsp" %>
+</div>
+<div>중간메뉴바
 <h2>예약 및 결제관리</h2>
 <h3>드라이버예약</h3>
 <a href="driverReserveList.do">1.드라이버예약</a> | <a href="memberReserveList.do">2.사용자예약</a> |<a href="payMentList.do">3.결제관리</a>
+</div>
+<div> 검색창
 <form name="a" action="adminDriverReserveSearch.do">
 
 <select name="select" id="select">
@@ -47,9 +53,10 @@ function showResult(){//응답결과함수
  <input type="text" id="search" name="search">
  <input type="button" value="검색" onclick="show()">
  </form>
+ </div>
 
 
-<section>
+
 	
 	<div id="spans">
 		<table border="1" cellspacing="0" width="800" height="150" >
@@ -103,7 +110,7 @@ function showResult(){//응답결과함수
 			</tfoot>
 		</table>
 		</div>
-</section>
+
 <footer>풋</footer>
 </body>
 </html>

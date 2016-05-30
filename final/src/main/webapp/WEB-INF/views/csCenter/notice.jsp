@@ -6,16 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 
 <%@include file="../header.jsp" %>
 <%@include file="csCenterSubMenu.jsp" %>
 <hr>
-<h2>공지사항</h2>
-
-
-<table border="1" width="800" height="150" >
+<div>
+<div>공지사항</div>
+<table>
 <thead>
 <tr>
    <th>번호</th>
@@ -52,7 +52,8 @@
  </tr>
  </tfoot>
 </table>
-<a href="adminNoticeList.do">관리자페이지 테스트</a>
+</div>
+
 <hr>
 풋부분
 </body>

@@ -8,12 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>헤더부분</div>
-<section>
-	<%@include file="../adHeader.jsp" %>
-</section>
-
-<section>
+<div>헤더
+<%@include file="../header.jsp" %>
+</div>
+<div>메뉴바
+<%@include file="../adHeader.jsp" %>
+</div>
+<div>
 <fieldset>
 <legend>공지사항</legend>
 <form action="NoticeUpdate_ok.do">
@@ -22,14 +23,13 @@
 글쓴이:<input type="text" name="writer" value="${list[0].writer}"  > 
 조회수:<input type="text" name="readnum" value="${list[0].readnum}" readonly="readonly"><br>
 제목:<input type="text" name="subject" value="${list[0].subject}" > <br>
-내용:
-<br>
-<textarea name="content" cols="55" rows="25" value="${list[0].content}" > ${list[0].content}</textarea><br>
+<textarea name="content" cols="55" rows="25" > ${list[0].content}</textarea><br>
 <input type="submit" value="수정하기">
 <a href="adminNoticeList.do">이전페이지로</a>
 </form>
 </fieldset>
-</section>
+</div>
+
 
 </body>
 </html>

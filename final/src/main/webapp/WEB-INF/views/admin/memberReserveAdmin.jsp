@@ -14,14 +14,18 @@ function adminMemberReserveDel(){
 }
 </script>
 <body>
-<div>헤더</div>
+<div>헤더
 <%@include file="../header.jsp" %>
+</div>
+<div>메뉴바
 <%@include file="../adHeader.jsp" %>
+</div>
+<div>중간메뉴바
 <h2>예약 및 결제관리</h2>
 <h3>사용자예약</h3>
 <a href="driverReserveList.do">1.드라이버예약</a> | <a href="memberReserveList.do">2.사용자예약</a> |<a href="payMentList.do">3.결제관리</a>
-<section>
-	<article>
+</div>
+<div>
 		<table border="1" cellspacing="0" width="800" height="150" >
 			<thead>
 				<tr>
@@ -60,8 +64,7 @@ function adminMemberReserveDel(){
 				</tr>
 			</tfoot>
 		</table>
-	</article>
-</section>
+</div>
 <footer>풋</footer>
 </body>
 </html>

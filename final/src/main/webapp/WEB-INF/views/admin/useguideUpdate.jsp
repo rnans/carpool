@@ -7,12 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>헤더부분</div>
-<section>
-	<%@include file="../adHeader.jsp" %>
-</section>
+<div>헤더
+<%@include file="../header.jsp" %>
+</div>
+<div>메뉴바
+<%@include file="../adHeader.jsp" %>
+</div>
 
-<section>
+<div>
 <fieldset>
 <legend>이용안내</legend>
 <form action="useguideUpdate_ok.do">
@@ -25,7 +27,8 @@
 <a href="adminuseguideList.do">이전페이지로</a>
 </form>
 </fieldset>
-</section>
+</div>
+
 <hr>
 <div>풋부분</div>
 </body>
