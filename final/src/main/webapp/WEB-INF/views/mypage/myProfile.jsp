@@ -46,18 +46,12 @@ header
 <h2>마이프로필</h2>
 		
 	<div id="div1">
-		<form name="up" action="upload.do" method="post" enctype="multipart/form-date">
-			<div id="preview">
-				
-			</div>
-				<input type="file" name="filename" onchange="previewImage(this,'preview',225,300)">
-				<input type="submit" value="사진올리깅">
-		</form>
+		 <form id="frm" name="frm" action="uploadimg.do" method="post" enctype="multipart/form-data">
+			 <a href="upload.do">사진</a>	
+			 <input type="submit" value="업로드">
+    	</form>
 	</div>
 
-	
-	
-	
 	
 	<div id="div2">
 	
