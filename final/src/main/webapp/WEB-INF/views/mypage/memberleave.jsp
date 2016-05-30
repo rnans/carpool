@@ -52,15 +52,15 @@ header
 	
 	<div id="div2">
 			<legend>회원탈퇴</legend>
-		<form name="myprofile" action="index.do">
+		<form name="memberDel" action="memDel.do">
 			<ul>
-					<li>비밀번호:<input type="password" name="password"></li>
-					<li>비밀번호 확인:<input type="password" name="password"></li>
-				<p>
-					<input type="submit" name="ml" value="회원탈퇴">
-				</p>
-			</ul>
+					
+					<li>비밀번호 확인:<input type="password" name="pwd"></li>
 				
+			</ul>
+				<p>
+					<input type="submit" value="회원탈퇴">
+				</p>
 		</form>
 	</div>
 	<div id="div3">
