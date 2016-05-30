@@ -9,35 +9,14 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div>헤더</div>
+<%@include file="csCenterSubMenu.jsp" %>
 <hr>
 <c:if test="${empty list }">
 <h3>글이 누락되었거나 사라졌습니다.</h3>
 </c:if>
-<section>
-<div>왼쪽에 박아놓기
-<table border="1">
-<thead>
-<tr>
-    <th><a href="notice.do">공지사항</a></th>
-</tr>
-<tr>   
-    <th><a href="qnaList.do">자주묻는질문(Q&A)</a></th> 
-</tr>
-<tr>
-    <th><a href="oneAndOne.do">1:1문의</a></th>
-</tr>
-<tr>
-    <th><a href="useGuideList.do">이용안내</a></th>
-</tr> 
-</thead>
-</table>
- </div>
-</section>
-<section>
 
+<section>
 <h2>1:1문의내역</h2>
-
 <fieldset>
 
 <legend>1:1문의 내역</legend>

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <script src="/final2/js/jquery-1.12.4.min"></script>
-<script language="javascript">
+<script >
 
 function QnaShow(qna) {
  
@@ -20,28 +20,13 @@ $('.tr').css('display','none');
 </script> 
 
 <body>
-<div>헤더부분</div>
+
 <%@include file="../header.jsp" %>
+<%@include file="csCenterSubMenu.jsp" %>
  <hr>
 <h2>자주묻는질문(Q&A)</h2>
-<div>왼쪽메뉴바
-<table border="1">
-<thead>
-<tr>
-    <th><a href="csCenter.do">공지사항</a></th>
-</tr>
-<tr>   
-    <th><a href="qnaList.do">자주묻는질문(Q&A)</a></th> 
-</tr>
-<tr>
-    <th><a href="oneAndOne.do">1:1문의</a></th>
-</tr>
-<tr>
-    <th><a href="useGuideList.do">이용안내</a></th>
-</tr>
-</thead>
-</table>
-<section>
+
+<div>
 <table border="1" width="800" height="150" >
 
 <tbody>
@@ -65,10 +50,9 @@ $('.tr').css('display','none');
  </tr>
  </tfoot>
 </table>
-</section>
+
 </div>
-<div>qna제목1             -----클릭시 (제목과 내용을박는다)</div>
-<div> 제목1 내용출력</div>
+
  
 <hr>
 풋부분

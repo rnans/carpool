@@ -8,31 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>헤더부분</div>
+<%@include file="../header.jsp" %>
+<%@include file="csCenterSubMenu.jsp" %>
+
 <hr>
 <c:if test="${empty list }">
 <h3>글이 누락되었거나 사라졌습니다.</h3>
 </c:if>
-<section>
-<div>왼쪽에 박아놓기
-<table border="1">
-<thead>
-<tr>
-    <th><a href="notice.do">공지사항</a></th>
-</tr>
-<tr>   
-    <th><a href="qnaList.do">자주묻는질문(Q&A)</a></th> 
-</tr>
-<tr>
-    <th><a href="oneAndOne.do">1:1문의</a></th>
-</tr>
-<tr>
-    <th><a href="useGuideList.do">이용안내</a></th>
-</tr> 
-</thead>
-</table>
-</div>
-</section>
+
+
 <section>
 <fieldset>
 <legend>공지사항</legend>
