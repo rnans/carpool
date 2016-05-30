@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import su.comm.model.carpoolinfoDTO;
@@ -12,14 +14,17 @@ import su.comm.model.commBBSDTO;
 import su.comm.model.commDAO;
 import su.comm.model.scheDTO;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
 @Controller
-public class commController {
-	
+public class commController {	
 	
 	@Autowired
 	private commDAO commDao;			
@@ -101,13 +106,7 @@ public class commController {
 		return mav;
 	}
 	
-	
-//	@RequestMapping("scheWrite.do")
-//	public String scheWritego(){
-//		
-//		return "comm/scheWrite";
-//	}
-	
+
 	@RequestMapping(value="scheWrite.do", method=RequestMethod.POST)
 	public ModelAndView scheWrite(scheDTO dto){
 		
@@ -132,6 +131,21 @@ public class commController {
 		mav.addObject("memberlist", list2);
 		return mav;
 		
+	}	
+	
+	@RequestMapping("bbsdel.do")
+	public String bbsdel(String idx){
+		
+		int count=commDao.bbsdel(idx);
+		if(count>0){}
+		return "comm/comm";
 	}
+	
+	@RequestMapping("bbsdelgo.do")
+	public String bbsdelgo(String idx){
+		
+		return "comm/bbsdel";
+	}
+	 	
 
 }

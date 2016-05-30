@@ -26,5 +26,14 @@
 		select * from carpoolinfo where poolname='test'
 	</select>
 	
+	<delete id="commbbsdel" parameterType="String">
+		delete from commBBS where idx=#{idx}
+	</delete>
+	
+	<insert id="imguplad" parameterType="String">
+		insert into file_upload values(file_upload_idx.nextval, 'test',
+        #{filename}, 1,  'test')
+	</insert>
+	
 
 </mapper>

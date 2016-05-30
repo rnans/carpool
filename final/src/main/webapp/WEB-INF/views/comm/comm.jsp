@@ -7,64 +7,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="CSS/comm.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta charset="utf-8">
+        <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <!-- Bootstrap -->
+        <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script type="text/javascript">
-	function show() {
-		var content = document.write.content.value;
-		var id = document.write.sid.value;
-		var params = 'content=' + content + '&' + 'id=' + id;
-		sendRequest('commWrite.do', params, null, 'GET');
+	var idx=null;
+	function bbsdel(){
+		var params="idx="+idx
+		window.open('bbsdelgo.do?'+params,'','width=350, height=150')
 	}
 </script>
 <style>
-body {
-	box-sizing: border-box;
-}
-
-.cPost {
-	display: table;
-	table-layout: fixed;
-	width: 100%;
-	padding-top: 3px;
-}
-
-.profileText {
-	vertical-align: top;
-	border-bottom: 1px solid #E5E5E5;
-	margin: 0;
-	position: relative;
-	font-size: 14px;
-	color: #333;
-	overflow: hidden;
-	max-width: 100%;
-	white-space: nowrap;
-	word-break: normal;
-	word-wrap: normal;
-	text-overflow: ellipsis;
-	display: inline-block;
-}
-
-.postText {
-	display: inline-block;
-	wihth: 90%;
-	margin-top: 7px;
-}
-
-.postBody {
-	position: relative;
-	padding: 0px 40px;
-	display: block;
-	min-height: 30px;
-}
-
-.updatebutton {
-	display: table-cell;
-	width: 40px;
-	text-align: rigth;
-	float: right;
-}
+               
 </style>
 <body>
 	<%@include file="../header.jsp"%>
@@ -99,9 +63,11 @@ body {
 			</form>
 		</div>
 
+
+
 		<div class="writeWrap" data-uiselector="postWriteRegion">
 			<form name="write" action="commWrite.do">
-				<div class="cPostWrite">
+				<div class="`Write">
 					<h3 class="gSrOnly"></h3>
 					<div class="writeWrap" data-uiselector="mentionListParent">
 						<div class="mentions-input _prevent_toggle"
@@ -123,18 +89,11 @@ body {
 						<div class="buttonArea">
 							<!-- 밑에  -->
 							<ul>
-								<li data-uiselector="attachItem"><label
+								<li><label
 									class="js-fileapi-wrapper"> <span class="gSrOnly">사진</span>
-										<input type="file" accept="image/*" name="attachment">
+										<input type="file" accept="image/*" >
 								</label></li>
-								<li data-uiselector="attachItem"><label
-									class="js-fileapi-wrapper"> <span class="gSrOnly">동영상</span>
-										<input type="file" accept="video/*" name="attachment">
-								</label></li>
-								<li data-uiselector="attachItem"><label
-									class="js-fileapi-wrapper"> <span class="gSrOnly">파일</span>
-										<input type="file" accept="*/*" name="attachment">
-								</label></li>
+		
 							</ul>
 
 							<div class="buttonSubmit">
@@ -160,6 +119,7 @@ body {
 		<c:if test="${empty list}">
 			<td colspan="4" align="center">등록된 게시글이 없습니다.</td>
 		</c:if>
+		
 		<c:forEach var="bbs" items="${list}">
 			<div data-viewname="DPostLayoutView" class="postout">
 				<div class="cPost " data-uiselector="postMainWrap">
@@ -169,9 +129,9 @@ body {
 							src="http://s.cmstatic.net/webclient/dres/20160419171121/images/template/profile_60x60.gif"
 							alt="남구문"></a>
 						<div class="profileText">
-							<span class="textName"> <strong class="name onlyName"><br>
+							<div class="textName"> <strong class="name onlyName"><br>
 									<br>${bbs.id }</strong>
-							</span>
+							</div>
 							<div class="textTime">${bbs.writedate }</div>
 						</div>
 					</div>
@@ -179,19 +139,39 @@ body {
 						<div class="postText">
 							<p class="txtBody" data-uiselector="txtBody">${bbs.content }</p>
 						</div>
-						<input type="button" class="updatebutton" value="삭제"> <input
-							type="button" class="updatebutton" value="수정">
+						<input type="button" class="updatebutton" value="삭제" onclick="javascript:idx=${bbs.idx};bbsdel();"> 
+						<input type="button" class="updatebutton" value="수정">
+                    <table class="table table-condensed">
+                        <tr>
+                            <td>
+                                <span class="form-inline" role="form">
+                                    <p>
+                                        <div class="form-group">
+                                            <input type="text" id="commentParentName" name="commentParentName" class="form-control col-lg-2" data-rule-required="true" placeholder="이름" maxlength="10">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" id="commentParentPassword" name="commentParentPassword" class="form-control col-lg-2" data-rule-required="true" placeholder="패스워드" maxlength="10">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">확인</button>
+                                        </div>
+                                    </p>
+                                        <textarea id="commentParentText" class="form-control col-lg-12" style="width:100%" rows="2"></textarea>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
 
 					</div>
+					                    
 				</div>
-
+	</c:forEach>
 			</div>
 
-		</c:forEach>
+	
 		<hr>
 		footer
 	</div>
-
 
 
 </body>

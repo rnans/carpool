@@ -32,7 +32,15 @@ int today=1;
 <html>
 <head>
   <title>devdaily.com calendar</title>
-  <link rel="StyleSheet" href="calendar.css" type="text/css" media="screen" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta charset="utf-8">
+        <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <!-- Bootstrap -->
+        <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 </head>
 
 <script type="text/javascript" src="js/httpRequest.js"></script>
@@ -209,9 +217,10 @@ a:focus, a:hover {
 <h1 class="uSectionTitle">일정</h1>
 
 <div id="span"><div id="calendarview">
-<table id="calendar_table">
+<table id="calendar_table" class="table table-striped table-hover">
+<thead>
   <tr>
-     <td colspan="7" align=centerheight=25>
+     <td colspan="7" align="center" height="25">
       <a href="javascript:document.getElementById('prev').click();"><font color=#FFFFFF>◀</font></a> 
       <font color=#FFFFFF><font face=Verdana, Arial, Helvetica, sans-serif><b>
     <%=monthName%> <%=intYear%> </b></font> </font>
@@ -227,7 +236,8 @@ a:focus, a:hover {
   <td width=82 class=verdana_b><font color=#666666>Fri</font></td>
   <td width=82 class=verdana_b><font color=#6666CC>Sat</font></td>
  </tr>
- 
+ </thead>
+ <tbody>
 <%
  
   for( int i=0; i<aMonth.getNumberOfWeeks(); i++ )
@@ -265,7 +275,7 @@ a:focus, a:hover {
   <%
   }
 %>
-
+</tbody>
 </table>
 </div>
 </div>

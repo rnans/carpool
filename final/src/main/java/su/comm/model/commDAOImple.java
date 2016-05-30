@@ -1,8 +1,7 @@
 package su.comm.model;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -51,5 +50,11 @@ public class commDAOImple implements commDAO {
 		return list;
 	}
 	
-
+	public int bbsdel(String idx){
+		int count = sqlMap.delete("commbbsdel", idx);
+		return count;
+	}
+	
 }
+	
+	

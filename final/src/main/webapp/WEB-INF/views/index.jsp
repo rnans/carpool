@@ -10,7 +10,7 @@
 <%@include file="header.jsp" %>
 
 <section>
-
+<A href="upload.do">test</A>
 
 </section>
 <footer>

@@ -44,6 +44,46 @@ A:active {color: #1f3174; text-decoration: none}
 A:visited {color: #1f3174; text-decoration: none}
 A:hover {color: #3366cc; text-decoration: underline}
 
+<!-- -->
+
+
+.cPost {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.profileText {
+	vertical-align: bottom;
+	border-bottom: 1px solid #E5E5E5;
+	margin: 0;
+	position: relative;
+	font-size: 14px;
+	color: #333;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.postText {
+	display: inline-block;
+	wihth: 90%;
+	margin-top: 7px;
+}
+
+.postBody {
+	position: relative;
+	padding: 0px 40px;
+	display: block;
+	min-height: 30px;
+}
+
+.updatebutton {
+	display: table-cell;
+	width: 40px;
+	text-align: rigth;
+	float: right;
+}
+
 .searchWrap {
     position: relative;
  border: 1px solid #DDD;
@@ -68,16 +108,15 @@ A:hover {color: #3366cc; text-decoration: underline}
 	width:95%;
 	height:35px;
     border-radius: 2px;
-    background: #FDFDFD;
     text-align: right;
 }
 .uInputSearch input {
 	display: table-cell;
 	float:left;
-	width: 400px;
+	width: 80%;
     border: 0;
     line-height: 36px;
-    padding: 0;
+    padding-left: 20px;
     background: 0 0;
     display: inline-block;
 }
@@ -206,9 +245,8 @@ input, textarea {
 
 <!---->
 .postout {
-	margin-bottom: 15px;
-}
-.postWrap .cPost {
+	margin-bottom: 3px;
+}.cPost {
     margin-bottom: 15px;
 }
 .cPost {
@@ -225,4 +263,150 @@ input, textarea {
     width: 20px;
     height: 20px;
     background: 0 0;
+}
+
+<!-- -->
+
+
+
+.uSectionTitle {
+    font-size: 16px;
+    line-height: 16px;
+    color: #222;
+    padding-bottom: 15px;
+    text-align: left;
+}
+.uSectionTitle .count {
+    margin-left: 5px;
+    vertical-align: top;
+    font-size: 16px;
+    color: pink;
+}
+
+.uSectionTitle+.titleAreaBtn {
+    position: absolute;
+    right: 0;
+    top: -7px;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid;
+    border-radius: 2px;
+    line-height: 28px;
+    text-align: right;	
+}
+
+.memberSection .subTitle {
+    height: 30px;
+    margin-bottom: -1px;
+    line-height: 28px;
+    text-indent: 22px;
+    border: 1px solid #E5E5E5;
+    border-left-color: #D5D5D5;
+    border-right-color: #D5D5D5;
+    border-bottom-color: #eee;
+    background: #FDFDFD;
+    color: #333;
+}
+
+.memberSection .cThumbList {
+    /* margin-bottom: -1px; */
+    border: 1px solid #D5D5D5;
+      padding: 0 20px;
+}
+
+.cThumbList li {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 93px;
+}
+.cThumbList .profile {
+    position: relative;
+    width: 102px;
+    font-size: 0;
+    text-align: center;
+}
+.cThumbList .nameArea, .cThumbList .profile, .cThumbList .side {
+    display: table-cell;
+    vertical-align: middle;
+}
+.cThumbList .nameArea .name:first-child {
+    display: inline-block;
+    margin-right: 6px;
+}
+.cThumbList .nameArea .name {
+    font-size: 14px;
+    color: #333;
+    display: block;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+    word-break: normal;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+}
+.cThumbList .nameArea .labelAuth {
+    display: inline-block;
+    overflow: hidden;
+    height: 17px;
+    padding: 0 10px;
+    line-height: 16px;
+    color: #fff;
+    background: #ccc;
+    border-radius: 18px;
+    vertical-align: top;
+}
+.cThumbList .nameArea .subtxt {
+    display: block;
+    font-size: 13px;
+    color: #aaa;
+}
+.cThumbList .side {
+    width: 120px;
+    text-align: center;
+    
+}
+
+.cThumbList .side .setting {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: #ccc;
+    
+}
+.icon-a-setting02:after, .icon-setting02:before, [data-icon-a=setting02]:after, [data-icon=setting02]:before {
+    content: "\e996";
+}
+
+.titleSetting {
+    overflow: hidden;
+    height: 30px;
+    line-height: 28px;
+    font-size: 13px;
+    padding-left: 18px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    background: #f9f9fa;
+}
+.settingList {
+    padding: 0 20px;
+}
+
+.settingList .listWrap, .settingList .side {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.settingList li {
+    display: table;
+    table-layout: fixed;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    /* border-top: 1px solid #f0f0f0; */
+}
+.settingList .side{
+width: 200px;
+    text-align: center;
 }
