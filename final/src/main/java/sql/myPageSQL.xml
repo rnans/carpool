@@ -22,4 +22,22 @@
 		pwd=#{pwd}
 		where id=#{id}
 	</update>
+	
+	<!-- alarm -->
+	<insert id="myAlarm" parameterType="su.mypage.model.MyAlarmDTO">
+		insert into notisetting values (notisetting_idx.nextval, #{userid},#{chat},
+		#{reservation},#{recommand},#{rate},#{community})
+	</insert>
+	
+	<select id="myAlarmInfo" resultType="su.mypage.model.MyAlarmDTO">
+		select * from notisetting where userid=#{id}
+	</select>
+	
+	<update id="alarmUpdate" parameterType="su.mypage.model.MyAlarmDTO">
+		update notisetting set chat=#{chat}, reservation=#{reservation}, recommand=#{recommand},
+		rate=#{rate},community=#{community} where userid=#{userid}
+	</update>
+	 
+	
+	
 </mapper>

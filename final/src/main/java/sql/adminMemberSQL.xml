@@ -42,4 +42,16 @@
 	<update id="memberCarOk" parameterType="Map">
 		update carinfo set confirm=#{confirm} where idx=#{idx}
 	</update>
+	
+	<!-- alarm -->
+	<select id="memberAlarm" resultType="su.mypage.model.MyAlarmDTO">
+		select * from
+	   (select rownum as rnum,a.* from
+	   (select * from notisetting order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	
+	<select id="alarmTotalCnt" resultType="int">
+		select count(*) from notisetting
+	</select>
 </mapper>
