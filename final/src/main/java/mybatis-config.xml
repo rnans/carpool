@@ -17,6 +17,7 @@
 		<mapper resource="sql/carInfoSQL.xml"/>
 		<mapper resource="sql/poolStatusSQL.xml"/>
 		<mapper resource="sql/adminReserveSQL.xml"/>
+		<mapper resource="sql/uploadSQL.xml"/>
 	</mappers>
 	
 </configuration>
