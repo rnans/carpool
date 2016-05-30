@@ -63,45 +63,69 @@
 			</form>
 		</div>
 
-
-
-		<div class="writeWrap" data-uiselector="postWriteRegion">
+<div class="writeWrap" data-uiselector="postWriteRegion">
 			<form name="write" action="commWrite.do">
-				<div class="`Write">
-					<h3 class="gSrOnly"></h3>
+				<div data-viewname="DPostWriteLayoutView" class="cPostWrite">
+					<h3 class="gSrOnly">글쓰기</h3>
 					<div class="writeWrap" data-uiselector="mentionListParent">
 						<div class="mentions-input _prevent_toggle"
 							style="overflow-y: hidden !important">
 							<div class="mentions" style="height: 75px;">
 								<div></div>
 							</div>
-
-							<textarea name="content" id="content" cols="30" rows="10"
+							<textarea cols="30" rows="10"
 								style="height: 75px; overflow: hidden;"
 								class="postWrite _use_keyup_event" maxlength="10000"
-								placeholder="멤버들에게 전할 소식을 남겨주세요."></textarea>
-							<input type="hidden" name="id" value="${sid}">
-
-							<div class="cMentionsList " style="display: none;">
-								<ul style="display: none;"></ul>
-							</div>
+								 name="content" id="content" placeholder="멤버들에게 전할 소식을 남겨주세요."
+								data-mentions-input="true"></textarea>
+							<div
+								style="position: absolute; display: none; word-wrap: break-word; white-space: pre-wrap; border: 0px none rgb(51, 51, 51); font-weight: 400; width: 541px; font-family: Arial, 'Noto Sans KR', 맑은고딕, 'Malgun Gothic', 돋움, Dotum, 'Helvetica Neue', Helvetica, AppleSDGothicNeo, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', 'Android Emoji', EmojiSymbols; line-height: 21.56px; font-size: 14px; padding: 16px 20px 0px;">&nbsp;</div>
 						</div>
-						<div class="buttonArea">
-							<!-- 밑에  -->
-							<ul>
-								<li><label
-									class="js-fileapi-wrapper"> <span class="gSrOnly">사진</span>
-										<input type="file" accept="image/*" >
-								</label></li>
-		
-							</ul>
-
-							<div class="buttonSubmit">
-								<input type="submit" value="게시">
-							</div>
-
+						<div data-uiselector="snippetRegion"></div>
+						<div class="cMentionsList " style="display: none;">
+							<ul style="display: none;"></ul>
 						</div>
 					</div>
+					<div class="buttonArea">
+						<ul>
+							<li data-uiselector="attachItem"><label data-icon="file-on"
+								data-uiselector="btnAttachFile" class="js-fileapi-wrapper">
+									<span style="padding-top: 4px"
+									class="glyphicon glyphicon-search" aria-hidden="true"> <input
+										type="file" multiple="" title=" " accept="image/*"
+										name="attachment"
+										style='margin-left: -10px; width: 74px; height: 20px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
+								</span> <span class="gSrOnly">사진</span>
+							</label></li>
+							<li data-uiselector="attachItem"><label data-icon="file-on"
+								data-uiselector="btnAttachFile" class="js-fileapi-wrapper">
+									<span style="padding-top: 4px"
+									class="glyphicon glyphicon-facetime-video" aria-hidden="true">
+										<input type="file" multiple="" title=" " accept="*/*"
+										name="attachment"
+										style='margin-left: -10px; width: 74px; height: 20px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
+								</span> <span class="gSrOnly">동영상</span>
+							</label></li>
+							<li data-uiselector="attachItem"><label data-icon="file-on"
+								data-uiselector="btnAttachFile" class="js-fileapi-wrapper">
+									<span style="padding-top: 4px"
+									class="glyphicon glyphicon-floppy-disk" aria-hidden="true">
+										<input type="file" multiple="" title=" " accept="*/*"
+										name="attachment"
+										style='margin-left: -10px; width: 74px; height: 20px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
+								</span> <span class="gSrOnly">파일</span>
+							</label></li>
+						</ul>
+						<input type="hidden" name="id" value="${sid}">
+						<div class="buttonSubmit">
+							<button type="reset" class="uButton uButtonDefault"
+								style="background: #a1a1a9; min-width: 70px; line-height: 32px; margin: 0 3px; font-size: 13px; color: #fff;">취소</button>
+							<button type="submit" class="uButton uButtonPoint" 
+								style="background: #3cd370; min-width: 70px; line-height: 32px; margin: 0 3px; font-size: 13px; color: #fff">게시</button>
+						</div>
+
+					</div>
+
 				</div>
 			</form>
 		</div>
@@ -119,7 +143,7 @@
 		<c:if test="${empty list}">
 			<td colspan="4" align="center">등록된 게시글이 없습니다.</td>
 		</c:if>
-		
+		<a href="test123.do">test123</a>
 		<c:forEach var="bbs" items="${list}">
 			<div data-viewname="DPostLayoutView" class="postout">
 				<div class="cPost " data-uiselector="postMainWrap">
@@ -134,7 +158,7 @@
 							</div>
 							<div class="textTime">${bbs.writedate }</div>
 						</div>
-					</div>
+					
 					<div class="postBody">
 						<div class="postText">
 							<p class="txtBody" data-uiselector="txtBody">${bbs.content }</p>
@@ -163,8 +187,8 @@
                     </table>
 
 					</div>
-					                    
-				</div>
+					      </div>              
+				</div></div>
 	</c:forEach>
 			</div>
 

@@ -15,6 +15,6 @@
 	<input type="submit" value="업로드">
     </form>
     
-<img style="width:100px;height:150px;" src="http://localhost:9090/final02/img/18aUd015f6anox25rtzm_5ksoqj.jpg">
+<img style="width:100px;height:150px;" src="http://localhost:9090/final02/img/iu.jpg">
 </body>
 </html>

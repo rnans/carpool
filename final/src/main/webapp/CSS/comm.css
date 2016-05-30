@@ -37,6 +37,7 @@
 button, dd, dl, dt, fieldset, ol, p, ul {
     margin: 0;
     padding: 0;
+    border: 0;
 }
 
 A:link {color: #1f3174; text-decoration: none}
@@ -54,28 +55,43 @@ A:hover {color: #3366cc; text-decoration: underline}
 }
 
 .profileText {
-	vertical-align: bottom;
-	border-bottom: 1px solid #E5E5E5;
-	margin: 0;
-	position: relative;
-	font-size: 14px;
-	color: #333;
-	overflow: hidden;
-	display: inline-block;
+    padding-left: 77px;
+    padding-top: 20px;
+    height: 72px;
+}
+
+.postWriter .profileText .textName {
+    display: block;
+    color: #aaa;
+    padding-right: 72px;
+    font-weight: 400;
+}
+.textName .name {
+    display: inline-block;
+    max-width: 40%;
+    color: #333;
+    font-size: 16px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.profileText .textTime {
+    color: #aaa;
+    font-size: 12px;
 }
 
 .postText {
-	display: inline-block;
-	wihth: 90%;
-	margin-top: 7px;
+    padding: 0 20px 20px;
+    word-wrap: break-word;
 }
 
 .postBody {
-	position: relative;
-	padding: 0px 40px;
-	display: block;
-	min-height: 30px;
+    padding-top: 11px;
 }
+
 
 .updatebutton {
 	display: table-cell;
@@ -130,16 +146,11 @@ A:hover {color: #3366cc; text-decoration: underline}
 <!--  -->
 .cPostWrite {
     position: relative;
-    padding-bottom: 32px;
+    padding-bottom: 52px;
     border: 1px solid #D5D5D5;
     border-radius: 2px;
     background: #FFF;
 }
-.writeWrap {
-    margin-bottom: 15px;  
-    border-bottom: 1px solid #D5D5D5; 
-}
-
 .cPostWrite .writeWrap {
     min-height: 73px;
 }
@@ -150,7 +161,27 @@ ol, ul {
 
 .cPostWrite .buttonArea ul {
     float: left;
-    margin: 10px 0 0 20px;
+    margin: 0 0 0 9px;
+}
+.cPostWrite .buttonArea li>button, .cPostWrite .buttonArea li>label {
+    overflow: hidden;
+    display: block;
+    position: relative;
+    top: 0;
+    width: 64px;
+    height: 52px;
+    margin: 0;
+    color: #d3d3d4;
+    cursor: pointer;
+    text-align: center;
+}
+.cPostWrite .buttonArea {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 52px;
+    border-top: 1px solid #EEE;
 }
 
 .cPostWrite .buttonArea li {
@@ -158,6 +189,20 @@ ol, ul {
     float: left;
     font-size: 20px;
     color: #B5B5B8;
+    padding-right: 10px;
+}
+
+.cPostWrite .buttonArea li .gSrOnly {
+    position: absolute!important;
+    top: auto!important;
+    bottom: 4px;
+    width: 64px!important;
+    height: auto!important;
+    font-size: 11px!important;
+    text-align: center;
+    line-height: 1.8!important;
+    white-space: nowrap;
+    color: #777;
 }
 
 .cPostWrite .mentions, .cPostWrite textarea {
@@ -176,11 +221,10 @@ div {
 }
 .cPostWrite .buttonArea .buttonSubmit {
     float: right;
-    margin: 10px 53px 0 20px;
+    margin: 10px 7px 0 0;
     text-align: right;
     font-size: 0;
 }
-
 .cPostWrite .mentions-input textarea {
     position: absolute;
 }
@@ -236,9 +280,7 @@ input, textarea {
     word-wrap: normal;
     text-overflow: ellipsis;
     position: relative;
-    height: 52px;
     padding: 0 43px 0 20px;
-    border-bottom: 1px solid #eee;
     line-height: 50px;
     color: #333;
 }
@@ -248,12 +290,25 @@ input, textarea {
 	margin-bottom: 3px;
 }.cPost {
     margin-bottom: 15px;
+    position: relative;
+    background: #fff;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
 }
 .cPost {
     position: relative;
     background: #fff;
     border: 1px solid #D5D5D5;
     border-radius: 2px;
+}
+.profileImg {
+    position: absolute;
+    left: 19px;
+    top: 19px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 .cPost .postFunction .postSet {
     overflow: hidden;

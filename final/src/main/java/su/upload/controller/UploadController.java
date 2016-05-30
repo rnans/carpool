@@ -82,7 +82,7 @@ public class UploadController {
 		 dto.setId(id); dto.setFilename(filename); 
 		 dto.setFilepath(filepath); dto.setFiletype(filetype);
 		 int count=uploadDao.upload(dto);
-		 String msg=count>0?"O":"X";
+		 String msg=count>0?"upload 성공":"upload 실패";
 		 System.out.println(msg);
 	     System.out.println("id :"+id);
 	     System.out.println("filename:"+filename);

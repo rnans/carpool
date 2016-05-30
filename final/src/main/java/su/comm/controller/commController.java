@@ -140,6 +140,12 @@ public class commController {
 		
 		return "comm/bbsdel";
 	}
+	
+	@RequestMapping("test123.do")
+	public String test123(){
+		
+		return "comm/test";
+	}
 	 	
 
 }
