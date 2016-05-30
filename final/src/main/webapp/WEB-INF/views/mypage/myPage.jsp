@@ -88,7 +88,7 @@ header
 			<form>
 				<a href="myPage.do"><input type="button" name="mypage" value="마이페이지"></a><br>
 				<a href="myProfile.do"><input type="button" name="myprofile" value="내프로필수정"></a><br>
-				<a href="notiSetting.do"><input type="button" name="notiSetting" value="알람설정"></a><br>
+				<a href="notiSetting.do?id=${dto.id}"><input type="button" name="notiSetting" value="알람설정"></a><br>
 				<a href="pwdUpdate.do"><input type="button" name="passchange" value="비밀번호변경"></a><br>
 				<a href="userPayInfo.do"><input type="button" name="userpayInfo" value="결제정보"></a><br>
 				<input type="button" name="mypage" value="이용내역"><br>

@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-div .a{
-	display:inline;
-}
+#chartdiv {float:left; padding:auto; margin:10px 5px; overflow:hidden; clear:both;}
+#chartdiv2 {float:left; padding:auto; margin:10px 5px; overflow: hidden;}
+table a{float:left; clear:both; padding: auto; margin:10px 5px; clear:both;}
 </style>
 <script>
 var idx=null;
@@ -181,9 +181,10 @@ results.push(dtos);
 <%@include file="../adHeader.jsp" %>
 <section>
 	<article>
-	<div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;" class="a"></div>
-	<div id="chartdiv2" style="width: 100%; height: 400px; background-color: #FFFFFF;" class="a"></div>
-		<table border="1" cellspacing="0" width="800">
+	<div id="chartdiv" style="width: 400px; height: 400px; background-color: #FFFFFF;"></div>
+	<div id="chartdiv2" style="width: 450px; height: 400px; background-color: #FFFFFF;"></div>
+		
+		<table border="1" cellspacing="0" width="800" id="a">
 			<thead>
 				<tr>
 					<th>구분</th>
@@ -238,6 +239,7 @@ results.push(dtos);
 				</tr>
 			</tfoot>
 		</table>
+		
 	</article>
 </section>
 <footer>풋</footer>
