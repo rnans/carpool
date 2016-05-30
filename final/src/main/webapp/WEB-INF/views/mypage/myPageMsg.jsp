@@ -3,5 +3,5 @@
 <!DOCTYPE html>
 <script>
 window.alert('${msg}');
-location.href='${gopage}';
+location.href='index.do';
 </script>
