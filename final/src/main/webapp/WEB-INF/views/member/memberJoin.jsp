@@ -4,11 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>회원가입</title>
+<!-- Bootstrap -->
+<link href="/final02/bootstrap/css/bootstrap.min.css.join" rel="stylesheet">
+<!-- font awesome -->
+<link rel="stylesheet" href="/final02/CSS/font-awesome.min.css" media="screen" title="no title">
+<!-- Custom style -->
+<link rel="stylesheet" href="/final02/CSS/style.css" media="screen" title="no title">
+
+
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
 function idCheck(){
-	var id = document.memberJoin.id.value;
+	var id = document.getElementById('id').value;
 	var params = 'id='+id;
 	sendRequest('idCheck.do', params, idCheckResult, 'POST');
 }
@@ -24,8 +35,8 @@ function idCheckResult(){
 </script>
 <script>
 function pwdCheck(){
-	  var pwd = document.memberJoin.pwd.value;
-	  var pwd2 = document.memberJoin.pwd2.value;
+	  var pwd = document.getElementById('pwd').value;
+	  var pwd2 = document.getElementById('pwd2').value;
 	  if(pwd!=pwd2){
 	   document.getElementById('pwdmsg').style.color = "red";
 	   document.getElementById('pwdmsg').innerHTML = "비밀번호를 다시 확인하세요."; 
@@ -182,35 +193,48 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 </head>
 <body>
 	<section>
-		<article>
-			<form name="memberJoin" action="memberJoin.do" method="post" class="form">
-				<fieldset>
-					<legend>회원가입</legend>
+		<article class="container">
+			
+				<div class="page-header">
+					<h1>회원가입</h1>
 					<font color="red">*</font>표시는 필수 입력사항입니다.
-					<ul>
-						<li>
-							ID(<font color="red">*</font>) : <input type="text" name="id" id="id" onblur="idCheck()" size="40" placeholder="영문+숫자 or 영문,숫자로 된 5~12 문자">
-							<span id="idmsg"></span> <!-- ajax 아이디체크용 -->
-						</li>
-						<li>
-							비밀번호(<font color="red">*</font>) : <input type="password" name="pwd" id="pwd" placeholder="영문+숫자 or 영문,숫자로 된 6~18 문자" size="40">	
-						</li>
-						<li>
-							비밀번호확인 : <input type="password" name="pwd2" onblur="pwdCheck()" size="40">
-							<span id="pwdmsg"></span> <!-- ajax 비밀번호확인용 -->
-						</li>
-						<li>
-							이름(<font color="red">*</font>) : <input type="text" name="name" id="name">
-						</li>
-						<li>
-							생년월일(<font color="red">*</font>) : <input type="text" name="birth" id="birth" placeholder="ex) 900415 형식으로 입력해주세요." size="40">
-						</li>
-						<li>
-							연락처(<font color="red">*</font>) : <input type="text" name="phonenum" id="phonenum" placeholder="ex) 01012345678 형식으로 입력해주세요." size="40">
-						</li>
-						<li>
-							거주지역(<font color="red">*</font>) : 
-							<select name="addr">
+				</div>
+				<div class="col-md-6 col-md-offset-3">
+          <form role="form" action="memberJoin.do">
+            <div class="form-group">
+              <label for="id">아이디</label>
+              <input type="text" class="form-control" name="id" id="id" placeholder="영문+숫자 or 영문,숫자로 된 5~12 문자" onblur="idCheck()">
+            </div>
+            <span id="idmsg"></span>
+            
+            <div class="form-group">
+              <label for="pwd">비밀번호</label>
+              <input type="password" class="form-control" name="pwd" id="pwd" placeholder="영문+숫자 or 영문,숫자로 된 6~18 문자">
+            </div>
+            <div class="form-group">
+              <label for="pwd2">비밀번호 확인</label>
+              <input type="password" class="form-control" id="pwd2" placeholder="비밀번호 확인" onblur="pwdCheck()">
+              <span id="pwdmsg">비밀번호 확인을 위해 다시한번 입력 해 주세요</span>
+            </div>
+            
+            <div class="form-group">
+              <label for="name">이름</label>
+              <input type="text" class="form-control" name="name" id="name">
+            </div>
+            
+            <div class="form-group">
+              <label for="birth">생년월일</label>
+              <input type="text" class="form-control" name="birth" id="birth" placeholder="ex) 900415 형식으로 입력해주세요.">
+            </div>
+            
+            <div class="form-group">
+              <label for="phonenum">연락처</label>
+              <input type="text" class="form-control" name="phonenum" id="phonenum" placeholder="ex) 01012345678 형식으로 입력해주세요.">
+            </div>
+            
+            <div class="form-group">
+              <label for="addr">거주지역</label>             
+              <select name="addr" id="addr" class="form-control">
 								<option value="서울특별시" selected>서울특별시</option>
 								<option value="부산광역시">부산광역시</option>
 								<option value="대구광역시">대구광역시</option>
@@ -226,40 +250,70 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 								<option value="전라도">전라도</option>
 								<option value="제주도">제주도</option>
 							</select>
-							
-						</li>
-						<li>
-							이메일(<font color="red">*</font>) : <input type="text" name="email" id="email">
-							@
-									<input type="text" name="email2" value="" id="email2" readonly="true">
+            </div>
+            <div class="row">
+           	<div class="col-md-8">
+           	<label for="email">이메일</label> 
+           		<input type="text" name="email" id="email" class="form-control">
+			</div>
+			<div class="col-md-4">
+			<label for="email2" class="col-sm-2 control-label">@</label>
+				<input type="text" name="email2" value="" id="email2" readonly="true" class="form-control">
 									
-							<select name="emailCheck" onchange="SetEmailTail(emailCheck.options[this.selectedIndex].value)">
+							<select name="emailCheck" onchange="SetEmailTail(emailCheck.options[this.selectedIndex].value)" class="form-control">
 								<option value="notSelected">::선택하세요::</option>
 								<option value="etc">직접입력</option>
 								<option value="naver.com">네이버</option>
 								<option value="daum.net">다음</option>
 								<option value="nate.com">네이트</option>
 								<option value="google.com">구글</option>
-							</select>
-						</li>
-						<li>
-							성별(<font color="red">*</font>) : 
-								  <input type="radio" name="sex" id="sex" value="남성" checked>남성
-								  <input type="radio" name="sex" value="여성">여성
-						</li>
-						<li>
-							차랑소유여부(<font color="red">*</font>) : 
-							      <input type="radio" name="carhave" id="carhave" value="있음" checked>있음
-								  <input type="radio" name="carhave" value="없음">없음
-						</li>
-					</ul>
-					<p>
-						<input type="submit" value="회원가입" id="submit">
-						<input type="reset" value="다시입력">
-					</p>
-				</fieldset>
-			</form>
+							</select>	
+           	</div>
+           	</div>
+           	
+           	<div class="row">
+	           	<div class="col-md-1">
+	           		남성
+	           		
+	             	 <label for="sex" class="col-sm-2 control-label">성별</label>
+	              	 <input type="radio" name="sex" id="sex" value="남성" checked class="form-control">
+				  	 <input type="radio" name="sex" value="여성" class="form-control">여성
+	            </div>
+            </div>
+            
+            <div class="form-group">
+             	 <label for="carhave">차량소유여부</label>
+              	 <input type="radio" name="carhave" id="carhave" value="있음" checked class="form-control">
+              	 <label>있음</label>
+				 <input type="radio" name="carhave" value="없음" class="form-control">없음
+            </div>
+            
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-info">회원가입<i class="fa fa-check spaceLeft"></i></button>
+              <button type="submit" class="btn btn-warning">가입취소<i class="fa fa-times spaceLeft"></i></button>
+            </div>
+          </form>
+        </div>
+				
+					
 		</article>
+		
+		<p>
+  <button type="button" class="btn btn-primary btn-lg">Large button</button>
+  <button type="button" class="btn btn-default btn-lg">Large button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-primary">Default button</button>
+  <button type="button" class="btn btn-default">Default button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-primary btn-sm">Small button</button>
+  <button type="button" class="btn btn-default btn-sm">Small button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+  <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+</p>
 	</section>
 </body>
 </html>

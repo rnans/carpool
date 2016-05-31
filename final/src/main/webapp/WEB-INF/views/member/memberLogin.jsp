@@ -72,7 +72,7 @@ $(function(){
 							<li>비밀번호 : <input type="password" name="pwd"></li>
 						</ul>
 						<p>		
-							<input type="checkbox" name="saveid" id="saveid" onClick="javascript:saveid(document.new_user_session);"> ID기억하기
+							<input type="checkbox" name="saveid" id="saveid" onclick="javascript:saveid(document.new_user_session);"> ID기억하기
 						</p>
 						<div>
 							<input type="submit" value="로그인">
@@ -86,4 +86,5 @@ $(function(){
 		</article>
 	</section>
 </body>
+
 </html>
