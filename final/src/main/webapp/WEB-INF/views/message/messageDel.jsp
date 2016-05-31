@@ -14,13 +14,13 @@ function delCancel(){
 <body>
 	<section>
 		<article>
-			<form name="memberDel" action="memberDel.do?idx="${idx}>
+			<form  action="messageDel_ok.do?idx="${idx}>
 			<input type="hidden" name="idx" value="${idx}">
 				<fieldset>
 				
-					<legend>회원탈퇴시키기</legend>
-					<div> 정말 탈퇴시키시겠습니까?</div>
-					<input type="submit" value="탈퇴시키기">
+					<legend>쪽지삭제</legend>
+					<div> 정말 쪽지삭제하시겠습니까?</div>
+					<input type="submit" value="쪽지삭제">
 					<input type="button" value="취소" onclick="delCancel()">
 				</fieldset>
 			</form>

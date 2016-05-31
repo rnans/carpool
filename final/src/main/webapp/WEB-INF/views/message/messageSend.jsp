@@ -19,7 +19,7 @@ function sendCancel(){
   보내는사람:<input type="text" name="sendid" readonly="readonly" value="${sid }"><br>
  받는사람:<input type="text" name="receiveid" readonly="readonly" value="${id }"><br>
  내용:<br>
- <textarea rows="5" cols="55"></textarea>
+ <textarea name="content" rows="5" cols="55"></textarea>
 <div><input type="submit" value="쪽지전송"></div> <div><input type="button" value="닫기" onclick="sendCancel()"></div> 
  </form>
 </fieldset>
