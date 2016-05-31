@@ -7,4 +7,7 @@
 		insert into file_upload values(file_upload_idx.nextval, #{id},
         #{filename},  #{filetype},  #{filepath})
 	</insert>
+	<select id="imgFind" resultType="su.upload.model.UploadDTO">
+	 select filename from file_upload where id=#{id} and filetype=0
+	</select>
 </mapper>
