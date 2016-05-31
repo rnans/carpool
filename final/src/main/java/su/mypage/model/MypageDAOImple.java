@@ -49,6 +49,11 @@ public class MypageDAOImple implements MypageDAO {
 	public MypageDAOImple() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public int memberDel(MypageDTO dto) {
+		int count=sqlMap.delete("memberDelete",dto);
+		return count;
+	}
 	
 	/**알람설정 정보보기*/
 	public MyAlarmDTO notiInfo(String id) {
@@ -79,6 +84,8 @@ public class MypageDAOImple implements MypageDAO {
 
 
 
+	
+	
 
 
 
