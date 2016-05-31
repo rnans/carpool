@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import su.mypage.model.MypageDAO;
+import su.mypage.model.MypageDTO;
 import su.upload.model.UploadDAO;
 import su.upload.model.UploadDTO;
 
@@ -29,7 +31,18 @@ public class UploadController {
 	public void setUploadDao(UploadDAO uploadDao) {
 		this.uploadDao = uploadDao;
 	}
-
+	
+//	@Autowired
+//	private MypageDAO mypageDao;
+//	
+//
+//
+//	public MypageDAO getMypageDao() {
+//		return mypageDao;
+//	}
+//	public void setMypageDao(MypageDAO mypageDao) {
+//		this.mypageDao = mypageDao;
+//	}
 
 	String root_path=null;
 	 String attach_path=null;
@@ -60,7 +73,8 @@ public class UploadController {
 		@RequestMapping("upload.do")
 		public ModelAndView uploadTest(){
 			ModelAndView mav=new ModelAndView();
-			mav.setViewName("upload/uploadTest");
+			//mav.setViewName("upload/uploadTest");
+			mav.setViewName("mypage/myProfile");
 			return mav;
 		}
 		 
@@ -70,7 +84,7 @@ public class UploadController {
 			HttpSession session, UploadDTO dto){
 		
 		
-		MultipartFile upload=req.getFile("upload");
+		 MultipartFile upload=req.getFile("upload");
 		 copyInto(upload, request);
 		 
 		 String filename=upload.getOriginalFilename();
@@ -78,6 +92,11 @@ public class UploadController {
 		 String filetype="0";
 	     String filepath=root_path+attach_path+filename;
 		 String id=(String)session.getAttribute("sid");
+		 
+//		 ModelAndView mav=new ModelAndView();
+//		 MypageDTO dto1= mypageDao.myProfileUpdate(dto1);
+//		 mav.addObject("dto1", dto1);
+//		 mav.addObject("dto", dto);
 		 
 		 dto.setId(id); dto.setFilename(filename); 
 		 dto.setFilepath(filepath); dto.setFiletype(filetype);
@@ -87,7 +106,9 @@ public class UploadController {
 	     System.out.println("id :"+id);
 	     System.out.println("filename:"+filename);
 	     System.out.println("filepath:"+filepath);
-		   return "upload/uploadTest";
+	    //return "upload/uploadTest";
+	     
+	     return "mypage/myProfile";
 	}
 	
 	//upload
