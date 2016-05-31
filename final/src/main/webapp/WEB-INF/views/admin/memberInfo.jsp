@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-#chartdiv {float:left; padding:auto; margin:10px 5px; overflow:hidden; clear:both;}
-#chartdiv2 {float:left; padding:auto; margin:10px 5px; overflow: hidden;}
+#chartdiv {float:left; padding:auto; overflow:hidden; clear:both;}
+#chartdiv2 {float:left; padding:auto; overflow: hidden;}
 table a{float:left; clear:both; padding: auto; margin:10px 5px; clear:both;}
 </style>
 <script>
@@ -37,7 +37,7 @@ var woman=0;
 dto.sex = '${dto.sex}';
 if(dto.sex=='남성' || dto.sex=='남자'){
 	man++;
-}else{
+}else if(dto.sex=='여성'){
 	woman++;
 }
 result.push(dto);
@@ -50,26 +50,7 @@ AmCharts.makeChart("chartdiv",
 				"type": "pie",
 				"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 				"colors": [
-							"#FF0F00",
-							"#FF6600",
-							"#FF9E01",
-							"#FCD202",
-							"#F8FF01",
-							"#B0DE09",
-							"#04D215",
-							"#0D8ECF",
-							"#0D52D1",
-							"#2A0CD0",
-							"#8A0CCF",
-							"#CD0D74",
-							"#754DEB",
-							"#DDDDDD",
-							"#999999",
-							"#333333",
-							"#000000",
-							"#57032A",
-							"#CA9726",
-							"#990000"
+					"#495fba","#e8d685","#ae85c9","#c9f0e1","#d48652","#629b6d","#719dc3","#719dc3"
 						],
 				"titleField": "category",
 				"valueField": "column-1",
@@ -133,21 +114,22 @@ if(dtos.addr=='서울특별시'){
 results.push(dtos);
 </c:forEach>
 			AmCharts.makeChart("chartdiv2",
-				{
-					"type": "pie",
-					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
-					"titleField": "category",
-					"valueField": "column-1",
-					"allLabels": [],
-					"balloon": {},
-					"legend": {
-						"enabled": true,
-						"align": "center",
-						"markerType": "circle"
-					},
-					"titles": [],
-					"dataProvider": [
-						{
+					{
+						"type": "pie",
+						"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+						"titleField": "category",
+						"valueField": "column-1",
+						"theme": "light",
+						"allLabels": [],
+						"balloon": {},
+						"legend": {
+							"enabled": true,
+							"align": "center",
+							"markerType": "circle"
+						},
+						"titles": [],
+						"dataProvider": [
+							{
 							"category": "서울특별시",
 							"column-1": seoul
 						},
@@ -171,9 +153,9 @@ results.push(dtos);
 							"category": "기타",
 							"column-1": etc
 						}
-					]
-				}
-			);
+						]
+					}
+				);
 		</script>
 </head>
 <body>
@@ -181,8 +163,8 @@ results.push(dtos);
 <%@include file="../adHeader.jsp" %>
 <section>
 	<article>
-	<div id="chartdiv" style="width: 400px; height: 400px; background-color: #FFFFFF;"></div>
-	<div id="chartdiv2" style="width: 450px; height: 400px; background-color: #FFFFFF;"></div>
+	<div id="chartdiv" style="width: 50%; height: 400px; background-color: #FFFFFF;"></div>
+	<div id="chartdiv2" style="width: 50%; height: 400px; background-color: #FFFFFF;"></div>
 		
 		<table border="1" cellspacing="0" width="800" id="a">
 			<thead>
