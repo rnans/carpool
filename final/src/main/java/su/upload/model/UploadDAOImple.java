@@ -1,5 +1,7 @@
 package su.upload.model;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class UploadDAOImple implements UploadDAO {
@@ -16,5 +18,9 @@ public class UploadDAOImple implements UploadDAO {
 		int count=sqlMap.insert("imgupload",dto);
 		return count;					
 	}
+	 public List<UploadDTO> imgFind(String id){
+		 List<UploadDTO> list=sqlMap.selectList("imgFind", id);
+		 return list;
+	 }
 
 }
