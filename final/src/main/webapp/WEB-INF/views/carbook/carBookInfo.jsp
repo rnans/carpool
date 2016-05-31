@@ -5,8 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<style>
+#costdiv td{
+	width: 50%;
+}
+</style>
 </head>
 <body>
+
 <%@include file="../header.jsp"%>
 <script type="text/javascript" src="/final02/js/httpRequest.js"></script>
 <script>
@@ -60,63 +67,71 @@ function opencostReg(){
 </script>
 <input type="hidden" id="hiddenId" value="${sid}"/>
 <hr>
-<div>
-	<select id=sel name=carnum onchange="show()">
+<div class="btn-group">
+    <select class="btn btn-default dropdown-toggle" id=sel name=carnum onchange="show()">
 	<c:forEach var="carn" items="${cnum }" >
 		<option value="${carn.carnum }">${carn.carnum}</option>
 	</c:forEach>
-	</select>
-	<a href="javascript:opencostReg()">비용입력</a>
+	</select><a href="javascript:opencostReg()">비용입력</a>
 </div>
 
 차량사진
 <div id="costdiv">
 <fieldset>
 	<legend>차량정보</legend>
-	<table border="1" width="400" height="100" >
+	<table class="table table-striped table-hover " >
+	<!--  <table border="1" width="400" height="100" >-->
 	<thead>
-	<tr>
+	<tr class="success">
 	<th>기록시작일</th>
-	<td><input type="text" name="날짜" value="날짜"></td>
+
+	<th><input type="text" name="날짜" value="날짜"></th>
 	</tr>
+		</thead>
+		<tbody>
 		<c:set var="cost" value="${costsum}"/>
 		<c:set var="km" value="${kmsum}" />
 	
-	<tr>
-	<th>총 주행거리</th>
+	<tr class="success">
+	<td>총 주행거리</td>
 	<td name="number">${km}km</td>
 	</tr>
-	<tr>
-	<th>총 지출금액</th>
+	<tr class="success">
+	<td>총 지출금액</td>
 	<td name="number">${cost}원</td>
 	</tr>
+</tbody>
 
-	</thead>
 </table>
 </fieldset>
 
 <fieldset>
 	<legend>차계부</legend>
-	<table border="1" width="400" height="100" >
-	<tr>
+	<table class="table table-striped table-hover ">
+	<thead>
+	<!--  <table border="1" width="400" height="100" >-->
+	<tr class="success">
 		<th>날짜</th>
-		<td></td>
+		<th></th>
 	</tr>
+	</thead>
+	<tbody>
 		<c:set var="jooyu" value="${jooyusum}"/>
 		<c:set var="jungbi" value="${jungbisum}"/>
 		<c:set var="buy" value="${buysum}"/>
-	<tr>
-		<th>총 주유비용</th>
+	<tr class="success">
+		<td>총 주유비용</td>
 		<td name="number">${jooyu }원</td>
 	</tr>
-	<tr>
-		<th>총 정비비용</th>
+	<tr class="success">
+		<td>총 정비비용</td>
 		<td name="number">${jungbi }원</td>
 	</tr>
-	<tr>
-		<th>총 물품구입비용</th>
+	<tr class="success">
+		<td>총 물품구입비용</td>
 		<td name="number">${buy }원</td>
 	</tr>
+	</tbody>
 	</table>
 </fieldset>
 </div>
