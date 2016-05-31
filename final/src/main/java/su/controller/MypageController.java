@@ -23,7 +23,8 @@ import su.mypage.model.MyAlarmDTO;
 import su.mypage.model.MypageDAO;
 import su.mypage.model.MypageDTO;
 /*import su.mypage.model.NotiSettingDTO;*/
-
+import su.upload.model.UploadDAO;
+import su.upload.model.UploadDTO;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -56,15 +57,30 @@ public class MypageController {
 	public void setMypageDao(MypageDAO mypageDao) {
 		this.mypageDao = mypageDao;
 	}
+	@Autowired
+	private UploadDAO uploadDao;
 	
+	
+	public UploadDAO getUploadDao() {
+		return uploadDao;
+	}
+
+
+	public void setUploadDao(UploadDAO uploadDao) {
+		this.uploadDao = uploadDao;
+	}
+
+
 	/**마이페이지 프로필정보*/
 	@RequestMapping("/myPage.do")
 	public ModelAndView mypage(HttpSession session,HttpServletRequest req){
 		String id=(String)session.getAttribute("sid");
 		ModelAndView mav=new ModelAndView();
 		MemberDTO dto=mypageDao.getAllUserInfo(id);
+		List<UploadDTO> dto2=uploadDao.imgFind(id);
 		mav.setViewName("mypage/myPage");
 		mav.addObject("dto",dto);
+		mav.addObject("dto2", dto2);
 		return mav;
 	}
 
@@ -211,6 +227,22 @@ public class MypageController {
 	      }
 	   }
 	
+	  //회원탈퇴
+	  @RequestMapping("/memDel.do")
+		public ModelAndView memberDel(MypageDTO dto){
+			int result=mypageDao.memberDel(dto);
+			String msg=result>0?"탈퇴성공!":"실패!";
+			ModelAndView mav=new ModelAndView();
+			mav.addObject("msg", msg);
+			mav.setViewName("mypage/myPageMsg");
+			return mav;
+		}
+	  
+	  
+	  @RequestMapping("/memberleave.do")
+	  public String memberleave(){
+		  return "mypage/memberleave";
+	  }
 	
 	  
 	  
