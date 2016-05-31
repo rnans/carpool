@@ -27,7 +27,6 @@ import su.carinfo.model.carInfoDTO;
 			CarCostDao = carCostDao;
 		}
 
-		
 	//수정
 	@RequestMapping("costUpdate.do")
 	   public ModelAndView costUpdate(int idx){
@@ -221,14 +220,42 @@ import su.carinfo.model.carInfoDTO;
 		   List<CarCostDTO> list=CarCostDao.CarCostList(carnum);
 		   ModelAndView mav=new ModelAndView();
 		   mav.addObject("list", list);
-			mav.setViewName("carbook/costA");
+		   mav.setViewName("carbook/costA");
 		return mav;
 	   }
 	   
 	   
 	   @RequestMapping("/graph.do")
-	   public String graph(){
-	      return "carbook/graph";
+	   public ModelAndView graph(HttpSession session, String carnum){
+		   String id=(String)session.getAttribute("sid");
+		   
+		   List<carInfoDTO> carlist=CarCostDao.carnum(id);
+		   if(carnum==null||carnum.equals("")){
+			   carnum=carlist.get(0).getCarnum();
+		   }
+		   System.out.println(id);
+		   ModelAndView mav=new ModelAndView();
+		   
+		   String costsum=CarCostDao.CarCostSum(carnum);
+		   String kmsum=CarCostDao.CarKmSum(carnum);
+		   String jooyusum=CarCostDao.CarJooyuSum(carnum);
+		   String jungbisum=CarCostDao.CarJungbiSum(carnum);
+		   String buysum=CarCostDao.CarBuySum(carnum);			
+		   
+		 
+		   
+			mav.addObject("costsum", costsum);
+		  	mav.addObject("kmsum", kmsum);
+			mav.addObject("jooyusum", jooyusum);
+			mav.addObject("jungbisum", jungbisum);
+			mav.addObject("buysum", buysum);
+			mav.addObject("cnum", carlist);
+			mav.addObject("carnum", carnum);
+			
+			mav.setViewName("carbook/graph");
+			System.out.println(carnum);
+	      
+		   return mav;
 	   }
 	   
 	 
@@ -237,7 +264,8 @@ import su.carinfo.model.carInfoDTO;
 		   public ModelAndView graphtest(HttpSession session){
 			   String id=(String)session.getAttribute("sid");
 			   List<carInfoDTO> carlist=CarCostDao.carnum(id);
-			   
+
+			   System.out.println(id);
 			   ModelAndView mav=new ModelAndView();
 			   String carnum=carlist.get(0).getCarnum();
 			   String costsum=CarCostDao.CarCostSum(carnum);
@@ -253,6 +281,7 @@ import su.carinfo.model.carInfoDTO;
 				mav.addObject("jooyusum", jooyusum);
 				mav.addObject("jungbisum", jungbisum);
 				mav.addObject("buysum", buysum);
+				mav.addObject("cnum", carlist);
 		      
 			   return mav;
 		   }
@@ -265,10 +294,12 @@ import su.carinfo.model.carInfoDTO;
 		   @RequestMapping("graphTest2.do")
 		   public ModelAndView graphtest2(HttpSession session){
 			   String id=(String)session.getAttribute("sid");
+			   System.out.println(id);
 			   List<carInfoDTO> carlist=CarCostDao.carnum(id);
 			   
 			   ModelAndView mav=new ModelAndView();
 			   String carnum=carlist.get(0).getCarnum();
+			   
 			   String costsum=CarCostDao.CarCostSum(carnum);
 			   String kmsum=CarCostDao.CarKmSum(carnum);
 			   String jooyusum=CarCostDao.CarJooyuSum(carnum);
@@ -282,9 +313,48 @@ import su.carinfo.model.carInfoDTO;
 				mav.addObject("jooyusum", jooyusum);
 				mav.addObject("jungbisum", jungbisum);
 				mav.addObject("buysum", buysum);
+				mav.addObject("cnum", carlist);
 		      
 			   return mav;
 		   } 
+		   
+		   
+		   @RequestMapping("/graphA.do")
+		   public ModelAndView graphA(HttpServletRequest req){
+			   String carnum=req.getParameter("carnum");
+			   ModelAndView mav=new ModelAndView();
+			   		
+				String costsum = CarCostDao.CarCostSum(carnum);
+				String kmsum = CarCostDao.CarKmSum(carnum);
+				String jooyusum = CarCostDao.CarJooyuSum(carnum);
+				String jungbisum = CarCostDao.CarJungbiSum(carnum);
+				String buysum = CarCostDao.CarBuySum(carnum);
+				
+				if(costsum==null){
+
+					costsum = "0";
+				}
+				if(kmsum==null){
+					kmsum = "0";
+				}
+				if(jooyusum==null){
+					jooyusum = "0";
+				}
+				if(jungbisum==null){
+					jungbisum = "0";
+				}
+				if(buysum==null){
+					buysum = "0";
+				}
+				
+				mav.addObject("costsum2", costsum);
+				mav.addObject("kmsum2", kmsum);
+				mav.addObject("jooyusum2", jooyusum);
+				mav.addObject("jungbisum2", jungbisum);
+				mav.addObject("buysum2", buysum);
+				mav.setViewName("carbook/graphA");
+			return mav;
+		   }
 	   
 /*//	 //그래프 보여주기
 //	   @RequestMapping("/graph.do")
