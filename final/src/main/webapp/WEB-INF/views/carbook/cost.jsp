@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 </head>
 
 
@@ -47,33 +48,34 @@ function opencostReg(){
 			carnum=sel.options[i].value;			
 		}
 	}		
-	window.open('costReg.do?carnum='+carnum,'opencostReg','width=350,height=450');
+	window.open('costReg.do?carnum='+carnum,'opencostReg','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+', width=350px,height=450px');
 	
 }
 
 function update(){
 	var param="?idx="+idx;
-   window.open('costUpdate.do'+param,'update','width=350,height=450');
+   window.open('costUpdate.do'+param,'update','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+', width=350px,height=450px');
 }
 function costDel(){
 	var param="?idx="+idx;
-   window.open('costDel.do'+param,'costDel','width=350,height=450');
+   window.open('costDel.do'+param,'costDel','left='+(screen.availWidth-300)/2+',top='+(screen.availHeight-330)/2+', width=250px,height=110px');
 }
 </script>
 <body>
 	<%@include file="../header.jsp"%>
 	<hr>
 	<div>
-		<select id=sel name=carnum onchange="show()">
+		<select id=sel name=carnum class="btn btn-default dropdown-toggle" onchange="show()">
 			<c:forEach var="carn" items="${cnum }">
 				<option value="${carn.carnum }">${carn.carnum}</option>
 			</c:forEach>
 		</select> <a href="javascript:opencostReg()">비용입력</a>
 	</div>
 	<div id="costdiv">
-		<table border="1" width="600" height="100">
+		<table class="table table-striped table-hover " >
+		<!-- <table border="1" width="600" height="100">-->
 			<thead>
-				<tr>
+				<tr class="success">
 					<th>유형</th>
 					<th>날짜</th>
 					<th>비고</th>
@@ -85,7 +87,7 @@ function costDel(){
 			</thead>
 			<tbody>
 				<c:forEach var="list" items="${list}">
-					<tr>
+					<tr class="success">
 						<td>${list.category}</td>
 						<td>${list.costday}</td>
 						<td>${list.bigo}</td>

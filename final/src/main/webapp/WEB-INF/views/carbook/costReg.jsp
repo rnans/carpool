@@ -5,6 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#div1{
+	padding-left: 30px
+}
+p{
+	padding-left: 55px
+}
+</style>
+<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 </head>
 <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
 <body>
@@ -21,25 +30,59 @@ function costsbmit() {
 	
 }
 </script>
-<form  action="costReg_ok.do" id="costFrm">
-<fieldset>
-	<legend>비용등록</legend>
-	<font color="red">*</font>표시는 필수 입력사항입니다.<br><br>
-	<select name="category">
-		<option>유형</option>
-		<option>주유</option>
-		<option>정비</option>
-		<option>물품구입</option>
-	</select><br>
-	날짜(<font color="red">*</font>)<input type="text" name="costday" placeholder="예)2016-01-01"><br>
-	비고<input type="text" name="bigo"><br>
-	금액(<font color="red">*</font>)<input type="number" name="cost">원<br>
-	주행거리(<font color="red">*</font>)<input type="number" name="km">km<br>
+<form  action="costReg_ok.do" id="costFrm" class="form-horizontal">
+
+  <fieldset>
+  
+    <legend>비용등록</legend>
+    
+  <div id="div1">  
+    <div><font color="red">*</font>표시는 필수 입력사항입니다.</div><br>
+    <div class="form-group">
+    	<label for="select" class="col-lg-2 control-label" >유형</label>
+      		<div class="col-lg-10">
+        		<select class="form-control" name="category" id="select" style="width:150px;">
+		          	<option>주유</option>
+					<option>정비</option>
+					<option>물품구입</option>
+        		</select>
+      		</div>
+      </div>
+      
+    <div class="form-group">
+      <label for="inputCostday" class="col-lg-2 control-label">날짜(<font color="red">*</font>)</label>
+      <div class="col-lg-10">
+        <input type="text" name="costday" style="width:150px;" class="form-control" id="costday" placeholder="예)2016-01-01">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="inputBigo" class="col-lg-2 control-label">비고</label>
+      <div class="col-lg-10">
+        <input type="text" name="bigo" style="width:150px;" class="form-control" id="bigo">
+		</div>
+	</div>
+	
+	<div class="form-group">
+      <label for="inputCost" class="col-lg-2 control-label">금액(<font color="red">*</font>)</label>
+      <div class="col-lg-10">
+        <input type="number" name="cost" style="width:150px;" class="form-control" id="bigo">원
+		</div>
+	</div>
+	
+	<div class="form-group">
+      <label for="inputkm" class="col-lg-2 control-label">주행거리(<font color="red">*</font>)</label>
+      <div class="col-lg-10">
+        <input type="number" name="km" style="width:150px;" class="form-control" id="km">km
+		</div>
+	</div>
+</div>
+	 <p>
 	<input type="hidden" name="id" value="${ sid }">
 	<input type="hidden" name="carnum" value="${carnum }">
-	<!-- <input type="submit" value="등록"> -->
 	<input type="button" value="등록" onclick="costsbmit()">
 	<input type="button" value="취소" onclick="javascript:window.self.close()">
+	</p>
 </fieldset>
 </form>
 </body>

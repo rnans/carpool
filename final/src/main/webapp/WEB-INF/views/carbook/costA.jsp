@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<table border="1" width="600" height="100">
+<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<table class="table table-striped table-hover " >
 			<thead>
-				<tr>
+				<tr class="success">
 					<th>유형</th>
 					<th>날짜</th>
 					<th>비고</th>
@@ -15,7 +16,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="list" items="${list}">
-					<tr>
+					<tr class="success">
 						<td>${list.category}</td>
 						<td>${list.costday}</td>
 						<td>${list.bigo}</td>

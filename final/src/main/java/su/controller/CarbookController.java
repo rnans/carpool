@@ -40,7 +40,7 @@ import su.carinfo.model.carInfoDTO;
 	
 	@RequestMapping("costUpdate_ok.do")
 	public ModelAndView costUpdate_ok(CarCostDTO dto){
-		
+		System.out.println(dto.getIdx()+dto.getId()+dto.getBigo()+dto.getCategory()+dto.getCost()+dto.getCostday());
 		int result=CarCostDao.CarCostUpdate(dto);
 		 String msg=result>0?"수정완료!":"수정실패!";
 		 ModelAndView mav=new ModelAndView();
@@ -256,6 +256,11 @@ import su.carinfo.model.carInfoDTO;
 		      
 			   return mav;
 		   }
+		   
+		   @RequestMapping("test.do")
+		   public String test(){
+			      return "carbook/test";
+			   }
 	   
 /*//	 //그래프 보여주기
 //	   @RequestMapping("/graph.do")
