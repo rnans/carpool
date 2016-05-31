@@ -18,6 +18,7 @@
 		<mapper resource="sql/poolStatusSQL.xml"/>
 		<mapper resource="sql/adminReserveSQL.xml"/>
 		<mapper resource="sql/uploadSQL.xml"/>
+		<mapper resource="sql/messageSQL.xml"/>
 	</mappers>
 	
 </configuration>
