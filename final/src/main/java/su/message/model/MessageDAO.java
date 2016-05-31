@@ -11,4 +11,5 @@ public interface MessageDAO {
 	public int messageRewrite(MessageDTO dto);
 	public int messageDel(int idx);
 	public int messageReading(int idx);
+	public int messageNumber(String sid);
 }

@@ -26,4 +26,7 @@
 	<update id="messageReading" parameterType="su.message.model.MessageDTO">
 	 update  message set reading='읽음' where idx=#{idx}
 	</update>
+	<select id="messageNumber" resultType="int">
+	 select count(*) from message where receiveid=#{sid} and reading='안읽음'
+	</select>
 </mapper>

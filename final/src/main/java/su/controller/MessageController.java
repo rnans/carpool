@@ -51,11 +51,14 @@ public class MessageController {
 			int totalCnt=messageDao.messageTotalCnt();
 			int listSize=10;
 			int pageSize=5;
+			int messageNumber=messageDao.messageNumber(sid);
 			List<MessageDTO> list=messageDao.messageShow(cp,listSize,sid);
+			
 			String pageStr=
 				su.Page.SuPage.makePage("messageShow.do", totalCnt, listSize, pageSize, cp);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list", list);
+			mav.addObject("messageNumber",messageNumber);
 			mav.addObject("pageStr",pageStr);
 			mav.setViewName("message/test1");
 			return mav;
@@ -107,6 +110,8 @@ public class MessageController {
 		mav.setViewName("message/messageMsg");
 		return mav;
 	}
+	
+	
 		 
-	 }
+}
 

@@ -48,6 +48,11 @@ public class MessageDAOImple implements MessageDAO {
 		int count=sqlMap.update("messageReading", idx);
 	    return count;
 	}
+	public int messageNumber(String sid){
+		int messagenumber=sqlMap.selectOne("messageNumber", sid);
+		return messagenumber;
+				
+				}
 	}
 
 	
