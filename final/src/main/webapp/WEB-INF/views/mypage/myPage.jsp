@@ -55,16 +55,13 @@ header
 		
 		<div id="div1">
 			<fieldset>
-				
-				<img style="width: 225px; height: 225px;" 
-				src="/final02/img/${list[0].filename}"><br>
-				
-			</fieldset>
+				<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[1].filename}"><br>
+			</fieldset>	 
 		</div>
 		
 			<form name="f" action="myProfile.do">
 			<fieldset>
-				<legend>${dto.name}님 정보 </legend>
+				<legend>${dto.name}님 정보  ${dto2[1].filename } </legend>
 					<ul>
 				
 						<li>아이디:
