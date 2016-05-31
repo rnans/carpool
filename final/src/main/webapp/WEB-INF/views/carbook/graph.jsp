@@ -40,6 +40,14 @@ $(function() {
 </script>
 </head>
 <body>
+<%@include file="../header.jsp"%>
+<div class="btn-group">
+    <select class="btn btn-default dropdown-toggle" id=sel name=carnum onchange="show()">
+	<c:forEach var="carn" items="${cnum }" >
+		<option value="${carn.carnum }">${carn.carnum}</option>
+	</c:forEach>
+	</select><a href="javascript:opencostReg()">비용입력</a>
+</div>
 <form action="">
 <div>Date: 
 <input type="text" name="startday" id="datepicker" value="시작일" maxlength="10" size="6">~
@@ -54,6 +62,7 @@ $(function() {
 <canvas id="myChart" width="800" height="400"></canvas>
 </form>
 <a href="graphTest.do">test</a>
+<a href="graphTest2.do">test2</a>
 </body>
  <script type="text/javascript">
 $(function() {

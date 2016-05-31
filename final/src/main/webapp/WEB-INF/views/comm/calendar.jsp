@@ -97,7 +97,6 @@ function write(){
 button, dd, dl, dt, fieldset, ol, p, ul {
     margin: 0;
     padding: 0;
-   
 }
 #lnb li {
     float: left;
@@ -114,7 +113,6 @@ button, dd, dl, dt, fieldset, ol, p, ul {
     line-height: 36px;
     font-size: 14px;
 }
-
 A:link {color: #1f3174; text-decoration: none}
 A:active {color: #1f3174; text-decoration: none}
 A:visited {color: #1f3174; text-decoration: none}
@@ -139,7 +137,6 @@ position: absolute;
   cellpadding:3;
   background-color:pink;
   margin:0px auto;
- 
 }
 .uSectionTitle {
     font-size: 16px;
@@ -158,18 +155,15 @@ position: absolute;
     margin: 0;
     font-size: 13px;
     font-weight: 400;  
-      
     }
 .scheduleList .title{
     padding: 5px 0 4px 20px;
 }
-
 .scheduleList ul {
     border-top: 1px solid #E5E5E5;
     padding: 0 20px;
     margin: 0;
 }
-
 .scheduleList li {
     position: relative;
     padding: 13px 0 15px;
@@ -251,7 +245,7 @@ a:focus, a:hover {
         <td class="empty_day_cell">&nbsp;</td>
       <%}
       else
-      {        
+      {
         %>
          <td style=" font-family:verdana, arial; font-size: 9px; color: #333333" align="left" valign="top" class="day_cell">
           <div class="daytd" style="<%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%>background-color:#FFEBFF; <%}%>"> 
@@ -262,12 +256,10 @@ a:focus, a:hover {
 		 	<c:if test="${bbs.startday==day2}">
 		 	${bbs.id}-${bbs.subject}
 		 	</c:if>
-			</c:forEach>		  
-			<%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%><br>핑쿠는 오늘 <%}%>
+			</c:forEach>
+		<%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%><br>핑쿠는 오늘 <%}%>
 		  </div>
           </td>
-
-          
         <%
       }
     } // end for %>
@@ -310,7 +302,6 @@ a:focus, a:hover {
 	 <span class="name">${bbs.id }</span>
 	  </a></li>
 	 </ul>
-	
 </div>
 </c:forEach>
 

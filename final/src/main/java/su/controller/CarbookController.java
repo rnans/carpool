@@ -261,6 +261,30 @@ import su.carinfo.model.carInfoDTO;
 		   public String test(){
 			      return "carbook/test";
 			   }
+		   
+		   @RequestMapping("graphTest2.do")
+		   public ModelAndView graphtest2(HttpSession session){
+			   String id=(String)session.getAttribute("sid");
+			   List<carInfoDTO> carlist=CarCostDao.carnum(id);
+			   
+			   ModelAndView mav=new ModelAndView();
+			   String carnum=carlist.get(0).getCarnum();
+			   String costsum=CarCostDao.CarCostSum(carnum);
+			   String kmsum=CarCostDao.CarKmSum(carnum);
+			   String jooyusum=CarCostDao.CarJooyuSum(carnum);
+			   String jungbisum=CarCostDao.CarJungbiSum(carnum);
+			   String buysum=CarCostDao.CarBuySum(carnum);			
+			   
+			   mav.setViewName("carbook/graphTest2");
+			   
+				mav.addObject("costsum", costsum);
+			  	mav.addObject("kmsum", kmsum);
+				mav.addObject("jooyusum", jooyusum);
+				mav.addObject("jungbisum", jungbisum);
+				mav.addObject("buysum", buysum);
+		      
+			   return mav;
+		   } 
 	   
 /*//	 //그래프 보여주기
 //	   @RequestMapping("/graph.do")

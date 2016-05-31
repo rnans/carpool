@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
-<link href="http://www.blueb.co.kr/data/201010/IJ12873498945369/style.css" media="screen" rel="stylesheet" type="text/css" />
+
 <script>
 function loginOpen(){
 	window.open('login.do', 'login', 'width=500 height=400 left=500 top=200');
