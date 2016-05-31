@@ -6,6 +6,7 @@ import java.util.List;
 import su.member.model.MemberDTO;
 import su.mypage.model.MyAlarmDTO;
 
+
 public interface MypageDAO {
 
 	public MemberDTO getAllUserInfo(String sid);
@@ -21,6 +22,7 @@ public interface MypageDAO {
 	
 	
 	
+	public int memberDel(MypageDTO dto);
 
 	
 }
