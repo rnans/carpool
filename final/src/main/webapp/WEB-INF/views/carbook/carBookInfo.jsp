@@ -68,7 +68,7 @@ function opencostReg(){
 <input type="hidden" id="hiddenId" value="${sid}"/>
 <hr>
 <div class="btn-group">
-    <select class="btn btn-default dropdown-toggle" id=sel name=carnum onchange="show()">
+    <select class="btn btn-default dropdown-toggle" id="sel" name="carnum" onchange="show()">
 	<c:forEach var="carn" items="${cnum }" >
 		<option value="${carn.carnum }">${carn.carnum}</option>
 	</c:forEach>
@@ -82,7 +82,7 @@ function opencostReg(){
 	<table class="table table-striped table-hover " >
 	<!--  <table border="1" width="400" height="100" >-->
 	<thead>
-	<tr class="success">
+	<tr class="info">
 	<th>기록시작일</th>
 
 	<th><input type="text" name="날짜" value="날짜"></th>
@@ -110,7 +110,7 @@ function opencostReg(){
 	<table class="table table-striped table-hover ">
 	<thead>
 	<!--  <table border="1" width="400" height="100" >-->
-	<tr class="success">
+	<tr class="info">
 		<th>날짜</th>
 		<th></th>
 	</tr>

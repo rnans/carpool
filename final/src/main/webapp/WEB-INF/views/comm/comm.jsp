@@ -139,7 +139,7 @@
 				</ul>
 			</div>
 		</div>
-
+	
 		<c:if test="${empty list}">
 			<td colspan="4" align="center">등록된 게시글이 없습니다.</td>
 		</c:if>

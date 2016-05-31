@@ -1,16 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-
-
-		<!-- amCharts javascript sources -->
-		<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
 		<script type="text/javascript" src="http://cdn.amcharts.com/lib/3/serial.js"></script>
 		<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/light.js"></script>
 		<script type="text/javascript" src="http://cdn.amcharts.com/lib/3/pie.js"></script>
-		<!-- amCharts javascript code -->
-		<script type="text/javascript">
-			AmCharts.makeChart("abc0",
+<script>
+			AmCharts.makeChart("chartdiv",
 				{
 				"type": "serial",
 				"categoryField": "category",
@@ -86,7 +80,7 @@
 			}
 		);
 			
-			AmCharts.makeChart("abc",{
+			AmCharts.makeChart("chartdiv2",{
 					"type": "pie",
 					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 					"titleField": "항목",
@@ -111,16 +105,10 @@
 							"$": "${jungbisum}"
 						},
 						{
-							"항목": "기타",
-							"$": "${buysum}"
-						}
-					]
-				}
-			);
-			
-		</script>
-
-	<div>
-		<div id="abc0" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;"></div>
-	   	<div id="abc" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;"></div>
-	</div>
+							"항목" : "기타",
+							"$" : "${buysum}"
+						} ]
+					});
+</script>
+		<div id="chartdiv" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;" ></div>
+	   	<div id="chartdiv2" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;" ></div>

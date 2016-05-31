@@ -5,82 +5,260 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
+<link href="./bootstrap/css/bootstrap.css" rel="stylesheet"
+	type="text/css" />
 <script type="text/javascript" src="js/httpRequest.js"></script>
-<script type="text/javascript">
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+<style>
+.navbar-brand {
+	position: relative;
+	z-index: 2;
+}
+
+.navbar-nav.navbar-right .btn {
+	position: relative;
+	z-index: 2;
+	padding: 4px 20px;
+	margin: 10px auto;
+}
+
+.navbar .navbar-collapse {
+	position: relative;
+}
+
+.navbar .navbar-collapse .navbar-right>li:last-child {
+	padding-left: 22px;
+}
+
+.navbar .nav-collapse {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	padding-right: 120px;
+	padding-left: 80px;
+	width: 100%;
+}
+
+.navbar.navbar-default .nav-collapse {
+	background-color: #f8f8f8;
+}
+
+.navbar.navbar-inverse .nav-collapse {
+	background-color: #222;
+}
+
+.navbar .nav-collapse .navbar-form {
+	border-width: 0;
+	box-shadow: none;
+}
+
+.nav-collapse>li {
+	float: right;
+}
+
+.btn.btn-circle {
+	border-radius: 50px;
+}
+
+.btn.btn-outline {
+	background-color: transparent;
+}
+
+@media screen and (max-width: 767px) {
+	.navbar .navbar-collapse .navbar-right>li:last-child {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.navbar .nav-collapse {
+		margin: 7.5px auto;
+		padding: 0;
+	}
+	.navbar .nav-collapse .navbar-form {
+		margin: 0;
+	}
+	.nav-collapse>li {
+		float: none;
+	}
+}
+</style>
+
+<!-- amCharts javascript code -->
+
 <script>
-$(function() {
-	var data = {
-		    labels: ["총 주행거리", "총 지출금액", "총 주유비용", "총 정비비용", "총 물품구입비용"],
-		    datasets: [
-		        {
-		            label: "My First dataset",
-		            backgroundColor: "rgba(255,99,132,0.2)",
-		            borderColor: "rgba(255,99,132,1)",
-		            borderWidth: 1,
-		            hoverBackgroundColor: "rgba(255,99,132,0.4)",
-		            hoverBorderColor: "rgba(255,99,132,1)",
-		            data: ['${costsum}','${kmsum}','${jooyusum}','${jungbisum}','${buysum}'],
-		        }
-		    ]
-		};
+	window.onload=function(){
+		for (var i = 0; i < sel.options.length; i++) {
+		if (sel.options[i].value=='${carnum}') {
+			sel.options[i].selected=true;
+		}
+	}}
+	
+	function show() {
+		var sel = document.getElementById('sel');
 
-    var options = {
-        animation: false
-    };
-
-    var ctx = $('#myChart').get(0).getContext('2d');
-    var myBarChart = new Chart(ctx).Bar(data, options);
-});
+		var carnum = null;
+		var params = null;
+		for (var i = 0; i < sel.options.length; i++) {
+			if (sel.options[i].value=='${carnum}') {
+				sel.options[i].selected=true;
+				
+			}
+		}
+		window.alert(params);
+		location.href='graph.do?'+params;
+	}
 </script>
+<script type="text/javascript"	src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+<script type="text/javascript"	src="http://cdn.amcharts.com/lib/3/serial.js"></script>
+<script type="text/javascript"	src="http://www.amcharts.com/lib/3/themes/light.js"></script>
+<script type="text/javascript"	src="http://cdn.amcharts.com/lib/3/pie.js"></script>
 </head>
 <body>
-<%@include file="../header.jsp"%>
-<div class="btn-group">
-    <select class="btn btn-default dropdown-toggle" id=sel name=carnum onchange="show()">
-	<c:forEach var="carn" items="${cnum }" >
-		<option value="${carn.carnum }">${carn.carnum}</option>
-	</c:forEach>
-	</select><a href="javascript:opencostReg()">비용입력</a>
-</div>
-<form action="">
-<div>Date: 
-<input type="text" name="startday" id="datepicker" value="시작일" maxlength="10" size="6">~
-<input type="text" name="endday" id="datepicker2" value="종료일" maxlength="10" size="6"> 
-<select name=type>
-   <option>주유</option>
-   <option>정비</option>
-   <option>물품구입비용</option>
-</select>
-<input type="button" value="확인"><br>
-</div>
-<canvas id="myChart" width="800" height="400"></canvas>
-</form>
-<a href="graphTest.do">test</a>
-<a href="graphTest2.do">test2</a>
-</body>
- <script type="text/javascript">
-$(function() {
-    $( "#datepicker" ).datepicker();
-  });
-$("#jj").click(function(){
-	
-	var kk = $("#datepicker").val();
-	
-	alert(kk);
-	
-}); 
-
-$(function() {
-	$("#datepicker2").datepicker();
-});
+	<%@include file="../header.jsp"%>
+	<hr size=5 color=skyblue>
+	${carnum }
+<button type="button" class="btn btn-default btn-lg" style="border:0;">
+  <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 통계
+</button>
+	<div class="btn-group">
+		<select class="btn btn-default dropdown-toggle" id="sel" name="carnum"
+			onchange="show()">
+			<c:forEach var="carn" items="${cnum }">
+				<option value="${carn.carnum}">${carn.carnum}</option>
+			</c:forEach>
+		</select><a href="javascript:opencostReg()">비용입력</a>
+	</div>
+	<form action="">
+		<div>
+			Date: <input type="text" name="startday" id="datepicker" value="시작일"
+				maxlength="10" size="6">~ <input type="text" name="endday"
+				id="datepicker2" value="종료일" maxlength="10" size="6"> <select
+				name=type>
+				<option>주유</option>
+				<option>정비</option>
+				<option>물품구입비용</option>
+			</select> <input type="button" value="확인"><br>
+		</div>
+		
+	</form>
 
 
+<div id="view" class="view">
+	<script>
+			AmCharts.makeChart("chartdiv",
+				{
+				"type": "serial",
+				"categoryField": "category",
+				"columnSpacing": 50,
+				"autoMarginOffset": 40,
+				"marginRight": 10,
+				"marginTop": 10,
+				"startDuration": 1,
+				"fontSize": 13,
+				"theme": "light",
+				"categoryAxis": {
+					"gridPosition": "start"
+				},
+				"trendLines": [],
+				"graphs": [
+					{
+						
+						"columnWidth": 0.7,
+						"fillAlphas": 0.9,
+						"gapPeriod": 50,
+						"id": "AmGraph-1",
+						"title": "graph 1",
+						"type": "column",
+						"labelText": "주유",
+						"valueField": "주유"
+						
+					},
+					{
+						
+						"columnWidth": 0.7,
+						"fillAlphas": 0.9,
+						"gapPeriod": 50,
+						"id": "AmGraph-2",
+						"title": "graph 2",
+						"type": "column",
+						"labelText": "정비",
+						"valueField": "정비"
+					},
+					{
+						"balloonColor": "#0DE911",
+						"columnWidth": 0.7,
+						"fillAlphas": 1,
+						"gapPeriod": 50,
+						"id": "AmGraph-3",
+						"title": "graph 3",
+						"type": "column",
+						"labelText": "기타",
+						"valueField": "기타"
+					}
+				],
+				"guides": [],
+				"valueAxes": [
+					{
+						"id": "ValueAxis-1",
+						"title": "Axis title"
+					}
+				],
+				"allLabels": [],
+				"balloon": {},
+				"titles": [{	"alpha": 0.66,
+		        	"bold": true,
+		        	"id": "Title-1",
+		        	"size": 15,
+		        	"text": "유지비용 그래프(원)"}],
+				"dataProvider": [
+					{
+						"category": "cost",
+						"주유": "${jooyusum}",
+						"정비": "${jungbisum}",
+						"기타": "${buysum}"
+					}
+				]
+			}
+		);
+			
+			AmCharts.makeChart("chartdiv2",{
+					"type": "pie",
+					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+					"titleField": "항목",
+					"valueField": "$",
+					"fontSize": 12,
+					"theme": "light",
+					"allLabels": [],
+					"balloon": {},
+					"titles": [		{	"alpha": 0.66,
+					        	"bold": true,
+					        	"id": "Title-1",
+					        	"size": 15,
+					        	"text": "유지비용 파이 그래프(원)"}
+					],
+					"dataProvider": [
+						{
+							"항목": "주유",
+							"$": "${jooyusum}"
+						},
+						{
+							"항목": "정비",
+							"$": "${jungbisum}"
+						},
+						{
+							"항목" : "기타",
+							"$" : "${buysum}"
+						} ]
+					});
 </script>
+		<div id="chartdiv" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;" ></div>
+	   	<div id="chartdiv2" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;" ></div>
+</div>
+	<a href="graphTest.do">test</a>
+	<a href="graphTest2.do">test2</a>
+</body>
+
 
 </html>

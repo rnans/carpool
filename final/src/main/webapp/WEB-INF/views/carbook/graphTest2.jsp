@@ -1,16 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>chart created with amCharts | amCharts</title>
-		<meta name="description" content="chart created using amCharts live editor" />
-
-		<!-- amCharts javascript sources -->
-		<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
-		<script type="text/javascript" src="http://www.amcharts.com/lib/3/serial.js"></script>
-		<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/light.js"></script>
-
 		<!-- amCharts javascript code -->
 		<script type="text/javascript">
 			AmCharts.makeChart("chartdiv",
@@ -239,13 +228,11 @@
 						}
 					]
 				}
-			);
-			
+			);			
 		</script>
 	</head>
-	<body>
-		
-		<div id="chartdiv" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;" ></div>
-		<div id="chartdiv2" style="width: 50%; height: 400px; background-color: #FFFFFF;" ></div>
+	<body>		
+		<div id="chartdiv" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;"></div>
+		<div id="chartdiv2" style="width: 50%; height: 400px; background-color: #FFFFFF;"></div>
 	</body>
 </html>
