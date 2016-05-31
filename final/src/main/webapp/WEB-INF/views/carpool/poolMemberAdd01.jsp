@@ -32,11 +32,11 @@ window.onload=function()
 	var male=document.getElementById('male');
 	
 	
-	if(sex=="남자")
+	if(sex=="남성")
 	{
 		male.checked=true;
 	}
-	else if(sex=="여자")
+	else if(sex=="여성")
 	{
 		female.checked=true;
 	}

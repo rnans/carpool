@@ -6,4 +6,10 @@
 	<select id="viewAllRateList">
 	select * from rate
 	</select>
+	<insert id="poolRateWrite" parameterType="su.pool.model.PoolRateDTO">
+	insert into rate values
+	(
+		
+	)
+	</insert>
 </mapper>

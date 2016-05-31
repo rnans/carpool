@@ -10,6 +10,14 @@ public class PoolRateDTO
 	private int rate;
 	private Date writedate;
 	private String content;
+	private String username;
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public int getIdx() {
 		return idx;
 	}

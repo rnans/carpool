@@ -78,12 +78,16 @@ function request()
 <%@ include file="poolRateList.jsp" %>
 </div>
 <div><input type="button" value="찜하기"><input type="button" value="예약하기" onclick="request()"></div>
+<c:if test="${dto.userid eq sid}">
 <div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="showEdit()"><input type="button" value="삭제하기" onclick="runDel()"></div>
+</c:if>
 </div>
 <div><input type="button" value="쪽지보내기" onclick="javascript:userid='${dto.userid}';message();"></div>
   <a href="messageShow.do?sid=${sid }">목록</a>
 </article>
 <article>
+<div>
+댓글 달기
 <form name="reply" action="rateWrite.do">
 <select name="rate">
 <option value="1">1</option>
@@ -95,13 +99,10 @@ function request()
 <textarea name="content">
 
 </textarea>
-<input type="button" onclick="rateWrite();" value="평가하기">
-<input type="button" onclick="rateModify()" value="수정">
-<input type="button" onclick="rateDelete()" value="삭제">
+<input type="submit" onclick="rateWrite();" value="평가하기">
+
 </form>
-</article>
-<article>
-<%@include file="poolRateList.jsp" %>
+</div>
 </article>
 </section>
 </body>

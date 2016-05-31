@@ -32,11 +32,11 @@ window.onload=function()
 	var male=document.getElementById('male');
 	
 	
-	if(sex=="害切")
+	if(sex=="害失")
 	{
 		male.checked=true;
 	}
-	else if(sex=="食切")
+	else if(sex=="食失")
 	{
 		female.checked=true;
 	}

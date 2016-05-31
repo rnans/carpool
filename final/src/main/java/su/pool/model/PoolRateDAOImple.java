@@ -12,4 +12,12 @@ public class PoolRateDAOImple implements PoolRateDAO
 		this.sqlMap = sqlMap;
 	}
 	
+	public PoolRateDAOImple() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public int reteWrite(PoolRateDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.insert("poolRateWrite",dto);
+	}
 }
