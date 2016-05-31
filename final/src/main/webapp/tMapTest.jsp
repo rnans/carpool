@@ -6,8 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
-
 <script src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=2e2fe45c-1baa-3078-b615-2c0b3f71bfe5"></script>
 <script>
 //초기화 함수
@@ -33,7 +31,7 @@ function searchRoute(){
     urlStr += "&startY="+startY;
     urlStr += "&endX="+endX;
     urlStr += "&endY="+endY;
-    urlStr += "&appKey=********-****-*********-************";
+    urlStr += "&appKey=2e2fe45c-1baa-3078-b615-2c0b3f71bfe5";
     var prtcl = new Tmap.Protocol.HTTP({
                                         url: urlStr,
                                         format:routeFormat
@@ -46,6 +44,7 @@ function searchRoute(){
 function onDrawnFeatures(e){
     map.zoomToExtent(this.getDataExtent());
 }
+
 </script>
 <body onload="initTmap()">
 //지도 div 정의

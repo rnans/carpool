@@ -150,7 +150,11 @@
    		</constructor-arg>
     </bean>
  
-   
+  	<bean id="poolRateDao" class="su.pool.model.PoolRateDAOImple">
+ 		<constructor-arg>
+ 			<ref bean="sqlSessionTemplate"/>
+ 		</constructor-arg>
+ 	</bean>
 	
 	
 	<!-- view -->

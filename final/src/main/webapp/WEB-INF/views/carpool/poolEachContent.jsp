@@ -84,7 +84,24 @@ function request()
   <a href="messageShow.do?sid=${sid }">목록</a>
 </article>
 <article>
+<form name="reply" action="rateWrite.do">
+<select name="rate">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+<textarea name="content">
 
+</textarea>
+<input type="button" onclick="rateWrite();" value="평가하기">
+<input type="button" onclick="rateModify()" value="수정">
+<input type="button" onclick="rateDelete()" value="삭제">
+</form>
+</article>
+<article>
+<%@include file="poolRateList.jsp" %>
 </article>
 </section>
 </body>
