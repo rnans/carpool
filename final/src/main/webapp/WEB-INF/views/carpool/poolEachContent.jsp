@@ -81,6 +81,7 @@ function request()
 <div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="showEdit()"><input type="button" value="삭제하기" onclick="runDel()"></div>
 </div>
 <div><input type="button" value="쪽지보내기" onclick="javascript:userid='${dto.userid}';message();"></div>
+  <a href="messageShow.do?sid=${sid }">목록</a>
 </article>
 <article>
 
