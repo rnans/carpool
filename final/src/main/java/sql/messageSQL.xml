@@ -3,5 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.message">
-
+   <insert id="messageSend" parameterType="su.message.model.MessageDTO">
+      insert into message values
+      (message_idx.nextval,#{sendid},#{receiveid},#{content},sysdate,'안읽음')
+   </insert>
+   <select id="messageShow" resultType="su.message.model.MessageDTO">
+    select * from message where receiveid=#{sid}
+   </select>
+    	<select id="messageTotalCnt" resultType="int">
+		select count(*) from message 
+	</select>
+	<select id="messageContent" resultType="su.message.model.MessageDTO">
+	 select * from message where idx=#{idx}
+	</select>
+	<insert id="messageRewrite" parameterType="su.message.model.MessageDTO">
+	 insert into message values
+	  (message_idx.nextval,#{sendid},#{receiveid},#{content},sysdate,'안읽음')
+	</insert>
+	<delete id="messageDel" parameterType="su.message.model.MessageDTO" >
+	 delete from message where idx=#{idx}
+	</delete>
+	<update id="messageReading" parameterType="su.message.model.MessageDTO">
+	 update  message set reading='읽음' where idx=#{idx}
+	</update>
 </mapper>

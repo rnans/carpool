@@ -1,5 +1,9 @@
 package su.message.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class MessageDAOImple implements MessageDAO {
@@ -9,7 +13,42 @@ public class MessageDAOImple implements MessageDAO {
 		super();
 		this.sqlMap = sqlMap;
 	}
-
-
+	public int messageSend(MessageDTO dto){
+		int count=sqlMap.insert("messageSend", dto);
+		return count;
 	}
+	public List<MessageDTO> messageShow(int cp, int ls,String sid){
+		 int startnum=(cp-1)*ls+1;
+		 int endnum=cp*ls;
+	
+		 Map map=new HashMap();
+		 map.put("startnum", startnum);
+		 map.put("endnum", endnum);
+		 map.put("sid", sid);
+		List<MessageDTO> list=sqlMap.selectList("messageShow", map);
+		return list;
+	}
+	public int messageTotalCnt(){
+		 int count=sqlMap.selectOne("messageTotalCnt");
+			return count;
+	 }
+	public List<MessageDTO> messageContent(int idx){
+		List<MessageDTO> list=sqlMap.selectList("messageContent",idx);
+		return list;
+	}
+	public int messageRewrite(MessageDTO dto){
+		int count=sqlMap.update("messageRewrite", dto);
+		return count;
+	}
+	public int messageDel(int idx){
+		int count=sqlMap.delete("messageDel", idx);
+		return count;
+	}
+	public int messageReading(int idx){
+		int count=sqlMap.update("messageReading", idx);
+	    return count;
+	}
+	}
+
+	
 
