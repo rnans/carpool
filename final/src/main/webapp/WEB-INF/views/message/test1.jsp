@@ -16,6 +16,7 @@ function messageDel(){
 </script>
 <body>
 <%@include file="../header.jsp" %>
+<h2>${messageNumber }</h2>
 <table border="1" cellspacing="0" width="800" height="150" >
 			<thead>
 			
