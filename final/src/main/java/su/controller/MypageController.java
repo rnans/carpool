@@ -87,16 +87,12 @@ public class MypageController {
 	
 	/**마이 프로필 수정*/
 	@RequestMapping("/myProfile.do")
-	public ModelAndView myProfile(MypageDTO dto){
-		
-//		MultipartFile upload=req.getFile("upload");         
-//	    String imgUpload = upload.getOriginalFilename();
-//	    dto1.setFilename(imgUpload);
-//	    copyInto(upload,request);	
-		
+	public ModelAndView myProfile(MypageDTO dto,HttpSession sion){
+		String id=(String)sion.getAttribute("sid");	
 		ModelAndView mav=new ModelAndView();		
-		
+		List<UploadDTO> dto2=uploadDao.imgFind(id);
 		mav.addObject("dto", dto);
+		mav.addObject("dto2",dto2);
 		mav.setViewName("mypage/myProfile");
 		return mav;
 	}
