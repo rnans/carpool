@@ -14,9 +14,11 @@ p{
 }
 </style>
 <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
 </head>
+
 <body>
-<form  action="costUpdate_ok.do" id="costFrm" class="form-horizontal">
+<form name="form1"  action="costUpdate_ok.do" id="costFrm" class="form-horizontal">
 
   <fieldset>
   
@@ -38,6 +40,7 @@ p{
     <div class="form-group">
       <label for="inputCostday" class="col-lg-2 control-label">날짜(<font color="red">*</font>)</label>
       <div class="col-lg-10">
+        <input type="text" id="sStartdt" name="sStartdt"  value=""onkeyup="javascript:date_mask(this.form.name, this.name);">
         <input type="text" name="costday" value=${list[0].costday } style="width:150px;" class="form-control" id="costday" placeholder="예)2016-01-01">
       </div>
     </div>
@@ -63,20 +66,6 @@ p{
 		</div>
 	</div>
 </div>
-<!--  -------------------------------------
-<form action="costUpdate_ok.do">
-<fieldset>
-	<legend>비용등록</legend>
-	<select name="category" value=${list[0].category }>
-		<option>유형</option>
-		<option>주유</option>
-		<option>정비</option>
-		<option>물품구입</option>
-	</select><br>
-	날짜 <input type="text" name="costday" value=${list[0].costday }><br>
-	비고<input type="text" name="bigo" value=${list[0].bigo }><br>
-	금액<input type="number" name="cost" value=${list[0].cost }><br>
-	주행거리<input type="number" name="km" value=${list[0].km }><br>-->
 	<p>
 	<input type="hidden" name="idx" value="${list[0].idx }">
 	<input type="hidden" name="id" value="${list[0].id}">
@@ -85,5 +74,6 @@ p{
 	</p>
 </fieldset>
 </form>
+
 </body>
 </html>
