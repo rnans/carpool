@@ -43,7 +43,7 @@
 </style>
 </head>
 <body id="bb">
-header
+<%@ include file="../header.jsp" %>
 <hr>
 <h2>즐겨찾기</h2>
 		
