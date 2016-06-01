@@ -22,5 +22,13 @@ public class UploadDAOImple implements UploadDAO {
 		 List<UploadDTO> list=sqlMap.selectList("imgFind", id);
 		 return list;
 	 }
+	 public int fileUpdate(UploadDTO dto){
+		 int count=sqlMap.update("fileUpdate", dto);
+		 return count;
+	 }
+	 public String filecheck(String id){
+		 String check=sqlMap.selectOne("fileCheck", id);
+		 return check;
+	 }
 
 }

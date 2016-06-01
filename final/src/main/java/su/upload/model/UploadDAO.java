@@ -6,4 +6,6 @@ public interface UploadDAO {
 	
 	public int upload(UploadDTO dto);
     public List<UploadDTO> imgFind(String id);
+    public int fileUpdate(UploadDTO dto);
+    public String filecheck(String id);
 }
