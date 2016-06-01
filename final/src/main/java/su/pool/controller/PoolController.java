@@ -21,6 +21,7 @@ import su.pool.model.PoolDAO;
 import su.pool.model.PoolDTO;
 import su.pool.model.PoolDateDTO;
 import su.pool.model.PoolInfoDTO;
+import su.pool.model.PoolLocDTO;
 import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolRateDAO;
@@ -227,7 +228,8 @@ public class PoolController
 		data.put("pooltype", pooltype);
 		data.put("startcoordi", startcoordi);
 		data.put("endcoordi",endcoordi);
-		data.put("userid", (String)session.getAttribute("sid"));		
+		data.put("userid", (String)session.getAttribute("sid"));
+
 		
 		session.setAttribute("data", data);
 		
@@ -247,7 +249,7 @@ public class PoolController
 		String endspot=req.getParameter("endspot");
 		String startcoordi=req.getParameter("startcoordi");
 		String endcoordi=req.getParameter("endcoordi");
-		
+
 		
 		HashMap<String, String> data=(HashMap<String, String>)session.getAttribute("data");
 		
@@ -258,7 +260,7 @@ public class PoolController
 		data.put("userid", (String)session.getAttribute("sid"));		
 		data.put("startcoordi", startcoordi);
 		data.put("endcoordi",endcoordi);
-		
+
 		session.setAttribute("data", data);
 		
 		ModelAndView mav=new ModelAndView();
@@ -494,7 +496,7 @@ public class PoolController
 		String pooltype=data.get("pooltype");
 		String startcoordi=data.get("startcoordi");
 		String endcoordi=data.get("endcoordi");
-		
+
 		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype);
 		
 		int count=poolDao.poolMemberShortAdd(dto);

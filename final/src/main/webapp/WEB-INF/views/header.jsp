@@ -11,7 +11,7 @@
 	}
 </style>
 
-
+<link href="/final02/CSS/cssReset.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/dialog-sally.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/dialog.css" />
 
@@ -70,6 +70,7 @@ $(document).ready(function(){
 	<li>
 		<a href="poolMain.do">카풀</a>
 		<ul class="cbp-tm-submenu">
+			<li><a href="poolMain.do" class="cbp-tm-icon-archive">메인</a></li>
 			<li><a href="poolAdd.do" class="cbp-tm-icon-archive">등록하기</a></li>
 			<li><a href="poolMemberList.do" class="cbp-tm-icon-cog">탈래요</a></li>
 			<li><a href="poolMasterList.do" class="cbp-tm-icon-location">타세요</a></li>
