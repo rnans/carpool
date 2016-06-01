@@ -79,6 +79,40 @@ public class UploadController {
 		}
 		 
 	 
+	@RequestMapping(value="uploadimgUpdate.do",  method=RequestMethod.POST)
+	public String uploadimgUpdate(MultipartHttpServletRequest req, HttpServletRequest request, 
+			HttpSession session, UploadDTO dto){
+				
+		 MultipartFile upload=req.getFile("upload");
+		 copyInto(upload, request);
+		 
+		 String filename=upload.getOriginalFilename();
+		 //파일 타입 프로필=0//차량=1//기타=각자 추가하셈
+		 String id=(String)session.getAttribute("sid");
+		 String filetype="0";
+	     String filepath=root_path+attach_path+filename;
+		 System.out.println(filename);
+		 System.out.println(id);
+		 
+		 String check=uploadDao.filecheck(id);
+		 dto.setId(id);
+		 dto.setFilename(filename); 	
+		 if(check==null||check.equals("")){
+			 
+			 dto.setFilepath(filepath); dto.setFiletype(filetype);
+			 int count=uploadDao.upload(dto);
+			 String msg=count>0?"O":"X";
+			 System.out.println(msg);
+			 
+			 }
+		 else{		 	  
+		 int count=uploadDao.fileUpdate(dto);
+		 String msg=count>0?"upload 성공":"upload 실패";
+		 System.out.println(msg);
+	    }
+		 return "upload/uploadMsg";
+	}
+	
 	@RequestMapping(value="uploadimg.do", method=RequestMethod.POST)
 	public String uploadimg(MultipartHttpServletRequest req, HttpServletRequest request, 
 			HttpSession session, UploadDTO dto){
@@ -93,13 +127,10 @@ public class UploadController {
 	     String filepath=root_path+attach_path+filename;
 		 String id=(String)session.getAttribute("sid");
 		 
-//		 ModelAndView mav=new ModelAndView();
-//		 MypageDTO dto1= mypageDao.myProfileUpdate(dto1);
-//		 mav.addObject("dto1", dto1);
-//		 mav.addObject("dto", dto);
-		 
 		 dto.setId(id); dto.setFilename(filename); 
 		 dto.setFilepath(filepath); dto.setFiletype(filetype);
+		 
+		 
 		 int count=uploadDao.upload(dto);
 		 String msg=count>0?"upload 성공":"upload 실패";
 		 System.out.println(msg);
