@@ -11,6 +11,14 @@
 
 <script type="text/javascript" src="/final02/js/httpRequest.js"></script>
 <script>
+window.onload=function(){
+	for (var i = 0; i < sel.options.length; i++) {
+	if (sel.options[i].value=='${carnum}') {
+		sel.options[i].selected=true;
+	}
+}}
+
+
 var idx=null;
 function show(){		
 	var sel=document.getElementById('sel');
@@ -48,7 +56,7 @@ function opencostReg(){
 			carnum=sel.options[i].value;			
 		}
 	}		
-	window.open('costReg.do?carnum='+carnum,'opencostReg','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+', width=350px,height=450px');
+	window.open('costReg2.do?carnum='+carnum,'opencostReg','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+', width=350px,height=450px');
 	
 }
 

@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script>
-	window.alert('${msg}');
-	location.href='index.do';
-	window.self.close();
+window.alert('${msg}');
+window.self.close();
+opener.location.href='cost.do?carnum=${carnum}';
+
+
 </script>

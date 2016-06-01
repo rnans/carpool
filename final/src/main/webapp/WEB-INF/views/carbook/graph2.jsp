@@ -1,10 +1,143 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-		<!-- amCharts javascript code -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="./bootstrap/css/bootstrap.css" rel="stylesheet"
+	type="text/css" />
+<script type="text/javascript" src="js/httpRequest.js"></script>
+<style>
+.navbar-brand {
+	position: relative;
+	z-index: 2;
+}
+
+.navbar-nav.navbar-right .btn {
+	position: relative;
+	z-index: 2;
+	padding: 4px 20px;
+	margin: 10px auto;
+}
+
+.navbar .navbar-collapse {
+	position: relative;
+}
+
+.navbar .navbar-collapse .navbar-right>li:last-child {
+	padding-left: 22px;
+}
+
+.navbar .nav-collapse {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	padding-right: 120px;
+	padding-left: 80px;
+	width: 100%;
+}
+
+.navbar.navbar-default .nav-collapse {
+	background-color: #f8f8f8;
+}
+
+.navbar.navbar-inverse .nav-collapse {
+	background-color: #222;
+}
+
+.navbar .nav-collapse .navbar-form {
+	border-width: 0;
+	box-shadow: none;
+}
+
+.nav-collapse>li {
+	float: right;
+}
+
+.btn.btn-circle {
+	border-radius: 50px;
+}
+
+.btn.btn-outline {
+	background-color: transparent;
+}
+
+@media screen and (max-width: 767px) {
+	.navbar .navbar-collapse .navbar-right>li:last-child {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.navbar .nav-collapse {
+		margin: 7.5px auto;
+		padding: 0;
+	}
+	.navbar .nav-collapse .navbar-form {
+		margin: 0;
+	}
+	.nav-collapse>li {
+		float: none;
+	}
+}
+</style>
+
+<!-- amCharts javascript code -->
+
+<script>
+	window.onload=function(){
+		for (var i = 0; i < sel.options.length; i++) {
+		if (sel.options[i].value=='${carnum}') {
+			sel.options[i].selected=true;
+		}
+	}}
+	
+	function show() {
+		var sel = document.getElementById('sel');
+
+		var carnum = document.getElementById('sel').value;
+
+		location.href='graph.do?carnum='+carnum;
+	}
+</script>
 <script type="text/javascript"	src="http://www.amcharts.com/lib/3/amcharts.js"></script>
 <script type="text/javascript"	src="http://cdn.amcharts.com/lib/3/serial.js"></script>
 <script type="text/javascript"	src="http://www.amcharts.com/lib/3/themes/light.js"></script>
 <script type="text/javascript"	src="http://cdn.amcharts.com/lib/3/pie.js"></script>
+</head>
+<body>
+	<%@include file="../header.jsp"%>
+	<hr size=5 color=skyblue>
+	${carnum }
+<button type="button" class="btn btn-default btn-lg" style="border:0;">
+  <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 통계
+</button>
+	<div class="btn-group">
+		<select class="btn btn-default dropdown-toggle" id="sel" name="carnum"
+			onchange="show()">
+			<c:forEach var="carn" items="${cnum }">
+				<option value="${carn.carnum}">${carn.carnum}</option>
+			</c:forEach>
+	</div>
+	<form action="">
+		<div>
+			Date: <input type="text" name="startday" id="datepicker" value="시작일"
+				maxlength="10" size="6">~ <input type="text" name="endday"
+				id="datepicker2" value="종료일" maxlength="10" size="6"> <select
+				name=type>
+				<option>주유</option>
+				<option>정비</option>
+				<option>물품구입비용</option>
+			</select> <input type="button" value="확인"><br>
+		</div>
+		
+	</form>
+
+
+<div id="view" class="view">
 		<script type="text/javascript">
 			AmCharts.makeChart("chartdiv",
 				{
@@ -234,9 +367,12 @@
 				}
 			);			
 		</script>
-	</head>
-	<body>		
-		<div id="chartdiv" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;"></div>
-		<div id="chartdiv2" style="width: 50%; height: 400px; background-color: #FFFFFF;"></div>
-	</body>
+		<div id="chartdiv" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;" ></div>
+	   	<div id="chartdiv2" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;" ></div>
+</div>
+	<a href="graphTest.do">test</a>
+	<a href="graphTest2.do">test2</a>
+</body>
+
+
 </html>

@@ -17,6 +17,12 @@
 <%@include file="../header.jsp"%>
 <script type="text/javascript" src="/final02/js/httpRequest.js"></script>
 <script>
+window.onload=function(){
+	for (var i = 0; i < sel.options.length; i++) {
+	if (sel.options[i].value=='${carnum}') {
+		sel.options[i].selected=true;
+	}
+}}
 
 function show(){		
 	var sel=document.getElementById('sel');
@@ -68,7 +74,7 @@ function opencostReg(){
 <input type="hidden" id="hiddenId" value="${sid}"/>
 <hr>
 <div class="btn-group">
-    <select class="btn btn-default dropdown-toggle" id="sel" name="carnum" onchange="show()">
+    <select class="btn btn-default dropdown-toggle" id=sel name=carnum onchange="show()">
 	<c:forEach var="carn" items="${cnum }" >
 		<option value="${carn.carnum }">${carn.carnum}</option>
 	</c:forEach>
@@ -82,7 +88,7 @@ function opencostReg(){
 	<table class="table table-striped table-hover " >
 	<!--  <table border="1" width="400" height="100" >-->
 	<thead>
-	<tr class="info">
+	<tr class="success">
 	<th>기록시작일</th>
 
 	<th><input type="text" name="날짜" value="날짜"></th>
@@ -110,7 +116,7 @@ function opencostReg(){
 	<table class="table table-striped table-hover ">
 	<thead>
 	<!--  <table border="1" width="400" height="100" >-->
-	<tr class="info">
+	<tr class="success">
 		<th>날짜</th>
 		<th></th>
 	</tr>

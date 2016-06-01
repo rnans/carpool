@@ -98,16 +98,9 @@
 	function show() {
 		var sel = document.getElementById('sel');
 
-		var carnum = null;
-		var params = null;
-		for (var i = 0; i < sel.options.length; i++) {
-			if (sel.options[i].value=='${carnum}') {
-				sel.options[i].selected=true;
-				
-			}
-		}
-		window.alert(params);
-		location.href='graph.do?'+params;
+		var carnum = document.getElementById('sel').value;
+
+		location.href='graph.do?carnum='+carnum;
 	}
 </script>
 <script type="text/javascript"	src="http://www.amcharts.com/lib/3/amcharts.js"></script>
@@ -128,7 +121,6 @@
 			<c:forEach var="carn" items="${cnum }">
 				<option value="${carn.carnum}">${carn.carnum}</option>
 			</c:forEach>
-		</select><a href="javascript:opencostReg()">비용입력</a>
 	</div>
 	<form action="">
 		<div>
@@ -256,7 +248,7 @@
 		<div id="chartdiv" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;" ></div>
 	   	<div id="chartdiv2" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;" ></div>
 </div>
-	<a href="graphTest.do">test</a>
+	<a href="graph2.do">test</a>
 	<a href="graphTest2.do">test2</a>
 </body>
 
