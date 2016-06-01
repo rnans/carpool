@@ -20,7 +20,7 @@
 #div2{
 	float:left;
 	width: 800px;
-	height: 250px;
+	height: 350px;
 	margin: 5px;
 	margin-left:px;
 	background-color:gray;
@@ -46,7 +46,7 @@
 </style>
 </head>
 <body id="bb">
-header
+<%@ include file="../header.jsp" %>
 <hr>
 <h2>마이페이지01</h2>
 	
@@ -55,7 +55,7 @@ header
 		
 		<div id="div1">
 			<fieldset>
-				<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[1].filename}"><br>
+				<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}"><br>
 			</fieldset>	 
 		</div>
 		

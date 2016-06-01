@@ -42,7 +42,7 @@
 </style>
 </head>
 <body id="bb">
-header
+<%@ include file="../header.jsp" %>
 <hr>
 <h2>비밀번호변경</h2>
 		

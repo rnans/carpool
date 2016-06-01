@@ -45,42 +45,23 @@
 
 </style>
 <script src="/final02/js/httpRequest.js"></script>
-<script>
-/* function show(){
-		params='upload='+document.getElementById('file').value;
-	
-		sendRequest('uploadimg.do', params, showResult, 'POST');
-	}
-	function showResult(){
-		if(XHR.readyState==4){
-			if(XHR.status==200){
-				var text=XHR.responseText;
-				var data=eval('('+text+')');
-				
-				var msg='총학생인원은'+data.students.length+'입니다\n';
-				for(var i=0;i<data.students.length;i++){
-					var student=data.students[i];
-					msg+='이름:'+student.name+'('+student.age+'세)/'+student.addr;
-				}
-				window.alert(msg);
-			}
-		}
-	} */
-</script>
+<style>
+
+</style>
 </head>
 <body id="bb">
-header
+<%@ include file="../header.jsp" %>
 <hr>
 <h2>마이프로필</h2>
 		
 	<div id="div1">
-		 <form id="frm" name="frm" action="uploadimg.do" method="post" enctype="multipart/form-data">
+		 <form id="frm" name="frm" action="uploadimgUpdate.do" method="post" enctype="multipart/form-data">
 
         <div id="preview">
         <img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}"><br>
 		</div>
-		<input type="file" id="file" name="upload" onchange="previewImage(this,'preview',225,300)">
-         
+		<input type="file" id="file" name="upload">
+   
 		<input type="submit" value="업로드">
     </form>
 	</div>
