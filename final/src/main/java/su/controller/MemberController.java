@@ -6,6 +6,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -57,14 +58,15 @@ public class MemberController {
 		
 	}
 	/**로그인 폼 이동 및 아이디 기억하기*/
-	@RequestMapping(value="/login.do", method=RequestMethod.GET)
+	@RequestMapping("/loginForm.do")
 	public String loginForm(){
 		
 		return "member/memberLogin";
 	}
 	
 	/**로그인*/
-	@RequestMapping(value="/login.do", method=RequestMethod.POST)
+	@RequestMapping(value="/login.do", method={RequestMethod.GET, RequestMethod.POST})
+
 	public ModelAndView login(@RequestParam(value="id", required=false)String id, 
 			@RequestParam(value="pwd", required=false)String pwd, HttpSession session){
 			
