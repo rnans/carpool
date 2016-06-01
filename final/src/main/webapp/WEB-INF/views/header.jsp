@@ -35,6 +35,7 @@ $(document).ready(function(){
 	
 });
 </script>
+
 <header>
 	<c:if test="${!empty sessionScope.sid}">
 		<div id="rig1">
