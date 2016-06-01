@@ -6,10 +6,31 @@
 	<select id="viewAllRateList">
 	select * from rate
 	</select>
+	<select id="getListByUserid" parameterType="String" resultType="su.pool.model.PoolRateDTO">
+	select * from rate where userid=#{userid}
+	</select>
+	<select id="getListByAimid" parameterType="String" resultType="su.pool.model.PoolRateDTO">
+	select * from rate where aimid=#{aimid}
+	</select>
 	<insert id="poolRateWrite" parameterType="su.pool.model.PoolRateDTO">
 	insert into rate values
 	(
-		
+		rate_idx.nextval,
+		#{userid},
+		#{aimid},
+		#{rate},
+		sysdate,
+		#{content},
+		#{username}
 	)
 	</insert>
+	<delete id="delRateByIdx" parameterType="int">
+	delete from rate where idx=#{idx}
+	</delete>
+	<update id="editRateByIdx" parameterType="su.pool.model.PoolRateDTO">
+	update rate set 
+	rate=#{rate},
+	content=#{content}
+	where idx=#{idx}
+	</update>
 </mapper>

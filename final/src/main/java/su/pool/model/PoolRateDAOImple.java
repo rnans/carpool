@@ -1,5 +1,7 @@
 package su.pool.model;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class PoolRateDAOImple implements PoolRateDAO
@@ -16,8 +18,28 @@ public class PoolRateDAOImple implements PoolRateDAO
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int reteWrite(PoolRateDTO dto) {
+	public int rateWrite(PoolRateDTO dto) {
 		// TODO Auto-generated method stub
 		return sqlMap.insert("poolRateWrite",dto);
+	}
+	
+	public List getListByUserid(String id) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("getListByUserid",id);
+	}
+	
+	public List getListByAimid(String aimid) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("getListByAimid",aimid);
+	}
+	
+	public int rateDel(int idx)
+	{
+		return sqlMap.delete("delRateByIdx",idx);
+	}
+	
+	public int rateEdit(PoolRateDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.update("editRateByIdx",dto);
 	}
 }

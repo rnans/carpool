@@ -6,7 +6,82 @@
 <head>
 <meta charset="UTF-8">
 <title>카풀 상세 보기</title>
+<script src="/final02/js/httpRequest.js"></script>
 <script>
+function rateReq()
+{
+	selEl=document.getElementById('rate');
+	
+	var rate;
+	
+	conEl=document.getElementById('content');
+	
+	var content=conEl.value;
+	
+	for(var i=0;i<selEl.options.length;i++)
+	{
+		if(selEl.options[i].selected)
+		{
+			rate=selEl.options[i].value;
+		}
+	}
+	
+	var url='rateWrite.do';
+	params='aimid='+'${dto.userid}'
+			+'&rate='+rate+'&content='+content;
+	
+	sendRequest(url,params,showResult,'GET')
+	
+	function showResult(){
+		   if(XHR.readyState==4){
+		      if(XHR.status==200){
+		         var msg = XHR.responseText;
+		         
+		         
+		         window.alert(msg);
+		         location.reload();
+		      }
+		   }
+		}
+}
+
+function rateEditReq()
+{
+	selEl=document.getElementById('rate2');
+	
+	var rate;
+	
+	conEl=document.getElementById('content2');
+	
+	var content=conEl.value;
+	
+	for(var i=0;i<selEl.options.length;i++)
+	{
+		if(selEl.options[i].selected)
+		{
+			rate=selEl.options[i].value;
+		}
+	}
+	
+	var url='rateEdit.do';
+	params='idx='+document.getElementById('rateIdx').value
+			+'&rate='+rate+'&content='+content;
+	
+	sendRequest(url,params,showResult,'GET')
+	
+	function showResult(){
+		   if(XHR.readyState==4){
+		      if(XHR.status==200){
+		         var msg = XHR.responseText;
+		         
+		         
+		         window.alert(msg);
+		         location.reload();
+		      }
+		   }
+		}
+}
+
 function showEdit()
 {
 	var param='?idx='+document.getElementById('idx').value;
@@ -46,6 +121,53 @@ function request()
 	
 }
 
+function delRate(idx)
+{
+	var url='rateDel.do';
+	params='idx='+idx
+
+	sendRequest(url,params,showResult,'GET')
+	
+	function showResult(){
+		   if(XHR.readyState==4){
+		      if(XHR.status==200){
+		         var msg = XHR.responseText;
+		         
+		         
+		         window.alert(msg);
+		         location.reload();
+		      }
+		   }
+		}
+}
+
+function modiRate(idx)
+{
+	var tBodyEl=document.getElementById('tB');
+	
+	var trEl=document.getElementById('tr'+idx);
+	trEl.style.display="none";
+	
+	var newTrEl=document.createElement('tr');
+	
+	newTrEl.innerHTML='<form name="reply" action="rateEdit.do">'
+	+'<input type="hidden" id="rateIdx" name="idx" value="'+idx+'">'
+	+'<input type="hidden" name="aimid" value="${dto.userid}">'
+	+'<select id="rate2" name="rate">'
+	+'<option value="1">1</option>'
+	+'<option value="2">2</option>'
+	+'<option value="3">3</option>'
+	+'<option value="4">4</option>'
+	+'<option value="5">5</option>'
+	+'</select>'
+	+'<textarea id="content2" name="content">'
+	+'${rDtos[idx].content}'
+	+'</textarea>'
+	+'<input type="button" onclick="rateEditReq();" value="수정완료">'
+	+'</form>';
+	
+	tBodyEl.insertBefore(newTrEl,trEl);
+}
 </script>
 </head>
 <body>
@@ -75,34 +197,56 @@ function request()
 <div>흡연 ${dto.smoking }</div>
 <div>지도 API 영역</div>
 <div>평점 게시판 영역
-<%@ include file="poolRateList.jsp" %>
 </div>
 <div><input type="button" value="찜하기"><input type="button" value="예약하기" onclick="request()"></div>
 <c:if test="${dto.userid eq sid}">
 <div><input type="button" value="목록보기"><input type="button" value="수정하기" onclick="showEdit()"><input type="button" value="삭제하기" onclick="runDel()"></div>
 </c:if>
-</div>
 <div><input type="button" value="쪽지보내기" onclick="javascript:userid='${dto.userid}';message();"></div>
   <a href="messageShow.do?sid=${sid }">목록</a>
+<div>댓글
+<c:if test="${empty rDtos}">
+<div>${msg}</div>
+</c:if>
+<table>
+<tbody id="tB">
+<c:forEach var="rDtos" items="${rDtos}">
+	<tr id="tr${rDtos.idx}">
+		<td>${rDtos.rate }</td>
+		<td>${rDtos.userid}</td>
+		<td>${rDtos.content }</td>
+		<td>${rDtos.writedate }</td>
+		<td><c:if test="${rDtos.userid eq sid}"><a href="javascript:modiRate(${rDtos.idx})">수정</a> <a href="javascript:delRate(${rDtos.idx})">삭제</a></c:if></td>
+	</tr>
+</c:forEach>
+</tbody>
+</table>
+</div>
+</div>
+
+
 </article>
 <article>
+<c:if test="${sid ne dto.userid}">
 <div>
 댓글 달기
 <form name="reply" action="rateWrite.do">
-<select name="rate">
+<input type="hidden" name="aimid" value="${dto.userid}">
+<select id="rate" name="rate">
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
 <option value="4">4</option>
 <option value="5">5</option>
 </select>
-<textarea name="content">
+<textarea id="content" name="content">
 
 </textarea>
-<input type="submit" onclick="rateWrite();" value="평가하기">
+<input type="button" onclick="rateReq();" value="평가하기">
 
 </form>
 </div>
+</c:if>
 </article>
 </section>
 </body>

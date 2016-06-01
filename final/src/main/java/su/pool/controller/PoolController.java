@@ -23,6 +23,7 @@ import su.pool.model.PoolDateDTO;
 import su.pool.model.PoolInfoDTO;
 import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
+import su.pool.model.PoolRateDAO;
 import su.pool.model.PoolStatusDAO;
 import su.carinfo.model.carInfoDAO;
 import su.carinfo.model.carInfoDTO;
@@ -77,6 +78,17 @@ public class PoolController
 
 	public void setMyPageDao(MypageDAO myPageDao) {
 		this.myPageDao = myPageDao;
+	}
+
+	@Autowired
+	private PoolRateDAO poolRateDao;
+	
+	public PoolRateDAO getPoolRateDao() {
+		return poolRateDao;
+	}
+
+	public void setPoolRateDao(PoolRateDAO poolRateDao) {
+		this.poolRateDao = poolRateDao;
 	}
 
 	@RequestMapping("/poolMain.do")
@@ -670,7 +682,19 @@ public class PoolController
 	{
 		PoolDTO dto=poolDao.viewEachContent(idx);
 		
+		List res=poolRateDao.getListByAimid(dto.getUserid());
+
 		ModelAndView mav=new ModelAndView();
+		
+		if(res.isEmpty())
+		{
+			mav.addObject("msg","등록된 평가가 없습니다.");
+		}
+		else
+		{
+			mav.addObject("rDtos",res);
+		}
+		
 		
 		mav.addObject("dto",dto);
 		
