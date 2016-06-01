@@ -2,6 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
 	window.alert('${name}님 환영합니다.')
-	opener.location.reload();
-	window.self.close();
+	redirect:location.href="index.do";
 </script>
