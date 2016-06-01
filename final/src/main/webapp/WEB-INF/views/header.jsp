@@ -9,8 +9,13 @@
 	#rig2 a{
 		color: black;
 	}
-
 </style>
+
+
+<link rel="stylesheet" type="text/css" href="/final02/CSS/dialog-sally.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/dialog.css" />
+
+		
 <link href="/final02/CSS/component.css" rel="stylesheet" type="text/css" />
 <link href="/final02/CSS/default.css" rel="stylesheet" type="text/css" />
 <script src="/final02/js/cbpTooltipMenu.js"></script>
@@ -44,11 +49,10 @@ $(document).ready(function(){
 	</c:if>
 	<c:if test="${empty sessionScope.sid }">
 		<div id="rig2">
-		<a href="javascript:loginOpen()">로그인</a> | <a href="memberJoin.do">회원가입</a>
+		<c:import url="/loginForm.do"></c:import> | <a href="memberJoin.do">회원가입</a>
 		</div>
 	</c:if>
-	
-	
+		
 	<ul>
 		<c:if test="${sessionScope.grade eq '관리자'}">
 			
@@ -107,6 +111,7 @@ $(document).ready(function(){
 			var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
 		</script>
 			  </ul>
-			    
+	<!-- --------------------------------------------------------------------------------------------------- -->
+		    
 
 </header>
