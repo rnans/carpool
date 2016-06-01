@@ -37,8 +37,13 @@ input[type='text']
 		  </select><br>
 		출발지<input type="text" placeholder="출발지를 입력하세요."  id="ss" name="startspot"><br>
 		<input type="text" id="sc" name="startcoordi">
+		<input type="hidden" id="sLat" name="sLat">
+		<input type="hidden" id="sLng" name="sLng">
+		
 		목적지<input type="text" placeholder="목적지를 입력하세요."  id="es" name="endspot"><br>
 		<input type="text" id="ec" name="endcoordi">
+		<input type="hidden" id="eLat" name="eLat"/>
+		<input type="hidden" id="eLng" name="eLng"/>
 		<p>
 			<input type="button" name="back" value="이전" onclick="location.href='poolMemberAdd.do'">
 			<input type="submit" name="next" value="다음">
@@ -151,12 +156,16 @@ input[type='text']
 		     	lng=location.lng();
 		    }
 		    
-		   if(title=='출발지'){
+		    if(title=='출발지'){
 		    	document.getElementById('sc').value=location.toString();
+		    	document.getElementById('sLat').value=lat;
+		    	document.getElementById('sLng').value=lng;
 		   }
 		   else if(title=='도착지')
 		   {
 			    document.getElementById('ec').value=location.toString();
+			    document.getElementById('eLat').value=lat;
+		    	document.getElementById('eLng').value=lng;
 		   }
 		   
 		   window.alert(location+'\n'+address);

@@ -5,59 +5,100 @@
 <html>
 <head>
 <style>
-   <style type="text/css">
-      html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
-      #map { height: 500px; width: 100%; }
-
-
-
+html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+#map { height: 500px; width: 100%; }
 input[type='text']
 {
-	width: 720px;
+	width: 100%;
 }
 </style>
-
+<link rel="stylesheet" type="text/css" href="/final02/CSS/subMenuComponent.css" />
 <meta charset="UTF-8">
 <title>카풀 서비스 메인 페이지</title>
 </head>
 <body>
 <%@ include file="../header.jsp" %>
-<%@ include file="poolSubmenu.jsp" %>
 <section>
-<article>
-<div id="search">
-<h1>검색 영역</h1>
-<form name="search" action="search.do">
-출발지<input type="text" placeholder="출발지를 입력하세요."  id="ss" name="startspot"><br>
-<input type="hidden" id="sc" name="startcoordi">
-목적지<input type="text" placeholder="목적지를 입력하세요."  id="es" name="endspot"><br>
-<input type="hidden" id="ec" name="endcoordi">
-<input type="submit" value="검색"><input type="button" value="상세 검색"><input type="button" value="실시간 매칭"><br>
-<div id="categorySearch">
-상세 검색 영역
-지역 <input type="button" value="서울"><input type="button" value="인천"><input type="button" value="부산"><br>
-인원 <input type="button" value="1명"><input type="button" value="2명"><input type="button" value="3명"><br>
-성별 <input type="button" value="남자만"><input type="button" value="여자만"><br>
-흡연여부 <input type="button" value="흡연 가능"><input type="button" value="흡연 불가"><br>
-</div>
-</form> 
-</div>
-<div id="map"></div>
-</article>
-<div id="recommand">
-<%@ include file="poolRecomm.jsp" %>
-</div>
-<div id="tab">
+	<div class="container">	
+			<div id="tabs" class="tabs">
+				<nav>
+					<ul>
+						<li><a href="#section-1" class="icon-shop"><span>메인</span></a></li>
+						<li><a href="#section-2" class="icon-cup"><span>탈래요</span></a></li>
+						<li><a href="#section-3" class="icon-food"><span>타세요</span></a></li>
+						<li><a href="#section-4" class="icon-lab"><span>단기 카풀</span></a></li>
+						<li><a href="#section-5" class="icon-truck"><span>정기 카풀</span></a></li>
+					</ul>
+				</nav>
+				<div class="content">
+					<section id="section-1">
+						<div id="search">
+								<h1>검색 영역</h1>
+								<form name="search" action="search.do">
+								출발지<input type="text" placeholder="출발지를 입력하세요."  id="ss" name="startspot"><br>
+								<input type="hidden" id="sc" name="startcoordi">
+								목적지<input type="text" placeholder="목적지를 입력하세요."  id="es" name="endspot"><br>
+								<input type="hidden" id="ec" name="endcoordi">
+								<input type="submit" value="검색"><input type="button" onclick="showCate()" value="상세 검색"><input type="button" value="실시간 자동 매칭"><br>
+								<div id="categorySearch">
+								상세 검색 영역
+								지역 <input type="button" value="서울"><input type="button" value="인천"><input type="button" value="부산"><br>
+								인원 <input type="button" value="1명"><input type="button" value="2명"><input type="button" value="3명 이상"><br>
+								성별 <input type="button" value="남성만"><input type="button" value="여성만"><br>
+								흡연여부 <input type="button" value="흡연 가능"><input type="button" value="흡연 불가"><br>
+								</div>
+								</form> 
+								</div>
+								<div id="map"></div>
+														
+					</section>
+					<section id="section-2">
+						<c:import url="/poolMemberList.do"></c:import>
 
+					</section>
+					<section id="section-3">
+						<c:import url="/poolMasterList.do"></c:import>
+
+
+					</section>
+					<section id="section-4">
+						<c:import url="/shortPoolList.do"></c:import>
+
+					</section>
+					<section id="section-5">
+						<c:import url="ongPoolList.do"></c:import>
+					</section>
+				</div><!-- /content -->
+			</div><!-- /tabs -->
 </div>
-<div id="list">
-<c:import url="/poolList.do"></c:import>
-</div>
+
 </section>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="//apis.daum.net/maps/maps3.js?apikey=140c866172be3f537fee6199c675008a&libraries=services,clusterer"></script>
-    <script src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=2e2fe45c-1baa-3078-b615-2c0b3f71bfe5"></script>
+<script src="//apis.daum.net/maps/maps3.js?apikey=140c866172be3f537fee6199c675008a&libraries=services,clusterer"></script>
+   <script src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=2e2fe45c-1baa-3078-b615-2c0b3f71bfe5"></script>
 	<script>
+	var cateBtStatus=false;
+	var cate=document.getElementById('categorySearch');
+	window.onload=function()
+	{
+		cateBtStatus=false;
+		cate.style.display="none";
+	}
+	function showCate()
+	{
+		if(cateBtStatus==true){
+			cate.style.display="none";
+			cateBtStatus=false;
+		}
+		else
+		{
+			cate.style.display="block";
+			cateBtStatus=true;
+			
+		}
+	}
+		 
+		
 	var id;
 	$('input').focus(function(e){
 		id=e.target.id
@@ -117,13 +158,9 @@ input[type='text']
 		// 마커 이미지를 생성합니다
 			var markerImg = new daum.maps.MarkerImage(imgSrc, imgSize, imgOption);
 
-		 
 		  autocomplete = new google.maps.places.Autocomplete(
 			      /** @type {!HTMLInputElement} */(input),
 			      {types: ['geocode']});
-
-
-		  
 
 		 autocomplete.addListener('place_changed', function() {
 		  
@@ -249,6 +286,9 @@ input[type='text']
 </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJz53NRCX_RWtNSeoAbPveANaDjlQF1tU&libraries=places&callback=initAutocomplete"
         async defer></script>	
-
+<script src="/final02/js/cbpFWTabs.js"></script>
+		<script>
+			new CBPFWTabs( document.getElementById( 'tabs' ) );
+		</script>
 </body>
 </html>

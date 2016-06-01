@@ -76,7 +76,6 @@
 					</select></li>
 					 <p>
 						 <input type="button" value="이전">
-						 
 						 <input type="submit" value="결제하기">
 						 <input type="reset" value="다시작성">
 					

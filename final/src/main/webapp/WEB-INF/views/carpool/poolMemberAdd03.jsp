@@ -304,11 +304,7 @@ function viewTerm()
 			</select>분<br>
 			
 			
-		인원<select name="mannum">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-		   </select>명        /
+		인원<input type="number" name="mannum">명        /
 		성별<select name="gender">
 				<option>상관없음</option>
 				<option>남성만</option>
