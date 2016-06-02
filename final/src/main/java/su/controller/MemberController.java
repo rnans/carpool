@@ -131,7 +131,7 @@ public class MemberController {
 	}
 	
 	/**아이디 찾기 폼이동*/
-	@RequestMapping(value="/idFind.do", method=RequestMethod.GET)
+	@RequestMapping("/idFindForm.do")
 	public String idFindForm(){
 		return "member/idFind";
 	}
