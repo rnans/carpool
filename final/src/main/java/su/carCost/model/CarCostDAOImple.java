@@ -67,9 +67,14 @@ public class CarCostDAOImple implements CarCostDAO {
    }
    public List<carInfoDTO> carnum(String id){
 		List<carInfoDTO> carlist=sqlMap.selectList("getCarnum", id);
-		
 		return carlist;
 	}
+   
+   public carInfoDTO Carimg(String carnum){
+	   
+	   carInfoDTO dto=sqlMap.selectOne("getCarimg", carnum);
+	   return dto;
+   }
    
    
 // public List<CarCostDTO> GraphCostList(String id){

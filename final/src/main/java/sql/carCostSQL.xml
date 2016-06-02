@@ -57,7 +57,11 @@
     <select id="getCarnum" resultType="su.carinfo.model.carInfoDTO">
     	select carnum from carinfo where id=#{id}
     </select>
-     
+    
+    <select id="getCarimg" resultType="su.carinfo.model.carInfoDTO">
+    	select * from carinfo where carnum=#{carnum}
+    </select>
+
        
        
       

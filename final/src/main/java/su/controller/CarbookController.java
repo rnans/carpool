@@ -48,24 +48,6 @@ import su.carinfo.model.carInfoDTO;
 		 return mav;
 	}
 	
-	   //리스트보여주기
-	   @RequestMapping("/cost.do")
-	   public ModelAndView CarCostList(HttpSession session,HttpServletRequest req){
-	      
-		   String id=(String)session.getAttribute("sid");
-		   List<carInfoDTO> carlist=CarCostDao.carnum(id);
-		   String carnum=req.getParameter("carnum");
-		   if(carnum==null||carnum.equals("")){
-		   carnum=carlist.get(0).getCarnum(); 
-		   }
-	      List<CarCostDTO> list=CarCostDao.CarCostList(carnum);
-		  ModelAndView mav=new ModelAndView();
-		  mav.addObject("list", list);
-		  mav.addObject("cnum", carlist);
-		  mav.addObject("carnum", carnum);
-		  mav.setViewName("carbook/cost");
-	      return mav;
-	   }
 	   //삭제
 	   @RequestMapping("/costDel.do")
 		public ModelAndView costDelete(HttpServletRequest req){
@@ -141,18 +123,19 @@ import su.carinfo.model.carInfoDTO;
 			} else {
 
 		   List<carInfoDTO> carlist=CarCostDao.carnum(id);
-
+		 
 		   if(carlist.isEmpty()){
 					mav.addObject("msg", "차량등록 후 이용가능합니다. 차량등록 페이지로 이동합니다.");
 					mav.addObject("gopage", "carList.do");
 					mav.setViewName("carManage/carMsg");
-		
 		   } else {
 			   
 		   String carnum=req.getParameter("carnum");
 		   if(carnum==null||carnum.equals("")){
 			   carnum=carlist.get(0).getCarnum();
 		   }
+		   carInfoDTO cardto=CarCostDao.Carimg(carnum);
+		   
 		   String costsum=CarCostDao.CarCostSum(carnum);
 		   String kmsum=CarCostDao.CarKmSum(carnum);
 		   String jooyusum=CarCostDao.CarJooyuSum(carnum);
@@ -174,7 +157,8 @@ import su.carinfo.model.carInfoDTO;
 		   }
 		   if(buysum==null){
 			   buysum = "0";
-		   }		       
+		   }	
+		   	mav.addObject("cardto", cardto);
 		  	mav.addObject("costsum", costsum);
 		  	mav.addObject("kmsum", kmsum);
 			mav.addObject("jooyusum", jooyusum);
@@ -191,40 +175,87 @@ import su.carinfo.model.carInfoDTO;
 	   
 	   @RequestMapping("/carA.do")
 	   public ModelAndView carA(HttpServletRequest req){
-		   String carnum=req.getParameter("carnum");
+		   		   
 		   ModelAndView mav=new ModelAndView();
-		   		
-			String costsum = CarCostDao.CarCostSum(carnum);
-			String kmsum = CarCostDao.CarKmSum(carnum);
-			String jooyusum = CarCostDao.CarJooyuSum(carnum);
-			String jungbisum = CarCostDao.CarJungbiSum(carnum);
-			String buysum = CarCostDao.CarBuySum(carnum);
-			
-			if(costsum==null){
+					   
+		   String carnum=req.getParameter("carnum");
 
-				costsum = "0";
-			}
-			if(kmsum==null){
-				kmsum = "0";
-			}
-			if(jooyusum==null){
-				jooyusum = "0";
-			}
-			if(jungbisum==null){
-				jungbisum = "0";
-			}
-			if(buysum==null){
-				buysum = "0";
-			}
-			
-			mav.addObject("costsum2", costsum);
-			mav.addObject("kmsum2", kmsum);
-			mav.addObject("jooyusum2", jooyusum);
-			mav.addObject("jungbisum2", jungbisum);
-			mav.addObject("buysum2", buysum);
+		   carInfoDTO cardto=CarCostDao.Carimg(carnum);
+		   
+		   String costsum=CarCostDao.CarCostSum(carnum);
+		   String kmsum=CarCostDao.CarKmSum(carnum);
+		   String jooyusum=CarCostDao.CarJooyuSum(carnum);
+		   String jungbisum=CarCostDao.CarJungbiSum(carnum);
+		   String buysum=CarCostDao.CarBuySum(carnum);
+		   
+		   if(costsum==null){
+
+			   costsum = "0";
+		   }
+		   if(kmsum==null){
+			   kmsum = "0";
+		   }
+		   if(jooyusum==null){
+			   jooyusum = "0";
+		   }
+		   if(jungbisum==null){
+			   jungbisum = "0";
+		   }
+		   if(buysum==null){
+			   buysum = "0";
+		   }	
+		   	mav.addObject("cardto", cardto);
+		  	mav.addObject("costsum", costsum);
+		  	mav.addObject("kmsum", kmsum);
+			mav.addObject("jooyusum", jooyusum);
+			mav.addObject("jungbisum", jungbisum);
+			mav.addObject("buysum", buysum);
+
+			mav.addObject("carnum", carnum);
 			mav.setViewName("carbook/carA");
-			
-		return mav;
+		   	
+		    return mav;
+	   }
+	   
+	   //리스트보여주기
+	   @RequestMapping("/cost.do")
+	   public ModelAndView CarCostList(HttpSession session,HttpServletRequest req){
+	      
+		   String id=(String)session.getAttribute("sid");
+		   
+		   ModelAndView mav=new ModelAndView();
+		   
+			if(id==null){
+				mav.addObject("msg", "로그인후 이용가능합니다.");
+				mav.addObject("gopage", "index.do");
+				mav.setViewName("carManage/carMsg");
+				
+			} else {
+
+		   List<carInfoDTO> carlist=CarCostDao.carnum(id);
+		 
+		   if(carlist.isEmpty()){
+					mav.addObject("msg", "차량등록 후 이용가능합니다. 차량등록 페이지로 이동합니다.");
+					mav.addObject("gopage", "carList.do");
+					mav.setViewName("carManage/carMsg");
+		   } else {
+			   
+		   String carnum=req.getParameter("carnum");
+		   if(carnum==null||carnum.equals("")){
+			   carnum=carlist.get(0).getCarnum();
+		   }
+		   carInfoDTO cardto=CarCostDao.Carimg(carnum);
+		      
+		   
+	      List<CarCostDTO> list=CarCostDao.CarCostList(carnum);
+	      mav.addObject("cardto", cardto);
+		  mav.addObject("list", list);
+		  mav.addObject("cnum", carlist);
+		  mav.addObject("carnum", carnum);
+		  mav.setViewName("carbook/cost");
+	      
+		   }}
+		   return mav;
 	   }
 	   
 	   @RequestMapping("/costA.do")
