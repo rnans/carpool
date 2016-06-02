@@ -24,10 +24,6 @@
 <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
 
 <script>
-function loginOpen(){
-	window.open('login.do', 'login', 'width=500 height=400 left=500 top=200');
-}
-
 ////////jquery/////////
 $(document).ready(function(){
 	$("#chageaboo").mouseenter(function(){
