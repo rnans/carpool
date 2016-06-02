@@ -1,14 +1,5 @@
 /* Iconfont made with icomoon.com */
-@font-face {
-	font-family: 'cbp-tmicons';
-	src:url('../fonts/tmicons/cbp-tmicons.eot');
-	src:url('../fonts/tmicons/cbp-tmicons.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/tmicons/cbp-tmicons.woff') format('woff'),
-		url('../fonts/tmicons/cbp-tmicons.ttf') format('truetype'),
-		url('../fonts/tmicons/cbp-tmicons.svg#cbp-tmicons') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
+
 
 /* reset  list style */
 .cbp-tm-menu,
@@ -38,9 +29,9 @@
 }
 
 .cbp-tm-menu > li > a {
-	line-height: 4em;
+	line-height: 3em;
 	padding: 0 0.3em;
-	font-size: 1.2em;
+	font-size: 32px;
 	display: block;
 	color: #fff;
 }
@@ -163,20 +154,6 @@ the right position for the arrow
 	background: #47a3da;
 }
 
-/* the icons (main level menu icon and sublevel icons) */
-.cbp-tm-submenu li a:before,
-.cbp-tm-menu > li > a:before {
-	font-family: 'cbp-tmicons';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	vertical-align: middle;
-	margin-right: 0.6em;
-	-webkit-font-smoothing: antialiased;
-}
 
 .cbp-tm-submenu li a:before {
 	position: absolute;

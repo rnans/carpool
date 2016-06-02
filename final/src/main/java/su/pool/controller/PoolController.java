@@ -98,6 +98,12 @@ public class PoolController
 		return "carpool/poolMain";
 	}
 	
+	@RequestMapping("/poolFind.do")
+	public String viewFindPage()
+	{
+		return "carpool/poolFind";
+	}
+	
 	@RequestMapping("/poolMemberAdd.do")
 	public ModelAndView viewMemberAddPage(HttpSession session)
 	{

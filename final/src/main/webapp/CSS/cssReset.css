@@ -2,6 +2,15 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@font-face {
+	font-family: 'NanumBarunGothic';
+	src:url('/final02/fonts/NanumBarunGothic.eot');
+	src:url('/final02/fonts/NanumBarunGothic.eot?#iefix') format('embedded-opentype'),
+		url('/final02/fonts/NanumBarunGothic.ttf') format('truetype'),
+/* 		url('../fonts/tmicons/cbp-tmicons.svg#cbp-tmicons') format('svg'); */
+	font-weight: normal;
+	font-style: normal;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

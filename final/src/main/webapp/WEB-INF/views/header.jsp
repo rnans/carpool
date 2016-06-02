@@ -59,16 +59,17 @@ $(document).ready(function(){
 				<li><a href="memberInfo.do">관리자페이지</a></li>
 		
 		</c:if>
-			<ul id="cbp-tm-menu" class="cbp-tm-menu">
-	<li>
+<ul id="cbp-tm-menu" class="cbp-tm-menu">
+	<li onclick="location.href='index.do'">
 		<a href="#">Home</a>
 	</li>
 
 	<li>
 		<a href="myPage.do">마이페이지</a>
 	</li>
-	<li>
-		<a href="poolMain.do">카풀</a>
+	<li onclick="location.href='poolMain.do'">
+	
+		<a href="#"><img src="/final02/icons/car.png">카풀</a>
 		<ul class="cbp-tm-submenu">
 			<li><a href="poolMain.do" class="cbp-tm-icon-archive">메인</a></li>
 			<li><a href="poolAdd.do" class="cbp-tm-icon-archive">등록하기</a></li>
@@ -107,7 +108,7 @@ $(document).ready(function(){
 		</ul>
 	</li>
 </ul>
-<div class="filler-below"></div>
+
 		<script>
 			var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
 		</script>
