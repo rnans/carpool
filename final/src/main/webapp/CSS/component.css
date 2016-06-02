@@ -9,9 +9,10 @@
 
 /* set menu position; change here to set to relative or float, etc. */
 .cbp-tm-menu {
+	z-index: 33;
 	display: block;
 	position: relative;
-	z-index: 1000;
+	z-index: 50;
 	top: 150;
 	width: 100%;
 	background: #47a3da;
