@@ -10,37 +10,14 @@ public class carInfoDTO {
     private String cartype;
     private String confirmphoto;
     private String confirm;
+    private String carphoto;
     
 	public carInfoDTO() {
 		super();
 	}
 
-	public carInfoDTO(int idx) {
-		super();
-		this.idx = idx;
-	}
-
-	public carInfoDTO(int idx, String driver, String carnum, String cartype, String confirmphoto) {
-		super();
-		this.idx = idx;
-		this.driver = driver;
-		this.carnum = carnum;
-		this.cartype = cartype;
-		this.confirmphoto = confirmphoto;
-	}
-
-	public carInfoDTO(String id, String driver, String carid, String carnum, String cartype, String confirmphoto) {
-		super();
-		this.id = id;
-		this.driver = driver;
-		this.carid = carid;
-		this.carnum = carnum;
-		this.cartype = cartype;
-		this.confirmphoto = confirmphoto;
-	}
-
 	public carInfoDTO(int idx, String id, String driver, String carid, String carnum, String cartype,
-			String confirmphoto, String confirm) {
+			String confirmphoto, String confirm, String carphoto) {
 		super();
 		this.idx = idx;
 		this.id = id;
@@ -50,6 +27,7 @@ public class carInfoDTO {
 		this.cartype = cartype;
 		this.confirmphoto = confirmphoto;
 		this.confirm = confirm;
+		this.carphoto = carphoto;
 	}
 
 	public int getIdx() {
@@ -115,10 +93,14 @@ public class carInfoDTO {
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
 	}
-	
-	
 
-	
-	
+	public String getCarphoto() {
+		return carphoto;
+	}
+
+	public void setCarphoto(String carphoto) {
+		this.carphoto = carphoto;
+	}
+
     
 }

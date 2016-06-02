@@ -76,11 +76,19 @@ public class MypageController {
 	public ModelAndView mypage(HttpSession session,HttpServletRequest req){
 		String id=(String)session.getAttribute("sid");
 		ModelAndView mav=new ModelAndView();
-		MemberDTO dto=mypageDao.getAllUserInfo(id);
-		List<UploadDTO> dto2=uploadDao.imgFind(id);
-		mav.setViewName("mypage/myPage2");
-		mav.addObject("dto",dto);
-		mav.addObject("dto2", dto2);
+		
+		if(id==null){
+			mav.setViewName("mypage/myPageMsg");
+			mav.addObject("msg", "로그인 후 이용 가능합니다.");
+			System.out.println("로그인후이용가능");
+		}else if(!(id.equals(""))||!(id==null)){
+			MemberDTO dto=mypageDao.getAllUserInfo(id);
+			List<UploadDTO> dto2=uploadDao.imgFind(id);
+			mav.setViewName("mypage/myPage2");
+			mav.addObject("dto",dto);
+			mav.addObject("dto2", dto2);	
+		}
+
 		return mav;
 	}
 
