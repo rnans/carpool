@@ -38,19 +38,24 @@ text-align: center;
     color: #777;
 }
 
-    .navbar-nav li {
+    .home li {
     position: relative;
     float: left;
     font-size: 20px;
     padding-right: 10px;
-    width: 100px;
+    width:80px;
+
+}
+.tabletd td{
+width: 50%;
 }
 
 </style>
 </head>
-<body>
+<body style="color: #4C4C4C; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;">
 
 <%@include file="../header.jsp"%>
+
 <script type="text/javascript" src="/final02/js/httpRequest.js"></script>
 <script>
 window.onload=function(){
@@ -71,7 +76,7 @@ function show(){
 			carnum=sel.options[i].value;			
 		}
 	}		
-	var params='carnum='+carnum
+	var params='carnum='+carnum;
 	sendRequest('carA.do', params, showResult, 'GET');
 }
 
@@ -112,7 +117,7 @@ function opencostReg(){
   <div class="container-fluid" >   
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav bar">
       	<li><a href="carBookInfo.do"><i class="fa fa-home fa-2x" aria-hidden="true"></i>
      차계부</a></li>
         <li><a href="cost.do"><i class="fa fa-calculator fa-2x" aria-hidden="true"></i>
@@ -129,10 +134,7 @@ function opencostReg(){
 
 <div style="width: 65%; margin: 0px auto">
   <div class="buttonArea" style="color: #4C4C4C; width:100%;">
-    
-
-    
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav home">
 	<li>
 	<i class="fa fa-home fa-3x" style="float: left;" aria-hidden="true"></i>
 	<span class="gSrOnly">차계부</span></li>
@@ -162,33 +164,41 @@ function opencostReg(){
     </div>
 
 
-<div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;">
-<h4 style="padding-left:100px; color: white;padding-top: 10px;font-size: 15px;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;그랜저SD &nbsp; [12가4567]</h4>
+
+
+
+<div id="costdiv" style="margin-top: 15px;">
+<div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;margin-bottom: 15px;">
+<h4 style="padding-left:100px; color: white;padding-top: 10px;font-size: 15px;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;${cardto.cartype } &nbsp; [${cardto.carnum}]</h4>
 
 </div>
-<div id="차계부 홈 첫번재 줄">
-
-<div id="costdiv" style="margin-top: 20px;">
-<div style="float:left; height:225px; width: 50%;">차량사진</div>
-<div style="float:right; height:225px; width: 50%;">
-			<span>차량정보</span>
-			<table class="table table-striped table-hover " style="height: 154.44px;">
+<div style="float:left; height:225px; width: 48%; margin-right: 7px;" >
+<img style="width:100%;height:100%;" src="http://localhost:9090/final02/img/${cardto.carphoto}">
+</div>
+<div style="float:right; height:225px; width: 48%; margin-left: 7px;" >
+			<fieldset>
+			<legend style="font-size: 17px; font-weight: bold; padding-bottom: 5px;">차량정보</legend> 
+			<table class="table table-striped table-hover tabletd" style="height: 154.44px;border-top: 3px solid #4C4C4C; border-bottom:3px solid #4C4C4C;">
 				<!--  <table border="1" width="400" height="100" >-->
 				<thead>
 					<tr>
 						<td style="width: 50%;">기록시작일</td>
 						
 
-						<td style="width: 50%;"><input type="text" name="날짜" value="날짜"></td>
+						<td style="width: 50%;">2016-01-01</td>
 					</tr>
 				</thead>
 				<tbody>
 					<c:set var="cost" value="${costsum}" />
 					<c:set var="km" value="${kmsum}" />
-<tr>
-<td>시작 주행거리</td>
-<td>0km</td>
-</tr>
+				<tr>
+					<td>운전자</td>
+					<td>${cardto.driver }</td>
+				</tr>
+				<tr>
+				<td>시작 주행거리</td>
+				<td>0km</td>
+				</tr>
 					<tr>
 						<td>총 주행거리</td>
 						<td  class="info" name="number">${km}km</td>
@@ -200,12 +210,15 @@ function opencostReg(){
 				</tbody>
 
 			</table>
+		</fieldset>
 	</div>
-</div>
 
 		<fieldset>
-			<legend>차계부</legend>
-			<table class="table table-striped table-hover ">
+			<legend style="font-size: 17px; font-weight: bold; padding-bottom: 5px;">차계부
+  
+			</legend>
+			<table class="table table-striped table-hover " style="height: 154.44px;
+			border-top: 3px solid #4C4C4C; border-bottom:3px solid #4C4C4C;">
 				<thead>
 					<!--  <table border="1" width="400" height="100" >-->
 					<tr>
@@ -233,6 +246,10 @@ function opencostReg(){
 			</table>
 		</fieldset>
 	</div>
+		
 </div>
+	
+	
+	
 </body>
 </html>

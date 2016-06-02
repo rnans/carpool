@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="./bootstrap/css/bootstrap.css" rel="stylesheet"
-	type="text/css" />
+<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <style>
 .navbar-brand {
@@ -83,6 +83,45 @@
 		float: none;
 	}
 }
+
+.buttonArea li .gSrOnly {
+    position: absolute!important;
+    top: auto!important;
+    bottom: 4px;
+    font-size: 14px!important;
+    text-align: center;
+    line-height: 1.8!important;
+    white-space: nowrap;
+    color: #777;
+}
+.buttonArea {
+    width: 100%;
+    height: 52px;
+}
+.buttonArea ul {
+    float: left;
+    margin: 0 0 0 9px;
+}
+
+.buttonArea li .gSrOnly {
+    position: absolute!important;
+    top: auto!important;
+    bottom: 4px;
+    font-size: 14px!important;
+    text-align: center;
+    line-height: 1.8!important;
+    white-space: nowrap;
+    color: #777;
+}
+
+    .home li {
+    position: relative;
+    float: left;
+    font-size: 20px;
+    padding-right: 10px;
+    width:80px;
+
+}
 </style>
 
 <!-- amCharts javascript code -->
@@ -110,18 +149,56 @@
 </head>
 <body>
 	<%@include file="../header.jsp"%>
-	<hr size=5 color=skyblue>
-	${carnum }
-<button type="button" class="btn btn-default btn-lg" style="border:0;">
-  <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 통계
-</button>
-	<div class="btn-group">
-		<select class="btn btn-default dropdown-toggle" id="sel" name="carnum"
-			onchange="show()">
-			<c:forEach var="carn" items="${cnum }">
-				<option value="${carn.carnum}">${carn.carnum}</option>
-			</c:forEach>
-	</div>
+<nav class="navbar navbar-default" >
+  <div class="container-fluid" >   
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
+      <ul class="nav navbar-nav bar">
+      	<li><a href="carBookInfo.do"><i class="fa fa-home fa-2x" aria-hidden="true"></i>
+     차계부</a></li>
+        <li><a href="cost.do"><i class="fa fa-calculator fa-2x" aria-hidden="true"></i>
+     내역</a></li>
+        <li><a href="graph.do"><i class="fa fa-bar-chart fa-2x" aria-hidden="true"></i>
+     그래프</a></li> 
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>	
+<div style="width: 65%; margin: 0px auto">
+<div class="buttonArea" style="color: #4C4C4C; width:100%;">   
+    <ul class="nav navbar-nav home">
+	<li>
+	<i class="fa fa-home fa-3x" style="float: left;" aria-hidden="true"></i>
+	<span class="gSrOnly">차계부</span></li>
+     
+     <li style=" float: left;position: relative;display: inline-block;">
+		<div class="form-group" style="padding-top: 15px; padding-left: 50px;padding-right:50px;width:350px;  position: relative;display: inline-block;">
+			<a href="#" class="btn btn-info" style="float: left; border:0;">Info</a>
+			<select class="btn btn-default dropdown-toggle" style="width: 180px; float: left;"   id=sel name=carnum
+				onchange="show()">
+				<c:forEach var="carn" items="${cnum }">
+					<option value="${carn.carnum }">${carn.carnum}</option>
+				</c:forEach>
+			</select>
+			
+		</div>
+	</li>
+   </ul>
+    
+    
+     
+           <div style="float: right;">
+
+       <div class="buttonSubmit" style="float: right; padding-top: 15px; padding-right: 20px;">
+							<a href="#" onclick="javascript:opencostReg()" class="btn btn-info" style="float: left; background: #EDD200; border:0;">비용 입력</a>
+		</div>
+      </div>
+    </div>
+	
+	
 	<form action="">
 		<div>
 			Date: <input type="text" name="startday" id="datepicker" value="시작일"
@@ -250,6 +327,8 @@
 </div>
 	<a href="graph2.do">test</a>
 	<a href="graphTest2.do">test2</a>
+	
+	</div>
 </body>
 
 
