@@ -52,7 +52,7 @@
 	<li>
 		<a href="myPage.do">마이페이지</a>
 	</li>
-	<li onclick="location.href='poolMain.do'">
+	<li>
 	
 		<a href="#"><img src="/final02/icons/car.png">카풀</a>
 		<ul class="cbp-tm-submenu">

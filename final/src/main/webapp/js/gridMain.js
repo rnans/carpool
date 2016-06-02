@@ -41,7 +41,7 @@
 		current = -1,
 		lockScroll = false, xscroll, yscroll,
 		isAnimating = false,
-		menuCtrl = document.getElementById('menu-toggle'),
+		//menuCtrl = document.getElementById('menu-toggle'),
 		menuCloseCtrl = sidebarEl.querySelector('.close-button');
 
 	/**
@@ -108,11 +108,11 @@
 		} );
 
 		// hamburger menu button (mobile) and close cross
-		menuCtrl.addEventListener('click', function() {
+		/*menuCtrl.addEventListener('click', function() {
 			if( !classie.has(sidebarEl, 'sidebar--open') ) {
 				classie.add(sidebarEl, 'sidebar--open');	
 			}
-		});
+		});*/
 
 		menuCloseCtrl.addEventListener('click', function() {
 			if( classie.has(sidebarEl, 'sidebar--open') ) {

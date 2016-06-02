@@ -1,6 +1,7 @@
 .dialog__overlay {
 	-webkit-transition-duration: 0.4s;
 	transition-duration: 0.4s;
+	z-index:1;
 }
 
 .dialog.dialog--open .dialog__content,

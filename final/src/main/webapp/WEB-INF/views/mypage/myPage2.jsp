@@ -548,7 +548,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<a href="memberleave.do">회원탈퇴</a>
 				</nav>
 			</div>
-			<button class="menu-button" id="open-button">Open Menu</button>
+			
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">

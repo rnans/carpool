@@ -4,6 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 <style>
 #categorySearch
 {
@@ -262,7 +269,7 @@ function modiRate(idx)
 <script>
 //초기화 함수
 function initTmap(){
-    centerLL = new Tmap.LonLat(14145677.4, 4511257.6);
+  
     map = new Tmap.Map({div:'map_div',
                         width:'100%', 
                         height:'400px',
@@ -339,6 +346,8 @@ function searchRoute(startX,startY,endX,endY){
     var routeLayer = new Tmap.Layer.Vector("route", {protocol:prtcl, strategies:[new Tmap.Strategy.Fixed()]});
     routeLayer.events.register("featuresadded", routeLayer, onDrawnFeatures);
     map.addLayer(routeLayer);
+    
+    
 }
 //경로 그리기 후 해당영역으로 줌
 function onDrawnFeatures(e){
