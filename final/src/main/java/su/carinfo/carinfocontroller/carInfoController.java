@@ -107,13 +107,21 @@ public class carInfoController {
 	}
 
 	@RequestMapping(value = "/carAdd.do", method = RequestMethod.POST)
-	public ModelAndView carAdd(MultipartHttpServletRequest req, HttpServletRequest request, 
+	public ModelAndView carAdd(@Param(value="check")String check,MultipartHttpServletRequest req, HttpServletRequest request, 
 			HttpSession session, UploadDTO dto,carInfoDTO dto2) {
 
 		ModelAndView mav = new ModelAndView();
 		String msg = null;
 		int result2 = carInfoDao.carNumList(dto2);
-		if (result2 == 1) {
+		
+		if(check.equals("")||check==null){
+			
+			mav.addObject("msg", "형식 확인을 해주세요.");
+			mav.addObject("dto", dto2);
+			mav.setViewName("carManage/carAdd");
+		}else if (result2 == 1) {
+		
+			
 			mav.addObject("msg", "이미 등록된 차량 번호입니다.");
 			mav.addObject("dto", dto2);
 			mav.setViewName("carManage/carAdd");

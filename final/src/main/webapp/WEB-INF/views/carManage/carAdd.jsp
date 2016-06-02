@@ -53,6 +53,7 @@ function car_num_chk(car_num)
 { 
     var v= car_num; 
     var result = document.getElementById('result'); 
+    var carNum=document.getElementsByName('carnum');
 
     var pattern1 = /\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; // 12저1234 
     var pattern2 = /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; // 서울12치1233 
@@ -60,14 +61,21 @@ function car_num_chk(car_num)
     if (!pattern1.test(v)) { 
         if (!pattern2.test(v)) { 
             result.innerText="차량 형식에 맞지 않습니다.";
+            var car=document.getElementById("car");
+            car.value="";
         } 
         else {  
             result.innerText="차량 형식에 맞습니다.";
+            var check=document.getElementsByName("check");
+            check.value=1;
         } 
     } 
     else { 
         result.innerText ="차량 형식에 맞습니다."; 
+        var check=document.getElementByName("check");
+        check.value=1;
     } 
+    
 } 
 
 </script>
@@ -82,7 +90,7 @@ function car_num_chk(car_num)
 				<br> 
 				
 				차 번호:<input type="text" name="carnum" value="${dto.carnum }" id="car" maxlength="9" required placeholder="공백없이">
-				<input type=button value="Check" onclick="car_num_chk(document.getElementById('car').value)">  
+				<input type=button value="형식 확인" onclick="car_num_chk(document.getElementById('car').value)">  
 				
 				  <div id=result></div> 
 				<br> 
@@ -116,6 +124,7 @@ function car_num_chk(car_num)
 
 			<div>
 			<p>
+				<input type="hidden" name="check" value="">
 				<input type="button" value="취소" onclick="addClose()"> 
 				<input type="submit" value="등록">
 				</p>

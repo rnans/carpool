@@ -18,11 +18,13 @@ public class carInfoDAOImple implements carInfoDAO {
 
 	// 차량등록
 	public int carAdd(carInfoDTO dto) {
-		System.out.println(dto.getDriver());
-System.out.println(dto.getCarphoto());
-System.out.println(dto.getConfirmphoto());
-		int result = sqlMap.insert("carAdd", dto);
 
+		int result=0;
+		if(dto.getCartype()==null||dto.getCartype().equals("")){
+			
+		}else{
+		 result = sqlMap.insert("carAdd", dto);
+		}
 		return result;
 	}
 
