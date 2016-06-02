@@ -18,6 +18,34 @@ text-align: center;
 .nav li{
 
 }
+.buttonArea {
+    width: 100%;
+    height: 52px;
+}
+.buttonArea ul {
+    float: left;
+    margin: 0 0 0 9px;
+}
+
+.buttonArea li .gSrOnly {
+    position: absolute!important;
+    top: auto!important;
+    bottom: 4px;
+    font-size: 14px!important;
+    text-align: center;
+    line-height: 1.8!important;
+    white-space: nowrap;
+    color: #777;
+}
+
+    .navbar-nav li {
+    position: relative;
+    float: left;
+    font-size: 20px;
+    padding-right: 10px;
+    width: 100px;
+}
+
 </style>
 </head>
 <body>
@@ -92,23 +120,6 @@ function opencostReg(){
         <li><a href="graph.do"><i class="fa fa-bar-chart fa-2x" aria-hidden="true"></i>
      그래프</a></li> 
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-             <select class="btn btn-default dropdown-toggle" id=sel name=carnum onchange="show()">
-	<c:forEach var="carn" items="${cnum }" >
-		<option value="${carn.carnum }">${carn.carnum}</option>
-	</c:forEach>
-	</select>
-        </div>
-       <div class="buttonSubmit" style="float: right;">
-							<button type="reset" class="uButton uButtonDefault" 
-							style="background: #EDD200; min-width: 70px; line-height: 32px; 
-								margin: 0 3px; font-size: 15px; color: #fff; border:0;"
-									onclick="javascript:opencostReg()">
-								비용 입력</button>
-							
-		</div>
-      </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Link</a></li>
       </ul>
@@ -117,15 +128,43 @@ function opencostReg(){
 </nav>
 
 <div style="width: 65%; margin: 0px auto">
- <div class="navbar-header" style="color: #4C4C4C;">
+  <div class="buttonArea" style="color: #4C4C4C; width:100%;">
     
-	<i class="fa fa-home fa-3x" aria-hidden="true"></i>
-     차계부
+
+    
+    <ul class="nav navbar-nav">
+	<li>
+	<i class="fa fa-home fa-3x" style="float: left;" aria-hidden="true"></i>
+	<span class="gSrOnly">차계부</span></li>
+     
+     <li style=" float: left;position: relative;display: inline-block;">
+		<div class="form-group" style="padding-top: 15px; padding-left: 50px;padding-right:50px;width:350px;  position: relative;display: inline-block;">
+			<a href="#" class="btn btn-info" style="float: left; border:0;">Info</a>
+			<select class="btn btn-default dropdown-toggle" style="width: 180px; float: left;"   id=sel name=carnum
+				onchange="show()">
+				<c:forEach var="carn" items="${cnum }">
+					<option value="${carn.carnum }">${carn.carnum}</option>
+				</c:forEach>
+			</select>
+			
+		</div>
+	</li>
+    </ul>
+    
+    
+     
+           <div style="float: right;">
+
+       <div class="buttonSubmit" style="float: right; padding-top: 15px; padding-right: 20px;">
+							<a href="#" onclick="javascript:opencostReg()" class="btn btn-info" style="float: left; background: #EDD200; border:0;">비용 입력</a>
+		</div>
+      </div>
     </div>
 
 
-<div class="outer" style="display: table;width:100%;height:40px;background-color:#4C4C4C;">
- <h4 style="padding-left:100px; vertical-align:middle;color: white;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;그랜저SD &nbsp; [12가4567]</h4>
+<div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;">
+<h4 style="padding-left:100px; color: white;padding-top: 10px;font-size: 15px;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;그랜저SD &nbsp; [12가4567]</h4>
+
 </div>
 <div id="차계부 홈 첫번재 줄">
 
@@ -136,7 +175,7 @@ function opencostReg(){
 			<table class="table table-striped table-hover " style="height: 154.44px;">
 				<!--  <table border="1" width="400" height="100" >-->
 				<thead>
-					<tr class="success">
+					<tr>
 						<td style="width: 50%;">기록시작일</td>
 						
 
@@ -146,17 +185,17 @@ function opencostReg(){
 				<tbody>
 					<c:set var="cost" value="${costsum}" />
 					<c:set var="km" value="${kmsum}" />
-<tr class="success">
+<tr>
 <td>시작 주행거리</td>
 <td>0km</td>
 </tr>
-					<tr class="success">
+					<tr>
 						<td>총 주행거리</td>
-						<td name="number">${km}km</td>
+						<td  class="info" name="number">${km}km</td>
 					</tr>
-					<tr class="success">
+					<tr>
 						<td>총 지출금액</td>
-						<td name="number">${cost}원</td>
+						<td  class="info" name="number">${cost}원</td>
 					</tr>
 				</tbody>
 
@@ -169,7 +208,7 @@ function opencostReg(){
 			<table class="table table-striped table-hover ">
 				<thead>
 					<!--  <table border="1" width="400" height="100" >-->
-					<tr class="success">
+					<tr>
 						<th>날짜</th>
 						<th></th>
 					</tr>
@@ -178,17 +217,17 @@ function opencostReg(){
 					<c:set var="jooyu" value="${jooyusum}" />
 					<c:set var="jungbi" value="${jungbisum}" />
 					<c:set var="buy" value="${buysum}" />
-					<tr class="success">
+					<tr>
 						<td>총 주유비용</td>
-						<td name="number">${jooyu }원</td>
+						<td  class="info" name="number">${jooyu }원</td>
 					</tr>
-					<tr class="success">
+					<tr>
 						<td>총 정비비용</td>
-						<td name="number">${jungbi }원</td>
+						<td  class="info" name="number">${jungbi }원</td>
 					</tr>
-					<tr class="success">
+					<tr>
 						<td>총 물품구입비용</td>
-						<td name="number">${buy }원</td>
+						<td  class="info" name="number">${buy }원</td>
 					</tr>
 				</tbody>
 			</table>
