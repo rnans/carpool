@@ -76,6 +76,14 @@
 			classie.remove( this.el, 'dialog--open' );
 			classie.add( self.el, 'dialog--close' );
 			
+			var loginDiv=document.getElementById('loginDiv');
+			var idFdiv=document.getElementById('idFind');
+			var pwFdiv=document.getElementById('pwFind');
+			
+			loginDiv.style.display="block";
+			idFdiv.style.display='none';
+			pwFdiv.style.display='none';
+			
 			onEndAnimation( this.el.querySelector( '.dialog__content' ), function() {
 				classie.remove( self.el, 'dialog--close' );
 			} );

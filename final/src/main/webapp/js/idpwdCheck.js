@@ -7,7 +7,7 @@ function idCheckResult(){
 	if(XHR.readyState==4){
 		if(XHR.status==200){
 			var result = XHR.responseText;
-			var span = document.getElementById('idmsg');
+			var span = document.getElementById('idmsg');			
 			span.innerHTML=result;
 		}
 	}
