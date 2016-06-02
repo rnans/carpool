@@ -78,7 +78,7 @@ public class MypageController {
 		ModelAndView mav=new ModelAndView();
 		MemberDTO dto=mypageDao.getAllUserInfo(id);
 		List<UploadDTO> dto2=uploadDao.imgFind(id);
-		mav.setViewName("mypage/myPage");
+		mav.setViewName("mypage/myPage2");
 		mav.addObject("dto",dto);
 		mav.addObject("dto2", dto2);
 		return mav;
@@ -93,7 +93,7 @@ public class MypageController {
 		List<UploadDTO> dto2=uploadDao.imgFind(id);
 		mav.addObject("dto", dto);
 		mav.addObject("dto2",dto2);
-		mav.setViewName("mypage/myProfile");
+		mav.setViewName("mypage/myProfile2");
 		return mav;
 	}
 	
@@ -136,7 +136,7 @@ public class MypageController {
 
 	
 		mav.addObject("dto", dto1);
-		mav.setViewName("mypage/pwdUpdate");
+		mav.setViewName("mypage/pwdUpdate2");
 		return mav;
 		
 		
@@ -237,11 +237,14 @@ public class MypageController {
 	  
 	  @RequestMapping("/memberleave.do")
 	  public String memberleave(){
-		  return "mypage/memberleave";
+		  return "mypage/memberleave2";
 	  }
 	
-	  
-	  
+//	  
+//	  @RequestMapping("/trr.do")
+//	  public String trrtest(){
+//		  return "mypage/trr";
+//	  }
 	  
 	
 	
