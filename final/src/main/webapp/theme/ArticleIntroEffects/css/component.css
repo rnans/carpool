@@ -11,6 +11,7 @@
 
 html, body, .container, .header {
 	height: 100%;
+
 }
 
 /* Header */
@@ -182,7 +183,6 @@ button.trigger span::before {
 	padding: 0.25em;
 	font-style: italic;
 	font-size: 1.65em;
-	font-family: 'Lora', serif;
 	line-height: 1.4;
 }
 
@@ -678,7 +678,6 @@ button.trigger span::before {
 }
 
 .intro-effect-side .header h1 {
-	font-family: 'Lora', serif;
 	font-style: italic;
 	font-weight: 400;
 	padding: 0 0 0.5em 0;
@@ -839,7 +838,6 @@ button.trigger span::before {
 }
 
 .intro-effect-sidefixed .title h1 {
-	font-family: 'Playfair Display', serif;
 	font-weight: 700;
 	padding: 0 0 0.5em 0;
 	color: #585a66;
@@ -1040,7 +1038,6 @@ button.trigger span::before {
 }
 
 .intro-effect-grid .header h1 {
-	font-family: 'Playfair Display', serif;
 	font-weight: 700;
 	padding: 0 0 0.6em;
 }
@@ -1104,7 +1101,6 @@ button.trigger span::before {
 }
 
 .intro-effect-grid .grid li h2 {
-	font-family: 'Playfair Display', serif;
 	font-weight: 700;
 	padding-bottom: 0.4em;
 	margin: 1em;
