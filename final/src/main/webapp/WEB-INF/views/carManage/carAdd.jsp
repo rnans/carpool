@@ -117,7 +117,7 @@ function car_num_chk(car_num)
 			<div>
 			<p>
 				<input type="button" value="취소" onclick="addClose()"> 
-				<input type="button" value="등록" onclick="test()">
+				<input type="submit" value="등록">
 				</p>
 			</div>
 
