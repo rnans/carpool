@@ -24,17 +24,6 @@
 <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
 
 <script>
-////////jquery/////////
-$(document).ready(function(){
-	$("#chageaboo").mouseenter(function(){
-		$(this).append(" <li id='chageaboo2'><a href='#'>home</a>&nbsp&nbsp<a href='cost.do?id=${sid}'>cost</a>&nbsp&nbsp<a href='graph.do?id=${sid}'>graph</a></li>");	
-	});
-	
-	$("#chageaboo").mouseleave(function(){
-		$(this).children("#chageaboo2").remove();
-	});
-	
-});
 </script>
 
 <header>
@@ -82,8 +71,9 @@ $(document).ready(function(){
 	<li>
 		<a href="carBookInfo.do">차계부</a>
 		<ul class="cbp-tm-submenu">
-			<li><a href="cost.do" class="cbp-tm-icon-archive">Cost</a></li>
-			<li><a href="graph.do" class="cbp-tm-icon-cog">Graph</a></li>
+			<li><a href="cost.do" class="cbp-tm-icon-archive">차계부</a></li>
+			<li><a href="cost.do" class="cbp-tm-icon-archive">비용</a></li>
+			<li><a href="graph.do" class="cbp-tm-icon-cog">그래프</a></li>
 		</ul>
 	</li>
 	<li>
