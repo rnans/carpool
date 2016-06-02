@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+#mainsection
+{
+	margin-top:5%;
+}
+input[type='text']
+{
+	width: 80%;
+}

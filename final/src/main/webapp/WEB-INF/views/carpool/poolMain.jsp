@@ -7,10 +7,7 @@
 <style>
 html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
 #map { height: 500px; width: 100%; }
-input[type='text']
-{
-	width: 80%;
-}
+
 </style>
 <meta charset="UTF-8">
 <title>카풀 서비스 메인 페이지</title>

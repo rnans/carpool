@@ -9,97 +9,321 @@
 	#rig2 a{
 		color: black;
 	}
+.button{
+	float: none;
+	margin:0 auto;
+}
+#a{
+	
+	margin-right: 250px;
+}
+
 </style>
+<script src="https://code.jquery.com/jquery-2.2.3.js"></script>
+<script src="/final02/bootstrap/js/bootstrap.js"></script>
 
 <link href="/final02/CSS/cssReset.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/dialog-sally.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/dialog.css" />
 
-		
-<link href="/final02/CSS/component.css" rel="stylesheet" type="text/css" />
-<link href="/final02/CSS/default.css" rel="stylesheet" type="text/css" />
-<script src="/final02/js/cbpTooltipMenu.js"></script>
-<script src="/final02/js/cbpTooltipMenu.min.js"></script>
-<script src="/final02/js/modernizr.custom.js"></script>
-<script src="https://code.jquery.com/jquery-2.2.3.js"></script>
+<!-- 텍스트상자 -->
+<link rel="stylesheet" type="text/css" href="/final02/CSS/set1.css" />
+
+<!-- 로그인 버튼 -->
+<link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
+
+<!-- 로그인 모달사용 -->
+<link rel="stylesheet" type="text/css" href="/final02/CSS/dialog-sally.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/dialog.css" />
+
+
+<link href="/final02/CSS/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="/final02/CSS/menu.css" rel="stylesheet" type="text/css" />
+
 
 <script>
 </script>
 
 <header>
-	<c:if test="${!empty sessionScope.sid}">
-		<div id="rig1">
-			${sessionScope.sid}님 로그인 | <a href="logout.do">로그아웃</a>
+
+<nav class="navbar navbar-findcond navbar-fixed-top">
+    <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.do">PoolParty</a>
 		</div>
-	</c:if>
-	<c:if test="${empty sessionScope.sid }">
-		<div id="rig2">
-		<c:import url="/loginForm.do"></c:import> | <a href="memberJoin.do">회원가입</a>
-		</div>
-	</c:if>
-		
-	<ul>
-		<c:if test="${sessionScope.grade eq '관리자'}">
-			
+		<div class="collapse navbar-collapse" id="navbar">
+			<ul class="nav navbar-nav navbar-left">
+				<li class="dropdown">
+					<a href="poolMain.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">카풀<span class="badge">0</span><span class="caret"></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="poolAdd.do">등록하기</a></li>
+						<li class="divider"></li>
+						<li><a href="poolFindForm.do">검색하기</a></li>						
+						<li class="divider"></li>
+						<li><a href="poolMasterList.do">타세요</a></li>
+						<li><a href="poolMemberList.do">탈래요</a></li>
+						<li><a href="shortPoolList.do">단기 카풀</a></li>
+						<li><a href="longPoolList.do">정기 카풀</a></li>
+						<li class="divider"></li>
+						<li><a href="poolStatus.do">예약 현황</a></li>
+						
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="comm.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">커뮤니티 <span class="badge">0</span><span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="comm.do">전체글</a></li>
+						<li class="divider"></li>
+						<li><a href="calendar.do">일정</a></li>
+						<li><a href="commMember.do">멤버</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="carBookInfo.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">차계부 <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="cost.do">차계부</a></li>
+						<li><a href="cost.do">비용</a></li>
+						<li><a href="graph.do">그래프</a></li>
+					</ul>
+				</li>
+				<li><a href="carList.do">차량관리</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="csCenter.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">고객센터 <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="csCenter.do">공지사항</a></li>
+						<li class="divider"></li>
+						<li><a href="qnaList.do">자주묻는질문</a></li>
+						<li><a href="oneAndOne.do">1:1문의</a></li>
+						<li><a href="useGuideList.do">이용안내</a></li>
+					</ul>
+				</li>
+				<c:if test="${!empty sessionScope.sid}">
+				<li class="active"><a href="#">${sessionScope.sid}님 로그인</a> </li>
+				<li><a href="logout.do">로그아웃</a></li>
+				</c:if>
+				<c:if test="${empty sessionScope.sid }">
+				<li class="active">
+				<!-- 로그인버튼 -->
+				<a data-dialog="somedialog" class="trigger">로그인</a></li>
+				<li><a href="memberJoin.do">회원가입</a></li>
+				</c:if>
+				<c:if test="${sessionScope.grade eq '관리자'}">
 				<li><a href="memberInfo.do">관리자페이지</a></li>
-		
-		</c:if>
-<ul id="cbp-tm-menu" class="cbp-tm-menu">
-	<li onclick="location.href='index.do'">
-		<a href="#">Home</a>
-	</li>
+				</c:if>
+			</ul>
+			<!-- 검색상자(다른 거로 대체할거임) -->
+<!-- 			<form class="navbar-form navbar-right search-form" role="search">
+				<input type="text" class="form-control" placeholder="Search" />
+			</form> -->
+		</div>
+	</div>
+</nav>
 
-	<li>
-		<a href="myPage.do">마이페이지</a>
-	</li>
-	<li>
+
 	
-		<a href="#"><img src="/final02/icons/car.png">카풀</a>
-		<ul class="cbp-tm-submenu">
-			<li><a href="poolMain.do" class="cbp-tm-icon-archive">메인</a></li>
-			<li><a href="poolAdd.do" class="cbp-tm-icon-archive">등록하기</a></li>
-			<li><a href="poolMemberList.do" class="cbp-tm-icon-cog">탈래요</a></li>
-			<li><a href="poolMasterList.do" class="cbp-tm-icon-location">타세요</a></li>
-			<li><a href="shortPoolList.do" class="cbp-tm-icon-users">단기카풀</a></li>
-			<li><a href="longPoolList.do" class="cbp-tm-icon-earth">정기카풀</a></li>
-			<li><a href="poolStatus.do" class="cbp-tm-icon-location">예약하기</a></li>
-		</ul>
-	</li>
-	<li>
-		<a href="carList.do">차량관리</a>
-	</li>
-	<li>
-		<a href="carBookInfo.do">차계부</a>
-		<ul class="cbp-tm-submenu">
-			<li><a href="cost.do" class="cbp-tm-icon-archive">차계부</a></li>
-			<li><a href="cost.do" class="cbp-tm-icon-archive">비용</a></li>
-			<li><a href="graph.do" class="cbp-tm-icon-cog">그래프</a></li>
-		</ul>
-	</li>
-	<li>
-		<a href="comm.do">커뮤니티</a>
-		<ul class="cbp-tm-submenu">
-			<li><a href="comm.do" class="cbp-tm-icon-screen">전체글</a></li>
-			<li><a href="calendar.do" class="cbp-tm-icon-mail">일정</a></li>
-			<li><a href="commMember.do" class="cbp-tm-icon-contract">멤버</a></li>
-		</ul>
-	</li>
-	<li>
-		<a href="csCenter.do">고객센터</a>
-		<ul class="cbp-tm-submenu">
-			<li><a href="csCenter.do" class="cbp-tm-icon-screen">공지사항</a></li>
-			<li><a href="qnaList.do" class="cbp-tm-icon-screen">자주묻는질문</a></li>
-			<li><a href="oneAndOne.do" class="cbp-tm-icon-mail">1:1문의</a></li>
-			<li><a href="useGuideList.do" class="cbp-tm-icon-contract">이용안내</a></li>
-		</ul>
-	</li>
-</ul>
+    
 
+<!-- 폼창에 값없을때 넘어가는거 방지 -->
+<script>
+function loginCheck(){
+	
+	var form = document.login;
+	
+	if(form.id.value=="" || form.pwd.value==""){
+		alert("아이디 혹은 비밀번호를 입력해 주세요.");
+		
+	}else if(form.id.value!="" && form.pwd.value!=""){
+		form.submit();
+	}
+	
+}
+function idFindCheck(){
+	var form = document.idFind;
+	if(form.name.value=="" || form.phonenum.value==""){
+		alert("이름 혹은 전화번호를 입력해 주세요.");
+	}else if(form.name.value!="" && form.phonenum.value!=""){
+		form.submit();
+	}
+}
+function pwFindCheck(){
+	var form = document.pwFind;
+	if(form.id.value==""||form.phonenum.value==""){
+		alert("아이디 혹은 전화번호를 입력해 주세요.");
+	}else if(form.id.value!="" && form.phonenum.value!=""){
+		form.submit();
+	}
+}
+</script>
+
+<script src="/final02/js/idChecked.js"></script>
+<script src="/final02/js/modernizr.custom2.js"></script>
+
+
+
+	
+	<!-- 내용들어갈 부분 -->
+	<div class="container">
+				<div id="somedialog" class="dialog">
+				
+				<div class="dialog__overlay"></div>
+			
+			<div id="loginDiv" class="dialog__content">
+
+				<form name="login" action="login.do" method="post">
+					<section class="content">
+						<span class="input input--hoshi"> <input
+							class="input__field input__field--hoshi" type="text" id="id"
+							name="id"> <label
+							class="input__label input__label--hoshi input__label--hoshi-color-1"
+							for="id"> <span
+								class="input__label-content input__label-content--hoshi">ID</span>
+						</label>
+						</span> <span class="input input--hoshi"> <input
+							class="input__field input__field--hoshi" type="password" id="pwd"
+							name="pwd"> <label
+							class="input__label input__label--hoshi input__label--hoshi-color-1"
+							for="pwd"> <span
+								class="input__label-content input__label-content--hoshi">PassWord</span>
+						</label>
+						</span>
+					</section>
+						<div id="a">
+							<input type="checkbox" name="saveid" id="saveid"
+								onclick="javascript:saveid(document.new_user_session);">
+							ID기억하기
+						</div>
+						<div>
+							<button type="button"
+								class="button button--isi button--border-thin button--size-s button--round-s"
+								onclick="loginCheck()">
+								<span>로그인</span>
+							</button>
+	
+						</div>
+						<div>
+							<a href="javascript:showFind()">ID찾기</a> / <a href="javascript:showFind2()">비밀번호찾기</a>
+						</div>
+
+				</form>
+			</div>
+
+			<!-- 아이디 찾기 -->
+					<div id="idFind" class="dialog__content" style="display:none;">
+						<form name="idFind" action="idFind.do" method="post">
+							<section class="content">
+								<span class="input input--hoshi"> 
+									<input class="input__field input__field--hoshi" type="text" id="name" name="name"> 
+										<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="name">
+											<span class="input__label-content input__label-content--hoshi">Name</span>
+										</label>
+								</span> 
+								<span class="input input--hoshi"> 
+									<input class="input__field input__field--hoshi" type="text" id="phonenum" name="phonenum"> 
+										<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="phonenum"> 
+											<span class="input__label-content input__label-content--hoshi">Phonenum</span>
+										</label>
+								</span>
+							</section>
+								<div>
+									<button type="button"
+										class="button button--isi button--border-thin button--size-s button--round-s"
+										onclick="idFindCheck()">
+										<span>ID 찾기</span>
+									</button>
+								</div>
+							
+						</form>
+					</div>
+					
+					<!-- 비밀번호찾기 -->
+					<div id="pwFind" class="dialog__content" style="display:none;">
+						<form name="pwFind" action="pwFind.do" method="post">
+							
+							<section class="content">
+								<span class="input input--hoshi"> 
+									<input class="input__field input__field--hoshi" type="text" id="id" name="id"> 
+										<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="id">
+											<span class="input__label-content input__label-content--hoshi">ID</span>
+										</label>
+								</span> 
+								<span class="input input--hoshi"> 
+									<input class="input__field input__field--hoshi" type="text" id="phonenum" name="phonenum"> 
+										<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="phonenum"> 
+											<span class="input__label-content input__label-content--hoshi">Phonenum</span>
+										</label>
+								</span>
+							</section>
+		
+								<div>
+									<button type="button"
+										class="button button--isi button--border-thin button--size-s button--round-s"
+										onclick="pwFindCheck()">
+										<span>PW 찾기</span>
+									</button>
+								</div>
+							
+						</form>
+					</div>
+
+		</div>
+				</div>
+
+		
+		
+		<!-- 모달 -->
+		<script src="/final02/js/classie.js"></script>
+		<script src="/final02/js/logindialogFx.js"></script>
 		<script>
-			var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
-		</script>
-			  </ul>
-	<!-- --------------------------------------------------------------------------------------------------- -->
-		    
+		
+	
+		
+		var status='${status}';
+	
+		
+		
+		function showFind()
+		{
+			var ddiv=document.getElementById('loginDiv');
+			
+			ddiv.style.display='none';
+			
+			var idFdiv=document.getElementById('idFind');
+			
+			idFdiv.style.display='block';
+		
+		}
+		function showFind2()
+		{
+			var ddiv=document.getElementById('loginDiv');
+			
+			ddiv.style.display='none';
+			
+			var pwFdiv=document.getElementById('pwFind');
+			
+			pwFdiv.style.display='block';
+		}
+
+
+		
+		(function() {
+
+			var dlgtrigger = document.querySelector( '[data-dialog]' )
+						
+			var	somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+				dlg = new DialogFx( somedialog );
+
+			dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+
+		})();
+			
+		</script>	
 
 </header>

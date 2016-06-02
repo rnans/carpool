@@ -66,7 +66,7 @@ function pwFindCheck(){
 </head>
 <body>
 	<!-- 로그인버튼 -->
-	<div class="button-wrap"><button data-dialog="somedialog" class="trigger">로그인</button></div>
+	<a href="#" data-dialog="somedialog" class="trigger">로그인</a>
 	
 	<!-- 내용들어갈 부분 -->
 	<div class="container">

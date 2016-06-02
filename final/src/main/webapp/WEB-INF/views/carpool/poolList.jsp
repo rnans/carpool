@@ -6,9 +6,11 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
 </head>
 <body onload="initTmap()">
 <%@include file="../header.jsp" %>
+<section id="mainsection">
 <h1>카풀 리스트 보기</h1>
 <table>
 	<thead>
@@ -54,7 +56,7 @@
 <c:forEach var="dtos" items="${list }">
 <div id="map_div${dtos.idx }"></div>
  </c:forEach>
-
+</section>
 <script src="/final02/js/jquery-1.12.4.min.js"></script>
 <script src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=2e2fe45c-1baa-3078-b615-2c0b3f71bfe5"></script>
 <script>
@@ -72,7 +74,7 @@ function initTmap(){
                         transitionEffect:"resize",
                         animation:true
                     }); 
-    window.alert('맵 생성 성공');
+
   //pr_3857 인스탄스 생성.
 	var pr_3857 = new Tmap.Projection("EPSG:3857");
 	 
@@ -120,7 +122,6 @@ function initTmap(){
 	var sCoordi= new Tmap.LonLat(startX, startY).transform(pr_4326,pr_3857);
 	var eCoordi = new Tmap.LonLat(endX, endY).transform(pr_4326,pr_3857);
 		
-	window.alert(sCoordi.lat+''+sCoordi.lon);
 
 	var bounds = new Tmap.Bounds();
 	

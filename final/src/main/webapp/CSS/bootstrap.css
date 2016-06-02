@@ -49,10 +49,6 @@ html {
 body {
   margin: 0;
 }
-a
-{
-	text-decoration: none;
-}
 
 a:focus {
   outline: thin dotted;
@@ -4189,6 +4185,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
+  margin-right: 50px;
 }
 
 .navbar-brand:hover,

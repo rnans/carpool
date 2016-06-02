@@ -1,11 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
 <head>
 <style>
 #map{ width:100%; height:550px;}
+#mainsection
+{
+	margin-top:5%;
+}
+input[type='text']
+{
+	width: 80%;
+}
 </style>
+<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
 </head>
+<body>
+<%@ include file="../header.jsp" %>
+<section id="mainsection">
 <div id="search">
 	<h1>검색 영역</h1>
 	<form name="search" action="search.do">
@@ -28,6 +41,7 @@
 	</form>
 </div>
 <div id="map"></div>
+</section>
 <script>
 var cateBtStatus=false;
 var cate=document.getElementById('categorySearch');
@@ -244,3 +258,5 @@ function showCate()
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJz53NRCX_RWtNSeoAbPveANaDjlQF1tU&libraries=places&callback=initAutocomplete"
         async defer></script>	
 <script src="/final02/js/cbpFWTabs.js"></script>
+</body>
+</html>
