@@ -23,8 +23,6 @@
 <script src="/final02/bootstrap/js/bootstrap.js"></script>
 
 <link href="/final02/CSS/cssReset.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="/final02/CSS/dialog-sally.css" />
-<link rel="stylesheet" type="text/css" href="/final02/CSS/dialog.css" />
 
 <!-- 텍스트상자 -->
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set1.css" />
@@ -64,7 +62,7 @@
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="poolAdd.do">등록하기</a></li>
 						<li class="divider"></li>
-						<li><a href="poolFindForm.do">검색하기</a></li>						
+						<li><a href="poolFind.do">검색하기</a></li>						
 						<li class="divider"></li>
 						<li><a href="poolMasterList.do">타세요</a></li>
 						<li><a href="poolMemberList.do">탈래요</a></li>
