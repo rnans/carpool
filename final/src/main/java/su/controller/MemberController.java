@@ -85,7 +85,7 @@ public class MemberController {
 			mav.setViewName("member/login_ok");	
 		}else{
 			mav.addObject("msg", "아이디가 없거나 비밀번호가 잘못되었습니다.");
-			mav.addObject("loc", "login.do");
+			mav.addObject("loc", "loginForm.do");
 			mav.setViewName("member/memberMsg");
 			
 		}
@@ -137,7 +137,7 @@ public class MemberController {
 	}
 	
 	/**아이디 찾기*/
-	@RequestMapping(value="/idFind.do", method=RequestMethod.POST)
+	@RequestMapping(value="/idFind.do", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView idFind(@RequestParam(value="name", required=false)String name, 
 			@RequestParam(value="phonenum", required=false)String phonenum){
 		ModelAndView mav = new ModelAndView();
@@ -149,7 +149,8 @@ public class MemberController {
 			mav.setViewName("member/memberMsg");
 		}else{
 			mav.addObject("msg", "회원님의 ID는 "+id+"입니다.");
-			mav.addObject("loc", "login.do");
+			mav.addObject("status", "1");
+			mav.addObject("loc", "index.do");
 			mav.setViewName("member/memberMsg");
 			
 		}
@@ -158,13 +159,13 @@ public class MemberController {
 	}
 	
 	/**비밀번호 찾기 폼이동*/
-	@RequestMapping(value="/pwFind.do", method=RequestMethod.GET)
+	@RequestMapping("/pwFindForm.do")
 	public String pwFindForm(){
 		return "member/pwFind";
 	}
 	
 	/**비밀번호 찾기*/
-	@RequestMapping(value="/pwFind.do", method=RequestMethod.POST)
+	@RequestMapping(value="/pwFind.do", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView pwFind(@RequestParam(value="id", required=false)String id,
 			@RequestParam(value="phonenum", required=false)String phonenum){
 		
