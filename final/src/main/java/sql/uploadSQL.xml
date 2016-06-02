@@ -16,8 +16,8 @@
 		where id=#{id}
 	</update>
 	
-		<select id="fileCheck" parameterType="String" resultType="String">
-select filetype from file_upload where id=#{id}
+ 	<select id="fileCheck" parameterType="String" resultType="String">
+	select filetype from file_upload where id=#{id} and filetype='0'
 	</select>
 
 </mapper>
