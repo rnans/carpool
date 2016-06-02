@@ -63,7 +63,7 @@ input[type='text']
 	$('input').focus(function(e){
 		id=e.target.id
 		
-		initAutocomplete();
+		initAutocomplete(id);
 	})
 
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -85,12 +85,12 @@ input[type='text']
 	
 	 var bounds = new daum.maps.LatLngBounds(); 
  
-	function initAutocomplete() {
+	function initAutocomplete(id) {
 				
 		 var input = /** @type {!HTMLInputElement} */(
 		      document.getElementById(id));
 		
-		var value=input.id;
+		
 		 
 		var sImgSrc='http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png'
 		var aImgSrc='http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_b.png'
@@ -103,12 +103,12 @@ input[type='text']
 
 		var title='';
 		 
-		 if(value=='ss')
+		 if(id=='ss')
 		 {
 			 title='출발지';
 			 imgSrc=sImgSrc;
 		 }
-		 else if(value=='es')
+		 else if(id=='es')
 		 {
 			 title='도착지';
 			 imgSrc=aImgSrc;
@@ -211,7 +211,10 @@ input[type='text']
 		        	     
 		        	         
 		        	    	 if(title=='출발지'){
+		        	    		 		        	    		 
 		 		 		    	document.getElementById('ss').value=result[0].jibunAddress.name;
+		 		 		    	
+		 		 		    	
 		 		 		   }
 		 		 		    else if(title=='도착지')
 		 		 		   {
@@ -225,7 +228,7 @@ input[type='text']
 		        	 };
 		        	 var bounds = map.getBounds();
 	
-		        	 geocoder.coord2detailaddr(coord, callback);
+		        	 geocoder.coord2detailaddr(coord, callback, new daum.maps.services.Format.SIMPLE);
 		        	 
 		   		});
 		        
