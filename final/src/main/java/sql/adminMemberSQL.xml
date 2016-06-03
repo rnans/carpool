@@ -10,7 +10,7 @@
 	   (select * from userinfo order by idx desc)a)b
 	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} 
 	</select>
-	
+
 	<select id="memberTotalCnt" resultType="int">
 		select count(*) from userinfo
 	</select>
@@ -22,6 +22,58 @@
 	<update id="adminAdd" parameterType="su.adminMember.model.AdminMemberDTO">
 		update userinfo set grade=#{grade} where idx=#{idx}
 	</update>
+	
+	<!-- ///////////////////////////////////////Search////////////////////////////////////// -->
+	<select id="memberIdTotalCnt" resultType="int">
+		select count(*) from userinfo where id=#{search}
+	</select>
+	<select id="memberNameTotalCnt" resultType="int">
+		select count(*) from userinfo where name=#{search}
+	</select>
+	<select id="memberSexTotalCnt" resultType="int">
+		select count(*) from userinfo where sex=#{search}
+	</select>
+	
+	<select id="memberIdSearch" parameterType="Map" resultType="su.adminMember.model.AdminMemberDTO">
+		select * from userinfo where id=#{search}
+	</select>
+	
+	<select id="memberNameSearch" parameterType="Map" resultType="su.adminMember.model.AdminMemberDTO">
+		select * from userinfo where name=#{search}
+	</select>
+	
+	<select id="memberSexSearch" parameterType="Map" resultType="su.adminMember.model.AdminMemberDTO">
+		select * from
+	   (select rownum as rnum,a.* from
+	   (select * from userinfo order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and sex=#{search}
+	</select>
+	
+	<!-- ////////////////////////////////////////////graph/////////////////////////////////////// -->
+	<select id="memberSexMan" resultType="int">
+		select count(*) from userinfo where sex='남성'
+	</select>
+	<select id="memberSexWoman" resultType="int">
+		select count(*) from userinfo where sex='여성'
+	</select>
+	
+	<select id="memberAddrSeoul" resultType="int">
+		select count(*) from userinfo where addr='서울특별시'
+	</select>
+	<select id="memberAddrGyeonggi" resultType="int">
+		select count(*) from userinfo where addr='경기도'
+	</select>
+	<select id="memberAddrInchean" resultType="int">
+		select count(*) from userinfo where addr='인천광역시'
+	</select>
+	<select id="memberAddrBusan" resultType="int">
+		select count(*) from userinfo where addr='부산광역시'
+	</select>
+	<select id="memberAddrEtc" resultType="int">
+		select count(*) from userinfo where addr='강원도' or addr='충청도' or addr='경상도' or addr='전라도' or 
+		addr='제주도' or addr='세종특별자치시' or addr='울산광역시' or addr='광주광역시' or addr='대구광역시'
+	</select>
+	<!-- ////////////////////////////////////////////graph/////////////////////////////////////// -->
 	
 	<!-- carinfo -->
 	<select id="memberCarInfo" parameterType="Map" resultType="su.adminMember.model.AdminCarInfoDTO">
