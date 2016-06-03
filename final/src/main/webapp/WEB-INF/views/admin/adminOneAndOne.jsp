@@ -170,10 +170,8 @@
     .search-query:focus + button {
         z-index: 3;   
     }
-    .buttons{
-      width: 10px;
-      height: 10px;
-    }
+  .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
+.icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
 </style>
 </head>
 <script type="text/javascript" src="js/httpRequest.js"></script>
@@ -282,7 +280,7 @@ function showResult(){//응답결과함수
  <td><a href="${oneandoneAnswer}">${oneandone.subject}</a></td>
  <td>${oneandone.writedate }</td>
  <td>${oneandone.state }</td>
- <td> <input type="button" value="글삭제" class="button button--ujarak button--border-thin button--text-thick" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"></td>
+ <td> <a class="btn icon-btn btn-danger" href="#" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>삭제</a></td>
 </tr>
  </c:forEach>
 </tbody>
