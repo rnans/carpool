@@ -184,6 +184,10 @@ public class CsCenterController {
 			return mav;
 	
     }
+	 @RequestMapping("/test4.do")
+	 public String test4(){
+		 return "message/test4";
+	 }
 	
 }
 
