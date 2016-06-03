@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import su.member.model.MemberDTO;
+import su.upload.model.UploadDTO;
 
 public class carInfoDAOImple implements carInfoDAO {
 
@@ -97,4 +98,9 @@ public class carInfoDAOImple implements carInfoDAO {
 		int count=sqlMap.update("carIdOne", dto);
 		return count;
 	}
+	//차량사진리스트
+	public List<UploadDTO> carImage(String userid){
+		 List<UploadDTO> list=sqlMap.selectList("carImage", userid);
+		 return list;
+	 }
 }

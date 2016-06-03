@@ -3,6 +3,7 @@ package su.carinfo.model;
 import java.util.List;
 
 import su.member.model.MemberDTO;
+import su.upload.model.UploadDTO;
 
 public interface carInfoDAO {
 
@@ -15,4 +16,5 @@ public interface carInfoDAO {
 	public MemberDTO username(String userid);
 	public int carIdZero(String userid);
 	public int carIdOne(carInfoDTO dto);
+	public List<UploadDTO> carImage(String userid);
 }
