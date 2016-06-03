@@ -15,7 +15,7 @@
 /* Common button styles */
 .button {
 	float: left;
-	min-width: 150px;
+	min-width: 30px;
 	max-width: 250px;
 	display: block;
 	margin: 1em;
@@ -93,7 +93,7 @@
 	border: 2px solid;
 }
 .button--border-thick {
-	border: 3px solid;
+	border: 1px solid;
 }
 
 /* Individual button styles */
