@@ -6,37 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-#div1{
-	float:left;
-	width: 250px;
-	height: 400px;
-	border: 1px;
-	margin: 5px;
-	margin-left: 200px;
-	
-}
-#div2{
-	float:left;
-	width: 800px;
-	height: 250px;
-	margin: 5px;
-	margin-left:px;
-	background-color:gray;
-}
-#div3{
-	position:;
-	float:left;
-	width: 800px;
-	height: 650px;
-	margin-top: 5px;
-	margin-left: 10px;
-	background-color:;
-	
-}
-
-
-</style>
+<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 </head>
 <body>
 <h2>카풀등록 페이지8결제</h2>

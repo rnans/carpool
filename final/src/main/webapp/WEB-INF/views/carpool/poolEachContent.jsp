@@ -5,11 +5,15 @@
 <html>
 <head>
 <link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 <link rel="stylesheet" type="text/css"
 	href="/final02/CSS/eachNormalize.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/eachDemo.css" />
 <link rel="stylesheet" type="text/css"
 	href="/final02/CSS/eachComponent.css" />
+	
 <!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->

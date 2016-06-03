@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 <body>
 <h1>내가 작성한 타세요! 글 목록</h1>
 <table>

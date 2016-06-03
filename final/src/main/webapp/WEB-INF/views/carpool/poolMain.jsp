@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>카풀 서비스 메인 페이지</title>
+<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 </head>
 <body>
 <%@ include file="../header.jsp" %>

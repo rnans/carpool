@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 <meta charset="UTF-8">
 <title></title>
 </head>

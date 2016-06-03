@@ -5,19 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
+
    <style type="text/css">
       html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
       #map { height: 500px; width: 100%; }
 
-
-
-input[type='text']
-{
-	width: 720px;
-}
 </style>
-
+<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 
 </head>
 <body>
