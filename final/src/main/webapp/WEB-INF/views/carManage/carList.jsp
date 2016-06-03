@@ -91,6 +91,7 @@ function checkMain(){
     <table class="table table-striped custab" style="width: 700px;">
 			<tr>
 				<th class="text-center">대표차량</th>
+				<th>차량사진</th>
 				<th class="text-center">운전자</th>
 				<th class="text-center">차량번호</th>
 				<th class="text-center">차량종류</th>
@@ -107,6 +108,9 @@ function checkMain(){
 			
 				<tr>
 					<td class="text-center"><input type="radio" name="carid" value="${dto.carid }" onclick="carMain(${dto.idx})"></td>
+					<td><div id="carImage">
+        <img style="width:100px; height:100px;" src="http://localhost:8080/final02/img/${dto.carphoto}">
+		</div></td>
 					<td class="text-center">${dto.driver }</td>
 					<td class="text-center">${dto.carnum }</td>
 					<td class="text-center">${dto.cartype }</td>
