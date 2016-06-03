@@ -19,5 +19,6 @@
 		<mapper resource="sql/uploadSQL.xml"/>
 		<mapper resource="sql/messageSQL.xml"/>
 		<mapper resource="sql/poolRateSQL.xml"/>
+		<mapper resource="sql/paySQL.xml"/>
 	</mappers>
 </configuration>

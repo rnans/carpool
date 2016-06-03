@@ -155,7 +155,12 @@
  			<ref bean="sqlSessionTemplate"/>
  		</constructor-arg>
  	</bean>
-	
+ 	
+ 	<bean id="payDao" class="su.pay.model.PayDAOImple">
+ 		<constructor-arg>
+ 			<ref bean="sqlSessionTemplate"/>
+ 		</constructor-arg>
+ 	</bean>
 	
 	<!-- view -->
 	

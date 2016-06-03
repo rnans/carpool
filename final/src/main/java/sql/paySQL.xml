@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="sql.PaySql">
+ 	<select id="paySql" parameterType="su.pay.model.PayDTO" resultType="su.pay.model.PayDTO">
+ 		select * from userpayinfo where userid=#{userid}
+ 	</select>
+ 	
+ 	<insert id="cardEnroll" parameterType="su.pay.model.PayDTO">
+ 		insert into userpayinfo 
+ 		values(userpayinfo_idx.nextval,#{userid},#{cardType1},#{cardNum},
+ 		#{cardTerm},#{cardName},#{cvc},#{cardType2},userpayinfo_cardId.nextval,#{cardImg})
+ 	</insert>
+ 	
+ 	<select id="payFinish" parameterType="String" resultType="su.pay.model.PayDTO">
+ 		select * from userpayinfo where cardId=#{cardId}
+ 	</select>
+</mapper>
