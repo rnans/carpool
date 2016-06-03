@@ -26,7 +26,7 @@
 		
 	
 <style>
-.Mycontainer, 
+.upicontainer, 
 .content-wrap {
 	overflow: hidden;
 	width: 100%;
@@ -35,7 +35,7 @@
 	margin-top: 25px ;
 }
 
-.Mycontainer {
+.upicontainer {
 	background: #373a47;
 	position:  relative;
 }
@@ -546,10 +546,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 	
 	<body>
 	<%@ include file="../header.jsp" %>
-		<div class="Mycontainer">
+		<div class="upicontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span> 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -575,47 +575,58 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<header class="codrops-header">
 						<div class="codrops-links">
 	
-			<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="none">
-
+			
+<h2>결제정보</h2>
 		
-		
-			<form name="f" action="myProfile.do">
-			<fieldset>
-				<legend>${dto.name}님 정보  ${dto2[1].filename } </legend>		
-<div class="center-block">
-	<div class="row">
-		<div class="col-xs-2">
-	
-	  ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
-	
-	NAME<input type="text" name="name" class="form-control" value="${dto.name}" readonly>
 
-    BIRTH<input type="text" name="birth" class="form-control" value="${dto.birth }" readonly>
-   
-	PHONE<input type="text" name="phonenum" class="form-control" value="${dto.phonenum }" readonly>
-
-	ADDR<input type="text" name="addr" class="form-control" value="${dto.addr }" readonly>
-    
-	EMAIL<input type="text" name="email" class="form-control" value="${dto.email }" readonly>
 	
 	
-	<label class="radio-inline">
-  		<input type="radio" name="sex" id="male" value="남성">M
- 	</label>
-	<label class="radio-inline">
-  		<input type="radio" name="sex" id="female" value="여성">W
- 	</label><br>
-	
-	<button type="submit" class="btn btn-primary" value="프로필수정">프로필수정</button>
-	
-			</div>
-		</div>
-	</div>	
-	 	
-		</fieldset>	
-</form>
-	
-</div>
+			<legend>회원결제정보</legend>
+			<form name="myprofile">
+				<table border="1" cellspacing="0" align="center" class="table table-striped">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>카드아이디</th>
+							<th>카드종류</th>
+							<th>카드번호</th>
+							<th>유효기간</th>
+							<th>개인/법인</th>
+							<th>수정/삭제</th>
+						</tr>	
+					</thead>
+				<tfoot>
+					
+				</tfoot>
+					<tbody>
+						<c:if test="${empty dto}">
+				<tr>
+					<td colspan="7">등록된 결제정보가 없습니다.</td>
+				</tr>
+			</c:if>
+			<c:forEach var="dto" items="${dto }">
+				<tr>
+					<td>${dto.idx }</td>
+					<td>${dto.cardid }</td>
+					<td>${dto.cardtype1 }</td>
+					<td>${dto.cardnum }</td>
+					<td>${dto.cardterm }</td>
+					<td>${dto.cardtype2 }</td>
+					<td>
+					<a href="cardUpdate.do?idx=${dto.idx}"><input type="button" value="수정"></a>
+					<a href="cardDel.do?idx=${dto.idx}"><input type="button" value="삭제"></a>
+					</td>
+						</tr>
+						</c:forEach>
+						<tr>
+						<td colspan="7" align="right"><a href="userPayAddPage.do"><input type="button" value="등록"></a></td>
+						</tr>
+					</tbody>
+				</table>
+				<p align="center">
+					<a href="#"><1 2 3 4 5></a>
+				</p>
+			</form>
 						
 						<nav class="codrops-demos">
 							

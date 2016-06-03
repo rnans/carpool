@@ -20,20 +20,23 @@
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/menu_topside.css" />
-		
+		<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		
 		
 <style>
-.container, 
+.Mycontainer, 
 .content-wrap {
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
+	position: relative;
+	margin-top: 25px ;
 }
 
-.container {
+.Mycontainer {
 	background: #373a47;
+	position:  relative;
 }
 
 .menu-wrap a {
@@ -59,8 +62,8 @@
 
 /* Overlay */
 .content::before {
-	position: absolute;
-	top: 0;
+	position: relative;
+	
 	left: 0;
 	z-index: 10;
 	width: 100%;
@@ -78,7 +81,7 @@
 .menu-button {
 	position: fixed;
 	z-index: 1000;
-	margin: 1em;
+	margin: 2em;
 	padding: 0;
 	width: 2.5em;
 	height: 2.25em;
@@ -89,10 +92,12 @@
 	background: transparent;
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
+	
 }
 
 .menu-button::before {
 	position: absolute;
+	
 	top: 0.5em;
 	right: 0.5em;
 	bottom: 0.5em;
@@ -106,7 +111,7 @@
 }
 /* Menu */
 .menu-wrap {
-	position: absolute;
+	position: absolute; 
 	font-weight: 700;
 	opacity: 0;
 	-webkit-transition: opacity 1s;
@@ -119,8 +124,12 @@
 
 .menu-top .profile {
 	display: inline-block;
+	position:relative;
+	margin-top:25px;
 	padding: 8px 10px;
 	line-height: 42px;
+	width: 60px;
+	height: 60px;
 }
 
 .menu-top .profile,
@@ -251,6 +260,7 @@ section {
 	font-size: 0.69em;
 	line-height: 2.2;
 	padding: 1.61em 5em;
+	
 }
 
 .codrops-links a {
@@ -258,6 +268,7 @@ section {
 	padding: 0 1em;
 	text-decoration: none;
 	letter-spacing: 1px;
+	
 }
 
 .codrops-icon:before {
@@ -530,10 +541,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 	</head>
 	<body>
 	<%@ include file="../header.jsp" %>
-		<div class="container">
+		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${dto.name} 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="#"><i class="fa fa-fw fa-star-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -561,60 +572,58 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						<div class="codrops-links">
 					
 					
-					<h2>마이프로필</h2>
+	<h2>마이프로필</h2>
 		
 	<div id="div1">
 		 <form id="frm" name="frm" action="uploadimgUpdate.do" method="post" enctype="multipart/form-data">
 
-        <div id="preview">
-        <img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}"><br>
-		</div>
-		<input type="file" id="file" name="upload">
+     	   <div id="preview">
+      			<img src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="img-circle">
+			</div>
+		
+			<input type="file" id="file" name="upload">
    
-		<input type="submit" value="업로드">
-    </form>
+		
+			<button type="submit" class="btn btn-success" value="사진올리기">사진올리기</button>
+    	</form>
 	</div>
 
-	
-	<div id="div2">
-	
 	<form name="myprofile" action="myProfileUpdate.do">
-		<fieldset>
-			<legend>${dto.name}님 프로필수정</legend>
-				<ul>
-					<li>아이디:
-							<input type="text" name="id" value="${dto.id}" readonly>
-							이름:
-							<input type="text" name="name" value="${dto.name} "></li>
-						<li>성별:
-							<input type="radio" name="sex" value="남성" id="male">남성
-							<input type="radio" name="sex" value="여성" id="female">여성
-						</li>
-						
-						<li>생년월일:<input type="text" name="birth" value="${dto.birth }"></li>
-								 
-						<li>전화번호:<input type="text" name="phonenum" value="${dto.phonenum }"></li>
-						<li>주소:<input type="text" name="addr" value="${dto.addr} "></li>
-						<li>email:<input type="text" name="email" value="${dto.email }"></li>
-						
-				</ul>
-					
+	<fieldset>
+		<legend>내 정보 수정</legend>
+	<div class="row">
+		<div class="col-xs-2">
+			ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
+			
+			NAME<input type="text" name="name" class="form-control" value="${dto.name}">
+		
+		    BIRTH<input type="text" name="birth" class="form-control" value="${dto.birth }">
+		   
+			PHONE<input type="text" name="phonenum" class="form-control" value="${dto.phonenum }">
+		
+			ADDR<input type="text" name="addr" class="form-control" value="${dto.addr }">
+		    
+			EMAIL<input type="text" name="email" class="form-control" value="${dto.email }">
+			
+			
+			<label class="radio-inline">
+		  		<input type="radio" name="sex" id="male" value="남성">M
+		 	</label>
+			<label class="radio-inline">
+		  		<input type="radio" name="sex" id="female" value="여성">W
+		 	</label><br>
 				<p>
-					<input type="reset" value="다시작성">
-					<input type="submit" value="수정하기">
+					<button type="reset" class="btn btn-default" value="다시작성">다시작성</button>
+					<button type="submit" class="btn btn-success" value="프로필수정">프로필수정</button>
 				</p>
-				
-				
-			</fieldset>
-		</form>
+			</div>
+		</div>	
 	</div>
+				
+		</fieldset>
+	</form>
 	
-					
-	
-	
-	
-	
-						</div>
+	</div>
 						
 						<nav class="codrops-demos">
 							
@@ -635,9 +644,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <!-- For the demo ad only -->   
 
 
-	</body>
-</html>
-			
+	
 			
 </body>
 </html>

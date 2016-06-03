@@ -26,7 +26,7 @@
 		
 	
 <style>
-.Mycontainer, 
+.upicontainer, 
 .content-wrap {
 	overflow: hidden;
 	width: 100%;
@@ -35,7 +35,7 @@
 	margin-top: 25px ;
 }
 
-.Mycontainer {
+.upicontainer {
 	background: #373a47;
 	position:  relative;
 }
@@ -546,10 +546,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 	
 	<body>
 	<%@ include file="../header.jsp" %>
-		<div class="Mycontainer">
+		<div class="upicontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span> 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -575,48 +575,58 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<header class="codrops-header">
 						<div class="codrops-links">
 	
-			<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="none">
+			
+<h2>결제정보</h2>
+		<legend>회원결제등록</legend>
+			<form name="userPayAdd" action="userPayAdd.do" method="post">
+				<table border="1" cellspacing="0" align="center" class="table table-hover">
+					
+						<tr>
+							<td>카드종류</td>
+							<td><select name="cardtype1">
+			 <option value="선택" selected="selected">선택</option>				
+            <option value="신한">신한</option>
+            <option value="농협">농협</option>
+             <option value="우리">우리</option>
+              <option value="국민">국민</option>
+            </select></td>
+						</tr>	
+								<tr>
+							<td>카드번호</td>
+							<td colspan="5"><input type="text" name="cardnum1" value="${dto.cardnum1 }" style="width:40px;">-<input type="text" name="cardnum2" value="${dto.cardnum2 }" style="width:40px;">-<input type="text" name="cardnum3" value="${dto.cardnum3 }" style="width:40px;">-<input type="text" name="cardnum4" value="${dto.cardnum4 }" style="width:40px;"></td>
+						</tr>
+						<tr>
+						<td>유효기간</td>
+						<td><input type="text" name="cardterm1" value="${dto.cardterm1}" style="width:20px;">월/<input type="text" name="cardterm2" value="${dto.cardterm2} " style="width:40px;">년</td>
+						</tr>
+						<tr>
+						<td>카드상이름</td>
+						<td><input type="text" name="cardname" value="${dto.cardname} "></td>
+						</tr>
+						<tr>
+						<td>cvv</td>
+						<td><input type="text" name="cvv" value="${dto.cvv}" style="width:30px;"></td>
+						</tr>
+						<tr>
+						<td>개인/법인</td>
+						<td><select name="cardtype2">
+            <option>개인</option>
+            <option>법인</option>
+            </select></td>
+						</tr>
+						<tr>
+						<td>카드아이디</td>
+						<td><input type="text" name="cardid" value="${dto.cardid} "></td>
+						</tr>
+						<tr>
+						<td colspan="2" align="right"><input type="button" value="취소" onclick="backPage()"><input type="submit" value="등록"></td>		
+						</tr>
+					</tbody>
+				</table>
 
-		
-		
-			<form name="f" action="myProfile.do">
-			<fieldset>
-				<legend>${dto.name}님 정보  ${dto2[1].filename } </legend>		
-<div class="center-block">
-	<div class="row">
-		<div class="col-xs-2">
-	
-	  ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
-	
-	NAME<input type="text" name="name" class="form-control" value="${dto.name}" readonly>
+			</form>	
 
-    BIRTH<input type="text" name="birth" class="form-control" value="${dto.birth }" readonly>
-   
-	PHONE<input type="text" name="phonenum" class="form-control" value="${dto.phonenum }" readonly>
-
-	ADDR<input type="text" name="addr" class="form-control" value="${dto.addr }" readonly>
-    
-	EMAIL<input type="text" name="email" class="form-control" value="${dto.email }" readonly>
 	
-	
-	<label class="radio-inline">
-  		<input type="radio" name="sex" id="male" value="남성">M
- 	</label>
-	<label class="radio-inline">
-  		<input type="radio" name="sex" id="female" value="여성">W
- 	</label><br>
-	
-	<button type="submit" class="btn btn-primary" value="프로필수정">프로필수정</button>
-	
-			</div>
-		</div>
-	</div>	
-	 	
-		</fieldset>	
-</form>
-	
-</div>
-						
 						<nav class="codrops-demos">
 							
 						

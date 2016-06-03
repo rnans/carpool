@@ -20,7 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/menu_topside.css" />
-		
+		<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		
 		
@@ -30,6 +30,8 @@
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
+	position: relative;
+	margin-top: 25px ;
 }
 
 .container {
@@ -78,7 +80,7 @@
 .menu-button {
 	position: fixed;
 	z-index: 1000;
-	margin: 1em;
+	margin: 2em;
 	padding: 0;
 	width: 2.5em;
 	height: 2.25em;
@@ -119,6 +121,8 @@
 
 .menu-top .profile {
 	display: inline-block;
+	position:relative;
+	margin-top:25px;
 	padding: 8px 10px;
 	line-height: 42px;
 	width: 8px;
@@ -563,25 +567,31 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						<div class="codrops-links">
 							
 				
-			<form name="memberDel" action="memDel.do">
+	<form name="memberDel" action="memDel.do">
 			
-			<ul>
-					<h2>회원탈퇴</h2>	
-					<li>비밀번호 확인:<input type="password" name="pwd"></li>
-				
-			</ul>
-				<p>
-					<input type="submit" value="회원탈퇴">
-				</p>
-		</form>
-		
+		<ul>
+			<h2>회원탈퇴</h2>	
+				<div class="row">
+					<div class="col-xs-2">
+						PWD<input type="passward"  name="pwd" class="form-control">
+					
+						<p>
+							<li><button type="submit" class="btn btn-primary" value="회원탈퇴">회원탈퇴</button></li>
+						</p>
+					</div>
+				</div>
+					
+		</ul>
+							
+	</form>
+			
 	
-						</div>
+</div>
 						
-						<nav class="codrops-demos">
+					<nav class="codrops-demos">
 							
 						
-						</nav>
+					</nav>
 					</header>
 					<!-- Related demos -->
 					<section class="related">
@@ -597,8 +607,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <!-- For the demo ad only -->   
 
 
-	</body>
-</html>
+
 			
 			
 </body>

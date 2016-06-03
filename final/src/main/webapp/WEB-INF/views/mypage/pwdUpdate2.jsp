@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,7 +23,7 @@
 		<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		
-	
+		
 <style>
 .Mycontainer, 
 .content-wrap {
@@ -93,7 +92,7 @@
 	background: transparent;
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
-		
+	
 }
 
 .menu-button::before {
@@ -514,19 +513,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 @media screen and (max-width: 460px){ 
 	body #cdawrap { display: none; }
 }
-//
-//
-.center-block {
-  display: block;
-  margin-left: 0px auto;
-  margin-right: 0px auto;
-  
-}
 
-// Usage as a mixin
-.element {
-  .center-block();
-}
 
 </style>
 
@@ -540,18 +527,24 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
+
+
+
+
 </script>
 
+
+
+
 	</head>
-	
 	<body>
 	<%@ include file="../header.jsp" %>
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${dto.name} 님 마이페이지</span></div>
 					<div class="icon-list">
-						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+						<a href="#"><i class="fa fa-fw fa-star-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-envelope-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-comment-o"></i></a>
@@ -559,10 +552,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</nav>
 				<nav class="menu-side">
 					<a href="myPage.do">마이페이지</a>
+					<a href="myProfile.do">프로필수정</a>
 					<a href="notiSetting.do">알람설정</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">결제정보</a>
-					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
+					<a href="wishpoolList.do">즐겨찾기(카풀)</a>
 					<a href="#">이용내역</a>
 					<a href="#">등록글</a>
 					<a href="#">평가글</a>
@@ -574,53 +568,35 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<div class="content">
 					<header class="codrops-header">
 						<div class="codrops-links">
-	
-			<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="none">
-
-		
-		
-			<form name="f" action="myProfile.do">
-			<fieldset>
-				<legend>${dto.name}님 정보  ${dto2[1].filename } </legend>		
-<div class="center-block">
-	<div class="row">
-		<div class="col-xs-2">
-	
-	  ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
-	
-	NAME<input type="text" name="name" class="form-control" value="${dto.name}" readonly>
-
-    BIRTH<input type="text" name="birth" class="form-control" value="${dto.birth }" readonly>
-   
-	PHONE<input type="text" name="phonenum" class="form-control" value="${dto.phonenum }" readonly>
-
-	ADDR<input type="text" name="addr" class="form-control" value="${dto.addr }" readonly>
-    
-	EMAIL<input type="text" name="email" class="form-control" value="${dto.email }" readonly>
-	
-	
-	<label class="radio-inline">
-  		<input type="radio" name="sex" id="male" value="남성">M
- 	</label>
-	<label class="radio-inline">
-  		<input type="radio" name="sex" id="female" value="여성">W
- 	</label><br>
-	
-	<button type="submit" class="btn btn-primary" value="프로필수정">프로필수정</button>
-	
-			</div>
-		</div>
-	</div>	
-	 	
-		</fieldset>	
-</form>
-	
-</div>
+							
+	<div id="div2">
+			<form name="myprofile" action="pwdUpdate.do" method="">
+				<fieldset>
+					<legend> ${sid} 님 비밀번호변경</legend>
+					
+					<input type="hidden" name="id" value="${dto.id }">
+						<ul>
+							<li>현재 비밀번호:<input type="text" name="nowpwd" value="${dto.pwd}"></li>
+							<li>새 비밀번호:<input type="password" name="pwd" ></li>
+							<li>비밀번호 확인:<input type="password" name="pwd2" ></li>
+						</ul>
+						<p>
+							<input type="reset" name="reset" value="취소">
+							<input type="submit" name="update" value="비밀번호변경">
+						</p>
 						
-						<nav class="codrops-demos">
+						
+					</fieldset>	
+				</form>
+			</div>
+					
+	
+		</div>
+						
+					<nav class="codrops-demos">
 							
 						
-						</nav>
+					</nav>
 					</header>
 					<!-- Related demos -->
 					<section class="related">
@@ -636,7 +612,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <!-- For the demo ad only -->   
 
 
-	
+	</body>
+</html>
+			
 			
 </body>
 </html>

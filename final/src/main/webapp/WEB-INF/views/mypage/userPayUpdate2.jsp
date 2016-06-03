@@ -26,7 +26,7 @@
 		
 	
 <style>
-.Mycontainer, 
+.upicontainer, 
 .content-wrap {
 	overflow: hidden;
 	width: 100%;
@@ -35,7 +35,7 @@
 	margin-top: 25px ;
 }
 
-.Mycontainer {
+.upicontainer {
 	background: #373a47;
 	position:  relative;
 }
@@ -541,15 +541,41 @@ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 </script>
+<script>
+window.onload=function(){
+	checkType1();
+	checkType2();
+	
+}
+function checkType1(){
+	
+	var cardtype1=document.getElementById('cardtype1');
+	for(var i=0;i<cardtype1.length;i++)
+	{
+		if(cardtype1[i].value=='${dto.cardtype1}'){
 
+			cardtype1[i].selected=true;
+		}
+	}
+}
+function checkType2(){
+	
+	var cardtype2=document.getElementById('cardtype2');
+	for(var i=0;i<cardtype2.length;i++){
+		if(cardtype2[i].value=='${dto.cardtype2}'){
+			cardtype2[i].selected=true;
+		}
+	}
+}
+</script> 
 	</head>
 	
 	<body>
 	<%@ include file="../header.jsp" %>
-		<div class="Mycontainer">
+		<div class="upicontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span> 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -575,48 +601,59 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<header class="codrops-header">
 						<div class="codrops-links">
 	
-			<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="none">
+			
 
-		
-		
-			<form name="f" action="myProfile.do">
-			<fieldset>
-				<legend>${dto.name}님 정보  ${dto2[1].filename } </legend>		
-<div class="center-block">
-	<div class="row">
-		<div class="col-xs-2">
 	
-	  ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
+	<div id="div2">
+			<legend>회원결제수정</legend>
+			<form name="cardUpdate" action="cardUpdate.do" method="post">
+			<input type="hidden" name="idx" value="${dto.idx}">
+			<table border="1" cellspacing="0" align="center" class="table table-hover">
+					
+						<tr>
+							<td>카드종류</td>
+							<td><select id="cardtype1" name="cardtype1">
+			 <option value="선택">선택</option>				
+            <option value="신한">신한</option>
+            <option  value="농협">농협</option>
+             <option  value="우리">우리</option>
+              <option  value="국민">국민</option>
+            </select></td>
+						</tr>	
+								<tr>
+							<td>카드번호</td>
+							<td colspan="5"><input type="text" name="cardnum1" style="width:40px;" value="${dto.cardnum1}">-<input type="text" name="cardnum2" style="width:40px;" value="${dto.cardnum2}">-<input type="text" name="cardnum3" style="width:40px;" value="${dto.cardnum3}">-<input type="text" name="cardnum4" style="width:40px;" value="${dto.cardnum4}"></td>
+						</tr>
+						<tr>
+						<td>유효기간</td>
+						<td><input type="text" name="cardterm1" style="width:20px;" value="${dto.cardterm1}">월/<input type="text" name="cardterm2" style="width:40px;" value="${dto.cardterm2}">년</td>
+						</tr>
+						<tr>
+						<td>카드상이름</td>
+						<td><input type="text" name="cardname" value="${dto.cardname}"></td>
+						</tr>
+						<tr>
+						<td>cvv</td>
+						<td><input type="text" name="cvv" style="width:30px;" value="${dto.cvv}"></td>
+						</tr>
+						<tr>
+						<td>개인/법인</td>
+						<td><select name="cardtype2" id="cardtype2">
+            <option value="개인">개인</option>
+            <option value="법인">법인</option>
+            </select></td>
+						</tr>
+						<tr>
+						<td>카드아이디</td>
+						<td><input type="text" name="cardid" value="${dto.cardid}"></td>
+						</tr>
+						<tr>
+						<td colspan="6" align="right"><input type="submit" value="수정"></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
 	
-	NAME<input type="text" name="name" class="form-control" value="${dto.name}" readonly>
-
-    BIRTH<input type="text" name="birth" class="form-control" value="${dto.birth }" readonly>
-   
-	PHONE<input type="text" name="phonenum" class="form-control" value="${dto.phonenum }" readonly>
-
-	ADDR<input type="text" name="addr" class="form-control" value="${dto.addr }" readonly>
-    
-	EMAIL<input type="text" name="email" class="form-control" value="${dto.email }" readonly>
-	
-	
-	<label class="radio-inline">
-  		<input type="radio" name="sex" id="male" value="남성">M
- 	</label>
-	<label class="radio-inline">
-  		<input type="radio" name="sex" id="female" value="여성">W
- 	</label><br>
-	
-	<button type="submit" class="btn btn-primary" value="프로필수정">프로필수정</button>
-	
-			</div>
-		</div>
-	</div>	
-	 	
-		</fieldset>	
-</form>
-	
-</div>
-						
 						<nav class="codrops-demos">
 							
 						
