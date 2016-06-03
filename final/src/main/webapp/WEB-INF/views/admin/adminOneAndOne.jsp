@@ -170,6 +170,10 @@
     .search-query:focus + button {
         z-index: 3;   
     }
+    .buttons{
+      width: 10px;
+      height: 10px;
+    }
 </style>
 </head>
 <script type="text/javascript" src="js/httpRequest.js"></script>
@@ -227,7 +231,7 @@ function showResult(){//응답결과함수
  <div class="container">
    <div class="row">
         <div class="span12" >
-            <form id="custom-search-form" name="a" class="form-search form-horizontal  pull-right" action="oneandoneSearch.do">
+            <form id="custom-search-form" name="a" class="form-search form-horizontal " action="oneandoneSearch.do">
                 <div class="input-append span12">
 						<section class="container">
 							<div class="dropdown2">
@@ -247,6 +251,7 @@ function showResult(){//응답결과함수
    </div>
 </div> 
 <div id="span">
+
 <table border="1">
 <thead>
 <tr>
@@ -277,8 +282,7 @@ function showResult(){//응답결과함수
  <td><a href="${oneandoneAnswer}">${oneandone.subject}</a></td>
  <td>${oneandone.writedate }</td>
  <td>${oneandone.state }</td>
- <td> <input type="button" value="글삭제" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"></td>
- 
+ <td> <input type="button" value="글삭제" class="button button--ujarak button--border-thin button--text-thick" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"></td>
 </tr>
  </c:forEach>
 </tbody>
@@ -289,7 +293,6 @@ function showResult(){//응답결과함수
  </tfoot>
 </table>
 </div>
-
 <hr>
 풋부분
 </body>
