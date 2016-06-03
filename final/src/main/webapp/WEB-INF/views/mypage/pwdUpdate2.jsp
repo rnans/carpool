@@ -552,11 +552,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</nav>
 				<nav class="menu-side">
 					<a href="myPage.do">마이페이지</a>
-					<a href="myProfile.do">프로필수정</a>
 					<a href="notiSetting.do">알람설정</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">결제정보</a>
-					<a href="wishpoolList.do">즐겨찾기(카풀)</a>
+					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
 					<a href="#">이용내역</a>
 					<a href="#">등록글</a>
 					<a href="#">평가글</a>
