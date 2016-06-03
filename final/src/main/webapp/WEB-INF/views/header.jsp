@@ -62,7 +62,7 @@
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="poolAdd.do">등록하기</a></li>
 						<li class="divider"></li>
-						<li><a href="poolFind.do">검색하기</a></li>						
+						<li><a href="poolFindForm.do">검색하기</a></li>						
 						<li class="divider"></li>
 						<li><a href="poolMasterList.do">타세요</a></li>
 						<li><a href="poolMemberList.do">탈래요</a></li>
@@ -104,7 +104,7 @@
 					</ul>
 				</li>
 				<c:if test="${!empty sessionScope.sid}">
-				<li class="active"><a href="#">${sessionScope.sid}님 로그인</a> </li>
+				<li class="active"><a href="myPage.do">${sessionScope.sid}님 로그인</a> </li>
 				<li><a href="logout.do">로그아웃</a></li>
 				</c:if>
 				<c:if test="${empty sessionScope.sid }">
