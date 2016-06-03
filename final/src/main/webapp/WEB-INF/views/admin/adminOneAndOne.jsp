@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
 <link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 
 <style>
@@ -280,7 +281,11 @@ function showResult(){//응답결과함수
  <td><a href="${oneandoneAnswer}">${oneandone.subject}</a></td>
  <td>${oneandone.writedate }</td>
  <td>${oneandone.state }</td>
- <td> <a class="btn icon-btn btn-danger" href="#" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"><span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>삭제</a></td>
+ <td> 
+ <button type="submit" class="uButton uButtonPoint" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"
+	style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
+삭제</button>
+
 </tr>
  </c:forEach>
 </tbody>
