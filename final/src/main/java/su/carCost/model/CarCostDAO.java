@@ -18,6 +18,8 @@ public interface CarCostDAO {
    public String CarJooyuSum(String carnum);
    public String CarJungbiSum(String carnum);
    public String CarBuySum(String carnum);
+   public String CarugSum(String carnum);
+   
    public carInfoDTO Carimg(String carnum);
   
 //   public List<CarCostDTO> GraphCostList(String id);

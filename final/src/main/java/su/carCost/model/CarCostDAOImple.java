@@ -65,6 +65,10 @@ public class CarCostDAOImple implements CarCostDAO {
 	   String buysum=sqlMap.selectOne("CarBuySum", carnum);
 	   return buysum;
    }
+   public String CarugSum(String carnum){
+	   String ugsum=sqlMap.selectOne("CarugSum", carnum);
+	   return ugsum;
+   }
    public List<carInfoDTO> carnum(String id){
 		List<carInfoDTO> carlist=sqlMap.selectList("getCarnum", id);
 		return carlist;
