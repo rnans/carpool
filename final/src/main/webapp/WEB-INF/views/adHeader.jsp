@@ -65,7 +65,7 @@ table tr {
 	padding-left:20px;
 }
 table td:first-child {
-	text-align: left;
+	
 	padding-left:20px;
 	border-left: 0;
 }
@@ -75,6 +75,7 @@ table td {
 	border-bottom:1px solid #e0e0e0;
 	border-left: 0;
     border-right: 0;
+    text-align: center;
 	background: #fafafa;
 	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
 	background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
