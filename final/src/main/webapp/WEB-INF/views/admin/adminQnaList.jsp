@@ -5,6 +5,51 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+.links {
+  *zoom: 1;
+  padding: 50px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+    color: #797878;
+  text-align: center;
+}
+.links:before, .links:after {
+  content: "";
+  display: table;
+}
+.links:after {
+  clear: both;
+}
+
+.link-effect-3 a {
+  padding: 10px 0;
+  margin: 0 20px;
+  color: #797878;
+  text-shadow: none;
+  position: relative;
+}
+.link-effect-3 a::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding: 10px 0;
+  max-width: 0;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  content: attr(data-hover);
+  -webkit-transition: max-width 0.5s;
+  -moz-transition: max-width 0.5s;
+  transition: max-width 0.5s;
+}
+.link-effect-3 a:hover::before {
+  max-width: 100%;
+}
+
+</style>
 </head>
 <script>
 var idx=null;
@@ -21,14 +66,27 @@ function QnaDeleteForm(){
 <%@include file="../adHeader.jsp" %>
 </div>
 <hr>
-<div> 중간메뉴바
-<h2>고객센터관리</h2>
-<a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="adminuseguideList.do">4.이용안내</a>
-<h4>Q&A</h4>
+<div align="center">
+ <h2 align="center">고객센터관리</h2>
+<h4 align="center">Q&A</h4> 
 </div>
+<div id="content">
+       
+ 
+            <section class="links">
+                <nav class="link-effect-3" id="link-effect-3">
+                    <a href="adminNoticeList.do" data-hover="1.공지사항">1.공지사항</a>
+                    <a href="adminQnaList.do" data-hover="2.Q&A">2.Q&A</a>
+                    <a href="adminOneAndOne.do" data-hover="3.1:1문의">3.1:1문의</a>
+                    <a href="adminuseguideList.do" data-hover="4.이용안내">4.이용안내</a>
+                </nav>
+            </section>
+   
+           
+        </div>  
 
 <div>
-<table border="1" width="800" height="150" >
+<table border="1" style="margin: 0px auto; " >
 <thead>
 <tr>
    <th>번호</th>
@@ -55,7 +113,13 @@ function QnaDeleteForm(){
  <td><a href="${qnaContent}">${qna.subject }</a></td>
  <td>${qna.content}</td>
  <td>${qna.writedate }</td>
- <td><input type="button" value="글삭제" onclick="javascript:idx='${qna.idx}';QnaDeleteForm();"></td>
+
+ <td><button type="submit" class="uButton uButtonPoint" onclick= "javascript:idx='${qna.idx}';QnaDeleteForm();"
+		style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
+	삭제</button>
+	</td>
+ 
+ 
 </tr>
  </c:forEach>
 </tbody>

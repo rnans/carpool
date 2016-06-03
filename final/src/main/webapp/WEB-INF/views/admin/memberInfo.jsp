@@ -214,7 +214,7 @@ results.push(dtos);
 				
 			</tbody>
 			<tfoot>
-				<tr  class="even">
+				<tr class="even">
 					<td colspan="11" align="center">
 					${pageStr}
 					</td>

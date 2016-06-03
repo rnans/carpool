@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
+
 <script>
 var idx=null;
 function adminDriverReserveDel(){
@@ -9,7 +10,7 @@ function adminDriverReserveDel(){
 	window.open('adminDriverReserveDel.do'+param,'adminDriverReserveDel','width=500 height=400 left=500 top=200');
 }
 </script>
-		<table border="1" cellspacing="0" width="800" height="150" >
+		<table border="1" style="margin: 0px auto;" width="800" height="150" >
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -45,7 +46,10 @@ function adminDriverReserveDel(){
 					<td>${list.members }</td>
 					<td>${list.inmembers }</td>
 					<td>${list.reqcount}</td>
-					<td><input type="button" value="글삭제" onclick="javascript:idx='${list.idx}';adminDriverReserveDel();"></td>
+							<td><button type="submit" class="uButton uButtonPoint" onclick= "javascript:idx='${list.idx}';adminDriverReserveDel();"
+		style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
+	삭제</button>
+	</td>
 				</tr>
 				</c:forEach>
 			</tbody>

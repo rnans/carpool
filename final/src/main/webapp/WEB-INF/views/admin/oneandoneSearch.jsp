@@ -40,7 +40,12 @@ function oneandoneDelForm(){
  <td><a href="${oneandoneAnswer}">${oneandone.subject}</a></td>
  <td>${oneandone.writedate }</td>
  <td>${oneandone.state }</td>
- <td> <input type="button" value="글삭제" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"></td>
+				<td><button type="submit" class="uButton uButtonPoint" onclick= "javascript:idx='${oneandone.idx}';oneandoneDelForm();"
+		style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
+	삭제</button>
+	</td>
+ 
+ 	
 </tr>
  </c:forEach>
 </tbody>

@@ -171,7 +171,50 @@
     .search-query:focus + button {
         z-index: 3;   
     }
-  .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
+    <style type="text/css">
+
+.links {
+  *zoom: 1;
+  padding: 50px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+    color: #797878;
+  text-align: center;
+}
+.links:before, .links:after {
+  content: "";
+  display: table;
+}
+.links:after {
+  clear: both;
+}
+
+.link-effect-3 a {
+  padding: 10px 0;
+  margin: 0 20px;
+  color: #797878;
+  text-shadow: none;
+  position: relative;
+}
+.link-effect-3 a::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding: 10px 0;
+  max-width: 0;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  content: attr(data-hover);
+  -webkit-transition: max-width 0.5s;
+  -moz-transition: max-width 0.5s;
+  transition: max-width 0.5s;
+}
+.link-effect-3 a:hover::before {
+  max-width: 100%;
+}
+.btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
 .icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
 </style>
 </head>
@@ -207,34 +250,31 @@ function showResult(){//응답결과함수
 <div>메뉴바
 <%@include file="../adHeader.jsp" %>
 </div>
-<hr>
-<div>중간메뉴바
-<h2>고객센터관리</h2>
-<a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="adminuseguideList.do">4.이용안내</a>
-<h4>1:1문의내역</h4>
-</div><!-- 
- <form name="a" action="oneandoneSearch.do">
-<section class="container">
-    <div class="dropdown">
-      <select name="select" class="dropdown-select" id="">
-  <option value="writer">작성자</option>
-  <option value="type">문의유형</option>
- <option value="status">답변현황</option>
-      </select>
-    </div>
-  </section>
- <input type="text" id="search" name="search">
- <input type="button" value="검색" onclick="show()">
- </form>  -->
+<div align="center">
+<h2 align="center">고객센터관리</h2>
+<h4 align="center">1:1문의</h4> 
+</div>
+<br>
+<br>
+<div id="content" style="margin: 0px auto; " >
+            <section class="links" >
+                <nav class="link-effect-3" id="link-effect-3" >
+                    <a href="adminNoticeList.do" data-hover="1.공지사항">1.공지사항</a>
+                    <a href="adminQnaList.do" data-hover="2.Q&A">2.Q&A</a>
+                    <a href="adminOneAndOne.do" data-hover="3.1:1문의">3.1:1문의</a>
+                    <a href="adminuseguideList.do" data-hover="4.이용안내">4.이용안내</a>
+                </nav>
+            </section>       
+        </div>  
  
  <div class="container">
 <div id="span" style="width:1000px;">
    <div class="row">
         <div class="span12" >
-            <form id="custom-search-form" name="a" class="form-search form-horizontal " action="oneandoneSearch.do">
+            <form id="custom-search-form" name="a" class="form-search form-horizontal" action="oneandoneSearch.do">
                 <div class="input-append span12">
 					<section class="container"  style="float: right; display: inline-block; width: 320px; height: 28px;" >
-						<div class="dropdown2" style="width: 100px;border: 0;">
+						<div class="dropdown2" style="width: 100px;border: 0; top: 8px;">
 								<select name="select" class="dropdown-select">
 									<option value="writer">작성자</option>
 									<option value="type">문의유형</option>
@@ -250,8 +290,9 @@ function showResult(){//응답결과함수
             </form>
         </div>
    </div>
-<div class="tablebody">
-	<table border="1">
+   </div>
+<div class="tablebody" >
+	<table border="1" style="margin: 0px auto; ">
 	<thead>
 	<tr>
 	   <th>번호</th>
@@ -285,7 +326,7 @@ function showResult(){//응답결과함수
 	 <button type="submit" class="uButton uButtonPoint" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"
 		style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
 	삭제</button>
-	
+	</td>
 	</tr>
 	 </c:forEach>
 	</tbody>
@@ -297,7 +338,7 @@ function showResult(){//응답결과함수
 	</table>
 </div>
 </div>
-</div> 
+ 
 <hr>
 풋부분
 </body>
