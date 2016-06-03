@@ -7,7 +7,7 @@
 	select * from userpayinfo where userid=#{userid}
 	</select>
 	<insert id="userPayAdd" parameterType="su.yangmypage.model.yangMypageDTO">
-	insert into userpayinfo values(userpayinfo_idx.nextval,#{userid},#{cardtype1},#{cardnum},#{cardterm},#{cardname},#{cvv},#{cardtype2},#{cardid})
+	insert into userpayinfo values(userpayinfo_idx.nextval,#{userid},#{cardtype1},#{cardnum},#{cardterm},#{cardname},#{cvv},#{cardtype2},#{cardid},'사진없음')
 	</insert>
 	<select id="cardIdxList" parameterType="Integer" resultType="su.yangmypage.model.yangMypageDTO">
 	select * from userpayinfo where idx=#{idx}
