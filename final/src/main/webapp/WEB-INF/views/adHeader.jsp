@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
     <style>
 table a:link {
 	color: #666;
