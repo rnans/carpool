@@ -13,10 +13,6 @@
 	float: none;
 	margin:0 auto;
 }
-#a{
-	
-	margin-right: 250px;
-}
 
 </style>
 <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
@@ -194,7 +190,7 @@ function pwFindCheck(){
 						</label>
 						</span>
 					</section>
-						<div id="a">
+						<div id="a" class="col-md-12">
 							<input type="checkbox" name="saveid" id="saveid"
 								onclick="javascript:saveid(document.new_user_session);">
 							ID기억하기
@@ -205,7 +201,7 @@ function pwFindCheck(){
 								onclick="loginCheck()">
 								<span>로그인</span>
 							</button>
-	
+							
 						</div>
 						<div>
 							<a href="javascript:showFind()">ID찾기</a> / <a href="javascript:showFind2()">비밀번호찾기</a>
