@@ -149,7 +149,7 @@
 </head>
 <body>
 	<%@include file="../header.jsp"%>
-<nav class="navbar navbar-default" >
+<nav class="navbar navbar-default"  style=" margin-top:46px; " >
   <div class="container-fluid" >   
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
@@ -171,8 +171,8 @@
 <div class="buttonArea" style="color: #4C4C4C; width:100%;">   
     <ul class="nav navbar-nav home">
 	<li>
-	<i class="fa fa-home fa-3x" style="float: left;" aria-hidden="true"></i>
-	<span class="gSrOnly">차계부</span></li>
+	<i class="fa fa-bar-chart fa-2x" style="float: left;margin-top: 7px;" aria-hidden="true"></i>
+	<span class="gSrOnly" style="font-size: 17px;">그래프</span></li>
      
      <li style=" float: left;position: relative;display: inline-block;">
 		<div class="form-group" style="padding-top: 15px; padding-left: 50px;padding-right:50px;width:350px;  position: relative;display: inline-block;">
@@ -196,8 +196,12 @@
 							<a href="#" onclick="javascript:opencostReg()" class="btn btn-info" style="float: left; background: #EDD200; border:0;">비용 입력</a>
 		</div>
       </div>
-    </div>
-	
+      
+ </div>
+	<div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;">
+<h4 style="padding-left:100px; color: white;font-size: 15px;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;${cardto.cartype } &nbsp; [${cardto.carnum}]</h4>
+
+</div>
 	
 	<form action="">
 		<div>

@@ -101,7 +101,7 @@ function opencostReg(){
 			carnum=sel.options[i].value;			
 		}
 	}		
-	window.open('costReg.do?carnum='+carnum,'opencostReg','width=350,height=450');
+	window.open('costReg.do?carnum='+carnum,'opencostReg','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+', width=350px,height=450px');
 	
 }
 /* $(document).on(function(){
@@ -114,7 +114,7 @@ function opencostReg(){
 </script>
 <input type="hidden" id="hiddenId" value="${sid}"/>
 <nav class="navbar navbar-default" >
-  <div class="container-fluid" >   
+  <div class="container-fluid" style=" margin-top:46px; ">   
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
       <ul class="nav navbar-nav bar">
@@ -131,12 +131,11 @@ function opencostReg(){
     </div>
   </div>
 </nav>
-
-<div style="width: 65%; margin: 0px auto">
+<div style="width: 60%; margin: 0px auto">
   <div class="buttonArea" style="color: #4C4C4C; width:100%;">
     <ul class="nav navbar-nav home">
 	<li>
-	<i class="fa fa-home fa-3x" style="float: left;" aria-hidden="true"></i>
+	<i class="fa fa-home fa-2x" style="float: left;margin-top: 7px;" aria-hidden="true"></i>
 	<span class="gSrOnly">차계부</span></li>
      
      <li style=" float: left;position: relative;display: inline-block;">
@@ -167,9 +166,9 @@ function opencostReg(){
 
 
 
-<div id="costdiv" style="margin-top: 15px;">
+<div id="costdiv" style="margin-top: 5px;">
 <div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;margin-bottom: 15px;">
-<h4 style="padding-left:100px; color: white;padding-top: 10px;font-size: 15px;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;${cardto.cartype } &nbsp; [${cardto.carnum}]</h4>
+<h4 style="padding-left:100px; color: white;font-size: 15px;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;${cardto.cartype } &nbsp; [${cardto.carnum}]</h4>
 
 </div>
 <div style="float:left; height:225px; width: 48%; margin-right: 7px;" >
@@ -177,7 +176,7 @@ function opencostReg(){
 </div>
 <div style="float:right; height:225px; width: 48%; margin-left: 7px;" >
 			<fieldset>
-			<legend style="font-size: 17px; font-weight: bold; padding-bottom: 5px;">차량정보</legend> 
+			<legend style="font-size: 17px; font-weight: bold; padding-bottom: 5px; margin-bottom: 0px; ">차량정보</legend> 
 			<table class="table table-striped table-hover tabletd" style="height: 154.44px;border-top: 3px solid #4C4C4C; border-bottom:3px solid #4C4C4C;">
 				<!--  <table border="1" width="400" height="100" >-->
 				<thead>
@@ -214,7 +213,7 @@ function opencostReg(){
 	</div>
 
 		<fieldset>
-			<legend style="font-size: 17px; font-weight: bold; padding-bottom: 5px;">차계부
+			<legend style="font-size: 17px; font-weight: bold; padding-bottom: 5px;margin-bottom: 0px;">차계부
   
 			</legend>
 			<table class="table table-striped table-hover " style="height: 154.44px;
@@ -232,15 +231,19 @@ function opencostReg(){
 					<c:set var="buy" value="${buysum}" />
 					<tr>
 						<td>총 주유비용</td>
-						<td  class="info" name="number">${jooyu }원</td>
+						<td  class="info" name="number"><c:if test="${empty jooyu }">0</c:if>${jooyu }원</td>
 					</tr>
 					<tr>
 						<td>총 정비비용</td>
-						<td  class="info" name="number">${jungbi }원</td>
+						<td  class="info" name="number"><c:if test="${empty jungbi }">0</c:if>${jungbi }원</td>
 					</tr>
 					<tr>
-						<td>총 물품구입비용</td>
-						<td  class="info" name="number">${buy }원</td>
+						<td>총 기타비용</td>
+						<td  class="info" name="number">0 원</td>
+					</tr>
+					<tr>
+						<td>총 기타비용</td>
+						<td  class="info" name="number"><c:if test="${empty buy }">0</c:if>${buy }원</td>
 					</tr>
 				</tbody>
 			</table>
