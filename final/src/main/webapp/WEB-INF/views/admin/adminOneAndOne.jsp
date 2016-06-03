@@ -228,74 +228,76 @@ function showResult(){//응답결과함수
  </form>  -->
  
  <div class="container">
+<div id="span" style="width:1000px;">
    <div class="row">
         <div class="span12" >
             <form id="custom-search-form" name="a" class="form-search form-horizontal " action="oneandoneSearch.do">
                 <div class="input-append span12">
-						<section class="container">
-							<div class="dropdown2">
-								<select name="select" class="dropdown-select" >
+					<section class="container"  style="float: right; display: inline-block; width: 320px; height: 28px;" >
+						<div class="dropdown2" style="width: 100px;border: 0;">
+								<select name="select" class="dropdown-select">
 									<option value="writer">작성자</option>
 									<option value="type">문의유형</option>
 									<option value="status">답변현황</option>
 								</select>
 							</div>
-						</section>
-						<input type="text" class="search-query" id="search" name="search">
+							<input type="text" class="search-query" id="search" name="search" style="width: 150px;margin: 0px 0px 0px 0px;padding: 0px 0px;">
                     <button type="button" class="btn" onclick="show();" ><i class="main-icon" data-type="img" > 
-                    <img src="http://image005.flaticon.com/28/svg/34/34097.svg" width="15" height="15" alt="Magnifier tool free icon" title="Magnifier tool free icon"></i></button>                 
+                    <img src="http://image005.flaticon.com/28/svg/34/34097.svg" width="15" height="15" alt="Magnifier tool free icon" title="Magnifier tool free icon"></i></button> 
+					
+					</section>	                
                 </div>
             </form>
         </div>
    </div>
-</div> 
-<div id="span">
-
-<table border="1">
-<thead>
-<tr>
-   <th>번호</th>
-   <th>작성자</th>
-   <th>문의유형</th>
-   <th>제목</th>
-   <th>작성일</th>
-   <th>답변현황</th>
-   <th>비고</th>
-</tr>
-</thead>
-<tbody>
-<c:if test="${empty list }">
-<tr class="even">
- <td colspan="7" align="center">작성된 글이 없습니다.</td>
-</tr>
- </c:if>
-
-<c:forEach var="oneandone" items="${list }">
-<tr class="even">
- <td>${oneandone.idx}</td>
- <c:url var="oneandoneAnswer" value="oneandoneAnswer.do">
- <c:param name="idx">${oneandone.idx }</c:param>
- </c:url>
- <td>${oneandone.writer }</td>
- <td>${oneandone.type }</td>
- <td><a href="${oneandoneAnswer}">${oneandone.subject}</a></td>
- <td>${oneandone.writedate }</td>
- <td>${oneandone.state }</td>
- <td> 
- <button type="submit" class="uButton uButtonPoint" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"
-	style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
-삭제</button>
-
-</tr>
- </c:forEach>
-</tbody>
-<tfoot>
-<tr class="even">
- <td colspan="7" align="center">${pageStr }</td>
- </tr>
- </tfoot>
-</table>
+<div class="tablebody">
+	<table border="1">
+	<thead>
+	<tr>
+	   <th>번호</th>
+	   <th>작성자</th>
+	   <th>문의유형</th>
+	   <th>제목</th>
+	   <th>작성일</th>
+	   <th>답변현황</th>
+	   <th>비고</th>
+	</tr>
+	</thead>
+	<tbody>
+	<c:if test="${empty list }">
+	<tr class="even">
+	 <td colspan="7" align="center">작성된 글이 없습니다.</td>
+	</tr>
+	 </c:if>
+	
+	<c:forEach var="oneandone" items="${list }">
+	<tr class="even">
+	 <td>${oneandone.idx}</td>
+	 <c:url var="oneandoneAnswer" value="oneandoneAnswer.do">
+	 <c:param name="idx">${oneandone.idx }</c:param>
+	 </c:url>
+	 <td>${oneandone.writer }</td>
+	 <td>${oneandone.type }</td>
+	 <td><a href="${oneandoneAnswer}">${oneandone.subject}</a></td>
+	 <td>${oneandone.writedate }</td>
+	 <td>${oneandone.state }</td>
+	 <td> 
+	 <button type="submit" class="uButton uButtonPoint" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"
+		style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
+	삭제</button>
+	
+	</tr>
+	 </c:forEach>
+	</tbody>
+	<tfoot>
+	<tr class="even">
+	 <td colspan="7" align="center">${pageStr }</td>
+	 </tr>
+	 </tfoot>
+	</table>
 </div>
+</div>
+</div> 
 <hr>
 풋부분
 </body>
