@@ -175,7 +175,7 @@
 	<span class="gSrOnly" style="font-size: 17px;">그래프</span></li>
      
      <li style=" float: left;position: relative;display: inline-block;">
-		<div class="form-group" style="padding-top: 15px; padding-left: 50px;padding-right:50px;width:350px;  position: relative;display: inline-block;">
+		<div class="form-group" style="padding-top: 15px; padding-left: 50px;padding-right:50px;width:350px;  position: relative;display: inline-block;margin-bottom: 0px;">
 			<a href="#" class="btn btn-info" style="float: left; border:0;">Info</a>
 			<select class="btn btn-default dropdown-toggle" style="width: 180px; float: left;"   id=sel name=carnum
 				onchange="show()">
@@ -183,7 +183,6 @@
 					<option value="${carn.carnum }">${carn.carnum}</option>
 				</c:forEach>
 			</select>
-			
 		</div>
 	</li>
    </ul>
@@ -192,31 +191,21 @@
      
            <div style="float: right;">
 
-       <div class="buttonSubmit" style="float: right; padding-top: 15px; padding-right: 20px;">
-							<a href="#" onclick="javascript:opencostReg()" class="btn btn-info" style="float: left; background: #EDD200; border:0;">비용 입력</a>
-		</div>
+
       </div>
       
  </div>
-	<div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;">
-<h4 style="padding-left:100px; color: white;font-size: 15px;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;${cardto.cartype } &nbsp; [${cardto.carnum}]</h4>
-
+<div id="costdiv" style="margin-top: -5px;">
+<div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;margin-bottom: 10px;">
+       <ul class="nav navbar-nav bar" style="height:36px; font-size:17px; overflow: hidden;">
+      	<li  style="min-width:150px; background-color: white;"><a href="graph.do" style="padding-top: 9px;padding-left: 20px;"><i class="fa fa-pie-chart" aria-hidden="true" style="color:#4C4C4C;"></i>
+    <font style="color:#4C4C4C; font-weight: bold;">  비용 그래프</font></a></li>
+        <li  style="min-width:150px;"><a href="graph2.do" style="padding-top: 9px;padding-left: 20px;"><i class="fa fa-line-chart" aria-hidden="true" style="color:white;"></i>
+     <font style="color:white;"> 거리 그래프</font></a></li>
+        <li style="min-width:150px;"><a href="#" style="padding-top: 9px;padding-left: 20px;"><i class="fa fa-bar-chart" aria-hidden="true" style="color:white;"></i>
+   <font style="color:white;">임시 그래프</font>  </a></li> 
+      </ul>
 </div>
-	
-	<form action="">
-		<div>
-			Date: <input type="text" name="startday" id="datepicker" value="시작일"
-				maxlength="10" size="6">~ <input type="text" name="endday"
-				id="datepicker2" value="종료일" maxlength="10" size="6"> <select
-				name=type>
-				<option>주유</option>
-				<option>정비</option>
-				<option>물품구입비용</option>
-			</select> <input type="button" value="확인"><br>
-		</div>
-		
-	</form>
-
 
 <div id="view" class="view">
 	<script>
@@ -267,6 +256,17 @@
 						"id": "AmGraph-3",
 						"title": "graph 3",
 						"type": "column",
+						"labelText": "유지",
+						"valueField": "유지"
+					},
+					{
+						"balloonColor": "#0DE911",
+						"columnWidth": 0.7,
+						"fillAlphas": 1,
+						"gapPeriod": 50,
+						"id": "AmGraph-4",
+						"title": "graph 4",
+						"type": "column",
 						"labelText": "기타",
 						"valueField": "기타"
 					}
@@ -290,6 +290,7 @@
 						"category": "cost",
 						"주유": "${jooyusum}",
 						"정비": "${jungbisum}",
+						"유지": "${ugsum}",
 						"기타": "${buysum}"
 					}
 				]
@@ -321,9 +322,14 @@
 							"$": "${jungbisum}"
 						},
 						{
+							"항목" : "유지",
+							"$" : "${ugsum}"
+						},
+						{
 							"항목" : "기타",
 							"$" : "${buysum}"
-						} ]
+						}
+						]
 					});
 </script>
 		<div id="chartdiv" style="float:left;width: 50%; height: 400px; background-color: #FFFFFF;" ></div>

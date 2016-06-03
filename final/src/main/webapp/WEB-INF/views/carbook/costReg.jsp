@@ -52,8 +52,9 @@ function costsbmit() {
       		<div class="col-lg-10">
         		<select class="form-control" name="category" id="select" style="width:150px;">
 		          	<option>주유</option>
-					<option>정비</option>
-					<option>물품구입</option>
+		          	<option>정비</option>
+		          	<option>유지</option>
+					<option>기타</option>
         		</select>
       		</div>
       </div>

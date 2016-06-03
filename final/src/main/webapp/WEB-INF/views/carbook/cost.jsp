@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
 </head>
 <style>
-
 .buttonArea li .gSrOnly {
     position: absolute!important;
     top: auto!important;
@@ -147,7 +146,7 @@ function costDel2(){
 	<span class="gSrOnly"  style="">내역</span></li>
      
      <li style=" float: left;position: relative;display: inline-block;">
-		<div class="form-group" style="padding-top: 15px; padding-left: 50px;padding-right:50px;width:350px;  position: relative;display: inline-block;">
+		<div class="form-group" style="padding-top: 15px; padding-left: 50px;padding-right:50px;width:350px;  position: relative;display: inline-block;margin-bottom: 5px;">
 			<a href="#" class="btn btn-info" style="float: left; border:0;">Info</a>
 			<select class="btn btn-default dropdown-toggle" style="width: 180px; float: left;"   id=sel name=carnum
 				onchange="show()">

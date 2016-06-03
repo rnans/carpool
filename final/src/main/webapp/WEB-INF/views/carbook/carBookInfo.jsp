@@ -135,11 +135,11 @@ function opencostReg(){
   <div class="buttonArea" style="color: #4C4C4C; width:100%;">
     <ul class="nav navbar-nav home">
 	<li>
-	<i class="fa fa-home fa-2x" style="float: left;margin-top: 7px;" aria-hidden="true"></i>
+	<i class="fa fa-home fa-2x" style="float: left;margin-top: 7px;padding-top: 5px;" aria-hidden="true"></i>
 	<span class="gSrOnly">차계부</span></li>
      
      <li style=" float: left;position: relative;display: inline-block;">
-		<div class="form-group" style="padding-top: 15px; padding-left: 50px;padding-right:50px;width:350px;  position: relative;display: inline-block;">
+		<div class="form-group" style="padding-top: 15px; padding-left: 50px;padding-right:50px;width:350px;  position: relative;display: inline-block;margin-bottom: 5px;">
 			<a href="#" class="btn btn-info" style="float: left; border:0;">Info</a>
 			<select class="btn btn-default dropdown-toggle" style="width: 180px; float: left;"   id=sel name=carnum
 				onchange="show()">
@@ -166,13 +166,13 @@ function opencostReg(){
 
 
 
-<div id="costdiv" style="margin-top: 5px;">
+<div id="costdiv" style="margin-top: -5px;">
 <div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;margin-bottom: 15px;">
 <h4 style="padding-left:100px; color: white;font-size: 15px;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;${cardto.cartype } &nbsp; [${cardto.carnum}]</h4>
 
 </div>
 <div style="float:left; height:225px; width: 48%; margin-right: 7px;" >
-<img style="width:100%;height:100%;" src="http://localhost:9090/final02/img/${cardto.carphoto}">
+<img style="width:100%;height:100%;" src="http://192.168.50.86:9090/final02/img/${cardto.carphoto}">
 </div>
 <div style="float:right; height:225px; width: 48%; margin-left: 7px;" >
 			<fieldset>
@@ -183,8 +183,8 @@ function opencostReg(){
 					<tr>
 						<td style="width: 50%;">기록시작일</td>
 						
-
-						<td style="width: 50%;">2016-01-01</td>
+<c:set var="cost" value="${costsum}" />
+						<td style="width: 50%;"> <c:if test="${empty cardto.joindate }">2016-01-01</c:if> ${cardto.joindate } </td>
 					</tr>
 				</thead>
 				<tbody>
@@ -238,8 +238,8 @@ function opencostReg(){
 						<td  class="info" name="number"><c:if test="${empty jungbi }">0</c:if>${jungbi }원</td>
 					</tr>
 					<tr>
-						<td>총 기타비용</td>
-						<td  class="info" name="number">0 원</td>
+						<td>총 유지비용</td>
+						<td  class="info" name="number"><c:if test="${empty ugsum }">0</c:if>${ugsum }원</td>
 					</tr>
 					<tr>
 						<td>총 기타비용</td>
