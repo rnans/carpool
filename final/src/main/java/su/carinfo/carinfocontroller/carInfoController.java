@@ -27,6 +27,7 @@ import su.upload.model.UploadDTO;
 import su.carinfo.model.carInfoDAO;
 import su.carinfo.model.carInfoDTO;
 import su.member.model.*;
+import su.mypage.model.MypageDTO;
 
 @Controller
 public class carInfoController {
@@ -111,19 +112,16 @@ public class carInfoController {
 			HttpSession session, UploadDTO dto,carInfoDTO dto2) {
 
 		ModelAndView mav = new ModelAndView();
-		String msg = null;
 		int result2 = carInfoDao.carNumList(dto2);
-		
-		if(check.equals("")||check==null){
+		mav.addObject("dto", dto2);
+		if(check.equals("false")){
 			
 			mav.addObject("msg", "형식 확인을 해주세요.");
-			mav.addObject("dto", dto2);
 			mav.setViewName("carManage/carAdd");
 		}else if (result2 == 1) {
 		
 			
 			mav.addObject("msg", "이미 등록된 차량 번호입니다.");
-			mav.addObject("dto", dto2);
 			mav.setViewName("carManage/carAdd");
 		} else {
 			
@@ -175,11 +173,18 @@ public class carInfoController {
 			     System.out.println("filepath2:"+filepath2);
 		     }
 		 	int result = carInfoDao.carAdd(dto2);
-			msg = result > 0 ? "차량등록 성공" : "차량등록 실패";
-
-			mav.addObject("msg", msg);
+		 	
+		 	if(result>0){
+		
+			mav.addObject("msg", "차량등록 성공");
 			mav.addObject("gopage", "carList.do");
 			mav.setViewName("carManage/carMsg");
+		 	}else{
+			mav.addObject("msg", "차 종류를 입력해주세요");
+			mav.setViewName("carManage/carAdd");
+			mav.addObject("dto", dto2);
+		 	}
+		 	
 			if (result > 0) {
 				session.setAttribute("carnum", dto2.getCarnum());
 			}
@@ -200,6 +205,10 @@ public class carInfoController {
 			mav.setViewName("carManage/carMsg");
 
 		} else {
+				
+			/*	List<UploadDTO> dto=carInfoDao.carImage(userid);
+				mav.addObject("carImage",dto);*/
+			
 			List<carInfoDTO> lists = carInfoDao.carAllList(userid);
 			mav.addObject("list", lists);
 			mav.setViewName("carManage/carList");
@@ -222,6 +231,7 @@ public class carInfoController {
 	@RequestMapping(value = "/carUpdate.do", method = RequestMethod.POST)
 	public ModelAndView carUpdate(carInfoDTO dto) {
 
+		System.out.println(dto.getIdx());
 		int result = carInfoDao.carUpdate(dto);
 		String msg = result > 0 ? "차량수정 성공" : "차량수정 실패";
 		ModelAndView mav = new ModelAndView();
