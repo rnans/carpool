@@ -53,14 +53,6 @@ function pwFindCheck(){
 <script src="/final02/js/idChecked.js"></script>
 <script src="/final02/js/modernizr.custom2.js"></script>
 <style>
-.button{
-	float: none;
-	margin:0 auto;
-}
-#a{
-	
-	margin-right: 250px;
-}
 
 </style>
 </head>
@@ -99,17 +91,18 @@ function pwFindCheck(){
 								onclick="javascript:saveid(document.new_user_session);">
 							ID기억하기
 						</div>
-						<div>
+					
+						<div class="text-center" style="width: 300px;padding:15px;">
 							<button type="button"
 								class="button button--isi button--border-thin button--size-s button--round-s"
 								onclick="loginCheck()">
 								<span>로그인</span>
 							</button>
-	
-						</div>
-						<div>
+						</div >
+						<div id="b" style="display: block;">
 							<a href="javascript:showFind()">ID찾기</a> / <a href="javascript:showFind2()">비밀번호찾기</a>
-						</div>
+						</div >
+						
 
 				</form>
 			</div>
@@ -131,7 +124,7 @@ function pwFindCheck(){
 										</label>
 								</span>
 							</section>
-								<div>
+								<div class="center-block" style="width: 300px;padding:15px;">
 									<button type="button"
 										class="button button--isi button--border-thin button--size-s button--round-s"
 										onclick="idFindCheck()">
@@ -161,7 +154,7 @@ function pwFindCheck(){
 								</span>
 							</section>
 		
-								<div>
+								<div class="center-block" style="width: 300px;padding:15px;">
 									<button type="button"
 										class="button button--isi button--border-thin button--size-s button--round-s"
 										onclick="pwFindCheck()">
