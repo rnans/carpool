@@ -41,19 +41,77 @@ public class AdminMemberController {
 	public void setAdCarInfoDao(AdminCarInfoDAO adCarInfoDao) {
 		this.adCarInfoDao = adCarInfoDao;
 	}
+	
+	/**회원 검색 아작스처리*/
+	@RequestMapping("/memberSearch.do")
+	public ModelAndView memberSearchList(@RequestParam(value="cp",defaultValue="1")int cp,HttpServletRequest req){
+		
+		String select=req.getParameter("select");
+		String search=req.getParameter("search");
+    	ModelAndView mav=new ModelAndView();
+		int idTotalCnt=adMemberDao.memberIdTotalCnt(search);
+		int nameTotalCnt=adMemberDao.memberNameTotalCnt(search);
+		int sexTotalCnt=adMemberDao.memberSexTotalCnt(search);
+		int listSize=15;
+		int pageSize=5;
+		
+		if(select.equals("id")){
+		List<AdminMemberDTO> list=adMemberDao.memberIdSearch(cp, listSize, search);
+		
+		String pageStr=
+				su.Page.SuPage.makePage("memberSearch.do", idTotalCnt, listSize, pageSize, cp);
+		mav.addObject("lists", list);
+		mav.addObject("pageStr",pageStr);
+		mav.setViewName("admin/memberSearch");
+		}else if(select.equals("name")){
+			List<AdminMemberDTO> list=adMemberDao.memberNameSearch(cp,listSize,search);
+			
+			String pageStr=
+					su.Page.SuPage.makePage("memberSearch.do", nameTotalCnt, listSize, pageSize, cp);
+			mav.addObject("lists", list);
+			mav.addObject("pageStr",pageStr);
+			mav.setViewName("admin/memberSearch");
+			
+		}else if(select.equals("sex")){
+			List<AdminMemberDTO> list=adMemberDao.memberSexSearch(cp,listSize,search);
+			
+			String pageStr=
+					su.Page.SuPage.makePage("memberSearch.do", sexTotalCnt, listSize, pageSize, cp);
+			mav.addObject("lists", list);
+			mav.addObject("pageStr",pageStr);
+			mav.setViewName("admin/memberSearch");
+		}
+		
+		
+		  return mav;
+    }
 
 	/**모든 회원 보기*/
 	@RequestMapping("/memberInfo.do")
 	public ModelAndView memberInfo(@RequestParam(value="cp", defaultValue="1")int cp){
 		
 		int totalCnt = adMemberDao.memberTotalCnt();
-		int listSize = 20;
+		int listSize = 15;
 		int pageSize = 5;
 		
 		ModelAndView mav = new ModelAndView();
 		List<AdminMemberDTO> list = adMemberDao.memberinfo(cp, listSize);
-		String pageStr = su.Page.SuPage.makePage("memberInfo", totalCnt, listSize, pageSize, cp);
+		String pageStr = su.Page.SuPage.makePage("memberInfo.do", totalCnt, listSize, pageSize, cp);
+		int man = adMemberDao.memberSexMan();
+		int woman = adMemberDao.memberSexWoman();
+		int seoul = adMemberDao.memberAddrSeoul();
+		int gyeonggi=adMemberDao.memberAddrGyeonggi();
+		int inchean = adMemberDao.memberAddrInchean();
+		int busan = adMemberDao.memberAddrBusan();
+		int etc = adMemberDao.memberAddrEtc();
 		
+		mav.addObject("man", man);
+		mav.addObject("woman", woman);
+		mav.addObject("seoul", seoul);
+		mav.addObject("gyeonggi", gyeonggi);
+		mav.addObject("inchean", inchean);
+		mav.addObject("busan", busan);
+		mav.addObject("etc", etc);
 		mav.addObject("lists", list);
 		mav.addObject("pageStr", pageStr);
 		mav.setViewName("admin/memberInfo");
