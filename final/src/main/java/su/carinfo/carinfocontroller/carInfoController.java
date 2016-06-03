@@ -229,17 +229,88 @@ public class carInfoController {
 	}
 
 	@RequestMapping(value = "/carUpdate.do", method = RequestMethod.POST)
-	public ModelAndView carUpdate(carInfoDTO dto) {
+	public ModelAndView carUpdate(@Param(value="check")String check,carInfoDTO dto2,MultipartHttpServletRequest req, HttpServletRequest request, 
+			HttpSession session, UploadDTO dto) {
 
-		System.out.println(dto.getIdx());
-		int result = carInfoDao.carUpdate(dto);
-		String msg = result > 0 ? "차량수정 성공" : "차량수정 실패";
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("msg", msg);
-		mav.addObject("gopage", "carList.do");
-		mav.setViewName("carManage/carMsg");
+		int result2 = carInfoDao.carNumList(dto2);
+		mav.addObject("dto", dto2);
+		if(check.equals("false")){
+			
+			mav.addObject("msg", "형식 확인을 해주세요.");
+			mav.setViewName("carManage/carAdd");
+		}else if (result2 == 1) {
+			
+			mav.addObject("msg", "이미 등록된 차량 번호입니다.");
+			mav.setViewName("carManage/carAdd");
+		} else {
+			
+			MultipartFile upload=req.getFile("upload");
+			MultipartFile upload2=req.getFile("upload2");
+			 copyInto(upload,upload2, request);
+			 
+			 String filename=upload.getOriginalFilename();
+			 //파일 타입 프로필=0//차량=1//기타=각자 추가하셈
+			 String filetype="1";
+		     String filepath=root_path+attach_path+filename;
+			 String id=(String)session.getAttribute("sid");
+			 
+			 dto.setId(id); 
+			 
+	
+		     if(filename.equals("")||filename==null){
+		    	 dto2.setCarphoto("사진없음");
+		     }else{
+		    	 dto2.setCarphoto(filename);
+		    	 dto.setFilename(filename); 
+				 dto.setFilepath(filepath); dto.setFiletype(filetype);
+				 int count=uploadDao.upload(dto);
+				 String msg2=count>0?"upload 성공":"upload 실패";
+				 System.out.println(msg2);
+			     System.out.println("id :"+id);
+			     System.out.println("filename:"+filename);
+			     System.out.println("filepath:"+filepath);
+		     }
+		//인증사진
+		     String filename2=upload2.getOriginalFilename();
+			 //파일 타입 프로필=0//차량=1//기타=각자 추가하셈
+			 String filetype2="1";
+		     String filepath2=root_path+attach_path+filename2;
+		
+		     
+		     if(filename2.equals("")||filename2==null){
+		    	 dto2.setConfirmphoto("사진없음");
+		     }else{
+		    	 dto2.setConfirmphoto(filename2);
+		    	 
+		    	 dto.setFilename(filename2); 
+				 dto.setFilepath(filepath2); dto.setFiletype(filetype2);
+				 int count=uploadDao.upload(dto);
+		    	 String msg2=count>0?"upload 성공":"upload 실패";
+				 System.out.println(msg2);
+			     System.out.println("id :"+id);
+			     System.out.println("filename2:"+filename2);
+			     System.out.println("filepath2:"+filepath2);
+		     }
+		 	int result = carInfoDao.carAdd(dto2);
+		 	
+		 	if(result>0){
+		
+			mav.addObject("msg", "차량등록 성공");
+			mav.addObject("gopage", "carList.do");
+			mav.setViewName("carManage/carMsg");
+		 	}else{
+			mav.addObject("msg", "차 종류를 입력해주세요");
+			mav.setViewName("carManage/carAdd");
+			mav.addObject("dto", dto2);
+		 	}
+		 	
+			if (result > 0) {
+				session.setAttribute("carnum", dto2.getCarnum());
+			}
+		}
 		return mav;
-
+		
 	}
 
 	@RequestMapping("/carDel.do")

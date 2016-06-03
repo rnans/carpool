@@ -80,7 +80,7 @@ public class yangMyPageController {
 			msg = result > 0 ? "결제정보 등록 성공" : "결제정보 등록 실패";
 			mav.addObject("msg", msg);
 			mav.addObject("gopage", "userPayInfo.do");
-			mav.setViewName("mypage/myPageMsg");
+			mav.setViewName("mypage/userPayAddMsg");
 		} else {
 			msg = "이미 등록된 카드번호 입니다.";
 			mav.addObject("dto", dto);

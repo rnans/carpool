@@ -2,8 +2,9 @@ function previewImage(targetObj, previewId,imgWidth,imgHeight) {
 
     var preview = document.getElementById(previewId); //div id   
     var ua = window.navigator.userAgent;
+    document.getElementById("fImage").style.display = "none";
 
-    if (ua.indexOf("MSIE") > -1) {//ieÀÏ¶§
+    if (ua.indexOf("MSIE") > -1) {//ieï¿½Ï¶ï¿½
 
         targetObj.select();
 
@@ -13,10 +14,10 @@ function previewImage(targetObj, previewId,imgWidth,imgHeight) {
                     .getElementById("ie_preview_error_" + previewId);
 
             if (ie_preview_error) {
-                preview.removeChild(ie_preview_error); //error°¡ ÀÖÀ¸¸é delete
+                preview.removeChild(ie_preview_error); //errorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ delete
             }
 
-            var img = document.getElementById(previewId); //ÀÌ¹ÌÁö°¡ »Ñ·ÁÁú °÷ 
+            var img = document.getElementById(previewId); //ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ·ï¿½ï¿½ï¿½ ï¿½ï¿½ 
 
             img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"
                     + src + "', sizingMethod='scale')";
@@ -28,17 +29,17 @@ function previewImage(targetObj, previewId,imgWidth,imgHeight) {
                 preview.insertBefore(info, null);
             }
         }
-    } else { //ie°¡ ¾Æ´Ò¶§
+    } else { //ieï¿½ï¿½ ï¿½Æ´Ò¶ï¿½
         var files = targetObj.files;
         for ( var i = 0; i < files.length; i++) {
 
             var file = files[i];
 
-            var imageType = /image.*/; //ÀÌ¹ÌÁö ÆÄÀÏÀÏ°æ¿ì¸¸.. »Ñ·ÁÁØ´Ù.
+            var imageType = /image.*/; //ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ì¸¸.. ï¿½Ñ·ï¿½ï¿½Ø´ï¿½.
             if (!file.type.match(imageType))
                 continue;
 
-            var prevImg = document.getElementById("prev_" + previewId); //ÀÌÀü¿¡ ¹Ì¸®º¸±â°¡ ÀÖ´Ù¸é »èÁ¦
+            var prevImg = document.getElementById("prev_" + previewId); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½â°¡ ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (prevImg) {
                 preview.removeChild(prevImg);
             }
@@ -47,12 +48,12 @@ function previewImage(targetObj, previewId,imgWidth,imgHeight) {
             img.id = "prev_" + previewId;
             img.classList.add("obj");
             img.file = file;
-            img.style.width = imgWidth+'px'; //±âº»¼³Á¤µÈ divÀÇ ¾È¿¡ »Ñ·ÁÁö´Â È¿°ú¸¦ ÁÖ±â À§ÇØ¼­ divÅ©±â¿Í °°Àº Å©±â¸¦ ÁöÁ¤ÇØÁØ´Ù.
+            img.style.width = imgWidth+'px'; //ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ divï¿½ï¿½ ï¿½È¿ï¿½ ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ divÅ©ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
             img.style.height = imgHeight+'px';
             
             preview.appendChild(img);
 
-            if (window.FileReader) { // FireFox, Chrome, Opera È®ÀÎ.
+            if (window.FileReader) { // FireFox, Chrome, Opera È®ï¿½ï¿½.
                 var reader = new FileReader();
                 reader.onloadend = (function(aImg) {
                     return function(e) {

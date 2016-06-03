@@ -105,7 +105,8 @@ public class UploadController {
 			 System.out.println(msg);
 			 
 			 }
-		 else{		 	  
+		 else{		
+			 System.out.println("업로드시도");
 		 int count=uploadDao.fileUpdate(dto);
 		 String msg=count>0?"upload 성공":"upload 실패";
 		 System.out.println(msg);
