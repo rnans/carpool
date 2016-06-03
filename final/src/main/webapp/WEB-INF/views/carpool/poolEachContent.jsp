@@ -71,7 +71,7 @@
 		var content = conEl.value;
 
 		for (var i = 0; i < selEl.options.length; i++) {
-			if (selEl.options[i].selected) {
+			if (selEl.options[i].selected){
 				rate = selEl.options[i].value;
 			}
 		}
@@ -112,11 +112,15 @@
 				'width=480 height=320');
 	}
 	function request() {
+		var param = '?idx='+document.getElementById('idx').value;
+		//alert('param='+param);
+		location.href="payType.do"+param;
+		/*
 		var poolType = '${dto.pooltype}';
 		var param = '';
 
 		window.alert(poolType);
-
+		
 		if (poolType == '타세요') {
 			var param = '?idx=' + document.getElementById('idx').value;
 			window.open('reqToMasterPage.do' + param, 'reqListPopup',
@@ -127,15 +131,13 @@
 			window.open('reqToMemberPage.do' + param, 'reqListPopup2',
 					'width=480 height=320');
 		}
-
+ 		*/
 	}
 
 	function delRate(idx) {
 		var url = 'rateDel.do';
 		params = 'idx=' + idx
-
 		sendRequest(url, params, showResult, 'GET')
-
 		function showResult() {
 			if (XHR.readyState == 4) {
 				if (XHR.status == 200) {
@@ -202,7 +204,7 @@
 					<input type="hidden" id="idx" name="idx" value="${dto.idx}">
 					<p>프로필 사진 영역</p>
 					<p>진행 상태 ${dto.status}</p>
-					<p>출발지 ${dto.startspot }</p>
+					<p>출발지 ${dto.startspot}</p>
 					<p>도착지 ${dto.endspot }</p>
 					<p>출발 일시 ${dto.starttime }</p>
 					<c:if test="${dto.termtype eq '정기' }">

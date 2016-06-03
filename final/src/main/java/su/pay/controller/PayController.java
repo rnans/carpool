@@ -28,8 +28,11 @@ public class PayController {
 	}
 
 	@RequestMapping("/payType.do")
-	public ModelAndView payType(){
+	public ModelAndView payType(
+			@RequestParam("idx")int idx){
 	
+		System.out.println("idx="+idx);
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("pay/payType");
 		return mav;
@@ -40,9 +43,8 @@ public class PayController {
 			PayDTO pDTO,HttpSession session){
 		
 		//String userid = (String)
-		//userid = (String)session.getAttribute("");
+		userid = (String)session.getAttribute("sid");
 		
-		userid = "asdf";
 		pDTO.setUserid(userid);
 		System.out.println("test");
 		List<PayDTO> list = payDao.payInfo(pDTO);
@@ -54,10 +56,9 @@ public class PayController {
 	}
 	
 	@RequestMapping("/newCardEnroll.do")
-	public ModelAndView newCardEnroll(PayDTO pDTO){
+	public ModelAndView newCardEnroll(PayDTO pDTO,HttpSession session){
 		//여긴 세션값으로 가져오는 아이디 값이 들어옴
-		//String userid = session.getSession();
-		
+		String userid = (String)session.getAttribute("sid");
 		String cardImg = "";
 		
 		if(pDTO.getCardType1().equals("신한은행")||
@@ -75,7 +76,7 @@ public class PayController {
 			pDTO.setCardImg(cardImg);
 		}
 		System.out.println(cardImg);
-		pDTO.setUserid("asdf");
+		pDTO.setUserid(userid);
 		int result=payDao.cardEnroll(pDTO);
 
 		String msg = result>0?"결제 및 카드등록이 처리되었습니다.":"결제실패하였습니다.";
@@ -106,4 +107,5 @@ public class PayController {
 		mav.setViewName("pay/payMsg");
 		return mav;
 	}
+	
 }
