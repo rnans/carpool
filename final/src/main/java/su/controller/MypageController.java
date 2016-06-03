@@ -170,26 +170,26 @@ public class MypageController {
 		dto = mypageDao.notiInfo(id);
 		
 		mav.addObject("dto", dto);
-		mav.setViewName("mypage/notiSetting");
+		mav.setViewName("mypage/notiSetting2");
 		
 		return mav;
 	}
 	
 	/**알림설정하기*/
-	@RequestMapping(value="/notiSetting.do", method=RequestMethod.POST)
-	public ModelAndView notiSetting(MyAlarmDTO dto){
-		
-		
-		ModelAndView mav = new ModelAndView();
-		int result = mypageDao.notiSetting(dto);
-		
-		String msg = result>0?"알람설정완료!":"알람설정실패!";
-		mav.addObject("msg", msg);
-		mav.addObject("gopage", "myPage.do");
-		mav.setViewName("mypage/myPageMsg");
-		
-		return mav;
-	}
+//	@RequestMapping(value="/notiSetting.do", method=RequestMethod.POST)
+//	public ModelAndView notiSetting(MyAlarmDTO dto){
+//		
+//		
+//		ModelAndView mav = new ModelAndView();
+//		int result = mypageDao.notiSetting(dto);
+//		
+//		String msg = result>0?"알람설정완료!":"알람설정실패!";
+//		mav.addObject("msg", msg);
+//		mav.addObject("gopage", "myPage.do");
+//		mav.setViewName("mypage/myPageMsg");
+//		
+//		return mav;
+//	}
 	
 	@RequestMapping(value="/alarmUpdate.do", method=RequestMethod.POST)
 	public ModelAndView alarmUpdate(MyAlarmDTO dto){
@@ -247,12 +247,10 @@ public class MypageController {
 	  public String memberleave(){
 		  return "mypage/memberleave2";
 	  }
+	  
+	 
 	
-//	  
-//	  @RequestMapping("/trr.do")
-//	  public String trrtest(){
-//		  return "mypage/trr";
-//	  }
+	
 	  
 	
 	
