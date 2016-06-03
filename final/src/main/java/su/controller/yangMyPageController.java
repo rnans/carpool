@@ -43,7 +43,7 @@ public class yangMyPageController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto", dto);
-		mav.setViewName("mypage/userPayInfo");
+		mav.setViewName("mypage/userPayInfo2");
 
 		return mav;
 	}
@@ -51,7 +51,7 @@ public class yangMyPageController {
 	@RequestMapping("/userPayAddPage.do")
 	public String userPayAddPage() {
 
-		return "mypage/userPayAdd";
+		return "mypage/userPayAdd2";
 	}
 
 	@RequestMapping("/userPayAdd.do")
@@ -85,7 +85,7 @@ public class yangMyPageController {
 			msg = "이미 등록된 카드번호 입니다.";
 			mav.addObject("dto", dto);
 			mav.addObject("msg", msg);
-			mav.setViewName("mypage/userPayAdd");
+			mav.setViewName("mypage/userPayAdd2");
 		}
 		return mav;
 	}
@@ -108,7 +108,7 @@ public class yangMyPageController {
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("dto", dto);
-		mav.setViewName("mypage/userPayUpdate");
+		mav.setViewName("mypage/userPayUpdate2");
 
 		return mav;
 	}
