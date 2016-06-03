@@ -63,17 +63,20 @@ function car_num_chk(car_num)
             result.innerText="차량 형식에 맞지 않습니다.";
             var car=document.getElementById("car");
             car.value="";
+            var check=document.getElementById("carCheck");
+            check.value="false";
+            
         } 
         else {  
             result.innerText="차량 형식에 맞습니다.";
-            var check=document.getElementsByName("check");
-            check.value=1;
+            var check=document.getElementById("carCheck");
+            check.value="true";
         } 
     } 
     else { 
         result.innerText ="차량 형식에 맞습니다."; 
-        var check=document.getElementByName("check");
-        check.value=1;
+        var check=document.getElementById("carCheck");
+        check.value="true";
     } 
     
 } 
@@ -124,7 +127,7 @@ function car_num_chk(car_num)
 
 			<div>
 			<p>
-				<input type="hidden" name="check" value="">
+				<input type="hidden" id="carCheck" name="check" value="false">
 				<input type="button" value="취소" onclick="addClose()"> 
 				<input type="submit" value="등록">
 				</p>
