@@ -57,6 +57,7 @@
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
     }
+    
 </style>
 <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="/final02/js/httpRequest.js"></script>
@@ -86,9 +87,10 @@ function checkMain(){
 </head>
 <body>
 <%@include file="../header.jsp"%>
+<div style="margin-top : 85px;">
 	<div class="container">
     <div class="row col-md-6 col-md-offset-2 custyle">
-    <table class="table table-striped custab" style="width: 700px;">
+    <table class="table table-striped custab" style="width: 750px;">
 			<tr>
 				<th class="text-center">대표차량</th>
 				<th>차량사진</th>
@@ -133,22 +135,7 @@ function checkMain(){
 
 		</table>
 	</fieldset>
-	<div class="container">
-   <div class="row">
-        <div class="span12">
-            <form id="custom-search-form" class="form-search form-horizontal pull-right">
-                <div class="input-append span12">
-                    <input type="text" class="search-query" placeholder="Search">
-                    <button type="submit" class="btn"><i class="main-icon" data-type="img" > 
-                    <img src="http://image005.flaticon.com/28/svg/34/34097.svg" width="20" height="20" alt="Magnifier tool free icon" title="Magnifier tool free icon"></i></button>
-                    
-				
-			
-                </div>
-            </form>
-        </div>
-   </div>
-</div>
 	
+</div>
 </body>
 </html>
