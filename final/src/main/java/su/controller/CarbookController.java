@@ -136,10 +136,12 @@ import su.carinfo.model.carInfoDTO;
 		   }
 		   carInfoDTO cardto=CarCostDao.Carimg(carnum);
 		   
+		   
 		   String costsum=CarCostDao.CarCostSum(carnum);
 		   String kmsum=CarCostDao.CarKmSum(carnum);
 		   String jooyusum=CarCostDao.CarJooyuSum(carnum);
 		   String jungbisum=CarCostDao.CarJungbiSum(carnum);
+		   String ugsum=CarCostDao.CarugSum(carnum);
 		   String buysum=CarCostDao.CarBuySum(carnum);
 		   
 		   if(costsum==null){
@@ -158,12 +160,16 @@ import su.carinfo.model.carInfoDTO;
 		   if(buysum==null){
 			   buysum = "0";
 		   }	
+		   if(ugsum==null){
+			   ugsum = "0";
+		   }	
 		   	mav.addObject("cardto", cardto);
 		  	mav.addObject("costsum", costsum);
 		  	mav.addObject("kmsum", kmsum);
 			mav.addObject("jooyusum", jooyusum);
 			mav.addObject("jungbisum", jungbisum);
 			mav.addObject("buysum", buysum);
+			mav.addObject("ugsum", ugsum);
 			mav.addObject("cnum", carlist);
 			mav.addObject("carnum", carnum);
 			mav.setViewName("carbook/carBookInfo");
@@ -187,6 +193,7 @@ import su.carinfo.model.carInfoDTO;
 		   String jooyusum=CarCostDao.CarJooyuSum(carnum);
 		   String jungbisum=CarCostDao.CarJungbiSum(carnum);
 		   String buysum=CarCostDao.CarBuySum(carnum);
+		   String ugsum=CarCostDao.CarugSum(carnum);
 		   
 		   if(costsum==null){
 
@@ -210,6 +217,7 @@ import su.carinfo.model.carInfoDTO;
 			mav.addObject("jooyusum", jooyusum);
 			mav.addObject("jungbisum", jungbisum);
 			mav.addObject("buysum", buysum);
+			mav.addObject("ugsum", ugsum);
 
 			mav.addObject("carnum", carnum);
 			mav.setViewName("carbook/carA");
@@ -265,12 +273,16 @@ import su.carinfo.model.carInfoDTO;
 		   List<carInfoDTO> carlist=CarCostDao.carnum(id);
 		   String carnum=req.getParameter("carnum");
 		   
-		   
 		   List<CarCostDTO> list=CarCostDao.CarCostList(carnum);
+		   carInfoDTO cardto=CarCostDao.Carimg(carnum);
+		   		   
 		   ModelAndView mav=new ModelAndView();
 		   mav.addObject("list", list);
+		   mav.addObject("carlist", carlist);
+		   mav.addObject("cardto", cardto);		   
 		   mav.setViewName("carbook/costA");
-		return mav;
+		   
+		   return mav;
 	   }
 	   
 	   
@@ -289,10 +301,10 @@ import su.carinfo.model.carInfoDTO;
 		   String kmsum=CarCostDao.CarKmSum(carnum);
 		   String jooyusum=CarCostDao.CarJooyuSum(carnum);
 		   String jungbisum=CarCostDao.CarJungbiSum(carnum);
-		   String buysum=CarCostDao.CarBuySum(carnum);			
+		   String buysum=CarCostDao.CarBuySum(carnum);	
+		   String ugsum=CarCostDao.CarugSum(carnum);
 		   
 		 
-		   
 			mav.addObject("costsum", costsum);
 		  	mav.addObject("kmsum", kmsum);
 			mav.addObject("jooyusum", jooyusum);
@@ -300,6 +312,7 @@ import su.carinfo.model.carInfoDTO;
 			mav.addObject("buysum", buysum);
 			mav.addObject("cnum", carlist);
 			mav.addObject("carnum", carnum);
+			mav.addObject("ugsum", ugsum);
 			
 			mav.setViewName("carbook/graph");
 			System.out.println(carnum);
@@ -378,6 +391,7 @@ import su.carinfo.model.carInfoDTO;
 				String jooyusum = CarCostDao.CarJooyuSum(carnum);
 				String jungbisum = CarCostDao.CarJungbiSum(carnum);
 				String buysum = CarCostDao.CarBuySum(carnum);
+				String ugsum=CarCostDao.CarugSum(carnum);
 				
 				if(costsum==null){
 
@@ -401,6 +415,7 @@ import su.carinfo.model.carInfoDTO;
 				mav.addObject("jooyusum2", jooyusum);
 				mav.addObject("jungbisum2", jungbisum);
 				mav.addObject("buysum2", buysum);
+				mav.addObject("ugsum2", ugsum);
 				mav.setViewName("carbook/graphA");
 			return mav;
 		   }

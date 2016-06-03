@@ -51,7 +51,10 @@
     </select>
     
     <select id="CarBuySum" parameterType="String" resultType="String">
-		select sum(cost) from carcost where carnum=#{carnum} and category='물품구입'
+		select sum(cost) from carcost where carnum=#{carnum} and category='기타'
+    </select>
+        <select id="CarugSum" parameterType="String" resultType="String">
+		select sum(cost) from carcost where carnum=#{carnum} and category='유지'
     </select>
     
     <select id="getCarnum" resultType="su.carinfo.model.carInfoDTO">
