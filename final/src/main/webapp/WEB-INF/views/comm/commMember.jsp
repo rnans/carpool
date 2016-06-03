@@ -22,7 +22,7 @@
 </div>
 
 <section data-viewname="DBandMemberLayoutView" class="memberSection">
-<div class="memberDiv">
+<div class="memberDiv" style="width: 65%; margin: 0px auto;">
 <h1 class="uSectionTitle">멤버<em class="count">1</em>
 <span style=" width: auto; height: 40px; text-align: center; color: #666; font-size: 14px; float: right;" ><button type="button" class="titleAreaBtn"> 멤버 초대하기</button></span></h1>
 
@@ -74,8 +74,8 @@
 </div>
 </div>
 
-<div class=""><!-- 설정 -->
-<h3 class="titleSetting">밴드 정보 관리</h3>
+<div style="border-bottom : 1px solid #DDD;"><!-- 설정 -->
+<h3 class="titleSetting" style="border-top: 1px solid #DDD;">밴드 정보 관리</h3>
 	<ul class="settingList setSmall">
 		<li>
 			<div class="listWrap"> 

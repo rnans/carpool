@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" type="text/css" href="CSS/comm.css">
 <!DOCTYPE ">
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="CSS/comm.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta charset="utf-8">
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
@@ -32,6 +32,7 @@
 </style>
 <body>
 	<%@include file="../header.jsp"%>
+	
 	<hr>
 
 	<div id="lnb" data-skin="skin5">
@@ -63,7 +64,7 @@
 			</form>
 		</div>
 
-<div class="writeWrap" data-uiselector="postWriteRegion">
+<div class="writeWrap" style="margin-bottom: 15px;">
 			<form name="write" action="commWrite.do">
 				<div data-viewname="DPostWriteLayoutView" class="cPostWrite">
 					<h3 class="gSrOnly">글쓰기</h3>
@@ -143,7 +144,7 @@
 		<c:if test="${empty list}">
 			<td colspan="4" align="center">등록된 게시글이 없습니다.</td>
 		</c:if>
-		<a href="test123.do">test123</a>
+
 		<c:forEach var="bbs" items="${list}">
 			<div data-viewname="DPostLayoutView" class="postout">
 				<div class="cPost " data-uiselector="postMainWrap">
@@ -153,7 +154,7 @@
 							src="http://s.cmstatic.net/webclient/dres/20160419171121/images/template/profile_60x60.gif"
 							alt="남구문"></a>
 						<div class="profileText">
-							<div class="textName"> <strong class="name onlyName"><br>
+							<div class="textName" style="height: 45px; padding-top: 5px;"> <strong class="name onlyName">
 									<br>${bbs.id }</strong>
 							</div>
 							<div class="textTime">${bbs.writedate }</div>
@@ -161,10 +162,13 @@
 					
 					<div class="postBody">
 						<div class="postText">
-							<p class="txtBody" data-uiselector="txtBody">${bbs.content }</p>
-						</div>
+							<p class="txtBody" data-uiselector="txtBody" style="padding-left: 10px;">${bbs.content }</p>
 						<input type="button" class="updatebutton" value="삭제" onclick="javascript:idx=${bbs.idx};bbsdel();"> 
 						<input type="button" class="updatebutton" value="수정">
+						<input type="button" class="updatebutton" value="댓글">
+
+						</div>
+					
                     <table class="table table-condensed">
                         <tr>
                             <td>
