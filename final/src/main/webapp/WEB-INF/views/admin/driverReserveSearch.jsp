@@ -27,7 +27,7 @@ function adminDriverReserveDel(){
 			</thead>
 			<tbody>
 			<c:if test="${empty list}">
-					<tr>
+					<tr class="even">
 						<td colspan="10" align="center">검색결과가 없습니다.</td>
 					</tr>
 				</c:if>
@@ -51,7 +51,7 @@ function adminDriverReserveDel(){
 			</tbody>
 			
 			<tfoot>
-				<tr>
+				<tr  class="even">
 				<td colspan="10" align="center">
 						${pageStr}
 					</td>

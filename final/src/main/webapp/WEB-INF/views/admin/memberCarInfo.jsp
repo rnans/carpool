@@ -42,7 +42,7 @@ function memberCarOkForm(){
 			</thead>
 			<tbody>
 			<c:if test="${empty lists}">
-				<tr>
+				<tr class="even">
 					<td colspan="7" align="center">
 						등록된 차량 정보가 없습니다.
 					</td>
@@ -67,7 +67,7 @@ function memberCarOkForm(){
 				
 			</tbody>
 			<tfoot>
-				<tr>
+				<tr  class="even">
 					<td colspan="8" align="center">
 						${pageStr}
 					</td>

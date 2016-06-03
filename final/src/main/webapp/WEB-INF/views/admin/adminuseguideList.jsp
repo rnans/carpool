@@ -39,7 +39,7 @@ function useguideDeleteForm(){
 </thead>
 <tbody>
 <c:if test="${empty list }">
-<tr>
+<tr class="even">
  <td colspan="5" align="center">작성된 글이 없습니다.</td>
 </tr>
  </c:if>
@@ -60,7 +60,7 @@ function useguideDeleteForm(){
  </c:forEach>
 </tbody>
 <tfoot>
-<tr>
+<tr class="even">
  <td colspan="5" align="center">${pageStr }</td>
  </tr>
  </tfoot>

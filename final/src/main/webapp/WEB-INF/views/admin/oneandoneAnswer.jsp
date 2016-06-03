@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 <div>헤더부분</div>
@@ -25,7 +26,7 @@
 </ul>
 <textarea name="content" cols="40" rows="10" readonly="readonly">${list[0].content} </textarea><br>
 <div>답변:<br>
-<textarea name="answer" cols="40" rows="10">${list[0].answer}</textarea></div><br>
+<textarea name="answer" cols="40" rows="10"></textarea></div><br>
 </fieldset>
 <div>
 <input type="submit" value="답변달기">

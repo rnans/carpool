@@ -40,7 +40,7 @@ function adminMemberReserveDel(){
 			</thead>
 			<tbody>
 			<c:if test="${empty list}">
-					<tr>
+					<tr class="even">
 						<td colspan="7" align="center">등록된 드라이버 카풀이 없습니다.</td>
 					</tr>
 				</c:if>
@@ -57,7 +57,7 @@ function adminMemberReserveDel(){
 			</c:forEach>
 			</tbody>
 			<tfoot>
-				<tr>
+				<tr  class="even">
 					<td colspan="7" align="center">
 						${pageStr}
 						</td>

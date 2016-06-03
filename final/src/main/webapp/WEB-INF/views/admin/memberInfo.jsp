@@ -186,7 +186,7 @@ results.push(dtos);
 			<tbody>
 				<c:set var="memberList" value="${lists}"></c:set>
 				<c:if test="${empty memberList}">
-					<tr>
+					<tr class="even">
 						<td colspan="11">등록된 회원이 없습니다.</td>
 					</tr>
 				</c:if>
@@ -214,7 +214,7 @@ results.push(dtos);
 				
 			</tbody>
 			<tfoot>
-				<tr>
+				<tr  class="even">
 					<td colspan="11" align="center">
 					${pageStr}
 					</td>

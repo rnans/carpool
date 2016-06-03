@@ -12,7 +12,7 @@
 <%@include file="../adHeader.jsp" %>
 <section>
 	<article>
-		<table border="1" cellspacing="0" width="500">
+		<table>
 			<thead>
 				<tr>
 					<th>번호</th>

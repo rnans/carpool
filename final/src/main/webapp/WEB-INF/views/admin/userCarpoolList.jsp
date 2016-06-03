@@ -46,7 +46,7 @@ function userPoolDelForm(){
 			</thead>
 			<tbody>
 				<c:if test="${empty lists}">
-					<tr>
+					<tr class="even">
 						<td colspan="19" align="center">등록된 이용자 카풀이 없습니다.</td>
 					</tr>
 				</c:if>
@@ -79,7 +79,7 @@ function userPoolDelForm(){
 				
 			</tbody>
 			<tfoot>
-				<tr>
+				<tr  class="even">
 					<td colspan="20" align="center">
 						${pageStr} 
 					</td>

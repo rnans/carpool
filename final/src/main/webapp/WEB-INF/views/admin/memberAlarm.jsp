@@ -42,7 +42,7 @@
 				
 			</tbody>
 			<tfoot>
-				<tr>
+				<tr  class="even">
 					<td colspan="8" align="center">
 					${pageStr }
 					</td>

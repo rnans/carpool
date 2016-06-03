@@ -60,7 +60,7 @@ function QnaDeleteForm(){
  </c:forEach>
 </tbody>
 <tfoot>
-<tr>
+<tr  class="even">
  <td colspan="5" align="center">${pageStr }</td>
  </tr>
  </tfoot>

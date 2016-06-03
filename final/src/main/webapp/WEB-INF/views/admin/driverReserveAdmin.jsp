@@ -78,7 +78,7 @@ function showResult(){//응답결과함수
 			</thead>
 			<tbody>
 			<c:if test="${empty list}">
-					<tr>
+					<tr class="even">
 						<td colspan="10" align="center">등록된 드라이버 카풀이 없습니다.</td>
 					</tr>
 				</c:if>
@@ -102,7 +102,7 @@ function showResult(){//응답결과함수
 			</tbody>
 			
 			<tfoot>
-				<tr>
+				<tr  class="even">
 				<td colspan="10" align="center">
 						${pageStr}
 					</td>
