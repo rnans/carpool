@@ -13,10 +13,10 @@
 </head>
 <body>
 <%@ include file="../header.jsp" %>
-
 <section id="mainsection">
-<div id="search">
-	<h1>카풀 검색</h1>
+<div id="search" class="col-md-12">
+	<div class="col-md-12"><h1 style="    margin-top: 20px;
+    margin-bottom: 10px;">카풀 검색<small>원하시는 카풀을 찾아드립니다.</small></h1></div>
 	<form name="search" action="search.do">
 	<div class="input input--nao col-md-12">
 					<input  class="input__field input__field--nao" type="text" id="ss" name="startspot"><br> <input type="hidden" id="sc"
@@ -111,7 +111,6 @@ function showCate()
 </script>
 
 <script src="//apis.daum.net/maps/maps3.js?apikey=140c866172be3f537fee6199c675008a&libraries=services,clusterer"></script>
-   <script src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=2e2fe45c-1baa-3078-b615-2c0b3f71bfe5" ></script>
 	<script>
 		
 	var id;

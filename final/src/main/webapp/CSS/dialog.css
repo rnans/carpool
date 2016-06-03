@@ -16,13 +16,13 @@
 	-webkit-justify-content: center;
 	justify-content: center;
 	pointer-events: none;
-	z-index:200;
+	z-index:1800;
 	
 }
 
 .dialog__overlay {
 	position: absolute;
-	z-index: 150;
+	z-index: 1700;
 	background: rgba(55, 58, 71, 0.9);
 	opacity: 0;
 	-webkit-transition: opacity 0.3s;
@@ -43,7 +43,7 @@
 	padding: 4em;
 	text-align: center;
 	position: relative;
-	z-index:150;
+	z-index:1900;
 	opacity: 0;
 }
 

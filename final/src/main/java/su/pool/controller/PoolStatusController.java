@@ -85,7 +85,7 @@ public class PoolStatusController
 		return mav;
 	}
 	
-	@RequestMapping("/uptoMaster.do")
+	@RequestMapping("/upToMaster.do")
 	public ModelAndView requestToMaster(@RequestParam(value="idx")String idx,@RequestParam(value="aimidx")String aimidx,HttpSession session)
 	{
 		String id=(String)session.getAttribute("sid");
@@ -93,15 +93,17 @@ public class PoolStatusController
 		int ownidx=Integer.parseInt(idx);
 		int addidx=Integer.parseInt(aimidx);
 		
+		
+		
+		//결제처리//
+		
 		List lists=poolStatusDao.getOwnPoolByIdx(ownidx);
 		PoolDateDTO dto=(PoolDateDTO)lists.get(0);
 		
 		PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(id, addidx);
 		
 		int count=poolStatusDao.makeMemberStatus(memberDto);
-		
-		
-		
+	
 		int mans=dto.getMannum();
 				
 		PoolMemberStatusDTO memberDto2=new PoolMemberStatusDTO(id, ownidx, addidx, mans);
@@ -112,12 +114,14 @@ public class PoolStatusController
 		
 		int count3=poolStatusDao.reqToMaster(masterDto);
 		
+		////////
+		
 		String msg=count+count2+count3>=3?"성공":"실패";
 		
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("msg",msg);
-		mav.setViewName("carpool/poolMsg");
+		mav.setViewName("pay/payType");
 				
 		return mav;
 	}

@@ -24,7 +24,7 @@
 	
 	<div id="div2">
 		<form name="geoInfo" action="poolMasterAdd04.do">
-		<input type="hidden" name="pooltype" value="탈래요">
+		<input type="hidden" name="pooltype" value="타세요">
 		유형<select id="type" name="aim">
 			<option value="출/퇴근">출/퇴근</option>
 			<option value="드라이브">드라이브</option>

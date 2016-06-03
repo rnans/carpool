@@ -44,7 +44,7 @@
                             
                  
              
-            	<div id="map_div${dtos.idx }" style="z-index:-1;"></div></a>
+            	<div id="map_div${dtos.idx }" class="mapDiv" style="z-index:-1;"></div></a>
                 <div class="main-content">
                  <h3>${dtos.startspot}</h3>
                  <h3 style="text-align: center"><img src="/final02/img/down-arrow.png"></h3>

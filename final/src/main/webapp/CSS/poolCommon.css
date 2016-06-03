@@ -4,14 +4,20 @@ html
 	background: #f0f0f0;
 }
 
+
 #mainsection
 {
-	padding-top:8%;
+	padding-top:5%;
 	padding-left:2%;
 	padding-right:2%;
 	height: 100%;
 	background: #f0f0f0;
 }
+.mavDiv
+{
+	z-index:2;
+}
+
 input[type='text']
 {
 	width: 80%;
@@ -170,4 +176,15 @@ input[type='text']
 		-webkit-transform: scale3d(1, 1, 1);
 		transform: scale3d(1, 1, 1);
 	}
+}
+
+@media screen and (max-width:768px) {
+ #mainsection
+{
+	padding-top:12%;
+	padding-left:2%;
+	padding-right:2%;
+	height: 100%;
+	background: #f0f0f0;
+}
 }
