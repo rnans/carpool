@@ -5,28 +5,42 @@
 <head>
 <style>
 #map{ width:100%; height:550px;}
-#mainsection
-{
-	margin-top:5%;
-}
-input[type='text']
-{
-	width: 80%;
-}
+
 </style>
 <link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/button.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 </head>
 <body>
 <%@ include file="../header.jsp" %>
+
 <section id="mainsection">
 <div id="search">
-	<h1>검색 영역</h1>
+	<h1>카풀 검색</h1>
 	<form name="search" action="search.do">
-		출발지<input type="text" placeholder="출발지를 입력하세요." id="ss"
-			name="startspot"><br> <input type="hidden" id="sc"
-			name="startcoordi"> 목적지<input type="text"
-			placeholder="목적지를 입력하세요." id="es" name="endspot"><br> <input
-			type="hidden" id="ec" name="endcoordi"> <input type="submit"
+	<div class="input input--nao col-md-12">
+					<input  class="input__field input__field--nao" type="text" id="ss" name="startspot"><br> <input type="hidden" id="sc"
+			name="startcoordi">
+					<label class="input__label input__label--nao" for="ss">
+						<span class="input__label-content input__label-content--nao">출발지</span>
+					</label>
+					<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+					</svg>
+				</div>
+				<br>
+				<div class="input input--nao col-md-12">
+					 <input class="input__field input__field--nao" type="text" id="es" name="endspot"><br> <input
+			type="hidden" id="ec" name="endcoordi"> 
+					<label class="input__label input__label--nao" for="es">
+						<span class="input__label-content input__label-content--nao">목적지</span>
+					</label>
+					<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+					</svg>
+				</div>
+	
+		<input type="submit"
 			value="검색"><input type="button" onclick="showCate()"
 			value="상세 검색"><input type="button" value="실시간 자동 매칭"><br>
 		<div id="categorySearch">
@@ -71,7 +85,7 @@ function showCate()
 	<script>
 		
 	var id;
-	$('input').focus(function(e){
+	$('.input--nao').focus(function(e){
 		id=e.target.id
 		
 		initAutocomplete();
@@ -257,6 +271,42 @@ function showCate()
 </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJz53NRCX_RWtNSeoAbPveANaDjlQF1tU&libraries=places&callback=initAutocomplete"
         async defer></script>	
-<script src="/final02/js/cbpFWTabs.js"></script>
+<script src="/final02/js/classie.js"></script>
+		<script>
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+		</script>
+
 </body>
 </html>

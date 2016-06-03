@@ -11,12 +11,13 @@ body {
 .portfolio-item {
 	margin-top: 25px;
     margin-bottom: 25px;
-    border: 5px solid #fff;
+
     padding: 10px 10px;
 }
 
 .portfolio-item:hover {
-    border: 5px solid #47a3da;
+
+	background-color: rgba(0, 138, 230, 0.3);
     padding: 10px 10px;
 }
 
