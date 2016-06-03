@@ -7,9 +7,169 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+.dropdown2 {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 28px;
+  width: 150px;
+  background: #f2f2f2;
+  border: 1px solid;
+  border-color: white #f7f7f7 #f5f5f5;
+  border-radius: 3px;
+  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+.dropdown2:before, .dropdown2:after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 9px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 4px dashed;
+  border-color: #888 transparent;
+  pointer-events: none;
+}
+.dropdown2:before {
+  border-bottom-style: solid;
+  border-top: none;
+}
+.dropdown2:after {
+  margin-top: 7px;
+  border-top-style: solid;
+  border-bottom: none;
+}
+
+.dropdown-select {
+  position: relative;
+  width: 130%;
+  margin: 0;
+  padding: 6px 8px 6px 10px;
+  height: 28px;
+  line-height: 14px;
+  font-size: 12px;
+  color: #62717a;
+  text-shadow: 0 1px white;
+  /* Fallback for IE 8 */
+  background: #f2f2f2;
+  /* "transparent" doesn't work with Opera */
+  background: rgba(0, 0, 0, 0) !important;
+  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+.dropdown-select:focus {
+  z-index: 3;
+  width: 100%;
+  color: #394349;
+  outline: 2px solid #49aff2;
+  outline: 2px solid -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.dropdown-select > option {
+  margin: 3px;
+  padding: 6px 8px;
+  text-shadow: none;
+  background: #f2f2f2;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Fix for IE 8 putting the arrows behind the select element. */
+.lt-ie9 .dropdown {
+  z-index: 1;
+}
+.lt-ie9 .dropdown-select {
+  z-index: -1;
+}
+.lt-ie9 .dropdown-select:focus {
+  z-index: 3;
+}
+
+/* Dirty fix for Firefox adding padding where it shouldn't. */
+@-moz-document url-prefix() {
+  .dropdown-select {
+    padding-left: 6px;
+  }
+}
+
+.dropdown-dark {
+  background: #444;
+  border-color: #111 #0a0a0a black;
+  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.dropdown-dark:before {
+  border-bottom-color: #aaa;
+}
+.dropdown-dark:after {
+  border-top-color: #aaa;
+}
+.dropdown-dark .dropdown-select {
+  color: #aaa;
+  text-shadow: 0 1px black;
+  /* Fallback for IE 8 */
+  background: #444;
+}
+.dropdown-dark .dropdown-select:focus {
+  color: #ccc;
+}
+.dropdown-dark .dropdown-select > option {
+  background: #444;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+}
+
+	 #custom-search-form {
+        margin:0;
+        margin-top: 5px;
+        padding: 0;
+        
+    }
+ 
+    #custom-search-form .search-query {
+        padding-right: 0px;
+        padding-right: 0px;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+          text-align : center;
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    #custom-search-form button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }
 #chartdiv {float:left; padding:auto; overflow:hidden; clear:both;}
 #chartdiv2 {float:left; padding:auto; overflow: hidden;}
-table a{float:left; clear:both; padding: auto; margin:10px 5px; clear:both;}
+table a{clear:both; padding: auto; margin:10px 5px; clear:both;}
 </style>
 <script>
 var idx=null;
@@ -26,24 +186,8 @@ function adminAddForm(){
 <script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
 <script type="text/javascript" src="http://www.amcharts.com/lib/3/pie.js"></script>
 
+<!-- 그래프1 -->
 <script type="text/javascript">
-var result = new Array();
-var dto = new Object();
-var man=0;
-var woman=0;
-
-<c:forEach var="dto" items="${lists}">
-
-dto.sex = '${dto.sex}';
-if(dto.sex=='남성' || dto.sex=='남자'){
-	man++;
-}else if(dto.sex=='여성'){
-	woman++;
-}
-result.push(dto);
-</c:forEach>
-
-
 AmCharts.makeChart("chartdiv",
 		
 			{
@@ -70,49 +214,20 @@ AmCharts.makeChart("chartdiv",
 				"dataProvider": [
 					{
 						"category": "남성",
-						"column-1": man
+						"column-1": "${man}"
 						
 					},
 					{
 						"category": "여성",
-						"column-1": woman
+						"column-1": "${woman}"
 					}	
 			]
 	}
 );
 </script>
 
+<!-- 그래프2 -->
 <script type="text/javascript">
-var results = new Array();
-var dtos = new Object();
-
-var seoul=0;
-var gyeonggi=0;
-var busan=0;
-var inchean=0;
-var gangwon=0;
-var etc=0;
-
-<c:forEach var="dto" items="${lists}">
-
-dtos.addr = '${dto.addr}';
-if(dtos.addr=='서울특별시'){
-	seoul++;
-}else if(dtos.addr=='부산광역시'){
-	busan++;
-}else if(dtos.addr=='대구광역시'){
-	daegu++;
-}else if(dtos.addr=='인천광역시'){
-	inchean++;
-}else if(dtos.addr=='경기도'){
-	gyeonggi++;
-}else if(dtos.addr=='강원도'){
-	gangwon++;
-}else{
-	etc++;
-}
-results.push(dtos);
-</c:forEach>
 			AmCharts.makeChart("chartdiv2",
 					{
 						"type": "pie",
@@ -122,6 +237,9 @@ results.push(dtos);
 						"theme": "light",
 						"allLabels": [],
 						"balloon": {},
+						"colors": [
+									"#495fba","#e8d685","#ae85c9","#c9f0e1","#d48652","#629b6d","#719dc3","#719dc3"
+										],
 						"legend": {
 							"enabled": true,
 							"align": "center",
@@ -131,42 +249,86 @@ results.push(dtos);
 						"dataProvider": [
 							{
 							"category": "서울특별시",
-							"column-1": seoul
+							"column-1": "${seoul}"
 						},
 						{
 							"category": "인천광역시",
-							"column-1": inchean
+							"column-1": "${inchean}"
 						},
 						{
 							"category": "부산광역시",
-							"column-1": busan
+							"column-1": "${busan}"
 						},
 						{
 							"category": "경기도",
-							"column-1": gyeonggi
-						},
-						{
-							"category": "강원도",
-							"column-1": gangwon
+							"column-1": "${gyeonggi}"
 						},
 						{
 							"category": "기타",
-							"column-1": etc
+							"column-1": "${etc}"
 						}
 						]
 					}
 				);
 		</script>
+
+<!-- 검색 아작스 -->
+<script type="text/javascript" src="js/httpRequest.js"></script>
+<script>
+function show(){
+	var search=document.a.search.value;
+	var select=document.a.select.value;
+	window.alert(search);
+	
+	var params='select='+select+'&search='+search;
+	sendRequest('memberSearch.do', params, showResult, 'GET');
+}
+
+function showResult(){//응답결과함수
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var result=XHR.responseText;
+			span.innerHTML=result;
+		}
+	}
+}
+</script>
+
 </head>
 <body>
 <div>헤더</div>
 <%@include file="../adHeader.jsp" %>
+
 <section>
 	<article>
 	<div id="chartdiv" style="width: 50%; height: 400px; background-color: #FFFFFF;"></div>
 	<div id="chartdiv2" style="width: 50%; height: 400px; background-color: #FFFFFF;"></div>
-		
-		<table border="1" cellspacing="0" width="800" id="a">
+ 
+ <div class="container">
+   <div class="row">
+        <div class="span12" >
+            <form id="custom-search-form" name="a" class="form-search form-horizontal " action="memberSearch.do">
+                <div class="input-append span12">
+						<section class="container">
+							<div class="dropdown2">
+								<select name="select" class="dropdown-select" >
+									<option value="id">아이디</option>
+									<option value="sex">성별</option>
+									<option value="name">이름</option>
+								</select>
+							</div>
+						</section>
+						<input type="text" class="search-query" id="search" name="search">
+                    <button type="button" class="btn" onclick="show();" ><i class="main-icon" data-type="img" > 
+                    <img src="http://image005.flaticon.com/28/svg/34/34097.svg" width="15" height="15" alt="Magnifier tool free icon" title="Magnifier tool free icon"></i></button>                 
+                </div>
+            </form>
+        </div>
+   </div>
+</div> 
+
+		<div id="span">
+			<table border="1" cellspacing="0" width="800" id="a">
 			<thead>
 				<tr>
 					<th>구분</th>
@@ -200,9 +362,7 @@ results.push(dtos);
 						<td>${list.email }</td>
 						<td>${list.sex }</td>
 						<td>${list.grade}</td>
-						<td>
-							${list.joindate}
-						</td>
+						<td>${list.joindate}</td>
 						<td>
 							<input type="button" value="등급조정" onclick="javascript:idx='${list.idx}';adminAddForm();">
 						</td>
@@ -221,7 +381,7 @@ results.push(dtos);
 				</tr>
 			</tfoot>
 		</table>
-		
+		</div>
 	</article>
 </section>
 <footer>풋</footer>
