@@ -8,7 +8,7 @@
 
 </style>
 <link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
-<link rel="stylesheet" type="text/css" href="/final02/CSS/button.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 </head>
 <body>
@@ -39,19 +39,49 @@
 						<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 					</svg>
 				</div>
-	
-		<input type="submit"
-			value="검색"><input type="button" onclick="showCate()"
-			value="상세 검색"><input type="button" value="실시간 자동 매칭"><br>
-		<div id="categorySearch">
-			상세 검색 영역 지역 <input type="button" value="서울"><input
-				type="button" value="인천"><input type="button" value="부산"><br>
-			인원 <input type="button" value="1명"><input type="button"
-				value="2명"><input type="button" value="3명 이상"><br>
-			성별 <input type="button" value="남성만"><input type="button"
-				value="여성만"><br> 흡연여부 <input type="button"
-				value="흡연 가능"><input type="button" value="흡연 불가"><br>
+				<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-8">
+				<div class="col-md-4">
+				<button type="button" onclick="showCate();"class="button button--ujarak button--border-thin button--text-thick">상세검색</button>
+				</div>
+				<div class="col-md-4">
+				<button type="button" class="button button--ujarak button--border-thin button--text-thick">검색</button>
+				</div>
+				<div class="col-md-4">
+				<button type="button" class="button button--ujarak button--border-thin button--text-thick">실시간 자동 매칭</button>
+				</div>
+				</div>
+				</div>
+<br>
+	<div class="row">
+		<div id="categorySearch" class="col-md-12">
+		<div class="row">
+		<div class="col-md-3">상세 검색 영역 지역</div> 
+		<div class="col-md-9">	<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">서울</button>
+					<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">경기</button>
+					<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">인천</button>
+					<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">부산</button>
 		</div>
+		<div class="col-md-3">인원</div>
+		<div class="col-md-9"> 
+		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">1명</button>
+		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">2명</button>
+		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">3명 이상</button>
+		</div>
+		<div class="col-md-3">성별</div> 
+		<div class="col-md-9">
+		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">여성만</button>
+		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">남성만</button>
+		</div>
+		<div class="col-md-3">흡연여부</div> 
+		<div class="col-md-9">
+		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">흡연 가능</button>
+		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">흡연 불가</button>
+		</div>
+		</div>
+	</div>
+	</div>
 	</form>
 </div>
 <div id="map"></div>

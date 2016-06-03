@@ -7,11 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
-<link href="/final02/CSS/2colGrid.css" rel="stylesheet">
+
 
 </head>
 <body onload="initTmap()">
 	<%@include file="../header.jsp" %>
+	<link href="/final02/CSS/2colGrid.css" rel="stylesheet">
 <section id="mainsection">
  	<!-- Page Header -->
     <div class="row">
@@ -31,27 +32,29 @@
 		<c:url var="poolEachContent" value="poolEachContent.do">
 			<c:param name="idx">${dtos.idx }</c:param>
 		</c:url>
-			<c:if test="${i.count%3==0}">
+			<c:if test="${i.count%2==0}">
 			<div class="row">
 			</c:if>
 			
 
-            <div class="col-md-4 col-sm-6 portfolio-item">
+            <div class="col-md-6 col-sm-6 portfolio-item">
+            <div class="innerDiv">
             <a href="${poolEachContent }" class="portfolio-link" data-toggle="modal">
             	
                             
                  
              
             	<div id="map_div${dtos.idx }" style="z-index:-1;"></div></a>
+                <div class="main-content">
                  <h3>${dtos.startspot}</h3>
                  <h3 style="text-align: center"><img src="/final02/img/down-arrow.png"></h3>
                  <h3>${dtos.endspot }</h3>
-                
-                <p> ${dtos.termtype} </p>
-				<p> ${dtos.mannum }/${dtos.pay }</p>
- 			
+                </div>
+                <p><span class="glyphicon glyphicon-calenda" aria-hidden="true"></span>   ${dtos.termtype}
+				<span class="text-right">${dtos.mannum }/${dtos.pay }</span></p>
+ 			</div>
             </div>
-       		<c:if test="${i.count%3==0}">
+       		<c:if test="${i.count%2==0}">
 			    </div>
 			</c:if>
   </c:forEach>  
