@@ -4,23 +4,23 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.carInfo">
 	<select id="carList" parameterType="String" resultType="su.carinfo.model.carInfoDTO">
-		select * from carInfo where id=#{userid}
+		select * from carInfo where id=#{userid} order by idx desc
 	</select>
 	<insert id="carAdd" parameterType="su.carinfo.model.carInfoDTO">
 		insert into carInfo
-		values(carInfo_idx.nextval,#{id},#{driver},'0',#{carnum},#{cartype},#{confirmphoto},'0',#{carphoto})
+		values(carInfo_idx.nextval,#{id},#{driver},'0',#{carnum},#{cartype},#{confirmphoto},'0',#{carphoto},sysdate)
 	</insert>
 	<select id="carIdxList" parameterType="su.carinfo.model.carInfoDTO" resultType="su.carinfo.model.carInfoDTO">
 		select * from carInfo where idx=#{idx}
 	</select>
 	<update id="carUpdate" parameterType="su.carinfo.model.carInfoDTO">
-		update carInfo set driver=#{driver}, carNum=#{carnum}, carType=#{cartype}, confirmPhoto=#{confirmphoto}, confirm=0 where idx=#{idx}
+		update carInfo set carNum=#{carnum}, carType=#{cartype}, confirmPhoto=#{confirmphoto}, confirm=0 where idx=#{idx}
 	</update>
 	<delete id="carDel" parameterType="Integer">
 		delete from carInfo where idx=#{idx} 
 	</delete>
 	<select id="carNumList" parameterType="su.carinfo.model.carInfoDTO" resultType="su.carinfo.model.carInfoDTO">
-	select * from carinfo where carnum=#{carnum}
+	select * from carinfo where carnum=#{carnum} 
 	</select>
 	<select id="userName" parameterType="String" resultType="su.member.model.MemberDTO">
 	select * from userinfo where id=#{userid}
@@ -31,4 +31,7 @@
 	<update id="carIdOne" parameterType="su.carinfo.model.carInfoDTO">
 	update carinfo set carid='1' where idx=#{idx}
 	</update>
+	<select id="carImage" parameterType="String" resultType="su.upload.model.UploadDTO">
+	select * from file_upload where id=#{userid} and filetype='1' order by idx desc
+	</select>
 </mapper>
