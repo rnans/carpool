@@ -53,6 +53,95 @@ public class AdminMemberDAOImple implements AdminMemberDAO {
 		return count;
 	}
 	
+	/**검색창 기능*/
+	public int memberIdTotalCnt(String search) {
+		int count = sqlMap.selectOne("memberIdTotalCnt", search);
+		return count;
+	}
+	
+	public int memberNameTotalCnt(String search) {
+		int count = sqlMap.selectOne("memberNameTotalCnt", search);
+		return count;
+	}
+	
+	public int memberSexTotalCnt(String search) {
+		int count = sqlMap.selectOne("memberSexTotalCnt", search);
+		return count;
+	}
+	
+	public List<AdminMemberDTO> memberIdSearch(int cp, int ls, String search) {
+		int startnum=(cp-1)*ls+1;
+		int endnum=cp*ls;
+		Map map = new HashMap();
+		map.put("search", search);
+		map.put("startnum", startnum);
+		map.put("endnum", endnum);
+		
+		List<AdminMemberDTO> list = sqlMap.selectList("memberIdSearch", map);
+				return list;
+	}
+	
+	public List<AdminMemberDTO> memberNameSearch(int cp, int ls, String search) {
+		int startnum=(cp-1)*ls+1;
+		int endnum=cp*ls;
+		Map map = new HashMap();
+		map.put("search", search);
+		map.put("startnum", startnum);
+		map.put("endnum", endnum);
+		
+		List<AdminMemberDTO> list = sqlMap.selectList("memberNameSearch", map);
+		return list;
+	}
+	
+	public List<AdminMemberDTO> memberSexSearch(int cp, int ls, String search) {
+		int startnum=(cp-1)*ls+1;
+		int endnum=cp*ls;
+		Map map = new HashMap();
+		map.put("search", search);
+		map.put("startnum", startnum);
+		map.put("endnum", endnum);
+		
+		List<AdminMemberDTO> list = sqlMap.selectList("memberSexSearch", map);
+		return list;
+	}
+	
+	/////////////////////////////////////////그래프 관련///////////////////////////////////////////////
+	public int memberSexMan() {
+		int count = sqlMap.selectOne("memberSexMan");
+		return count;
+	}
+	
+	public int memberSexWoman() {
+		int count = sqlMap.selectOne("memberSexWoman");
+		return count;
+	}
+	
+	public int memberAddrSeoul() {
+		int count = sqlMap.selectOne("memberAddrSeoul");
+		return count;
+	}
+	
+	public int memberAddrGyeonggi() {
+		int count = sqlMap.selectOne("memberAddrGyeonggi");
+		return count;
+	}
+	
+	public int memberAddrInchean() {
+		int count = sqlMap.selectOne("memberAddrInchean");
+		return count;
+	}
+	
+	public int memberAddrBusan() {
+		int count = sqlMap.selectOne("memberAddrBusan");
+		return count;
+	}
+	
+	public int memberAddrEtc() {
+		int count = sqlMap.selectOne("memberAddrEtc");
+		return count;
+	}
+	/////////////////////////////////////////그래프 관련///////////////////////////////////////////////
+	
 	///////////////////////////////////////////////////회원 알림 관리 //////////////////////////////////////////
 	public List<MyAlarmDTO> memberAlarm(int cp, int ls) {
 		
