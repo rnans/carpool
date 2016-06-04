@@ -12,6 +12,7 @@
     list-style: none;
 }
 #lnb a, #daytd a {
+	
     display: block;
     width: 100%;
     padding: 0 5px;
@@ -26,7 +27,7 @@
     height: 36px;
     left: 0;
     top: 46px;
-    background: pink;
+    background: #86E57F;
     text-align: center;
 }
 #lnb ul {
@@ -365,7 +366,7 @@ input, textarea {
 
 .memberSection .cThumbList {
     /* margin-bottom: -1px; */
-    border: 1px solid #D5D5D5;
+    border-bottom: 1px solid #D5D5D5;
       padding: 0 20px;
 }
 

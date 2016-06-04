@@ -30,28 +30,23 @@
 <style>
                
 </style>
-<body>
+<body  style="background-color: #F6F6F6;">
 	<%@include file="../header.jsp"%>
 	
-	<hr>
-
-	<div id="lnb" data-skin="skin5">
-		<ul class="_joinedLnb">
-			<li><span><a href="comm.do"
-					class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></span></li>
-			<li><a href="calendar.do"
-				class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
-			<li><a href="commMember.do"
-				class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
-		</ul>
-	</div>
+<div id="lnb" style="margin-top: 50px; ">
+<ul class="nav navbar-nav bar" style="margin: 0px auto;">
+<li><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></li>
+<li><a href="calendar.do" class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
+<li><a href="commMember.do" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
+</ul> 
+</div>
 
 
-	<div style="width: 65%; margin: 0px auto;">
+	<div style="width: 50%; margin: 0px auto;">
 		<h2 class="menu_title"
 			style="position: relative; z-index: 100; margin-bottom: 16px; text-align: center;">커뮤니티</h2>
 
-		<div class="searchWrap" data-status="true">
+		<div class="searchWrap" style="background-color: #fff;">
 			<form autocomplete="off" action="">
 				<h2 class="gSrOnly">검색 입력 폼</h2>
 				<div class="uInputSearch">

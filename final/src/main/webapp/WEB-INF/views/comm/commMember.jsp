@@ -10,23 +10,23 @@
 </head>
 <style>
 </style>
-<body>
+<body  style="background-color: #F6F6F6;">
 <%@include file="../header.jsp"%>
-<hr>
-<div id="lnb" data-skin="skin5">
-	<ul class="_joinedLnb"> 
-	<li><span><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></span></li>
-	<li><a href="calendar.do" class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
-	<li><a href="commMember.do" data-skinfactor="tBorder color" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
-	</ul> 
+<div id="lnb" style="margin-top: 50px; ">
+<ul class="nav navbar-nav bar" style="margin: 0px auto;">
+<li><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></li>
+<li><a href="calendar.do" class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
+<li><a href="commMember.do" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
+</ul> 
 </div>
 
+
 <section data-viewname="DBandMemberLayoutView" class="memberSection">
-<div class="memberDiv" style="width: 65%; margin: 0px auto;">
+<div class="memberDiv" style="width: 50%; margin: 0px auto;">
 <h1 class="uSectionTitle">멤버<em class="count">1</em>
 <span style=" width: auto; height: 40px; text-align: center; color: #666; font-size: 14px; float: right;" ><button type="button" class="titleAreaBtn"> 멤버 초대하기</button></span></h1>
 
-		<div class="searchWrap" data-status="true">
+		<div class="searchWrap" style="background-color: #fff;">
 			<form autocomplete="off" action="">
 				<h2 class="gSrOnly">검색 입력 폼</h2>
 				<div class="uInputSearch">
@@ -39,10 +39,10 @@
 			</form>
 		</div>
 
-<div class="memberWrap">
+<div class="memberWrap" style="margin-bottom: 20px;">
 
 <div data-uiselector="memberListWrap">
-	<div data-viewname="DMemberListView">
+	<div data-viewname="DMemberListView" style="background-color: #fff;border : 1px solid #D5D5D5;border-bottom: 0px;">
 	
 
 <c:if test="${empty memberlist}">
@@ -54,7 +54,7 @@
 	<div class="subTitle"> <strong>멤버</strong></div> 
 	</c:if>
 	<c:forEach var="member" items="${memberlist}">
-	<ul class="cThumbList" data-uiselector="memberList" data-type="type3"> 
+	<ul class="cThumbList" style="margin-bottom: 0px;"> 
 	<li><div class="profile">
 	<a href="#"><img data-uiselector="profileImg" src="http://s.cmstatic.net/webclient/dres/20160524170024/images/template/profile_60x60.gif" alt="남구문"></a>
 	</div>
@@ -74,8 +74,8 @@
 </div>
 </div>
 
-<div style="border-bottom : 1px solid #DDD;"><!-- 설정 -->
-<h3 class="titleSetting" style="border-top: 1px solid #DDD;">밴드 정보 관리</h3>
+<div style="border : 1px solid #DDD;background-color: #fff; margin-bottom: 20px;" ><!-- 설정 -->
+<h3 class="titleSetting" style=" margin-bottom: 0px; margin-top: 0px;">밴드 정보 관리</h3>
 	<ul class="settingList setSmall">
 		<li>
 			<div class="listWrap"> 
@@ -103,7 +103,11 @@
 		</li>
 	</ul>
 </div> <!-- member div -->
-<h3 class="titleSetting">나가기</h3>
+
+
+<div style="background-color: #fff; margin-bottom: 100px; border : 1px solid #DDD; "> 
+<h3 class="titleSetting" style=" margin-bottom: 0px; margin-top: 0px;">나가기</h3>
+
 	<ul class="settingList setSmall">
 		<li>
 			<div class="listWrap"> 
@@ -122,6 +126,7 @@
 			</div>
 		</li>
 	</ul>
+	</div>
 </div><!-- 설정 닫기 -->
 </section>
 

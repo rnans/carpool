@@ -85,7 +85,7 @@ function write(){
     height: 36px;
     left: 0;
     top: 46px;
-    background: pink;
+    background: #86E57F;
     text-align: center;
 }
 #lnb ul {
@@ -121,21 +121,22 @@ A:hover {color: #3366cc; text-decoration: underline}
 .cal_black { font-family:verdana, arial; font-size: 9px; color: #333333 }
 .daytd{
     position: relative;
-    width: 123px;
-    height: 100px;
+    width: 90px;
+    height: 80px;
     padding: 4px 9px;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
 }
-.calendarview{
-position: absolute;
+#calendarview{
+  margin:0px auto;
+ width:50% ;
 }
 #calendar_table{
- width:60% ;
+
  border:1;
   cellspacing:1; 
   cellpadding:3;
-  background-color:pink;
+  background-color:#86E57F;
   margin:0px auto;
 }
 .uSectionTitle {
@@ -196,22 +197,24 @@ a:focus, a:hover {
     text-overflow: ellipsis;
 }
 </style>
-<body>
+<body style="background-color: #F6F6F6;">
 
 <%@include file="../header.jsp"%>
-<hr>
-<div id="lnb" data-skin="skin5">
-<ul class="_joinedLnb"> 
-<li><span><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></span></li>
+
+
+<div id="lnb" style="margin-top: 50px; ">
+<ul class="nav navbar-nav bar" style="margin: 0px auto;">
+<li><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></li>
 <li><a href="calendar.do" class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
 <li><a href="commMember.do" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
 </ul> 
 </div>
 
-<h1 class="uSectionTitle">일정</h1>
+
 
 <div id="span"><div id="calendarview">
-<table id="calendar_table" class="table table-striped table-hover">
+<h1 class="uSectionTitle">일정</h1>
+<table id="calendar_table" class="table table-hover" style="border:1px solid #cfcfcf; border-bottom: 1px solid #CFCFCF;">
 <thead>
   <tr>
      <td colspan="7" align="center" height="25">
@@ -247,18 +250,30 @@ a:focus, a:hover {
       else
       {
         %>
-         <td style=" font-family:verdana, arial; font-size: 9px; color: #333333" align="left" valign="top" class="day_cell">
-          <div class="daytd" style="<%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%>background-color:#FFEBFF; <%}%>"> 
-         
-          <a href="javascript:startdate=<%=days[i][j] %>;write();"><%=days[i][j]%></a><br><br>
-		  <c:forEach var="bbs" items="${list}">	
+         <td style=" font-family:verdana, arial; padding:0px;  font-size: 9px; color: #333333" align="left" valign="top" class="day_cell">
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  style="padding: 0px;">
+      <ul class="nav navbar-nav bar" style="height: 100%;width: 100%; padding: 0px;">
+      	<li><a href="javascript:startdate=<%=days[i][j] %>;write();" style="position:absolute; font-size:14px; width: 99px;height: 83px; z-index:0;">
+      	<%if(j==0){%><font style="color: #CC0000;"><%}%>
+      	<%if(j==6){%><font style="color: #6666CC;"><%}%>
+      	<%=days[i][j]%></a> 
+     	     
+     </li>
+     	</ul>
+ </div>
+ <div style="position: absolute;z-index:100;">
+ <%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%>&nbsp;&nbsp;<font style="color: #ff5b72">today</font> <%}%>
+  <Br>
+<c:forEach var="bbs" items="${list}">	
 			<c:set var="day2" value="<%=temp+days[i][j]%>"></c:set>
 		 	<c:if test="${bbs.startday==day2}">
-		 	${bbs.id}-${bbs.subject}
+		 	<br><font style="color:#8C8C8C;">${bbs.id}</font>&nbsp;${bbs.subject}
 		 	</c:if>
 			</c:forEach>
-		<%if((currentMonthInt+"-"+currentDayInt).equals(intMonth+"-"+days[i][j])){%><br>핑쿠는 오늘 <%}%>
+		
 		  </div>
+
+
           </td>
         <%
       }
@@ -284,7 +299,7 @@ a:focus, a:hover {
         <input type="hidden" name="year" value="<%=nextYear%>">
      </form>
  </div>
- 
+ <div class="calbbs" style="width: 50%;margin: 0px auto;">
  <c:if test="${empty list}">
 	<td colspan="4" align="center">
 		등록된 게시글이 없습니다.
@@ -304,6 +319,8 @@ a:focus, a:hover {
 	 </ul>
 </div>
 </c:forEach>
+
+</div>
 
  
 </body>

@@ -19,7 +19,7 @@
 	</insert>
 	
 	<select id="scheList" resultType="su.comm.model.scheDTO">
-			select * from schedule
+			select * from schedule order by idx desc
 	</select>
 	
 	<select id="commmember" parameterType="String" resultType="su.comm.model.carpoolinfoDTO">
