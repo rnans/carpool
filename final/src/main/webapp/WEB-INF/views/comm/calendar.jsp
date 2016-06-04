@@ -197,6 +197,7 @@ a:focus, a:hover {
     text-overflow: ellipsis;
 }
 </style>
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
 <body style="background-color: #F6F6F6;">
 
 <%@include file="../header.jsp"%>

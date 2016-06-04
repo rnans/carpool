@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+    
 <!DOCTYPE>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="CSS/comm.css">
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
 </head>
 <style>
 </style>
@@ -23,10 +25,15 @@
 
 <section data-viewname="DBandMemberLayoutView" class="memberSection">
 <div class="memberDiv" style="width: 50%; margin: 0px auto;">
-<h1 class="uSectionTitle">멤버<em class="count">1</em>
-<span style=" width: auto; height: 40px; text-align: center; color: #666; font-size: 14px; float: right;" ><button type="button" class="titleAreaBtn"> 멤버 초대하기</button></span></h1>
+<h1 class="uSectionTitle" style="vertical-align:  middle;"><span>멤버</span><em class="count">1</em>
+<span style=" width: auto; height: 40px; text-align: center; color: #666; font-size: 14px; float: right;" >
 
-		<div class="searchWrap" style="background-color: #fff;">
+<button type="button" class="uButton uButtonPoint btn-hover" 
+	style="background:none ; color: #86E57F; border:2px solid #86E57F;min-width: 70px; line-height: 32px; margin: 0 3px; font-size: 14px;font-weight:bold ; padding-left: 5px; padding-right: 5px;">
+	멤버 초대하기
+</button></span></h1>
+
+	<div class="searchWrap" style="background-color: #fff;">
 			<form autocomplete="off" action="">
 				<h2 class="gSrOnly">검색 입력 폼</h2>
 				<div class="uInputSearch">
@@ -34,7 +41,7 @@
 					<input type="text" id="input_search"
 						placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name="">
 
-					<button type="button" class="searchbutton">검색</button>
+					<a href="carBookInfo.do" style="padding-right:42px; "><i class="fa fa-search" style="color: #BDBDBD;padding-top: 8px;font-size: 22px;" aria-hidden="true"></i></a>
 				</div>
 			</form>
 		</div>
@@ -61,19 +68,22 @@
 	
 	<div class="nameArea"> 
 	<strong class="name">${member.name }</strong>   
-	<c:if test="${member.grade==0}"><span class="labelAuth">리더</span> </c:if>   
+	
+	<c:if test="${member.grade==0}"><span class="labelAuth" style="background-color: #86E57F;">리더</span> </c:if>   
+	<c:if test="${member.sex==null||member.sex=='남성' }"><i class="fa fa-mars" style="color: skyblue;" aria-hidden="true"></i></c:if>
+	<c:if test="${member.sex=='여성' }"><i class="fa fa-venus" style="color: pink;" aria-hidden="true"></i></c:if>
 	<span class="subtxt">${member.phonenum }</span> </div>
-	<div class="setting">임시 </div>
+	<div class="setting"> 뭘 더 넣ㅅ지 </div>
 	<div class="side"> 
-	<button data-uiselector="btnSetting" type="button" class="setting" data-icon="setting02">
-	<span class="gSrOnly">설정</span></button></div>
+<c:if test="${member.id==sid}"> <a href="carBookInfo.do"><i class="fa fa-cog fa-2x" style="color: #BDBDBD;" aria-hidden="true"></i></a> </c:if>
+<c:if test="${member.id!=sid}"> <a href="carBookInfo.do"> <i class="fa fa-comment-o fa-2x" style="color: #86E57F;"  aria-hidden="true"></i></a></c:if>
+     </div>
 	</li>    
 	</ul>
 	 </c:forEach>    
 	</div>
 </div>
-</div>
-
+</div>	
 <div style="border : 1px solid #DDD;background-color: #fff; margin-bottom: 20px;" ><!-- 설정 -->
 <h3 class="titleSetting" style=" margin-bottom: 0px; margin-top: 0px;">밴드 정보 관리</h3>
 	<ul class="settingList setSmall">
