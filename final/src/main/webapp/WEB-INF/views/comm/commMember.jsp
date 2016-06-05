@@ -41,7 +41,8 @@
 					<input type="text" id="input_search"
 						placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name="">
 
-					<a href="carBookInfo.do" style="padding-right:42px; "><i class="fa fa-search" style="color: #BDBDBD;padding-top: 8px;font-size: 22px;" aria-hidden="true"></i></a>
+					<button type="button" class="searchbutton" style=" background-color: #fff;color: #fff;">
+					<i class="fa fa-search" style="color: #BDBDBD;padding-top: 0px;font-size: 22px;" aria-hidden="true"></i></button>
 				</div>
 			</form>
 		</div>
@@ -73,7 +74,7 @@
 	<c:if test="${member.sex==null||member.sex=='남성' }"><i class="fa fa-mars" style="color: skyblue;" aria-hidden="true"></i></c:if>
 	<c:if test="${member.sex=='여성' }"><i class="fa fa-venus" style="color: pink;" aria-hidden="true"></i></c:if>
 	<span class="subtxt">${member.phonenum }</span> </div>
-	<div class="setting"> 뭘 더 넣ㅅ지 </div>
+	<div class="setting"></div>
 	<div class="side"> 
 <c:if test="${member.id==sid}"> <a href="carBookInfo.do"><i class="fa fa-cog fa-2x" style="color: #BDBDBD;" aria-hidden="true"></i></a> </c:if>
 <c:if test="${member.id!=sid}"> <a href="carBookInfo.do"> <i class="fa fa-comment-o fa-2x" style="color: #86E57F;"  aria-hidden="true"></i></a></c:if>

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" type="text/css" href="CSS/comm.css">
 <link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+
 <!DOCTYPE ">
 <html>
 <head>
@@ -23,12 +24,30 @@
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script type="text/javascript">
 	var idx=null;
+
 	function bbsdel(){
 		var params="idx="+idx
 		window.open('bbsdelgo.do?'+params,'','width=350, height=150')
 	}
+	function redel(){
+		var params="idx="+idx
+		window.open('redelgo.do?'+params,'','width=350, height=150')
+	}
+
+	
 </script>
 <style>
+
+@import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+.accordion-toggle:after {
+    font-family: 'FontAwesome';
+    content: "\f078";    
+    float: right;
+    padding-right: 28px;
+}
+.accordion-opened .accordion-toggle:after {    
+    content: "\f077";    
+}
                
 </style>
 <body  style="background-color: #F6F6F6;">
@@ -55,7 +74,8 @@
 					<input type="text" id="input_search"
 						placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name="">
 
-					<button type="button" class="searchbutton">검색</button>
+					<button type="button" class="searchbutton" style=" background-color: #fff;color: #fff;">
+					<i class="fa fa-search" style="color: #BDBDBD;padding-top: 0px;font-size: 22px;" aria-hidden="true"></i></button>
 				</div>
 			</form>
 		</div>
@@ -142,6 +162,7 @@
 		</c:if>
 
 		<c:forEach var="bbs" items="${list}">
+		<script>	var recount=null; </script>
 			<div data-viewname="DPostLayoutView" class="postout">
 				<div class="cPost " data-uiselector="postMainWrap">
 					<div class="postMain" data-uiselector="postRegion">
@@ -156,36 +177,471 @@
 							<div class="textTime">${bbs.writedate }</div>
 						</div>
 					
-					<div class="postBody">
-						<div class="postText">
-							<p class="txtBody" data-uiselector="txtBody" style="padding-left: 10px;">${bbs.content }</p>
-						<input type="button" class="updatebutton" value="삭제" onclick="javascript:idx=${bbs.idx};bbsdel();"> 
-						<input type="button" class="updatebutton" value="수정">
-						<input type="button" class="updatebutton" value="댓글">
+						<div class="feedback"
+							style="position: absolute; right: 20px; top: 10px;">
+							<div class="">
+								<span data-toggle="dropdown"
+									style="vertical-align: bottom; padding-right: 10px;"> <i
+									class="fa fa-ellipsis-v fa-2x" style="color: #bbb;"
+									aria-hidden="true"></i>
+								</span>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#" data-uiselector="modifyButton">공지사항 등록</a></li>
+									<li class="divider"></li>
+									<li><a href="#" data-uiselector="modifyButton">글 수정</a></li>
+									<li><a href="javascript:idx=${bbs.idx};bbsdel();"
+										data-uiselector="deleteButton">글 삭제</a></li>
+								</ul>
+							</div>
 
 						</div>
-					
-                    <table class="table table-condensed">
-                        <tr>
-                            <td>
-                                <span class="form-inline" role="form">
-                                    <p>
-                                        <div class="form-group">
-                                            <input type="text" id="commentParentName" name="commentParentName" class="form-control col-lg-2" data-rule-required="true" placeholder="이름" maxlength="10">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" id="commentParentPassword" name="commentParentPassword" class="form-control col-lg-2" data-rule-required="true" placeholder="패스워드" maxlength="10">
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">확인</button>
-                                        </div>
-                                    </p>
-                                        <textarea id="commentParentText" class="form-control col-lg-12" style="width:100%" rows="2"></textarea>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
 
+						<div class="postBody">
+						<div class="postText">
+							<p class="txtBody" data-uiselector="txtBody" style="padding-left: 10px;">${bbs.content }</p>
+						</div>
+					<div class="reply">
+                    <!-- 댓글 시작-->
+							<div class="accordion" id="accordion2">
+								<div class="accordion-heading">
+									<a class="accordion-toggle" data-toggle="collapse"
+										href='.${bbs.idx }'> <span style="padding-left: 20px;">댓글</span><em class="count" id="re${bbs.idx}" style="color: #FF1291">0</em> </a>
+								</div>
+								<div class="${bbs.idx} accordion-body collapse">
+			<!-- 나타나는 부분 -->
+		<div class="accordion-inner">
+
+		<!-- 밴드 -->
+		<style>
+.cComment:first-child {
+    border-top: 1px solid #e5e5e5;
+}
+.cComment {
+    position: relative;
+    min-height: 67px;
+    padding: 10px 15px 13px 71px;
+    background: #FDFDFD;}
+.cComment .writeInfo .nameWrap {
+    width: 75%;
+    display: block;
+    font-size: 0;
+    text-align: left;
+    border: none;
+    background: 0 0;
+    word-wrap: normal;
+}
+.cComment .thum {
+    overflow: hidden;
+    position: absolute;
+    left: 19px;
+    top: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+a, a:focus, a:hover {
+    color: #666;
+    text-decoration: none;
+}
+.cComment .writeInfo .nameWrap .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 40%;
+    vertical-align: middle;
+    color: #333;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+}
+.cComment .writeInfo .nameWrap .nickname {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 55%;
+    margin-left: 5px;
+    vertical-align: middle;
+    color: #aaa;
+    font-size: 12px;
+}
+.cComment .thum img {
+    width: 100%;
+    border-radius: 50%;
+}
+.commentBody .txt {
+     display: block; 
+     max-height: 100%; 
+     word-wrap: break-word;
+     text-overflow: clip; 
+   white-space: pre-wrap;
+    color: #666;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    max-height: 36.4px;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.cComment .commentBody .func {
+    position: relative;
+    vertical-align: top;
+    font-size: 0;
+}
+.cComment .commentBody .func .likeCount {
+    position: relative;
+    margin-right: 7px;
+    padding-right: 1px;
+    border: 0;
+    background: 0 0;
+    text-align: left;
+    color: #777;
+    font-size: 12px;
+    vertical-align: middle;
+    line-height: 21px;
+    height: 21px;
+}
+.cComment .commentBody .func .likeText {
+    border: 0;
+    background: 0 0;
+    color: #777;
+    font-size: 12px;
+    vertical-align: middle;
+    height: 21px;
+}
+.cComment .feedback {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.cComment .feedback .time {
+    font-size: 12px;
+    color: #aaa;
+}
+.cComment .feedback .commentEdit {
+    position: absolute;
+    right: -10px;
+    top: 3px;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    text-indent: -9999px;
+    background: 0 0;
+    color: transparent;
+    text-align: left;
+}
+.cComment .feedback .lyMenu {
+    right: -24px;
+    top: 28px;
+    z-index: 200;
+}
+.lyMenu li a {
+    display: block;
+    height: 37px;
+    line-height: 37px;
+    font-size: 13px;
+    text-align: center;
+    color: #494949;
+    padding: 0 15px;
+    white-space: nowrap;
+}
+.cCommentWrite {
+    position: relative;
+    border-top: 1px solid #EEE;
+    background: #FDFDFD;
+}
+.cCommentWrite .writeMain {
+    position: relative;
+    padding-top: 13px;
+    min-height: 58px;
+}
+.cCommentWrite .writeBtn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 85px;
+}
+<!-- 업로드 버튼 -->
+.cCommentWrite .btnUpload {
+    left: 10px;
+    font-size: 19px;
+}
+.cCommentWrite .btnUpload input {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: 200%;
+    height: 100%;
+    font-size: 50px;
+    cursor: pointer;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacity)"!important;
+    filter: alpha(opacity=0)!important;
+    opacity: 0!important;
+}
+
+.cCommentWrite .thum {
+    left: 43px;
+    overflow: hidden;
+    position: absolute;
+    top: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+}
+.cCommentWrite .thum img {
+    width: 100%;
+    border-radius: 50%;
+}
+.cCommentWrite .writeWrap {
+    padding-left: 72px;
+    padding-right: 81px;
+}
+.cCommentWrite .mentionsWrap {
+    position: relative;
+    font-size: 0;
+    padding-bottom: 13px;
+}
+.cCommentWrite .writeWrap .uInputComment {
+    position: static;
+    border-radius: 2px 0 0 2px;
+}
+.uInputComment {
+    min-height: 32px;
+    padding: 0;
+}
+.uInputComment {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border: 1px solid;
+    border-color: #ccc;
+    border-radius: 2px;
+    background: #fff;
+}
+.cCommentWrite .mentionsWrap .mentions-input {
+    position: relative;
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.cCommentWrite .mentionsWrap .mentions, .cCommentWrite .mentionsWrap textarea {
+    overflow: hidden;
+    padding: 6px 10px 0;
+    border: 0;
+    line-height: 1.54;
+    font-size: 13px;
+    vertical-align: top;
+    text-align: left;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+.cCommentWrite .mentionsWrap .mentions-input textarea {
+    position: absolute;
+}
+.cCommentWrite .mentionsWrap textarea {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: -1px;
+    min-height: 32px;
+    background: 0 0;
+    resize: none;
+}
+
+.cCommentWrite .writeSubmit {
+    position: absolute;
+    right: 12px;
+    top: 13px;
+    bottom: 13px;
+    height: auto;
+    border-radius: 0 2px 2px 0;
+    font-size: 14px;
+}
+
+.writeSubmit button{
+    background: #3cd370;
+}
+
+.ubutton{
+border:0px;
+	    min-width: 70px;
+	    font-size: 13px;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+    line-height: 29px;
+    background: #3cd370;
+}
+<!--upload preview-->
+.cCommentWrite .uploadPreview {
+    z-index: 200;
+    position: absolute;
+    right: -5px;
+    top: -176px;
+    font-size: 0;
+}
+.cCommentWrite .uploadPreview .imgWrap {
+    width: 200px;
+    height: 175px;
+    padding: 5px;
+    text-align: center;
+    background: #6e6e75;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+}
+.cCommentWrite .uploadPreview .imgWrap img.loading {
+    margin: 66px 0 0;
+}
+.cCommentWrite .uploadPreview .closePreview {
+    position: absolute;
+    right: -8px;
+    top: -6px;
+    width: 24px;
+    height: 24px;
+    font-size: 25px;
+}
+ 
+
+		</style>
+			<div class="_commentRegion">
+				<div data-viewname="DPostCommentMainLayoutView">
+					<div data-uiselector="commentListRegion">
+					<c:forEach var="re" items="${list2}">
+					<c:if test="${bbs.idx==re.bbsidx}">
+					<script>
+					recount=recount+1;
+					document.getElementById("re${bbs.idx}").innerText=recount;
+					</script>
+
+						<div data-viewname="DCommentListCollectionView"
+							class="commentList">
+							<div data-viewname="DCommentLayoutView" class="cComment">
+								<div class="writeInfo">
+									<span class="nameWrap"><label class="name">${re.name }</label>
+										</span> 
+										<a href="#" class="thum" data-uiselector="authorProfile">
+										<img src="http://s.cmstatic.net/webclient/dres/20160602183753/images/template/profile_60x60.gif"
+										alt="남구문"></a>
+								</div>
+								<div class="commentBody" style="padding-top: 5px;">
+									<p class="txt">${re.content }</p>
+									
+								</div>
+								<div class="feedback"
+									style="position: absolute; right: 20px; top: 10px;">
+									<div class="">
+										<span data-toggle="dropdown"
+											style="vertical-align: bottom; padding-right: 10px;">
+											<i class="fa fa-ellipsis-v fa-2x"
+											style="color: #bbb;" aria-hidden="true"></i>
+										</span>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="#" data-uiselector="modifyButton">댓글
+													수정</a></li>
+											<li class="divider"></li>
+											<li><a
+												href="javascript:idx=${re.idx};bbsdel();"
+												data-uiselector="deleteButton">댓글 삭제</a></li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+						</div>
+	
+						</c:if>	
+					</c:forEach>	
+					</div>
+					<div class="cCommentWrite"
+						data-uiselector="commentInputRegion">
+						<div data-viewname="DMessageInputLayoutView">
+							<div class="writeMain _writeMain">
+								
+								<form id="re" action="reWrite.do" > <!-- 댓글 -->
+								<div class="writeBtn">
+									<label data-icon="file-on" data-uiselector="btnAttachFile" class="js-fileapi-wrapper">
+									<span style="padding-top: 13px;font-weight:lighter; padding-left:20px; font-size: 30px;color: #bbb;  "
+									class="glyphicon glyphicon-comment" aria-hidden="true">
+									 <input type="file" multiple="" title=" " accept="image/*" 	name="attachment"
+										style='margin-left: -10px; width: 74px; height: 50px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
+								</span></label>
+
+								</div>
+								<div class="writeWrap">
+								
+									<div class="mentionsWrap">
+										<div class="uInputComment"
+											data-uiselector="mentionListParent">
+											<label class="gSrOnly" for="write_comment_view1659">댓글을
+												남겨주세요.</label>
+											<div class="mentions-input _prevent_toggle"
+												style="overflow-y: hidden !important">
+												<div class="mentions" style="height: 33px;">
+													<div></div>
+												</div>
+												<textarea cols="20" rows="1"
+													class="commentWrite _use_keyup_event"
+													id="write_comment_view1659"
+													name="content"
+													placeholder="댓글을 남겨주세요."
+													style="display: inline-block; overflow: hidden; height: 34px;"
+													data-uiselector="messageTextArea"
+													data-mentions-input="true"></textarea>
+												<div
+													style="position: absolute; display: none; word-wrap: break-word; white-space: pre-wrap; border: 0px none rgb(51, 51, 51); font-weight: 400; width: 383px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', 'Android Emoji', EmojiSymbols; line-height: 20.02px; font-size: 13px; padding: 6px 10px 0px;">&nbsp;</div>
+											</div>
+											<div class="cMentionsList " style="display: none;">
+												<ul style="display: none;"></ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<input type="hidden" name="bbsidx" value="${bbs.idx }">
+								<button type="submit"
+									class="uButton writeSubmit uButtonDefault"
+									data-width="xxSmall" data-height="middleSmall"
+									data-uiselector="sendMessageButton" style="border:0;height: 35px;">보내기</button>
+									</form> <!-- 댓글 폼 -->
+							</div>
+							<div class="uploadPreview" style="display: none;"
+								data-uiselector="previewArea">
+								<div class="imgWrap">
+									<img src="" alt="" width="165" height="165"
+										class="_prevent_context"
+										data-uiselector="previewImage"><img
+										class="loading"
+										src="http://s.cmstatic.net/webclient/dres/20160602183753/images/common/loading4.gif"
+										width="32" height="32" data-uiselector="loadingImage">
+								</div>
+								<button class="closePreview" type="button"
+									data-icon="pc-delete"
+									data-uiselector="closePreviewButton">
+									<span class="gSrOnly">Close</span>
+								</button>
+							</div>
+							<div data-uiselector="stickerSelectRegion"
+								class="stickerSelectRegion" style="display: none;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- 밴드 끗 -->
+
+
+										</div><!--  나타나는 부분끗 -->
+								</div>
+
+							</div>
+							<!-- 댓글 끗 -->
+						</div>
 					</div>
 					      </div>              
 				</div></div>
@@ -196,6 +652,20 @@
 		<hr>
 		footer
 	</div>
+	<!-- 댓글 js -->
+	<script>
+    $(document).on('show','.accordion', function (e) {
+        //$('.accordion-heading i').toggleClass(' ');
+        console.log(e.target);
+        $(e.target).prev('.accordion-heading').addClass('accordion-opened');
+   });
+   
+   $(document).on('hide','.accordion', function (e) {
+       console.log(e.target);
+       $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
+       //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
+   });
+	</script>
 
 
 </body>
