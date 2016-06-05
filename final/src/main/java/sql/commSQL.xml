@@ -35,5 +35,14 @@
         #{filename}, 1,  'test')
 	</insert>
 	
+	<insert id="reWrite" parameterType="su.comm.model.CommBBSreDTO">
+		insert into commbbs_re values(commbbs_re_idx.nextval, 'test', #{bbsidx},
+        #{id},  #{name}, #{content}, sysdate)
+	</insert>
+	
+	<select id="reList" parameterType="String"  resultType="su.comm.model.CommBBSreDTO">
+		select * from commBBS_re where commid=#{commid} order by idx desc 
+	</select>
+	
 
 </mapper>

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import su.comm.model.CommBBSreDTO;
 import su.comm.model.carpoolinfoDTO;
 import su.comm.model.commBBSDTO;
 import su.comm.model.commDAO;
@@ -33,24 +34,26 @@ public class commController {
 	public ModelAndView comm(HttpSession session){
 		ModelAndView mav=new ModelAndView();		
 		String sid=(String)session.getAttribute("sid");
-		String commid=(String)session.getAttribute("commid");
+		
 		if(sid==null||sid.equals("")){
             String msg="로그인후 이용 바랍니다.";
             mav.addObject("msg", msg);
             mav.setViewName("csCenter/oneandonefailMsg");
           return mav;
-		
-		
-//			}else if(commid==null||commid.equals("")){
-//		   String msg="가입된 커뮤니티가 없습니다.";
-//           mav.addObject("msg", msg);
-//           mav.setViewName("csCenter/oneandonefailMsg");
-//           return mav; 
+
 		}else{			
-			List<commBBSDTO> list=commDao.bbsList();			
+			List<commBBSDTO> list=commDao.bbsList();		
+			String commid="test";
+			List<CommBBSreDTO> list2=commDao.reList(commid);
+			int recount=0;
+	
+			mav.addObject("recount", recount);
 			mav.addObject("list", list);
+			mav.addObject("list2",list2);
 			mav.setViewName("comm/comm");
 			return mav;
+			
+			
 		}
 		
 		
@@ -126,6 +129,20 @@ public class commController {
 		return mav;
 		
 	}	
+	
+	@RequestMapping("reWrite.do")
+	public ModelAndView reWrite(CommBBSreDTO dto, HttpSession session){
+		String id=(String)session.getAttribute("sid");
+		String name=(String)session.getAttribute("sname");
+		dto.setId(id); dto.setName(name);
+		
+		int count=commDao.reWrite(dto);
+		String msg=count>0?"글 작성 성공":"글 작성 실패";
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("comm/commBBSmsg");
+		mav.addObject("msg", msg);
+		return mav;
+	}
 	
 	@RequestMapping("bbsdel.do")
 	public String bbsdel(String idx){

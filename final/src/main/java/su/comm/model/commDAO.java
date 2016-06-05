@@ -19,6 +19,12 @@ public interface commDAO {
 	
 	public int bbsdel(String idx);
 	
+	public int reWrite(CommBBSreDTO dto);
+	
+	public List<CommBBSreDTO> reList(String commid); 
+	
+	
+	
 	//uploadtest
 	
 }

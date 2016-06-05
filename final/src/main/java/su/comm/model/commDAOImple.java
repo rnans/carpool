@@ -8,7 +8,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 public class commDAOImple implements commDAO {
 	
-	
 	private SqlSessionTemplate sqlMap;	
 	private int arr[];
 
@@ -35,6 +34,18 @@ public class commDAOImple implements commDAO {
 			int count =sqlMap.insert("scheWrite", dto);
 			return count;
 		}
+	//reply
+	public int reWrite(CommBBSreDTO dto){
+		int count=sqlMap.insert("reWrite", dto);
+		return count;
+	}
+	
+	public List<CommBBSreDTO> reList(String commid){
+		
+		List<CommBBSreDTO> list=sqlMap.selectList("reList", commid);
+
+		return list;
+	}
 	
 	//스케쥴글 띄우기
 	public List<scheDTO> scheList(){
@@ -47,6 +58,7 @@ public class commDAOImple implements commDAO {
 	public List<carpoolinfoDTO> commMemberList(String poolname) {
 		
 		List<carpoolinfoDTO> list = sqlMap.selectList("commmember", poolname);
+
 		return list;
 	}
 	
@@ -54,6 +66,9 @@ public class commDAOImple implements commDAO {
 		int count = sqlMap.delete("commbbsdel", idx);
 		return count;
 	}
+	
+	
+	
 	
 }
 	
