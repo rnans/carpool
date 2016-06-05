@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import su.pool.model.PoolDTO;
+
 public class PayDAOImple implements PayDAO {
 
 	private SqlSessionTemplate sqlMap;
@@ -30,4 +32,10 @@ public class PayDAOImple implements PayDAO {
 		List<PayDTO> listp = sqlMap.selectList("payFinish",cardId);
 		return listp;
 	}
+	
+	/*public List<PoolDTO> payInfoList(int idx) {
+
+		List<PoolDTO> list = sqlMap.selectList("payInfoList",idx);
+		return list;
+	}*/
 }

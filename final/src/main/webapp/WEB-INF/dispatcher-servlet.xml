@@ -161,6 +161,12 @@
  			<ref bean="sqlSessionTemplate"/>
  		</constructor-arg>
  	</bean>
+ 	
+ 	<bean id="payListDao" class="su.paylist.model.PayListDAOImple">
+ 		<constructor-arg>
+ 			<ref bean="sqlSessionTemplate"/>
+ 		</constructor-arg>
+ 	</bean>
 	
 	<!-- view -->
 	

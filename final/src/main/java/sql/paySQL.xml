@@ -17,4 +17,14 @@
  	<select id="payFinish" parameterType="String" resultType="su.pay.model.PayDTO">
  		select * from userpayinfo where cardId=#{cardId}
  	</select>
+ 	
+ 	<insert id="payAllList" parameterType="su.paylist.model.PayListDTO">
+ 		insert into payAllList
+ 		values(payAllList_idx.nextval,#{userid},
+ 		#{status},#{pooltype},#{termtype},#{poolname},#{pay})
+ 	</insert> 
+ 	
+ 	<select id="payInfoList" resultType="su.pool.model.PoolDTO">
+ 		select * from reservationList where idx=#{idx}
+ 	</select>
 </mapper>

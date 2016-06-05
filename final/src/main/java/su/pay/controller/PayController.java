@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import su.pay.model.PayDAO;
 import su.pay.model.PayDTO;
+import su.paylist.model.PayListDAO;
+import su.pool.model.PoolDTO;
+
 
 @Controller
 public class PayController {
@@ -19,21 +22,29 @@ public class PayController {
 	@Autowired
 	private PayDAO payDao;
 	
-	public PayDAO getPayDao() {
+	public PayDAO getPayDao(){
 		return payDao;
 	}
-
-	public void setPayDao(PayDAO payDao) {
+	public void setPayDao(PayDAO payDao){
 		this.payDao = payDao;
 	}
+	
+	@Autowired
+	private PayListDAO plDao;
 
+	public PayListDAO getPlDao() {
+		return plDao;
+	}
+	public void setPlDao(PayListDAO plDao) {
+		this.plDao = plDao;
+	}
+	
 	@RequestMapping("/payType.do")
 	public ModelAndView payType(
 			@RequestParam("idx")int idx){
-	
-		System.out.println("idx="+idx);
 		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("ridx",idx);
 		mav.setViewName("pay/payType");
 		return mav;
 	}
@@ -55,21 +66,30 @@ public class PayController {
 		return mav;
 	}
 	
+	
+	/**결제정보저장*/
 	@RequestMapping("/newCardEnroll.do")
-	public ModelAndView newCardEnroll(PayDTO pDTO,HttpSession session){
+	public ModelAndView newCardEnroll(PayDTO pDTO,HttpSession session,
+			 PoolDTO pdto,
+			@RequestParam(value="ridx",required=false)int idx){
 		//여긴 세션값으로 가져오는 아이디 값이 들어옴
+
+		System.out.println("idx="+idx);
+		
 		String userid = (String)session.getAttribute("sid");
 		String cardImg = "";
 		
-		if(pDTO.getCardType1().equals("신한은행")||
-				pDTO.getCardType1().equals("신한카드")||
-				pDTO.getCardType1().equals("신한")){
+		if(pDTO.getCardType1().equals("신한은행")){
 			cardImg="img/shin.png";
 			pDTO.setCardImg(cardImg);
-		}else if(pDTO.getCardType1().equals("국민은행")||
-				pDTO.getCardType1().equals("국민카드")||
-				pDTO.getCardType1().equals("국민")){
+		}else if(pDTO.getCardType1().equals("국민은행")){
 			cardImg="img/kok.png";
+			pDTO.setCardImg(cardImg);
+		}else if(pDTO.getCardType1().equals("농협")){
+			cardImg="img/nong.png";
+			pDTO.setCardImg(cardImg);
+		}else if(pDTO.getCardType1().equals("우리은행")){
+			cardImg="img/woori.png";
 			pDTO.setCardImg(cardImg);
 		}else{
 			cardImg="img/noimage.png";
@@ -86,7 +106,7 @@ public class PayController {
 		return mav;
 	}
 	
-	@RequestMapping("/paySuccess.do")
+	/*@RequestMapping("/paySuccess.do")
 	public ModelAndView cardSuccess(
 			@RequestParam(value="cardId",required=false)String cardId){
 		System.out.println(cardId);
@@ -98,14 +118,17 @@ public class PayController {
 		mav.addObject("listp",listp);
 		mav.setViewName("pay/payFinish");
 		return mav;
-	}
+	}*/
 	
+	
+	/**결제정보저장*/
 	@RequestMapping("/lastPay.do")
-	public ModelAndView lastPay(){
+	public ModelAndView lastPay(HttpSession session){
+		String userid = (String)session.getAttribute("sid");
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg","결제가 정상적으로 처리되었습니다.");
 		mav.setViewName("pay/payMsg");
 		return mav;
 	}
-	
 }

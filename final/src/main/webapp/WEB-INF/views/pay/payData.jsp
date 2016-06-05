@@ -23,9 +23,12 @@
 		<div class="clbo"></div>
 			
 		<div class="card">
+		
+			<c:if test="${empty lists}">등록된 카드 정보가 없습니다.</c:if>
+		
 			<c:forEach var="pay" items="${lists}">
 				<input type="image" name="cardImg" src="${pay.cardImg}">
-					<c:url var="payURL" value="paySuccess.do">
+					<c:url var="payURL" value="lastPay.do">
 						<c:param name="cardId">${pay.cardId}</c:param>
 					</c:url>
 				<input type="text" value="${pay.cardType1}" disabled><br>
