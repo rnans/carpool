@@ -47,7 +47,6 @@
 .link-effect-3 a:hover::before {
   max-width: 100%;
 }
-
 </style>
 </head>
 <script>
