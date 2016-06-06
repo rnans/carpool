@@ -14,14 +14,26 @@
 </style>
 <body  style="background-color: #F6F6F6;">
 <%@include file="../header.jsp"%>
-<div id="lnb" style="margin-top: 50px; ">
-<ul class="nav navbar-nav bar" style="margin: 0px auto;">
-<li><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></li>
-<li><a href="calendar.do" class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
-<li><a href="commMember.do" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
-</ul> 
-</div>
 
+	<div id="lnb" data-skin="skin5">
+		<div data-viewname="DLnbMenuView">
+			<ul class="_joinedLnb">
+				<li><a href="comm.do" data-skinfactor="tBorder color"
+					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">전체글</a></li>
+				<li><a href="gallery.do"
+					data-skinfactor="tBorder color"
+					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">사진첩</a></li>
+				<li><a href="calendar.do"
+					data-skinfactor="tBorder color"
+					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">일정</a></li>
+				<li><a href="commMember.do"
+					data-skinfactor="tBorder color"
+					class="_fullArticleLnbBtn _eachLnbMenu on">멤버</a></li>
+			</ul>
+		</div>
+	</div>
+
+<br><BR><Br><Br>
 
 <section data-viewname="DBandMemberLayoutView" class="memberSection">
 <div class="memberDiv" style="width: 50%; margin: 0px auto;">
@@ -29,7 +41,7 @@
 <span style=" width: auto; height: 40px; text-align: center; color: #666; font-size: 14px; float: right;" >
 
 <button type="button" class="uButton uButtonPoint btn-hover" 
-	style="background:none ; color: #86E57F; border:2px solid #86E57F;min-width: 70px; line-height: 32px; margin: 0 3px; font-size: 14px;font-weight:bold ; padding-left: 5px; padding-right: 5px;">
+	style="background:none ; color: #3cd370; border:1px solid #3cd370;min-width: 70px; line-height: 28px; margin: 0 3px; font-size: 14px;font-weight:bold ; padding-left: 5px; padding-right: 5px;">
 	멤버 초대하기
 </button></span></h1>
 
@@ -70,14 +82,14 @@
 	<div class="nameArea"> 
 	<strong class="name">${member.name }</strong>   
 	
-	<c:if test="${member.grade==0}"><span class="labelAuth" style="background-color: #86E57F;">리더</span> </c:if>   
+	<c:if test="${member.grade==0}"><span class="labelAuth" style="background-color: #3cd370;">리더</span> </c:if>   
 	<c:if test="${member.sex==null||member.sex=='남성' }"><i class="fa fa-mars" style="color: skyblue;" aria-hidden="true"></i></c:if>
 	<c:if test="${member.sex=='여성' }"><i class="fa fa-venus" style="color: pink;" aria-hidden="true"></i></c:if>
 	<span class="subtxt">${member.phonenum }</span> </div>
 	<div class="setting"></div>
 	<div class="side"> 
-<c:if test="${member.id==sid}"> <a href="carBookInfo.do"><i class="fa fa-cog fa-2x" style="color: #BDBDBD;" aria-hidden="true"></i></a> </c:if>
-<c:if test="${member.id!=sid}"> <a href="carBookInfo.do"> <i class="fa fa-comment-o fa-2x" style="color: #86E57F;"  aria-hidden="true"></i></a></c:if>
+<c:if test="${member.id==sid}"> <a href="#"><i class="fa fa-cog fa-2x" style="color: #BDBDBD;" aria-hidden="true"></i></a> </c:if>
+<c:if test="${member.id!=sid}"> <a href="#"> <i class="fa fa-comment-o fa-2x" style="color: #3cd370;"  aria-hidden="true"></i></a></c:if>
      </div>
 	</li>    
 	</ul>
@@ -93,7 +105,7 @@
 			<span class="name">카풀 이름 및 커버 설정</span>
 			</div>
 			<div class="side"> 
-			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
+			<a href="#" class="_btnBandNameCover btnTxt">변경</a>
 			</div>
 		</li>
 		<li>
@@ -101,7 +113,7 @@
 			<span class="name">공지 사항 등록</span>
 			</div>
 			<div class="side"> 
-			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
+			<a href="#" class="_btnBandNameCover btnTxt">변경</a>
 			</div>
 		</li>
 		<li>
@@ -109,7 +121,7 @@
 			<span class="name">기타 등등</span>
 			</div>
 			<div class="side"> 
-			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
+			<a href="#" class="_btnBandNameCover btnTxt">변경</a>
 			</div>
 		</li>
 	</ul>
@@ -125,7 +137,7 @@
 			<span class="name">파티 탈퇴하기</span>
 			</div>
 			<div class="side"> 
-			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
+			<a href="#" class="_btnBandNameCover btnTxt">변경</a>
 			</div>
 		</li>
 		<li>
@@ -133,7 +145,7 @@
 			<span class="name">파티 삭제하기</span>
 			</div>
 			<div class="side"> 
-			<a href="/#!/band/61355066/bandCoverUpdate" class="_btnBandNameCover btnTxt">변경</a>
+			<a href="#" class="_btnBandNameCover btnTxt">변경</a>
 			</div>
 		</li>
 	</ul>

@@ -383,7 +383,7 @@ tbody {
 		</div>
 		<input type="hidden" name="id" value="${sid}">
 		<div class="btnArea"> 
-			<button type="submit" class="uButton uButtonPoint">완료</button>
+			<button type="submit" class="uButton uButtonPoint" style="border:0px;">완료</button>
 		</div>
 		<button data-uiselector="closeButton" type="button" class="btnLyClose" onclick="javascript:window.self.close();">
 		<span class="gSrOnly">레이어 닫기</span> X </button>

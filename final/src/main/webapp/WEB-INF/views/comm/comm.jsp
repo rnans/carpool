@@ -18,7 +18,9 @@
         <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
         <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">	
+        <link rel="stylesheet" type="text/css" href="http://s.cmstatic.net/webclient/dres/20160602183753/css/bandComponent.css?_=20160602183753">
+		<link rel="stylesheet" type="text/css" href="http://s.cmstatic.net/webclient/dres/20160602183753/css/band.css?_=20160602183753">
 </head>
 
 <script type="text/javascript" src="js/httpRequest.js"></script>
@@ -42,8 +44,13 @@
 
 	
 </script>
-<style>
+<body  style="background-color: #F6F6F6;">
+	<%@include file="../header.jsp"%>
 
+
+
+<!-- 밴드 -->
+<style>
 @import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
 .accordion-toggle:after {
     font-family: 'FontAwesome';
@@ -54,172 +61,6 @@
 .accordion-opened .accordion-toggle:after {    
     content: "\f077";    
 }
-               
-</style>
-<body  style="background-color: #F6F6F6;">
-	<%@include file="../header.jsp"%>
-	
-<div id="lnb" style="margin-top: 50px; ">
-<ul class="nav navbar-nav bar" style="margin: 0px auto;">
-<li><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></li>
-<li><a href="calendar.do" class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
-<li><a href="commMember.do" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
-</ul> 
-</div>
-
-
-	<div style="width: 50%; margin: 0px auto;">
-		<h2 class="menu_title"
-			style="position: relative; z-index: 100; margin-bottom: 16px; text-align: center;">커뮤니티</h2>
-
-		<div class="searchWrap" style="background-color: #fff;">
-			<form autocomplete="off" action="">
-				<h2 class="gSrOnly">검색 입력 폼</h2>
-				<div class="uInputSearch">
-					<label class="gSrOnly" for="input_search">이름, 글내용, 해시태그로 검색</label>
-					<input type="text" id="input_search"
-						placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name="">
-
-					<button type="button" class="searchbutton" style=" background-color: #fff;color: #fff;">
-					<i class="fa fa-search" style="color: #BDBDBD;padding-top: 0px;font-size: 22px;" aria-hidden="true"></i></button>
-				</div>
-			</form>
-		</div>
-
-<div class="writeWrap" style="margin-bottom: 15px;">
-			<form name="write" action="commWrite.do">
-				<div data-viewname="DPostWriteLayoutView" class="cPostWrite">
-					<h3 class="gSrOnly">글쓰기</h3>
-					<div class="writeWrap" data-uiselector="mentionListParent">
-						<div class="mentions-input _prevent_toggle"
-							style="overflow-y: hidden !important">
-							<div class="mentions" style="height: 75px;">
-								<div></div>
-							</div>
-							<textarea cols="30" rows="10"
-								style="height: 75px; overflow: hidden;"
-								class="postWrite _use_keyup_event" maxlength="10000"
-								 name="content" id="content" placeholder="멤버들에게 전할 소식을 남겨주세요."
-								data-mentions-input="true"></textarea>
-							<div
-								style="position: absolute; display: none; word-wrap: break-word; white-space: pre-wrap; border: 0px none rgb(51, 51, 51); font-weight: 400; width: 541px; font-family: Arial, 'Noto Sans KR', 맑은고딕, 'Malgun Gothic', 돋움, Dotum, 'Helvetica Neue', Helvetica, AppleSDGothicNeo, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', 'Android Emoji', EmojiSymbols; line-height: 21.56px; font-size: 14px; padding: 16px 20px 0px;">&nbsp;</div>
-						</div>
-						<div data-uiselector="snippetRegion"></div>
-						<div class="cMentionsList " style="display: none;">
-							<ul style="display: none;"></ul>
-						</div>
-					</div>
-					<div class="buttonArea">
-						<ul>
-							<li data-uiselector="attachItem"><label data-icon="file-on"
-								data-uiselector="btnAttachFile" class="js-fileapi-wrapper">
-									<span style="padding-top: 4px"
-									class="glyphicon glyphicon-search" aria-hidden="true"> <input
-										type="file" multiple="" title=" " accept="image/*"
-										name="attachment"
-										style='margin-left: -10px; width: 74px; height: 20px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
-								</span> <span class="gSrOnly">사진</span>
-							</label></li>
-							<li data-uiselector="attachItem"><label data-icon="file-on"
-								data-uiselector="btnAttachFile" class="js-fileapi-wrapper">
-									<span style="padding-top: 4px"
-									class="glyphicon glyphicon-facetime-video" aria-hidden="true">
-										<input type="file" multiple="" title=" " accept="*/*"
-										name="attachment"
-										style='margin-left: -10px; width: 74px; height: 20px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
-								</span> <span class="gSrOnly">동영상</span>
-							</label></li>
-							<li data-uiselector="attachItem"><label data-icon="file-on"
-								data-uiselector="btnAttachFile" class="js-fileapi-wrapper">
-									<span style="padding-top: 4px"
-									class="glyphicon glyphicon-floppy-disk" aria-hidden="true">
-										<input type="file" multiple="" title=" " accept="*/*"
-										name="attachment"
-										style='margin-left: -10px; width: 74px; height: 20px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
-								</span> <span class="gSrOnly">파일</span>
-							</label></li>
-						</ul>
-						<input type="hidden" name="id" value="${sid}">
-						<div class="buttonSubmit">
-							<button type="reset" class="uButton uButtonDefault"
-								style="background: #a1a1a9; min-width: 70px; line-height: 32px; margin: 0 3px; font-size: 13px; color: #fff;">취소</button>
-							<button type="submit" class="uButton uButtonPoint" 
-								style="background: #3cd370; min-width: 70px; line-height: 32px; margin: 0 3px; font-size: 13px; color: #fff">게시</button>
-						</div>
-
-					</div>
-
-				</div>
-			</form>
-		</div>
-
-		<div style="width: 100%">
-			<div class="noticeWrap" style="display: block;">
-				<h2 class="tit">공지사항</h2>
-				<ul class="notice">
-					<li><a href="#" data-index="0"> 공지사항 </a>
-						<div></div></li>
-				</ul>
-			</div>
-		</div>
-	
-		<c:if test="${empty list}">
-			<td colspan="4" align="center">등록된 게시글이 없습니다.</td>
-		</c:if>
-
-		<c:forEach var="bbs" items="${list}">
-		<script>	var recount=null; </script>
-			<div data-viewname="DPostLayoutView" class="postout">
-				<div class="cPost " data-uiselector="postMainWrap">
-					<div class="postMain" data-uiselector="postRegion">
-
-						<a href="#" data-uiselector="Img"> <img class="profileImg"
-							src="http://s.cmstatic.net/webclient/dres/20160419171121/images/template/profile_60x60.gif"
-							alt="남구문"></a>
-						<div class="profileText">
-							<div class="textName" style="height: 45px; padding-top: 5px;"> <strong class="name onlyName">
-									<br>${bbs.id }</strong>
-							</div>
-							<div class="textTime">${bbs.writedate }</div>
-						</div>
-					
-						<div class="feedback"
-							style="position: absolute; right: 20px; top: 10px;">
-							<div class="">
-								<span data-toggle="dropdown"
-									style="vertical-align: bottom; padding-right: 10px;"> <i
-									class="fa fa-ellipsis-v fa-2x" style="color: #bbb;"
-									aria-hidden="true"></i>
-								</span>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#" data-uiselector="modifyButton">공지사항 등록</a></li>
-									<li class="divider"></li>
-									<li><a href="#" data-uiselector="modifyButton">글 수정</a></li>
-									<li>
-									<a onclick="javascript:idx='${bbs.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete">
-											글 삭제</a></li>
-								</ul>
-							</div>
-
-						</div>
-
-						<div class="postBody">
-						<div class="postText">
-							<p class="txtBody" data-uiselector="txtBody" style="padding-left: 10px;">${bbs.content }</p>
-						</div>
-					<div class="reply">
-                    <!-- 댓글 시작-->
-							<div class="accordion" id="accordion2">
-								<div class="accordion-heading">
-									<a class="accordion-toggle" data-toggle="collapse"
-										href='.${bbs.idx }'> <span style="padding-left: 20px;">댓글</span><em class="count" id="re${bbs.idx}" style="color: #FF1291">0</em> </a>
-								</div>
-								<div class="${bbs.idx} accordion-body collapse">
-			<!-- 나타나는 부분 -->
-		<div class="accordion-inner">
-
-		<!-- 밴드 -->
-		<style>
 .cComment:first-child {
     border-top: 1px solid #e5e5e5;
 }
@@ -519,9 +360,181 @@ border:0px;
     height: 24px;
     font-size: 25px;
 }
- 
+[data-skin=skin5] [data-skinFactor~=tBorder], [data-skin=skin5] [data-skinFactor~=border], [data-skin=skin5] [data-skinFactor~=beforeBorder]:before, [data-skin=skin5] [data-skinFactor~=afterBorder]:after {
+    border-color: #3cd370!important;
+}
+[data-skin=skin5] [data-skinFactor~=color], [data-skin=skin5] [data-skinFactor~=beforeColor]:before, [data-skin=skin5] [data-skinFactor~=afterColor]:after, [data-skin=skin5] [data-skinFactor~=bColor], [data-skin=skin5] [data-skinFactor~=bBeforeColor]:before, [data-skin=skin5] [data-skinFactor~=bAfterColor]:after {
+    color: #3cd370!important;
+}
+</style>
 
-		</style>
+	<div id="lnb" data-skin="skin5">
+		<div data-viewname="DLnbMenuView">
+			<ul class="_joinedLnb">
+				<li><a href="comm.do" data-skinfactor="tBorder color"
+					class="_fullArticleLnbBtn _eachLnbMenu on">전체글</a></li>
+				<li><a href="gallery.do"
+					data-skinfactor="tBorder color"
+					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">사진첩</a></li>
+				<li><a href="calendar.do"
+					data-skinfactor="tBorder color"
+					class="_calendarLnbBtn _eachLnbMenu _unclickableMenu">일정</a></li>
+				<li><a href="commMember.do"
+					data-skinfactor="tBorder color"
+					class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
+			</ul>
+		</div>
+	</div>
+<br><br><br>
+	<div style="width: 50%; margin: 0px auto; margin-top: 50px;" >
+		<h2 class="menu_title"
+			style="position: relative; z-index: 0; margin-bottom: 16px; text-align: center;"> </h2>
+
+		<div class="searchWrap" style="background-color: #fff;">
+			<form autocomplete="off" action="">
+				<h2 class="gSrOnly">검색 입력 폼</h2>
+				<div class="uInputSearch">
+					<label class="gSrOnly" for="input_search">이름, 글내용, 해시태그로 검색</label>
+					<input type="text" id="input_search"
+						placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name="">
+
+					<button type="button" class="searchbutton" style="right: 15px; background-color: #fff;color: #fff;">
+					<i class="fa fa-search" style="color: #BDBDBD;padding-top: 0px;font-size: 22px;" aria-hidden="true"></i></button>
+				</div>
+			</form>
+		</div>
+
+<div class="writeWrap" style="margin-bottom: 15px;">
+			<form name="write" action="commWrite.do">
+				<div data-viewname="DPostWriteLayoutView" class="cPostWrite">
+					<h3 class="gSrOnly">글쓰기</h3>
+					<div class="writeWrap" data-uiselector="mentionListParent">
+						<div class="mentions-input _prevent_toggle"
+							style="overflow-y: hidden !important">
+							<div class="mentions" style="height: 75px;">
+								<div></div>
+							</div>
+							<textarea cols="30" rows="10"
+								style="height: 75px; overflow: hidden;"
+								class="postWrite _use_keyup_event" maxlength="10000"
+								 name="content" id="content" placeholder="멤버들에게 전할 소식을 남겨주세요."
+								data-mentions-input="true"></textarea>
+							<div
+								style="position: absolute; display: none; word-wrap: break-word; white-space: pre-wrap; border: 0px none rgb(51, 51, 51); font-weight: 400; width: 541px; font-family: Arial, 'Noto Sans KR', 맑은고딕, 'Malgun Gothic', 돋움, Dotum, 'Helvetica Neue', Helvetica, AppleSDGothicNeo, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', 'Android Emoji', EmojiSymbols; line-height: 21.56px; font-size: 14px; padding: 16px 20px 0px;">&nbsp;</div>
+						</div>
+						<div data-uiselector="snippetRegion"></div>
+						<div class="cMentionsList " style="display: none;">
+							<ul style="display: none;"></ul>
+						</div>
+					</div>
+					<div class="buttonArea">
+						<ul>
+							<li data-uiselector="attachItem"><label>
+									<span style="padding-top: 4px"
+									class="glyphicon glyphicon-picture" aria-hidden="true"> <input
+										type="file" multiple="" title=" " accept="image/*"
+										name="attachment"
+										style='margin-left: -10px; width: 74px; height: 20px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
+								</span> <span class="gSrOnly">사진</span>
+							</label></li>
+							<li data-uiselector="attachItem"><label>
+									<span style="padding-top: 4px"
+									class="glyphicon glyphicon-facetime-video" aria-hidden="true">
+										<input type="file" multiple="" title=" " accept="*/*"
+										name="attachment"
+										style='margin-left: -10px; width: 74px; height: 20px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
+								</span> <span class="gSrOnly">동영상</span>
+							</label></li>
+							<li data-uiselector="attachItem"><label>
+									<span style="padding-top: 4px"
+									class="glyphicon glyphicon-floppy-disk" aria-hidden="true">
+										<input type="file" multiple="" title=" " accept="*/*"
+										name="attachment"
+										style='margin-left: -10px; width: 74px; height: 20px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
+								</span> <span class="gSrOnly">파일</span>
+							</label></li>
+						</ul>
+						<input type="hidden" name="id" value="${sid}">
+						<div class="buttonSubmit">
+							<button type="reset" class="uButton uButtonDefault"
+								style="background: #a1a1a9; min-width: 70px; line-height: 32px; margin: 0 3px; font-size: 13px; color: #fff;">취소</button>
+							<button type="submit" class="uButton uButtonPoint" 
+								style="background: #3cd370; min-width: 70px; line-height: 32px; margin: 0 3px; font-size: 13px; color: #fff">게시</button>
+						</div>
+
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+		<div style="width: 100%">
+			<div class="noticeWrap" style="display: block;">
+				<h2 class="tit">공지사항</h2>
+				<ul class="notice">
+					<li><a href="#" data-index="0"> 공지사항 </a>
+						<div></div></li>
+				</ul>
+			</div>
+		</div>
+	
+		<c:if test="${empty list}">
+			<td colspan="4" align="center">등록된 게시글이 없습니다.</td>
+		</c:if>
+
+		<c:forEach var="bbs" items="${list}">
+		<script>	var recount=null; </script>
+			<div data-viewname="DPostLayoutView" class="postout">
+				<div class="cPost " data-uiselector="postMainWrap">
+					<div class="postMain" data-uiselector="postRegion">
+
+						<a href="#" data-uiselector="Img"> <img class="profileImg"
+							src="http://s.cmstatic.net/webclient/dres/20160419171121/images/template/profile_60x60.gif"
+							alt="남구문"></a>
+						<div class="profileText">
+							<div class="textName" style="height: 45px; padding-top: 5px;"> <strong class="name onlyName">
+									<br>&nbsp;&nbsp;${bbs.id }</strong>
+							</div>
+							<div class="textTime">&nbsp;&nbsp;${bbs.writedate }</div>
+						</div>
+					
+						<div class="feedback"
+							style="position: absolute; right: 20px; top: 10px;">
+							<div class="">
+								<span data-toggle="dropdown"
+									style="vertical-align: bottom; padding-right: 10px;"> <i
+									class="fa fa-ellipsis-v fa-2x" style="color: #bbb;"
+									aria-hidden="true"></i>
+								</span>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#" data-uiselector="modifyButton">공지사항 등록</a></li>
+									<li class="divider"></li>
+									<li><a href="#" data-uiselector="modifyButton">글 수정</a></li>
+									<li>
+									<a onclick="javascript:idx='${bbs.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete">
+											글 삭제</a></li>
+								</ul>
+							</div>
+
+						</div>
+
+						<div class="postBody">
+						<div class="postText">
+							<p class="txtBody" data-uiselector="txtBody" style="padding-left: 80px;">${bbs.content }</p>
+						</div>
+					<div class="reply">
+                    <!-- 댓글 시작-->
+							<div class="accordion" id="accordion2">
+								<div class="accordion-heading">
+									<a class="accordion-toggle" data-toggle="collapse"
+										href='.${bbs.idx }'> <span style="padding-left: 20px;">댓글</span><em class="count" id="re${bbs.idx}" style="color: #FF1291">0</em> </a>
+								</div>
+								<div class="${bbs.idx} accordion-body collapse">
+			<!-- 나타나는 부분 -->
+		<div class="accordion-inner">
+
+		<!-- 밴드 -->
+		
 			<div class="_commentRegion">
 				<div data-viewname="DPostCommentMainLayoutView">
 					<div data-uiselector="commentListRegion">
@@ -579,7 +592,7 @@ border:0px;
 								
 								<form id="re" action="reWrite.do" > <!-- 댓글 -->
 								<div class="writeBtn">
-									<label data-icon="file-on" data-uiselector="btnAttachFile" class="js-fileapi-wrapper">
+									<label>
 									<span style="padding-top: 13px;font-weight:lighter; padding-left:20px; font-size: 30px;color: #bbb;  "
 									class="glyphicon glyphicon-comment" aria-hidden="true">
 									 <input type="file" multiple="" title=" " accept="image/*" 	name="attachment"
@@ -619,8 +632,7 @@ border:0px;
 								<input type="hidden" name="bbsidx" value="${bbs.idx }">
 								<button type="submit"
 									class="uButton writeSubmit uButtonDefault"
-									data-width="xxSmall" data-height="middleSmall"
-									data-uiselector="sendMessageButton" style="border:0;height: 35px;">보내기</button>
+								    style="border:0;background-color:#3cd370; ">보내기</button>
 									</form> <!-- 댓글 폼 -->
 							</div>
 							<div class="uploadPreview" style="display: none;"
@@ -730,7 +742,7 @@ border:0px;
 	
 		<hr>
 		footer
-	</div>
+
 	<!-- 댓글 js -->
 	<script>
     $(document).on('show','.accordion', function (e) {

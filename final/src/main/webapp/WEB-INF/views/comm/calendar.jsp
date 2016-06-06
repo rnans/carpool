@@ -5,6 +5,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="calendarCommon.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<link rel="stylesheet" type="text/css" href="CSS/comm.css">
 <%
 int today=1;
   Month aMonth = Month.getMonth( Integer.parseInt(currentMonthString), Integer.parseInt(currentYearString) );
@@ -78,45 +79,6 @@ function write(){
 
 </script>
 <style>
-#lnb {
-    z-index: 1900;
-    width: 100%;
-    min-width: 1024px;
-    height: 36px;
-    left: 0;
-    top: 46px;
-    background: #86E57F;
-    text-align: center;
-}
-#lnb ul {
-    overflow: hidden;
-    display: inline-block;
-    height: 100%;
-}
-
-button, dd, dl, dt, fieldset, ol, p, ul {
-    margin: 0;
-    padding: 0;
-}
-#lnb li {
-    float: left;
-    position: relative;
-    min-width: 112px;
-    text-align: center;
-    list-style: none;
-}
-#lnb a, #daytd a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 0 5px;
-    line-height: 36px;
-    font-size: 14px;
-}
-A:link {color: #1f3174; text-decoration: none}
-A:active {color: #1f3174; text-decoration: none}
-A:visited {color: #1f3174; text-decoration: none}
-A:hover {color: #3366cc; text-decoration: underline}
 .verdana_b { font-family:verdana, arial; font-size: 9px; font-weight: bold}
 .cal_black { font-family:verdana, arial; font-size: 9px; color: #333333 }
 .daytd{
@@ -136,7 +98,7 @@ A:hover {color: #3366cc; text-decoration: underline}
  border:1;
   cellspacing:1; 
   cellpadding:3;
-  background-color:#86E57F;
+  background-color:#3cd370;
   margin:0px auto;
 }
 .uSectionTitle {
@@ -203,18 +165,29 @@ a:focus, a:hover {
 <%@include file="../header.jsp"%>
 
 
-<div id="lnb" style="margin-top: 50px; ">
-<ul class="nav navbar-nav bar" style="margin: 0px auto;">
-<li><a href="comm.do" class="_fullArticleLnbBtn _eachLnbMenu">전체글</a></li>
-<li><a href="calendar.do" class="_calendarLnbBtn _eachLnbMenu _unclickableMenu on">일정</a></li>
-<li><a href="commMember.do" class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
-</ul> 
-</div>
+
+	<div id="lnb" data-skin="skin5">
+		<div data-viewname="DLnbMenuView">
+			<ul class="_joinedLnb">
+				<li><a href="comm.do" data-skinfactor="tBorder color"
+					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">전체글</a></li>
+				<li><a href="gallery.do"
+					data-skinfactor="tBorder color"
+					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">사진첩</a></li>
+				<li><a href="calendar.do"
+					data-skinfactor="tBorder color"
+					class="_fullArticleLnbBtn _eachLnbMenu on">일정</a></li>
+				<li><a href="commMember.do"
+					data-skinfactor="tBorder color"
+					class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
+			</ul>
+		</div>
+	</div>
 
 
 
-<div id="span"><div id="calendarview">
-<h1 class="uSectionTitle">일정</h1>
+<div id="span" style="margin-top: 70px;" ><div id="calendarview">
+<br><br>
 <table id="calendar_table" class="table table-hover" style="border:1px solid #cfcfcf; border-bottom: 1px solid #CFCFCF;">
 <thead>
   <tr>
