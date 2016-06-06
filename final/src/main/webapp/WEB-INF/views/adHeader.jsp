@@ -137,12 +137,11 @@ table tr:hover td {
 	</div>
 	<div>예약및결제관리
 		<div><a href="allReserveList.do">-예약관리</a></div>
-		<div>&nbsp;&nbsp;&nbsp;<a href="allReserveList.do">-진행중인예약</a></div>
+		<div>&nbsp;&nbsp;&nbsp;<a href="#">-진행중인예약</a></div>
 		<div>&nbsp;&nbsp;&nbsp;<a href="driverReserveList.do">-드라이버예약</a></div>
 		<div>&nbsp;&nbsp;&nbsp;<a href="memberReserveList.do">-사용자예약</a></div>
 		<div><a href="payMentList.do">-결제관리</a></div>
 	</div>
-	<div>차계부관리</div>
-	<div>커뮤니티관리</div>
+	<div><a href="memberCommList.do">커뮤니티관리</a></div>
 	<hr>
 </header>
