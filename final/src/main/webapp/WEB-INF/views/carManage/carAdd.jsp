@@ -15,9 +15,6 @@ function addClose(){
 }
 </script>
 <style>
-body{
-    background-color: gray;
-}
 
 #box{
     border: 1px solid rgb(200, 200, 200);
@@ -102,7 +99,7 @@ function car_num_chk(car_num)
 
 </script>
 </head>
-<body">
+<body>
 <%@include file="../header.jsp"%>
 
 	
