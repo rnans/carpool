@@ -21,7 +21,7 @@
 }
 
 #lnb {
-    z-index: 1900;
+    z-index: 0;
     width: 100%;
     min-width: 1024px;
     height: 36px;
@@ -44,7 +44,7 @@ button, dd, dl, dt, fieldset, ol, p, ul {
 A:link {color: #1f3174; text-decoration: none}
 A:active {color: #1f3174; text-decoration: none}
 A:visited {color: #1f3174; text-decoration: none}
-A:hover {color: #3366cc; text-decoration: underline}
+A:hover {color: #3366cc; text-decoration: none}
 
 <!-- -->
 
@@ -465,4 +465,65 @@ input, textarea {
 .settingList .side{
 width: 200px;
     text-align: center;
+}
+
+ #lnb{
+ z-index: 101;
+    position: fixed;
+    width: 100%;
+    min-width: 1024px;
+    margin-top: 6	0px;
+    height: 36px;
+    left: 0;
+    top: 50px;
+    background: #fff;
+    text-align: center;}
+
+#lnb li {
+    float: left;
+    position: relative;
+    min-width: 112px;
+    text-align: center;
+}
+#lnb li a {
+    display: block;
+    height: 100%;
+    padding: 0 5px;
+    line-height: 36px;
+    font-size: 14px;
+}
+#lnb li a:not(.on) {
+    color: #333!important;
+}
+[data-skin=skin5] [data-skinFactor~=tBorder], [data-skin=skin5] [data-skinFactor~=border], [data-skin=skin5] [data-skinFactor~=beforeBorder]:before, [data-skin=skin5] [data-skinFactor~=afterBorder]:after {
+    border-color: #3cd370!important;
+}
+[data-skin=skin5] [data-skinFactor~=color], [data-skin=skin5] [data-skinFactor~=beforeColor]:before, [data-skin=skin5] [data-skinFactor~=afterColor]:after, [data-skin=skin5] [data-skinFactor~=bColor], [data-skin=skin5] [data-skinFactor~=bBeforeColor]:before, [data-skin=skin5] [data-skinFactor~=bAfterColor]:after {
+    color: #3cd370!important;
+}
+#lnb li a.on:before {
+    display: block;
+    font-weight: 700;
+}
+#lnb li a:before {
+    content: '';
+    display: none;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-top: 3px solid;
+    border-top-color: inherit;
+    font-size: 0;
+}
+#lnb:after {
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: -1px;
+    background: rgba(0,0,0,.1);
+    content: '';
 }
