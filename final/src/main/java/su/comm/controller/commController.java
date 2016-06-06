@@ -61,18 +61,13 @@ public class commController {
 	
 	@RequestMapping("commmsg.do")
 	public String commmsg(){
-		
-		return "comm/commmsg";
-		
+		return "comm/commmsg";		
 	}	
 	
 	@RequestMapping("commWrite.do")
 	public ModelAndView commWrite(commBBSDTO dto){					
-		
-		int count=commDao.commWrite(dto);
-		
+		int count=commDao.commWrite(dto);		
 		String msg=count>0?"글 작성 성공":"글 작성 실패";
-		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.setViewName("comm/commBBSmsg");
@@ -103,7 +98,6 @@ public class commController {
 		return mav;
 	}
 	
-
 	@RequestMapping(value="scheWrite.do", method=RequestMethod.POST)
 	public ModelAndView scheWrite(scheDTO dto){
 		
@@ -164,6 +158,18 @@ public class commController {
 	public String test123(){
 		
 		return "comm/test";
+	}
+
+	@RequestMapping("commMain.do")
+	public String commmain(){
+		
+		return "comm/commMain";
+	}
+	
+	@RequestMapping("gallery.do")
+	public String gallery(){
+		
+		return "comm/gallery";
 	}
 	 	
 
