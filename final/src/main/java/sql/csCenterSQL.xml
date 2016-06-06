@@ -55,7 +55,7 @@
 	</select>
 	<insert id="oneandoneAdd" parameterType="su.csCenter.model.CsoneandoneDTO">
 		insert into oneandone
-		values(oneandone_idx.nextval,#{writer},#{type},sysdate,#{subject},#{content},'답변대기',0)
+		values(oneandone_idx.nextval,#{writer},#{type},sysdate,#{subject},#{content},'답변대기','')
 	</insert>
 	   <select id="adminoneandoneList" parameterType="Map" resultType="su.csCenter.model.CsoneandoneDTO">
 	select * from
