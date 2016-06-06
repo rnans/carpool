@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+<link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 </head>
 <script src="/final2/js/jquery-1.12.4.min"></script>
 <script >
@@ -24,10 +26,13 @@ $('.tr').css('display','none');
 <%@include file="../header.jsp" %>
 <%@include file="csCenterSubMenu.jsp" %>
  <hr>
-<h2>자주묻는질문(Q&A)</h2>
 
+<h3> Q&A</h3>
 <div>
-<table border="1" width="800" height="150" >
+<div class="container">
+	<div class="row">
+		<div class="col-md-9" >
+<table class="table table-list-search" > 
 
 <tbody>
 <c:if test="${empty list }">
@@ -37,10 +42,10 @@ $('.tr').css('display','none');
  </c:if>
 <c:forEach var="qna" items="${list }" >
 <tr>
-  <td><a href="javascript:QnaShow('qna${qna.idx }')">${qna.subject }</a></td>
+  <td><a href="javascript:QnaShow('qna${qna.idx }')">Q. ${qna.subject }</a></td>
  </tr>
  <tr class="tr" id="qna${qna.idx}" style="display:none;">
-   <td>${qna.content }</td>
+   <td>A. ${qna.content }</td>
  </tr>
  </c:forEach>
 </tbody>
@@ -52,7 +57,9 @@ $('.tr').css('display','none');
 </table>
 
 </div>
-
+		</div>
+	</div>
+</div>
  
 <hr>
 풋부분

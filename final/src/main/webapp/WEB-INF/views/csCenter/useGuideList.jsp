@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+<link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 </head>
 <script src="/final2/js/jquery-1.12.4.min"></script>
 <script >
@@ -22,11 +24,15 @@ $('.tr').css('display','none');
 <body>
 
 <%@include file="../header.jsp" %>
+<hr>
 <%@include file="csCenterSubMenu.jsp" %>
  <hr>
-<h2>이용안내</h2>
 <div>
-<table border="1" width="800" height="150">
+<h3> 이용안내</h3>
+<div class="container">
+	<div class="row">
+		<div class="col-md-9" >
+<table class="table table-list-search" > 
 <tbody>
 <c:if test="${empty list }">
 <tr>
@@ -35,10 +41,10 @@ $('.tr').css('display','none');
  </c:if>
 <c:forEach var="useguide" items="${list }">
 <tr>
-  <td><a href="javascript:UseGuideShow('useguide${useguide.idx }')">${useguide.subject }</a></td>
+  <td><a href="javascript:UseGuideShow('useguide${useguide.idx }')">제목: ${useguide.subject }</a></td>
  </tr>
  <tr class="tr" id="useguide${useguide.idx}" style="display:none;">
-   <td>${useguide.content }</td>
+   <td>내용: ${useguide.content }</td>
  </tr>
  </c:forEach>
 </tbody>
@@ -49,7 +55,9 @@ $('.tr').css('display','none');
  </tfoot>
 </table>
 </div>
-
+		</div>
+	</div>
+</div>
  
 <hr>
 풋부분

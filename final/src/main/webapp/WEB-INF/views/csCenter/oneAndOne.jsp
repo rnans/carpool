@@ -6,16 +6,108 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+<link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="/SRC2/css3button/styles.css" type="text/css"/>
+<style type="text/css">
+body {
+    margin-top: 2%
+}
+p {
+	margin: 0 0 2em;
+}
+h1 {
+	margin: 0;
+}
+a {
+	color: #339;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+div {
+	padding: 20px 0;
+	border-bottom: solid 1px #ccc;
+}
+
+/* button 
+---------------------------------------------- */
+.button {
+	display: inline-block;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+.bigrounded {
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+}
+.medium {
+	font-size: 12px;
+	padding: .4em 1.5em .42em;
+}
+.small {
+	font-size: 11px;
+	padding: .2em 1em .275em;
+}
+.white {
+	color: #606060;
+	border: solid 1px #b7b7b7;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+}
+.white:hover {
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+	background: -moz-linear-gradient(top,  #fff,  #dcdcdc);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');
+}
+.white:active {
+	color: #999;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+	background: -moz-linear-gradient(top,  #ededed,  #fff);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
+}
+
+</style>
 </head>
 <body>
 <%@include file="../header.jsp" %>
 <%@include file="csCenterSubMenu.jsp" %>
 <div>헤더부분 </div>
 <hr>
-<h2>1:1문의</h2>
+<h3 align="left">1:1문의</h3>
+<div class="container">
 
-<div>로그인해야지  들어올수있습니다.</div>
-<table border="1">
+	<div class="row">
+		<div class="col-md-9" >
+<table class="table table-list-search" > 
 <thead>
 <tr>
    <th>번호</th>
@@ -51,11 +143,18 @@
 </tbody>
 <tfoot>
 <tr>
- <td colspan="5" align="center">${pageStr }</td>
- <td><a href="oneAndOneWriteForm.do">1:1문의하기</a></td>
+ <td colspan="6" align="center">${pageStr }</td>
+
  </tr>
  </tfoot>
 </table>
+
+<a href="oneAndOneWriteForm.do" class="button white">1:1문의하기</a> 
+		</div>
+	</div>
+	
+</div>
+
 <hr>
 풋부분
 </body>

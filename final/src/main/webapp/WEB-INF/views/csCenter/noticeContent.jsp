@@ -27,7 +27,7 @@
 제목:<input type="text" name="subject" value="${list[0].subject}" readonly="readonly"> <br>
 <br>
 <textarea name="content" cols="55" rows="25"  readonly="readonly">${list[0].content} </textarea><br>
-<a href="csCenter.do">이전페이지로</a>
+<a href="csCenter.do"><img src="http://socdnw.speedgabia.com/template/asset/images/common/btn_list.gif" alt="목록보기"></a>
 </fieldset>
 </section>
 <hr>

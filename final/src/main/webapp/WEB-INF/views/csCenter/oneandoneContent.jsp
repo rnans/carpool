@@ -33,7 +33,7 @@
 </fieldset>
 
 
-<a href="oneAndOne.do">이전페이지로</a>
+<a href="oneAndOne.do"><img src="http://socdnw.speedgabia.com/template/asset/images/common/btn_list.gif" alt="목록보기"></a>
 </section>
 <hr>
 <div>풋</div>

@@ -6,7 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+<link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+body {
+    margin-top: 2%
 
+}
+</style>
 </head>
 <body>
 
@@ -14,8 +21,11 @@
 <%@include file="csCenterSubMenu.jsp" %>
 <hr>
 <div>
-<div>공지사항</div>
-<table>
+<h3 align="left">공지사항</h3>
+<div class="container">
+	<div class="row">
+		<div class="col-md-9" >
+<table class="table table-list-search" > 
 <thead>
 <tr>
    <th>번호</th>
@@ -53,7 +63,9 @@
  </tfoot>
 </table>
 </div>
-
+		</div>
+	</div>
+</div>
 <hr>
 풋부분
 </body>
