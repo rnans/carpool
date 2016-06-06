@@ -27,19 +27,31 @@
 			<c:if test="${empty lists}">등록된 카드 정보가 없습니다.</c:if>
 		
 			<c:forEach var="pay" items="${lists}">
+				
 				<input type="image" name="cardImg" src="${pay.cardImg}">
 					<c:url var="payURL" value="lastPay.do">
 						<c:param name="cardId">${pay.cardId}</c:param>
+						<c:param name="ridx">${ridx}</c:param>
 					</c:url>
 				<input type="text" value="${pay.cardType1}" disabled><br>
 				<input type="text" value="${pay.cardNum}" disabled><br>
 				<input type="text" value="${pay.cardName}" disabled><br>
 				<input type="text" value="${pay.cardId}" disabled><br>
-				<a href="${payURL}">카드선택</a><br>
+				<a href="javascript:dopay()">카드선택</a><br>
 				<div class="clbo"></div>
 				<hr>
 			</c:forEach>
 		</div>
 	</div>
 </body>
+
+<script type="text/javascript">
+	function dopay(){
+		if(confirm("결제를 완료하시겠습니까?")){
+			location.href='${payURL}';
+		}else{
+			location.href="index.do";
+		}
+	}
+</script>
 </html>

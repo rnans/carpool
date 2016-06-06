@@ -10,7 +10,7 @@ public class PayListDTO {
 	private int pay;
 	
 	public PayListDTO() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	public PayListDTO(int idx, String userid, String status, String pooltype, String termtype, String poolname,

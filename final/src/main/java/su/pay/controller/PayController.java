@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import su.pay.model.PayDAO;
 import su.pay.model.PayDTO;
 import su.paylist.model.PayListDAO;
+import su.paylist.model.PayListDTO;
 import su.pool.model.PoolDTO;
 
 
@@ -51,9 +52,11 @@ public class PayController {
 	
 	@RequestMapping("/payData.do")
 	public ModelAndView dataView(String userid,
-			PayDTO pDTO,HttpSession session){
+			PayDTO pDTO,HttpSession session,
+			@RequestParam("ridx")String ridx){
 		
 		//String userid = (String)
+		System.out.println("ttt="+ridx);
 		userid = (String)session.getAttribute("sid");
 		
 		pDTO.setUserid(userid);
@@ -61,6 +64,7 @@ public class PayController {
 		List<PayDTO> list = payDao.payInfo(pDTO);
 		System.out.println("list="+list);
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("ridx",ridx);
 		mav.addObject("lists",list);
 		mav.setViewName("pay/payData");
 		return mav;
@@ -70,11 +74,11 @@ public class PayController {
 	/**결제정보저장*/
 	@RequestMapping("/newCardEnroll.do")
 	public ModelAndView newCardEnroll(PayDTO pDTO,HttpSession session,
-			 PoolDTO pdto,
-			@RequestParam(value="ridx",required=false)int idx){
+			 PayListDTO plistDto,
+			@RequestParam(value="ridx",required=false)String ridx){
 		//여긴 세션값으로 가져오는 아이디 값이 들어옴
 
-		System.out.println("idx="+idx);
+		System.out.println("idx="+ridx);
 		
 		String userid = (String)session.getAttribute("sid");
 		String cardImg = "";
@@ -96,10 +100,32 @@ public class PayController {
 			pDTO.setCardImg(cardImg);
 		}
 		System.out.println(cardImg);
+		
+		//section
+		
+		PoolDTO pdto = plDao.payInfo(ridx);
+		
+		plistDto.setPay(pdto.getPay());
+		plistDto.setPoolname(pdto.getPoolname());
+		plistDto.setPooltype(pdto.getPooltype());
+		plistDto.setStatus(pdto.getStatus());
+		plistDto.setTermtype(pdto.getTermtype());
+		plistDto.setUserid(pdto.getUserid());
+		
 		pDTO.setUserid(userid);
 		int result=payDao.cardEnroll(pDTO);
+		int count = plDao.payEnrollList(plistDto);
 
-		String msg = result>0?"결제 및 카드등록이 처리되었습니다.":"결제실패하였습니다.";
+		String msg = "";
+		
+		if(result<1){
+			msg = "카드등록이 실패하였습니다";
+		}else if(count>1){
+			msg = "결제가 실패하였습니다.";
+		}else{
+			msg = "카드등록 및 결제가 성공하였습니다.";
+		}
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg",msg);
 		mav.setViewName("pay/payMsg");
@@ -120,14 +146,29 @@ public class PayController {
 		return mav;
 	}*/
 	
-	
 	/**결제정보저장*/
 	@RequestMapping("/lastPay.do")
-	public ModelAndView lastPay(HttpSession session){
+	public ModelAndView lastPay(HttpSession session,
+			@RequestParam("ridx")String ridx,
+			PayListDTO plistDto){
+		System.out.println("hey="+ridx);
 		String userid = (String)session.getAttribute("sid");
 		
+		PoolDTO pdto = plDao.payInfo(ridx);
+		
+		plistDto.setPay(pdto.getPay());
+		plistDto.setPoolname(pdto.getPoolname());
+		plistDto.setPooltype(pdto.getPooltype());
+		plistDto.setStatus(pdto.getStatus());
+		plistDto.setTermtype(pdto.getTermtype());
+		plistDto.setUserid(pdto.getUserid());
+		
+		int count = plDao.payEnrollList(plistDto);
+		
+		String msg = count>0?"결제가 정상적으로 처리되었습니다.":"결제가 실패하였습니다.";
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("msg","결제가 정상적으로 처리되었습니다.");
+		mav.addObject("msg",msg);
 		mav.setViewName("pay/payMsg");
 		return mav;
 	}

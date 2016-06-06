@@ -14,14 +14,19 @@
 	input[type=text]{margin:0 auto;}
 </style>
 <script>
+	
+	
 
 	function show1(){
+		
+		var param ='ridx=${ridx}';
+
 		if($('input type[radio]').val('0')){
 			$('.newCard').hide();
 			$('.ownCard').fadeIn();
 		}
 		
-		sendRequest("payData.do", null, show1Result, 'GET');
+		sendRequest("payData.do",param, show1Result, 'GET');
 	}
 	
 	function show1Result(){
@@ -60,7 +65,9 @@
 	<hr>
 	
 	<div class="ownCard">
-		<div class="ownCardInfo"></div>
+		<div class="ownCardInfo">
+		
+		</div>
 		<hr>
 	</div>
 	
@@ -77,24 +84,22 @@
 				</select><br>
 				
 				<label>카드번호:</label>
-				<input type="text" name="cardNum" id="num1" maxlength="4">-
-				<input type="text" id="cardNum" id="num2" maxlength="4">-
-				<input type="text" name="cardNum" id="num3" maxlength="4">-
-				<input type="text" name="cardNum" id="num4" maxlength="4"><br>
+				<input type="text" name="cardNum" id="num1" min="4" maxlength="4">-
+				<input type="text" id="cardNum" id="num2"  min="4"  min="4"maxlength="4">-
+				<input type="text" name="cardNum" id="num3"  min="4"  min="4"maxlength="4">-
+				<input type="text" name="cardNum" id="num4"   min="4" maxlength="4"><br>
 				
 				<label>카드유효기간:</label>
 				<select name="cardTerm">
-					<option>12</option><option>11</option><option>10</option><option>9</option>
-					<option>8</option><option>7</option><option>6</option><option>5</option>
-					<option>4</option><option>3</option><option>2</option><option>1</option>
+					<option>2016</option><option>2017</option><option>2018</option><option>2019</option>
+					<option>2020</option><option>2021</option><option>2022</option><option>2023</option>
+					<option>2024</option><option>2025</option>
 				</select>년
 				<select name="cardTerm">
 					<option>12</option><option>11</option><option>10</option><option>9</option>
 					<option>8</option><option>7</option><option>6</option><option>5</option>
 					<option>4</option><option>3</option><option>2</option><option>1</option>
 				</select>월<br>
-				<!-- <input type="text" name="cardTerm" id="term1" placeholder="YY" maxlength="2">년/
-				<input type="text" name="cardTerm" id="term2" placeholder="MM" maxlength="2">월<br> -->
 				
 				<label>카드이름:</label>
 				<input type="text" name="cardName" placeholder="카드이름을 적어주세요"><br>
@@ -119,7 +124,6 @@
 <script type="text/javascript">
 
 	function value(){
-		
 		var cardType1 = $('input[name=cardType1]');
 		var num1 = $('#num1'); var num2=$('#num2');
 		var num3 = $('#num4'); var num4=$('#num3');
@@ -129,24 +133,34 @@
 		var cardType2 = $('input[name=cardType2]');
 		
 		if(cardType1.val()==''){
-			alert('카드타입1을 확인하세요'); cardType1.focus(); 
+			alert('카드은행명을 확인하세요'); cardType1.focus(); return;
 		}
 		if(num1.val()==''||num2.val()==''||num3.val()==''||num4.val()==''){
-			alert('카드번호을 확인하세요'); num1.focus(); 
+			alert('카드번호을 확인하세요'); num1.focus(); return;
 		}
+		/* if(num1.val().length<4 ||
+			num2.val().length<4 ||
+			num3.val().length<4 ||
+			num4.val().length<4){
+			alert('카드번호를 올바르게 입력해주세요'); num1.focus();  return;
+		} */
 		if(term1.val()==''||term2.val()==''){
-			alert('유효기간을 확인하세요'); term1.focus();
+			alert('유효기간을 확인하세요'); term1.focus(); return;
 		}
 		if(cardName.val()==''){
-			alert('카드명을 확인하세요'); cardName.focus();
+			alert('카드명을 확인하세요'); cardName.focus();  return;
 		}
 		if(cvc.val()==''){
-			alert('cvc번호를 확인하세요'); cvc.focus(); 
+			alert('cvc번호를 확인하세요'); cvc.focus();   return;
 		}
 		if(cardType2.val()==''){
-			alert('카드타입2을 확인하세요'); cardType2.focus(); 
+			alert('카드구분을 확인하세요'); cardType2.focus(); return;
 		}
-		$('#newCard').submit();
+		if(confirm("결제를 완료하시겠습니까?")){
+			$('#newCard').submit();
+		}else{
+			location.href="index.do";
+		}
 	}
 </script>
 </html>

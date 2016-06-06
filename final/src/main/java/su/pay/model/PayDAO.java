@@ -9,5 +9,5 @@ public interface PayDAO {
 	public List<PayDTO> payInfo(PayDTO pDTO);
 	public int cardEnroll(PayDTO pDTO);
 	public List<PayDTO> payFinish(String cardId);
-	//public List<PoolDTO> payInfoList(int idx);
+	
 }
