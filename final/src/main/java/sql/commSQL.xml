@@ -48,5 +48,17 @@
 		delete from commBBS_re where idx=#{idx}
 	</delete>
 	
+	<!-- adminComm -->
+	<select id="memberCommList" parameterType="Map" resultType="su.comm.model.carpoolinfoDTO">
+		select distinct poolname, name, idx from
+	   (select rownum as rnum,a.* from
+	   (select * from carpoolinfo order by idx desc)a)b
+	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	
+	<select id="commTotalCnt" resultType="int">
+		select count(*) from carpoolinfo
+	</select>
+	
 
 </mapper>
