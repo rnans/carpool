@@ -73,7 +73,7 @@
 				<li class="dropdown">
 					<a href="comm.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">커뮤니티 <span class="badge">0</span><span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="comm.do">전체글</a></li>
+						<li><a href="commMain.do">전체글</a></li>
 						<li class="divider"></li>
 						<li><a href="calendar.do">일정</a></li>
 						<li><a href="commMember.do">멤버</a></li>
@@ -82,7 +82,7 @@
 				<li class="dropdown">
 					<a href="carBookInfo.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">차계부 <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="cost.do">차계부</a></li>
+						<li><a href="carBookInfo.do">차계부</a></li>
 						<li><a href="cost.do">비용</a></li>
 						<li><a href="graph.do">그래프</a></li>
 					</ul>
