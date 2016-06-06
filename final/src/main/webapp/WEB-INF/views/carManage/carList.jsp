@@ -57,11 +57,19 @@
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
     }
-    
+
+
 </style>
 <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="/final02/js/httpRequest.js"></script>
 <script>
+var idx=null;
+function carDel(){
+	this.idx=idx;
+	var param="?idx="+idx;
+	window.location.href = 'carDel.do'+param;
+}
+
 function carMain(idx){
 	
 	var param="?idx="+idx;
@@ -90,10 +98,10 @@ function checkMain(){
 <div style="margin-top : 85px;">
 	<div class="container">
     <div class="row col-md-6 col-md-offset-2 custyle">
-    <table class="table table-striped custab" style="width: 750px;">
+    <table class="table table-striped custab" style="width: 900px;">
 			<tr>
 				<th class="text-center">대표차량</th>
-				<th>차량사진</th>
+				<th style="text-align: center;">차량사진</th>
 				<th class="text-center">운전자</th>
 				<th class="text-center">차량번호</th>
 				<th class="text-center">차량종류</th>
@@ -103,25 +111,25 @@ function checkMain(){
 
 			<c:if test="${empty list}">
 				<tr>
-					<td colspan="7">등록된 차량이 없습니다.</td>
+					<td colspan="7" style="text-align: center;">등록된 차량이 없습니다.</td>
 				</tr>
 			</c:if>
 			<c:forEach var="dto" items="${list }">
 			
-				<tr>
-					<td class="text-center"><input type="radio" name="carid" value="${dto.carid }" onclick="carMain(${dto.idx})"></td>
+				<tr style="vertical-align: middle;">
+					<td style="vertical-align: middle;" ><input type="radio" style="text-align: center; margin-left: 30px;" name="carid" value="${dto.carid }" onclick="carMain(${dto.idx})"></td>
 					<td><div id="carImage">
-        <img style="width:100px; height:100px;" src="http://localhost:8080/final02/img/${dto.carphoto}">
+        <img style="width:100px; height:100px;" src="http://localhost:9090/final02/img/${dto.carphoto}">
 		</div></td>
-					<td class="text-center">${dto.driver }</td>
-					<td class="text-center">${dto.carnum }</td>
-					<td class="text-center">${dto.cartype }</td>
-					<td class="text-center"><c:if test="${dto.confirm eq 0 }">미인증된 차량입니다.</c:if><c:if test="${dto.confirm eq 1 }">인증된 차량입니다.</c:if></td>
-						<td class="text-center">
-						<a href="carUpdate.do?idx=${dto.idx}" class="btn btn-info btn-xs">
+					<td style="vertical-align: middle;" class="text-center">${dto.driver }</td>
+					<td style="vertical-align: middle;" class="text-center">${dto.carnum }</td>
+					<td style="vertical-align: middle;" class="text-center">${dto.cartype }</td>
+					<td style="vertical-align: middle;" class="text-center"><c:if test="${dto.confirm eq 0 }">미인증된 차량입니다.</c:if><c:if test="${dto.confirm eq 1 }">인증된 차량입니다.</c:if></td>
+						<td style="vertical-align: middle;" class="text-center">
+						<a href="carUpdate.do?idx=${dto.idx}"  class="btn btn-info btn-xs">
 						<span class="glyphicon glyphicon-edit"></span> Edit</a>
 						 
-						<a href="carDel.do?idx=${dto.idx}" class="btn btn-danger btn-xs">
+						<a href="#" onclick="javascript:idx='${dto.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete" class="btn btn-danger btn-xs">
 						<span class="glyphicon glyphicon-remove"></span> Del</a>
 						</td>
 					</tr>
@@ -137,5 +145,38 @@ function checkMain(){
 	</fieldset>
 	
 </div>
+
+
+   <div class="modal fade" id="delete" tabindex="-1" role="dialog"
+      aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px;">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"
+                  aria-hidden="true">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+               </button>
+               <h4 class="modal-title custom_align" id="Heading">삭제</h4>
+            </div>
+            <div class="modal-body">
+
+               <div class="alert alert-danger">
+                  <span class="glyphicon glyphicon-warning-sign"></span> 삭제하시겠습니까?
+               </div>
+
+            </div>
+            <div class="modal-footer ">
+               <button type="button" class="btn btn-success" onclick="javascript:carDel();" data-dismiss="modal">
+                  <span class="glyphicon glyphicon-ok-sign"></span> Yes
+               </button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">
+                  <span class="glyphicon glyphicon-remove"></span> No
+               </button>
+            </div>
+         </div>
+         <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+   </div>
 </body>
 </html>

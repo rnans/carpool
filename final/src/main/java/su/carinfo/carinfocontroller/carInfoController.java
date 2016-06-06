@@ -111,9 +111,12 @@ public class carInfoController {
 	public ModelAndView carAdd(@Param(value="check")String check,MultipartHttpServletRequest req, HttpServletRequest request, 
 			HttpSession session, UploadDTO dto,carInfoDTO dto2) {
 
+		
+		System.out.println("1");
 		ModelAndView mav = new ModelAndView();
 		int result2 = carInfoDao.carNumList(dto2);
 		mav.addObject("dto", dto2);
+		System.out.println("2");
 		if(check.equals("false")){
 			
 			mav.addObject("msg", "형식 확인을 해주세요.");
