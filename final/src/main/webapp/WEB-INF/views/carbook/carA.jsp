@@ -74,9 +74,14 @@
 						<td  class="info" name="number">${jungbi }원</td>
 					</tr>
 					<tr>
-						<td>총 물품구입비용</td>
-						<td  class="info" name="number">${buy }원</td>
+						<td>총 유지비용</td>
+						<td  class="info" name="number"><c:if test="${empty ugsum }">0</c:if>${ugsum }원</td>
 					</tr>
+					<tr>
+						<td>총 기타비용</td>
+						<td  class="info" name="number"><c:if test="${empty buy }">0</c:if>${buy }원</td>
+					</tr>
+				</tbody>
 				</tbody>
 			</table>
 		</fieldset>

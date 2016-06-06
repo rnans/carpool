@@ -122,6 +122,11 @@
     width:80px;
 
 }
+
+.top a{
+margin: 0 0 0 50px;
+}
+
 </style>
 
 <!-- amCharts javascript code -->
@@ -153,7 +158,7 @@
   <div class="container-fluid" >   
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
-      <ul class="nav navbar-nav bar">
+      <ul class="nav navbar-nav bar top"   style="margin-left: 400px;">
       	<li><a href="carBookInfo.do"><i class="fa fa-home fa-2x" aria-hidden="true"></i>
      차계부</a></li>
         <li><a href="cost.do"><i class="fa fa-calculator fa-2x" aria-hidden="true"></i>

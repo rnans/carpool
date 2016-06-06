@@ -50,6 +50,10 @@ text-align: center;
 width: 50%;
 }
 
+.top a{
+margin: 0 0 0 50px;
+}
+
 </style>
 </head>
 <body style="color: #4C4C4C; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;">
@@ -114,24 +118,21 @@ function opencostReg(){
 </script>
 <input type="hidden" id="hiddenId" value="${sid}"/>
 <nav class="navbar navbar-default" >
-  <div class="container-fluid" style=" margin-top:46px; ">   
+  <div class="container-fluid" style=" margin-top:46px; text-align: center;">   
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
-      <ul class="nav navbar-nav bar">
-      	<li><a href="carBookInfo.do"><i class="fa fa-home fa-2x" aria-hidden="true"></i>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="text-align: center;"  >
+      <ul class="nav navbar-nav bar top" style="margin-left: 400px;">
+      	<li><a href="carBookInfo.do"><i class="fa fa-home fa-2x" aria-hidden="true" style=""></i>
      차계부</a></li>
         <li><a href="cost.do"><i class="fa fa-calculator fa-2x" aria-hidden="true"></i>
      내역</a></li>
         <li><a href="graph.do"><i class="fa fa-bar-chart fa-2x" aria-hidden="true"></i>
      그래프</a></li> 
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-      </ul>
     </div>
   </div>
 </nav>
-<div style="width: 60%; margin: 0px auto">
+<div style="width: 65%; margin: 0px auto">
   <div class="buttonArea" style="color: #4C4C4C; width:100%;">
     <ul class="nav navbar-nav home">
 	<li>
@@ -172,7 +173,8 @@ function opencostReg(){
 
 </div>
 <div style="float:left; height:225px; width: 48%; margin-right: 7px;" >
-<img style="width:100%;height:100%;" src="http://192.168.50.86:9090/final02/img/${cardto.carphoto}">
+<c:if test="${cartdto.carphoto=='사진없음'}"><img style="width:100%;height:100%;" src="http://192.168.50.86:9090/final02/img/nocarimg.png"></c:if>
+<c:if test="${cartdto.carphoto!='사진없음'}"><img style="width:100%;height:100%;" src="http://192.168.50.86:9090/final02/img/${cardto.carphoto}"></c:if>
 </div>
 <div style="float:right; height:225px; width: 48%; margin-left: 7px;" >
 			<fieldset>
