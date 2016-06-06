@@ -168,6 +168,11 @@
  		</constructor-arg>
  	</bean>
 	
+	<bean id="adCommDao" class="su.adminComm.model.AdminCommDAOImple">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/> 
+		</constructor-arg>
+	</bean>
 	<!-- view -->
 	
 	<bean id="yongJson"
