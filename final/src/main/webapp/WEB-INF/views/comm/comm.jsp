@@ -25,14 +25,20 @@
 <script type="text/javascript">
 	var idx=null;
 
-	function bbsdel(){
-		var params="idx="+idx
-		window.open('bbsdelgo.do?'+params,'','width=350, height=150')
+	function bbsDel(){
+		this.idx=idx;
+		var params='idx='+idx;	
+		sendRequest('bbsdel.do', params, null, 'GET')
+		location.reload();
 	}
-	function redel(){
-		var params="idx="+idx
-		window.open('redelgo.do?'+params,'','width=350, height=150')
+	
+	function reDel2(){
+		this.idx=idx;
+		var params='idx='+idx;	
+		sendRequest('reDel_ok.do', params, null, 'GET')
+		location.reload();
 	}
+	
 
 	
 </script>
@@ -189,8 +195,9 @@
 									<li><a href="#" data-uiselector="modifyButton">공지사항 등록</a></li>
 									<li class="divider"></li>
 									<li><a href="#" data-uiselector="modifyButton">글 수정</a></li>
-									<li><a href="javascript:idx=${bbs.idx};bbsdel();"
-										data-uiselector="deleteButton">글 삭제</a></li>
+									<li>
+									<a onclick="javascript:idx='${bbs.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete">
+											글 삭제</a></li>
 								</ul>
 							</div>
 
@@ -304,6 +311,10 @@ a, a:focus, a:hover {
     vertical-align: middle;
     line-height: 21px;
     height: 21px;
+}
+.textTime {
+    color: #aaa;
+    font-size: 12px;
 }
 .cComment .commentBody .func .likeText {
     border: 0;
@@ -537,7 +548,7 @@ border:0px;
 								</div>
 								<div class="feedback"
 									style="position: absolute; right: 20px; top: 10px;">
-									<div class="">
+									<div class=""><span class="textTime" style="padding-right: 20px;"> ${re.writedate } </span>
 										<span data-toggle="dropdown"
 											style="vertical-align: bottom; padding-right: 10px;">
 											<i class="fa fa-ellipsis-v fa-2x"
@@ -547,9 +558,10 @@ border:0px;
 											<li><a href="#" data-uiselector="modifyButton">댓글
 													수정</a></li>
 											<li class="divider"></li>
-											<li><a
-												href="javascript:idx=${re.idx};bbsdel();"
-												data-uiselector="deleteButton">댓글 삭제</a></li>
+											<li>
+											<a onclick="javascript:idx='${re.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete2">
+											댓글 삭제</a></li>
+
 										</ul>
 									</div>
 
@@ -648,6 +660,73 @@ border:0px;
 	</c:forEach>
 			</div>
 
+
+<!-- modal -->
+	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
+		aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">삭제</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="alert alert-danger">
+						<span class="glyphicon glyphicon-warning-sign"></span> ㅋㅋㅋ진짜 지울거냐	??
+					</div>
+
+				</div>
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success" onclick="javascript:bbsDel();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	
+	
+<!-- modal2 del -->
+	<div class="modal fade" id="delete2" tabindex="-1" role="dialog"
+		aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">삭제</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="alert alert-danger">
+						<span class="glyphicon glyphicon-warning-sign"></span> ㅋㅋㅋ진짜 지울거냐	??
+					</div>
+
+				</div>
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success" onclick="javascript:reDel2();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
 	
 		<hr>
 		footer

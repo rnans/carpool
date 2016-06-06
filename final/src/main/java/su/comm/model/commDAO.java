@@ -23,6 +23,8 @@ public interface commDAO {
 	
 	public List<CommBBSreDTO> reList(String commid); 
 	
+	public int redel(String idx);
+	
 	
 	
 	//uploadtest

@@ -41,8 +41,12 @@
 	</insert>
 	
 	<select id="reList" parameterType="String"  resultType="su.comm.model.CommBBSreDTO">
-		select * from commBBS_re where commid=#{commid} order by idx desc 
+		select * from commBBS_re where commid=#{commid} order by idx asc 
 	</select>
+	
+		<delete id="redel" parameterType="String">
+		delete from commBBS_re where idx=#{idx}
+	</delete>
 	
 
 </mapper>

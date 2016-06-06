@@ -47,6 +47,12 @@ public class commDAOImple implements commDAO {
 		return list;
 	}
 	
+	public int redel(String idx){
+		int count = sqlMap.delete("redel", idx);
+		return count;
+		
+	}
+	
 	//스케쥴글 띄우기
 	public List<scheDTO> scheList(){
 		

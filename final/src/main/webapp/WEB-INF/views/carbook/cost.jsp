@@ -199,7 +199,7 @@ function costDel2(){
 						<td class="text-center">
 
 						<a href="javascript:idx='${list.idx}';alert(idx);" class="btn btn-info btn-xs">
-						<span class="glyphicon glyphicon-edit" data-title="Edit" data-toggle="modal" data-target="#edit"></span> Edit</a>
+						<span class="glyphicon glyphicon-edit" data-title="Edit" data-target="#edit"></span> Edit</a>
 				
 						<a onclick="javascript:idx='${list.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete" class="btn btn-danger btn-xs">
 						<span class="glyphicon glyphicon-remove"></span> Del</a>
@@ -250,7 +250,7 @@ function costDel2(){
 
 	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
 		aria-labelledby="edit" aria-hidden="true">
-		<div class="modal-dialog" style="width: 350px;padding-top: 150px;">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px;">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"

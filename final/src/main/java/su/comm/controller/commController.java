@@ -145,18 +145,20 @@ public class commController {
 	}
 	
 	@RequestMapping("bbsdel.do")
-	public String bbsdel(String idx){
-		
+	public String bbsdel(String idx){		
 		int count=commDao.bbsdel(idx);
-		if(count>0){}
+		if(count>0){System.out.println("성공");}
 		return "comm/comm";
 	}
 	
-	@RequestMapping("bbsdelgo.do")
-	public String bbsdelgo(String idx){
+	@RequestMapping("reDel_ok.do")
+	public String redel(String idx){
+		int count=commDao.redel(idx);
+		if(count>0){System.out.println("성공");}
+		return "comm/comm";
 		
-		return "comm/bbsdel";
 	}
+	
 	
 	@RequestMapping("test123.do")
 	public String test123(){
