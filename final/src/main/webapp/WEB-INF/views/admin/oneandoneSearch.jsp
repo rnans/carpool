@@ -9,8 +9,8 @@ function oneandoneDelForm(){
 	window.open('oneandoneDelete.do'+param,'oneandoneDelForm','width=500 height=400 left=500 top=200');
 }
 </script>
-<div>
-<table border="1">
+
+<table border="1" style="margin: 0px auto;">
 <thead>
 <tr>
    <th>번호</th>
@@ -55,4 +55,3 @@ function oneandoneDelForm(){
  </tr>
  </tfoot>
 </table>
-</div>

@@ -115,10 +115,8 @@ function QnaDeleteForm(){
  <h2 align="center">고객센터관리</h2>
 <h4 align="center">Q&A</h4> 
 </div>
-<div id="content">
-       
- 
-            <section class="links">
+<div id="content" >
+            <section class="links" >
                 <nav class="link-effect-3" id="link-effect-3">
                     <a href="adminNoticeList.do" data-hover="1.공지사항">1.공지사항</a>
                     <a href="adminQnaList.do" data-hover="2.Q&A">2.Q&A</a>
@@ -126,8 +124,6 @@ function QnaDeleteForm(){
                     <a href="adminuseguideList.do" data-hover="4.이용안내">4.이용안내</a>
                 </nav>
             </section>
-   
-           
         </div>  
 
 <div>

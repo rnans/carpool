@@ -20,6 +20,13 @@
 	margin: 10px 0px 60px;
 	border: 1px solid GREY;
 	}
+	textarea.form-control2 {
+  width: 600px;
+  height: 500px;
+
+}
+
+
 </style>
 </head>
 <body>
@@ -42,41 +49,45 @@
 <textarea name="content" cols="55" rows="25" > ${list[0].content}</textarea><br>
 <input type="submit" value="수정하기">
 <a href="adminNoticeList.do">이전페이지로</a> --%>
-<div class="container">
-<div class="col-md-5">
-    <div class="form-area">  
-        <form action="NoticeUpdate_ok.do">
-        <br style="clear:both">
-                    <h3 style="margin-bottom: 25px; text-align: center;">공지사항</h3>
-    				<div class="form-group">
-					글번호<input type="text" name="idx" value="${list[0].idx}" readonly="readonly" >
-					</div>
-					<div class="form-group">
-						작성날짜<input type="text" name="writedate" value="${list[0].writedate}"><br>
-					</div>
-					<div class="form-group">
-						글쓴이<input type="text" name="writer" value="${list[0].writer}"  > 
-					</div>
-					<div class="form-group">
-						조회수<input type="text" name="readnum" value="${list[0].readnum}" readonly="readonly"><br>
-					</div>
-					<div class="form-group">
-						제목<input type="text" name="subject" value="${list[0].subject}" > <br>
-					</div>
-                    <div class="form-group">
-                   <textarea name="content" cols="55" rows="25" > ${list[0].content}</textarea><br>
-                                      
-                    </div>
-  
-       <input type="submit" value="수정하기">
-        </form>
-    </div>
+<fieldset>
+<div class="container" style="margin: 0px auto;">
+<div class="row">
+<div class="col-sm-8 contact-form" style="margin: 0px auto;">
+<form action="NoticeUpdate_ok.do" id="contact" class="form" role="form" >
+<div class="row">
+<div class="col-xs-3 col-md-3 form-group">
+글번호<input class="form-control" id="idx" name="idx"  value="${list[0].idx }"type="text" required autofocus readonly="readonly"/>
+</div>
+<div class="col-xs-4 col-md-4 form-group">
+작성날짜<input class="form-control" id="writedate" name="writedate" value="${list[0].writedate}" type="text" required autofocus readonly="readonly"/>
 </div>
 </div>
+<div class="row">
+<div class="col-xs-4 col-md-4 form-group">
+글쓴이<input class="form-control" id="writer" name="writer"  value="${list[0].writer }" type="text" required autofocus readonly="readonly"/>
+</div>
+<div class="col-xs-3 col-md-3 form-group">
+조회수<input class="form-control" id="readnum" name="readnum" value="${list[0].readnum }" type="text" required autofocus readonly="readonly"/>
+</div>
+<div class="col-xs-7 col-md-7 form-group">
+제목<input class="form-control" id="subject" name="subject" value="${list[0].subject }" type="text" required autofocus />
+</div>
+</div>
+내용
+<br>
+<textarea class="form-control2" id="content" name="content" >${list[0].content }</textarea>
+<br />
+<br>
+<button class="btn btn-primary full-center" type="submit">수정하기</button>
+</form>
+</div>
+</div>
+</div>
+</fieldset>
+
 
 <!-- </fieldset>
 </div> -->
-
 
 </body>
 </html>

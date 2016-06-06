@@ -145,8 +145,7 @@
         padding-left: 3px;
         padding-left: 4px \9;
         /* IE7-8 doesn't have border-radius, so don't indent the padding */
-        top:5px;
-          text-align : center;
+        text-align : center;
         margin-bottom: 0;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
@@ -156,7 +155,6 @@
     #custom-search-form button {
         border: 0;
         background: none;
-        top:5px;
         /** belows styles are working good */
         padding: 2px 5px;
         margin-top: 2px;
@@ -172,6 +170,15 @@
     .search-query:focus + button {
         z-index: 3;   
     }
+    style type ="text/css">.links {
+	*zoom: 1;
+	padding: 50px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #797878;
+	text-align: center;
+}
 .links {
   *zoom: 1;
   padding: 50px;
@@ -273,22 +280,22 @@ function showResult(){//응답결과함수
  </form>
  </div> -->
  <div class="container">
-<div id="span" style="width:1000px;">
+<div id="span"  style="width:1270px;">
    <div class="row">
         <div class="span12" >
             <form id="custom-search-form" name="a" class="form-search form-horizontal" action="oneandoneSearch.do">
                 <div class="input-append span12">
 					<section class="container"  style="float: right; display: inline-block; width: 320px; height: 28px;" >
-						<div class="dropdown2" style="width: 100px;border: 0; top: 1px;">
+						<div class="dropdown2" style="width: 100px;border: 0; top: 8px;">
 								<select name="select" class="dropdown-select">
 										<option value="masterid">작성자</option>
 										<option value="status">예약상태</option>
 										<option value="aimidx">예약된 게시물 글번호</option>
 									</select>
 							</div>
-							<input type="text" class="search-query" id="search" name="search" style="width:150px; top:1px; border: 1; ">
+							<input type="text" class="search-query" id="search" name="search" style="width:150px; margin: 0px 0px 0px 0px;padding: 0px 0px; ">
                     <button type="button" class="btn" onclick="show();" ><i class="main-icon" data-type="img" > 
-                    <img src="http://image005.flaticon.com/28/svg/34/34097.svg" width="15" height="15" alt="Magnifier tool free icon" title="Magnifier tool free icon" ></i></button> 
+                    <img src="http://image005.flaticon.com/28/svg/34/34097.svg" width="20" height="20" alt="Magnifier tool free icon" title="Magnifier tool free icon" ></i></button> 
 					
 					</section>	                
                 </div>
@@ -300,7 +307,7 @@ function showResult(){//응답결과함수
 
 	
 	<div id="spans">
-		<table border="1" style="margin: 0px auto;" width="800" height="150" >
+		<table border="1" style="margin: 0px auto;"  >
 			<thead>
 			
 				<tr>

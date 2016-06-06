@@ -10,7 +10,7 @@ function adminDriverReserveDel(){
 	window.open('adminDriverReserveDel.do'+param,'adminDriverReserveDel','width=500 height=400 left=500 top=200');
 }
 </script>
-		<table border="1" style="margin: 0px auto;" width="800" height="150" >
+		<table border="1" style="margin: 0px auto;">
 			<thead>
 				<tr>
 					<th>번호</th>

@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+  <link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+<link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
 <div>헤더
@@ -15,21 +18,35 @@
 </div>
 
 <div>
-<fieldset>
-<legend>이용안내</legend>
-<form action="useguideUpdate_ok.do">
-글번호:<input type="text" name="idx" value="${list[0].idx}" readonly="readonly" >
-작성날짜:<input type="text" name="writedate" value="${list[0].writedate }"><br>
-제목:<input type="text" name="subject" value="${list[0].subject}" > <br>
-내용:<br>
-<textarea name="content" cols="55" rows="25" value="${list[0].content}" > ${list[0].content}</textarea><br>
-<input type="submit" value="수정하기">
-<a href="adminuseguideList.do">이전페이지로</a>
+<h3>이용안내</h3>
+<div class="container" style="margin: 0px auto;">
+<div class="row">
+
+    
+<div class="col-sm-8 contact-form" style="margin: 0px auto;">
+<form action="useguideUpdate_ok.do" id="contact" class="form" role="form" >
+<div class="row">
+<div class="col-xs-6 col-md-6 form-group">
+글번호<input class="form-control" id="idx" name="idx"  value="${list[0].idx }"type="text" required autofocus readonly="readonly"/>
+</div>
+<div class="col-xs-6 col-md-6 form-group">
+제목<input class="form-control" id="subject" name="subject" value="${list[0].subject }" type="text" required autofocus />
+</div>
+</div>
+<br>
+내용<textarea class="form-control" id="content" name="content" rows="5">${list[0].content }</textarea>
+<br />
+<button class="btn btn-primary pull-right" type="submit">수정하기</button>
+<input type="reset" value="다시작성" class="btn btn-primary pull-right" >
+
 </form>
-</fieldset>
+</div>
+</div>
+</div>
 </div>
 
 <hr>
+
 <div>풋부분</div>
 </body>
 </html>

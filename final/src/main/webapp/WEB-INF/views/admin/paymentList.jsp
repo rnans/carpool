@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+<link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 .links {
   *zoom: 1;
@@ -71,34 +73,51 @@
                 </nav>
             </section>   
         </div>  
-<section>
-	<article>
 	<div>
-		<table border="1" style="margin: 0px auto;" width="500">
+		<table border="1" style="margin: 0px auto;"  >
 			<thead>
+			
 				<tr>
-					<th>구분</th>
-					<th>결제자</th>
-					<th>결제방법</th>
-					<th>금액</th>
-					<th>결제내용</th>
-					<th>결제취소</th>
+					<th>번호</th>
+					<th>결제아이디</th>
+					<th>결제상태</th>
+					<th>모집상태</th>
+					<th>글타입</th>
+					<th>기간</th>
+					<th>글제목</th>
+					
 				</tr>
+				
 			</thead>
 			<tbody>
+			<c:if test="${empty list}">
+					<tr class="even">
+						<td colspan="7" align="center">결제내역이없습니다.</td>
+					</tr>
+				</c:if>
+				<c:forEach var="list" items="${list}">
 				<tr>
-					<td></td>
+					<td>${list.idx }</td>				
+					<td>${list.userid}</td>
+					<td>${list.status }</td>
+					<td>${list.pooltype }</td>
+					<td>${list.termtype}</td>
+					<td>${list.poolname}</td>
+					<td>${list.pay }</td>					
+					
 				</tr>
+				</c:forEach>
 			</tbody>
+			
 			<tfoot>
-				<tr>
-				
+				<tr  class="even">
+				<td colspan="7" align="center">
+						${pageStr}
+					</td>
 				</tr>
 			</tfoot>
 		</table>
 		</div>
-	</article>
-</section>
 <footer>풋</footer>
 </body>
 </html>
