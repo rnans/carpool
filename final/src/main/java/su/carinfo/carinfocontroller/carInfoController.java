@@ -232,22 +232,17 @@ public class carInfoController {
 	}
 
 	@RequestMapping(value = "/carUpdate.do", method = RequestMethod.POST)
-	public ModelAndView carUpdate(@Param(value="check")String check,carInfoDTO dto2,MultipartHttpServletRequest req, HttpServletRequest request, 
+	public ModelAndView carUpdate(@Param(value="fcarnum")String fcarnum,
+			@Param(value="check")String check,carInfoDTO dto2,MultipartHttpServletRequest req, HttpServletRequest request, 
 			HttpSession session, UploadDTO dto) {
 
 		ModelAndView mav = new ModelAndView();
-		int result2 = carInfoDao.carNumList(dto2);
-		mav.addObject("dto", dto2);
-		if(check.equals("false")){
-			
-			mav.addObject("msg", "형식 확인을 해주세요.");
-			mav.setViewName("carManage/carAdd");
-		}else if (result2 == 1) {
-			
-			mav.addObject("msg", "이미 등록된 차량 번호입니다.");
-			mav.setViewName("carManage/carAdd");
-		} else {
-			
+		String cartype=dto2.getCartype();
+		if(cartype.equals("")||cartype==null){
+		mav.addObject("msg", "차 종류를 입력해주세요");
+		mav.setViewName("carManage/carUpdate");
+		mav.addObject("idxList", dto2);
+		}else{
 			MultipartFile upload=req.getFile("upload");
 			MultipartFile upload2=req.getFile("upload2");
 			 copyInto(upload,upload2, request);
@@ -262,7 +257,7 @@ public class carInfoController {
 			 
 	
 		     if(filename.equals("")||filename==null){
-		    	 dto2.setCarphoto("사진없음");
+		    	 
 		     }else{
 		    	 dto2.setCarphoto(filename);
 		    	 dto.setFilename(filename); 
@@ -295,25 +290,17 @@ public class carInfoController {
 			     System.out.println("filename2:"+filename2);
 			     System.out.println("filepath2:"+filepath2);
 		     }
-		 	int result = carInfoDao.carAdd(dto2);
+		 	int result = carInfoDao.carUpdate(dto2);
 		 	
 		 	if(result>0){
 		
-			mav.addObject("msg", "차량등록 성공");
+			mav.addObject("msg", "차량수정 성공");
 			mav.addObject("gopage", "carList.do");
 			mav.setViewName("carManage/carMsg");
-		 	}else{
-			mav.addObject("msg", "차 종류를 입력해주세요");
-			mav.setViewName("carManage/carAdd");
-			mav.addObject("dto", dto2);
 		 	}
-		 	
-			if (result > 0) {
-				session.setAttribute("carnum", dto2.getCarnum());
-			}
 		}
 		return mav;
-		
+
 	}
 
 	@RequestMapping("/carDel.do")

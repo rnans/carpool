@@ -47,6 +47,11 @@ public class carInfoDAOImple implements carInfoDAO {
 
 	// 차량수정
 	public int carUpdate(carInfoDTO dto) {
+		System.out.println(dto.getCarnum());
+		System.out.println(dto.getCarphoto());
+		System.out.println(dto.getCartype());
+		System.out.println(dto.getId());
+		System.out.println(dto.getIdx());
 		int count = sqlMap.update("carUpdate", dto);
 
 		return count;
@@ -103,4 +108,24 @@ public class carInfoDAOImple implements carInfoDAO {
 		 List<UploadDTO> list=sqlMap.selectList("carImage", userid);
 		 return list;
 	 }
+	// 수정관련 차량번호 유효성
+		public int carUpNumList(carInfoDTO dto) {
+
+			List<carInfoDTO> carNum = sqlMap.selectList("carNumList", dto);
+     int result=1;
+			if (carNum.size() == 0) {
+				result=0;
+			}
+			if (carNum.get(0).getCarnum().equals(dto.getCarnum())) {
+				String dbcarNum = carNum.get(0).getCarnum();
+				result=0;
+				if (dbcarNum == dto.getCarnum()) {
+					result=0;
+				} else if (dbcarNum.equals("") || dbcarNum == null) {
+					result=0;
+				}
+			}
+
+			return result;
+		}
 }

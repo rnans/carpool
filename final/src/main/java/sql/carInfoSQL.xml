@@ -14,7 +14,7 @@
 		select * from carInfo where idx=#{idx}
 	</select>
 	<update id="carUpdate" parameterType="su.carinfo.model.carInfoDTO">
-		update carInfo set carNum=#{carnum}, carType=#{cartype}, confirmPhoto=#{confirmphoto}, confirm=0 where idx=#{idx}
+		update carInfo set carNum=#{carnum}, carType=#{cartype}, confirmPhoto=#{confirmphoto}, confirm=0, carPhoto=#{carphoto} where idx=#{idx}
 	</update>
 	<delete id="carDel" parameterType="Integer">
 		delete from carInfo where idx=#{idx} 
@@ -34,4 +34,5 @@
 	<select id="carImage" parameterType="String" resultType="su.upload.model.UploadDTO">
 	select * from file_upload where id=#{userid} and filetype='1' order by idx desc
 	</select>
+	
 </mapper>

@@ -7,6 +7,33 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/previewmodule.js"></script>
+<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+<script type="text/javascript" src="/final02/js/httpRequest.js"></script>
+<script>
+function addClose(){
+	window.location.href = 'carList.do';
+}
+</script>
+<style>
+body{
+    background-color: gray;
+}
+
+#box{
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+    background: rgba(200, 200, 200, 0.1);
+    border-radius: 4px;
+    top:50px;
+}
+
+h2{
+    text-align:center;
+    color:#fff;
+}
+</style>
+<script type="text/javascript" src="js/previewmodule.js"></script>
 <script>
 window.onload=function(){
 
@@ -30,60 +57,30 @@ var msg='${msg}';
 window.alert('${msg}');
 </script>
 </c:if>
-<script>
-function car_num_chk(car_num) 
-{ 
-    var v= car_num; 
-    var result = document.getElementById('result'); 
-    var carNum=document.getElementsByName('carnum');
 
-    var pattern1 = /\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; // 12저1234 
-    var pattern2 = /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; // 서울12치1233 
-
-    if (!pattern1.test(v)) { 
-        if (!pattern2.test(v)) { 
-            result.innerText="차량 형식에 맞지 않습니다.";
-            var car=document.getElementById("car");
-            car.value="";
-            var check=document.getElementById("carCheck");
-            check.value="false";
-            
-        } 
-        else {  
-            result.innerText="차량 형식에 맞습니다.";
-            var check=document.getElementById("carCheck");
-            check.value="true";
-        } 
-    } 
-    else { 
-        result.innerText ="차량 형식에 맞습니다."; 
-        var check=document.getElementById("carCheck");
-        check.value="true";
-    } 
-    
-} 
-</script>
 </head>
 <body>
+<%@include file="../header.jsp"%>
 <fieldset>
 <legend>차량수정</legend>
-<form  name="carUpdate" action="carUpdate.do" method="post">
+<form  name="carUpdate" action="carUpdate.do" method="post" enctype="multipart/form-data">
 <div>
 <input type="hidden" name="idx" value="${idxList.idx }">
 드라이버:<input type="text" name=driver value="${idxList.driver }" readonly="readonly">
 <br>
 <br>
-차 번호:<input type="text" name="carnum" value="${idxList.carnum }" id="car" maxlength="9" required placeholder="공백없이">
-				<input type=button value="형식 확인" onclick="car_num_chk(document.getElementById('car').value)">  
-				
-				  <div id=result></div> 
+<input type="hidden" name="fcarnum" value="${idxList.carnum }">
+차 번호:<input type="text" name="carnum" value="${idxList.carnum }" id="car" maxlength="9" required placeholder="공백없이" readonly="readonly"> 
 				<br> 
 				차종:<input type="text" name="cartype" value="${idxList.cartype }">
 			</div>
 			<h3>차량 사진</h3>
+			
 			<div id="getImage"><div id="fImage"><img style="width:200px; height:200px;" src="http://localhost:8080/final02/img/${idxList.carphoto}"></div>
-			</div><div>
-				<input name="upload" type="file" size="50"  onclick="delphoto()" onchange="previewImage(this,'getImage',200,200);"> 
+			</div>
+			<input type="hidden" name="carphoto" value="${idxList.carphoto}">
+			<div>
+				<input name="upload" type="file" size="50" onchange="previewImage(this,'getImage',200,200);"> 
 					<br>
 			</div>
 			<!-- <img src='이미지 경로명' width="100" height="100"/>
@@ -108,7 +105,6 @@ function car_num_chk(car_num)
 
 			<div>
 			<p>
-				<input type="hidden" id="carCheck" name="check" value="false">
 	<input type="button" value="취소">
 	<input type="submit" value="수정">
 	</p>

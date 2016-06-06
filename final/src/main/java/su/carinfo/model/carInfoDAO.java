@@ -17,4 +17,5 @@ public interface carInfoDAO {
 	public int carIdZero(String userid);
 	public int carIdOne(carInfoDTO dto);
 	public List<UploadDTO> carImage(String userid);
+	public int carUpNumList(carInfoDTO dto);
 }
