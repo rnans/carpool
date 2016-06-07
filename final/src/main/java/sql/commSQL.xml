@@ -67,6 +67,7 @@
 	<select id="commTotalCnt" resultType="int">
 		select count(*) from (select distinct poolname from reservationlist)
 	</select>
+	<!-- adminComm -->
 	
 	<select id="bbssearch" parameterType="String" resultType="su.comm.model.commBBSDTO">
 		select * from commbbs where poolname='test' and id like '%'||#{search}||'%' or content like '%'||#{search}||'%'
