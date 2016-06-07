@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import su.member.model.MemberDAO;
 import su.member.model.MemberDTO;
+import su.status.model.StatusDAO;
+import su.status.model.StatusDTO;
 
 
 @Controller
@@ -39,6 +41,16 @@ public class MemberController {
 		return "member/memberJoin";
 	}
 	
+	@Autowired
+	private StatusDAO statusDao;
+	public StatusDAO getStatusDao() {
+		return statusDao;
+	}
+
+	public void setStatusDao(StatusDAO statusDao) {
+		this.statusDao = statusDao;
+	}
+
 	/**회원가입*/
 	@RequestMapping(value="/memberJoin.do", method=RequestMethod.POST)
 	public ModelAndView memberJoin(MemberDTO dto){
@@ -68,6 +80,7 @@ public class MemberController {
 	@RequestMapping(value="/login.do", method={RequestMethod.GET, RequestMethod.POST})
 
 	public ModelAndView login(@RequestParam(value="id", required=false)String id, 
+			StatusDTO sDTO,
 			@RequestParam(value="pwd", required=false)String pwd, HttpSession session){
 			
 		ModelAndView mav = new ModelAndView();
@@ -81,13 +94,17 @@ public class MemberController {
 			session.setAttribute("sname", name);
 			session.setAttribute("sid", id);
 			session.setAttribute("grade", grade);
+			
+			sDTO.setUserid(id);
+			
+			int count = statusDao.loginStatus(sDTO);
+			
 			mav.addObject("name", name);
 			mav.setViewName("member/login_ok");	
 		}else{
 			mav.addObject("msg", "아이디가 없거나 비밀번호가 잘못되었습니다.");
 			mav.addObject("loc", "loginForm.do");
 			mav.setViewName("member/memberMsg");
-			
 		}
 		return mav;
 	}
@@ -125,7 +142,11 @@ public class MemberController {
 	/**로그아웃*/
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session){
+		
+		
+		String userid = (String)session.getAttribute("sid");
 		session.invalidate();
+		int count = statusDao.loginDel(userid);
 		
 		return "redirect:/index.do";
 	}
@@ -152,9 +173,7 @@ public class MemberController {
 			mav.addObject("status", "1");
 			mav.addObject("loc", "index.do");
 			mav.setViewName("member/memberMsg");
-			
 		}
-				
 		return mav;
 	}
 	

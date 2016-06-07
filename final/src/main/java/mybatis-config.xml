@@ -20,5 +20,6 @@
 		<mapper resource="sql/messageSQL.xml"/>
 		<mapper resource="sql/poolRateSQL.xml"/>
 		<mapper resource="sql/paySQL.xml"/>
+		<mapper resource="sql/statusSQL.xml"/>
 	</mappers>
 </configuration>

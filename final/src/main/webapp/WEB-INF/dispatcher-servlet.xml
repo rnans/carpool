@@ -173,6 +173,12 @@
 			<ref bean="sqlSessionTemplate"/> 
 		</constructor-arg>
 	</bean>
+	
+	<bean id="statusDao" class="su.status.model.StatusDAOImple">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
 	<!-- view -->
 	
 	<bean id="yongJson"
