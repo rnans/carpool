@@ -50,14 +50,22 @@
 	
 	<!-- adminComm -->
 	<select id="memberCommList" parameterType="Map" resultType="su.comm.model.carpoolinfoDTO">
-		select distinct poolname, name, idx from
+		select distinct poolname from
 	   (select rownum as rnum,a.* from
 	   (select * from carpoolinfo order by idx desc)a)b
 	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
 	
+	<select id="memberCommList2" resultType="su.comm.model.carpoolinfoDTO">
+		select * from carpoolinfo order by idx desc
+	</select>
+	
+	<select id="memberCommList3" resultType="su.pool.model.PoolDTO">
+		select * from reservationlist where pooltype='타세요'
+	</select>
+	
 	<select id="commTotalCnt" resultType="int">
-		select count(*) from carpoolinfo
+		select count(*) from (select distinct poolname from reservationlist)
 	</select>
 	
 	<select id="bbssearch" parameterType="String" resultType="su.comm.model.commBBSDTO">
