@@ -23,7 +23,7 @@
  		values(payAllList_idx.nextval,#{userid},
  		#{status},#{pooltype},#{termtype},#{poolname},#{pay})
  	</insert> 
- <!-- 	<select id="adminPayList" resultType="su.paylist.model.PayListDTO">
+  	<select id="adminPayList" resultType="su.paylist.model.PayListDTO">
  	select * from
    (select rownum as rnum,a.* from
    (select * from payalllist order by idx desc)a)b
@@ -32,7 +32,7 @@
  	</select>
 		<select id="paylisttotalCnt" resultType="int">
 		select count(*) from payalllist
-	</select> -->
+	</select> 
  	<select id="payInfoList" resultType="su.pool.model.PoolDTO">
  		select * from reservationList where idx=#{ridx}
  	</select>

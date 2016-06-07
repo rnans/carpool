@@ -138,8 +138,4 @@ public class AdminReserveController {
 		mav.setViewName("admin/adminMsg");
 		return mav;
 	}
-	@RequestMapping("/payMentList.do")
-	public String payMentList(){
-		return "admin/paymentList";
-	}
 }

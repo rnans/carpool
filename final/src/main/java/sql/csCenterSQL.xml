@@ -107,7 +107,7 @@
 	</insert>
 	  <update id="qnaUpdate" parameterType="su.csCenter.model.CsQnaDTO">
 		update qna set
-		subject=#{subject},content=#{content},writedate=to_date(#{writedate},'yyyy-mm-dd hh24:mi:ss')
+		subject=#{subject},content=#{content}
 		where idx=#{idx}
 	</update>
 	<select id="qnaContent" resultType="su.csCenter.model.CsQnaDTO">
@@ -134,7 +134,7 @@
 	</insert>
 	 <update id="useguideUpdate" parameterType="su.csCenter.model.CsuseGuideDTO">
 		update useguide set
-		subject=#{subject},content=#{content},writedate=to_date(#{writedate},'yyyy-mm-dd hh24:mi:ss')
+		subject=#{subject},content=#{content}
 		where idx=#{idx}
 	</update>
 	<select id="useguideContent" resultType="su.csCenter.model.CsuseGuideDTO">
