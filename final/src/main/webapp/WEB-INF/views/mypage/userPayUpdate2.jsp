@@ -58,7 +58,7 @@
 
 .content {
 	position: relative;
-	background: #b4bad2;
+	background: #E3DDDC;
 }
 
 /* Overlay */
@@ -605,7 +605,7 @@ function checkType2(){
 
 	
 	<div id="div2">
-			<legend>회원결제수정</legend>
+			<legend>카드정보수정</legend>
 			<form name="cardUpdate" action="cardUpdate.do" method="post">
 			<input type="hidden" name="idx" value="${dto.idx}">
 			<table border="1" cellspacing="0" align="center" class="table table-hover">

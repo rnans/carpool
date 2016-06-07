@@ -58,7 +58,7 @@
 
 .content {
 	position: relative;
-	background: #b4bad2;
+	background: #E3DDDC;
 }
 
 /* Overlay */
@@ -576,12 +576,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						<div class="codrops-links">
 	
 			
-<h2>결제정보</h2>
+<h2>카드 등록</h2>
 		
 
 	
 	
-			<legend>회원결제정보</legend>
+			<legend>등록된  카드정보</legend>
 			<form name="myprofile">
 				<table border="1" cellspacing="0" align="center" class="table table-striped">
 					<thead>

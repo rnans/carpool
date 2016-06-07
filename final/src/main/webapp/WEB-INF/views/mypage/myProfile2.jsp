@@ -57,7 +57,7 @@
 
 .content {
 	position: relative;
-	background: #b4bad2;
+	background: #E3DDDC;
 }
 
 /* Overlay */
@@ -253,6 +253,11 @@ section {
 	font-weight: 400;
 	padding-top: 0.325em;
 }
+.center-block{
+	position: relative;
+  	
+}
+
 
 .codrops-links {
 	text-transform: uppercase;
@@ -515,7 +520,13 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 @media screen and (max-width: 460px){ 
 	body #cdawrap { display: none; }
 }
-
+#my{
+	color:white;
+}
+.center-block{
+	position: relative;
+	left: 505px;
+}
 
 </style>
 
@@ -544,7 +555,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="#"><i class="fa fa-fw fa-star-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -573,23 +584,21 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					
 	<h2>마이프로필</h2>
 		
-	<div id="div1">
-		 <form id="frm" name="frm" action="uploadimgUpdate.do" method="post" enctype="multipart/form-data">
-
-     	   <div id="preview">
-      			<img src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="img-circle">
-			</div>
-		
+	<div>
+	 <form id="frm" name="frm" action="uploadimgUpdate.do" method="post" enctype="multipart/form-data">
+		<span>
+  		<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="img-none">
+		</span>	
 			<input type="file" id="file" name="upload">
-   
-		
-			<button type="submit" class="btn btn-success" value="사진올리기">사진올리기</button>
+   			<button type="submit" class="btn btn-success" value="사진올리기">사진올리기</button>
+    	
     	</form>
 	</div>
 
 	<form name="myprofile" action="myProfileUpdate.do">
 	<fieldset>
 		<legend>내 정보 수정</legend>
+	<div class="center-block">
 	<div class="row">
 		<div class="col-xs-2">
 			ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
@@ -612,7 +621,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 		  		<input type="radio" name="sex" id="female" value="여성">W
 		 	</label><br>
 				<p>
-					<button type="reset" class="btn btn-default" value="다시작성">다시작성</button>
 					<button type="submit" class="btn btn-success" value="프로필수정">프로필수정</button>
 				</p>
 			</div>

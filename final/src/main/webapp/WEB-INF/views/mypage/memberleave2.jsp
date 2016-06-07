@@ -56,7 +56,7 @@
 
 .content {
 	position: relative;
-	background: #b4bad2;
+	background: #E3DDDC;
 }
 
 /* Overlay */
@@ -249,6 +249,10 @@ section {
 	font-size: 50%;
 	font-weight: 400;
 	padding-top: 0.325em;
+}
+.center-block{
+	position: relative;
+  
 }
 
 .codrops-links {
@@ -510,7 +514,10 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 @media screen and (max-width: 460px){ 
 	body #cdawrap { display: none; }
 }
-
+.center-block{
+	position: relative;
+	left: 505px;
+}
 
 </style>
 
@@ -571,16 +578,17 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			
 		<ul>
 			<h2>회원탈퇴</h2>	
+			<div class="center-block">	
 				<div class="row">
 					<div class="col-xs-2">
-						PWD<input type="passward"  name="pwd" class="form-control">
+						PWD<input type="password"  name="pwd" class="form-control">
 					
 						<p>
 							<li><button type="submit" class="btn btn-primary" value="회원탈퇴">회원탈퇴</button></li>
 						</p>
 					</div>
 				</div>
-					
+			</div>		
 		</ul>
 							
 	</form>

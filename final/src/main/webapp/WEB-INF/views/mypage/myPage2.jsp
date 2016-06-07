@@ -58,7 +58,7 @@
 
 .content {
 	position: relative;
-	background: #b4bad2;
+	background: #E3DDDC;
 }
 
 /* Overlay */
@@ -255,12 +255,15 @@ section {
 	padding-top: 0.325em;
 }
 
+
+
 .codrops-links {
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 0.69em;
 	line-height: 2.2;
-	padding: 1.61em 5em;
+	padding: 1.61em 5em;	
+	
 }
 
 .codrops-links a {
@@ -517,17 +520,23 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 //
 //
 .center-block {
-  display: block;
-  margin-left: 0px auto;
-  margin-right: 0px auto;
-  
+	display: block;
+    margin-right: 0 auto;
+    margin-left: 0 auto;
+ 
 }
 
 // Usage as a mixin
 .element {
   .center-block();
+} 
+.center-block{
+	position: relative;
+	left: 505px;
 }
-
+#my{
+	color:white;
+}
 </style>
 
 
@@ -549,7 +558,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -561,11 +570,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<a href="myPage.do">마이페이지</a>
 					<a href="notiSetting.do">알람설정</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
-					<a href="userPayInfo.do">결제정보</a>
+					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
 					<a href="#">이용내역</a>
 					<a href="#">등록글</a>
-					<a href="#">평가글</a>
+					<a href="rateView.do">평가글</a>
 					<a href="memberleave.do">회원탈퇴</a>
 				</nav>
 			</div>
@@ -580,13 +589,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 		
 		
 			<form name="f" action="myProfile.do">
-			<fieldset>
+			
 				<legend>${dto.name}님 정보  ${dto2[1].filename } </legend>		
 <div class="center-block">
 	<div class="row">
 		<div class="col-xs-2">
 	
-	  ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
+	ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
 	
 	NAME<input type="text" name="name" class="form-control" value="${dto.name}" readonly>
 
@@ -611,8 +620,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			</div>
 		</div>
 	</div>	
-	 	
-		</fieldset>	
+		
+	
 </form>
 	
 </div>

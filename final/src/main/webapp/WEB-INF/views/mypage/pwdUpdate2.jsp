@@ -57,7 +57,7 @@
 
 .content {
 	position: relative;
-	background: #b4bad2;
+	background: #E3DDDC;
 }
 
 /* Overlay */
@@ -569,6 +569,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						<div class="codrops-links">
 							
 	<div id="div2">
+		
 			<form name="myprofile" action="pwdUpdate.do" method="">
 				<fieldset>
 					<legend> ${sid} 님 비밀번호변경</legend>
