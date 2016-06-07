@@ -108,16 +108,12 @@ function noticeDelForm(){
 <div>헤더
 <%@include file="../header.jsp" %>
 </div>
-<div>메뉴바
-<%@include file="../adHeader.jsp" %>
-</div>
-<div align="center">
+            <div align="center">
 <h2>고객센터관리</h2>
 <h4>공지사항</h4> 
 </div>
-<div id="content">
+<div id="content" align="center">
           
- 
             <section class="links">
                 <nav class="link-effect-3" id="link-effect-3">
                     <a href="adminNoticeList.do" data-hover="1.공지사항">1.공지사항</a>
@@ -129,12 +125,19 @@ function noticeDelForm(){
    
            
         </div>  
+<div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
+
+<div class=".col-md-4 " style="position: absolute ; display: inline-block;top:150px ;left:0px;">
+		<%@include file="../adHeader.jsp" %>
+	</div>
+<div class=".col-md-8" style="margin-left:100px; display: inline-block; width: 100%; ">
+
 <!-- <a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="adminuseguideList.do">4.이용안내</a>
 -->
 
 
 <div>
-<table border="1"  style="margin: 0px auto; ">
+<table border="1" style="margin-left: 100px;">
 <thead>
 <tr>
    <th>번호</th>
@@ -177,6 +180,9 @@ function noticeDelForm(){
 </table>
 <a class="button darkGrey" href="noticeWriteForm.do">글쓰기</a>
 </div>
+</div>
+</div>
+
 <hr>
 <footer>푸터</footer>
 </body>
