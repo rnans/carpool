@@ -26,6 +26,7 @@
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script type="text/javascript">
 	var idx=null;
+	var img=null;
 
 	function bbsDel(){
 		this.idx=idx;
@@ -39,6 +40,7 @@
 		var params='idx='+idx;	
 		sendRequest('reDel_ok.do', params, null, 'GET')
 		location.reload();
+		
 	}
 	
 
@@ -366,6 +368,38 @@ border:0px;
 [data-skin=skin5] [data-skinFactor~=color], [data-skin=skin5] [data-skinFactor~=beforeColor]:before, [data-skin=skin5] [data-skinFactor~=afterColor]:after, [data-skin=skin5] [data-skinFactor~=bColor], [data-skin=skin5] [data-skinFactor~=bBeforeColor]:before, [data-skin=skin5] [data-skinFactor~=bAfterColor]:after {
     color: #3cd370!important;
 }
+h1,
+h2,
+h3 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+
+
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
+
 </style>
 
 	<div id="lnb" data-skin="skin5">
@@ -387,8 +421,8 @@ border:0px;
 	</div>
 <br><br><br>
 	<div style="width: 50%; margin: 0px auto; margin-top: 50px;" >
-		<h2 class="menu_title"
-			style="position: relative; z-index: 0; margin-bottom: 16px; text-align: center;"> </h2>
+		<h2 class="menu_title" 
+			style="position: relative; z-index: 0; margin-bottom: 16px; text-align: center; margin-top: 0px;"> </h2>
 
 		<div class="searchWrap" style="background-color: #fff;">
 			<form autocomplete="off" action="commsearch.do">
@@ -405,7 +439,7 @@ border:0px;
 		</div>
 
 <div class="writeWrap" style="margin-bottom: 15px;">
-			<form name="write" action="commWrite.do">
+			<form name="write" action="commWrite.do" method="post"  enctype="multipart/form-data">
 				<div data-viewname="DPostWriteLayoutView" class="cPostWrite">
 					<h3 class="gSrOnly">글쓰기</h3>
 					<div class="writeWrap" data-uiselector="mentionListParent">
@@ -427,15 +461,65 @@ border:0px;
 							<ul style="display: none;"></ul>
 						</div>
 					</div>
+					<div class="accordion" id="accordion2" style="margin-top: 0px;">
+								<div class="accordion-heading">
+									<a class="" data-toggle="collapse"
+										href='.pic'> <span id="picclick" style="padding-left: 20px;"></span> </a>
+								</div>
+<div class="pic accordion-body collapse">
+			<!-- 나타나는 부분 -->
+		<div class="accordion-inner">
+		
+		<div class="cPreview" data-uiselector="attachPreviewRegion">
+			<div>
+				<div class="previewHead">
+					<div class="previewTitle">
+						<strong>사진</strong> <em class="num1">2</em><em class="num2">/50</em>
+					</div>
+					<button type="button" class="previewDelete" data-icon="pc-waste" onclick="document.getElementById('picclick').click();"
+						data-uiselector="btnRemoveAllMedia" >
+						<span class="gSrOnly">전체 삭제</span>
+					</button>
+				</div>
+				<div class="previewBody" style="height: 100px;padding-left: 0px;">
+					<p class="tip" data-uiselector="sortTip">사진을 파티원들에게 공유 할
+						수 있습니다.</p>				
+				
+
+            <!-- image-preview-filename input [CUT FROM HERE]-->
+            <div class="input-group image-preview">
+                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input type="file" name="upload"/> <!-- rename it -->
+                    </div>
+                </span>
+            </div><!-- /input-group image-preview [TO HERE]--> 			
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
 					<div class="buttonArea">
 						<ul>
-							<li data-uiselector="attachItem"><label>
-									<span style="padding-top: 4px"
-									class="glyphicon glyphicon-picture" aria-hidden="true"> <input
-										type="file" multiple="" title=" " accept="image/*"
-										name="attachment"
+							<li data-uiselector="attachItem" style="overflow: visible;"><label>
+									<span style="padding-top: 4px; overflow: visible;"
+									class="glyphicon glyphicon-picture" aria-hidden="true"> 
+									<input type="button" onclick="document.getElementById('picclick').click();" multiple="" title=" " accept="image/*" name="attachment" 
 										style='margin-left: -10px; width: 74px; height: 20px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
 								</span> <span class="gSrOnly">사진</span>
+			
+								
+								
+								
 							</label></li>
 							<li data-uiselector="attachItem"><label>
 									<span style="padding-top: 4px"
@@ -467,14 +551,35 @@ border:0px;
 				</div>
 			</form>
 		</div>
+		<!--  test -->
 
+		
+
+		<!--  test -->
 		<div style="width: 100%">
-			<div class="noticeWrap" style="display: block;">
-				<h2 class="tit">공지사항</h2>
-				<ul class="notice">
-					<li><a href="#" data-index="0"> 공지사항 </a>
-						<div></div></li>
-				</ul>
+			<div class="noticeWrap" style="display: block;min-height: 70px;">
+				<h2 class="tit">공지사항</h2>				
+					<ul class="notice">
+					<c:if test="${empty list}">
+						<li>
+							<a href="#" data-index="0"> 등록된 공지사항이 없어요. </a>
+						</li>
+					</c:if>
+					<c:forEach var="bbs" items="${list}">
+					
+						<c:if test="${bbs.notice==1}">	
+										
+						<li>
+						<span data-toggle="dropdown" data-index="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ★ ${bbs.content} 
+						
+						</span>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="bbsupdate2.do?idx=${bbs.idx }" data-uiselector="modifyButton">공지사항 해제</a></li>
+							</ul>
+						</li>
+						</c:if>
+					</c:forEach>
+					</ul>
 			</div>
 		</div>
 	
@@ -496,27 +601,27 @@ border:0px;
 									<br>&nbsp;&nbsp;${bbs.id }</strong>
 							</div>
 							<div class="textTime">&nbsp;&nbsp;${bbs.writedate }</div>
-						</div>
-					
-						<div class="feedback"
-							style="position: absolute; right: 20px; top: 10px;">
-							<div class="">
-								<span data-toggle="dropdown"
-									style="vertical-align: bottom; padding-right: 10px;"> <i
-									class="fa fa-ellipsis-v fa-2x" style="color: #bbb;"
-									aria-hidden="true"></i>
-								</span>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#" data-uiselector="modifyButton">공지사항 등록</a></li>
-									<li class="divider"></li>
-									<li><a href="#" data-uiselector="modifyButton">글 수정</a></li>
-									<li>
-									<a onclick="javascript:idx='${bbs.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete">
-											글 삭제</a></li>
-								</ul>
+						</div> 
+			
+							<div class="feedback"
+								style="position: absolute; right: 20px; top: 10px;">
+								<div class="">
+									<span data-toggle="dropdown"
+										style="vertical-align: bottom; padding-right: 10px;"> <i
+										class="fa fa-ellipsis-v fa-2x" style="color: #bbb;"
+										aria-hidden="true"></i>
+									</span>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="bbsupdate.do?idx=${bbs.idx }" data-uiselector="modifyButton">공지사항 등록</a></li>
+										<li class="divider"></li>
+										<li><a href="#" data-uiselector="modifyButton">글 수정</a></li>
+										<li>
+										<a onclick="javascript:idx='${bbs.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete">
+												글 삭제</a></li>
+									</ul>
+								</div>
 							</div>
-
-						</div>
+						
 
 						<div class="postBody">
 						<div class="postText">
@@ -582,7 +687,7 @@ border:0px;
 							</div>
 						</div>
 	
-						</c:if>	
+						</c:if>
 					</c:forEach>	
 					</div>
 					<div class="cCommentWrite"
@@ -744,7 +849,7 @@ border:0px;
 		footer
 
 	<!-- 댓글 js -->
-	<script>
+	 <script type="text/javascript">
     $(document).on('show','.accordion', function (e) {
         //$('.accordion-heading i').toggleClass(' ');
         console.log(e.target);
@@ -756,6 +861,69 @@ border:0px;
        $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
        //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
    });
+   
+   $(document).on('click', '#close-preview', function(){ 
+	    $('.image-preview').popover('hide');
+	    // Hover befor close the preview
+	    $('.image-preview').hover(
+	        function () {
+	           $('.image-preview').popover('show');
+	        }, 
+	         function () {
+	           $('.image-preview').popover('hide');
+	        }
+	    );    
+	});
+
+   
+	$(function() {
+	    // Create the close button
+	    var closebtn = $('<button/>', {
+	        type:"button",
+	        text: 'x',
+	        id: 'close-preview',
+	        style: 'font-size: initial;',
+	    });
+	    closebtn.attr("class","close pull-right");
+	    // Set the popover default content
+	    $('.image-preview').popover({
+	        trigger:'manual',
+	        html:true,
+	        title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
+	        content: "There's no image",
+	        placement:'bottom'
+	    });
+	    // Clear event
+	    $('.image-preview-clear').click(function(){
+	        $('.image-preview').attr("data-content","").popover('hide');
+	        $('.image-preview-filename').val("");
+	        $('.image-preview-clear').hide();
+	        $('.image-preview-input input:file').val("");
+	        $(".image-preview-input-title").text("Browse"); 
+	    }); 
+	    // Create the preview image
+	    $(".image-preview-input input:file").change(function (){     
+	        var img = $('<img/>', {
+	            id: 'dynamic',
+	            width:250,
+	            height:200
+	        });      
+	        var file = this.files[0];
+	        var reader = new FileReader();
+	        // Set preview image into the popover data-content
+	        reader.onload = function (e) {
+	            $(".image-preview-input-title").text("Change");
+	            $(".image-preview-clear").show();
+	            $(".image-preview-filename").val(file.name);            
+	            img.attr('src', e.target.result);
+	            $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+	        }        
+	        reader.readAsDataURL(file);
+	    });  
+	});
+ 
+
+   
 	</script>
 
 

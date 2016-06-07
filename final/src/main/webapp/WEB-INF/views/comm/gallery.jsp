@@ -175,9 +175,6 @@ footer a,footer a:hover{
     color: #3cd370!important;
 }
 </style>
-
-</style>
-	
 	
 	<div id="lnb" data-skin="skin5">
 		<div data-viewname="DLnbMenuView">
