@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import su.adminComm.model.AdminCommDAO;
 import su.comm.model.carpoolinfoDTO;
+import su.pool.model.PoolDTO;
 
 @Controller
 public class AdminCommController {
@@ -33,11 +34,17 @@ public class AdminCommController {
 		int pageSize = 5;
 		
 		List<carpoolinfoDTO> list = adCommDao.commList(cp, listSize);
+		List<carpoolinfoDTO> list2 = adCommDao.commList2();
+		List<PoolDTO> list3 = adCommDao.commList3();
+		
 		String pageStr = su.Page.SuPage.makePage("memberCommList.do", totalCnt, listSize, pageSize, cp);
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("lists", list);
+		mav.addObject("list", list);
+		mav.addObject("list2", list2);
+		mav.addObject("list3", list3);
+		
 		mav.addObject("pageStr", pageStr);
 		mav.setViewName("admin/communityList");
 		return mav;
