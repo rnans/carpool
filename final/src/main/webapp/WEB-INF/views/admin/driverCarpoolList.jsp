@@ -58,11 +58,27 @@ function driverPoolDelForm(){
 </script>
 </head>
 <body>
-<div>헤더</div>
-<%@include file="../adHeader.jsp" %>
-<section>
-	<article><!-- 드라이버 카풀 등록 목록보기 -->
-		<table border="1" cellspacing="0" width="1000">
+	<div>
+		<%@include file="../header.jsp"%>
+	</div>
+	<%@include file="../adHeader.jsp" %>
+
+	<div align="center"
+		style="margin-left: 150px; margin-bottom: 10px; margin-top: 60px;">
+		<h2 align="center">카풀게시물관리</h2>
+		<h4 align="center">드라이버</h4>
+		<div id="content" align="center">
+			<section class="links">
+				<nav class="link-effect-3" id="link-effect-3">
+					<a href="driverPoolList.do" data-hover="1.드라이버">1.드라이버</a> 
+					<a href="userPoolList.do" data-hover="2.사용자">2.사용자</a>
+				</nav>
+			</section>
+		</div>
+	</div>
+	
+	<div class="container" style="width: 100%; margin: 0px auto;">
+		<table border="1" style="margin-left: 100px;">
 			<thead>
 				<tr>
 					<th>구분</th> <!-- idx -->
@@ -131,7 +147,6 @@ function driverPoolDelForm(){
 				</tr>
 			</tfoot>
 		</table>
-	</article>
-</section>
+</div>
 <footer>풋</footer>
 </html>

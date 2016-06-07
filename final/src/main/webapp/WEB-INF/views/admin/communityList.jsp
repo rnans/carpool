@@ -6,10 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-	<script src="/final02/bootstrap/js/bootstrap.js"></script>
 <style>
 @import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
 .accordion-toggle:after {
@@ -21,11 +20,70 @@
     content: "\f077";    
 }
 
+.links {
+  *zoom: 1;
+  padding: 50px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+    color: #797878;
+  text-align: center;
+}
+.links:before, .links:after {
+  content: "";
+  display: table;
+}
+.links:after {
+  clear: both;
+}
+
+.link-effect-3 a {
+  padding: 10px 0;
+  margin: 0 20px;
+  color: #797878;
+  text-shadow: none;
+  position: relative;
+}
+.link-effect-3 a::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding: 10px 0;
+  max-width: 0;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  content: attr(data-hover);
+  -webkit-transition: max-width 0.5s;
+  -moz-transition: max-width 0.5s;
+  transition: max-width 0.5s;
+}
+.link-effect-3 a:hover::before {
+  max-width: 100%;
+}
 </style>
 </head>
 <body>
-	<div>헤더</div>
+	
 	<%@include file="../adHeader.jsp"%>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+	<script src="/final02/bootstrap/js/bootstrap.js"></script>
+	
+	<div align="center"
+		style="margin-left: 150px; margin-bottom: 10px; margin-top: 60px;">
+		<h2 align="center">커뮤니티관리</h2>
+		<h4 align="center">커뮤니티</h4>
+		<div id="content" align="center">
+			<section class="links">
+				<nav class="link-effect-3" id="link-effect-3">
+					<a href="memberCommList.do" data-hover="1.커뮤니티">1.커뮤니티</a> 
+				</nav>
+			</section>
+		</div>
+	</div>
+	
+	<div class="container" style="width: 100%; margin-left: 215px;">
 	
 	<table style="margin: 10px auto; height: 80px;">
 	
@@ -46,8 +104,8 @@
 		<table style="margin: 10px auto; height: 80px;">
 				
 				<c:forEach var="list3" items="${list2}">
-				<c:choose>
-				<c:when test="${list.poolname==list3.poolname}">
+				
+				<c:if test="${list.poolname==list3.poolname}">
 				
 				<tr>
 					<td>
@@ -67,8 +125,8 @@
 					<td>${list.termtype }</td>
 					<td>${list.status }</td>
 				</tr>
-				</c:when>
-				</c:choose>
+				</c:if>
+				
 				
 				</c:forEach>
 				
@@ -117,16 +175,11 @@
 						
 					
 		
-	
-	
-		
-			
-		
 
 	<div style="text-align: center;">
 			${pageStr }
 	</div>
-
+</div>
 	<!-- 아코디언 -->
 				<script>
     $(document).on('show','.accordion', function (e) {
