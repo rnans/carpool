@@ -117,7 +117,7 @@ function userPoolDelForm(){
 							<td><button type="submit" class="uButton uButtonPoint"
 									onclick="javascript:idx='${list.idx}';userPoolDelForm();"
 									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
-									글삭제</button></td>
+									삭제</button></td>
 						</tr>
 	
 				</c:forEach>

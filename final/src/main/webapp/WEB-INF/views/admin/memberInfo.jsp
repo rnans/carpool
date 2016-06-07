@@ -304,7 +304,7 @@ function showResult(){//응답결과함수
 	<div id="chartdiv" style="width: 50%; height: 400px; background-color: #FFFFFF;"></div>
 	<div id="chartdiv2" style="width: 50%; height: 400px; background-color: #FFFFFF;"></div>
  
- <div class="container">
+ <div class="container" style="margin-left: 205px;">
    <div class="row">
         <div class="span12" >
             <form id="custom-search-form" name="a" class="form-search form-horizontal " action="memberSearch.do">
@@ -328,7 +328,7 @@ function showResult(){//응답결과함수
 </div> 
 
 		<div id="span">
-			<table border="1" cellspacing="0" width="800" id="a">
+			<table border="1" cellspacing="0" width="800" id="a" style="margin: 0px auto; ">
 			<thead>
 				<tr>
 					<th>구분</th>
