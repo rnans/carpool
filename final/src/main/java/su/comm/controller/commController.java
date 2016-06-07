@@ -51,13 +51,33 @@ public class commController {
 			mav.addObject("list", list);
 			mav.addObject("list2",list2);
 			mav.setViewName("comm/comm");
-			return mav;
-			
-			
-		}
-		
-		
+			return mav;	
+		}	
 	}
+	
+	@RequestMapping("commsearch.do")
+	public ModelAndView commsearch(String search){
+		ModelAndView mav=new ModelAndView();		
+		
+			if(search==null||search.equals("")){
+			List<commBBSDTO> list=commDao.bbsList();		
+			String commid="test";
+			List<CommBBSreDTO> list2=commDao.reList(commid);
+			mav.addObject("list", list);
+			mav.addObject("list2",list2);
+			}else{
+			List<commBBSDTO> list3=commDao.bbsserch(search);
+			String commid="test";
+			List<CommBBSreDTO> list2=commDao.reList(commid);
+			mav.addObject("list", list3);
+			mav.addObject("list2",list2);
+			}
+
+			mav.setViewName("comm/comm");
+			return mav;
+	}
+	
+	
 	
 	@RequestMapping("commmsg.do")
 	public String commmsg(){
@@ -113,6 +133,7 @@ public class commController {
 	
 	@RequestMapping("commMember.do")
 	public ModelAndView commMember(HttpSession session){
+		
 		String id=(String)session.getAttribute("sid");
 		String poolname="test";
 		List<carpoolinfoDTO> list2=commDao.commMemberList(poolname);

@@ -26,6 +26,8 @@ public interface commDAO {
 	public int redel(String idx);
 	
 	
+	public List<commBBSDTO> bbsserch(String search); 
+	
 	
 	//uploadtest
 	

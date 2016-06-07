@@ -28,12 +28,20 @@ public class commDAOImple implements commDAO {
 		List<commBBSDTO> list=sqlMap.selectList("bbsList");		
 		return list;
 	}
+	//search
+	public List<commBBSDTO> bbsserch(String search){
+		
+		List<commBBSDTO> list= sqlMap.selectList("bbssearch", search);
+		return list;
+	}
 	
 	public int scheWrite(scheDTO dto) {
 			System.out.println(dto.getStartday());
 			int count =sqlMap.insert("scheWrite", dto);
 			return count;
 		}
+	
+	
 	//reply
 	public int reWrite(CommBBSreDTO dto){
 		int count=sqlMap.insert("reWrite", dto);

@@ -6,7 +6,7 @@
 
 	<insert id="commWrite" parameterType="su.comm.model.commBBSDTO">
 		insert into commbbs values(comm_idx.nextval, 'test',
-        #{id},  #{content},  sysdate)
+        #{id}, '남구문', #{content},  sysdate, '0', 0)
 	</insert>
 	
 	<select id="bbsList" resultType="su.comm.model.commBBSDTO">
@@ -60,5 +60,8 @@
 		select count(*) from carpoolinfo
 	</select>
 	
-
+	<select id="bbssearch" parameterType="String" resultType="su.comm.model.commBBSDTO">
+		select * from commbbs where poolname='test' and id like '%'||#{search}||'%' or content like '%'||#{search}||'%'
+	</select>
+	
 </mapper>

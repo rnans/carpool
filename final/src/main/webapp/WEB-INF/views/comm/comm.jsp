@@ -391,14 +391,14 @@ border:0px;
 			style="position: relative; z-index: 0; margin-bottom: 16px; text-align: center;"> </h2>
 
 		<div class="searchWrap" style="background-color: #fff;">
-			<form autocomplete="off" action="">
+			<form autocomplete="off" action="commsearch.do">
 				<h2 class="gSrOnly">검색 입력 폼</h2>
 				<div class="uInputSearch">
 					<label class="gSrOnly" for="input_search">이름, 글내용, 해시태그로 검색</label>
 					<input type="text" id="input_search"
-						placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name="">
+						placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name="search">
 
-					<button type="button" class="searchbutton" style="right: 15px; background-color: #fff;color: #fff;">
+					<button type="submit" class="searchbutton" style="right: 15px; background-color: #fff;color: #fff;">
 					<i class="fa fa-search" style="color: #BDBDBD;padding-top: 0px;font-size: 22px;" aria-hidden="true"></i></button>
 				</div>
 			</form>
