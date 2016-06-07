@@ -100,7 +100,7 @@ public class MemberController {
 			int count = statusDao.loginStatus(sDTO);
 			
 			mav.addObject("name", name);
-			mav.setViewName("member/login_ok");	
+			mav.setViewName("member/login_ok");
 		}else{
 			mav.addObject("msg", "아이디가 없거나 비밀번호가 잘못되었습니다.");
 			mav.addObject("loc", "loginForm.do");
@@ -200,9 +200,23 @@ public class MemberController {
 			mav.addObject("loc", "login.do");
 			mav.setViewName("member/memberMsg");
 		}
-		
-		
 		return mav;
 	}
 	
+	/**현재접속인원 수 파악*/
+	
+	@RequestMapping("/memberList.do")
+	public ModelAndView numStatus(){
+		
+		int count = statusDao.numStatus();
+	
+		List<StatusDTO> list = statusDao.listStatus();
+		
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("count",count);
+		mav.addObject("lists",list);
+		mav.setViewName("memberList");
+		return mav;
+	}
 }

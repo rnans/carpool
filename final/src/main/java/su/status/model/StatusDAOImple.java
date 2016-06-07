@@ -1,5 +1,7 @@
 package su.status.model;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class StatusDAOImple implements StatusDAO {
@@ -24,8 +26,13 @@ public class StatusDAOImple implements StatusDAO {
 		return count;
 	}
 	
-	public int numStatus() {
+	public int numStatus(){
 		int count = sqlMap.selectOne("numStatus");
 		return count;
+	}
+	
+	public List<StatusDTO> listStatus(){
+		List<StatusDTO> list = sqlMap.selectList("listStatus");
+		return list;
 	}
 }

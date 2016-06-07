@@ -9,7 +9,10 @@
   		<delete id="loginDel" parameterType="su.status.model.StatusDTO">
   			delete from loginstatus where userid=#{userid}
   		</delete>
-  		<select id="numStatus" parameterType="java.lang.Integer" resultType="su.status.model.StatusDTO">
+  		<select id="numStatus" parameterType="su.status.model.StatusDTO" resultType="java.lang.Integer">
   			select count(*) from loginstatus order by idx
+  		</select>
+  		<select id="listStatus" parameterType="String" resultType="su.status.model.StatusDTO">
+  			select userid from loginstatus order by idx
   		</select>
   </mapper>
