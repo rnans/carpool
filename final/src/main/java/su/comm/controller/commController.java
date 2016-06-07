@@ -1,20 +1,29 @@
 package su.comm.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import su.carinfo.model.carInfoDTO;
 import su.comm.model.CommBBSreDTO;
 import su.comm.model.carpoolinfoDTO;
 import su.comm.model.commBBSDTO;
 import su.comm.model.commDAO;
 import su.comm.model.scheDTO;
+import su.upload.model.UploadDTO;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
@@ -29,6 +38,31 @@ public class commController {
 	public void setCommDao(commDAO commDao) {
 		this.commDao = commDao;
 	}
+	
+	String root_path=null;
+	 String attach_path=null;
+	 
+	 private void copyInto(MultipartFile upload, HttpServletRequest request){
+	     System.out.println("올린파일명:"+upload.getOriginalFilename());
+	   
+	     //경로
+	    root_path = request.getSession().getServletContext().getRealPath("/");  
+	    attach_path = "img/";
+
+	     try {
+	      byte[] bytes=upload.getBytes();
+	      File outFile=
+	            new File(root_path+attach_path+upload.getOriginalFilename());
+	      FileOutputStream fos= 
+	                       new FileOutputStream(outFile);
+	      fos.write(bytes);
+	      fos.close();
+	   } catch (IOException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	   }
+	  }
+	 	
 
 	@RequestMapping("comm.do")
 	public ModelAndView comm(HttpSession session){
@@ -84,14 +118,46 @@ public class commController {
 		return "comm/commmsg";		
 	}	
 	
-	@RequestMapping("commWrite.do")
-	public ModelAndView commWrite(commBBSDTO dto){					
-		int count=commDao.commWrite(dto);		
-		String msg=count>0?"글 작성 성공":"글 작성 실패";
+	/*
+	 * @RequestMapping(value = "/carAdd.do", method = RequestMethod.POST)
+	public ModelAndView carAdd(@Param(value="check")String check,MultipartHttpServletRequest req, HttpServletRequest request, 
+			HttpSession session, UploadDTO dto,carInfoDTO dto2) {*/
+	
+	
+	@RequestMapping(value="commWrite.do", method = RequestMethod.POST)
+	public ModelAndView commWrite(commBBSDTO dto, MultipartHttpServletRequest req, HttpServletRequest request, 
+			HttpSession session,UploadDTO dto2){	
+		
+		
+		 MultipartFile upload=req.getFile("upload");		 
+		 copyInto(upload, request);
+		 
+		 String filename=upload.getOriginalFilename();
+		 
+		 String filetype="3";
+	     String filepath=root_path+attach_path+filename;
+		 String id=(String)session.getAttribute("sid");
+		 
+		 String poolname="test"; //수정요망
+		 
+		 dto2.setId(id); dto2.setFilename(filename); 
+		 dto2.setFilepath(filepath); dto2.setFiletype(filetype);
+		 dto2.setPoolname(poolname);
+		 
+		 int count=commDao.upload(dto2);
+		 
+		
+		int count2=commDao.commWrite(dto);		
+		String msg=count2>0?"글 작성 성공":"글 작성 실패";
+		String msg2=count>0?"업로드 성공":"업로드 실패";
+		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
+		mav.addObject("msg2", msg2);
 		mav.setViewName("comm/commBBSmsg");
 		return mav;
+		
+		
 		
 	}
 	
@@ -172,6 +238,20 @@ public class commController {
 		if(count>0){System.out.println("성공");}
 		return "comm/comm";
 		
+	}
+	
+	@RequestMapping("bbsupdate.do")
+	public String commupdate(String idx){
+		int count=commDao.bbsupdate(idx);
+		if(count>0){System.out.println("성공");}
+		return "redirect:comm.do";
+	}
+	
+	@RequestMapping("bbsupdate2.do")
+	public String commupdate2(String idx){
+		int count=commDao.bbsupdate2(idx);
+		if(count>0){System.out.println("성공");}
+		return "redirect:comm.do";
 	}
 	
 	

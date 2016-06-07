@@ -15,7 +15,7 @@ public class UploadDAOImple implements UploadDAO {
 
 	public int upload(UploadDTO dto) {
 		
-		int count=sqlMap.insert("imgupload",dto);
+		int count=sqlMap.insert("imguploadcomm",dto);
 		return count;					
 	}
 	 public List<UploadDTO> imgFind(String id){

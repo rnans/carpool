@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import su.upload.model.UploadDTO;
+
 
 public interface commDAO {	
 	
@@ -25,8 +27,12 @@ public interface commDAO {
 	
 	public int redel(String idx);
 	
-	
 	public List<commBBSDTO> bbsserch(String search); 
+	
+	public int bbsupdate(String idx);
+	public int bbsupdate2(String idx);
+	
+	public int upload(UploadDTO dto);
 	
 	
 	//uploadtest

@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import su.upload.model.UploadDTO;
+
 
 public class commDAOImple implements commDAO {
 	
@@ -81,7 +83,23 @@ public class commDAOImple implements commDAO {
 		return count;
 	}
 	
+	public int bbsupdate(String idx){
+		System.out.println(idx);
+		int count = sqlMap.update("bbsupdate", idx);
+		return count;		
+	}
 	
+	public int bbsupdate2(String idx){
+		System.out.println(idx);
+		int count = sqlMap.update("bbsupdate2", idx);
+		return count;		
+	}
+	
+	public int upload(UploadDTO dto) {
+		
+		int count=sqlMap.insert("imguploadcomm",dto);
+		return count;					
+	}
 	
 	
 }

@@ -73,4 +73,18 @@
 		select * from commbbs where poolname='test' and id like '%'||#{search}||'%' or content like '%'||#{search}||'%'
 	</select>
 	
+	<!-- notice -->
+	<update id="bbsupdate" parameterType="String">
+		update commbbs set notice=1 where idx=#{idx}	
+	</update>
+	<update id="bbsupdate2" parameterType="String">
+		update commbbs set notice=0 where idx=#{idx}	
+	</update>
+	<!-- /notice -->
+	
+	<insert id="imguploadcomm" parameterType="su.upload.model.UploadDTO">
+		insert into file_upload values(file_upload_idx.nextval, #{id},
+	        #{filename},  #{filetype},  #{filepath}, #{poolname})		
+	</insert>
+	
 </mapper>
