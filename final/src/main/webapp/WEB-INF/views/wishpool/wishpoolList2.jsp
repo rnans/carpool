@@ -58,7 +58,7 @@
 
 .content {
 	position: relative;
-	background: #b4bad2;
+	background: #E3DDDC;
 }
 
 /* Overlay */
@@ -586,7 +586,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<table border="1" cellspacing="0" align="center" class="table table-hover">
 					<thead>
 						<tr>
-							
+							<th><input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></th>
 							<th>번호</th>
 							<th>운전자글번호</th>
 							<th>이용자아이디</th>
@@ -604,13 +604,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			</tfoot>
 			<tbody>
 		<c:if test="${empty lists }">
-				<td colspan="5" align="center">
+				<td colspan="6" align="center">
 					등록된 즐겨찾기 가 없습니다.
 				</td>
 		</c:if>
 			<c:forEach var="dto" items="${lists }">
 				<tr align="center">
-					
+					<td><input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></td>
 					<td>${dto.idx }</td>
 					<td>${dto.aimidx}</td>
 					<td>${dto.userid}</td>
