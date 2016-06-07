@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
-       <link rel="stylesheet" href="./bootstrap/css/sb-admin.css">
-<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
-<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+       <link rel="stylesheet" href="/final02/bootstrap/css/sb-admin.css">
+<link rel="stylesheet" href="/final02/bootstrap/css/font-awesome.min.css">
+<link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <style>
 .navbar-nav {
     float: left;
@@ -177,7 +177,7 @@ table tr:hover td {
 		data-target="#demo5"><i class="fa fa-fw fa-arrows-v"></i> 커뮤니티관리 <i
 			class="fa fa-fw fa-caret-down"></i></a>
 		<ul id="demo5" class="collapse">
-			<li><a href="#">-커뮤니티관리</a></li>
+			<li><a href="memberCommList.do">-커뮤니티관리</a></li>
 		</ul></li>
 </ul>
 <!-- 
