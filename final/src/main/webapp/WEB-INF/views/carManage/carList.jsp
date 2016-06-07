@@ -58,7 +58,6 @@
     transition: 0.5s;
     }
 
-
 </style>
 <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="/final02/js/httpRequest.js"></script>
@@ -95,10 +94,12 @@ function checkMain(){
 </head>
 <body>
 <%@include file="../header.jsp"%>
-<div style="margin-top : 85px;">
+<div style="margin-top : 45px;">
 	<div class="container">
     <div class="row col-md-6 col-md-offset-2 custyle">
-    <table class="table table-striped custab" style="width: 900px;">
+    <p><MARQUEE direction=right><h2 style="margin-top : 65px; text-align: center; color: #00006F;">보다 즐거운 드라이브를 원한다면</h2></MARQUEE><br>
+    <MARQUEE direction=right><h2 style="text-align: center; color: #00006F;">지금 바로 차량등록 하러~~</h2></MARQUEE></p>
+    <table class="table table-striped custab" style="width: 800px; margin-top: 60px;">
 			<tr>
 				<th class="text-center">대표차량</th>
 				<th style="text-align: center;">차량사진</th>
