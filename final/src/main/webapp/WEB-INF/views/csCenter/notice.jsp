@@ -21,18 +21,17 @@ body {
 </div>
 <hr>
 <br>
-<div>
-<%@include file="csCenterSubMenu.jsp" %>
-</div>
-<div>
 
-<div class="container">
+<div>
+<div class="container" style=" margin: 0px 0px 0px 0px">
 	<div class="row">
-		<div class="col-md-9" >
-	<div class=".col-md-8" style="margin-left:200px; display: inline-block; width: 100%; ">	
+				
+<%@include file="csCenterSubMenu.jsp" %>
+	<div class=".col-md-10" style="margin-left:200px; display: inline-block; width: 70%; ">
+
+		<br><br><br><br>	
 	<h3 align="center">공지사항</h3>
-	<br><br>
-<table class="table table-list-search" style="margin: 0px auto;"> 
+<table class="table table-list-search"> 
 <thead>
 <tr>
    <th>번호</th>
@@ -72,6 +71,7 @@ body {
 </div>
 		</div>
 	</div>
+</div>
 </div>
 </div>
 <hr>

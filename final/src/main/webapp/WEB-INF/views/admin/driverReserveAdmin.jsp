@@ -253,13 +253,11 @@ function showResult(){//응답결과함수
 <div>헤더
 <%@include file="../header.jsp" %>
 </div>
-<div>
-<%@include file="../adHeader.jsp" %>
-</div>
+
 <hr>
 <div align="center" style="margin-left: 120px;">
 <h2>예약및결제관리</h2>
-<h4 >드라이버예약</h4> 
+<h4 >진행중인예약</h4> 
 <div id="content" align="center">
             <section class="links" >
                 <nav class="link-effect-3" id="link-effect-3" >
@@ -271,6 +269,7 @@ function showResult(){//응답결과함수
         </div>
    </div> 	
 <div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
+		<%@include file="../adHeader.jsp" %>
 <div class=".col-md-8" style="margin-left:170px; display: inline-block; width: 100%; ">
  <div style="">
 		<form id="custom-search-form" name="a"

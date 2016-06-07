@@ -25,16 +25,14 @@ $('.tr').css('display','none');
 
 <%@include file="../header.jsp" %>
 <hr>
-<%@include file="csCenterSubMenu.jsp" %>
 
-<div>
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-9" >
-		<div class=".col-md-8" style="margin-left:200px; display: inline-block; width: 100%; ">
-		<h3 align="center"> 이용안내</h3>
-		<br><br>
+ 	<h3 align="center"> 이용안내</h3>
+<div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
+	<div class="row" >
+		 <%@include file="csCenterSubMenu.jsp" %>
+		<div class=".col-md-7" style="margin-left:200px; width: 60%; ">
+
 <table class="table table-list-search" > 
 <tbody>
 <c:if test="${empty list }">
@@ -60,8 +58,8 @@ $('.tr').css('display','none');
 </div>
 		</div>
 	</div>
-</div>
- </div>
+
+
 <hr>
 풋부분
 </body>

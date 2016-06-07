@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+<link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 .button {
   display: inline-block;
@@ -93,9 +95,9 @@
 .link-effect-3 a:hover::before {
   max-width: 100%;
 }
-
 </style>
 </head>
+<script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
 var idx=null;
 function useguideDeleteForm(){
@@ -106,9 +108,6 @@ function useguideDeleteForm(){
 <body>
 <div>헤더
 <%@include file="../header.jsp" %>
-</div>
-<div>메뉴바
-<%@include file="../adHeader.jsp" %>
 </div>
 <hr>
 <div align="center" style="margin-left: 120px;">

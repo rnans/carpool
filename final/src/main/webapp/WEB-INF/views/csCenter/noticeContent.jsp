@@ -35,8 +35,8 @@
 <c:if test="${empty list }">
 <h3>글이 누락되었거나 사라졌습니다.</h3>
 </c:if>
-
-<div class=".col-md-8" style="margin-left:250px; display: inline-block; width: 100%; ">	
+<h3 align="center">공지사항</h3>
+<div class=".col-md-8" style="margin-left:450px; display: inline-block; width: 100%; ">	
 <div class="container" style="margin: 0px auto;">
 <div class="row">
 <div class="col-sm-8 contact-form" style="margin: 0px auto;">

@@ -26,15 +26,14 @@ $('.tr').css('display','none');
 <%@include file="../header.jsp" %>
 </div>
 <hr>
-<div>
-<%@include file="csCenterSubMenu.jsp" %>
-</div>
+
 
 <div>
 <div class="container">
 	<div class="row">
+	<%@include file="csCenterSubMenu.jsp" %>
 		<div class="col-md-9" >
-				<div class=".col-md-8" style="margin-left:200px; display: inline-block; width: 100%; ">		
+				<div class=".col-md-8" style="margin-left:200px; display: inline-block; width: 70%; margin-left: 250px;">		
 <h3 align="center"> 자주하는질문(Q&A)</h3>	
 <br><br>
 <table class="table table-list-search" > 

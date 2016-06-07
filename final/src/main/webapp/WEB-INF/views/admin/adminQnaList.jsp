@@ -107,9 +107,6 @@ function QnaDeleteForm(){
 <div>헤더
 <%@include file="../header.jsp" %>
 </div>
-<div>메뉴바
-<%@include file="../adHeader.jsp" %>
-</div>
 <hr>
 <div align="center" style="margin-left: 120px;">
  <h2 >고객센터관리</h2>
@@ -126,10 +123,9 @@ function QnaDeleteForm(){
             </section>
         </div>  
         </div>
+        
         <div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
-
 		<%@include file="../adHeader.jsp" %>
-
 <div class=".col-md-8" style="margin-left:100px; display: inline-block; width: 100%; ">
 <div>
   <div class="btn-group" role="group" aria-label="..." style="margin-left:1050px">
