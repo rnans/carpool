@@ -35,22 +35,14 @@
 </div>
 <div>메뉴바
 <%@include file="../adHeader.jsp" %>
-
 </div>
-<%-- <div>
-<fieldset>
-<legend>공지사항</legend>
-<form action="NoticeUpdate_ok.do">
-글번호:<input type="text" name="idx" value="${list[0].idx}" readonly="readonly" >
-작성날짜:<input type="text" name="writedate" value="${list[0].writedate}"><br>
-글쓴이:<input type="text" name="writer" value="${list[0].writer}"  > 
-조회수:<input type="text" name="readnum" value="${list[0].readnum}" readonly="readonly"><br>
-제목:<input type="text" name="subject" value="${list[0].subject}" > <br>
-<textarea name="content" cols="55" rows="25" > ${list[0].content}</textarea><br>
-<input type="submit" value="수정하기">
-<a href="adminNoticeList.do">이전페이지로</a> --%>
-<fieldset>
-<div class="container" style="margin: 0px auto;">
+<br>
+<div align="center">
+<h3>공지사항 글보기</h3>
+</div>
+<br>
+<div class=".col-md-8" style="margin-left:350px; display: inline-block; width: 100%; " >
+<div class="container" style="margin: 0px auto;" >
 <div class="row">
 <div class="col-sm-8 contact-form" style="margin: 0px auto;">
 <form action="NoticeUpdate_ok.do" id="contact" class="form" role="form" >
@@ -78,12 +70,12 @@
 <textarea class="form-control2" id="content" name="content" >${list[0].content }</textarea>
 <br />
 <br>
-<button class="btn btn-primary full-center" type="submit">수정하기</button>
+<button class="btn btn-primary pull-left" type="submit">수정하기</button>
 </form>
 </div>
 </div>
 </div>
-</fieldset>
+</div>
 
 
 <!-- </fieldset>

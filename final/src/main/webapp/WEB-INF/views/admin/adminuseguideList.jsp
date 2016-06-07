@@ -111,10 +111,10 @@ function useguideDeleteForm(){
 <%@include file="../adHeader.jsp" %>
 </div>
 <hr>
-<div align="center">
+<div align="center" style="margin-left: 120px;">
  <h2>고객센터관리</h2>
 <h4>이용안내</h4> 
-</div>
+
 <div id="content">
        
  
@@ -125,13 +125,20 @@ function useguideDeleteForm(){
                     <a href="adminOneAndOne.do" data-hover="3.1:1문의">3.1:1문의</a>
                     <a href="adminuseguideList.do" data-hover="4.이용안내">4.이용안내</a>
                 </nav>
-            </section>
-   
-           
+            </section>          
         </div>  
+        </div>
+    <div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
 
+		<%@include file="../adHeader.jsp" %>
+
+<div class=".col-md-8" style="margin-left:100px; display: inline-block; width: 100%; ">
 <div>
-<table border="1" style="margin: 0px auto; " >
+<div>
+  <div class="btn-group" role="group" aria-label="..." style="margin-left:1050px">
+  <a href="useguideWrite.do" class="btn btn-default">글쓰기</a>
+</div>
+<table border="1" style="margin-left: 120px; " >
 
 <thead>
 <tr>
@@ -173,7 +180,9 @@ function useguideDeleteForm(){
  </tr>
  </tfoot>
 </table>
-<a  class="button darkGrey" href="useguideWrite.do">글쓰기</a>
+</div>
+</div>
+</div>
 </div>
 <hr>
 <footer>푸터</footer>

@@ -111,10 +111,10 @@ function QnaDeleteForm(){
 <%@include file="../adHeader.jsp" %>
 </div>
 <hr>
-<div align="center">
- <h2 align="center">고객센터관리</h2>
-<h4 align="center">Q&A</h4> 
-</div>
+<div align="center" style="margin-left: 120px;">
+ <h2 >고객센터관리</h2>
+<h4 >Q&A</h4> 
+
 <div id="content" >
             <section class="links" >
                 <nav class="link-effect-3" id="link-effect-3">
@@ -125,9 +125,17 @@ function QnaDeleteForm(){
                 </nav>
             </section>
         </div>  
+        </div>
+        <div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
 
+		<%@include file="../adHeader.jsp" %>
+
+<div class=".col-md-8" style="margin-left:100px; display: inline-block; width: 100%; ">
 <div>
-<table border="1" style="margin: 0px auto; " >
+  <div class="btn-group" role="group" aria-label="..." style="margin-left:1050px">
+  <a href="qnaWrite.do" class="btn btn-default">글쓰기</a>
+</div>
+<table border="1" style="margin-left: 120px; " >
 <thead>
 <tr>
    <th>번호</th>
@@ -170,7 +178,9 @@ function QnaDeleteForm(){
  </tr>
  </tfoot>
 </table>
-<a  class="button darkGrey" href="qnaWrite.do">글쓰기</a>
+
+</div>
+</div>
 </div>
 <hr>
 <footer>푸터</footer>

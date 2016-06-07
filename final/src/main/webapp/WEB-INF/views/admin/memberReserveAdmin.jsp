@@ -63,20 +63,22 @@ function adminMemberReserveDel(){
 <div>메뉴바
 <%@include file="../adHeader.jsp" %>
 </div>
-<div  align="center">
+
+        <div class=".col-md-8" style="margin-left:110px; display: inline-block; width: 100%; ">
+        <div  align="center">
 <h2>예약 및 결제관리</h2>
 <h4>사용자예약</h4> 
 </div>
 <div id="content">
-            <section class="links">
+            <div class="links">
                 <nav class="link-effect-3" id="link-effect-3">
-                    <a href="#" data-hover="1.진행중인예약">1.진행중인예약</a>
-                    <a href="driverReserveList.do" data-hover="2.드라이버예약">2.드라이버예약</a>
-                    <a href="memberReserveList.do" data-hover="3.사용자예약">3.사용자예약</a>
-                    <a href="payMentList.do" data-hover="4.결제관리">4.결제관리</a>
+                    <a href="driverReserveList.do" data-hover="1.진행중인예약">1.진행중인예약</a>
+                    <a href="memberReserveList.do" data-hover="2.사용자예약">2.사용자예약</a>
+                    <a href="payMentList.do" data-hover="3.결제관리">3.결제관리</a>
                 </nav>
-            </section>   
+            </div>   
         </div>  
+        
 <div>
 		<table border="1" style="margin: 0px auto;" width="800" height="150" >
 			<thead>
@@ -120,6 +122,7 @@ function adminMemberReserveDel(){
 				</tr>
 			</tfoot>
 		</table>
+</div>
 </div>
 <footer>풋</footer>
 </body>

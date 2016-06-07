@@ -16,14 +16,15 @@
 <div>메뉴바
 <%@include file="../adHeader.jsp" %>
 </div>
-
-<div>
+<br><br><br><br><br><br>
+<div align="center">
 <h3>이용안내</h3>
+</div>
+<br><br>
 <div class="container" style="margin: 0px auto;">
 <div class="row">
 
-    
-<div class="col-sm-8 contact-form" style="margin: 0px auto;">
+<div class="col-sm-8 contact-form" style="margin-left:230px;">
 <form action="useguideUpdate_ok.do" id="contact" class="form" role="form" >
 <div class="row">
 <div class="col-xs-6 col-md-6 form-group">
@@ -43,7 +44,7 @@
 </div>
 </div>
 </div>
-</div>
+
 
 <hr>
 

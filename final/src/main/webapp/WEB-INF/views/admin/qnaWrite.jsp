@@ -10,14 +10,20 @@
 
 </head>
 <body>
-<%@include file="../adHeader.jsp" %>
+<div>
 <%@include file="../header.jsp" %>
+</div>
+<div>
+<%@include file="../adHeader.jsp" %>
+</div>
+<br><br><br><br><br><br>
+<div align="center">
 <h3>Q&A 글쓰기</h3>
+</div>
+<br><br><br><br>
 <div class="container" style="margin: 0px auto;">
 <div class="row">
-
-    
-<div class="col-sm-8 contact-form" style="margin: 0px auto;">
+<div class="col-sm-8 contact-form" style="margin-left:230px;">
 <form action="qnaWrite_ok.do" id="contact" class="form" role="form" >
 <div class="row">
 <div class="col-xs-6 col-md-6 form-group">

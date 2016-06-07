@@ -20,14 +20,18 @@ body {
 <%@include file="../header.jsp" %>
 </div>
 <hr>
+<br>
 <div>
 <%@include file="csCenterSubMenu.jsp" %>
 </div>
 <div>
-<h3 align="center">공지사항</h3>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-9" >
+	<div class=".col-md-8" style="margin-left:200px; display: inline-block; width: 100%; ">	
+	<h3 align="center">공지사항</h3>
+	<br><br>
 <table class="table table-list-search" style="margin: 0px auto;"> 
 <thead>
 <tr>
@@ -68,6 +72,7 @@ body {
 </div>
 		</div>
 	</div>
+</div>
 </div>
 <hr>
 풋부분

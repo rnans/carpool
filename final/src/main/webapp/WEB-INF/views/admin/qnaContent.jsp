@@ -10,13 +10,16 @@
 
 </head>
 <body>
-<div>헤더부분</div>
-<section>
+<div><%@include file="../header.jsp" %></div>
+<div>
 	<%@include file="../adHeader.jsp" %>
-</section>
-
-
-<h3>QnA</h3>
+</div>
+<br><br><br><br><br>
+<div align="center">
+<h3>QnA글보기</h3>
+</div>
+<br>
+<div class=".col-md-8" style="margin-left:230px; display: inline-block; width: 100%; " >
 <div class="container" style="margin: 0px auto;">
 <div class="row">
     
@@ -40,9 +43,8 @@
 </div>
 </div>
 </div>
-
+</div>
 <hr>
-
 
 <div>풋부분</div>
 </body>

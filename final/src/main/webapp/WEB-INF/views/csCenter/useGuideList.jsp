@@ -26,12 +26,15 @@ $('.tr').css('display','none');
 <%@include file="../header.jsp" %>
 <hr>
 <%@include file="csCenterSubMenu.jsp" %>
- <hr>
+
 <div>
-<h3> 이용안내</h3>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-9" >
+		<div class=".col-md-8" style="margin-left:200px; display: inline-block; width: 100%; ">
+		<h3 align="center"> 이용안내</h3>
+		<br><br>
 <table class="table table-list-search" > 
 <tbody>
 <c:if test="${empty list }">
@@ -58,7 +61,7 @@ $('.tr').css('display','none');
 		</div>
 	</div>
 </div>
- 
+ </div>
 <hr>
 풋부분
 </body>

@@ -10,13 +10,21 @@
 
 </head>
 <body>
-헤더부분
+<div>
+<%@include file="../header.jsp" %>
+</div>
 <hr>
+<div>
+	<%@include file="../adHeader.jsp" %>
+		
+</div>
+<br><br>
+<div align="center">
+<h3>1:1문의 답변 달기</h3>
+</div>
 <div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
-	<div class=".col-md-4 " style="position: absolute ; display: inline-block; height:150px;top:150px ;left:0px;">
-		<%@include file="../adHeader.jsp" %>
-	</div>
-	<div class=".col-md-8" style="margin-left:350px; display: inline-block; width: 100%;">
+	
+	<div class=".col-md-8" style="margin-left:450px; display: inline-block; width: 100%;">
 	<div class="container">
 	<div class="row">
 	<div class="col-sm-8 contact-form" style="margin: 0px auto;">
@@ -41,7 +49,7 @@
 	<br>
 	답변<textarea class="form-control" id="answer" name="answer" rows="5">${list[0].answer }</textarea>
 	<br />
-	<button class="btn btn-primary pull-right" type="submit">수정하기</button>
+	<button class="btn btn-primary pull-right" type="submit">답변달기</button>
 	<input type="reset" value="다시작성" class="btn btn-primary pull-right" >
 	</form>
 	</div>

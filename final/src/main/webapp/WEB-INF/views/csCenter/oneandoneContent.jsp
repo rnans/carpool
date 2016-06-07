@@ -28,13 +28,13 @@ textarea {
 <c:if test="${empty list }">
 <h3>글이 누락되었거나 사라졌습니다.</h3>
 </c:if>
-
-<h3>1:1문의내역</h3>
+<div class=".col-md-8" style="margin-left:450px; display: inline-block; width: 100%; ">	
 <div class="container" style="margin: 0px auto;">
 <div class="row">
 <div class="col-sm-8 contact-form" style="margin: 0px auto;">
 <div class="row">
 <div class="col-xs-7 col-md-7 form-group">
+<h3 align="left">   1:1문의내역</h3>
 글번호<input class="form-control" id="idx" name="idx"  value="${list[0].idx }"type="text" required autofocus readonly="readonly"/>
 </div>
 <div class="col-xs-7 col-md-7 form-group">
@@ -61,7 +61,7 @@ textarea {
 </div>
 </div>
 </div>
-
+</div>
 <hr>
 
 <div>풋</div>

@@ -105,11 +105,15 @@ div {
 <div>
 <%@include file="csCenterSubMenu.jsp" %>
 </div>
-<h3 align="left">1:1문의</h3>
+
 <div class="container">
 
 	<div class="row">
 		<div class="col-md-9" >
+		<div class=".col-md-8" style="margin-left:200px; display: inline-block; width: 100%; ">	
+		<h3 align="center">1:1문의</h3>
+		<br><br>
+		<div>
 <table class="table table-list-search" > 
 <thead>
 <tr>
@@ -151,13 +155,14 @@ div {
  </tr>
  </tfoot>
 </table>
-
-<a href="oneAndOneWriteForm.do" class="button white">1:1문의하기</a> 
+	 <div class="btn-group" role="group" aria-label="..." style="margin-left:900px">
+  <a href="oneAndOneWriteForm.do" class="btn btn-default">문의하기</a>
+</div>
 		</div>
 	</div>
-	
+	</div>
 </div>
-
+</div>
 <hr>
 풋부분
 </body>

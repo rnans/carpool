@@ -140,7 +140,7 @@
 }
 #custom-search-form {
 	margin: 0;
-	margin-top: 5px;
+	
 	padding: 0;
 }
 #custom-search-form .search-query {
@@ -168,6 +168,7 @@
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+	right: 50px;
 }
 .search-query:focus+button {
 	z-index: 3;
@@ -253,16 +254,11 @@ style type ="text/css">.links {
 <div>헤더
 <%@include file="../header.jsp" %>
 </div>
-<div>메뉴바
-<%@include file="../adHeader.jsp" %>
-</div>
-<div align="center">
+<hr>
+<div align="center" style="margin-left: 120px;">
 <h2 align="center">고객센터관리</h2>
 <h4 align="center">1:1문의</h4> 
-</div>
-<br>
-<br>
-<div id="content">
+<div id="content" align="center">
             <section class="links" >
                 <nav class="link-effect-3" id="link-effect-3" >
                     <a href="adminNoticeList.do" data-hover="1.공지사항">1.공지사항</a>
@@ -271,35 +267,43 @@ style type ="text/css">.links {
                     <a href="adminuseguideList.do" data-hover="4.이용안내">4.이용안내</a>
                 </nav>
             </section>       
-        </div>  
-
- <div class="container">
-<div id="span" style="width:1270px;">
-   <div class="row">
-        <div class="span12" >
-            <form id="custom-search-form" name="a" class="form-search form-horizontal" action="oneandoneSearch.do">
-                <div class="input-append span12">
-					<section class="container"  style="float: right; display: inline-block; width: 320px; height: 28px;" >
-						<div class="dropdown2" style="width: 100px;border: 0; top: 8px;">
-								<select name="select" class="dropdown-select">
-									<option value="writer">작성자</option>
-									<option value="type">문의유형</option>
-									<option value="status">답변현황</option>
-								</select>
-							</div>
-							<input type="text" class="search-query" id="search" name="search" style="width: 150px;margin: 0px 0px 0px 0px;padding: 0px 0px;">
-                    <button type="button" class="btn" onclick="show();" ><i class="main-icon" data-type="img" > 
-                    <img src="http://image005.flaticon.com/28/svg/34/34097.svg" width="20" height="20" alt="Magnifier tool free icon" title="Magnifier tool free icon"></i></button> 
-					</section>	                
-                </div>
-            </form>
         </div>
-   </div>
- </div>
- 	
+        </div> 	
+<div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
+<%@include file="../adHeader.jsp" %>
+<div class=".col-md-8" style="margin-left:170px; display: inline-block; width: 100%; ">
+ <div style="">
+		<form id="custom-search-form" name="a"
+			class="form-search form-horizontal" action="oneandoneSearch.do">
 
-<div id="spans">
-	<table border="1" style="margin: 0px auto; ">
+			<div class="container"
+				style="float: right; margin-right:40px; margin-bottom:10px; display: inline-block; width: 320px; height: 28px;">
+				<div class="dropdown2" style=" width: 100px; border: 0; top: 8px;">
+
+					<select name="select" style="width: 130px;"
+						class="dropdown-select">
+						<option value="writer">작성자</option>
+						<option value="type">문의유형</option>
+						<option value="status">답변현황</option>
+					</select>
+				</div>
+
+				<input type="text" class="search-query" id="search" name="search"
+					style="width: 150px; padding: 0px 0px;">
+				<button type="button" class="btn" onclick="show();">
+					<i class="main-icon" data-type="img"> <img
+						src="http://image005.flaticon.com/28/svg/34/34097.svg"
+						width="20" height="20" alt="Magnifier tool free icon"
+						title="Magnifier tool free icon"></i>
+				</button>
+
+
+			</div>
+
+		</form>
+	</div>
+<div id="spans" >
+	<table border="1" style="margin-left: 50px;" >
 	<thead>
 	<tr>
 	   <th>번호</th>
@@ -344,8 +348,8 @@ style type ="text/css">.links {
 	</table>
 </div>
 </div>
+</div>
 
- 
 <hr>
 풋부분
 </body>

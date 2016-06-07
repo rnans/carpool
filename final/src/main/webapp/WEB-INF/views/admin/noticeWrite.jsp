@@ -17,14 +17,20 @@
 </style>
 </head>
 <body>
-<%@include file="../adHeader.jsp" %>
+<div>
 <%@include file="../header.jsp" %>
-<div>헤더</div>
+</div>
+<div>
+<%@include file="../adHeader.jsp" %>
+</div>
+<br><br><br>
+<div align="center">
 <h3>공지사항 글쓰기</h3>
+</div>
 <div class="container" style="margin: 0px auto;">
 <div class="row">
     
-<div class="col-sm-8 contact-form" style="margin: 0px auto;">
+<div class="col-sm-8 contact-form" style="margin-left: 350px;">
 <form action="noticeWrite.do" id="contact" class="form" role="form" >
 <div class="row">
 <div class="col-xs-7 col-md-7 form-group">

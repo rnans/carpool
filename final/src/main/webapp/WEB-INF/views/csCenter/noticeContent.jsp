@@ -36,7 +36,7 @@
 <h3>글이 누락되었거나 사라졌습니다.</h3>
 </c:if>
 
-
+<div class=".col-md-8" style="margin-left:250px; display: inline-block; width: 100%; ">	
 <div class="container" style="margin: 0px auto;">
 <div class="row">
 <div class="col-sm-8 contact-form" style="margin: 0px auto;">
@@ -64,6 +64,7 @@
 <textarea class="form-control2" id="content" name="content" >${list[0].content }</textarea>
 <br />
 <a href="csCenter.do"><button class="btn btn-primary full-center" >목록으로</button></a>
+</div>
 </div>
 </div>
 </div>

@@ -10,20 +10,22 @@
 
 </head>
 <body>
-<div>헤더
+<div>
 <%@include file="../header.jsp" %>
 </div>
-<div>메뉴바
+<div>
 <%@include file="../adHeader.jsp" %>
 </div>
-<hr>
-<div>
+<br><br><br><br><br><br><br><br>
+<div align="center">
 <h3>이용안내 글쓰기</h3>
+<br><br><br>
+</div>
 <div class="container" style="margin: 0px auto;">
 <div class="row">
 
     
-<div class="col-sm-8 contact-form" style="margin: 0px auto;">
+<div class="col-sm-8 contact-form" style="margin-left:250px;">
 <form action="useguideWrite_ok.do" id="contact" class="form" role="form" >
 <div class="row">
 <div class="col-xs-6 col-md-6 form-group">
@@ -39,7 +41,7 @@
 </div>
 </div>
 </div>
-</div>
+
 
 
 <hr>
