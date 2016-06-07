@@ -47,7 +47,7 @@ table th {
 	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
 }
 table th:first-child {
-	text-align: left;
+	text-align: center;
 	padding-left:20px;
 }
 table tr:first-child th:first-child {
@@ -66,16 +66,17 @@ table tr {
 }
 table td:first-child {
 	
-	padding-left:20px;
+	padding-left:10px;
 	border-left: 0;
+    text-align: center;
 }
 table td {
-	padding:10px;
+	padding:8px;
 	border-top: 1px solid #ffffff;
 	border-bottom:1px solid #e0e0e0;
 	border-left: 0;
     border-right: 0;
-    text-align: center;
+    margin : 0px auto;
 	background: #fafafa;
 	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
 	background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
@@ -116,6 +117,8 @@ table tr:hover td {
 	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
 }
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+
 </style>
 
 <header>
