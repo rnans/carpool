@@ -96,7 +96,7 @@ public class PayController {
 			cardImg="img/woori.png";
 			pDTO.setCardImg(cardImg);
 		}else{
-			cardImg="img/noimage.png";
+			cardImg="img/noimg.png";
 			pDTO.setCardImg(cardImg);
 		}
 		System.out.println(cardImg);
