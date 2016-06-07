@@ -22,10 +22,13 @@ $('.tr').css('display','none');
 </script> 
 
 <body>
-
+<div>
 <%@include file="../header.jsp" %>
+</div>
+<hr>
+<div>
 <%@include file="csCenterSubMenu.jsp" %>
- <hr>
+</div>
 
 <h3> Q&A</h3>
 <div>

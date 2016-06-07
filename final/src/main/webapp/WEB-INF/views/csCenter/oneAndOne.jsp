@@ -98,10 +98,13 @@ div {
 </style>
 </head>
 <body>
+<div>
 <%@include file="../header.jsp" %>
-<%@include file="csCenterSubMenu.jsp" %>
-<div>헤더부분 </div>
+</div>
 <hr>
+<div>
+<%@include file="csCenterSubMenu.jsp" %>
+</div>
 <h3 align="left">1:1문의</h3>
 <div class="container">
 

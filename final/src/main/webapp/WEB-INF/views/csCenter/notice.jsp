@@ -16,16 +16,19 @@ body {
 </style>
 </head>
 <body>
-
+<div>
 <%@include file="../header.jsp" %>
-<%@include file="csCenterSubMenu.jsp" %>
+</div>
 <hr>
 <div>
-<h3 align="left">공지사항</h3>
+<%@include file="csCenterSubMenu.jsp" %>
+</div>
+<div>
+<h3 align="center">공지사항</h3>
 <div class="container">
 	<div class="row">
 		<div class="col-md-9" >
-<table class="table table-list-search" > 
+<table class="table table-list-search" style="margin: 0px auto;"> 
 <thead>
 <tr>
    <th>번호</th>
