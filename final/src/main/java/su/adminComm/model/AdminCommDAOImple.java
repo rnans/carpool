@@ -7,6 +7,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import su.comm.model.carpoolinfoDTO;
+import su.pool.model.PoolDTO;
 
 public class AdminCommDAOImple implements AdminCommDAO {
 
@@ -28,6 +29,17 @@ public class AdminCommDAOImple implements AdminCommDAO {
 		map.put("endnum", endnum);
 		
 		List<carpoolinfoDTO> list = sqlMap.selectList("memberCommList", map);
+		return list;
+	}
+	
+	public List<carpoolinfoDTO> commList2() {
+		
+		List<carpoolinfoDTO> list = sqlMap.selectList("memberCommList2");
+		return list;
+	}
+	
+	public List<PoolDTO> commList3() {
+		List<PoolDTO> list = sqlMap.selectList("memberCommList3");
 		return list;
 	}
 	
