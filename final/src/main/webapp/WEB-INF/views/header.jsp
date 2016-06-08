@@ -221,7 +221,7 @@ function pwFindCheck(){
 										</label>
 								</span> 
 								<span class="input input--hoshi"> 
-									<input class="input__field input__field--hoshi" type="text" id="phonenum" name="phonenum"> 
+									<input class="input__field input__field--hoshi" type="text" id="phonenum" name="phonenum" onkeydown="javascript:onEnterSubmit2();"> 
 										<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="phonenum"> 
 											<span class="input__label-content input__label-content--hoshi">Phonenum</span>
 										</label>
@@ -250,7 +250,7 @@ function pwFindCheck(){
 										</label>
 								</span> 
 								<span class="input input--hoshi"> 
-									<input class="input__field input__field--hoshi" type="text" id="phonenum" name="phonenum"> 
+									<input class="input__field input__field--hoshi" type="text" id="phonenum" name="phonenum" onkeydown="javascript:onEnterSubmit3();"> 
 										<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="phonenum"> 
 											<span class="input__label-content input__label-content--hoshi">Phonenum</span>
 										</label>
@@ -282,6 +282,20 @@ function pwFindCheck(){
 			var keyCode = window.event.keyCode;
 			if(keyCode==13){
 				login.submit();
+			}
+		}
+		
+		function onEnterSubmit2(){
+			var keyCode = window.event.keyCode;
+			if(keyCode==13){
+				idfind.submit();
+			}
+		}
+		
+		function onEnterSubmit3(){
+			var keyCode = window.event.keyCode;
+			if(keyCode==13){
+				pwfind.submit();
 			}
 		}
 	
