@@ -113,10 +113,11 @@ public class MessageController {
 	*/
 	
 	@RequestMapping("/messageWrite.do")
-	public ModelAndView mWrite(HttpSession session){
+	public ModelAndView mWrite(HttpSession session,
+			@RequestParam("uid")String rid){
 		//@RequestParam("rid")String rid추가
 		
-		String rid = "admin";
+		//String rid = "admin";
 		String userid = (String)session.getAttribute("sid");
 		System.out.println("userid="+userid);
 		ModelAndView mav = new ModelAndView();
