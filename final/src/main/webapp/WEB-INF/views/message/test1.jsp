@@ -48,7 +48,7 @@ function messageDel(){
 					<td><a href="javascript: window.open('${messageContent }','messageContent','width=500 height=400')">${list.content}</a></td>
 				
 					<td>${list.senddate }</td>
-					<td>${list.reading}</td>		
+					<td>${list.reading}</td>
 					<td><input type="button" value="글삭제" onclick="javascript:idx='${list.idx}';messageDel();"></td>
 				</tr>
 				</c:forEach>

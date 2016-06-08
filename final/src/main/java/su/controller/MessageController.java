@@ -20,14 +20,13 @@ public class MessageController {
 	@Autowired
 	public MessageDAO messageDao;
 
-	
-	 public MessageDAO getMessageDao() {
+	 public MessageDAO getMessageDao(){
 		return messageDao;
 	}
-	public void setMessageDao(MessageDAO messageDao) {
+	public void setMessageDao(MessageDAO messageDao){
 		this.messageDao = messageDao;
 	}
-	@RequestMapping("/messageSend.do")
+/*	@RequestMapping("/messageSend.do")
 	 public ModelAndView messageSend(HttpServletRequest req){
 		 String id = req.getParameter("userid");
 		 ModelAndView mav=new ModelAndView();
@@ -63,6 +62,7 @@ public class MessageController {
 			mav.setViewName("message/test1");
 			return mav;
 		}
+	 
 	 @RequestMapping("/messageContent.do")
 	 public ModelAndView messageContent(HttpServletRequest req){
 		 int idx=Integer.parseInt(req.getParameter("idx"));
@@ -110,8 +110,55 @@ public class MessageController {
 		mav.setViewName("message/messageMsg");
 		return mav;
 	}
+	*/
+	
+	@RequestMapping("/messageWrite.do")
+	public ModelAndView mWrite(HttpSession session){
+		//@RequestParam("rid")String rid추가
+		
+		String rid = "admin";
+		String userid = (String)session.getAttribute("sid");
+		System.out.println("userid="+userid);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("userid", userid);
+		mav.addObject("rid",rid);
+		mav.setViewName("message/mWrite");
+		return mav;
+	}
 	
 	
-		 
+	@RequestMapping("/messageSend.do")
+	public ModelAndView mSend(MessageDTO mDto){
+		
+		int result=messageDao.messageSend(mDto);
+		
+		String msg = result>0?"메시지전송성공":"메시지전송실패";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg",msg);
+		mav.setViewName("message/messageMsg");
+		return mav;
+	}
+	
+	@RequestMapping("/messageList.do")
+	public ModelAndView mList(@RequestParam(value="cp",defaultValue="1")int cp,HttpSession session){
+		
+		String userid = (String)session.getAttribute("sid");
+		
+		int totalCnt=messageDao.messageTotalCnt();
+		int listSize=10;
+		int pageSize=5;
+		int messageNumber=messageDao.messageNumber(userid);
+		List<MessageDTO> list=messageDao.messageShow(cp,listSize,userid);
+		
+		String pageStr=
+		su.Page.SuPage.makePage("messageShow.do", totalCnt, listSize, pageSize, cp);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("lists",list);
+		//mav.addObject("messageNumber",messageNumber);
+		mav.setViewName("message/mList");
+		
+		return mav;
+	}
 }
 

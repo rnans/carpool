@@ -11,7 +11,7 @@
     select * from message where receiveid=#{sid}
    </select>
     	<select id="messageTotalCnt" resultType="int">
-		select count(*) from message 
+		select count(*) from message
 	</select>
 	<select id="messageContent" resultType="su.message.model.MessageDTO">
 	 select * from message where idx=#{idx}
