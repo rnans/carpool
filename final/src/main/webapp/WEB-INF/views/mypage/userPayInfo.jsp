@@ -47,10 +47,7 @@ header
 <hr>
 <h2>결제정보</h2>
 		
-	<!-- 	<div id="div1">
-		<img src="1234.jpg" border="100"><br>
-		
-		</div>-->
+
 	
 	<div id="div2">
 			<legend>회원결제정보</legend>

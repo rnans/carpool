@@ -57,12 +57,7 @@ window.alert('${msg}');
 header
 <hr>
 <h2>결제정보</h2>
-		
-	<!-- 	<div id="div1">
-		<img src="1234.jpg" border="100"><br>
-		
-		</div>-->
-	
+
 	<div id="div2">
 			<legend>회원결제등록</legend>
 			<form name="userPayAdd" action="userPayAdd.do" method="post">
@@ -112,6 +107,9 @@ header
 				</table>
 
 			</form>
+			
+			
+			
 	</div>
 	<div id="div3">
 		<fieldset>

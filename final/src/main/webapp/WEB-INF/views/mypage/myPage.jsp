@@ -23,7 +23,7 @@
 	height: 350px;
 	margin: 5px;
 	margin-left:px;
-	background-color:gray;
+	color:;
 }
 #div3{
 	position:;
@@ -48,6 +48,7 @@
 <body id="bb">
 <%@ include file="../header.jsp" %>
 <hr>
+<h3><a href="myPage.do">메뉴</a></h3>
 <h2>마이페이지01</h2>
 	
 	

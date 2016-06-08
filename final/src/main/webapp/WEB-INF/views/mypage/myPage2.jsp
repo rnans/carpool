@@ -80,7 +80,7 @@
 
 /* Menu Button */
 .menu-button {
-	position: fixed;
+	position: absolute;
 	z-index: 1000;
 	margin: 2em;
 	padding: 0;
@@ -530,10 +530,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 .element {
   .center-block();
 } 
-.center-block{
-	position: relative;
-	left: 505px;
-}
+
 #my{
 	color:white;
 }
@@ -582,6 +579,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
+					</header>	
 						<div class="codrops-links">
 	
 			<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="none">
@@ -630,7 +628,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 							
 						
 						</nav>
-					</header>
+					
 					<!-- Related demos -->
 					<section class="related">
 					

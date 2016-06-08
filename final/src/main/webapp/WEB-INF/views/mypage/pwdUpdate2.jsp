@@ -37,6 +37,11 @@
 .Mycontainer {
 	background: #373a47;
 	position:  relative;
+	
+	
+	width:100%;
+	height:100%;
+	overflow: scroll;
 }
 
 .menu-wrap a {
@@ -57,7 +62,11 @@
 
 .content {
 	position: relative;
+	width:100%;
+	height:100%;
 	background: #E3DDDC;
+	
+	
 }
 
 /* Overlay */
@@ -79,7 +88,7 @@
 
 /* Menu Button */
 .menu-button {
-	position: fixed;
+	position: absolute;
 	z-index: 1000;
 	margin: 2em;
 	padding: 0;
@@ -316,44 +325,6 @@ section {
 	color: #fffce1;
 }
 
-/* Related demos */
-.related {
-	margin-top: 5em;
-	padding: 0 3em 5em;
-}
-
-.related p {
-	font-size: 1.5em;
-	font-weight: 700;
-}
-
-.related > a {
-	display: inline-block;
-	text-align: center;
-	margin: 20px 10px;
-	padding: 25px;
-	border-radius: 35px/200px;
-	background: #fffce1;
-	max-width: 100%;
-}
-
-.related a img {
-	max-width: 100%;
-	opacity: 0.8;
-	border-radius: 20px/100px;
-}
-
-.related a:hover img,
-.related a:active img {
-	opacity: 1;
-}
-
-.related a h3 {
-	margin: 0;
-	padding: 0.5em 0.75em 0.3em;
-	max-width: 300px;
-	text-align: left;
-}
 
 body #cdawrap {
 	top: auto;
@@ -398,7 +369,6 @@ body #cdawrap {
 }
 
 
-article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}body{margin:0;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;margin:0.67em 0;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:bold;}dfn{font-style:italic;}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em;}pre{white-space:pre-wrap;}q{quotes:"\201C" "\201D" "\2018" "\2019";}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-0.5em;}sub{bottom:-0.25em;}img{border:0;}svg:not(:root){overflow:hidden;}figure{margin:0;}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}legend{border:0;padding:0;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,select{text-transform:none;}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}button[disabled],html input[disabled]{cursor:default;}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}
 
 #cdawrap {
 	text-align: center; 
@@ -514,7 +484,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 	body #cdawrap { display: none; }
 }
 
-
+#my{
+	color:white;
+}
 </style>
 
 
@@ -542,7 +514,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="#"><i class="fa fa-fw fa-star-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -552,13 +524,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</nav>
 				<nav class="menu-side">
 					<a href="myPage.do">마이페이지</a>
-					<a href="notiSetting.do">알람설정</a>
+					<a href="notiSetting.do?id=${sessionScope.sid}">알람설정</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
-					<a href="userPayInfo.do">결제정보</a>
+					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
 					<a href="#">이용내역</a>
-					<a href="#">등록글</a>
-					<a href="#">평가글</a>
+					<a href="reservationList.do">등록글</a>
+					<a href="rateView.do">평가글</a>
 					<a href="memberleave.do">회원탈퇴</a>
 				</nav>
 			</div>
@@ -566,6 +538,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
+					</header>
 						<div class="codrops-links">
 							
 	<div id="div2">
@@ -575,12 +548,15 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<legend> ${sid} 님 비밀번호변경</legend>
 					
 					<input type="hidden" name="id" value="${dto.id }">
-						<ul>
-							<li>현재 비밀번호:<input type="text" name="nowpwd" value="${dto.pwd}"></li>
-							<li>새 비밀번호:<input type="password" name="pwd" ></li>
-							<li>비밀번호 확인:<input type="password" name="pwd2" ></li>
-						</ul>
-						<p>
+											
+					<div class="row" id="cm">
+					  <div class="col-xs-4">
+					    pwd<input type="text" class="form-control" name="nowpwd" value="${dto.pwd}">
+					    new pwd<input type="password" class="form-control" name="pwd">
+					    pwd<input type="password" class="form-control" name="pwd2"><br>
+					  </div>
+					</div>				
+						<p id="cm">
 							<input type="reset" name="reset" value="취소">
 							<input type="submit" name="update" value="비밀번호변경">
 						</p>
@@ -597,7 +573,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 							
 						
 					</nav>
-					</header>
+					
 					<!-- Related demos -->
 					<section class="related">
 					

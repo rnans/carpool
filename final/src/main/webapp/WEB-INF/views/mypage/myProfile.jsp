@@ -27,7 +27,7 @@
 	height: 300px;
 	margin: 5px;
 	margin-left:0px;
-	background-color:gray;
+	background-color:;
 }
 #div3{
 	float:right;

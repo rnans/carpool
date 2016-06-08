@@ -80,7 +80,7 @@
 
 /* Menu Button */
 .menu-button {
-	position: fixed;
+	position: absolute;
 	z-index: 1000;
 	margin: 2em;
 	padding: 0;
@@ -549,7 +549,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 		<div class="upicontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span> 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${sessionScope.sname} 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -559,13 +559,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</nav>
 				<nav class="menu-side">
 					<a href="myPage.do">마이페이지</a>
-					<a href="notiSetting.do">알람설정</a>
+					<a href="notiSetting.do?id=${sessionScope.sid}">알람설정</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
-					<a href="userPayInfo.do">결제정보</a>
+					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
 					<a href="#">이용내역</a>
-					<a href="#">등록글</a>
-					<a href="#">평가글</a>
+					<a href="reservationList.do">등록글</a>
+					<a href="rateView.do">평가글</a>
 					<a href="memberleave.do">회원탈퇴</a>
 				</nav>
 			</div>
@@ -583,8 +583,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 	
 			<legend>등록된  카드정보</legend>
 			<form name="myprofile">
-				<table border="1" cellspacing="0" align="center" class="table table-striped">
-					<thead>
+				<table style="" class="table table-striped">
+					<thead style="">
 						<tr>
 							<th>번호</th>
 							<th>카드아이디</th>
@@ -616,10 +616,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<a href="cardUpdate.do?idx=${dto.idx}"><input type="button" value="수정"></a>
 					<a href="cardDel.do?idx=${dto.idx}"><input type="button" value="삭제"></a>
 					</td>
-						</tr>
-						</c:forEach>
+				</tr>
+			</c:forEach>
 						<tr>
-						<td colspan="7" align="right"><a href="userPayAddPage.do"><input type="button" value="등록"></a></td>
+							<td colspan="7" align="right"><a href="userPayAddPage.do"><input type="button" value="등록"></a></td>
 						</tr>
 					</tbody>
 				</table>
