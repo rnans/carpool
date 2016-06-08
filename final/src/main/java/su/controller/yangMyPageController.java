@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import su.member.model.MemberDTO;
 import su.mypage.model.MypageDAO;
 import su.mypage.model.MypageDTO;
+import su.pool.model.PoolDTO;
+import su.pool.model.PoolRateDTO;
 import su.yangmypage.model.yangMypageDAO;
 import su.yangmypage.model.yangMypageDTO;
 
@@ -147,4 +149,30 @@ public class yangMyPageController {
 		return mav;
 	}
 
+	@RequestMapping("/reservationList.do")
+	public ModelAndView reservationList(HttpSession session){
+		
+		String userid = (String) session.getAttribute("sid");
+		List<PoolDTO> lists = yangMyPageDao.reservationList(userid);
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", lists);
+		mav.setViewName("mypage/reservationList");
+
+		return mav;
+	}
+	@RequestMapping("/rateView.do")
+	public ModelAndView rateView(HttpSession session){
+		
+		String userid = (String) session.getAttribute("sid");
+		List<PoolRateDTO> get = yangMyPageDao.rateGetView(userid);
+		List<PoolRateDTO> set = yangMyPageDao.rateSetView(userid);
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("get", get);
+		mav.addObject("set", set);
+		mav.setViewName("mypage/rateView");
+
+		return mav;
+	}
 }

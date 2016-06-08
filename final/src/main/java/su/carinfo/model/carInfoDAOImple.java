@@ -51,7 +51,7 @@ public class carInfoDAOImple implements carInfoDAO {
 		System.out.println(dto.getCarphoto());
 		System.out.println(dto.getCartype());
 		System.out.println(dto.getId());
-		System.out.println(dto.getIdx());
+		System.out.println("idx="+dto.getIdx());
 		int count = sqlMap.update("carUpdate", dto);
 
 		return count;

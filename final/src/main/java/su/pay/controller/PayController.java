@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import su.pay.model.PayDAO;
 import su.pay.model.PayDTO;
@@ -70,7 +71,38 @@ public class PayController {
 		return mav;
 	}
 	
-	
+	@RequestMapping("/cardEnroll.do")
+	public ModelAndView newCardEnroll(PayDTO pDTO,HttpSession session){
+		
+		String userid = (String)session.getAttribute("sid");
+		String cardImg = "";
+		
+		if(pDTO.getCardType1().equals("신한은행")){
+			cardImg="img/shin.png";
+			pDTO.setCardImg(cardImg);
+		}else if(pDTO.getCardType1().equals("국민은행")){
+			cardImg="img/kok.png";
+			pDTO.setCardImg(cardImg);
+		}else if(pDTO.getCardType1().equals("농협")){
+			cardImg="img/nong.png";
+			pDTO.setCardImg(cardImg);
+		}else if(pDTO.getCardType1().equals("우리은행")){
+			cardImg="img/woori.png";
+			pDTO.setCardImg(cardImg);
+		}else{
+			cardImg="img/noimg.png";
+			pDTO.setCardImg(cardImg);
+		}
+		System.out.println(cardImg);
+		pDTO.setUserid(userid);
+		int result = payDao.cardEnroll(pDTO);
+		
+		String msg = result>0?"카드등록성공":"카드등록실패";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg",msg);
+		mav.setViewName("pay/payMsg");
+		return mav;
+	}
 	/**결제정보저장*/
 	@RequestMapping("/newCardEnroll.do")
 	public ModelAndView newCardEnroll(PayDTO pDTO,HttpSession session,

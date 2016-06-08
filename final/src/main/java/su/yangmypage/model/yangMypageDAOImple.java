@@ -5,6 +5,8 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import su.member.model.MemberDTO;
+import su.pool.model.PoolDTO;
+import su.pool.model.PoolRateDTO;
 
 public class yangMypageDAOImple implements yangMypageDAO {
 
@@ -45,6 +47,21 @@ public class yangMypageDAOImple implements yangMypageDAO {
 	public List<yangMypageDTO> allCardInfo() {
 
 		List<yangMypageDTO> list=sqlMap.selectList("cardNum");
+		return list;
+	}
+	public List<PoolDTO> reservationList(String userid) {
+		
+		List<PoolDTO> list=sqlMap.selectList("reservationList", userid);
+		return list;
+	}
+	public List<PoolRateDTO> rateGetView(String userid) {
+		
+		List<PoolRateDTO> list=sqlMap.selectList("rateGetView", userid);
+		return list;
+	}
+	public List<PoolRateDTO> rateSetView(String userid) {
+		
+		List<PoolRateDTO> list=sqlMap.selectList("rateSetView", userid);
 		return list;
 	}
 }

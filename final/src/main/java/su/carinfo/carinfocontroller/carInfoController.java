@@ -235,14 +235,16 @@ public class carInfoController {
 	public ModelAndView carUpdate(@Param(value="fcarnum")String fcarnum,
 			@Param(value="check")String check,carInfoDTO dto2,MultipartHttpServletRequest req, HttpServletRequest request, 
 			HttpSession session, UploadDTO dto) {
-
+System.out.println("1");
 		ModelAndView mav = new ModelAndView();
 		String cartype=dto2.getCartype();
 		if(cartype.equals("")||cartype==null){
 		mav.addObject("msg", "차 종류를 입력해주세요");
 		mav.setViewName("carManage/carUpdate");
 		mav.addObject("idxList", dto2);
+		System.out.println("2");
 		}else{
+			System.out.println("3");
 			MultipartFile upload=req.getFile("upload");
 			MultipartFile upload2=req.getFile("upload2");
 			 copyInto(upload,upload2, request);
@@ -257,7 +259,7 @@ public class carInfoController {
 			 
 	
 		     if(filename.equals("")||filename==null){
-		    	 
+		    	 dto2.setConfirmphoto("사진없음");
 		     }else{
 		    	 dto2.setCarphoto(filename);
 		    	 dto.setFilename(filename); 
@@ -291,13 +293,14 @@ public class carInfoController {
 			     System.out.println("filepath2:"+filepath2);
 		     }
 		 	int result = carInfoDao.carUpdate(dto2);
-		 	
+		 	System.out.println("리절트"+result);
 		 	if(result>0){
-		
+		 		System.out.println("4");
 			mav.addObject("msg", "차량수정 성공");
 			mav.addObject("gopage", "carList.do");
 			mav.setViewName("carManage/carMsg");
 		 	}
+		 	
 		}
 		return mav;
 

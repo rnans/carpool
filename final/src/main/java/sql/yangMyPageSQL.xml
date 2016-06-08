@@ -21,4 +21,13 @@
 	<select id="cardNum" resultType="su.yangmypage.model.yangMypageDTO">
 	select cardnum from userpayinfo 
 	</select>
+	<select id="reservationList" parameterType="String" resultType="su.pool.model.PoolDTO">
+	select * from reservationlist where userid=#{userid}
+	</select>
+	<select id="rateSetView" parameterType="String" resultType="su.pool.model.PoolRateDTO">
+	select * from rate where userid=#{userid}
+	</select>
+	<select id="rateGetView" parameterType="String" resultType="su.pool.model.PoolRateDTO">
+	select * from rate where aimid=#{userid}
+	</select>
 </mapper>

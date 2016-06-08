@@ -14,7 +14,7 @@
 		select * from carInfo where idx=#{idx}
 	</select>
 	<update id="carUpdate" parameterType="su.carinfo.model.carInfoDTO">
-		update carInfo set carNum=#{carnum}, carType=#{cartype}, confirmPhoto=#{confirmphoto}, confirm=0, carPhoto=#{carphoto} where idx=#{idx}
+		update carInfo set carType=#{cartype}, confirmPhoto=#{confirmphoto}, confirm='0', carPhoto=#{carphoto} where idx=#{idx}
 	</update>
 	<delete id="carDel" parameterType="Integer">
 		delete from carInfo where idx=#{idx} 

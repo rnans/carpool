@@ -16,8 +16,21 @@ function addClose(){
 }
 </script>
 <style>
-body{
-    background-color: gray;
+#carLeft{
+	float:left;
+	width: 200px;
+	height: 150px;
+	margin-top: 5px;
+	margin-left:0px;
+	}
+
+#carRight{
+	float:right;
+	width: 200px;
+	height: 150px;
+	margin-top: 5px;
+	margin-left:20px;
+	
 }
 
 #box{
@@ -37,17 +50,25 @@ h2{
 <script>
 window.onload=function(){
 
-	document.getElementById("confirm2").style.display = "none";
+	 document.getElementById("confirm2").style.display = "none"; 
 
  }
 function confirm2(){
-
 	document.getElementById("confirm2").style.display = "block";
+	document.getElementById("confirm1").style.display = "none"; 
 
- }
- function black(){
-	 
-	 document.getElementById("confirm2").style.display = "none";
+
+}
+ function fileReset(form)
+ {
+	 var preview = document.getElementById("getImage2");
+	 var prevImg = document.getElementById("prev_" + "getImage2"); //������ �̸����Ⱑ �ִٸ� ����
+	 var file2=document.getElementById("file2");
+ 
+	 /* document.getElementById("confirm2").style.display = "none"; */
+	 form.value = '';
+	 document.selection.clear();
+	 /* document.getElementById("confirm1").style.display = "block";  */
  }
 </script>
 <c:if test="${!(empty msg)}">
@@ -61,56 +82,101 @@ window.alert('${msg}');
 </head>
 <body>
 <%@include file="../header.jsp"%>
-<fieldset>
-<legend>차량수정</legend>
-<form  name="carUpdate" action="carUpdate.do" method="post" enctype="multipart/form-data">
-<div>
-<input type="hidden" name="idx" value="${idxList.idx }">
-드라이버:<input type="text" name=driver value="${idxList.driver }" readonly="readonly">
-<br>
-<br>
-<input type="hidden" name="fcarnum" value="${idxList.carnum }">
-차 번호:<input type="text" name="carnum" value="${idxList.carnum }" id="car" maxlength="9" required placeholder="공백없이" readonly="readonly"> 
-				<br> 
-				차종:<input type="text" name="cartype" value="${idxList.cartype }">
-			</div>
-			<h3>차량 사진</h3>
-			
-			<div id="getImage"><div id="fImage"><img style="width:200px; height:200px;" src="http://localhost:8080/final02/img/${idxList.carphoto}"></div>
+
+
+ <div class="container-fluid">
+                <div class="row-fluid" >
+                     <div class="col-md-offset-4 col-md-4" id="box" style="height:550px; background-color: #EAEAEA; ">
+                      <h2>차량수정</h2>
+                            <hr>
+                              <form class="form-horizontal" action="carUpdate.do" method="post" id="contact_form" enctype="multipart/form-data">
+                                    <fieldset>
+                                        <!-- Form Name -->
+                                        
+                                        
+            <!-- Text input(이름)-->
+
+               <div class="form-group">
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                        <input type="hidden" name="idx" value="${idxList.idx }">
+                            <input type="hidden" name="id" value="${sid }" >
+                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="driver" readonly="readonly" value="${idxList.driver }" placeholder="Name" class="form-control" type="text">
+                        </div>
+                    </div>
+                 </div>
+
+
+                                  
+                   <!-- Text input(차번호)-->
+             <div class="form-group">
+                  <div class="col-md-12">
+                       <div class="input-group" style="width: 200px; float: left;">
+                            <span class="input-group-addon"><i class="fa fa-car fa-3" aria-hidden="true"></i></span>
+                                 <input type="text" value="${idxList.carnum}" id="car" maxlength="9" required placeholder="예)12가1234" name="carnum" class="form-control" readonly="readonly">
+                 		</div> 
+                  </div>
+             </div>
+
+              <!-- Text input(차종)-->
+
+            <div class="form-group">
+                 <div class="col-md-12">
+                       <div class="input-group">
+                               <span class="input-group-addon"><i class="fa fa-car fa-3" aria-hidden="true"></i></span>
+                               <input name="cartype" value="${idxList.cartype }" placeholder="예)티코" class="form-control" type="text">
+                       </div>
+                 </div>
+            </div>
+	<table>
+	<tr>
+	<td>
+	<div id="carLeft">
+			<h5>차량 사진</h5>
+			<div id="getImage"><div id="fImage"><img style="width:100px; height:100px;" src="http://localhost:8080/final02/img/${idxList.carphoto}"></div>
 			</div>
 			<input type="hidden" name="carphoto" value="${idxList.carphoto}">
 			<div>
-				<input name="upload" type="file" size="50" onchange="previewImage(this,'getImage',200,200);"> 
+				<input name="upload" type="file" size="30" onchange="previewImage(this,'getImage',100,100);"> 
 					<br>
 			</div>
-			<!-- <img src='이미지 경로명' width="100" height="100"/>
-<br>
-<input type="file"> -->
+			 </div>
+		</td>
+		<td>
+		<div id="carRight">
 			<div id="confirm1">
-			<br>
+			
 				차량인증을 해야 원활한 서비스를 이용하실 수 있습니다. <input type="button" value="인증하기" onclick="confirm2()">
 			</div>
 			
 			<div id="confirm2">
-				<h3>인증 사진</h3>
+				<h5>인증 사진</h5>
 				<div id="getImage2"></div>
-				<br> 
-				<input type="file" name="upload2" size="50" onchange="previewImage(this,'getImage2',200,200);"> 
-				<br>
+			 
+				<input type="file" id="file2" name="upload2" size="30" onchange="previewImage(this,'getImage2',100,100);"> 
 					<div>
-				<input type="button" value="나중에 인증" onclick="black()"> 
-				<br>
+				<input type="button" value="나중에 인증" onclick="fileReset(this.form);"> 
+			
 				</div>
+			
 			</div>
-
-			<div>
-			<p>
-	<input type="button" value="취소">
-	<input type="submit" value="수정">
-	</p>
-	</div>
-
-	</form>
-	</fieldset>
+		
+</div>
+</td>
+</tr>
+</table>
+            <div class="form-group" style="margin-top: 50px; margin-right: 2px;">
+              <div id="2button" >
+          
+                    <button type="submit"  class="btn btn-warning pull-right">수정 <span class="glyphicon glyphicon-send"></span></button>
+                    <button type="button"  class="btn btn-warning pull-right" onclick="addClose()">취소 <span class="glyphicon glyphicon-remove-sign"></span></button>
+              </div>
+            </div>
+           </fieldset>
+        </form>  
+     </div> 
+</div>  
 </body>
 </html>

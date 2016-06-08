@@ -2,8 +2,10 @@ function previewImage(targetObj, previewId,imgWidth,imgHeight) {
 
     var preview = document.getElementById(previewId); //div id   
     var ua = window.navigator.userAgent;
+    var getImage='getImage';
+   if(previewId==getImage){
     document.getElementById("fImage").style.display = "none";
-
+   }
     if (ua.indexOf("MSIE") > -1) {//ie�϶�
 
         targetObj.select();
