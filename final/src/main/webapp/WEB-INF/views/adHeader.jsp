@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/final02/bootstrap/css/font-awesome.min.css">
 <link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <style>
+
 .navbar-nav {
     float: left;
     margin: 0;
@@ -129,12 +130,19 @@ table tr:hover td {
 	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
 	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
 }
+#sidebar
+{
+	position: absolute;
+	top: -50px;
+	
+	
+} 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
 
 
 </style>
-
-<ul class="nav navbar-nav side-nav"
+<div style="position: fixed;height: 100%;">
+<ul id="sidebar" class="nav navbar-nav side-nav"
 	style="position: absolute; left: 0px;">
 	<li class="active"><a href="index.do"><i
 			class="fa fa-fw fa-dashboard"></i> 관리자페이지</a></li>
@@ -180,6 +188,7 @@ table tr:hover td {
 			<li><a href="memberCommList.do">-커뮤니티관리</a></li>
 		</ul></li>
 </ul>
+</div>
 <!-- 
 	<header role="banner" 	>
 		<nav class="nav" role="navigation">
@@ -241,4 +250,4 @@ table tr:hover td {
  
      
   </nav> -->
-</header>
+
