@@ -34,6 +34,8 @@ public interface commDAO {
 	
 	public int upload(UploadDTO dto);
 	
+	public List<UploadDTO> imgList(String poolname);
+	
 	
 	//uploadtest
 	

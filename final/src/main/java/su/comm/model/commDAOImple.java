@@ -50,10 +50,8 @@ public class commDAOImple implements commDAO {
 		return count;
 	}
 	
-	public List<CommBBSreDTO> reList(String commid){
-		
+	public List<CommBBSreDTO> reList(String commid){		
 		List<CommBBSreDTO> list=sqlMap.selectList("reList", commid);
-
 		return list;
 	}
 	
@@ -64,17 +62,14 @@ public class commDAOImple implements commDAO {
 	}
 	
 	//스케쥴글 띄우기
-	public List<scheDTO> scheList(){
-		
+	public List<scheDTO> scheList(){		
 		List<scheDTO> list=sqlMap.selectList("scheList");		
 		return list;
 	}
 	
 	//커뮤니티 member
-	public List<carpoolinfoDTO> commMemberList(String poolname) {
-		
+	public List<carpoolinfoDTO> commMemberList(String poolname) {		
 		List<carpoolinfoDTO> list = sqlMap.selectList("commmember", poolname);
-
 		return list;
 	}
 	
@@ -95,10 +90,14 @@ public class commDAOImple implements commDAO {
 		return count;		
 	}
 	
-	public int upload(UploadDTO dto) {
-		
+	public int upload(UploadDTO dto) {		
 		int count=sqlMap.insert("imguploadcomm",dto);
 		return count;					
+	}
+	
+	public List<UploadDTO> imgList(String poolname){
+		List<UploadDTO> list=sqlMap.selectList("commimgList", poolname);
+				return list;
 	}
 	
 	

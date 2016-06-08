@@ -264,20 +264,25 @@ public class commController {
 	
 	@RequestMapping("test123.do")
 	public String test123(){
-		
 		return "comm/test";
 	}
 
 	@RequestMapping("commMain.do")
 	public String commmain(){
-		
 		return "comm/commMain";
 	}
 	
 	@RequestMapping("gallery.do")
-	public String gallery(){
+	public ModelAndView gallery(){
 		
-		return "comm/gallery";
+		
+		ModelAndView mav=new ModelAndView();
+		String poolname="test";
+		
+		List<UploadDTO> list=commDao.imgList(poolname);
+		mav.addObject("list", list);
+		mav.setViewName("comm/gallery");
+		return mav;
 	}
 	 	
 

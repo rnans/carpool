@@ -30,11 +30,6 @@
 		delete from commBBS where idx=#{idx}
 	</delete>
 	
-	<insert id="imguplad" parameterType="String">
-		insert into file_upload values(file_upload_idx.nextval, 'test',
-        #{filename}, 1,  'test')
-	</insert>
-	
 	<insert id="reWrite" parameterType="su.comm.model.CommBBSreDTO">
 		insert into commbbs_re values(commbbs_re_idx.nextval, 'test', #{bbsidx},
         #{id},  #{name}, #{content}, sysdate)
@@ -86,5 +81,9 @@
 		insert into file_upload values(file_upload_idx.nextval, #{id},
 	        #{filename},  #{filetype},  #{filepath}, #{poolname})		
 	</insert>
+	
+	<select  id="commimgList" parameterType="String" resultType="su.upload.model.UploadDTO">
+		select * from file_upload where poolname=#{poolname} order by idx asc
+	</select>
 	
 </mapper>
