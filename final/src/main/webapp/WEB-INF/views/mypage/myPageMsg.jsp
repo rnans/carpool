@@ -3,5 +3,6 @@
 <!DOCTYPE html>
 <script>
 window.alert('${msg}');
-location.href='index.do';
+window.self.close();
+location.href='${loc}';
 </script>

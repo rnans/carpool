@@ -233,12 +233,26 @@ public class MypageController {
 	
 	  //회원탈퇴
 	  @RequestMapping("/memDel.do")
-		public ModelAndView memberDel(MypageDTO dto){
-			int result=mypageDao.memberDel(dto);
-			String msg=result>0?"탈퇴성공!":"실패!";
+		public ModelAndView memberDel(MypageDTO dto,HttpSession session){
 			ModelAndView mav=new ModelAndView();
-			mav.addObject("msg", msg);
-			mav.setViewName("mypage/myPageMsg");
+			String id=(String)session.getAttribute("sid");
+			MemberDTO dto1=mypageDao.getAllUserInfo(id);
+		  if(dto.getPwd().equals("")||dto.getPwd()==null){
+			  mav.addObject("msg", "비밀번호를 입력해 주세요.");
+			  mav.addObject("loc", "memberleave.do");
+			  mav.setViewName("mypage/myPageMsg");
+		  }else if(dto.getPwd().equals(dto1.getPwd())){
+			  int result=mypageDao.memberDel(dto);
+			  mav.addObject("loc", "index.do");
+			  mav.addObject("msg", "탈퇴성공");
+			  session.invalidate();
+			  mav.setViewName("mypage/myPageMsg");
+		  }else{
+			  mav.addObject("msg", "정확한 비밀번호를 입력해 주세요.");
+			  mav.addObject("loc", "memberleave.do");
+			  mav.setViewName("mypage/myPageMsg");
+		  }
+			
 			return mav;
 		}
 	  

@@ -36,9 +36,8 @@
 	width:1000px;
 	margin: 0px auto;
 }
-
-
 </style>
+
 </head>
 <body id="bb">
 <%@ include file="../header.jsp" %>
