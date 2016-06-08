@@ -168,9 +168,9 @@ public class MypageController {
 		ModelAndView mav = new ModelAndView();
 		
 		dto = mypageDao.notiInfo(id);
-		
+	
 		mav.addObject("dto", dto);
-		mav.setViewName("mypage/notiSetting2");
+		mav.setViewName("mypage/notiSetting");
 		
 		return mav;
 	}
@@ -198,8 +198,7 @@ public class MypageController {
 		
 		String msg = result>0?"알림변경완료!":"알림변경실패!";
 		mav.addObject("msg", msg);
-		mav.addObject("gopage", "myPage.do");
-		mav.setViewName("mypage/myPageMsg");
+		mav.setViewName("mypage/UpdateMsg");
 		
 		return mav;
 	}
