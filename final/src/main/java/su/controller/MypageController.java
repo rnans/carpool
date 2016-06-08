@@ -22,6 +22,8 @@ import su.member.model.MemberDTO;
 import su.mypage.model.MyAlarmDTO;
 import su.mypage.model.MypageDAO;
 import su.mypage.model.MypageDTO;
+import su.pool.model.PoolRateDAO;
+import su.pool.model.PoolRateDTO;
 /*import su.mypage.model.NotiSettingDTO;*/
 import su.upload.model.UploadDAO;
 import su.upload.model.UploadDTO;
@@ -71,6 +73,7 @@ public class MypageController {
 	}
 
 
+
 	/**마이페이지 프로필정보*/
 	@RequestMapping("/myPage.do")
 	public ModelAndView mypage(HttpSession session,HttpServletRequest req){
@@ -105,22 +108,7 @@ public class MypageController {
 		return mav;
 	}
 	
-//uplaod	
-	
-	/*@RequestMapping(value="/upload.do",method=RequestMethod.POST)
-	public String upload(UploadDTO dto, MultipartHttpServletRequest req, HttpServletRequest request){
-	 
-		
-		
-		
-		MultipartFile upload=req.getFile("upload");         
-	      String filename = upload.getOriginalFilename();
-	      dto.setFilename(filename);
-	      copyInto(upload,request);
-	      
-	      return "mypage/myProfile";
-			
-	}*/
+
 	
 	@RequestMapping("/myProfileUpdate.do")
 	public ModelAndView myProfileUpdate(MypageDTO dto,HttpServletRequest req){
@@ -138,11 +126,14 @@ public class MypageController {
 	@RequestMapping(value="pwdUpdateForm.do",method=RequestMethod.GET)
 	public ModelAndView pwdUpdateForm(MypageDTO dto,HttpSession session){
 		
+		
 		String id=(String)session.getAttribute("sid");
 		ModelAndView mav=new ModelAndView();
 		MemberDTO dto1=mypageDao.getAllUserInfo(id);
-
-	
+		List<UploadDTO> dto2=uploadDao.imgFind(id);
+		
+		mav.addObject("dto2",dto2);
+		
 		mav.addObject("dto", dto1);
 		mav.setViewName("mypage/pwdUpdate2");
 		return mav;
@@ -166,30 +157,31 @@ public class MypageController {
 	public ModelAndView notiSettingForm(MyAlarmDTO dto, @RequestParam("id")String id){
 		
 		ModelAndView mav = new ModelAndView();
-		
+
+		List<UploadDTO> dto2=uploadDao.imgFind(id);
 		dto = mypageDao.notiInfo(id);
-	
+
+		mav.addObject("dto2",dto2);
 		mav.addObject("dto", dto);
 		mav.setViewName("mypage/notiSetting");
 		
 		return mav;
 	}
-	
 	/**알림설정하기*/
-//	@RequestMapping(value="/notiSetting.do", method=RequestMethod.POST)
-//	public ModelAndView notiSetting(MyAlarmDTO dto){
-//		
-//		
-//		ModelAndView mav = new ModelAndView();
-//		int result = mypageDao.notiSetting(dto);
-//		
-//		String msg = result>0?"알람설정완료!":"알람설정실패!";
-//		mav.addObject("msg", msg);
-//		mav.addObject("gopage", "myPage.do");
-//		mav.setViewName("mypage/myPageMsg");
-//		
-//		return mav;
-//	}
+	@RequestMapping(value="/notiSetting.do", method=RequestMethod.POST)
+	public ModelAndView notiSetting(MyAlarmDTO dto){
+		
+		
+		ModelAndView mav = new ModelAndView();
+		int result = mypageDao.notiSetting(dto);
+		
+		String msg = result>0?"알람설정완료!":"알람설정실패!";
+		mav.addObject("msg", msg);
+		mav.addObject("gopage", "myPage.do");
+		mav.setViewName("mypage/myPageMsg");
+		
+		return mav;
+	}
 	
 	@RequestMapping(value="/alarmUpdate.do", method=RequestMethod.POST)
 	public ModelAndView alarmUpdate(MyAlarmDTO dto){
@@ -261,7 +253,8 @@ public class MypageController {
 		  return "mypage/memberleave2";
 	  }
 	  
-	 
+	  
+
 	
 	
 	  

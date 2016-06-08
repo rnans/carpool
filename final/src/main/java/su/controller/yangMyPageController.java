@@ -20,6 +20,8 @@ import su.mypage.model.MypageDAO;
 import su.mypage.model.MypageDTO;
 import su.pool.model.PoolDTO;
 import su.pool.model.PoolRateDTO;
+import su.upload.model.UploadDAO;
+import su.upload.model.UploadDTO;
 import su.yangmypage.model.yangMypageDAO;
 import su.yangmypage.model.yangMypageDTO;
 
@@ -36,14 +38,29 @@ public class yangMyPageController {
 	public void setYangMyPageDao(yangMypageDAO yangMyPageDao) {
 		this.yangMyPageDao = yangMyPageDao;
 	}
+	
+	@Autowired
+	private UploadDAO uploadDao;
+	
+	public UploadDAO getUploadDao() {
+		return uploadDao;
+	}
+	public void setUploadDao(UploadDAO uploadDao) {
+		this.uploadDao = uploadDao;
+	}
 
 	@RequestMapping("/userPayInfo.do")
 	public ModelAndView userPayInfoForm(HttpSession session) {
 
 		String userid = (String) session.getAttribute("sid");
 		List<yangMypageDTO> dto = yangMyPageDao.allPayInfo(userid);
-
+		
+		List<UploadDTO> dto2=uploadDao.imgFind(userid);
+		
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("dto2",dto2);
+		
 		mav.addObject("dto", dto);
 		mav.setViewName("mypage/userPayInfo2");
 
