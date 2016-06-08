@@ -250,27 +250,13 @@ function showResult(){//응답결과함수
 }
 </script>
 <body>
-<div>헤더
-<%@include file="../header.jsp" %>
-</div>
 
-<hr>
-<div align="center" style="margin-left: 120px;">
-<h2>예약및결제관리</h2>
-<h4 >진행중인예약</h4> 
-<div id="content" align="center">
-            <section class="links" >
-                <nav class="link-effect-3" id="link-effect-3" >
-                    <a href="driverReserveList.do" data-hover="1.진행중인예약">1.진행중인예약</a>
-                    <a href="memberReserveList.do" data-hover="2.사용자예약">2.사용자예약</a>
-                    <a href="payMentList.do" data-hover="3.결제관리">3.결제관리</a>
-                </nav>
-            </section>       
-        </div>
-   </div> 	
-<div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
-		<%@include file="../adHeader.jsp" %>
-<div class=".col-md-8" style="margin-left:170px; display: inline-block; width: 100%; ">
+<%@include file="../header.jsp" %>
+
+<div style="width: 100%; margin: 0px 0px 0px 0px">
+<%@include file="../adHeader.jsp" %>
+
+<div class=".col-md-8" style="margin-left: auto; margin-right: auto;">
  <div style="">
 		<form id="custom-search-form" name="a"
 			class="form-search form-horizontal" action="oneandoneSearch.do">

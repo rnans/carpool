@@ -27,9 +27,8 @@ body {
 	<div class="row">
 				
 <%@include file="csCenterSubMenu.jsp" %>
-	<div class=".col-md-10" style="margin-left:200px; display: inline-block; width: 70%; ">
+	<div class=".col-md-10" style="display: inline-block; width: 70%; ">
 
-		<br><br><br><br>	
 	<h3 align="center">공지사항</h3>
 <table class="table table-list-search"> 
 <thead>

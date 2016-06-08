@@ -251,34 +251,26 @@ style type ="text/css">.links {
 	}
 </script>
 <body>
-<div>헤더
+
 <%@include file="../header.jsp" %>
-</div>
-<hr>
-<div align="center" style="margin-left: 120px;">
-<h2 align="center">고객센터관리</h2>
-<h4 align="center">1:1문의</h4> 
-<div id="content" align="center">
-            <section class="links" >
-                <nav class="link-effect-3" id="link-effect-3" >
-                    <a href="adminNoticeList.do" data-hover="1.공지사항">1.공지사항</a>
-                    <a href="adminQnaList.do" data-hover="2.Q&A">2.Q&A</a>
-                    <a href="adminOneAndOne.do" data-hover="3.1:1문의">3.1:1문의</a>
-                    <a href="adminuseguideList.do" data-hover="4.이용안내">4.이용안내</a>
-                </nav>
-            </section>       
-        </div>
-        </div> 	
-<div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
+
+
+<div style="width: 100%; margin: 100px 0px 0px 0px">
 <%@include file="../adHeader.jsp" %>
-<div class=".col-md-8" style="margin-left:170px; display: inline-block; width: 100%; ">
+
+<div class=".col-md-8" style="margin-left:120px; display: inline-block; width: 100%; ">
  <div style="">
+ <div align="center" style="margin-right: 100px;">
+<h2 >고객센터관리</h2>
+         <h4>1:1문의</h4>
+         </div>
 		<form id="custom-search-form" name="a"
 			class="form-search form-horizontal" action="oneandoneSearch.do">
 
+
 			<div class="container"
-				style="float: right; margin-right:40px; margin-bottom:10px; display: inline-block; width: 320px; height: 28px;">
-				<div class="dropdown2" style=" width: 100px; border: 0; top: 8px;">
+				style="margin-left:850px; margin-top: 10px; display: inline-block; width: 320px; height: 28px;">
+				<div class="dropdown2" style=" width: 100px; border: 0; top: 10px;">
 
 					<select name="select" style="width: 130px;"
 						class="dropdown-select">
@@ -303,7 +295,7 @@ style type ="text/css">.links {
 		</form>
 	</div>
 <div id="spans" >
-	<table border="1" style="margin-left: 50px;" >
+	<table border="1" style="margin-left: 120px;" >
 	<thead>
 	<tr>
 	   <th>번호</th>

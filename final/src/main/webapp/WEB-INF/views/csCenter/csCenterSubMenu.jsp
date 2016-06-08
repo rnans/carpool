@@ -48,7 +48,7 @@ body{margin-top:20px;}
 
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked" style=" text-align: center;">
-                <li class="active"><a href="#">고객센터</a></li>
+             
                 <li><a href="csCenter.do">공지사항</a></li>
                <li><a href="qnaList.do">자주묻는질문(Q&A)</a></li>
               <li><a href="oneAndOne.do">1:1문의</a></li>

@@ -22,40 +22,43 @@ textarea {
 </style>
 </head>
 <body>
+<div>
 <%@include file="../header.jsp" %>
-<%@include file="csCenterSubMenu.jsp" %>
+</div>
 <hr>
+<br>
 <c:if test="${empty list }">
 <h3>글이 누락되었거나 사라졌습니다.</h3>
 </c:if>
-<div class=".col-md-8" style="margin-left:450px; display: inline-block; width: 100%; ">	
-<div class="container" style="margin: 0px auto;">
-<div class="row">
-<div class="col-sm-8 contact-form" style="margin: 0px auto;">
-<div class="row">
-<div class="col-xs-7 col-md-7 form-group">
-<h3 align="left">   1:1문의내역</h3>
+<div class="container"  style=" margin: 0px 0px 0px 0px">
+	<div class="row">
+	<%@include file="csCenterSubMenu.jsp" %>
+		<div class="" style="width: 60%; padding-left:130px; display: inline-block;">	
+<div class="row" >
+<h3 align="center">   1:1문의내역</h3>
+<div class="form-group" style="width: 50%; float: left; padding-right: 30px;">
 글번호<input class="form-control" id="idx" name="idx"  value="${list[0].idx }"type="text" required autofocus readonly="readonly"/>
 </div>
-<div class="col-xs-7 col-md-7 form-group">
+<div class="form-group" style="width: 50%; display: inline-block; padding-left: 30px;">
 작성날짜<input class="form-control" id="writedate" name="writedate" value="${list[0].writedate}" type="text" required autofocus readonly="readonly"/>
 </div>
-<div class="col-xs-7 col-md-7 form-group">
-문의유형<input class="form-control" id="type" name="type"  value="${list[0].type }" type="text" required autofocus readonly="readonly"/>
+<div class="form-group" style="width: 100%;" >
+문의유형<input class="form-control" id="type" name="type"   value="${list[0].type }" type="text" required autofocus readonly="readonly"/>
 </div>
-<div class="col-xs-7 col-md-7 form-group">
+
+<div class="form-group" style="width: 100%; " >
 제목
 <input class="form-control" id="subject" name="subject" value="${list[0].subject }" type="text" required autofocus />
 </div>
 </div>
 <br>
+<div class="row">
 내용
-<br><textarea class="form-control2" id="content" name="content" rows="5">${list[0].content }</textarea>
+<br><textarea class="form-control2" id="content" name="content" rows="5" style="width: 100%; padding-left: 30px; padding-right: 30px;">${list[0].content }</textarea>
 <br />
 <br>
 답변
-<br><textarea class="form-control2" id="answer" name="answer" rows="5">${list[0].answer }</textarea>
-
+<br><textarea class="form-control2" id="answer" name="answer" rows="5" style="width: 100%; padding-left: 30px; padding-right: 30px;">${list[0].answer }</textarea>
 <br />
 <a href="oneAndOne.do"><button class="btn btn-primary ">이전페이지로</button></a>
 </div>

@@ -27,12 +27,13 @@ $('.tr').css('display','none');
 <hr>
 
 
- 	<h3 align="center"> 이용안내</h3>
-<div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
+ <br><br>	
+<div class="container" style=" margin: 0px 0px 0px 0px">
 	<div class="row" >
 		 <%@include file="csCenterSubMenu.jsp" %>
-		<div class=".col-md-7" style="margin-left:200px; width: 60%; ">
-
+		<div class=".col-md-10" style="display: inline-block; width: 70%; ">
+<h3 align="center"> 이용안내</h3>
+<br>
 <table class="table table-list-search" > 
 <tbody>
 <c:if test="${empty list }">

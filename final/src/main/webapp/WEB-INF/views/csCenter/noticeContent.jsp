@@ -28,42 +28,46 @@
 </style>
 </head>
 <body>
+<div>
 <%@include file="../header.jsp" %>
-<%@include file="csCenterSubMenu.jsp" %>
+</div>
 
-<hr>
+<hr><br>
 <c:if test="${empty list }">
 <h3>글이 누락되었거나 사라졌습니다.</h3>
 </c:if>
-<h3 align="center">공지사항</h3>
-<div class=".col-md-8" style="margin-left:450px; display: inline-block; width: 100%; ">	
-<div class="container" style="margin: 0px auto;">
+<div class="container"  style=" margin: 0px 0px 0px 0px">
+	<div class="row">
+	<%@include file="csCenterSubMenu.jsp" %>
+		<div class="" style="padding-left:130px; display: inline-block; width: 60%;  ">	
+		<br>
+
 <div class="row">
-<div class="col-sm-8 contact-form" style="margin: 0px auto;">
-<div class="row">
-<div class="col-xs-3 col-md-3 form-group">
+<h3 align="center">   공지사항</h3>
+<div class="form-group" style="width: 50%;float: left; padding-right: 30px;">
 글번호<input class="form-control" id="idx" name="idx"  value="${list[0].idx }"type="text" required autofocus readonly="readonly"/>
 </div>
-<div class="col-xs-4 col-md-4 form-group">
+<div class="form-group" style="width: 50%;display: inline-block; padding-left: 30px; ">
 작성날짜<input class="form-control" id="writedate" name="writedate" value="${list[0].writedate}" type="text" required autofocus readonly="readonly"/>
 </div>
 </div>
 <div class="row">
-<div class="col-xs-4 col-md-4 form-group">
+<div class="form-group" style="width: 50%;float: left;display: inline-block; padding-right: 30px;">
 글쓴이<input class="form-control" id="writer" name="writer"  value="${list[0].writer }" type="text" required autofocus readonly="readonly"/>
 </div>
-<div class="col-xs-3 col-md-3 form-group">
+<div class="form-group" style="width: 50%;display: inline-block; padding-left: 30px; ">
 조회수<input class="form-control" id="readnum" name="readnum" value="${list[0].readnum }" type="text" required autofocus readonly="readonly"/>
 </div>
-<div class="col-xs-7 col-md-7 form-group">
+<div class="form-group" style="width: 100%; ">
 제목<input class="form-control" id="subject" name="subject" value="${list[0].subject }" type="text" required autofocus />
 </div>
 </div>
+<div class="row">
 내용
 <br>
-<textarea class="form-control2" id="content" name="content" >${list[0].content }</textarea>
+<textarea class="form-control2" id="content" name="content" style="width: 100%; padding-left: 30px; padding-right: 30px;">${list[0].content }</textarea>
 <br />
-<a href="csCenter.do"><button class="btn btn-primary full-center" >목록으로</button></a>
+<a href="csCenter.do"><button class="btn btn-primary full-right" >목록으로</button></a>
 </div>
 </div>
 </div>

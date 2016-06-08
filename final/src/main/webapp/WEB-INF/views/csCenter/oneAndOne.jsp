@@ -102,18 +102,19 @@ div {
 <%@include file="../header.jsp" %>
 </div>
 <hr>
-<div>
-<%@include file="csCenterSubMenu.jsp" %>
-</div>
+<br>
 
-<div class="container">
-
+<div class="container"  style=" margin: 0px 0px 0px 0px">
 	<div class="row">
-		<div class="col-md-9" >
-		<div class=".col-md-8" style="margin-left:200px; display: inline-block; width: 100%; ">	
+	<%@include file="csCenterSubMenu.jsp" %>
+		<div class=".col-md-10" style=" display: inline-block; width: 70%; ">	
 		<h3 align="center">1:1문의</h3>
-		<br><br>
+		<br>
 		<div>
+			 <div class="btn-group" role="group" aria-label="..." style="margin-left:870px">
+  <a href="oneAndOneWriteForm.do" class="btn btn-default">문의하기</a>
+</div>
+<br><br>
 <table class="table table-list-search" > 
 <thead>
 <tr>
@@ -155,13 +156,10 @@ div {
  </tr>
  </tfoot>
 </table>
-	 <div class="btn-group" role="group" aria-label="..." style="margin-left:900px">
-  <a href="oneAndOneWriteForm.do" class="btn btn-default">문의하기</a>
-</div>
+
 		</div>
 	</div>
 	</div>
-</div>
 </div>
 <hr>
 풋부분

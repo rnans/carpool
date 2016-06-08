@@ -9,7 +9,10 @@
 body {
     margin-top: 100px;
     background-color: #222;
+   
 }
+
+
 
 @media(min-width:768px) {
     body {
@@ -25,6 +28,7 @@ body {
     width: 100%;
     padding: 0;
     background-color: #fff;
+     
 }
 
 .huge {

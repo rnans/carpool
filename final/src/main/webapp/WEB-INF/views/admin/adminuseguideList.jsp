@@ -106,34 +106,22 @@ function useguideDeleteForm(){
 }
 </script>
 <body>
-<div>헤더
-<%@include file="../header.jsp" %>
-</div>
-<hr>
-<div align="center" style="margin-left: 120px;">
- <h2>고객센터관리</h2>
-<h4>이용안내</h4> 
 
-<div id="content">
+<%@include file="../header.jsp" %>
+
+
        
- 
-            <section class="links">
-                <nav class="link-effect-3" id="link-effect-3">
-                    <a href="adminNoticeList.do" data-hover="1.공지사항">1.공지사항</a>
-                    <a href="adminQnaList.do" data-hover="2.Q&A">2.Q&A</a>
-                    <a href="adminOneAndOne.do" data-hover="3.1:1문의">3.1:1문의</a>
-                    <a href="adminuseguideList.do" data-hover="4.이용안내">4.이용안내</a>
-                </nav>
-            </section>          
-        </div>  
-        </div>
-    <div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
+
+    <div style="width: 100%; margin: 100px 0px 0px 0px">
 
 		<%@include file="../adHeader.jsp" %>
 
-<div class=".col-md-8" style="margin-left:100px; display: inline-block; width: 100%; ">
+<div class=".col-md-8" style="margin-left:120px; display: inline-block; width: 100%; ">
 <div>
-<div>
+ <div align="center" style="margin-right: 100px;">
+<h2 >고객센터</h2>
+<h4 >이용안내</h4>
+</div>
   <div class="btn-group" role="group" aria-label="..." style="margin-left:1050px">
   <a href="useguideWrite.do" class="btn btn-default">글쓰기</a>
 </div>

@@ -26,16 +26,15 @@ $('.tr').css('display','none');
 <%@include file="../header.jsp" %>
 </div>
 <hr>
-
-
+<br><br>
 <div>
-<div class="container">
+<div class="container" style="margin:  0px 0px 0px 0px;">
 	<div class="row">
 	<%@include file="csCenterSubMenu.jsp" %>
-		<div class="col-md-9" >
-				<div class=".col-md-8" style="margin-left:200px; display: inline-block; width: 70%; margin-left: 250px;">		
+				<div class=".col-md-10" style="display: inline-block; width: 70%; ">		
+				
 <h3 align="center"> 자주하는질문(Q&A)</h3>	
-<br><br>
+<br>
 <table class="table table-list-search" > 
 
 <tbody>
@@ -64,7 +63,6 @@ $('.tr').css('display','none');
 		</div>
 	</div>
 </div>
- </div>
 <hr>
 풋부분
 </body>
