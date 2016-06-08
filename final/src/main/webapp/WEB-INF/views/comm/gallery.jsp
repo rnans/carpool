@@ -105,7 +105,7 @@ body{
 	text-shadow:none;
 }
 .gal-container .modal-dialogue{
-	width: 80%;
+	width: 60%;
 }
 .gal-container .description{
 	position: relative;
@@ -205,147 +205,211 @@ footer a,footer a:hover{
 </button></span></h1>
 
 <section>
+
+
+
   <div class="container gal-container" style="padding-top: 0px;padding-left: 0px;padding-right: 0px;">
+  
+<c:forEach  var="i" begin="0" end="14" step='1'>
+  <c:if test="${i==0}">
     <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
       <div class="box">
+       <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#1">
-          <img src="http://placemi.com/i3xhd/1000x750">
+          <img src="http://localhost:9090/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="1" tabindex="-1" role="dialog">
-          <div class="modal-dialog" role="document" style="position: absolute; right:100px; ">
+          <div class="modal-dialog" role="document" style="position: absolute; margin-left: auto; margin-right: auto; ">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-                <img src="http://placemi.com/i3xhd/1000x750">
+               <img src="http://localhost:9090/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
-                  <h4>This is the first one on my Gallery</h4>
+                  <h4>This is Upload by ${list[i].id}</h4>
                 </div>
             </div>
           </div>
         </div>
+        </c:if>
       </div>
     </div>
+  </c:if>
+</c:forEach>
+
+<c:forEach  var="i" begin="0" end="14" step='1'>
+  <c:if test="${i==1}">
+    
     <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
       <div class="box">
+       <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#2">
-          <img src="http://placemi.com/gut3z/1000x750">
+          <img src="http://localhost:9090/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="2" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="position: absolute; left:0px; ">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-                <img src="http://placemi.com/gut3z/1000x750">
+             <img src="http://localhost:9090/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
-                  <h4>This is the second one on my Gallery</h4>
+                  <h4>This is Upload by ${list[i].id}</h4>
                 </div>
             </div>
           </div>
         </div>
+         </c:if>
       </div>
     </div>
+    
+  </c:if>
+</c:forEach>    
+
+<c:forEach  var="i" begin="0" end="14" step='1'>
+  <c:if test="${i==2}">
+    
+
     <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
       <div class="box">
+       <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#3">
-          <img src="http://placemi.com/yggpo/1000x750">
+          <img src="http://localhost:9090/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="3" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document" style="position: absolute; right:100px;">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-                <img src="http://placemi.com/yggpo/1000x750">
+               <img src="http://localhost:9090/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
-                  <h4>This is the third one on my Gallery</h4>
+                  <h4>This is Upload by ${list[i].id}</h4>
                 </div>
             </div>
           </div>
         </div>
+         </c:if>
       </div>
     </div>
+    
+</c:if>
+</c:forEach>    
+
+<c:forEach  var="i" begin="0" end="14" step='1'>
+  <c:if test="${i==3}">
     <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
       <div class="box">
+       <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#4">
-          <img src="http://placemi.com/49zqo/1000x750">
+          <img src="http://localhost:9090/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="4" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="position: absolute; left:0px; ">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-                <img src="http://placemi.com/49zqo/1000x750">
+            <img src="http://localhost:9090/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
-                  <h4>This is the fourth one on my Gallery</h4>
+                  <h4>This is Upload by ${list[i].id}</h4>
                 </div>
             </div>
           </div>
         </div>
+         </c:if>
       </div>
     </div>
+    
+        
+</c:if>
+</c:forEach>    
+
+<c:forEach  var="i" begin="0" end="14" step='1'>
+  <c:if test="${i==4}">
     <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
       <div class="box">
+       <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#5">
-          <img src="http://placemi.com/k2mjk/1000x750">
+          <img src="http://localhost:9090/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="5" tabindex="-1" role="dialog">
           <div class="modal-dialog"  role="document"  style="position: absolute; left:0px; ">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-                <img src="http://placemi.com/k2mjk/1000x750">
+                 <img src="http://localhost:9090/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
-                  <h4>This is the fifth one on my Gallery</h4>
+                  <h4>This is Upload by ${list[i].id}</h4>
                 </div>
             </div>
           </div>
         </div>
+         </c:if>
       </div>
     </div>
+    
+        
+</c:if>
+</c:forEach>    
+
+<c:forEach  var="i" begin="0" end="14" step='1'>
+  <c:if test="${i==5}">
     <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
       <div class="box">
+       <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#6">
-          <img src="http://placemi.com/lv0ga/1000x750">
+          <img src="http://localhost:9090/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="6" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="left:0px;">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-                <img src="http://placemi.com/lv0ga/1000x750">
+             <img src="http://localhost:9090/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
-                  <h4>This is the sixth one on my Gallery</h4>
+                  <h4>This is Upload by ${list[i].id}</h4>
                 </div>
             </div>
           </div>
         </div>
+         </c:if>
       </div>
     </div>
+    
+        
+</c:if>
+</c:forEach>    
+
+<c:forEach  var="i" begin="0" end="14" step='1'>
+  <c:if test="${i==6}">
     <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
       <div class="box">
+      <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#7">
-          <img src="http://placemi.com/3rezh/1000x750">
+          <img src="http://localhost:9090/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="7" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="left:0px;">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-                <img src="http://placemi.com/3rezh/1000x750">
+                 <img src="http://localhost:9090/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
-                  <h4>This is the seventh one on my Gallery</h4>
+                  <h4>This is Upload by ${list[i].id}</h4>
                 </div>
             </div>
           </div>
         </div>
+         </c:if>
       </div>
     </div>
+   </c:if>
+   </c:forEach> 
+    
     <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
       <div class="box">
         <a href="#" data-toggle="modal" data-target="#8">
