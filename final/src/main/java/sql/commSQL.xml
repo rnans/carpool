@@ -6,7 +6,7 @@
 
 	<insert id="commWrite" parameterType="su.comm.model.commBBSDTO">
 		insert into commbbs values(comm_idx.nextval, 'test',
-        #{id}, '남구문', #{content},  sysdate, '0', 0)
+        #{id}, '남구문', #{content},  sysdate, #{photo}, 0)
 	</insert>
 	
 	<select id="bbsList" resultType="su.comm.model.commBBSDTO">

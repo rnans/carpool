@@ -420,6 +420,9 @@ h3 {
 		</div>
 	</div>
 <br><br><br>
+
+
+         
 	<div style="width: 50%; margin: 0px auto; margin-top: 50px;" >
 		<h2 class="menu_title" 
 			style="position: relative; z-index: 0; margin-bottom: 16px; text-align: center; margin-top: 0px;"> </h2>
@@ -438,6 +441,9 @@ h3 {
 			</form>
 		</div>
 
+             
+
+                
 <div class="writeWrap" style="margin-bottom: 15px;">
 			<form name="write" action="commWrite.do" method="post"  enctype="multipart/form-data">
 				<div data-viewname="DPostWriteLayoutView" class="cPostWrite">
@@ -492,13 +498,13 @@ h3 {
                 <span class="input-group-btn">
                     <!-- image-preview-clear button -->
                     <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span> Clear
+                        <span class="glyphicon glyphicon-remove"></span> 취소
                     </button>
                     <!-- image-preview-input -->
                     <div class="btn btn-default image-preview-input">
                         <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
-                        <input type="file" name="upload"/> <!-- rename it -->
+                        <span class="image-preview-input-title">사진 업로드</span>
+                        <input type="file" accept="image/*" name="upload"/> <!-- rename it -->
                     </div>
                 </span>
             </div><!-- /input-group image-preview [TO HERE]--> 			
@@ -551,18 +557,15 @@ h3 {
 				</div>
 			</form>
 		</div>
-		<!--  test -->
-
 		
-
-		<!--  test -->
+		<!--  공지  -->
 		<div style="width: 100%">
 			<div class="noticeWrap" style="display: block;min-height: 70px;">
 				<h2 class="tit">공지사항</h2>				
 					<ul class="notice">
 					<c:if test="${empty list}">
 						<li>
-							<a href="#" data-index="0"> 등록된 공지사항이 없어요. </a>
+							<a href="#" data-index="0"> 공지사항이 없어요. </a>
 						</li>
 					</c:if>
 					<c:forEach var="bbs" items="${list}">
@@ -583,8 +586,25 @@ h3 {
 			</div>
 		</div>
 	
+	<!-- 게시글  -->
 		<c:if test="${empty list}">
-			<td colspan="4" align="center">등록된 게시글이 없습니다.</td>
+		
+		<div style="width: 100%">
+			<div class="noticeWrap" style="display: block;min-height: 70px;">
+				<h2 class="tit">담벼락</h2>				
+					<ul class="notice">
+					<c:if test="${empty list}">
+						<li>
+							<a href="#" data-index="0"> 글이 없어요. </a>
+						</li>
+					</c:if>
+					</ul>
+			</div>
+		</div>
+		
+		
+		
+		
 		</c:if>
 
 		<c:forEach var="bbs" items="${list}">
@@ -600,7 +620,8 @@ h3 {
 							<div class="textName" style="height: 45px; padding-top: 5px;"> <strong class="name onlyName">
 									<br>&nbsp;&nbsp;${bbs.id }</strong>
 							</div>
-							<div class="textTime">&nbsp;&nbsp;${bbs.writedate }</div>
+							<div class="textTime">&nbsp;&nbsp;${bbs.writedate }<br>
+							</div>
 						</div> 
 			
 							<div class="feedback"
@@ -627,6 +648,18 @@ h3 {
 						<div class="postText">
 							<p class="txtBody" data-uiselector="txtBody" style="padding-left: 80px;">${bbs.content }</p>
 						</div>
+				<c:if test="${bbs.photo!=null}">
+								<!-- test -->
+									<div class="_attachmentPhotosRegion" style="margin-left: auto;margin-right: auto;">
+										<div data-viewname="DPostPhotoListView" class="uWidget" style="margin-left: auto;margin-right: auto;">
+											<div style="text-align: center;">
+												<img src="http://localhost:9090/final02/img/${bbs.photo}"
+													alt="">
+											</div>
+										</div>
+									</div>
+									<!--  -->
+                    </c:if>
 					<div class="reply">
                     <!-- 댓글 시작-->
 							<div class="accordion" id="accordion2">
@@ -912,7 +945,7 @@ h3 {
 	        var reader = new FileReader();
 	        // Set preview image into the popover data-content
 	        reader.onload = function (e) {
-	            $(".image-preview-input-title").text("Change");
+	            $(".image-preview-input-title").text("다른걸로^^");
 	            $(".image-preview-clear").show();
 	            $(".image-preview-filename").val(file.name);            
 	            img.attr('src', e.target.result);
@@ -923,7 +956,16 @@ h3 {
 	});
  
 
-   
+	$(document).ready(function(){
+	    //FANCYBOX
+	    //https://github.com/fancyapps/fancyBox
+	    $(".fancybox").fancybox({
+	        openEffect: "none",
+	        closeEffect: "none"
+	    });
+	});
+	   
+	  
 	</script>
 
 

@@ -8,7 +8,7 @@ public class commBBSDTO {
 	private String name;
 	private String content;
 	private String writedate;
-	private String varchar2;
+	private String photo;
 	private int notice;
 	
 	public commBBSDTO() {
@@ -16,7 +16,7 @@ public class commBBSDTO {
 	}
 
 	public commBBSDTO(int idx, String poolname, String id, String name, String content, String writedate,
-			String varchar2, int notice) {
+			String photo, int notice) {
 		super();
 		this.idx = idx;
 		this.poolname = poolname;
@@ -24,7 +24,7 @@ public class commBBSDTO {
 		this.name = name;
 		this.content = content;
 		this.writedate = writedate;
-		this.varchar2 = varchar2;
+		this.photo = photo;
 		this.notice = notice;
 	}
 
@@ -76,12 +76,12 @@ public class commBBSDTO {
 		this.writedate = writedate;
 	}
 
-	public String getVarchar2() {
-		return varchar2;
+	public String getphoto() {
+		return photo;
 	}
 
-	public void setVarchar2(String varchar2) {
-		this.varchar2 = varchar2;
+	public void setphoto(String photo) {
+		this.photo = photo;
 	}
 
 	public int getNotice() {

@@ -128,32 +128,39 @@ public class commController {
 	public ModelAndView commWrite(commBBSDTO dto, MultipartHttpServletRequest req, HttpServletRequest request, 
 			HttpSession session,UploadDTO dto2){	
 		
-		
+		ModelAndView mav=new ModelAndView();
 		 MultipartFile upload=req.getFile("upload");		 
 		 copyInto(upload, request);
 		 
 		 String filename=upload.getOriginalFilename();
 		 
-		 String filetype="3";
-	     String filepath=root_path+attach_path+filename;
-		 String id=(String)session.getAttribute("sid");
+		 if(filename==null||filename.equals("")){
+
+		 }else{
+			 String filetype="3";
+		     String filepath=root_path+attach_path+filename;
+			 String id=(String)session.getAttribute("sid");
+			 
+			 String poolname="test"; //수정요망
+			 
+			 dto2.setId(id); dto2.setFilename(filename); 
+			 dto2.setFilepath(filepath); dto2.setFiletype(filetype);
+			 dto2.setPoolname(poolname);
+			 
+			 int count=commDao.upload(dto2);
+			 String msg2=count>0?"업로드 성공":"업로드 실패";
+			 mav.addObject("msg2",msg2);
+		 }
 		 
-		 String poolname="test"; //수정요망
-		 
-		 dto2.setId(id); dto2.setFilename(filename); 
-		 dto2.setFilepath(filepath); dto2.setFiletype(filetype);
-		 dto2.setPoolname(poolname);
-		 
-		 int count=commDao.upload(dto2);
-		 
+		 String photo=filename;
+		 dto.setphoto(photo);
 		
 		int count2=commDao.commWrite(dto);		
 		String msg=count2>0?"글 작성 성공":"글 작성 실패";
-		String msg2=count>0?"업로드 성공":"업로드 실패";
 		
-		ModelAndView mav=new ModelAndView();
+		
+
 		mav.addObject("msg", msg);
-		mav.addObject("msg2", msg2);
 		mav.setViewName("comm/commBBSmsg");
 		return mav;
 		
