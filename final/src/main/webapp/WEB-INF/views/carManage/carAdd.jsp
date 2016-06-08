@@ -69,8 +69,8 @@ function car_num_chk(car_num)
 { 
     var v= car_num; 
     var result = document.getElementById('result'); 
-    var carNum=document.getElementsByName('carnum');
-
+    var carNum=document.getElementById('car');
+    
     var pattern1 = /\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; // 12저1234 
     var pattern2 = /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; // 서울12치1233 
 
@@ -87,12 +87,19 @@ function car_num_chk(car_num)
             result.innerText="차량 형식에 맞습니다.";
             var check=document.getElementById("carCheck");
             check.value="true";
+            var num=document.getElementById("carnum");
+            num.value=carNum.value;
+         
+          
         } 
     } 
     else { 
         result.innerText ="차량 형식에 맞습니다."; 
         var check=document.getElementById("carCheck");
         check.value="true";
+        var num=document.getElementById("carnum");
+        num.value=carNum.value;
+  
     } 
     
 } 
@@ -133,8 +140,9 @@ function car_num_chk(car_num)
                   <div class="col-md-12">
                        <div class="input-group" style="width: 200px; float: left;">
                             <span class="input-group-addon"><i class="fa fa-car fa-3" aria-hidden="true"></i></span>
-                                 <input type="text" value="${dto.carnum}" id="car" maxlength="9" required placeholder="예)12가1234" name="carnum" class="form-control">
-                       <div style="float: none;"><input type=button value="형식 확인" style="right: 300px;" onclick="car_num_chk(document.getElementById('car').value)"></div>
+                            	<input type="hidden" id="carnum" name="carnum" value="">
+                                 <input type="text" value="${dto.carnum}" id="car" maxlength="9" required placeholder="예)12가1234" name="car" class="form-control">
+                       <div style="float: none;"><input type="button" value="형식 확인" style="right: 300px;" onclick="car_num_chk(document.getElementById('car').value)"></div>
                  		<div id=result></div> 
                  		</div> 
                   </div>
@@ -177,7 +185,7 @@ function car_num_chk(car_num)
 
             <div class="form-group">
               <div class="col-md-12">
-                    <button type="submit" class="btn btn-warning pull-right">등록 <span class="glyphicon glyphicon-send"></span></button>
+                    <button type="submit" class="btn btn-warning pull-right" onb>등록 <span class="glyphicon glyphicon-send"></span></button>
                     <button type="button"  class="btn btn-warning pull-right" onclick="addClose()">취소 <span class="glyphicon glyphicon-remove-sign"></span></button>
               		<input type="hidden" id="carCheck" name="check" value="false">
               </div>

@@ -578,12 +578,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			
 <h2>카드 등록</h2>
 		<legend>카드등록</legend>
-			<form name="userPayAdd" action="userPayAdd.do" method="post">
+			<form name="userPayAdd" action="cardEnroll.do" method="post">
 				<table border="1" cellspacing="0" align="center" class="table table-hover">
 					
 						<tr>
 							<td>카드종류</td>
-							<td><select name="cardtype1">
+							<td><select name="cardType1">
 			 <option value="선택" selected="selected">선택</option>				
             <option value="신한">신한</option>
             <option value="농협">농협</option>
@@ -593,31 +593,31 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						</tr>	
 								<tr>
 							<td>카드번호</td>
-							<td colspan="5"><input type="text" name="cardnum1" value="${dto.cardnum1 }" style="width:40px;">-<input type="text" name="cardnum2" value="${dto.cardnum2 }" style="width:40px;">-<input type="text" name="cardnum3" value="${dto.cardnum3 }" style="width:40px;">-<input type="text" name="cardnum4" value="${dto.cardnum4 }" style="width:40px;"></td>
+							<td colspan="5"><input type="text" name="cardNum" style="width:40px;">-<input type="text" name="cardNum" value="${dto.cardnum2 }" style="width:40px;">-<input type="text" name="cardnum3" value="${dto.cardnum3 }" style="width:40px;">-<input type="text" name="cardnum4" value="${dto.cardnum4 }" style="width:40px;"></td>
 						</tr>
 						<tr>
 						<td>유효기간</td>
-						<td><input type="text" name="cardterm1" value="${dto.cardterm1}" style="width:20px;">월/<input type="text" name="cardterm2" value="${dto.cardterm2} " style="width:40px;">년</td>
+						<td><input type="text" name="cardTerm" style="width:20px;">월/<input type="text" name="cardterm2" value="${dto.cardterm2} " style="width:40px;">년</td>
 						</tr>
 						<tr>
 						<td>카드상이름</td>
-						<td><input type="text" name="cardname" value="${dto.cardname} "></td>
+						<td><input type="text" name="cardName" ></td>
 						</tr>
 						<tr>
 						<td>cvv</td>
-						<td><input type="text" name="cvv" value="${dto.cvv}" style="width:30px;"></td>
+						<td><input type="text" name="cvc" style="width:30px;"></td>
 						</tr>
 						<tr>
 						<td>개인/법인</td>
-						<td><select name="cardtype2">
+						<td><select name="cardType2">
             <option>개인</option>
             <option>법인</option>
             </select></td>
 						</tr>
 						<tr>
-						<td>카드아이디</td>
+						<%-- <td>카드아이디</td>
 						<td><input type="text" name="cardid" value="${dto.cardid} "></td>
-						</tr>
+						</tr> --%>
 						<tr>
 						<td colspan="2" align="right"><input type="button" value="취소" onclick="backPage()"><input type="submit" value="등록"></td>		
 						</tr>

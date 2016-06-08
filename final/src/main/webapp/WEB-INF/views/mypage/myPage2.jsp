@@ -573,7 +573,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
 					<a href="#">이용내역</a>
-					<a href="#">등록글</a>
+					<a href="reservationList.do">등록글</a>
 					<a href="rateView.do">평가글</a>
 					<a href="memberleave.do">회원탈퇴</a>
 				</nav>
