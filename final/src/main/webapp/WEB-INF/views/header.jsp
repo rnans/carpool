@@ -183,7 +183,7 @@ function pwFindCheck(){
 						</label>
 						</span> <span class="input input--hoshi"> <input
 							class="input__field input__field--hoshi" type="password" id="pwd"
-							name="pwd"> <label
+							name="pwd" onkeydown="javascript:onEnterSubmit();"> <label
 							class="input__label input__label--hoshi input__label--hoshi-color-1"
 							for="pwd"> <span
 								class="input__label-content input__label-content--hoshi">PassWord</span>
@@ -278,6 +278,12 @@ function pwFindCheck(){
 		<script src="/final02/js/logindialogFx.js"></script>
 		<script>
 		
+		function onEnterSubmit(){
+			var keyCode = window.event.keyCode;
+			if(keyCode==13){
+				login.submit();
+			}
+		}
 	
 		
 		var status='${status}';
