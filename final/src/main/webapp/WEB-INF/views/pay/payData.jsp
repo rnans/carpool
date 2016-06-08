@@ -9,10 +9,9 @@
 
 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 <style>
-	
 	.card{height:230px;}
 	label{float:left;}
-	input[type=image]{float:left;margin-bottom:30px;margin-right:15px;height:180px;width:250px;}
+	input[type=image]{float:left;margin-bottom:30px;margin-right:15px;height:180px;width:250px;padding-left:10px;}
 	input[type=text]{height:30px;}
 	.clbo{clear:both;}
 	.btn_confirm1{width:170px;display:inline-block;
@@ -44,9 +43,7 @@
 				<input type="text" value="${pay.cardTerm}" disabled><br>
 				<label>CVC번호 :</label>&nbsp;
 				<input type="text" value="${pay.cvc}" disabled><br>
-				
 				<a href="javascript:dopay()" class="btn_confirm1" style="text-decoration: none;">이 카드로 결제하기</a><br>
-				
 				<div class="clbo"></div>
 				<hr>
 			</c:forEach>

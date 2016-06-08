@@ -48,18 +48,43 @@
 	.newCard{display:none;}
 	input[type=text]{height:15px;}
 	.newCard{width:400px;}
-	.btn_confirm2{display:inline-block;padding:12px 20px;background-color:#2185c5;border-radius:7px;color:#fff;
+	.btn_confirm2{margin-top:7px;inline-block;padding:8px 30px;background-color:#2185c5;border-radius:7px;color:#fff;
 	margin-top:10px;}
+	input[type=radio]{}
+	fieldset {
+		border: 1px solid #ddd !important;
+		margin: 0;
+		xmin-width: 0;
+		padding: 10px;       
+		position: relative;
+		border-radius:4px;
+		background-color:#f5f5f5;
+		padding-left:10px!important;
+	}
+	legend
+	{
+		font-size:14px;
+		font-weight:bold;
+		font-family:cursive;
+		margin-bottom: 0px; 
+		width: 35%; 
+		border: 1px solid #ddd;
+		border-radius: 4px; 
+		padding: 5px 5px 5px 10px; 
+		background-color: #ffffff;
+		text-align: center;
+	}
+	.panel-body{width:300px;}
+	
 </style>
 </head>
 <body>	
 	<%@ include file="../header.jsp" %>
-	<div class="container">
-	
+	<div class="section">
 	<h3>결제 정보창 페이지</h3>
 	
 	<form name="nae">
-		<input type="radio" name="radiob" value="0" onclick="show1()">등록카드결제
+		<input type="radio" name="radiob" value="0" onclick="show1()" class="nae">등록카드결제
 		<input type="radio" name="radiob" value="1" onclick="show2()">신규결제
 	</form>
 	
@@ -73,6 +98,19 @@
 	
 		<div class="newCard">
 			<form name="newCardEnroll" action="newCardEnroll.do" id="newCard">
+		
+				<div class="container">
+					<br/>
+				<div class="panel panel-default">
+    	
+					<div class="panel-heading">카드 등록 및 결제</div>
+					<div class="panel-body">
+		            
+		            <fieldset class="col-md-6">    	
+							<legend>신규카드정보입력</legend>
+					
+					<div class="panel panel-default">
+						<div class="panel-body">
 		
 					<input type="hidden" name="ridx" value="${ridx}">
 					
@@ -96,7 +134,7 @@
 						</span>
 					</section>
 					
-					&nbsp;&nbsp;&nbsp;<select name="cardTerm" style="width:200px;height:25px;">
+					&nbsp;&nbsp;&nbsp;<select name="cardTerm" style="width:100px;height:25px;">
 						<option>2016</option><option>2017</option><option>2018</option><option>2019</option>
 						<option>2020</option><option>2021</option><option>2022</option><option>2023</option>
 						<option>2024</option><option>2025</option>
@@ -128,9 +166,18 @@
 						<option>개인</option>
 						<option>법인</option>
 					</select>
-				
+					
+						</div>
+					</div>	
+				</fieldset>
+				<div class="clearfix"></div>
+           		 </div>
+				</div>
+			</div>
 			</form>
 			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;<a href="javascript:value()" class="btn_confirm2" style="text-decoration: none;">등록 및 결제하기</a>
 			</p>
 		</div>
