@@ -28,6 +28,30 @@ h2{
     text-align:center;
     color:#fff;
 }
+
+.image-preview-input, .image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file], .image-preview2-input input[type=file]{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.image-preview-input-title, .image-preview2-input-title {
+    margin-left:2px;
+}
+
 </style>
 <script type="text/javascript" src="js/previewmodule.js"></script>
 	<script type="text/javascript">
@@ -110,10 +134,10 @@ function car_num_chk(car_num)
 <%@include file="../header.jsp"%>
 
 	
-	 <div class="container-fluid">
-                <div class="row-fluid" >
-                     <div class="col-md-offset-4 col-md-4" id="box" style="height:600px; background-color: #EAEAEA; ">
-                      <h2>차량등록</h2>
+	 <div class="all" style="width: 100%; height: 100%;">
+                <div class="row-fluid" style="padding-top:80px; width: 30%; margin-left:auto; margin-right: auto;" >
+                     <div class="" id="box" style="height:500px; background-color: #EAEAEA; ">
+                      <h2 style="color: #000;">차량 등록</h2>
                             <hr>
                               <form class="form-horizontal" action="carAdd.do" method="post" id="contact_form" enctype="multipart/form-data">
                                     <fieldset>
@@ -139,7 +163,7 @@ function car_num_chk(car_num)
              <div class="form-group">
                   <div class="col-md-12">
                        <div class="input-group" style="width: 200px; float: left;">
-                            <span class="input-group-addon"><i class="fa fa-car fa-3" aria-hidden="true"></i></span>
+                            <span class="input-group-addon"><i class="fa fa-list-ol fa-3" aria-hidden="true"></i></span>
                             	<input type="hidden" id="carnum" name="carnum" value="">
                                  <input type="text" value="${dto.carnum}" id="car" maxlength="9" required placeholder="예)12가1234" name="car" class="form-control">
                        <div style="float: none;"><input type="button" value="형식 확인" style="right: 300px;" onclick="car_num_chk(document.getElementById('car').value)"></div>
@@ -158,41 +182,174 @@ function car_num_chk(car_num)
                        </div>
                  </div>
             </div>
-
-			<h5>차량 사진</h5>
-			<div id="getImage"></div>
-			<div>
-				<input name="upload" type="file" size="30" onchange="previewImage(this,'getImage',200,50);"> 
-			</div>
+<br>
+			  <div class="input-group image-preview">
+                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> 취소
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-picture"></span>
+                        <span class="image-preview-input-title">차 사진</span>
+                        <input type="file" accept="image/*" name="upload"/> <!-- rename it -->
+                    </div>
+                </span>
+            </div><!-- /input-group image-preview [TO HERE]--> 		
+			
+			
 			 
 		
-			<div id="confirm1"></div>
+			<div id="confirm1" style="min-height:50px; margin-top: 10px;margin-bottom: 10px;">
 			
-				차량인증을 해야 원활한 서비스를 이용하실 수 있습니다. <input type="button" value="인증하기" onclick="confirm2()">
-			
-			
-			<div id="confirm2">
-				<h5>인증 사진</h5>
-				<div id="getImage2">
-			 
-				<input type="file" name="upload2" size="30" onchange="previewImage(this,'getImage2',200,50);"> 
-					<div>
-				<input type="button" value="나중에 인증" onclick="black()"> 
-			
-				</div>
+				<font style="padding-top:20px; font-size: 13px;"> &nbsp;&nbsp;차량인증을 해야 원활한 서비스를 이용하실 수 있습니다.</font>
+				<button type="button" class="uButton uButtonPoint" onclick="confirm2()"
+								style="border:0; background: #3cd370; min-width: 70px; line-height: 32px; float:right; right:10px; font-size: 13px; color: #fff">인증하기</button>
+
 			</div>
+			<div id="confirm2">
+				 <div class="input-group image-preview2">
+                <input type="text" class="form-control image-preview2-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview2-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> 취소
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview2-input">
+                        <span class="glyphicon glyphicon-picture"></span>
+                        <span class="image-preview2-input-title">인증 사진</span>
+                        <input type="file" accept="image/*" name="upload"/> <!-- rename it -->
+                    </div>
+                </span>
+            </div><!-- /input-group image-preview [TO HERE]--> 		
+
 			</div>
 
-            <div class="form-group">
-              <div class="col-md-12">
-                    <button type="submit" class="btn btn-warning pull-right" onb>등록 <span class="glyphicon glyphicon-send"></span></button>
-                    <button type="button"  class="btn btn-warning pull-right" onclick="addClose()">취소 <span class="glyphicon glyphicon-remove-sign"></span></button>
+            <div class="form-group" style="padding: 10px 10px 10px 10px; text-align: center;">
+              
+              <div style="width: 200px;height: 100%; margin: 0px auto;">
+               	<div style=" margin: 0px auto; text-align: center;">
+                    <button type="submit" class="btn btn-warning">등록 <span class="glyphicon glyphicon-send"></span></button>
+                    <button type="button"  class="btn btn-warning" onclick="addClose()">취소 <span class="glyphicon glyphicon-remove-sign"></span></button>
               		<input type="hidden" id="carCheck" name="check" value="false">
-              </div>
+    			</div>
+    			</div>
             </div>
            </fieldset>
         </form>  
      </div> 
 </div>  
+</div>
+<script>
+$(document).on('click', '#close-preview', function(){ 
+    $('.image-preview').popover('hide');
+    // Hover befor close the preview
+    $('.image-preview').hover(
+        function () {
+           $('.image-preview').popover('show');
+        }, 
+         function () {
+           $('.image-preview').popover('hide');
+        }
+    );    
+});
+
+
+$(function() {
+    // Create the close button
+    var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class","close pull-right");
+    // Set the popover default content
+    $('.image-preview').popover({
+        trigger:'manual',
+        html:true,
+        title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
+        content: "There's no image",
+        placement:'bottom'
+    });
+    // Clear event
+    $('.image-preview-clear').click(function(){
+        $('.image-preview').attr("data-content","").popover('hide');
+        $('.image-preview-filename').val("");
+        $('.image-preview-clear').hide();
+        $('.image-preview-input input:file').val("");
+        $(".image-preview-input-title").text("Browse"); 
+    }); 
+    // Create the preview image
+    $(".image-preview-input input:file").change(function (){     
+        var img = $('<img/>', {
+            id: 'dynamic',
+            width:250,
+            height:200
+        });      
+        var file = this.files[0];
+        var reader = new FileReader();
+        // Set preview image into the popover data-content
+        reader.onload = function (e) {
+            $(".image-preview-input-title").text("다른걸로^^");
+            $(".image-preview-clear").show();
+            $(".image-preview-filename").val(file.name);            
+            img.attr('src', e.target.result);
+            $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+        }        
+        reader.readAsDataURL(file);
+    });  
+});
+
+$(function() {
+    // Create the close button
+    var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class","close pull-right");
+    // Set the popover default content
+    $('.image-preview2').popover({
+        trigger:'manual',
+        html:true,
+        title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
+        content: "There's no image",
+        placement:'bottom'
+    });
+    // Clear event
+    $('.image-preview2-clear').click(function(){
+        $('.image-preview2').attr("data-content","").popover('hide');
+        $('.image-preview2-filename').val("");
+        $('.image-preview2-clear').hide();
+        $('.image-preview2-input input:file').val("");
+        $(".image-preview2-input-title").text("Browse"); 
+    }); 
+    // Create the preview image
+    $(".image-preview2-input input:file").change(function (){     
+        var img = $('<img/>', {
+            id: 'dynamic',
+            width:250,
+            height:200
+        });      
+        var file = this.files[0];
+        var reader = new FileReader();
+        // Set preview image into the popover data-content
+        reader.onload = function (e) {
+            $(".image-preview2-input-title").text("바꾸기");
+            $(".image-preview2-clear").show();
+            $(".image-preview2-filename").val(file.name);            
+            img.attr('src', e.target.result);
+            $(".image-preview2").attr("data-content",$(img)[0].outerHTML).popover("show");
+        }        
+        reader.readAsDataURL(file);
+    });  
+});
+   </script>   
+   
 </body>
 </html>
