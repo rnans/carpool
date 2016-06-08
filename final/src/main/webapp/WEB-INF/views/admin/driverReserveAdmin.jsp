@@ -252,18 +252,22 @@ function showResult(){//응답결과함수
 <body>
 
 <%@include file="../header.jsp" %>
-
-<div style="width: 100%; margin: 0px 0px 0px 0px">
+    <div style="width: 100%; ">
+<div style="width: 20%; margin: 100px 0px 0px 0px;">
 <%@include file="../adHeader.jsp" %>
-
-<div class=".col-md-8" style="margin-left: auto; margin-right: auto;">
- <div style="">
+</div>
+<div class="" style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
+ <div>
+ <div align="center" style="margin-left:180px;">
+<h2 >예약및결제관리</h2>
+<h4 >드라이버 예약</h4>
+</div>
 		<form id="custom-search-form" name="a"
 			class="form-search form-horizontal" action="oneandoneSearch.do">
 
-			<div class="container"
-				style="float: right; margin-right:40px; margin-bottom:10px; display: inline-block; width: 320px; height: 28px;">
-				<div class="dropdown2" style=" width: 100px; border: 0; top: 8px;">
+			<div class=""
+				style="margin-top:10px;margin-bottom:15px; margin-left:730px; display: inline-block; width: 320px; height: 28px;">
+				<div class="dropdown2" style=" width: 100px; border: 0; top: 10px;">
 
 					<select name="select" style="width: 130px;"
 						class="dropdown-select">
@@ -288,7 +292,7 @@ function showResult(){//응답결과함수
 		</form>
 	</div>
 <div id="spans" >
-	<table border="1" style="margin-left: 50px;" >
+	<table border="1" style="margin: 0px auto;" >
 	<thead>
 	<tr>
 					<th>번호</th>
@@ -337,6 +341,7 @@ function showResult(){//응답결과함수
 						${pageStr}
 					</td>
 				</tr>
+				</tfoot>
 	</table>
 </div>
 </div>

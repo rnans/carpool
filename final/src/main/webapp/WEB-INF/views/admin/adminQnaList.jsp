@@ -105,21 +105,21 @@ function QnaDeleteForm(){
 </script>
 <body>
 <%@include file="../header.jsp" %>
-       
-        <div style="width: 100%; margin: 100px 0px 0px 0px">
+       <div style="width: 100%; ">
+        <div style="width: 20%; margin: 100px 0px 0px 0px">
 		<%@include file="../adHeader.jsp" %>
+		</div>
 		
-		
-<div class=".col-md-8" style="margin-left:120px; display: inline-block; width: 100%; ">
+<div class="" style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%; ">
 <div>
-<div align="center" style="margin-right: 100px;">
+<div align="center" style="margin-left:180px;">
     <h2 >고객센터관리</h2>
-         <h4>자주묻는질문(Q&A)</h4>
+        <h4>자주묻는질문(Q&A)</h4>
          </div>
-  <div class="btn-group" role="group" aria-label="..." style="margin-left:1050px">
+  <div class="btn-group" role="group" aria-label="..." style="margin-left:928px;">
   <a href="qnaWrite.do" class="btn btn-default">글쓰기</a>
 </div>
-<table border="1" style="margin-left: 120px; " >
+<table border="1" style="margin: 0px auto;" >
 <thead>
 <tr>
    <th>번호</th>

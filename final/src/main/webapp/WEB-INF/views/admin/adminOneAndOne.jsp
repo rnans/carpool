@@ -254,13 +254,13 @@ style type ="text/css">.links {
 
 <%@include file="../header.jsp" %>
 
-
-<div style="width: 100%; margin: 100px 0px 0px 0px">
+<div style="width: 100%; ">
+<div style="width:20%; margin: 100px 0px 0px 0px;">
 <%@include file="../adHeader.jsp" %>
-
-<div class=".col-md-8" style="margin-left:120px; display: inline-block; width: 100%; ">
+</div>
+<div class=""  style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%; ">
  <div style="">
- <div align="center" style="margin-right: 100px;">
+ <div align="center" style="margin-left:180px;">
 <h2 >고객센터관리</h2>
          <h4>1:1문의</h4>
          </div>
@@ -269,7 +269,7 @@ style type ="text/css">.links {
 
 
 			<div class="container"
-				style="margin-left:850px; margin-top: 10px; display: inline-block; width: 320px; height: 28px;">
+				style="margin-top:10px;margin-bottom:15px; margin-left:730px; display: inline-block; width: 320px; height: 28px;">
 				<div class="dropdown2" style=" width: 100px; border: 0; top: 10px;">
 
 					<select name="select" style="width: 130px;"
@@ -295,7 +295,7 @@ style type ="text/css">.links {
 		</form>
 	</div>
 <div id="spans" >
-	<table border="1" style="margin-left: 120px;" >
+	<table border="1" style="margin: 0px auto; " >
 	<thead>
 	<tr>
 	   <th>번호</th>

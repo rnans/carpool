@@ -53,27 +53,18 @@
 </style>
 </head>
 <body>
-<div>헤더
 <%@include file="../header.jsp" %>
+    <div style="width: 100%; ">
+    <div style="width: 20%; margin: 100px 0px 0px 0px">
+		<%@include file="../adHeader.jsp" %>
 </div>
-<div>메뉴바
-<%@include file="../adHeader.jsp" %>
+<div class="" style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;  ">
+<div>
+ <div align="center" style="margin-left:180px; margin-bottom: 80px;">
+<h2 >예약및결제관리</h2>
+<h4 >결제관리</h4>
 </div>
 
-	<div class=".col-md-8" style="margin-left:100px; display: inline-block; width: 100%; ">
-	<div align="center">
-<h2>예약 및 결제관리</h2>
-<h4>결제관리</h4> 
-</div>
-<div id="content">
-            <section class="links">
-                <nav class="link-effect-3" id="link-effect-3">
-                    <a href="driverReserveList.do" data-hover="1.진행중인예약">1.진행중인예약</a>
-                    <a href="memberReserveList.do" data-hover="2.사용자예약">2.사용자예약</a>
-                    <a href="payMentList.do" data-hover="3.결제관리">3.결제관리</a>
-                </nav>
-            </section>   
-        </div>  
 	<div>
 		<table border="1" style="margin: 0px auto;"  >
 			<thead>
@@ -115,6 +106,8 @@
 				</tr>
 			</tfoot>
 		</table>
+		</div>
+		</div>
 		</div>
 		</div>
 <footer>풋</footer>
