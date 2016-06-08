@@ -40,6 +40,48 @@
 
 </style>
 
+<script>
+window.onload=function(){
+	
+	checkAlram();
+}
+function checkAlram(){
+
+	var bang='';
+	
+	var check=new Array();
+	check[0]='${dto.chat}';
+	check[1]='${dto.reservation}';
+	check[2]='${dto.recommand}';
+	check[3]='${dto.rate}';
+	check[4]='${dto.community}';
+	
+	var check2=new Array();
+	check2[0]=document.getElementById('chat');
+	check2[1]=document.getElementById('reservation');
+	check2[2]=document.getElementById('recommand');
+	check2[3]=document.getElementById('rate');
+	check2[4]=document.getElementById('community');
+	
+	var check3=new Array();
+	check3[0]=document.getElementById('chat2');
+	check3[1]=document.getElementById('reservation2');
+	check3[2]=document.getElementById('recommand2');
+	check3[3]=document.getElementById('rate2');
+	check3[4]=document.getElementById('community2');
+	
+	for(var i=0;i<check.length;i++){
+	if(check[i]=='O'){
+		
+		check2[i].checked=true;
+	}else if(check[i]=='X'){
+		
+		check3[i].checked=true;
+	}
+		}
+	}
+</script>
+
 </head>
 <body id="bb">
 header
@@ -73,24 +115,24 @@ header
 			<legend>알람설정</legend>
 				<ul>
 				<li>실시간알람
-					<input type="radio" name="chat" checked value="O">수신
-					<input type="radio" name="chat" value="X">수신안함				
+					<input type="radio" name="chat" id="chat" value="O">수신
+					<input type="radio" name="chat" id="chat2" value="X">수신안함				
 				</li>	
 				<li>예약알람
-					<input type="radio" name="reservation" checked value="O">수신
-					<input type="radio" name="reservation" value="X">수신안함
+					<input type="radio" name="reservation" id="reservation" value="O">수신
+					<input type="radio" name="reservation" id="reservation2" value="X">수신안함
 				</li>
 				<li>추천알람
-					<input type="radio" name="recommand" checked value="O">수신
-					<input type="radio" name="recommand" value="X">수신안함
+					<input type="radio" name="recommand" id="recommand" value="O">수신
+					<input type="radio" name="recommand" id="recommand2" value="X">수신안함
 				</li>
 				<li>평가알람
-					<input type="radio" name="rate" checked value="O">수신
-					<input type="radio" name="rate" value="X">수신안함
+					<input type="radio" name="rate" id="rate" value="O">수신
+					<input type="radio" name="rate" id="rate2" value="X">수신안함
 				</li>
 				<li>커뮤니티알람
-					<input type="radio" name="community" checked value="O">수신
-					<input type="radio" name="community" value="X">수신안함
+					<input type="radio" name="community" id="community" value="O">수신
+					<input type="radio" name="community" id="community2" value="X">수신안함
 				</li>
 				</ul>
 				<c:set var="dto" value="${dto}"></c:set>
