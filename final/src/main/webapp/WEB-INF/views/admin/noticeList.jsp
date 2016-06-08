@@ -120,6 +120,7 @@ function noticeDelForm(){
         </div>  --> 
 <div style="width: 100%; margin: 100px 0px 0px 0px">
 		<%@include file="../adHeader.jsp" %>
+		
 <div style="margin-left:120px; display: inline-block; width: 100%; ">
  <div align="center" style="margin-right: 100px;">
 <h2 >고객센터</h2>

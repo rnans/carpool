@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 .dropdown2 {
   display: inline-block;
@@ -171,18 +172,9 @@
 #chartdiv2 {float:right; padding:auto; overflow: hidden; margin-left:170px;}
 table a{clear:both; padding: auto; margin:10px 5px; clear:both;}
 </style>
-<script>
-var idx=null;
-function memberDelForm(){
-	var param="?idx="+idx;
-	window.open('memberDelForm.do'+param,'memberDelForm','width=500 height=400 left=500 top=200');
-}
-function adminAddForm(){
-	var param="?idx="+idx;
-	window.open('adminAddForm.do'+param,'adminAddForm','width=500 height=400 left=500 top=200');
-}
-</script>
 
+ <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">	
 <script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
 <script type="text/javascript" src="http://www.amcharts.com/lib/3/pie.js"></script>
 
@@ -272,9 +264,12 @@ AmCharts.makeChart("chartdiv",
 				);
 		</script>
 
+<script src="/final02/js/jquery-1.12.4.min.js"></script>
 <!-- 검색 아작스 -->
 <script type="text/javascript" src="js/httpRequest.js"></script>
-<script>
+<script type="text/javascript">
+
+
 function show(){
 	var search=document.a.search.value;
 	var select=document.a.select.value;
@@ -292,19 +287,42 @@ function showResult(){//응답결과함수
 		}
 	}
 }
-</script>
 
+
+
+</script>
+<script>
+var idx= null;
+var grade=null;
+//회원탈퇴
+function memberDel(){
+	this.idx=idx;
+	var params='idx='+idx;	
+	sendRequest('memberDel.do', params, null, 'GET');
+	location.reload();
+}
+
+//등급관리
+function adminAdd(){
+	this.idx=idx;
+	var grade = document.getElementById('grade');
+	var params='idx='+idx;
+	
+	window.alert(params);
+	sendRequest('adminAdd.do', params, null, 'GET');
+	location.reload();
+}
+</script>
 </head>
 <body>
 <div>
 <%@include file="../header.jsp" %>
 </div>
+<div style="width: 100%; margin: 100px 0px 0px 0px">
 <%@include file="../adHeader.jsp" %>
+</div>
 
 <div class="container" style="width: 100%; margin: 0px auto;">
-
-
-
 
 	<div id="chartdiv" style="width: 35%; height: 400px; background-color: #FFFFFF;  display: inline-block;"></div>
 	<div id="chartdiv2" style="width: 35%; height: 400px; background-color: #FFFFFF;  display: inline-block;"></div>
@@ -370,10 +388,18 @@ function showResult(){//응답결과함수
 						<td>${list.grade}</td>
 						<td>${list.joindate}</td>
 						<td>
-							<input type="button" value="등급조정" onclick="javascript:idx='${list.idx}';adminAddForm();">
+							<a onclick="javascript:idx='${list.idx}';" data-title="Grade" data-toggle="modal" data-target="#grade">
+							<button type="button" class="uButton uButtonPoint"
+									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
+									등급변경</button>
+							</a>
 						</td>
 						<td>
-							<input type="button" value="탈퇴시키기" onclick="javascript:idx='${list.idx}';memberDelForm();">
+							<a onclick="javascript:idx='${list.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete">
+							<button type="button" class="uButton uButtonPoint"
+									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
+									회원탈퇴</button>
+							</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -382,13 +408,98 @@ function showResult(){//응답결과함수
 			<tfoot>
 				<tr class="even">
 					<td colspan="11" align="center">
-					${pageStr}
+						${pageStr}
 					</td>
 				</tr>
 			</tfoot>
 		</table>
 		</div>
 </div>
-<footer>풋</footer>
+
+<!-- 삭제 모달 -->
+	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
+		aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin: 0px auto;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">삭제</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="alert alert-danger">
+						<span class="glyphicon glyphicon-warning-sign">정말 탈퇴 시키시겠습니까?</span> 
+					</div>
+
+				</div>
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success" onclick="javascript:memberDel();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+<!-- 삭제 모달 -->
+
+<!-- 등급변경 모달 -->
+	<div class="modal fade" id="grade" tabindex="-1" role="dialog"
+		aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin: 0px auto;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">등급변경</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="alert alert-danger">
+						<div id="grade" style="position: relative;">
+					
+				
+				<fieldset>
+					<legend>등급 변경(일반/관리자)</legend>
+					<div>
+						<select name="grade" id="grade">
+							<option value="관리자">관리자</option>
+							<option value="일반">일반</option>
+						</select>
+					</div>
+				</fieldset>
+						</div> 
+					</div>
+
+				</div>
+				<div class="modal-footer ">
+					<button type="submit" class="btn btn-success" onclick="javascript:idx='${list.idx}';grade='${list.grade}';adminAdd();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+		
+	</div>
+
+<!-- 등급변경 모달 -->
+
+<footer>풋터푸터</footer>
+<div class="fuck"></div>
 </body>
 </html>

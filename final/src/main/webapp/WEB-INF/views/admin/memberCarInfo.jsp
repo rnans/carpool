@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style type="text/css">
 .links {
   *zoom: 1;
@@ -69,10 +70,14 @@ function memberCarOkForm(){
 <div>
 <%@include file="../header.jsp" %>
 </div>
-<%@include file="../adHeader.jsp" %>
 
+<div style="width: 100%; margin: 100px 0px 0px 0px">
+<%@include file="../adHeader.jsp" %>
+</div>
+
+<div class="container" style="width: 100%; margin: 0px auto;">
 	<div align="center"
-		style="margin-left: 150px; margin-bottom: 10px; margin-top: 60px;">
+		style="margin-top: 0px; display: inline-block;">
 		<h2 align="center">회원관리</h2>
 		<h4 align="center">회원차량관리</h4>
 		<div id="content" align="center">
@@ -86,9 +91,9 @@ function memberCarOkForm(){
 		</div>
 	</div>
 
-	<div class="container" style="width: 100%; margin: 0px auto;">
-
-		<table border="1" style="margin-left: 190px; margin-top: 0px;">
+	
+	<div>
+		<table border="1">
 			<thead>
 				<tr>
 					<th>구분</th>
@@ -138,6 +143,7 @@ function memberCarOkForm(){
 				</tr>
 			</tfoot>
 		</table>
+	</div>
 </div>
 <footer>풋</footer>
 </body>

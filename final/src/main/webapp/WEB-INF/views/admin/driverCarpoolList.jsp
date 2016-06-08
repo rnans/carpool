@@ -88,7 +88,6 @@ function driverPoolDelForm(){
 					<th>단기/장기</th> <!-- termtype -->
 					<th>성별</th><!-- gender -->
 					<th>출발지</th> <!-- startspot -->
-					<th>경유지</th> <!-- route -->
 					<th>도착지</th> <!-- endspot -->
 					<th>출발시간</th> <!-- starttime -->
 					<th>정기시작일</th> <!-- startdate -->
@@ -118,7 +117,6 @@ function driverPoolDelForm(){
 					<td>${list.termtype}</td>
 					<td>${list.gender}</td>
 					<td>${list.startspot}</td>
-					<td>${list.route}</td>
 					<td>${list.endspot}</td>
 					<td>${list.starttime}</td>
 					<td>${list.startdate}</td>

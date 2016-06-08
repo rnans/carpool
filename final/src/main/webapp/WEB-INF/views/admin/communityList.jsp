@@ -5,11 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<style>
+<title>Insert title here</title>
+	<style>
 @import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
 .accordion-toggle:after {
     font-family: 'FontAwesome';
@@ -64,11 +62,13 @@
 </style>
 </head>
 <body>
+	<div>
+	<%@include file="../header.jsp"%>
+	</div>
 	
+	<div style="width: 100%; margin: 100px 0px 0px 0px">
 	<%@include file="../adHeader.jsp"%>
-	
-	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-	<script src="/final02/bootstrap/js/bootstrap.js"></script>
+	</div>
 	
 	<div align="center"
 		style="margin-left: 150px; margin-bottom: 10px; margin-top: 60px;">
@@ -83,7 +83,8 @@
 		</div>
 	</div>
 	
-	<div class="container" style="width: 100%; margin-left: 215px;">
+	
+	<div class="container" style="width: 100%; margin-left: 165px;">
 	
 	<table style="margin: 10px auto; height: 80px;">
 	
