@@ -50,8 +50,8 @@ public class MypageDAOImple implements MypageDAO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int memberDel(MypageDTO dto) {
-		int count=sqlMap.delete("memberDelete",dto);
+	public int memberDel(String id) {
+		int count=sqlMap.delete("memberDelete",id);
 		return count;
 	}
 	

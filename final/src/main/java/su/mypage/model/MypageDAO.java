@@ -22,7 +22,7 @@ public interface MypageDAO {
 	
 	
 	
-	public int memberDel(MypageDTO dto);
+	public int memberDel(String id);
 
 	
 }

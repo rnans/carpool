@@ -38,8 +38,8 @@
 		rate=#{rate},community=#{community} where userid=#{userid}
 	</update>
 	 
-	<delete id="memberDelete" parameterType="su.mypage.model.MypageDTO">
-		delete from userinfo where userid=#{id}
+	<delete id="memberDelete" parameterType="String">
+		delete from userinfo where id=#{id}
 	</delete>
 	 
 	

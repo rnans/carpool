@@ -242,7 +242,7 @@ public class MypageController {
 			  mav.addObject("loc", "memberleave.do");
 			  mav.setViewName("mypage/myPageMsg");
 		  }else if(dto.getPwd().equals(dto1.getPwd())){
-			  int result=mypageDao.memberDel(dto);
+			  int result=mypageDao.memberDel(id);
 			  mav.addObject("loc", "index.do");
 			  mav.addObject("msg", "탈퇴성공");
 			  session.invalidate();
