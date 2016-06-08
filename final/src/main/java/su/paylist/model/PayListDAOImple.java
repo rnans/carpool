@@ -17,6 +17,8 @@ public class PayListDAOImple implements PayListDAO {
 		this.sqlMap = sqlMap;
 	}
 	public int payEnrollList(PayListDTO plistDto) {
+		System.out.println("test1="+plistDto.getPoolname());
+		System.out.println("test2="+plistDto.getPooltype());
 		int count = sqlMap.insert("payAllList", plistDto);
 		return count;
 	}

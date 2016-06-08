@@ -39,6 +39,7 @@
 			$('.newCard').fadeIn();
 		}
 	}
+	
 	function payPage(){
 		location.href="sample_crossplatform.rms";
 	}
@@ -52,13 +53,13 @@
 	margin-top:10px;}
 	input[type=radio]{}
 	fieldset {
-		border: 1px solid #ddd !important;
+		border: 1px solid black !important;
 		margin: 0;
 		xmin-width: 0;
 		padding: 10px;       
 		position: relative;
 		border-radius:4px;
-		background-color:#f5f5f5;
+		background-color:#B2CCFF;
 		padding-left:10px!important;
 	}
 	legend
@@ -68,42 +69,55 @@
 		font-family:cursive;
 		margin-bottom: 0px; 
 		width: 35%; 
-		border: 1px solid #ddd;
+		border: 1px solid black !important;
 		border-radius: 4px; 
 		padding: 5px 5px 5px 10px; 
-		background-color: #ffffff;
+		background-color: #B2CCFF;
 		text-align: center;
 	}
 	.panel-body{width:300px;}
-	
+	input[type=radio]{text-align: center;}
+	.newCard{margin:0px auto;}
+	.panel-heading{background-color:#B2CCFF; }
+	.btn span.glyphicon {opacity: 0;}
+	.btn.active span.glyphicon {opacity: 1;}
+	.btn-group{margin-top:20px;}
+	hr{border:3px; }
 </style>
 </head>
 <body>	
 	<%@ include file="../header.jsp" %>
-	<div class="section">
+	<div class="section" style="width:500px; margin: 0px auto;">
 	<h3>결제 정보창 페이지</h3>
 	
-	<form name="nae">
-		<input type="radio" name="radiob" value="0" onclick="show1()" class="nae">등록카드결제
-		<input type="radio" name="radiob" value="1" onclick="show2()">신규결제
-	</form>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="btn-group">		
+			<label class="btn btn-success active">
+				<input type="radio" name="radiob" value="0" onclick="show1()" style="display:none">등록카드결제
+			</label>
+
+			<label class="btn btn-primary">
+				<input type="radio" name="radiob" value="1" onclick="show2()" style="display:none">신규카드결제
+			</label>
+		</div>
+	</div>
 	
 	<hr>
 	
 	<div class="ownCard">
 		<div class="ownCardInfo">
 		</div>
-		<hr>
 	</div>
-	
 		<div class="newCard">
 			<form name="newCardEnroll" action="newCardEnroll.do" id="newCard">
 		
-				<div class="container">
+				<div class="container" style="border:1px solid #4374D9 !important">
 					<br/>
 				<div class="panel panel-default">
     	
-					<div class="panel-heading">카드 등록 및 결제</div>
+					<div class="panel-heading">카드를 등록해주세요^^</div>
 					<div class="panel-body">
 		            
 		            <fieldset class="col-md-6">    	
@@ -178,10 +192,9 @@
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;<a href="javascript:value()" class="btn_confirm2" style="text-decoration: none;">등록 및 결제하기</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:value()" class="btn_confirm2" style="text-decoration: none;">등록 및 결제하기</a>
 			</p>
 		</div>
-	</div>
 </body>
 
 <script type="text/javascript">
@@ -227,10 +240,9 @@
 </script>
 <script type="text/javascript">
 	(function() {
-		// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+		
 		if (!String.prototype.trim) {
 			(function() {
-				// Make sure we trim BOM and NBSP
 				var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
 				String.prototype.trim = function() {
 					return this.replace(rtrim, '');
@@ -239,7 +251,6 @@
 		}
 	
 		[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-			// in case the input is already filled..
 			if( inputEl.value.trim() !== '' ) {
 				classie.add( inputEl.parentNode, 'input--filled' );
 			}

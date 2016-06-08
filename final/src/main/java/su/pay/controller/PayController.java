@@ -107,6 +107,8 @@ public class PayController {
 	@RequestMapping("/newCardEnroll.do")
 	public ModelAndView newCardEnroll(PayDTO pDTO,HttpSession session,
 			 PayListDTO plistDto,
+			 @RequestParam("cardType1")String cardType1,
+			@RequestParam("cardNum")String cardNum,
 			@RequestParam(value="ridx",required=false)String ridx){
 		//여긴 세션값으로 가져오는 아이디 값이 들어옴
 
@@ -143,16 +145,19 @@ public class PayController {
 		plistDto.setStatus(pdto.getStatus());
 		plistDto.setTermtype(pdto.getTermtype());
 		plistDto.setUserid(pdto.getUserid());
+		plistDto.setUserid1(userid);
+		plistDto.setCardType1(cardType1);
+		plistDto.setCardNum(cardNum);
 		
 		pDTO.setUserid(userid);
 		int result=payDao.cardEnroll(pDTO);
 		int count = plDao.payEnrollList(plistDto);
-
+		System.out.println("test");
 		String msg = "";
 		
 		if(result<1){
 			msg = "카드등록이 실패하였습니다";
-		}else if(count>1){
+		}else if(count<1){
 			msg = "결제가 실패하였습니다.";
 		}else{
 			msg = "카드등록 및 결제가 성공하였습니다.";
@@ -182,7 +187,9 @@ public class PayController {
 	@RequestMapping("/lastPay.do")
 	public ModelAndView lastPay(HttpSession session,
 			@RequestParam("ridx")String ridx,
-			PayListDTO plistDto){
+			PayListDTO plistDto,PayDTO payDTO,
+			@RequestParam("cardType1")String cardType1,
+			@RequestParam("cardNum")String cardNum){
 		System.out.println("hey="+ridx);
 		String userid = (String)session.getAttribute("sid");
 		
@@ -194,7 +201,10 @@ public class PayController {
 		plistDto.setStatus(pdto.getStatus());
 		plistDto.setTermtype(pdto.getTermtype());
 		plistDto.setUserid(pdto.getUserid());
-		
+
+		plistDto.setUserid1(userid);
+		plistDto.setCardType1(cardType1);
+		plistDto.setCardNum(cardNum);
 		int count = plDao.payEnrollList(plistDto);
 		
 		String msg = count>0?"결제가 정상적으로 처리되었습니다.":"결제가 실패하였습니다.";

@@ -17,21 +17,23 @@
 	.btn_confirm1{width:170px;display:inline-block;
 	padding:10px 20px;background-color:#2185c5;border-radius:7px;
 	color:#fff;line-height:8px;margin-top: 5px;}
+
 </style>
 </head>
 <body>
-	<div class="section">
+	<div class="section" style="width:550px; margin: 0px auto;">
 		<div class="clbo"></div>
 			
 		<div class="card">
 			<c:if test="${empty lists}">등록된 카드 정보가 없습니다.</c:if>
 		
 			<c:forEach var="pay" items="${lists}">
-				
 				<input type="image" name="cardImg" src="${pay.cardImg}">
 					<c:url var="payURL" value="lastPay.do">
 						<c:param name="cardId">${pay.cardId}</c:param>
 						<c:param name="ridx">${ridx}</c:param>
+						<c:param name="cardType1">${pay.cardType1}</c:param>
+						<c:param name="cardNum">${pay.cardNum}</c:param>
 					</c:url>
 				<label>은행구분 :</label>&nbsp;
 				<input type="text" value="${pay.cardType1}" disabled><br>
