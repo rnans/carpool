@@ -130,6 +130,7 @@ public class AdminMemberController {
 		mav.setViewName("admin/adminMsg");
 		return mav;
 	}
+	
 	/**grade 변경*/
 	@RequestMapping("/adminAdd.do")
 	public ModelAndView adminAdd(@RequestParam(value="idx", required=false)int idx,

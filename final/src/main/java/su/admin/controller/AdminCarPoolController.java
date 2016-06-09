@@ -57,21 +57,7 @@ public class AdminCarPoolController {
 		
 		return mav;
 	}
-	
-	/**유저 카풀 삭제 폼 이동*/
-	@RequestMapping("/userPoolDelForm.do")
-	public ModelAndView userPoolDelForm(HttpServletRequest req){
-		
-		int idx = Integer.parseInt(req.getParameter("idx"));
-		
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("idx", idx);
-		mav.setViewName("admin/userCarpoolDel");
-		
-		return mav;
-	}
-	
+
 	/**등록된 유저 카플 삭제*/
 	@RequestMapping("/userPoolDel.do")
 	public ModelAndView userPoolDel(@RequestParam("idx")int idx){
@@ -98,18 +84,6 @@ public class AdminCarPoolController {
 		mav.addObject("lists", list);
 		mav.addObject("pageStr", pageStr);
 		mav.setViewName("admin/driverCarpoolList");
-		
-		return mav;
-	}
-	
-	/**드라이버 예약 카풀 삭제 폼*/
-	@RequestMapping("/driverPoolDelForm.do")
-	public ModelAndView driverPoolDelForm(HttpServletRequest req){
-		ModelAndView mav = new ModelAndView();
-		int idx = Integer.parseInt(req.getParameter("idx"));
-		
-		mav.addObject("idx", idx);
-		mav.setViewName("admin/driverCarpoolDel");
 		
 		return mav;
 	}
