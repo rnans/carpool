@@ -26,6 +26,59 @@
 		
 	
 <style>
+
+ @import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+        @import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono");
+        @font-face {
+            font-family: 'Dosis';
+            font-style: normal;
+            font-weight: 300;
+            src: local('Dosis Light'), local('Dosis-Light'), url(http://fonts.gstatic.com/l/font?kit=RoNoOKoxvxVq4Mi9I4xIReCW9eLPAnScftSvRB4WBxg&skey=a88ea9d907460694) format('woff2');
+        }
+        @font-face {
+            font-family: 'Dosis';
+            font-style: normal;
+            font-weight: 500;
+            src: local('Dosis Medium'), local('Dosis-Medium'), url(http://fonts.gstatic.com/l/font?kit=Z1ETVwepOmEGkbaFPefd_-CW9eLPAnScftSvRB4WBxg&skey=21884fc543bb1165) format('woff2');
+        }
+        body {
+
+            font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif,  Open Sans;
+            font-size: 14px;
+            line-height: 1.42857;
+            /*background: rgb(204,204,204);*/
+        }
+table {
+    font: 11px/24px 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif,  Open Sans;
+	border-collapse: collapse;
+	width: 320px;
+	}
+
+th {
+	padding: 0 0.5em;
+	text-align: left;
+	}
+
+tr.yellow td {
+	border-top: 1px solid #FB7A31;
+	border-bottom: 1px solid #FB7A31;
+	background: #FFC;
+	}
+
+td {
+	border-bottom: 1px solid #CCC;
+	padding: 0 0.5em;
+	}
+
+td.width {
+	width: 190px;
+	}
+
+td.adjacent {
+	border-left: 1px solid #CCC;
+	text-align: center;
+	}
+
 .Mycontainer, 
 .content-wrap {
 	overflow: hidden;
@@ -80,7 +133,7 @@
 
 /* Menu Button */
 .menu-button {
-	position: absolute;
+	position: fixed;
 	z-index: 1000;
 	margin: 2em;
 	padding: 0;
@@ -530,12 +583,15 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 .element {
   .center-block();
 } 
-
+.center-block{
+	position: relative;
+	left: 505px;
+}
 #my{
 	color:white;
 }
-
 </style>
+
 
 <script>
 var _gaq = _gaq || [];
@@ -550,12 +606,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 	</head>
 	
-	<body style="height: 600px;">
+	<body>
 	<%@ include file="../header.jsp" %>
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-				<div class="icon-list">
+					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
+					<div class="icon-list">
 						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-envelope-o"></i></a>
@@ -576,19 +633,20 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			</div>
 			<button class="menu-button" id="open-button">Open Menu</button>
 			<div class="content-wrap">
-				<div class="content" style="height: 600px;">
+				<div class="content">
 					<header class="codrops-header">
-					</header>	
 						<div class="codrops-links">
 	
 
 		
 		
-			
-		
-	<h3 style="font-size: 30px;">결제내역</h3><hr></hr><hr></hr>
-	<table style="" class="table">
-  	<thead class="thead-inverse" style="background-color: #FFFFFF; color: #980000;">
+
+					
+<div class="container">
+	<div class="row">
+  <h3 style="font-size: 30px;">결제내역</h3><hr></hr><hr></hr>
+   <table class="table">
+     <thead class="thead-inverse" style="background-color: #FFFFFF; color: #980000;">
   <tr style="font-size: 18px;"> 
     <th style="text-align: center;">카풀 유형</th>
     <th style="text-align: center;">카풀 기간</th>
@@ -614,20 +672,24 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
   </c:forEach>
   </tbody>
 </table>
-<hr></hr><hr></hr>	
+<hr></hr><hr></hr>   
 
-
-	</div>
-	
 </div>
-					
 						
+						<nav class="codrops-demos">
+							
+						
+						</nav>
+					</header>
+					<!-- Related demos -->
+					<section class="related">
+					
+					</section>
 				</div>
-
 			</div><!-- /content-wrap -->
-		
-<script src="js/classie.js"></script>
-<script src="js/main.js"></script>
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script src="js/main.js"></script>
 		
 
 <!-- For the demo ad only -->   
