@@ -28,8 +28,8 @@ public class MessageDAOImple implements MessageDAO {
 		List<MessageDTO> list=sqlMap.selectList("messageShow", map);
 		return list;
 	}
-	public int messageTotalCnt(){
-		 int count=sqlMap.selectOne("messageTotalCnt");
+	public int messageTotalCnt(String userid){
+		 int count=sqlMap.selectOne("messageTotalCnt",userid);
 			return count;
 	 }
 	public List<MessageDTO> messageContent(int idx){
@@ -52,8 +52,24 @@ public class MessageDAOImple implements MessageDAO {
 		int messagenumber=sqlMap.selectOne("messageNumber", sid);
 		return messagenumber;
 				
-				}
 	}
+	public MessageDTO mContent(int idx) {
+		
+		MessageDTO mDto = sqlMap.selectOne("mContent", idx);
+		
+		return mDto;
+	}
+	public int messageAllDel(String userid) {
+		
+		int count = sqlMap.delete("messageAllDel", userid);
+		return count;
+	}
+	public int noReadDel(String userid) {
+		
+		int count = sqlMap.delete("noReadDel",userid);
+		return count;
+	}
+}
 
 	
 

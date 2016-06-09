@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,13 +44,16 @@ public class MessageController {
 		 mav.setViewName("message/messageMsg");
 		 return mav;
 	 }
+	 */
+	
+	/*
 	 @RequestMapping("/messageShow.do")
 	 public ModelAndView messageShow(@RequestParam(value="cp",defaultValue="1")int cp,HttpSession session){
 	
 		 	String sid=(String)session.getAttribute("sid");
-			int totalCnt=messageDao.messageTotalCnt();
-			int listSize=10;
-			int pageSize=5;
+			int totalCnt=messageDao.messageTotalCnt(sid);
+			int listSize=3;
+			int pageSize=2;
 			int messageNumber=messageDao.messageNumber(sid);
 			List<MessageDTO> list=messageDao.messageShow(cp,listSize,sid);
 			
@@ -62,7 +66,7 @@ public class MessageController {
 			mav.setViewName("message/test1");
 			return mav;
 		}
-	 
+	 /*
 	 @RequestMapping("/messageContent.do")
 	 public ModelAndView messageContent(HttpServletRequest req){
 		 int idx=Integer.parseInt(req.getParameter("idx"));
@@ -144,20 +148,81 @@ public class MessageController {
 		
 		String userid = (String)session.getAttribute("sid");
 		
-		int totalCnt=messageDao.messageTotalCnt();
-		int listSize=10;
-		int pageSize=5;
-		//int messageNumber=messageDao.messageNumber(userid);
+		int totalCnt=messageDao.messageTotalCnt(userid);
+		System.out.println(totalCnt);
+		int listSize=2;
+		int pageSize=2;
+		int messageNumber=messageDao.messageNumber(userid);
 		List<MessageDTO> list=messageDao.messageShow(cp,listSize,userid);
 		
 		String pageStr=
-		su.Page.SuPage.makePage("messageShow.do", totalCnt, listSize, pageSize, cp);
+		su.Page.SuPage.makePage("messageList.do", totalCnt, listSize, pageSize, cp);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("lists",list);
-		//mav.addObject("messageNumber",messageNumber);
+		mav.addObject("messageNumber",messageNumber);
+		mav.addObject("pageStr", pageStr);
 		mav.setViewName("message/mList");
+		return mav;
+	}
+	
+	@RequestMapping("/messageContent.do")
+	public ModelAndView mContent(@RequestParam(value="idx",required=false)int midx,
+			MessageDTO mDto){
 		
+		System.out.println("midx="+midx);
+		int result = messageDao.messageReading(midx);
+		
+		mDto = messageDao.mContent(midx);
+		String content = mDto.getContent();
+		System.out.println("content="+content);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("contents", content);
+		mav.addObject("midx", midx);
+		mav.setViewName("message/mContent");
+		return mav;
+	}
+	
+	@RequestMapping("/messageReWrite.do")
+	public ModelAndView mrWrite(MessageDTO mDto,
+			@RequestParam("sendid")String receiveid,
+			@RequestParam("receiveid")String sendid,
+			@RequestParam("midx")int midx){
+		
+		int result = messageDao.messageReading(midx);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("rid", receiveid);
+		mav.addObject("userid", sendid);
+		mav.setViewName("message/mWrite");
+		return mav;
+	}
+	
+	@RequestMapping("/messageDel.do")
+	public ModelAndView mDel(HttpSession session){
+		
+		String userid = (String)session.getAttribute("sid");
+		
+		int result = messageDao.noReadDel(userid);
+		String msg = result>0?"선택 메시지가 삭제되었습니다.":"메시지 삭제 실패하였습니다.";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.setViewName("message/messageMsg");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/messageAllDel.do")
+	public ModelAndView maDel(HttpSession session){
+		
+		String userid = (String)session.getAttribute("sid");
+		
+		int result = messageDao.messageAllDel(userid);
+		String msg = result>0?"메시지가 모두 삭제되었습니다.":"메시지 삭제 실패하였습니다.";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.setViewName("message/messageMsg");
 		return mav;
 	}
 }

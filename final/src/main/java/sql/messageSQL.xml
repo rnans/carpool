@@ -11,7 +11,7 @@
     select * from message where receiveid=#{sid}
    </select>
     	<select id="messageTotalCnt" resultType="int">
-		select count(*) from message
+		select count(*) from message where receiveid=#{sid}
 	</select>
 	<select id="messageContent" resultType="su.message.model.MessageDTO">
 	 select * from message where idx=#{idx}
@@ -29,4 +29,14 @@
 	<select id="messageNumber" resultType="int">
 	 select count(*) from message where receiveid=#{sid} and reading='안읽음'
 	</select>
+	<select id="mContent" parameterType="java.lang.Integer" resultType="su.message.model.MessageDTO">
+	select content from message where idx=#{idx}
+	</select>
+	
+	<delete id="messageAllDel" parameterType="su.message.model.MessageDTO">
+		delete from message where receiveid=#{userid}
+	</delete>
+	<delete id="noReadDel" parameterType="su.message.model.MessageDTO">
+		delete from message where receiveid=#{sid} and reading='읽음'
+	</delete>
 </mapper>
