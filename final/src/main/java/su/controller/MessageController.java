@@ -234,5 +234,14 @@ public class MessageController {
 		mav.setViewName("message/messageMsg");
 		return mav;
 	}
+	
+	@RequestMapping("/messageReSend.do")
+	public ModelAndView mrSend(HttpSession session){
+		
+		String userid = (String)session.getAttribute("sid");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("");
+		return mav;
+	}
 }
 

@@ -15,6 +15,7 @@
 <script type="text/javascript">
 	function mCon(idx){
 		var param = '?idx='+idx;
+		location.reload();
 		window.open('messageContent.do'+param,'mCon','width=450,height=270');
 	}
 	function allDel(){
