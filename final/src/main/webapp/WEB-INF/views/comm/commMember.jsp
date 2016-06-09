@@ -9,13 +9,34 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="CSS/comm.css">
 <link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+<script type="text/javascript">
+window.onload=function(){
+	sendRequest('memberList.do', null, showResult, 'GET')
+}
+
+	
+	function showResult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var result = XHR.responseText;
+			commside.innerHTML=result;
+		}
+	}
+}
+	
+	var uid=null;
+	function msgOpen(){	
+		
+		window.open('messageWrite.do?uid='+uid,'','width=400, height=270')
+	}
+</script>
 </head>
 <style>
 </style>
-<body  style="background-color: #F6F6F6;">
+<body  style="background-color: #F6F6F6; padding-top: 110px;">
 <%@include file="../header.jsp"%>
 
-	<div id="lnb" data-skin="skin5">
+	<div id="lnb" data-skin="skin5" style="z-index: 50;"> 
 		<div data-viewname="DLnbMenuView">
 			<ul class="_joinedLnb">
 				<li><a href="comm.do" data-skinfactor="tBorder color"
@@ -32,28 +53,24 @@
 			</ul>
 		</div>
 	</div>
+	   
+	
+	 <div id="commside">
+  </div>
 
-<br><BR><Br><Br>
 
-<section data-viewname="DBandMemberLayoutView" class="memberSection">
-<div class="memberDiv" style="width: 50%; margin: 0px auto;">
-<h1 class="uSectionTitle" style="vertical-align:  middle;"><span>멤버</span><em class="count">1</em>
-<span style=" width: auto; height: 40px; text-align: center; color: #666; font-size: 14px; float: right;" >
+<section class="memberSection"  style="width: 40%; margin: 0px auto;">
+<div class="memberDiv" style="z-index: 100">
 
-<button type="button" class="uButton uButtonPoint btn-hover" 
-	style="background:none ; color: #3cd370; border:1px solid #3cd370;min-width: 70px; line-height: 28px; margin: 0 3px; font-size: 14px;font-weight:bold ; padding-left: 5px; padding-right: 5px;">
-	멤버 초대하기
-</button></span></h1>
-
-	<div class="searchWrap" style="background-color: #fff;">
+	<div class="searchWrap" style="background-color: #fff;border: 0;">
 			<form autocomplete="off" action="">
 				<h2 class="gSrOnly">검색 입력 폼</h2>
-				<div class="uInputSearch">
+				<div class="uInputSearch"   style="display: block; ">
 					<label class="gSrOnly" for="input_search">이름, 글내용, 해시태그로 검색</label>
 					<input type="text" id="input_search"
 						placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name="">
 
-					<button type="button" class="searchbutton" style=" background-color: #fff;color: #fff;">
+					<button type="button" class="searchbutton" style="display:inline-block; color: #fff;float: right;">
 					<i class="fa fa-search" style="color: #BDBDBD;padding-top: 0px;font-size: 22px;" aria-hidden="true"></i></button>
 				</div>
 			</form>
@@ -74,7 +91,7 @@
 	<div class="subTitle"> <strong>멤버</strong></div> 
 	</c:if>
 	<c:forEach var="member" items="${memberlist}">
-	<ul class="cThumbList" style="margin-bottom: 0px;"> 
+	<ul class="cThumbList" style="margin-bottom: 0px; border: 0;border-bottom: 1px solid #D5D5D5; "> 
 	<li><div class="profile">
 	<a href="#"><img data-uiselector="profileImg" src="http://s.cmstatic.net/webclient/dres/20160524170024/images/template/profile_60x60.gif" alt="남구문"></a>
 	</div>
@@ -82,14 +99,14 @@
 	<div class="nameArea"> 
 	<strong class="name">${member.name }</strong>   
 	
-	<c:if test="${member.grade==0}"><span class="labelAuth" style="background-color: #3cd370;">리더</span> </c:if>   
+	<c:if test="${member.grade==0}"><span class="labelAuth" data-skin="skin5"  data-skinfactor="bg">리더</span> </c:if>   
 	<c:if test="${member.sex==null||member.sex=='남성' }"><i class="fa fa-mars" style="color: skyblue;" aria-hidden="true"></i></c:if>
 	<c:if test="${member.sex=='여성' }"><i class="fa fa-venus" style="color: pink;" aria-hidden="true"></i></c:if>
 	<span class="subtxt">${member.phonenum }</span> </div>
 	<div class="setting"></div>
 	<div class="side"> 
-<c:if test="${member.id==sid}"> <a href="#"><i class="fa fa-cog fa-2x" style="color: #BDBDBD;" aria-hidden="true"></i></a> </c:if>
-<c:if test="${member.id!=sid}"> <a href="#"> <i class="fa fa-comment-o fa-2x" style="color: #3cd370;"  aria-hidden="true"></i></a></c:if>
+<c:if test="${member.id==sid}"> <a href="#"><i class="fa fa-cog fa-2x"  style="color: #8C8C8C;" aria-hidden="true"></i></a> </c:if>
+<c:if test="${member.id!=sid}"> <a href="#"> <i class="fa fa-comment-o fa-2x" style="color: #8C8C8C;"  aria-hidden="true"></i></a></c:if>
      </div>
 	</li>    
 	</ul>
@@ -152,7 +169,6 @@
 	</div>
 </div><!-- 설정 닫기 -->
 </section>
-
 
 
 </body>

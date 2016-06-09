@@ -3,28 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="http://s.cmstatic.net/webclient/dres/20160608160250/css/bandComponent.css?_=20160608160250">
+<link rel="stylesheet" type="text/css"
+	href="http://s.cmstatic.net/webclient/dres/20160608160250/css/band.css?_=20160608160250">
+<link rel="stylesheet" type="text/css"
+	href="http://s.cmstatic.net/webclient/dres/20160608160250/css/bandLayout.css?_=20160608160250">
         
-        
-        <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-        <link rel="stylesheet" type="text/css" href="http://s.cmstatic.net/webclient/dres/20160602183753/css/bandComponent.css?_=20160602183753">
-		<link rel="stylesheet" type="text/css" href="http://s.cmstatic.net/webclient/dres/20160602183753/css/band.css?_=20160602183753">        
-        
-<script>
-var uid=null;
-function msgOpen(){	
-	
-	window.open('messageWrite.do?uid='+uid,'','width=400, height=270')
-}
-</script>
-<style>
+
 <style>
 #info .widget {
     min-width: 210px;
@@ -149,9 +135,11 @@ function msgOpen(){
 
 
 </style>
-<div class="commside" style="width: 30%; float: left; height: 100%;">
-  <aside id="info" data-uiselector="leftSection" data-skin="skin5" style="width:200px; padding-left : 170px;padding-top: 50px;">
-	
+
+
+   <div class="commside" style="width: 30%; float: left; height: 100%;">
+  <aside id="info" data-uiselector="leftSection" data-skin="skin5" style="min-width:210px;max-width:210px;float: right; margin-right: 30px;">
+
 	<!-- pool -->
 
 	<div data-viewname="DBandCoverItemView">
@@ -185,12 +173,12 @@ function msgOpen(){
 
 
 	<!--  chat -->
-	<div data-uiselector="summaryRegion">
+<div data-uiselector="summaryRegion">
 		<div data-viewname="DBandSummaryItemView">
 			<div data-uiselector="bandChannelsRegion" style="min-height: 100px;" class="widget">
 				<div data-viewname="DBandChattingChannelListView">
 					<div class="tit noArrow">
-						<h2>접속중 <font style="color:#F15F5F;">${count}</font></h2>
+						<h2 style="margin-top: 0;">접속중 <font style="color:#F15F5F;">${count}</font></h2>
 						<button data-uiselector="btnNewChatChannel" type="button"
 							class="uButton newChat">쪽지</button>
 					</div>
@@ -228,3 +216,77 @@ function msgOpen(){
 </aside>
     
     </div>     
+    
+<div style="width: 30%; position:absolute; height: 100%;right : 200px;z-index: 0;">
+<aside id="banner" data-uiselector="bannerRegion">
+						<div data-viewname="DBannersView" class="inner">
+							<div data-uiselector="bandBannerRegion" class="widget myBand">
+								<div data-viewname="DBandBannerView">
+									<div class="tit _myBandListTitle" data-skin="skin5">
+										<h2>내 카풀</h2>
+									</div>
+									<div class="dummy" data-uiselector="dummy">
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+									</div>
+									<div class="scrollWrap">
+										<div class="nano has-scrollbar">
+											<div class="nano-content" tabindex="0" style="right: -17px;">
+												<ul data-uiselector="bandList">
+													<li data-viewname="DBandBannerItemView" data-skin="skin5" class=""><a href="#"><span data-skinfactor="beforeBg"></span> <span><strong title="">가입된 카풀1</strong> </span></a></li>
+													<li data-viewname="DBandBannerItemView" data-skin="skin4" class=""><a href="#"><span data-skinfactor="beforeBg"></span> <span><strong title="">가입된 카풀2</strong> </span></a></li>
+													<li data-viewname="DBandBannerItemView" data-skin="skin3" class=""><a href="#"><span data-skinfactor="beforeBg"></span> <span><strong title="">가입된 카풀3</strong> </span></a></li>
+													<li data-viewname="DBandBannerItemView" data-skin="skin2" class=""><a href="#"><span data-skinfactor="beforeBg"></span> <span><strong title="">가입된 카풀4</strong> </span></a></li>
+												</ul>
+											</div>
+											<div class="nano-pane" style="display: block;">
+												<div class="nano-slider" style="height: 201px; transform: translate(0px, 35px);"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div data-uiselector="recommendBandBannerRegion" class="widget proposeBand">
+								<div data-viewname="DBandBannerRecommendBandsCompositeView">
+									<h2 class="tit">
+										<a href="#" data-icon="right" data-uiselector="btnMoveDiscover">이런 밴드는 어때요</a>
+									</h2>
+									<div class="dummy" data-uiselector="recommendBandsDummy">
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+									</div>
+									<div class="scrollWrap">
+										<div class="nano has-scrollbar">
+											<div class="nano-content" tabindex="0" style="right: -17px;">
+												<ul data-uiselector="recommendBands">
+													<li data-viewname="DBandBannerRecommendBandsItemView" data-skin="skin9"><a href="#" data-uiselector="goTargetBand"><span data-skinfactor="beforeBg"><img src="http://coresos.phinf.naver.net/a/2gei0a_0/7f8Ud015h6bj6qmqnig5_tycu2s.jpg?type=s150_low" width="44" height="44" alt="팩토리크루" data-skinfactor="border"></span> <span><strong title="팩토리크루">여행을 떠나요</strong> </span></a></li>
+													<li data-viewname="DBandBannerRecommendBandsItemView" data-skin="skin10"><a href="#" data-uiselector="goTargetBand"><span data-skinfactor="beforeBg"><img src="http://coresos.phinf.naver.net/a/2h0j6c_e/e7bUd015spyt7qyt1tz3_wptrrw.jpg?type=s150_low" width="44" height="44" alt="흔남들의 여심저격 스타일링" data-skinfactor="border"></span> <span><strong title="흔남들의 여심저격 스타일링">잉행 공장 ㄱㄱ</strong> </span></a></li>
+													<li data-viewname="DBandBannerRecommendBandsItemView" data-skin="skin3"><a href="#" data-uiselector="goTargetBand"><span data-skinfactor="beforeBg"><img src="http://coresos.phinf.naver.net/a/2h40bb_e/03jUd015anb6lqiyi6pz_enolh1.jpg?type=s150_low" width="44" height="44" alt="우울증 이야기(동양과 서양매체를 이용한 심리상담)" data-skinfactor="border"></span> <span><strong title="우울증 이야기(동양과 서양매체를 이용한 심리상담)">급구 부산가실 분																	서양매체를 이용한 심리상담)</strong> </span></a></li>
+													<li data-viewname="DBandBannerRecommendBandsItemView" data-skin="skin4"><a href="#" data-uiselector="goTargetBand"><span data-skinfactor="beforeBg"><img src="http://coresos.phinf.naver.net/a/2h4c7e_j/354Ud015xl4ref2geqzt_y9wczf.jpg?type=s150_low" width="44" height="44" alt="어린이집교사 상담전문" data-skinfactor="border"></span> <span><strong title="어린이집교사 상담전문">ㅋㅋㅋㅋ</strong> </span></a></li>
+													<li data-viewname="DBandBannerRecommendBandsItemView" data-skin="skin4"><a href="#" data-uiselector="goTargetBand"><span data-skinfactor="beforeBg"><img src="http://coresos.phinf.naver.net/a/2ghcj3_8/48cUd015b4dhvztxjp90_aq02eu.jpg?type=s150_low" width="44" height="44" alt="치아 교정하는 사람들" data-skinfactor="border"></span> <span><strong title="치아 교정하는 사람들">쑤갱네 조</strong> </span></a></li>
+													<li data-viewname="DBandBannerRecommendBandsItemView" data-skin="skin2"><a href="#" data-uiselector="goTargetBand"><span data-skinfactor="beforeBg"><img src="http://coresos.phinf.naver.net/a/2h2iee_2/919Ud015gskg9cpebv2d_308wvj.jpg?type=s150_low" width="44" height="44" alt="놀이기구 정ㅋ벅ㅋ" data-skinfactor="border"></span> <span><strong title="놀이기구 정ㅋ벅ㅋ">모여라</strong> </span></a></li>
+													<li data-viewname="DBandBannerRecommendBandsItemView" data-skin="skin5"><a href="#" data-uiselector="goTargetBand"><span data-skinfactor="beforeBg"><img src="http://coresos.phinf.naver.net/a/2gfi9e_i/5hiUd01558ym1u0xk8n1_13rgio.jpg?type=s150_low" width="44" height="44" alt="립스틱만 50개째" data-skinfactor="border"></span> <span><strong title="립스틱만 50개째">갈데 없음 오셈</strong> </span></a></li>
+													<li data-viewname="DBandBannerRecommendBandsItemView" data-skin="skin10"><a href="#" data-uiselector="goTargetBand"><span data-skinfactor="beforeBg"><img src="http://coresos.phinf.naver.net/a/2g1jf2_8/6geUd0151j5a495obd9u8_bwwo23.jpg?type=s150_low" width="44" height="44" alt="김필(Kim Feel) 팬 밴드" data-skinfactor="border"></span> <span><strong title="김필(Kim Feel) 팬 밴드"></strong>몰라 뭐하지</span></a></li>
+												</ul>
+											</div>
+											<div class="nano-pane">
+												<div class="nano-slider" style="height: 174px; transform: translate(0px, 0px);"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</aside>
+				</div>

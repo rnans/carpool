@@ -284,6 +284,14 @@ public class commController {
 		mav.setViewName("comm/gallery");
 		return mav;
 	}
+	
+	@RequestMapping("poolList2.do")
+	public ModelAndView poolList(){
+		
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("poolList");
+		return mav;
+	}
 	 	
 
 }

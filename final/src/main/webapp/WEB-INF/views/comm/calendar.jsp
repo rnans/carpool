@@ -69,12 +69,32 @@ function showResult(){
 	}
 }
 
+window.onload=function(){
+	sendRequest('memberList.do', null, showResult2, 'GET')
+}
+
+	
+	function showResult2(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var result = XHR.responseText;
+			commside.innerHTML=result;
+		}
+	}
+}
+
 function write(){	
 	var month=<%=intMonth+1%>;
 	var day=startdate;
 	var year=<%=intYear%>;
 	var params='day='+day+'&'+'month='+month+'&year='+year;
 	window.open('scheWrite.do?'+params,'','width=515, height=595')
+}
+
+var uid=null;
+function msgOpen(){	
+	
+	window.open('messageWrite.do?uid='+uid,'','width=400, height=270')
 }
 
 </script>
@@ -88,10 +108,6 @@ function write(){
     padding: 4px 9px;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
-}
-#calendarview{
-  margin:0px auto;
- width:50% ;
 }
 #calendar_table{
 
@@ -158,15 +174,17 @@ a:focus, a:hover {
     word-wrap: normal;
     text-overflow: ellipsis;
 }
+
+
+
 </style>
 <link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
-<body style="background-color: #F6F6F6;">
+<body style="background-color: #F6F6F6;padding-top: 110px;">
 
 <%@include file="../header.jsp"%>
 
 
-
-	<div id="lnb" data-skin="skin5">
+	<div id="lnb" data-skin="skin5" style="z-index: 50">
 		<div data-viewname="DLnbMenuView">
 			<ul class="_joinedLnb">
 				<li><a href="comm.do" data-skinfactor="tBorder color"
@@ -183,12 +201,15 @@ a:focus, a:hover {
 			</ul>
 		</div>
 	</div>
+	 <link rel="stylesheet" type="text/css" href="http://s.cmstatic.net/webclient/dres/20160602183753/css/bandComponent.css?_=20160602183753">
+		<link rel="stylesheet" type="text/css" href="http://s.cmstatic.net/webclient/dres/20160602183753/css/band.css?_=20160602183753"> 
+	
+	 <div id="commside">
+  </div>
 
-
-
-<div id="span" style="margin-top: 70px;" ><div id="calendarview">
-<br><br>
-<table id="calendar_table" class="table table-hover" style="border:1px solid #cfcfcf; border-bottom: 1px solid #CFCFCF;">
+<div class="calendarview" style="width: 40%; margin: 0px auto;">
+<div id="calendarview">
+<table id="calendar_table" data-skin="skin5" data-skinfactor="bg" class="table table-hover" style="border:1px solid #cfcfcf; border-bottom: 1px solid #CFCFCF;">
 <thead>
   <tr>
      <td colspan="7" align="center" height="25">
@@ -241,7 +262,7 @@ a:focus, a:hover {
 <c:forEach var="bbs" items="${list}">	
 			<c:set var="day2" value="<%=temp+days[i][j]%>"></c:set>
 		 	<c:if test="${bbs.startday==day2}">
-		 	<br><font style="color:#8C8C8C;">${bbs.id}</font>&nbsp;${bbs.subject}
+		 	<br><font style="color:#8C8C8C;">${bbs.id}</font><br>&nbsp;${bbs.subject}
 		 	</c:if>
 			</c:forEach>
 		
@@ -259,7 +280,7 @@ a:focus, a:hover {
 </tbody>
 </table>
 </div>
-</div>
+
 <div>
    <form method="post" hidden="true" >
         <input type="submit" id="prev" name="PREV" value="">
@@ -273,7 +294,7 @@ a:focus, a:hover {
         <input type="hidden" name="year" value="<%=nextYear%>">
      </form>
  </div>
- <div class="calbbs" style="width: 50%;margin: 0px auto;">
+ <div class="calbbs" >
  <c:if test="${empty list}">
 	<td colspan="4" align="center">
 		등록된 게시글이 없습니다.
@@ -293,6 +314,8 @@ a:focus, a:hover {
 	 </ul>
 </div>
 </c:forEach>
+
+</div>
 
 </div>
 

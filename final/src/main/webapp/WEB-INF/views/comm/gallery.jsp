@@ -24,7 +24,7 @@
 
 </head>
 
-<body  style="background-color: #F6F6F6;">
+<body  style="background-color: #F6F6F6; padding-top: 80px;">
 	<%@include file="../header.jsp"%>
 	<style>
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,300);
@@ -168,12 +168,7 @@ footer{
 footer a,footer a:hover{
     color: #88C425;
 }
-[data-skin=skin5] [data-skinFactor~=tBorder], [data-skin=skin5] [data-skinFactor~=border], [data-skin=skin5] [data-skinFactor~=beforeBorder]:before, [data-skin=skin5] [data-skinFactor~=afterBorder]:after {
-    border-color: #3cd370!important;
-}
-[data-skin=skin5] [data-skinFactor~=color], [data-skin=skin5] [data-skinFactor~=beforeColor]:before, [data-skin=skin5] [data-skinFactor~=afterColor]:after, [data-skin=skin5] [data-skinFactor~=bColor], [data-skin=skin5] [data-skinFactor~=bBeforeColor]:before, [data-skin=skin5] [data-skinFactor~=bAfterColor]:after {
-    color: #3cd370!important;
-}
+
 </style>
 	
 	<div id="lnb" data-skin="skin5">
@@ -194,19 +189,15 @@ footer a,footer a:hover{
 		</div>
 	</div>
 
-<div class="container" style="width:50%;margin-top: 80px;">
 
-<h1 class="uSectionTitle" style="vertical-align:  middle;"><span style="vertical-align: middle;"><font style="position:relative; margin-top: 15px;">사진</font></span><em class="count">16</em>
+
+<div class="container" style="width:55%;">
+
+<h1 class="uSectionTitle" style="vertical-align:  middle;padding-bottom: 0;"><span style="vertical-align: middle;"><font style="position:relative;">사진</font></span><em class="count">16</em>
 <span style=" width: auto; height: 40px; text-align: center; color: #666; font-size: 14px; float: right;" >
-
-<button type="button" class="uButton uButtonPoint btn-hover" 
-	style="background:none ; color: #86E57F; border:1px solid #86E57F;min-width: 70px; line-height: 28px; margin: 0 3px; font-size: 14px;font-weight:bold ; padding-left: 5px; padding-right: 5px;">
-	사진 올리기
-</button></span></h1>
+</span></h1>
 
 <section>
-
-
 
   <div class="container gal-container" style="padding-top: 0px;padding-left: 0px;padding-right: 0px;">
   
@@ -592,5 +583,6 @@ footer a,footer a:hover{
   </div>
 </section>
 </div>
+
 </body>
 </html>
