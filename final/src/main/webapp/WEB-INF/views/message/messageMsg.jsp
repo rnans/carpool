@@ -2,7 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
 	window.alert('${msg}');
-	window.self.close();
-	location.href="messageList.do"
 	opener.location.reload();
 </script>

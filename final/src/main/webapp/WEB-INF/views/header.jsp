@@ -90,7 +90,7 @@
 				</li>
 				<li><a href="carList.do">차량관리</a></li>
 				<li class="dropdown">
-					<a href="comm.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">쪽지함 <span class="badge">3</span><span class="caret"></span></a>
+					<a href="comm.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">쪽지함 <span class="badge">${mNum}</span><span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="">쪽지쓰기</a></li>
 						<li><a href="messageList.do">쪽지함보기</a></li>

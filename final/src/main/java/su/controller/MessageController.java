@@ -154,6 +154,8 @@ public class MessageController {
 		int messageNumber=messageDao.messageNumber(userid);
 		List<MessageDTO> list=messageDao.messageShow(cp,listSize,userid);
 		
+		session.setAttribute("mNum", messageNumber);
+		
 		String pageStr=
 		su.Page.SuPage.makePage("messageList.do", totalCnt, listSize, pageSize, cp);
 		//System.out.println("messageNumber="+messageNumber);

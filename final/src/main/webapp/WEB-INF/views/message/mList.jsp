@@ -33,7 +33,9 @@
 	}
 	function Test(idx){
 		var param = '?idx='+idx;
+		location.reload();
 		window.open('messageReWrite.do'+param,'mrWrite','width=450,height=270');
+		
 	}
 	
 </script>
