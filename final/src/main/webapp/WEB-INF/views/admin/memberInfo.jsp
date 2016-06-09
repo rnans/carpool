@@ -186,7 +186,7 @@ AmCharts.makeChart("chartdiv",
 				"type": "pie",
 				"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 				"colors": [
-					"#495fba","#e8d685","#ae85c9","#c9f0e1","#d48652","#629b6d","#719dc3","#719dc3"
+					"#368AFF","#FF5AFF"
 						],
 				"titleField": "category",
 				"valueField": "column-1",
@@ -392,14 +392,14 @@ function memberDel(){
 						<td>
 							<a onclick="javascript:idx='${list.idx}';grade='${list.grade }'" data-title="Grade" data-toggle="modal" data-target="#grade">
 							<button type="button" class="uButton uButtonPoint"
-									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
+									style="background: #3DB7CC; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
 									등급변경</button>
 							</a>
 						</td>
 						<td>
 							<a onclick="javascript:idx='${list.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete">
 							<button type="button" class="uButton uButtonPoint"
-									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
+									style="background: #6799FF; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
 									회원탈퇴</button>
 							</a>
 						</td>
@@ -497,7 +497,9 @@ function memberDel(){
 		<!-- /.modal-dialog -->
 </div>
 <!-- 등급변경 모달 -->
-
-<footer>풋</footer>
+<hr>
+<div>
+<%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>
