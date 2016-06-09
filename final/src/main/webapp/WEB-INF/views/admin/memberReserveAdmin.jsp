@@ -68,14 +68,14 @@ function memberReserveDel(){
 </div>
        <div class="" style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;  ">
 <div>
- <div align="center" style="margin-left:180px; margin-bottom: 80px;">
+ <div align="center" style="margin-left:180px; margin-bottom: 25px;">
 <h2 >예약및결제관리</h2>
 <h4 >사용자예약</h4>
 </div>
 
 
 <div>
-		<table border="1" style="margin: 0px auto;" width="800" height="150" >
+		<table border="1" style="margin: 0px auto;"  >
 			<thead>
 				<tr>
 					<th>번호</th>

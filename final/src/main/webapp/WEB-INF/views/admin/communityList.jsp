@@ -62,31 +62,23 @@
 </style>
 </head>
 <body>
-	<div>
 	<%@include file="../header.jsp"%>
-	</div>
 	
-	<div style="width: 100%; margin: 100px 0px 0px 0px">
-	<%@include file="../adHeader.jsp"%>
-	</div>
-	
+ <div style="width: 100%; ">
+<div style="width: 100%; margin: 100px 0px 0px 0px">
+<%@include file="../adHeader.jsp" %>
+</div>
+
+<div class="" style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
 	<div align="center"
-		style="margin-left: 150px; margin-bottom: 10px; margin-top: 60px;">
+		style="margin-left:180px; margin-bottom: 25px;">
 		<h2 align="center">커뮤니티관리</h2>
 		<h4 align="center">커뮤니티</h4>
-		<div id="content" align="center">
-			<section class="links">
-				<nav class="link-effect-3" id="link-effect-3">
-					<a href="memberCommList.do" data-hover="1.커뮤니티">1.커뮤니티</a> 
-				</nav>
-			</section>
-		</div>
+	
 	</div>
 	
 	
-	<div class="container" style="width: 100%; margin-left: 165px;">
-	
-	<table style="margin: 10px auto; height: 80px;">
+	<table border="1" style="margin: 0px auto; height: 80px;">
 	
 				<tr>
 					<th>구분</th>
@@ -102,7 +94,7 @@
 
 		<c:forEach var="list" items="${list3}" varStatus="status">
 		<div class="accordion" id="accordion2" style="margin-bottom: 0px;">
-		<table style="margin: 10px auto; height: 80px;">
+		<table border="1" style="margin: 0px auto; height: 80px;">
 				
 				<c:forEach var="list3" items="${list2}">
 				
@@ -138,7 +130,7 @@
 				<div id="collapseOne" class="${list.poolname} accordion-body collapse">
 							<div class="accordion-inner" style="margin-top: 0px;">
 							
-							<table style="margin: 0px auto; height: 120px;">
+							<table border="1" style="margin: 0px auto; height: 120px;">
 							<tr>
 										<th>구분</th>
 										<th>카풀명</th>
@@ -177,10 +169,12 @@
 					
 		
 
-	<div style="text-align: center;">
+	<div style="text-align: center; margin-left: 180px;">
 			${pageStr }
 	</div>
 </div>
+</div>
+
 	<!-- 아코디언 -->
 				<script>
     $(document).on('show','.accordion', function (e) {

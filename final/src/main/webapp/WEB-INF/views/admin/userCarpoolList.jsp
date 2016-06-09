@@ -71,30 +71,23 @@ function userPoolDel(){
 
 </head>
 <body>
-<div>
 	<%@include file="../header.jsp"%>
-	</div>
-	<%@include file="../adHeader.jsp" %>
+ <div style="width: 100%; ">
+<div style="width: 100%; margin: 100px 0px 0px 0px">
+<%@include file="../adHeader.jsp" %>
+</div>
 
 
-
-
+	<div  style="width: 100%; margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
 	<div align="center"
-		style="margin-left: 150px; margin-bottom: 10px; margin-top: 60px;">
+		style="margin-left:180px; margin-bottom: 25px;">
 		<h2 align="center">카풀게시물관리</h2>
 		<h4 align="center">사용자</h4>
-		<div id="content" align="center">
-			<section class="links">
-				<nav class="link-effect-3" id="link-effect-3">
-					<a href="driverPoolList.do" data-hover="1.드라이버">1.드라이버</a> 
-					<a href="userPoolList.do" data-hover="2.사용자">2.사용자</a>
-				</nav>
-			</section>
-		</div>
-	</div>
 	
-	<div class="container" style="width: 100%; margin: 0px auto;">
-		<table border="1" style="margin-left: 100px;">
+	</div>
+	<div>
+	
+		<table border="1" style="margin: 0px auto;">
 			<thead>
 				<tr>
 					<th>구분</th> <!-- idx -->
@@ -157,6 +150,8 @@ function userPoolDel(){
 				</tr>
 			</tfoot>
 		</table>
+</div>
+</div>
 </div>
 
 <!-- 삭제 모달 -->

@@ -51,29 +51,23 @@
 </style>
 </head>
 <body>
-<div>
-<%@include file="../header.jsp" %>
-</div>
-<%@include file="../adHeader.jsp" %>
 
+<%@include file="../header.jsp" %>
+
+ <div style="width: 100%; ">
+<div style="width: 100%; margin: 100px 0px 0px 0px">
+<%@include file="../adHeader.jsp" %>
+</div>
+
+<div  style="width: 100%; margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
 	<div align="center"
-		style="margin-left: 150px; margin-bottom: 10px; margin-top: 60px;">
+		style="margin-left:180px; margin-bottom: 25px;">
 		<h2 align="center">회원관리</h2>
-		<h4 align="center">회원알림관리</h4>
-		<div id="content" align="center">
-			<section class="links">
-				<nav class="link-effect-3" id="link-effect-3">
-					<a href="memberInfo.do" data-hover="1.회원정보관리">1.회원정보관리</a> <a
-						href="memberCarInfo.do" data-hover="2.회원차량관리">2.회원차량관리</a> <a
-						href="memberAlarm.do" data-hover="3.회원알림관리">3.회원알림관리</a>
-				</nav>
-			</section>
-		</div>
+		<h4 align="center">회원알람관리</h4>
 	</div>
 	
-	<div class="container" style="width: 100%; margin: 0px auto;">
-
-		<table border="1" style="margin-left: 190px; margin-top: 0px;">
+<div>
+		<table border="1" style="margin: 0px auto;">
 			<thead>
 				<tr>
 					<th>구분</th>
@@ -110,6 +104,8 @@
 			</tfoot>
 		</table>
 	</div>
+	</div>
+</div>
 <footer>풋</footer>
 </body>
 </html>

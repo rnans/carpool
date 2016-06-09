@@ -265,9 +265,9 @@ style type ="text/css">.links {
 <h2 >고객센터관리</h2>
          <h4>1:1문의</h4>
          </div>
+         
 		<form id="custom-search-form" name="a"
 			class="form-search form-horizontal" action="oneandoneSearch.do">
-
 
 			<div class="container"
 				style="margin-top:10px;margin-bottom:15px; margin-left:730px; display: inline-block; width: 320px; height: 28px;">

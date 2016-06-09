@@ -60,7 +60,7 @@
 </div>
 <div class="" style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;  ">
 <div>
- <div align="center" style="margin-left:180px; margin-bottom: 80px;">
+ <div align="center" style="margin-left:180px; margin-bottom: 25px;">
 <h2 >예약및결제관리</h2>
 <h4 >결제관리</h4>
 </div>

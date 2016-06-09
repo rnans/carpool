@@ -319,44 +319,42 @@ function memberDel(){
 
 </head>
 <body>
-<div>
+
 <%@include file="../header.jsp" %>
-</div>
-<div style="width: 100%; margin: 100px 0px 0px 0px">
+<div style="width: 100%; ">
+<div style="width: 20%; margin: 100px 0px 0px 0px">
 <%@include file="../adHeader.jsp" %>
 </div>
-
-<div class="container" style="width: 100%; margin: 0px auto;">
-
-	<div id="chartdiv" style="width: 35%; height: 400px; background-color: #FFFFFF;  display: inline-block;"></div>
+    <div id="chartdiv" style="width: 35%; height: 400px; background-color: #FFFFFF;  display: inline-block; margin-left: 5px;"></div>
 	<div id="chartdiv2" style="width: 35%; height: 400px; background-color: #FFFFFF;  display: inline-block;"></div>
+<div class=""  style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
+
+	
  
- <div class="container" >
-   <div class="row">
+
         <div class="" >
             <form id="custom-search-form" name="a" class="form-search form-horizontal " action="memberSearch.do">
-                <div class="input-append span12" style="margin-left: 470px; float: right;">
+               
 						<div class="container"
-						style="float: right; margin-right:100px; margin-bottom:10px; display: inline-block; width: 320px; height: 28px;">
-							<div class="dropdown2" style=" width: 100px; border: 0; top: 8px;">
+						style="margin-top:10px;margin-bottom:15px; margin-left:730px; display: inline-block; width: 320px; height: 28px;">
+							<div class="dropdown2" style=" width: 100px; border: 0; top: 10px;">
 								<select name="select" class="dropdown-select" style="width: 130px;">
 									<option value="id">아이디</option>
 									<option value="sex">성별</option>
 									<option value="name">이름</option>
 								</select>
 							</div>
-						</div>
-						<input type="text" class="search-query" id="search" name="search" style="width: 150px; float:right; margin-left: 500px; position: absolute;">
-                    <button type="button" class="btn" onclick="show();" style="margin-left: 700px; float: right; position: absolute;"><i class="main-icon" data-type="img" > 
+						
+						<input type="text" class="search-query" id="search" name="search" style="width: 150px; padding: 0px 0px;">
+                    <button type="button" class="btn" onclick="show();"><i class="main-icon" data-type="img" > 
                     <img src="http://image005.flaticon.com/28/svg/34/34097.svg" width="20" height="20" alt="Magnifier tool free icon" title="Magnifier tool free icon"></i></button>                 
                 </div>
             </form>
         </div>
-   </div>
-</div> 
 
-		<div id="span" style="margin-left: 165px;">
-			<table  border="1" style=" margin-top: 0px;" id="a">
+
+		<div id="span">
+			<table  border="1" style="margin: 0px auto;" id="a">
 			<thead>
 				<tr>
 					<th>구분</th>
@@ -418,6 +416,7 @@ function memberDel(){
 			</tfoot>
 		</table>
 		</div>
+</div>
 </div>
 
 <!-- 삭제 모달 -->

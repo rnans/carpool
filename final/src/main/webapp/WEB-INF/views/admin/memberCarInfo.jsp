@@ -76,33 +76,24 @@ function memberCarOk(){
 
 </head>
 <body>
-<div>
 <%@include file="../header.jsp" %>
-</div>
 
+ <div style="width: 100%; ">
 <div style="width: 100%; margin: 100px 0px 0px 0px">
 <%@include file="../adHeader.jsp" %>
 </div>
 
-<div class="container" style="width: 100%; margin: 0px auto;">
+<div  style="width: 100%; margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
 	<div align="center"
-		style="margin-top: 0px; display: inline-block;">
+		style="margin-left:180px; margin-bottom: 25px;">
 		<h2 align="center">회원관리</h2>
 		<h4 align="center">회원차량관리</h4>
-		<div id="content" align="center">
-			<section class="links">
-				<nav class="link-effect-3" id="link-effect-3">
-					<a href="memberInfo.do" data-hover="1.회원정보관리">1.회원정보관리</a> <a
-						href="memberCarInfo.do" data-hover="2.회원차량관리">2.회원차량관리</a> <a
-						href="memberAlarm.do" data-hover="3.회원알림관리">3.회원알림관리</a>
-				</nav>
-			</section>
-		</div>
+	
 	</div>
 
 	
 	<div>
-		<table border="1">
+		<table border="1" style="margin: 0px auto;">
 			<thead>
 				<tr>
 					<th>구분</th>
@@ -162,7 +153,7 @@ function memberCarOk(){
 		</table>
 	</div>
 </div>
-
+</div>
 <!-- 삭제 모달 -->
 	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
 		aria-labelledby="edit" aria-hidden="true">
