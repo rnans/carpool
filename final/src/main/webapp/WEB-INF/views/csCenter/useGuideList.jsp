@@ -22,19 +22,15 @@ $('.tr').css('display','none');
 </script> 
 
 <body>
-
 <%@include file="../header.jsp" %>
-<hr>
 
-
- <br><br>	
-<div class="container" style=" margin: 0px 0px 0px 0px">
+<div class="container" style=" margin: 50px 0px 0px 0px">
 	<div class="row" >
 		 <%@include file="csCenterSubMenu.jsp" %>
 		<div class=".col-md-10" style="display: inline-block; width: 70%; ">
-<h3 align="center"> 이용안내</h3>
-<br>
-<table class="table table-list-search" > 
+<h3 align="center" style="margin-left: 140px;"> 이용안내</h3>
+
+<table class="table table-list-search" style="margin-left: 70px; margin-top: 60px;" > 
 <tbody>
 <c:if test="${empty list }">
 <tr>

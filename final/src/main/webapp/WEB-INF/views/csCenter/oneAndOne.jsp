@@ -101,21 +101,20 @@ div {
 <div>
 <%@include file="../header.jsp" %>
 </div>
-<hr>
-<br>
 
-<div class="container"  style=" margin: 0px 0px 0px 0px">
+<div>
+<div class="container"  style=" margin: 50px 0px 0px 0px;">
 	<div class="row">
 	<%@include file="csCenterSubMenu.jsp" %>
-		<div class=".col-md-10" style=" display: inline-block; width: 70%; ">	
-		<h3 align="center">1:1문의</h3>
-		<br>
-		<div>
-			 <div class="btn-group" role="group" aria-label="..." style="margin-left:870px">
+	
+		<div class=".col-md-10"  style="display: inline-block; width: 70%; ">	
+		<h3 align="center" style="margin-left: 140px;">
+		1:1문의</h3>
+		
+			 <div class="btn-group" role="group" aria-label="..." style="margin-left:940px">
   <a href="oneAndOneWriteForm.do" class="btn btn-default">문의하기</a>
 </div>
-<br><br>
-<table class="table table-list-search" > 
+<table class="table table-list-search" style="margin-left: 70px;"> 
 <thead>
 <tr>
    <th>번호</th>
@@ -156,11 +155,11 @@ div {
  </tr>
  </tfoot>
 </table>
-
+</div>
 		</div>
 	</div>
 	</div>
-</div>
+
 <hr>
 풋부분
 </body>

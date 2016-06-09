@@ -22,20 +22,18 @@ $('.tr').css('display','none');
 </script> 
 
 <body>
-<div>
+
 <%@include file="../header.jsp" %>
-</div>
-<hr>
-<br><br>
+
 <div>
-<div class="container" style="margin:  0px 0px 0px 0px;">
+<div class="container" style="margin:  50px 0px 0px 0px;">
 	<div class="row">
 	<%@include file="csCenterSubMenu.jsp" %>
 				<div class=".col-md-10" style="display: inline-block; width: 70%; ">		
 				
-<h3 align="center"> 자주하는질문(Q&A)</h3>	
-<br>
-<table class="table table-list-search" > 
+<h3 align="center" style="margin-left: 140px;"> 자주하는질문(Q&A)</h3>	
+
+<table class="table table-list-search" style="margin-left: 70px; margin-top: 60px;"> 
 
 <tbody>
 <c:if test="${empty list }">
