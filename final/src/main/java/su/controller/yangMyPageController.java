@@ -201,9 +201,11 @@ public class yangMyPageController {
 	public ModelAndView useList(HttpSession session, String sid){
 		String userid1 = (String) session.getAttribute("sid");
 		List<PayListDTO> list = yangMyPageDao.useList(userid1);
+		List<UploadDTO> dto2=uploadDao.imgFind(userid1);
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
+		mav.addObject("dto2",dto2);
 		mav.setViewName("mypage/useList2");
 		
 		return mav;
