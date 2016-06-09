@@ -172,7 +172,7 @@ function costDel2(){
     </div>
 
 <div id="costdiv">
-<div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;">
+<div class="outer" style="margin-top:5px;display: table;width:100%;height:36px;background-color:#4C4C4C;">
 <h4 style="padding-left:100px; color: white;font-size: 15px;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;${cardto.cartype } &nbsp; [${cardto.carnum}]</h4>
 
 </div>
