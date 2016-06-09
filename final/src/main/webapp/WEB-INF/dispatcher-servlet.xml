@@ -179,6 +179,12 @@
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
+	
+	<bean id="notiDao" class="su.noti.model.NotiDAOImple">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
 	<!-- view -->
 	
 	<bean id="yongJson"

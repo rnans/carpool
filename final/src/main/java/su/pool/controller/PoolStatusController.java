@@ -135,6 +135,7 @@ public class PoolStatusController
 				}
 				
 				mav.addObject("msg","성공");
+				mav.addObject("ridx",idx);
 				mav.setViewName("carpool/poolMsg");
 				
 			}
@@ -251,6 +252,7 @@ public class PoolStatusController
 				}
 				
 				mav.addObject("msg","성공");
+				mav.addObject("ridx",idx);
 				mav.setViewName("carpool/poolMsg");
 				
 			}

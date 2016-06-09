@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="sql.notiSQL">
+ <insert id="inToPoolCount" parameterType="map">
+ 	insert into notification values
+ 	(
+ 		notification_idx.nextval,
+ 		#{userid},
+ 		'pool',
+ 		#{poolname},
+ 		0
+ 	)
+ </insert>
+ <insert id="inToCommCount" parameterType="map">
+ 	insert into notification values
+ 	(
+ 		notification_idx.nextval,
+ 		#{userid},
+ 		'comm',
+ 		#{poolname},
+ 		0
+ 	)
+ </insert>
+ <update id="upToPoolCount">
+ 	update notification set
+ 		count=count+1
+ 	where userid=#{userid} and notitype='pool'
+ </update>
+ <update id="upToCommCount">
+ 	update notification set
+ 		count=count+1
+ 	where poolname=#{poolname} and notitype='comm'
+ </update>
+ <select id="getPoolCount" parameterType="String" resultType="su.noti.model.NotiDTO">
+ 	select count from notification where userid=#{userid} and notitype='pool'
+ </select>
+ <select id="getCommCount" parameterType="Map" resultType="su.noti.model.NotiDTO">
+ 	select count from notification where userid=#{userid} and poolname=#{poolname} and notitype='comm'
+ </select>
+  <update id="resetPoolCount" parameterType="String">
+ 	update notification set
+ 	count=0 
+ 	where userid=#{userid} and notitype='pool'
+ </update>
+  <update id="resetCommCount" parameterType="map">
+ 	update notification set
+ 	count=0
+ 	where userid=#{userid} and poolname=#{poolname} and notitype='comm'
+ </update>
+ </mapper>

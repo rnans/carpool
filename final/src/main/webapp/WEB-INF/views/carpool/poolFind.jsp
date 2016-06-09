@@ -333,16 +333,13 @@ function findList()
 		</div>
 		</div>
 				<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-8">
-				<div class="col-md-4">
+				<div class="col-md-6"></div>
+				<div class="col-md-6">
+				<div class="col-md-6">
 				<button type="button" onclick="showCate();"class="button button--ujarak button--border-thin button--text-thick">상세검색</button>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6">
 				<button type="button" onclick="findList()" class="button button--ujarak button--border-thin button--text-thick">검색</button>
-				</div>
-				<div class="col-md-4">
-				<button type="button" class="button button--ujarak button--border-thin button--text-thick">실시간 자동 매칭</button>
 				</div>
 				</div>
 				</div>

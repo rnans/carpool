@@ -18,6 +18,11 @@ function delReq(idx)
 var aIdx;
 var aMans;
 
+function payfor(idx)
+{
+	location.href='payType.do?idx='+idx;
+}
+
 function editMans(idx, mans, aimidx)
 {
 	aIdx=idx;
@@ -75,7 +80,7 @@ function editMans(idx, mans, aimidx)
  <td>${dtos.idx }</td>
  <td id="editTd${dtos.idx}">${dtos.mans }</td>
  <td>${dtos.status}</td>
- <td id="btsTd${dtos.idx}"><input type="button" value="수정" id="edBt${dtos.idx }" onclick="editMans(${dtos.idx},${dtos.mans },${dtos.aimidx })"><input type="button" value="내가 쓴 요청글 보기" onclick="viewMyPool(${dtos.aimidx})"><input type="button" value="취소" onclick="delReq('${dtos.idx}')"></td>
+ <td id="btsTd${dtos.idx}"><input type="button" value="결제하기" id="payBt${dtos.idx }" onclick="payfor(${dtos.aimidx })"><input type="button" value="수정" id="edBt${dtos.idx }" onclick="editMans(${dtos.idx},${dtos.mans },${dtos.aimidx })"><input type="button" value="내가 쓴 요청글 보기" onclick="viewMyPool(${dtos.aimidx})"><input type="button" value="취소" onclick="delReq('${dtos.idx}')"></td>
 </tr>
  </c:forEach>
 </tbody>

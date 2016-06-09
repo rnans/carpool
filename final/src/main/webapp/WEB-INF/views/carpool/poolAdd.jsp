@@ -10,47 +10,62 @@
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 <link href="/final02/CSS/hover.css" rel="stylesheet" media="all">
-<script>
-window.onload=function(){
 
-for(var i=0;i<2;i++){	
-var div = document.getElementById('div'+i); // 이미지를 감싸는 div
-var img = document.getElementById('img'+i) // 이미지
-var divAspect = 1 / 2; // div의 가로세로비는 알고 있는 값이다
-var imgAspect = img.height / img.width;
- 
-if (imgAspect <= divAspect) {
-    // 이미지가 div보다 납작한 경우 세로를 div에 맞추고 가로는 잘라낸다
-    var imgWidthActual = div.offsetHeight / imgAspect;
-    var imgWidthToBe = div.offsetHeight / divAspect;
-    var marginLeft = -Math.round((imgWidthActual - imgWidthToBe) / 2);
-    img.style.cssText = 'width: auto; height: 100%; margin-left: '
-                      + marginLeft + 'px;'
-} else {
-    // 이미지가 div보다 길쭉한 경우 가로를 div에 맞추고 세로를 잘라낸다
-    img.style.cssText = 'width: 100%; height: auto; margin-left: 0;';
-}
-}
-}
-</script>
 </head>
 <body>
 <%@ include file="../header.jsp" %>
+<style>
+.jumbotron { 
+    background-color: #fff; 
+    border-top: 5px solid #02639d;
+}
+.jumbotron h1{
+	color: #333;
+	
+}
+.jumbotron p
+{
+	margin: 50px auto;
+	
+}
+</style>
 <section id="mainsection">
 		<div id="search" class="col-md-12">
-			<div class="col-md-12">
-				<h1>
-					카풀 등록 <small>카풀 유형을 선택해주세요.</small>
-				</h1>
+			 <div class="jumbotron">
+    <h1>카풀 등록</h1> 
+    <p>일반 이용자와 운전자는 각각 카풀을 모집하는 글을 올리실 수 있습니다. 
+	<br>모집 글 유형을 선택해주세요.</p>
+  </div>
+
+		<div id="row">
+			
+			<div id="div1" class="col-md-6 select">
+				<figure>
+                    <img src="/final02/img/pMember.jpg" class="center-block" alt=""/>
+                   <a href="poolMemberAdd.do">
+                   <figcaption>
+                      <h2>탈래요!</h2>
+                      <p>카풀을 제공하는 운전자를 구해보세요.<br>
+                      일반 이용자는 '탈래요' 글을 통해 카풀을 제공하는 운전자를 구하실 수 있습니다.</p>
+  
+                   </figcaption>
+                   </a>
+                  </figure>
 			</div>
-			<div id="div1" class="col-md-6"
-				style="width: 50%; height: 100%; overflow: hidden;">
-				<a href="poolMemberAdd.do" style="margin: 25px 25px" class="hvr-back-pulse">탈래요<img id="img1" height="550px" src="/final02/img/poolmember.jpg"></a>
+			<div id="div2" class="col-md-6 select center-block" style="text-align: center;">
+					<figure>
+                    <img src="/final02/img/pMaster.jpg" class="center-block" alt=""/>
+                   <a href="poolMasterAdd.do">
+                   <figcaption>
+                      <h2>타세요!</h2>
+                      <p>당신의 카풀을 이용할 이용자를 구해보세요.<br>
+                      운전자는 '타세요' 글을 통해 카풀을 이용하고자 하는 이용자를 구하실 수 있습니다.</p>
+  
+                   </figcaption>
+                   </a>
+                  </figure>
 			</div>
-			<div id="div2" class="col-md-6"	 style="width: 50%; height: 100%; overflow: hidden;">
-				<a href="poolMasterAdd.do" style="margin: 25px 25px" class="hvr-back-pulse">타세요<img id="img2" height="550px" src="/final02/img/driver.jpg"></a>
-			</div>
-			<br>
+			
 		</div>
 
 	</section>

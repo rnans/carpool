@@ -5,44 +5,90 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
+<link rel="stylesheet" type="text/css"
+	href="/final02/CSS/poolCommon.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 </head>
 <body>
-	<fieldset>
-		<legend>카풀 등록</legend>
-		<form name="carInfo" action="poolMasterAdd03.do">
-		<fieldset>
-			<legend>차량 정보</legend>
-			<div id="div1">
-			<input type="hidden" name="idx" value="${dto.idx}">
+	<%@ include file="../header.jsp"%>
+	<section id="mainsection">
+		<div class="col-md-12">
+			<h1 class="main--title">
+				카풀 등록 <small>본인 차량 정보를 확인해주세요.</small>
+			</h1>
+		</div>
+		<div class="row">
+			<form name="carInfo" action="poolMasterAdd03.do">
 
-			운전자 이름<input type="text" name="driver" value="${dto.driver }">
-			<br>
-			차 번호<input type="text" name="carnum" value="${dto.carnum }">
-			<br>
-			차종<input type="text" name="cartype" value="${dto.cartype }">
+				<div id="div2" class="col-md-4 profile--div">
+					<img src='이미지 경로명' />
 
-			인증된 차량 입니다.
-			<br>
-			</div>
-			<div id="div2">
-			<img src='이미지 경로명' width="100" height="100"/>
-			<br>
-			<input type="radio"  name="carImage">
-			<input type="radio" name="carImage">
-			<input type="radio" name="carImage">
-			<input type="radio" name="carImage">
-			<br>	
-			<input type="file">
-			</div>
-		</fieldset>
-		<br>
-		<input type="button" value="취소" onclick="location.href='poolMasterAdd01.do'">
-			<input type="button" value="수정" onclick="editCarinfo()">  
-			<input type="submit" value="다음"> 
+				</div>
+				<div id="div1" class="col-md-8">
+					<input type="hidden" name="idx" value="${dto.idx}">
+					<div class="input input--nao col-md-12">
+						<input class="input__field input__field--nao" type="text"
+							id="driver" name="driver" value="${dto.driver }"><br>
+						<label class="input__label input__label--nao" for="driver">
+							<span class="input__label-content input__label-content--nao">운전자
+								이름</span>
+						</label>
+						<svg class="graphic graphic--nao" width="300%" height="100%"
+							viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path
+								d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
+					</svg>
+					</div>
+					<br>
+
+					<div class="input input--nao col-md-12">
+						<input class="input__field input__field--nao" type="text"
+							id="carnum" name="carnum" value="${dto.carnum }"><br>
+						<label class="input__label input__label--nao" for="carname">
+							<span class="input__label-content input__label-content--nao">차량
+								번호</span>
+						</label>
+						<svg class="graphic graphic--nao" width="300%" height="100%"
+							viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path
+								d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
+					</svg>
+					</div>
+					<br>
+
+
+					<div class="input input--nao col-md-12">
+						<input class="input__field input__field--nao" type="text"
+							id="cartype" name="cartype" value="${dto.cartype }"><br>
+						<label class="input__label input__label--nao" for="cartype">
+							<span class="input__label-content input__label-content--nao">차종</span>
+						</label>
+						<svg class="graphic graphic--nao" width="300%" height="100%"
+							viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path
+								d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
+					</svg>
+					</div>
+					<br> <br>
+					<div class="col-md-3">
+						<button type="button" onclick="showCate();"
+							class="button button--ujarak button--border-thin button--text-thick"
+							onclick="location.href='poolMasterAdd01.do'">취소</button>
+					</div>
+					<div class="col-md-3">
+						<button type="button" onclick="findList()"
+							class="button button--ujarak button--border-thin button--text-thick"
+							onclick="editCarinfo()">수정</button>
+					</div>
+					<div class="col-md-6">
+						<button type="submit" onclick="findList()"
+							class="button button--ujarak button--border-thin button--text-thick button--next">다음</button>
+					</div>
+
+				</div>
 			</form>
-	</fieldset>
+		</div>
+	</section>
 </body>
 </html>

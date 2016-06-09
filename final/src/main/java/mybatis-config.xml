@@ -21,5 +21,6 @@
 		<mapper resource="sql/poolRateSQL.xml"/>
 		<mapper resource="sql/paySQL.xml"/>
 		<mapper resource="sql/statusSQL.xml"/>
+		<mapper resource="sql/notiSQL.xml"/>
 	</mappers>
 </configuration>
