@@ -26,7 +26,7 @@
 		
 	
 <style>
-.upicontainer, 
+.Mycontainer, 
 .content-wrap {
 	overflow: hidden;
 	width: 100%;
@@ -35,7 +35,7 @@
 	margin-top: 25px ;
 }
 
-.upicontainer {
+.Mycontainer {
 	background: #373a47;
 	position:  relative;
 }
@@ -255,12 +255,15 @@ section {
 	padding-top: 0.325em;
 }
 
+
+
 .codrops-links {
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 0.69em;
 	line-height: 2.2;
-	padding: 1.61em 5em;
+	padding: 1.61em 5em;	
+	
 }
 
 .codrops-links a {
@@ -517,15 +520,19 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 //
 //
 .center-block {
-  display: block;
-  margin-left: 0px auto;
-  margin-right: 0px auto;
-  
+	display: block;
+    margin-right: 0 auto;
+    margin-left: 0 auto;
+ 
 }
 
 // Usage as a mixin
 .element {
   .center-block();
+} 
+
+#my{
+	color:white;
 }
 
 </style>
@@ -543,9 +550,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 	</head>
 	
-	<body>
+	<body style="height: 600px;">
 	<%@ include file="../header.jsp" %>
-		<div class="upicontainer">
+		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
 				<div class="icon-list">
@@ -569,23 +576,20 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			</div>
 			<button class="menu-button" id="open-button">Open Menu</button>
 			<div class="content-wrap">
-				<div class="content">
+				<div class="content" style="height: 600px;">
 					<header class="codrops-header">
+					</header>	
 						<div class="codrops-links">
 	
 
 		
 		
-			<form name="f" action="">
-			<fieldset>
-			<legend>${sessionScope.sname}님 이용내역</legend>
-					
-
-	<table style="" class="table table-striped">
-  
-    <h3>결제내역</h3>
-  
-  <tr> 
+			
+		
+	<h3 style="font-size: 30px;">결제내역</h3><hr></hr><hr></hr>
+	<table style="" class="table">
+  	<thead class="thead-inverse" style="background-color: #FFFFFF; color: #980000;">
+  <tr style="font-size: 18px;"> 
     <th style="text-align: center;">카풀 유형</th>
     <th style="text-align: center;">카풀 기간</th>
     <th style="text-align: center;">카풀 이름</th>
@@ -594,8 +598,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
     <th style="text-align: center;">결제 카드</th>
     <th style="text-align: center;">카드 번호</th>
   </tr>
+  </thead>
+  
+  <tbody>
   <c:forEach var="list" items="${list}">
-  <tr> 
+  <tr scope="row" style="color: #191919; font-size: 11px; text-align: center;"> 
     <td>${list.pooltype }</td>
     <td>${list.termtype }</td>
     <td>${list.poolname }</td>
@@ -605,29 +612,22 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
     <td>${list.cardnum }</td>
   </tr>
   </c:forEach>
+  </tbody>
 </table>
-	</div>
+<hr></hr><hr></hr>	
 
-		
-</fieldset>	
-</form>
+
+	</div>
 	
 </div>
-						
-						<nav class="codrops-demos">
-							
-						
-						</nav>
-					</header>
-					<!-- Related demos -->
-					<section class="related">
 					
-					</section>
+						
 				</div>
+
 			</div><!-- /content-wrap -->
-		</div><!-- /container -->
-		<script src="js/classie.js"></script>
-		<script src="js/main.js"></script>
+		
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
 		
 
 <!-- For the demo ad only -->   

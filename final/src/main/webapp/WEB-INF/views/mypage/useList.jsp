@@ -6,7 +6,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
+#div1{
+	float:left;
+	width: 250px;
+	height: 400px;
+	border: 1px;
+	margin: 5px;
+	margin-left: 5px;
+	
+}
+#div2{
+	float:left;
+	width: 800px;
+	height: 250px;
+	margin: 5px;
+	margin-left:px;
+	background-color:gray;
+}
 #div3{
 	float:right;
 	width: 150px;
