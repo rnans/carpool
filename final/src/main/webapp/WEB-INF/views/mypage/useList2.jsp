@@ -636,49 +636,45 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<div class="content">
 					<header class="codrops-header">
 						<div class="codrops-links">
-	
-
-		
-		
-
-					
-<div class="container">
-	<div class="row">
-  <h3 style="font-size: 30px;">결제내역</h3><hr></hr><hr></hr>
-   <table class="table">
-     <thead class="thead-inverse" style="background-color: #FFFFFF; color: #980000;">
-  <tr style="font-size: 18px;"> 
-    <th style="text-align: center;">카풀 유형</th>
-    <th style="text-align: center;">카풀 기간</th>
-    <th style="text-align: center;">카풀 이름</th>
-    <th style="text-align: center;">카풀 비용</th>
-    <th style="text-align: center;">user1</th>
-    <th style="text-align: center;">결제 카드</th>
-    <th style="text-align: center;">카드 번호</th>
-  </tr>
-  </thead>
-  
-  <tbody>
-  <c:forEach var="list" items="${list}">
-  <tr scope="row" style="color: #191919; font-size: 11px; text-align: center;"> 
-    <td>${list.pooltype }</td>
-    <td>${list.termtype }</td>
-    <td>${list.poolname }</td>
-    <td>${list.pay }</td>
-    <td>${list.userid1 }</td>
-    <td>${list.cardtype1 }</td>
-    <td>${list.cardnum }</td>
-  </tr>
-  </c:forEach>
-  </tbody>
-</table>
-<hr></hr><hr></hr>   
-
-</div>
+							<div class="row">
+							<h4>이용내역</h4>
+							  <h3 style="font-size: 30px;">결제내역</h3><hr></hr><hr></hr>
+							   <table class="table">
+							     <thead class="thead-inverse" style="background-color: #FFFFFF; color: #980000;">
+							  <tr style="font-size: 18px;"> 
+							    <th style="text-align: center;">카풀 유형</th>
+							    <th style="text-align: center;">카풀 기간</th>
+							    <th style="text-align: center;">카풀 이름</th>
+							    <th style="text-align: center;">카풀 비용</th>
+							    <th style="text-align: center;">user1</th>
+							    <th style="text-align: center;">결제 카드</th>
+							    <th style="text-align: center;">카드 번호</th>
+							  </tr>
+							  </thead>
+							  
+							  <tbody>
+							  <c:forEach var="list" items="${list}">
+							  <tr scope="row" style="color: #191919; font-size: 11px; text-align: center;"> 
+							    <td>${list.pooltype }</td>
+							    <td>${list.termtype }</td>
+							    <td>${list.poolname }</td>
+							    <td>${list.pay }</td>
+							    <td>${list.userid1 }</td>
+							    <td>${list.cardtype1 }</td>
+							    <td>${list.cardnum }</td>
+							  </tr>
+							  </c:forEach>
+							  </tbody>
+							</table>
+							<hr></hr><hr></hr>
+						</div>
+						<hr></hr>
+					<div>
+						<h3>소속카풀</h3>
+						
+					</div>	
 						
 						<nav class="codrops-demos">
-							
-						
 						</nav>
 					</header>
 					<!-- Related demos -->

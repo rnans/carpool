@@ -236,9 +236,9 @@ section {
 
 /* Header */
 .codrops-header {
-	margin: 0 auto;
+
 	padding: 3em 2em;
-	text-align: center;
+	text-align: left;
 }
 
 .codrops-header h1 {
@@ -534,6 +534,12 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 #my{
 	color:white;
 }
+
+#imgf{
+	float:left;
+	margin:10px;
+}
+
 </style>
 
 
@@ -559,7 +565,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<div class="icon-list">
 						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
 						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
-						<a href="#"><i class="fa fa-fw fa-envelope-o"></i></a>
+						<a href="messageList.do"><i class="fa fa-fw fa-envelope-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-comment-o"></i></a>
 					</div>
 				</nav>
@@ -576,19 +582,23 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</nav>
 			</div>
 			<button class="menu-button" id="open-button">Open Menu</button>
+			
 			<div class="content-wrap">
+			
 				<div class="content">
 					<header class="codrops-header">
+					<h3>MyPage</h3>
 					</header>	
 						<div class="codrops-links">
 	
-			<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="none">
-
+		<div id="imgf">
+			<img style="width:300px; height:300px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="none">
+		</div>
 		
-		
+		<div>
 			<form name="f" action="myProfile.do">
 			
-				<legend>${dto.name}님 정보  ${dto2[1].filename } </legend>		
+						
 <div class="center-block">
 	<div class="row">
 		<div class="col-xs-4">
@@ -607,10 +617,14 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 	
 	
 	<label class="radio-inline">
-  		<input type="radio" name="sex" id="male" value="남성">M
+  		<input type="radio" name="sex" id="male" value="남성">
+  		<i class="fa fa-mars" aria-hidden="true"></i>
+  		
  	</label>
 	<label class="radio-inline">
-  		<input type="radio" name="sex" id="female" value="여성">W
+  		<input type="radio" name="sex" id="female" value="여성">
+  		<i class="fa fa-venus" aria-hidden="true"></i>
+  		
  	</label><br>
 	
 	<button type="submit" class="btn btn-primary" value="프로필수정">프로필수정</button>
@@ -623,7 +637,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </form>
 	
 </div>
-						
+</div>					
+	
 						<nav class="codrops-demos">
 							
 						

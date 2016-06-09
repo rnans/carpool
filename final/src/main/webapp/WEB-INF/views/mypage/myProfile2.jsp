@@ -235,9 +235,9 @@ section {
 
 /* Header */
 .codrops-header {
-	margin: 0 auto;
+	margin: ;
 	padding: 3em 2em;
-	text-align: center;
+	text-align: left;
 }
 
 .codrops-header h1 {
@@ -523,7 +523,10 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 #my{
 	color:white;
 }
-
+#imgf{
+	float:left;
+	margin: 20px;
+}
 
 </style>
 
@@ -576,26 +579,27 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
+						<h3>MyProfile</h3>
 					</header>	
 						<div class="codrops-links">
 					
 					
-	<h2>마이프로필</h2>
+	
 		
-	<div>
+	<div id="imgf">
 	 <form id="frm" name="frm" action="uploadimgUpdate.do" method="post" enctype="multipart/form-data">
 		<span>
-  		<img style="width:225px; height:225px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="img-none">
+  		<img style="width:300px; height:300px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="img-none">
 		</span>	
 			<input type="file" id="file" name="upload">
    			<button type="submit" class="btn btn-success" value="사진올리기">사진올리기</button>
     	
     	</form>
 	</div>
-
+<div>
 	<form name="myprofile" action="myProfileUpdate.do">
 	<fieldset>
-		<legend>내 정보 수정</legend>
+		
 	<div class="center-block">
 	<div class="row">
 		<div class="col-xs-4">
@@ -613,10 +617,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			
 			
 			<label class="radio-inline">
-		  		<input type="radio" name="sex" id="male" value="남성">M
+		  		<input type="radio" name="sex" id="male" value="남성">
+		  		<i class="fa fa-mars" aria-hidden="true"></i>
 		 	</label>
 			<label class="radio-inline">
-		  		<input type="radio" name="sex" id="female" value="여성">W
+		  		<input type="radio" name="sex" id="female" value="여성">
+		  		<i class="fa fa-venus" aria-hidden="true"></i>
 		 	</label><br>
 				<p>
 					<button type="submit" class="btn btn-success" value="프로필수정">프로필수정</button>
@@ -629,7 +635,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 	</form>
 	
 	</div>
-						
+</div>						
 						<nav class="codrops-demos">
 							
 						

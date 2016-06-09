@@ -236,9 +236,9 @@ section {
 
 /* Header */
 .codrops-header {
-	margin: 0 auto;
+	margin: ;
 	padding: 3em 2em;
-	text-align: center;
+	text-align: left;
 }
 
 .codrops-header h1 {
@@ -620,6 +620,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
+					<h3>notiSetting</h3>
 					</header>	
 						<div class="codrops-links">
 							
@@ -643,29 +644,34 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 								<input type="hidden" name="userid" value="${sessionScope.sid}">
 								
 									<fieldset>
-									<legend>알람설정</legend>
-										<ul>
-										<li>실시간알람
-											<input type="radio" name="chat" id="chat" value="O">수신
-											<input type="radio" name="chat" id="chat2" value="X">수신안함				
-										</li>	
-										<li>예약알람
-											<input type="radio" name="reservation" id="reservation" value="O">수신
-											<input type="radio" name="reservation" id="reservation2" value="X">수신안함
-										</li>
-										<li>추천알람
-											<input type="radio" name="recommand" id="recommand" value="O">수신
-											<input type="radio" name="recommand" id="recommand2" value="X">수신안함
-										</li>
-										<li>평가알람
-											<input type="radio" name="rate" id="rate" value="O">수신
-											<input type="radio" name="rate" id="rate2" value="X">수신안함
-										</li>
-										<li>커뮤니티알람
-											<input type="radio" name="community" id="community" value="O">수신
-											<input type="radio" name="community" id="community2" value="X">수신안함
-										</li>
-										</ul>
+									
+									<table class="table table-success">
+										<tr>
+										<td>실시간알람</td>
+											<td><input type="radio" name="chat" id="chat" value="O">수신</td>
+											<td><input type="radio" name="chat" id="chat2" value="X">수신안함</td>				
+										</tr>	
+										<tr>
+											<td>예약알람</td>
+											<td><input type="radio" name="reservation" id="reservation" value="O">수신</td>
+											<td><input type="radio" name="reservation" id="reservation2" value="X">수신안함</td>
+										</tr>
+										<tr>
+										<td>추천알람</td>
+											<td><input type="radio" name="recommand" id="recommand" value="O">수신</td>
+											<td><input type="radio" name="recommand" id="recommand2" value="X">수신안함</td>
+										</tr>
+										<tr>
+										<td>평가알람</td>
+											<td><input type="radio" name="rate" id="rate" value="O">수신</td>
+											<td><input type="radio" name="rate" id="rate2" value="X">수신안함</td>
+										</tr>
+										<tr>
+										<td>커뮤니티알람</td>
+											<td><input type="radio" name="community" id="community" value="O">수신</td>
+											<td><input type="radio" name="community" id="community2" value="X">수신안함</td>
+										</tr>
+									</table>
 										<c:set var="dto" value="${dto}"></c:set>
 										<c:if test="${empty dto}">
 											<p>

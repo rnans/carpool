@@ -530,6 +530,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 #my{
  	color:white;
 }
+
+
 </style>
 
 
@@ -586,15 +588,15 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<legend>등록된  카드정보</legend>
 			<form name="myprofile">
 				<table style="" class="table table-striped">
-					<thead style="">
+					<thead class="tb">
 						<tr>
-							<th>번호</th>
-							<th>카드아이디</th>
-							<th>카드종류</th>
-							<th>카드번호</th>
-							<th>유효기간</th>
-							<th>개인/법인</th>
-							<th>수정/삭제</th>
+							<th style="text-align: center;">번호</th>
+							<th style="text-align: center;">카드아이디</th>
+							<th style="text-align: center;">카드종류</th>
+							<th style="text-align: center;">카드번호</th>
+							<th style="text-align: center;">유효기간</th>
+							<th style="text-align: center;">개인/법인</th>
+							<th style="text-align: center;">수정/삭제</th>
 						</tr>	
 					</thead>
 				<tfoot>
