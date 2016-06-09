@@ -129,13 +129,12 @@ public class CsCenterController {
 	       	mav.setViewName("csCenter/oneandonefailMsg");
 	        return mav;
     	}else{
-		int totalCnt=csoneandoneDao.oneandoneTotalCnt();
+		int totalCnt=csoneandoneDao.oneandoneTotalCnt(sid);
 		int listSize=10;
 		int pageSize=5;
 		List<CsoneandoneDTO> list=csoneandoneDao.oneandoneList(cp,listSize,sid);
 		String pageStr=
 			su.Page.SuPage.makePage("oneAndOne.do", totalCnt, listSize, pageSize, cp);
-    	
 		mav.addObject("list", list);
 		mav.addObject("pageStr",pageStr);
 		mav.setViewName("csCenter/oneAndOne");

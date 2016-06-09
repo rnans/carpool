@@ -46,8 +46,8 @@
    where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and writer=#{id}
 	</select>
 	
-	<select id="totalCnt2" resultType="int">
-		select count(*) from oneandone
+	<select id="totalCnt2"  parameterType="String" resultType="int">
+		select count(*) from oneandone where writer=#{sid}
 	</select>
 	<select id="oneandoneContent" resultType="su.csCenter.model.CsoneandoneDTO">
 		select * from oneandone where
@@ -64,7 +64,7 @@
    where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
 	</select>
 	<select id="adminoneandonetotalCnt"  resultType="int">
-		select count(*) from oneandone
+		select count(*) from oneandone 
 	  </select>
 	 <update id="oneandoneAnswer" parameterType="su.csCenter.model.CsoneandoneDTO">
 		update oneandone set state='답변완료', answer=#{answer} where idx=#{idx}
