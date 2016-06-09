@@ -148,7 +148,7 @@ public class MessageController {
 		int totalCnt=messageDao.messageTotalCnt();
 		int listSize=10;
 		int pageSize=5;
-		int messageNumber=messageDao.messageNumber(userid);
+		//int messageNumber=messageDao.messageNumber(userid);
 		List<MessageDTO> list=messageDao.messageShow(cp,listSize,userid);
 		
 		String pageStr=
