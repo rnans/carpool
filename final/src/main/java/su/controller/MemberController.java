@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import su.member.model.MemberDAO;
 import su.member.model.MemberDTO;
+import su.message.model.MessageDAO;
 import su.status.model.StatusDAO;
 import su.status.model.StatusDTO;
 
@@ -33,6 +34,16 @@ public class MemberController {
 
 	public void setMemberDao(MemberDAO memberDao) {
 		this.memberDao = memberDao;
+	}
+	@Autowired
+	public MessageDAO messageDao;
+	
+	public MessageDAO getMessageDao() {
+		return messageDao;
+	}
+
+	public void setMessageDao(MessageDAO messageDao) {
+		this.messageDao = messageDao;
 	}
 
 	@RequestMapping(value="/memberJoin.do", method=RequestMethod.GET)
@@ -96,7 +107,10 @@ public class MemberController {
 			session.setAttribute("grade", grade);
 			
 			sDTO.setUserid(id);
+			String userid = (String)session.getAttribute("sid");
 			
+			int messageNumber=messageDao.messageNumber(userid);
+			session.setAttribute("mNum", messageNumber);
 			int count = statusDao.loginStatus(sDTO);
 			
 			mav.addObject("name", name);
