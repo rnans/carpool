@@ -171,9 +171,10 @@ public class yangMyPageController {
 		
 		String userid = (String) session.getAttribute("sid");
 		List<PoolDTO> lists = yangMyPageDao.reservationList(userid);
-
+		List<UploadDTO> dto2=uploadDao.imgFind(userid);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", lists);
+		mav.addObject("dto2",dto2);
 		mav.setViewName("mypage/reservationList");
 
 		return mav;
@@ -184,8 +185,10 @@ public class yangMyPageController {
 		String userid = (String) session.getAttribute("sid");
 		List<PoolRateDTO> get = yangMyPageDao.rateGetView(userid);
 		List<PoolRateDTO> set = yangMyPageDao.rateSetView(userid);
-
+		List<UploadDTO> dto2=uploadDao.imgFind(userid);
+		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto2",dto2);
 		mav.addObject("get", get);
 		mav.addObject("set", set);
 		mav.setViewName("mypage/rateView");

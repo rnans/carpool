@@ -228,6 +228,7 @@ public class MypageController {
 			ModelAndView mav=new ModelAndView();
 			String id=(String)session.getAttribute("sid");
 			MemberDTO dto1=mypageDao.getAllUserInfo(id);
+		
 		  if(dto.getPwd().equals("")||dto.getPwd()==null){
 			  mav.addObject("msg", "비밀번호를 입력해 주세요.");
 			  mav.addObject("loc", "memberleave.do");
@@ -249,8 +250,14 @@ public class MypageController {
 	  
 	  
 	  @RequestMapping("/memberleave.do")
-	  public String memberleave(){
-		  return "mypage/memberleave2";
+	  public ModelAndView memberleave(HttpSession session){
+
+		String id=(String)session.getAttribute("sid");
+		ModelAndView mav=new ModelAndView();
+		List<UploadDTO> dto2=uploadDao.imgFind(id);
+		mav.addObject("dto2",dto2);
+		mav.setViewName("mypage/memberleave2");
+		return mav;
 	  }
 	  
 	  

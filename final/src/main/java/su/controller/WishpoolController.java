@@ -44,8 +44,13 @@ public class WishpoolController {
 	}
 
 	@RequestMapping("/wishPoolList.do")
-	public String wishpoollist(){
-		return "wishpool/wishpoolList2";
+	public ModelAndView wishpoollist(HttpSession session){
+		String id=(String)session.getAttribute("sid");
+		ModelAndView mav=new ModelAndView();
+		List<UploadDTO> dto2=uploadDao.imgFind(id);
+		mav.addObject("dto2",dto2);
+		mav.setViewName("wishpool/wishpoolList2");
+		return mav;
 	}
 	
 	 
@@ -56,15 +61,9 @@ public class WishpoolController {
 			int listSize = 10;
 			int pageSize = 5;
 			
-			String id=(String)session.getAttribute("sid");
-			
 			ModelAndView mav = new ModelAndView();
 			List<WishpoolListDTO> list = wishpoollistDao.wishList(cp, listSize);
 			String pageStr = su.Page.SuPage.makePage("wishPoolList.do", totalCnt, listSize, pageSize, cp);
-			
-			List<UploadDTO> dto2=uploadDao.imgFind(id);
-			mav.addObject("dto7",dto2);
-			
 			
 			mav.addObject("lists", list);
 			mav.addObject("pageStr",pageStr);
