@@ -107,32 +107,21 @@ function noticeDelForm(){
 <body>
 <%@include file="../header.jsp" %>
        
-<!-- <div id="content" align="center">       
-            <div class="links">
-                <nav class="link-effect-3" id="link-effect-3">
-                    <a href="adminNoticeList.do" data-hover="1.공지사항">1.공지사항</a>
-                    <a href="adminQnaList.do" data-hover="2.Q&A">2.Q&A</a>
-                    <a href="adminOneAndOne.do" data-hover="3.1:1문의">3.1:1문의</a>
-                    <a href="adminuseguideList.do" data-hover="4.이용안내">4.이용안내</a>
-                </nav>
-
-            </div>
-        </div>  --> 
-<div style="width: 100%; margin: 100px 0px 0px 0px">
+    <div style="width: 100%; ">
+<div style="width: 20%; margin: 100px 0px 0px 0px">
 		<%@include file="../adHeader.jsp" %>
-		
-<div style="margin-left:120px; display: inline-block; width: 100%; ">
- <div align="center" style="margin-right: 100px;">
+		</div>
+<div style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;  ">
+ <div align="center" style="margin-left:180px;">
 <h2 >고객센터</h2>
 <h4 >공지사항</h4>
 </div>
-<!-- <a href="adminNoticeList.do">1.공지사항</a> |<a href="adminQnaList.do">2.Q&A</a> |<a href="adminOneAndOne.do">3.1:1문의</a> |<a href="adminuseguideList.do">4.이용안내</a>
--->
 
-  <div class="btn-group" role="group" aria-label="..." style="margin-left:1050px">
+
+  <div class="btn-group" role="group" aria-label="..." style="margin-left:928px;">
   <a href="noticeWriteForm.do" class="btn btn-default">글쓰기</a>
 </div>
-<table border="1" style="margin-left: 120px;">
+<table border="1" style="margin: 0px auto; ">
 <thead>
 <tr>
    <th>번호</th>
