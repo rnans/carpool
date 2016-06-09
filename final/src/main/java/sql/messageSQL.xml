@@ -30,7 +30,7 @@
 	 select count(*) from message where receiveid=#{sid} and reading='안읽음'
 	</select>
 	<select id="mContent" parameterType="java.lang.Integer" resultType="su.message.model.MessageDTO">
-	select content from message where idx=#{idx}
+	select content,senddate,sendid from message where idx=#{idx}
 	</select>
 	
 	<delete id="messageAllDel" parameterType="su.message.model.MessageDTO">
@@ -39,4 +39,7 @@
 	<delete id="noReadDel" parameterType="su.message.model.MessageDTO">
 		delete from message where receiveid=#{sid} and reading='읽음'
 	</delete>
+	<select id="messageInfo" resultType="su.message.model.MessageDTO">
+		select sendid from message where idx=#{idx}
+	</select>
 </mapper>

@@ -149,13 +149,15 @@ public class MessageController {
 		
 		int totalCnt=messageDao.messageTotalCnt(userid);
 		System.out.println(totalCnt);
-		int listSize=2;
+		int listSize=10;
 		int pageSize=2;
 		int messageNumber=messageDao.messageNumber(userid);
 		List<MessageDTO> list=messageDao.messageShow(cp,listSize,userid);
 		
 		String pageStr=
 		su.Page.SuPage.makePage("messageList.do", totalCnt, listSize, pageSize, cp);
+		
+		MessageDTO mDTO = new MessageDTO();
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("lists",list);
@@ -174,9 +176,13 @@ public class MessageController {
 		
 		mDto = messageDao.mContent(midx);
 		String content = mDto.getContent();
+		String senddate = mDto.getSenddate();
+		String sendid = mDto.getSendid();
 		System.out.println("content="+content);
 		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("senddate", senddate);
+		mav.addObject("sendid", sendid);
 		mav.addObject("contents", content);
 		mav.addObject("midx", midx);
 		mav.setViewName("message/mContent");
@@ -184,12 +190,14 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/messageReWrite.do")
-	public ModelAndView mrWrite(MessageDTO mDto,
-			@RequestParam("sendid")String receiveid,
-			@RequestParam("receiveid")String sendid,
-			@RequestParam("midx")int midx){
+	public ModelAndView mrWrite(MessageDTO mDto,HttpSession session,
+			@RequestParam("idx")int midx){
 		
+		String sendid = (String)session.getAttribute("sid");
 		int result = messageDao.messageReading(midx);
+		mDto = messageDao.messageInfo(midx);
+		String receiveid = mDto.getSendid();
+		System.out.println("receiveid="+receiveid);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("rid", receiveid);

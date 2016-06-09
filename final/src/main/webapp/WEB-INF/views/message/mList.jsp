@@ -6,25 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="">
+
 <link rel="stylesheet" type="text/css" href="CSS/message.css">
 <script src="js/message.js"></script>
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"></script>
 <script type="text/javascript">
-	/* function mCon(idx){
-		var param = 'idx='+idx;
-		sendRequest('messageContent.do',param,mResult,'GET');
+	function mCon(idx){
+		var param = '?idx='+idx;
+		window.open('messageContent.do'+param,'mCon','width=450,height=270');
 	}
-	function mResult(){
-		if(XHR.readyState==4){
-			if(XHR.status==200){
-				//alert('test');
-				$('.mContent').html(XHR.responseText);
-			}
-		}
-	} */
 	function allDel(){
 		if(confirm("메시지를 모두 삭제 하시겠습니까?")){
 			location.href="messageAllDel.do";
@@ -39,6 +31,11 @@
 			
 		}
 	}
+	function Test(idx){
+		var param = '?idx='+idx;
+		window.open('messageReWrite.do'+param,'mrWrite','width=450,height=270');
+	}
+	
 </script>
 <style>
 	.mContent{background-color: #efefef;}
@@ -79,23 +76,28 @@
 											</a> -->
 										</td>
 										<td>
+											<%-- <c:url var="mrWrite" value="messageReWrite.do">
+													<c:param name="receiveid">${m.receiveid}</c:param>
+													<c:param name="sendid">${m.sendid}</c:param>
+													<c:param name="midx">${m.idx}</c:param>
+											</c:url> --%>
 											<div class="media">
 												<a href="#" class="pull-left">
 													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
 												</a>
-												<div class="media-body">
-													<span class="media-meta pull-right">${m.senddate} / ${m.reading}</span>
+												<div class="media-body" style="margin:0px auto;">
+													<span class="media-meta pull-right">${m.senddate} <br> 
+														<c:if test="${m.reading=='읽음'}"><font color="#8C8C8C">읽음</font></c:if>
+														<c:if test="${m.reading=='안읽음'}"><font color="black">안읽음</font></c:if>
+													</span>
+													
 													<h4 class="title">
-														${m.sendid}
+														<a href="javascript:Test(${m.idx})">${m.sendid}</a>
 														<span class="pull-right pagado">${m.receiveid}</span>
 													</h4>
-													<c:url var="mrWrite" value="messageReWrite.do">
-														<c:param name="receiveid">${m.receiveid}</c:param>
-														<c:param name="sendid">${m.sendid}</c:param>
-														<c:param name="midx">${m.idx}</c:param>
-													</c:url>
+									
 													<p class="summary"><a href="javascript:mCon(${m.idx});">${m.content}...</a></p>
-													<div class="mContent"></div><a href="${mrWrite}">답장보내기</a>
+													<div class="mContent"></div>
 												</div>
 											</div>
 										</td>

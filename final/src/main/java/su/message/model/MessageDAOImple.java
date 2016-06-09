@@ -56,7 +56,6 @@ public class MessageDAOImple implements MessageDAO {
 	public MessageDTO mContent(int idx) {
 		
 		MessageDTO mDto = sqlMap.selectOne("mContent", idx);
-		
 		return mDto;
 	}
 	public int messageAllDel(String userid) {
@@ -68,6 +67,11 @@ public class MessageDAOImple implements MessageDAO {
 		
 		int count = sqlMap.delete("noReadDel",userid);
 		return count;
+	}
+	
+	public MessageDTO messageInfo(int idx) {
+		MessageDTO mDto = sqlMap.selectOne("messageInfo",idx);
+		return mDto;
 	}
 }
 

@@ -105,19 +105,19 @@ body {
 	color: #F0AD4E;
 }
 .table-filter .media-photo {
-	width: 35px;
+	width: 40px;
 }
 .table-filter .media-body {
     display: block;
     /* Had to use this style to force the div to expand (wasn't necessary with my bootstrap version 3.3.6) */
 }
 .table-filter .media-meta {
-	font-size: 11px;
-	color: #999;
+	font-size: 14px;
+	color: black;
 }
 .table-filter .media .title {
 	color: #2BBCDE;
-	font-size: 14px;
+	font-size: 18px;
 	font-weight: bold;
 	line-height: normal;
 	margin: 0;

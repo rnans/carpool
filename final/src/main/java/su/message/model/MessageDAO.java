@@ -15,4 +15,5 @@ public interface MessageDAO {
 	public MessageDTO mContent(int idx);
 	public int messageAllDel(String userid);
 	public int noReadDel(String userid);
+	public MessageDTO messageInfo(int idx);
 }
