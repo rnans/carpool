@@ -146,8 +146,8 @@ public class PayController {
 		plistDto.setTermtype(pdto.getTermtype());
 		plistDto.setUserid(pdto.getUserid());
 		plistDto.setUserid1(userid);
-		plistDto.setCardType1(cardType1);
-		plistDto.setCardNum(cardNum);
+		plistDto.setCardtype1(cardType1);
+		plistDto.setCardnum(cardNum);
 		
 		pDTO.setUserid(userid);
 		int result=payDao.cardEnroll(pDTO);
@@ -203,8 +203,8 @@ public class PayController {
 		plistDto.setUserid(pdto.getUserid());
 
 		plistDto.setUserid1(userid);
-		plistDto.setCardType1(cardType1);
-		plistDto.setCardNum(cardNum);
+		plistDto.setCardtype1(cardType1);
+		plistDto.setCardnum(cardNum);
 		int count = plDao.payEnrollList(plistDto);
 		
 		String msg = count>0?"결제가 정상적으로 처리되었습니다.":"결제가 실패하였습니다.";

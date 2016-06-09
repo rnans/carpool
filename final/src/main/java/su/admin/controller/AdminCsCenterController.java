@@ -86,15 +86,8 @@ public class AdminCsCenterController {
 		return mav;
 	}
 	//공지사항 삭제
+
 	@RequestMapping("/noticeDelete.do")
-	public ModelAndView noticeDeleteDelete(HttpServletRequest req){
-		int idx=(Integer.parseInt(req.getParameter("idx")));
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("idx", idx);
-		mav.setViewName("admin/noticeDel");
-		return mav;
-	}	
-	@RequestMapping("/noticeDelete_ok.do")
 	public ModelAndView noticeDelete(int idx){
 		 int result=csnoticeDao.noticeDelete(idx);
 		 String msg=result>0?"공지사항글삭제성공!":"공지사항글삭제실패!";
@@ -168,15 +161,8 @@ public class AdminCsCenterController {
 			return mav;
 		}
 		//qna삭제
+
 		@RequestMapping("/QnaDelete.do")
-		public ModelAndView qnaDelete(HttpServletRequest req){
-			int idx=(Integer.parseInt(req.getParameter("idx")));
-			ModelAndView mav=new ModelAndView();
-			mav.addObject("idx", idx);
-			mav.setViewName("admin/qnaDel");
-			return mav;
-		}
-		@RequestMapping("/QnaDelele_ok.do")
 		public ModelAndView qnaDelete_ok(int idx){
 			 int result=csqnaDao.qnaDelete(idx);
 			 String msg=result>0?"QnA글삭제성공!":"QnA글삭제실패!";
@@ -256,16 +242,8 @@ public class AdminCsCenterController {
 		  }
 		  
 		  //1:1문의 삭제
-		  
+		 
 		  @RequestMapping("/oneandoneDelete.do")
-			public ModelAndView oneandoneDelete(HttpServletRequest req){
-				int idx=(Integer.parseInt(req.getParameter("idx")));
-				ModelAndView mav=new ModelAndView();
-				mav.addObject("idx", idx);
-				mav.setViewName("admin/oneandoneDel");
-				return mav;
-			}
-		  @RequestMapping("/oneandoneDelete_ok.do")
 		  public ModelAndView oneandoneDelete_ok(int idx){
 			  int result=csoneandoneDao.oneandoneDelete(idx);
 				 String msg=result>0?"1:1문의글삭제성공!":"1:1문의글삭제실패!";
@@ -286,7 +264,7 @@ public class AdminCsCenterController {
 				ModelAndView mav=new ModelAndView();
 				mav.addObject("list", list);
 				mav.addObject("pageStr",pageStr);
-				mav.setViewName("admin/adminuseguideList");
+				mav.setViewName("admin/adminUseGuideList");
 				return mav;
 		  }
 		  //이용안내 글쓰기
@@ -324,15 +302,8 @@ public class AdminCsCenterController {
 			}
 			
 			//이용안내글삭제
+		
 			@RequestMapping("/useguideDelete.do")
-			public ModelAndView useguideDelete(HttpServletRequest req){
-				int idx=(Integer.parseInt(req.getParameter("idx")));
-				ModelAndView mav=new ModelAndView();
-				mav.addObject("idx", idx);
-				mav.setViewName("admin/useguideDel");
-				return mav;
-			}
-			@RequestMapping("/useguideDelete_ok.do")
 			public ModelAndView useguideDelete_ok(int idx){
 				 int result=csuseguideDao.useguideDelete(idx);
 				 String msg=result>0?"이용안내글삭제성공!":"이용안내글삭제실패!";

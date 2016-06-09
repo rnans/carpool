@@ -51,15 +51,8 @@ public class AdminReserveController {
 		return mav;
 	}
 	//드라이버 예약 글취소
+
 	@RequestMapping("/adminDriverReserveDel.do")
-	public ModelAndView adminDriverReserveDel(HttpServletRequest req){
-		int idx=(Integer.parseInt(req.getParameter("idx")));
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("idx", idx);
-		mav.setViewName("admin/driverReserveDel");
-		return mav;
-	}
-	@RequestMapping("/adminDriverReserveDel_ok.do")
 	public ModelAndView adminDriverReserveDel_ok(int idx){
 		
 		int result=adminPoolStatusDao.adminDriverReserveDel(idx);
@@ -120,15 +113,8 @@ public class AdminReserveController {
 		return mav;
 	}
 	//드라이버 예약 글취소
+	
 	@RequestMapping("/adminMemberReserveDel.do")
-	public ModelAndView adminMemberReserveDel(HttpServletRequest req){
-		int idx=(Integer.parseInt(req.getParameter("idx")));
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("idx", idx);
-		mav.setViewName("admin/memberReserveDel");
-		return mav;
-	}
-	@RequestMapping("/adminMemberReserveDel_ok.do")
 	public ModelAndView adminMemberReserveDel_ok(int idx){
 		
 		int result=adminPoolStatusDao.adminMemberReserveDel(idx);

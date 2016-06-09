@@ -118,17 +118,6 @@ public class AdminMemberController {
 		return mav;
 	}
 	
-	/**회원삭제 확인 폼*/
-	@RequestMapping("/memberDelForm.do")
-	public ModelAndView memberDelForm(HttpServletRequest req){
-		int idx = Integer.parseInt(req.getParameter("idx"));
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("idx", idx);
-		mav.setViewName("admin/memberDel");
-		return mav;
-	}
-	
 	/**회원삭제*/
 	@RequestMapping("/memberDel.do")
 	public ModelAndView memberDel(@RequestParam("idx")int idx){
@@ -141,19 +130,6 @@ public class AdminMemberController {
 		mav.setViewName("admin/adminMsg");
 		return mav;
 	}
-	
-	/**grade 변경 폼*/
-	@RequestMapping("/adminAddForm.do")
-	public ModelAndView adminAddForm(HttpServletRequest req){
-		
-		int idx = Integer.parseInt(req.getParameter("idx"));
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("idx", idx);
-		mav.setViewName("admin/adminAdd");
-		return mav;
-	}
-	
 	/**grade 변경*/
 	@RequestMapping("/adminAdd.do")
 	public ModelAndView adminAdd(@RequestParam(value="idx", required=false)int idx,
@@ -187,20 +163,7 @@ public class AdminMemberController {
 		
 		return mav;
 	}
-	
-	/**등록된 차정보 삭제 폼 이동*/
-	@RequestMapping("/memberCarDelForm.do")
-	public ModelAndView memberCarDelForm(HttpServletRequest req){
-		int idx = Integer.parseInt(req.getParameter("idx"));
-	
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("idx", idx);
-		mav.setViewName("admin/memberCarDel");
-		
-		return mav;	
-	}
-	
+
 	/**등록된 차정보 삭제*/
 	@RequestMapping("/memberCarDel.do")
 	public ModelAndView memberCarDel(@RequestParam("idx")int idx){
@@ -214,19 +177,7 @@ public class AdminMemberController {
 		
 		return mav;
 	}
-	
-	/**회원 차 승인 폼*/
-	@RequestMapping("/memberCarOkForm.do")
-	public ModelAndView memberCarOkForm(HttpServletRequest req){
-		int idx = Integer.parseInt(req.getParameter("idx"));
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("idx", idx);
-		mav.setViewName("admin/memberCarOk");
-		
-		return mav;
-	}
-	
+
 	/**회원 차 승인*/
 	@RequestMapping("/memberCarOk.do")
 	public ModelAndView memberCarOk(@RequestParam(value="idx",required=false)int idx, 
