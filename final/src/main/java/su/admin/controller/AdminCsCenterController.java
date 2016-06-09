@@ -264,7 +264,7 @@ public class AdminCsCenterController {
 				ModelAndView mav=new ModelAndView();
 				mav.addObject("list", list);
 				mav.addObject("pageStr",pageStr);
-				mav.setViewName("admin/adminUseGuideList");
+				mav.setViewName("admin/adminuseguideList");
 				return mav;
 		  }
 		  //이용안내 글쓰기
