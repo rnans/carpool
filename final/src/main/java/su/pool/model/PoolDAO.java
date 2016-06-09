@@ -50,4 +50,10 @@ public interface PoolDAO
 	public int poolDel(int idx);
 	
 	public int editPoolMans(int idx, int mans);
+	
+	public List viewAllList();
+	
+	public List poolFind(HashMap map);
+	
+	public List checkPoolName(String poolname);
 }

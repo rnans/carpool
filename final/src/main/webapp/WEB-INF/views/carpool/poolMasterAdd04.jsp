@@ -287,7 +287,7 @@ function viewTerm()
 				<option>남성만</option>
 				<option>여성만</option>
 		  </select><br>
-		요금<input type="text" name="pay"><br>
+		요금<input type="number" name="pay"><br>
 		흡연여부<input type="radio" name="smoking" value="흡연">흡연
 		  	 <input type="radio" name="smoking" value="비흡연">비흡연
 		<p>
@@ -350,11 +350,7 @@ function viewTerm()
       흡연여부<input type="radio" name="smoking" value="흡연">흡연
             <input type="radio" name="smoking" value="비흡연">비흡연
             <br>
-         인원<select name="mannum">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-         </select>명  
+         인원<input type="number" name="mannum">명  
          <br>
          성별<select name="gender">
             <option>상관없음</option>

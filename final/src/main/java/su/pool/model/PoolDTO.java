@@ -27,6 +27,12 @@ public class PoolDTO
 	private String termtype;
 	private int caridx;
 	private String poolname;
+	private double slat;
+	private double slng;
+	private double elat;
+	private double elng;
+	private String path;
+	private String point;
 
 	public PoolDTO() {
 		super();
@@ -34,6 +40,171 @@ public class PoolDTO
 
 	
 	
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String startcoordi, String endcoordi,
+			String starttime, int mannum, String gender, int pay, String smoking, String pluscontent, String pooltype,
+			String startdate, String enddate, String days, String termtype, int caridx, String poolname, double slat,
+			double slng, double elat, double elng, String path, String point) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.termtype = termtype;
+		this.caridx = caridx;
+		this.poolname = poolname;
+		this.slat = slat;
+		this.slng = slng;
+		this.elat = elat;
+		this.elng = elng;
+		this.path = path;
+		this.point = point;
+	}
+
+
+
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String startcoordi, String endcoordi,
+			String starttime, int mannum, String gender, int pay, String smoking, String pluscontent, String pooltype,
+			String termtype, int caridx, String poolname, double slat, double slng, double elat, double elng, String path,
+			String point) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.termtype = termtype;
+		this.caridx = caridx;
+		this.poolname = poolname;
+		this.slat = slat;
+		this.slng = slng;
+		this.elat = elat;
+		this.elng = elng;
+		this.path = path;
+		this.point = point;
+	}
+
+	
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String startcoordi, String endcoordi, String starttime,
+			int mannum, String gender, int pay, String smoking, String pluscontent, String pooltype,
+			String startdate, String enddate, String days, String termtype, double slat, double slng, double elat, double elng,
+			String path, String point) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.starttime=starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.termtype = termtype;
+		this.slat = slat;
+		this.slng = slng;
+		this.elat = elat;
+		this.elng = elng;
+		this.path = path;
+		this.point = point;
+	}
+
+
+
+	public PoolDTO(String userid, String aim, String startspot, String endspot, String startcoordi, String endcoordi,
+			String starttime, int mannum, String gender, int pay, String smoking, String pluscontent, String pooltype,
+			String termtype, double slat, double slng, double elat, double elng, String path, String point) {
+		super();
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.termtype = termtype;
+		this.slat = slat;
+		this.slng = slng;
+		this.elat = elat;
+		this.elng = elng;
+		this.path = path;
+		this.point = point;
+	}
+
+
+
+	public PoolDTO(int idx, String userid, String aim, String startspot, String endspot, String route,
+			String startcoordi, String endcoordi, String routecoordi, String starttime, int mannum, String gender,
+			int pay, String smoking, String pluscontent, String writedate, String status, String pooltype,
+			String startdate, String enddate, String days, String location, String termtype, int caridx,
+			String poolname, double slat, double slng, double elat, double elng, String path, String point) {
+		super();
+		this.idx = idx;
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.route = route;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.routecoordi = routecoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.writedate = writedate;
+		this.status = status;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.location = location;
+		this.termtype = termtype;
+		this.caridx = caridx;
+		this.poolname = poolname;
+		this.slat = slat;
+		this.slng = slng;
+		this.elat = elat;
+		this.elng = elng;
+		this.path = path;
+		this.point = point;
+	}
+
+
+
 	public PoolDTO(int idx, String userid, String aim, String startspot, String endspot, String route,
 			String startcoordi, String endcoordi, String routecoordi, String starttime, int mannum, String gender,
 			int pay, String smoking, String pluscontent, String writedate, String status, String pooltype,
@@ -693,6 +864,78 @@ public class PoolDTO
 
 	public void setPoolname(String poolname) {
 		this.poolname = poolname;
+	}
+
+
+
+	public double getSlat() {
+		return slat;
+	}
+
+
+
+	public void setSlat(double slat) {
+		this.slat = slat;
+	}
+
+
+
+	public double getSlng() {
+		return slng;
+	}
+
+
+
+	public void setSlng(double slng) {
+		this.slng = slng;
+	}
+
+
+
+	public double getElat() {
+		return elat;
+	}
+
+
+
+	public void setElat(double elat) {
+		this.elat = elat;
+	}
+
+
+
+	public double getElng() {
+		return elng;
+	}
+
+
+
+	public void setElng(double elng) {
+		this.elng = elng;
+	}
+
+
+
+	public String getPath() {
+		return path;
+	}
+
+
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+
+
+	public String getPoint() {
+		return point;
+	}
+
+
+
+	public void setPoint(String point) {
+		this.point = point;
 	}
 	
 	

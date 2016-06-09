@@ -19,6 +19,26 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public List getMasShortMatch(PoolDateDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("getMasShortMatch",dto);
+	}
+	
+	public List getMasLongMatch(PoolDateDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("getMasLongMatch",dto);
+	}
+	
+	public List getMemLongMatch(PoolDateDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("getMemLongMatch",dto);
+	}
+	
+	public List getMemShortMatch(PoolDateDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("getMasShortMatch",dto);
+	}
+	
 	public int getOwnMasterTotalCnt(String id) {
 		// TODO Auto-generated method stub
 		return sqlMap.selectOne("sql.poolStatusSQL.getOwnMasterPoolTotalCnt",id);

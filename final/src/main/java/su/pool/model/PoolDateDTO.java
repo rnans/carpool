@@ -1,6 +1,6 @@
 package su.pool.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class PoolDateDTO 
 {
@@ -22,22 +22,143 @@ public class PoolDateDTO
 	private Date writedate;
 	private String status;
 	private String pooltype;
-	private Date startdate;
-	private Date enddate;
+	private java.sql.Date startdate;
+	private java.sql.Date enddate;
 	private String days;
 	private String location;
 	private String termtype;
 	private int caridx;
 	private String poolname;
+	private double slat;
+	private double slng;
+	private double elat;
+	private double elng;
+	private String path;
+	private String point;
 	
 	public PoolDateDTO() {
 		super();
 	}
 
+	
+	
+	public double getSlat() {
+		return slat;
+	}
+
+
+
+	public void setSlat(double slat) {
+		this.slat = slat;
+	}
+
+
+
+	public double getSlng() {
+		return slng;
+	}
+
+
+
+	public void setSlng(double slng) {
+		this.slng = slng;
+	}
+
+
+
+	public double getElat() {
+		return elat;
+	}
+
+
+
+	public void setElat(double elat) {
+		this.elat = elat;
+	}
+
+
+
+	public double getElng() {
+		return elng;
+	}
+
+
+
+	public void setElng(double elng) {
+		this.elng = elng;
+	}
+
+
+
+	public String getPath() {
+		return path;
+	}
+
+
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+
+
+	public String getPoint() {
+		return point;
+	}
+
+
+
+	public void setPoint(String point) {
+		this.point = point;
+	}
+
+
+
 	public PoolDateDTO(int idx, String userid, String aim, String startspot, String endspot, String route,
 			String startcoordi, String endcoordi, String routecoordi, Date starttime, int mannum, String gender,
-			int pay, String smoking, String pluscontent, Date writedate, String status, String pooltype, Date startdate,
-			Date enddate, String days, String location, String termtype, int caridx, String poolname) {
+			int pay, String smoking, String pluscontent, Date writedate, String status, String pooltype, java.sql.Date startdate,
+			java.sql.Date enddate, String days, String location, String termtype, int caridx, String poolname, double slat,
+			double slng, double elat, double elng, String path, String point) {
+		super();
+		this.idx = idx;
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.route = route;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.routecoordi = routecoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.writedate = writedate;
+		this.status = status;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.location = location;
+		this.termtype = termtype;
+		this.caridx = caridx;
+		this.poolname = poolname;
+		this.slat = slat;
+		this.slng = slng;
+		this.elat = elat;
+		this.elng = elng;
+		this.path = path;
+		this.point = point;
+	}
+
+
+
+	public PoolDateDTO(int idx, String userid, String aim, String startspot, String endspot, String route,
+			String startcoordi, String endcoordi, String routecoordi, Date starttime, int mannum, String gender,
+			int pay, String smoking, String pluscontent, Date writedate, String status, String pooltype, java.sql.Date startdate,
+			java.sql.Date enddate, String days, String location, String termtype, int caridx, String poolname) {
 		super();
 		this.idx = idx;
 		this.userid = userid;
@@ -210,19 +331,19 @@ public class PoolDateDTO
 		this.pooltype = pooltype;
 	}
 
-	public Date getStartdate() {
+	public java.sql.Date getStartdate() {
 		return startdate;
 	}
 
-	public void setStartdate(Date startdate) {
+	public void setStartdate(java.sql.Date startdate) {
 		this.startdate = startdate;
 	}
 
-	public Date getEnddate() {
+	public java.sql.Date getEnddate() {
 		return enddate;
 	}
 
-	public void setEnddate(Date enddate) {
+	public void setEnddate(java.sql.Date enddate) {
 		this.enddate = enddate;
 	}
 

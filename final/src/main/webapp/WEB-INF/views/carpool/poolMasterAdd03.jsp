@@ -53,7 +53,6 @@
 	<script src="//apis.daum.net/maps/maps3.js?apikey=140c866172be3f537fee6199c675008a&libraries=services,clusterer"></script>
 
 
-    <script src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=2e2fe45c-1baa-3078-b615-2c0b3f71bfe5"></script>
 	<script>
 	var id;
 	$('input').focus(function(e){
@@ -171,6 +170,8 @@
 
 		           var coords = new daum.maps.LatLng(lat, lng);
 			       
+		           geocoder.coord2detailaddr(coords, callback);
+		           
 		           // 결과값으로 받은 위치를 마커로 표시합니다
 		           var marker = new daum.maps.Marker({
 		               map: map,
@@ -179,12 +180,30 @@
 		               title: title,
 		               image: markerImg
 		           });
-				
+	
 		           bounds.extend(coords);
 		           map.setBounds(bounds);
 		           
+		        // 출발 마커에 dragstart 이벤트를 등록합니다
+			        daum.maps.event.addListener(marker, 'dragstart', function() {
+			        	 if(title=='출발지'){
+				 		    	document.getElementById('ss').value="";
+				 		   }
+				 		   else if(title=='도착지')
+				 		   {
+				 			    document.getElementById('es').value="";
+				 		   }
+			        });
+
+		           
 		        daum.maps.event.addListener(marker,"dragend",function(){
 		   			
+
+		        	 var coord = marker.getPosition();
+		        	
+		        	 coord.split(',');
+		        	
+		        	
 		        	 if(title=='출발지'){
 		 		    	document.getElementById('sc').value=marker.getPosition();
 		 		   }
@@ -195,40 +214,18 @@
 		        	
 		        	
 
-		        	 var coord = marker.getPosition();
-		        	 
-			           bounds.extend(coord);
-			           map.setBounds(bound);
+			        
   			
 		        	 var geocoder = new daum.maps.services.Geocoder();
 		        	 
-		        	 var callback = function(status, result) {
-		        	     if (status === daum.maps.services.Status.OK) {
-		        	     
-		        	         
-		        	    	 if(title=='출발지'){
-		        	    		 		        	    		 
-		 		 		    	document.getElementById('ss').value=result[0].jibunAddress.name;
-		 		 		    	
-		 		 		    	
-		 		 		   }
-		 		 		    else if(title=='도착지')
-		 		 		   {
-		 		 			    document.getElementById('es').value=result[0].jibunAddress.name;
-		 		 		   }
-		 		        	
-		        	    	 
-		        	     }   
-
-			           
-		        	 };
-		        	 var bounds = map.getBounds();
+		        	
+		        	 
 	
-		        	 geocoder.coord2detailaddr(coord, callback, new daum.maps.services.Format.SIMPLE);
+		        	 geocoder.coord2detailaddr(coord, callback);
 		        	 
 		   		});
 		        
-		      
+		     
    
 		           for(var i=0;i<markers.length;i++)
 		           {
@@ -248,7 +245,26 @@
 		           });
 		           infowindow.open(map, marker);
 		           infowindows.push(infowindow); */
+		           var callback = function(status, result) {
+		        	     if (status === daum.maps.services.Status.OK) {
+		        	     
+		        	         
+		        	    	 if(title=='출발지'){
+		        	    		 		        	    		 
+		 		 		    	document.getElementById('ss').value='대한민국 '+result[0].jibunAddress.name;
+		 		 		    	
+		 		 		    	
+		 		 		   }
+		 		 		    else if(title=='도착지')
+		 		 		   {
+		 		 			    document.getElementById('es').value='대한민국 '+result[0].jibunAddress.name;
+		 		 		   }
+		 		        	
+		        	    	 
+		        	     }   
 
+			           
+		        	 };
 		  });
 }
 </script>

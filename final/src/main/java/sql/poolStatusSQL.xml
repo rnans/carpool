@@ -181,4 +181,110 @@
  		   <delete id="driverReserveDel" parameterType="su.pool.model.PoolMasterStatusDTO">
        delete from poolmasterstatus where aimidx=#{idx}
     </delete>
+    <select id="getMasShortMatch" parameterType="map" resultType="su.pool.model.PoolDateDTO">
+	select * from reservationlist where
+userid=#{userid} and
+mannum>=#{mannum} and
+starttime=#{starttime} and
+smoking=#{smoking} and
+gender=#{gender} and
+status='모집중' and
+pooltype='타세요' and
+termtype='단기' and 
+trunc(6371 * ACOS(
+        COS( #{slat} * 0.017453293 )
+        * COS( slat * 0.017453293 )
+        * COS( (slng * 0.017453293) - (#{slng} * 0.017453293))
+        + SIN( #{slat} * 0.017453293 )
+        * SIN( slat * 0.017453293 )
+    ),4) <![CDATA[<=]]> 0.5 and	
+  trunc(  6371 * ACOS(
+        COS( #{elat} * 0.017453293 )
+        * COS( elat * 0.017453293 )
+        * COS( (elng * 0.017453293) - (#{elng} * 0.017453293))
+        + SIN( #{elat} * 0.017453293 )
+        * SIN( elat * 0.017453293 )
+    ),4) <![CDATA[<=]]> 0.5
+	</select>
+	<select id="getMasLongMatch" parameterType="map" resultType="su.pool.model.PoolDateDTO">
+	select * from reservationlist where
+userid=#{userid} and
+mannum>=#{mannum} and
+starttime=#{starttime} and 
+startdate<![CDATA[-]]>#{startdate}<![CDATA[<=]]>0 and
+enddate<![CDATA[-]]>#{enddate}<![CDATA[>=]]>0 and
+days like #{days} and
+smoking=#{smoking} and
+gender=#{gender} and
+status='모집중' and
+pooltype='타세요' and
+termtype='정기' and 
+trunc(6371 * ACOS(
+        COS( #{slat} * 0.017453293 )
+        * COS( slat * 0.017453293 )
+        * COS( (slng * 0.017453293) - (#{slng} * 0.017453293))
+        + SIN( #{slat} * 0.017453293 )
+        * SIN( slat * 0.017453293 )
+    ),4) <![CDATA[<=]]> 0.5 and	
+  trunc(  6371 * ACOS(
+        COS( #{elat} * 0.017453293 )
+        * COS( elat * 0.017453293 )
+        * COS( (elng * 0.017453293) - (#{elng} * 0.017453293))
+        + SIN( #{elat} * 0.017453293 )
+        * SIN( elat * 0.017453293 )
+    ),4) <![CDATA[<=]]> 0.5
+	</select>
+	 <select id="getMemShortMatch" parameterType="map" resultType="su.pool.model.PoolDateDTO">
+	select * from reservationlist where
+userid=#{userid} and
+mannum>=#{mannum} and
+starttime=#{starttime} and
+smoking=#{smoking} and
+gender=#{gender} and
+status='모집중' and
+pooltype='탈래요' and
+termtype='단기' and 
+trunc(6371 * ACOS(
+        COS( #{slat} * 0.017453293 )
+        * COS( slat * 0.017453293 )
+        * COS( (slng * 0.017453293) - (#{slng} * 0.017453293))
+        + SIN( #{slat} * 0.017453293 )
+        * SIN( slat * 0.017453293 )
+    ),4) <![CDATA[<=]]> 0.5 and	
+  trunc(  6371 * ACOS(
+        COS( #{elat} * 0.017453293 )
+        * COS( elat * 0.017453293 )
+        * COS( (elng * 0.017453293) - (#{elng} * 0.017453293))
+        + SIN( #{elat} * 0.017453293 )
+        * SIN( elat * 0.017453293 )
+    ),4) <![CDATA[<=]]> 0.5
+	</select>
+	<select id="getMemLongMatch" parameterType="map" resultType="su.pool.model.PoolDateDTO">
+	select * from reservationlist where
+userid=#{userid} and
+mannum>=#{mannum} and
+starttime=#{starttime} and 
+startdate<![CDATA[-]]>#{startdate}<![CDATA[<=]]>0 and
+enddate<![CDATA[-]]>#{enddate}<![CDATA[>=]]>0 and
+days like #{days} and
+smoking=#{smoking} and
+gender=#{gender} and
+status='모집중' and
+pooltype='탈래요' and
+termtype='정기' and 
+trunc(6371 * ACOS(
+        COS( #{slat} * 0.017453293 )
+        * COS( slat * 0.017453293 )
+        * COS( (slng * 0.017453293) - (#{slng} * 0.017453293))
+        + SIN( #{slat} * 0.017453293 )
+        * SIN( slat * 0.017453293 )
+    ),4) <![CDATA[<=]]> 0.5 and	
+  trunc(  6371 * ACOS(
+        COS( #{elat} * 0.017453293 )
+        * COS( elat * 0.017453293 )
+        * COS( (elng * 0.017453293) - (#{elng} * 0.017453293))
+        + SIN( #{elat} * 0.017453293 )
+        * SIN( elat * 0.017453293 )
+    ),4) <![CDATA[<=]]> 0.5
+	</select>
 </mapper>

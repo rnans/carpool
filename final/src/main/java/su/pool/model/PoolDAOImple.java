@@ -125,6 +125,11 @@ public class PoolDAOImple implements PoolDAO {
 		 return list;
 	}
 	 
+	 public List viewAllList() {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("viewAllList2");
+	}
+	 
 	 public List viewLongList(int cp, int ls) {
 		 int startnum=(cp-1)*ls+1;
 		 int endnum=cp*ls;
@@ -196,5 +201,13 @@ public class PoolDAOImple implements PoolDAO {
 		return sqlMap.update("editPoolMans",map);
 	}
 		
-
+	public List poolFind(HashMap map) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("cateSearch",map);
+	}
+	
+	public List checkPoolName(String poolname) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectList("checkPoolName",poolname);
+	}
 }

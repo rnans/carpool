@@ -1,45 +1,152 @@
 @CHARSET "UTF-8";
-html
-{
+
+html {
 	background: #f0f0f0;
 }
 
 
-#mainsection
-{
-	padding-top:5%;
-	padding-left:2%;
-	padding-right:2%;
+.wrap {
+	position: absolute;
+	left: 0;
+	bottom: 40px;
+	width: 288px;
+	height: 132px;
+	margin-left: -144px;
+	text-align: left;
+	overflow: hidden;
+	font-size: 12px;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	line-height: 1.5;
+}
+
+.wrap * {
+	padding: 0;
+	margin: 0;
+}
+
+.wrap .info {
+	width: 286px;
+	height: 120px;
+	border-radius: 5px;
+	border-bottom: 2px solid #ccc;
+	border-right: 1px solid #ccc;
+	overflow: hidden;
+	background: #fff;
+}
+
+.wrap .info:nth-child(1) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+	padding: 5px 0 0 10px;
+	height: 30px;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.info .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #888;
+	width: 17px;
+	height: 17px;
+	background:
+		url('http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+	cursor: pointer;
+}
+
+.info .body {
+	position: relative;
+	overflow: hidden;
+}
+
+.info .desc {
+	position: relative;
+	margin: 13px 0 0 90px;
+	height: 75px;
+}
+
+.desc .ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.desc .jibun {
+	font-size: 11px;
+	color: #888;
+	margin-top: -2px;
+}
+
+.info .img {
+	position: absolute;
+	top: 6px;
+	left: 5px;
+	width: 73px;
+	height: 71px;
+	border: 1px solid #ddd;
+	color: #888;
+	overflow: hidden;
+}
+
+.info:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: 0;
+	width: 22px;
+	height: 12px;
+	background:
+		url('http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+	color: #5085BB;
+}
+
+#mainsection {
+	padding-top: 5%;
+	padding-left: 2%;
+	padding-right: 2%;
 	height: 100%;
 	background: #f0f0f0;
 }
-.mavDiv
-{
-	z-index:2;
+
+.mavDiv {
+	z-index: 2;
 }
 
-input[type='text']
-{
+input[type='text'] {
 	width: 80%;
 }
-.grid__item::before {
-    top: 5px;
-    right: 5px;
-    bottom: 5px;
-    left: 5px;
-    border: 1px solid rgba(74, 74, 74, 0.075);
-    -webkit-transition: opacity 0.3s;
-    transition: opacity 0.3s;
-  }
 
-  .grid__item:hover::before,
-  .grid__item:focus::before {
-    border: 3px solid rgba(129, 196, 131, 0.5);
-  }
-  .button--cate {
+.grid__item::before {
+	top: 5px;
+	right: 5px;
+	bottom: 5px;
+	left: 5px;
+	border: 1px solid rgba(74, 74, 74, 0.075);
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+.grid__item:hover::before, .grid__item:focus::before {
+	border: 3px solid rgba(129, 196, 131, 0.5);
+}
+
+.button--cate {
 	float: left;
-	width:150px;
-	height:50px;
+	width: 150px;
+	height: 50px;
 	display: block;
 	margin: 0.3em;
 	padding: 0px;
@@ -47,16 +154,18 @@ input[type='text']
 	background: none;
 	color: inherit;
 	vertical-align: middle;
-	line-height:0;
+	line-height: 0;
 	position: relative;
 	z-index: 1;
 	-webkit-backface-visibility: hidden;
 	-moz-osx-font-smoothing: grayscale;
 }
+
 .button--cate:focus {
 	outline: none;
 }
-.button--cate > span {
+
+.button--cate>span {
 	vertical-align: middle;
 }
 
@@ -64,9 +173,11 @@ input[type='text']
 .button--size-s {
 	font-size: 14px;
 }
+
 .button--size-m {
 	font-size: 16px;
 }
+
 .button--size-l {
 	font-size: 18px;
 }
@@ -76,21 +187,27 @@ input[type='text']
 	letter-spacing: 2px;
 	text-transform: uppercase;
 }
+
 .button--text-thin {
 	font-weight: 300;
 }
+
 .button--text-medium {
 	font-weight: 500;
 }
+
 .button--text-thick {
 	font-weight: 600;
 }
+
 .button--round-s {
 	border-radius: 5px;
 }
+
 .button--round-m {
 	border-radius: 15px;
 }
+
 .button--round-l {
 	border-radius: 40px;
 }
@@ -99,13 +216,14 @@ input[type='text']
 .button--border-thin {
 	border: 1px solid;
 }
+
 .button--border-medium {
 	border: 2px solid;
 }
+
 .button--border-thick {
 	border: 3px solid;
 }
-
 
 .button--moema {
 	padding: 1.5em 3em;
@@ -115,10 +233,12 @@ input[type='text']
 	-webkit-transition: background-color 0.3s, color 0.3s;
 	transition: background-color 0.3s, color 0.3s;
 }
+
 .button--moema.button--inverted {
 	background: #ECEFF1;
 	color: #37474f;
 }
+
 .button--moema::before {
 	content: '';
 	position: absolute;
@@ -133,6 +253,7 @@ input[type='text']
 	-webkit-transform: scale3d(0.8, 0.5, 1);
 	transform: scale3d(0.8, 0.5, 1);
 }
+
 .button--moema:hover {
 	-webkit-transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
 	transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
@@ -141,50 +262,131 @@ input[type='text']
 	-webkit-animation: anim-moema-1 0.3s forwards;
 	animation: anim-moema-1 0.3s forwards;
 }
+
+.button--moema:active
+{
+	color: #ECEFF1;
+	background-color: #3f51b5;
+}
+
 .button--moema.button--inverted:hover {
 	color: #ECEFF1;
 	background-color: #7986cb;
 }
+
 .button--moema:hover::before {
 	-webkit-animation: anim-moema-2 0.3s 0.3s forwards;
 	animation: anim-moema-2 0.3s 0.3s forwards;
 }
-@-webkit-keyframes anim-moema-1 {
-	60% {
-		-webkit-transform: scale3d(0.8, 0.8, 1);
-		transform: scale3d(0.8, 0.8, 1);
-	}
-	85% {
-		-webkit-transform: scale3d(1.1, 1.1, 1);
-		transform: scale3d(1.1, 1.1, 1);
-	}
-	100% {
-		-webkit-transform: scale3d(1, 1, 1);
-		transform: scale3d(1, 1, 1);
-	}
-}
-@keyframes anim-moema-1 {
-	60% {
-		-webkit-transform: scale3d(0.8, 0.8, 1);
-		transform: scale3d(0.8, 0.8, 1);
-	}
-	85% {
-		-webkit-transform: scale3d(1.1, 1.1, 1);
-		transform: scale3d(1.1, 1.1, 1);
-	}
-	100% {
-		-webkit-transform: scale3d(1, 1, 1);
-		transform: scale3d(1, 1, 1);
-	}
+
+@
+-webkit-keyframes anim-moema-1 { 60% {
+	-webkit-transform: scale3d(0.8, 0.8, 1);
+	transform: scale3d(0.8, 0.8, 1);
 }
 
-@media screen and (max-width:768px) {
- #mainsection
+85%
 {
-	padding-top:12%;
-	padding-left:2%;
-	padding-right:2%;
-	height: 100%;
-	background: #f0f0f0;
+-webkit-transform
+:
+ 
+scale3d
+(1
+.1
+,
+1
+.1
+,
+1);
+transform
+:
+ 
+scale3d
+(1
+.1
+,
+1
+.1
+,
+1);
 }
+100%
+{
+-webkit-transform
+:
+ 
+scale3d
+(1
+,
+1,
+1);
+transform
+:
+ 
+scale3d
+(1
+,
+1,
+1);
+}
+}
+@
+keyframes anim-moema-1 { 60% {
+	-webkit-transform: scale3d(0.8, 0.8, 1);
+	transform: scale3d(0.8, 0.8, 1);
+}
+
+85%
+{
+-webkit-transform
+:
+ 
+scale3d
+(1
+.1
+,
+1
+.1
+,
+1);
+transform
+:
+ 
+scale3d
+(1
+.1
+,
+1
+.1
+,
+1);
+}
+100%
+{
+-webkit-transform
+:
+ 
+scale3d
+(1
+,
+1,
+1);
+transform
+:
+ 
+scale3d
+(1
+,
+1,
+1);
+}
+}
+@media screen and (max-width:768px) {
+	#mainsection {
+		padding-top: 12%;
+		padding-left: 2%;
+		padding-right: 2%;
+		height: 100%;
+		background: #f0f0f0;
+	}
 }

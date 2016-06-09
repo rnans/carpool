@@ -10,6 +10,261 @@
 <link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
+<script src="/final02/js/httpRequest.js"></script>
+
+<script>
+var dparams='pooltype=';
+var tparams='termtype=';
+var lparams='startspot=';
+var lparams2='endspot=';
+var gparams='gender=';
+var sparams='smoking=';
+function driveron(bt)
+{
+	
+	$('#driver').toggleClass('button--on');
+	
+	$('#member').removeClass('button--on');
+	if($('#driver').hasClass('button--on'))
+	{
+		
+		dparams=bt.name+'='+bt.value;
+	
+	}
+		
+
+}
+function memberon(bt)
+{
+	
+	$('#driver').removeClass('button--on');
+	
+	$('#member').toggleClass('button--on');
+	if($('#member').hasClass('button--on'))
+	{
+		
+		dparams=bt.name+'='+bt.value;
+		
+	}
+	
+	
+}
+
+function shorton(bt)
+{
+	
+	$('#short').toggleClass('button--on');
+	
+	$('#long').removeClass('button--on');
+	if($('#short').hasClass('button--on'))
+	{
+		
+		tparams=bt.name+'='+bt.value;
+	
+	}
+	
+
+}
+function longon(bt)
+{
+	
+	$('#long').toggleClass('button--on');
+	
+	$('#short').removeClass('button--on');
+	if($('#long').hasClass('button--on'))
+	{
+		
+		tparams=bt.name+'='+bt.value;
+	
+	}
+	
+
+}
+function seon(bt)
+{
+	
+	$('#se').toggleClass('button--on');
+	
+	$('#kk').removeClass('button--on');
+	$('#ic').removeClass('button--on');
+	$('#ps').removeClass('button--on');
+	if($('#se').hasClass('button--on'))
+	{
+		
+		lparams='startspot='+bt.value;
+		lparams2='endspot='+bt.value;
+	
+	}
+	
+
+}
+function kkon(bt)
+{
+	
+	$('#kk').toggleClass('button--on');
+	
+	$('#se').removeClass('button--on');
+	$('#ic').removeClass('button--on');
+	$('#ps').removeClass('button--on');
+	if($('#kk').hasClass('button--on'))
+	{
+		
+		lparams='startspot='+bt.value;
+		lparams2='endspot='+bt.value;
+	
+	}
+	
+
+}
+function icon(bt)
+{
+	
+	$('#ic').toggleClass('button--on');
+	
+	$('#se').removeClass('button--on');
+	$('#kk').removeClass('button--on');
+	$('#ps').removeClass('button--on');
+	if($('#ic').hasClass('button--on'))
+	{
+		
+		lparams='startspot='+bt.value;
+		lparams2='endspot='+bt.value;
+	
+	}
+	
+
+}
+function pson(bt)
+{
+	
+	$('#ps').toggleClass('button--on');
+	
+	$('#se').removeClass('button--on');
+	$('#ic').removeClass('button--on');
+	$('#kk').removeClass('button--on');
+	if($('#ps').hasClass('button--on'))
+	{
+		
+		lparams='startspot='+bt.value;
+		lparams2='endspot='+bt.value;
+	
+	}
+	
+
+}
+function femaleon(bt)
+{
+	
+	$('#female').toggleClass('button--on');
+	
+	$('#male').removeClass('button--on');
+	if($('#female').hasClass('button--on'))
+	{
+		
+		gparams=bt.name+'='+bt.value;
+	
+	}
+	
+
+}
+function maleon(bt)
+{
+	
+	$('#male').toggleClass('button--on');
+	
+	$('#female').removeClass('button--on');
+	if($('#male').hasClass('button--on'))
+	{
+		
+		gparams=bt.name+'='+bt.value;
+	
+	}
+	
+
+}
+function smokeon(bt)
+{
+	
+	$('#smoke').toggleClass('button--on');
+	
+	$('#nonsmoke').removeClass('button--on');
+	if($('#smoke').hasClass('button--on'))
+	{
+		
+		sparams='smoking='+bt.value;
+	
+	}
+	
+
+}
+function nonsmokeon(bt)
+{
+	
+	$('#nonsmoke').toggleClass('button--on');
+	
+	$('#smoke').removeClass('button--on');
+	if($('#nonsmoke').hasClass('button--on'))
+	{
+		
+		sparams='smoking='+bt.value;
+	
+	}
+	
+
+}
+
+
+function findList()
+{
+	var scoordi=document.getElementById('sc').value.split(',');
+	var ecoordi=document.getElementById('ec').value.split(',');
+
+	var startX;
+	var startY;
+	var endX;
+	var endY;
+
+	for(var i=0;i<scoordi.length;i++)
+	{
+		
+		if(i==0)
+		{
+			startY=scoordi[i].substring(1,scoordi[i].length);
+
+		}
+		if(i==1)
+		{
+			startX=scoordi[i].substring(1,scoordi[i].length-1);
+
+		}
+	}
+	
+	for(var i=0;i<ecoordi.length;i++)
+	{
+		
+		if(i==0)
+		{
+			endY=ecoordi[i].substring(1,ecoordi[i].length);
+
+		}
+		if(i==1)
+		{
+			endX=ecoordi[i].substring(1,ecoordi[i].length-1);
+
+		}
+	}
+	
+	
+	
+	var params=dparams+'&'+tparams+'&'+lparams+'&'+lparams2+'&'+gparams+'&'+sparams+'&slat='+startY+'&slng='+startX+'&elat='+endY+'&elng='+endX;
+	
+	location.href='poolFind.do?'+params;
+	
+	window.alert(document.getElementById('ec').value);
+	window.alert(document.getElementById('sc').value);
+}
+
+</script>
 </head>
 <body>
 <%@ include file="../header.jsp" %>
@@ -17,7 +272,7 @@
 <div id="search" class="col-md-12">
 	<div class="col-md-12"><h1 style="    margin-top: 20px;
     margin-bottom: 10px;">카풀 검색<small>원하시는 카풀을 찾아드립니다.</small></h1></div>
-	<form name="search" action="search.do">
+	<form name="search" id="sForm" action="search.do">
 	<div class="input input--nao col-md-12">
 					<input  class="input__field input__field--nao" type="text" id="ss" name="startspot"><br> <input type="hidden" id="sc"
 			name="startcoordi">
@@ -39,6 +294,44 @@
 						<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 					</svg>
 				</div>
+				<div id="categorySearch" class="col-md-12">
+		<div class="row">
+		<div class="col-md-3 col-xd-3">카풀 유형</div> 
+		<div class="col-md-9 col-xd-9">	
+			<button type="button" name="pooltype" value="타세요" id="driver" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="driveron(this)">타세요</button>
+			<button type="button" name="pooltype" value="탈래요" id="member" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="memberon(this)">탈래요</button>	
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-md-3 col-xd-3">카풀 기간</div> 
+		<div class="col-md-9 col-xd-9">	
+			<button type="button" id="short" name="termtype" value="단기" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="shorton(this)">단기</button>
+			<button type="button" id="long" name="termtype" value="정기" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="longon(this)">정기</button>	
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-md-3 col-xd-3">지역</div> 
+		<div class="col-md-9 col-xd-9">	<button type="button" id="se" value="서울" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="seon(this)">서울</button>
+					<button type="button" id="kk" value="경기" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="kkon(this)">경기</button>
+					<button type="button" id="ic" value="인천" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="icon(this)">인천</button>
+					<button type="button" id="ps" value="부산" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="pson(this)">부산</button>
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-md-3 col-xd-3">성별</div> 
+		<div class="col-md-9 col-xd-9">
+		<button type="button" id="female" value="남성만" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="femaleon(this)">여성만</button>
+		<button type="button" id="male" value="여성만" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="maleon(this)">남성만</button>
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-md-3 col-xd-3">흡연여부</div> 
+		<div class="col-md-9 col-xd-9">
+		<button type="button" id="smoke" value="흡연" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="smokeon(this)">흡연 가능</button>
+		<button type="button" id="nonsmoke" value="비흡연" class="button--cate button--moema button--text-thick button--text-upper button--size-s" onclick="nonsmokeon(this)">흡연 불가</button>
+		</div>
+		</div>
+		</div>
 				<div class="row">
 				<div class="col-md-4"></div>
 				<div class="col-md-8">
@@ -46,7 +339,7 @@
 				<button type="button" onclick="showCate();"class="button button--ujarak button--border-thin button--text-thick">상세검색</button>
 				</div>
 				<div class="col-md-4">
-				<button type="button" class="button button--ujarak button--border-thin button--text-thick">검색</button>
+				<button type="button" onclick="findList()" class="button button--ujarak button--border-thin button--text-thick">검색</button>
 				</div>
 				<div class="col-md-4">
 				<button type="button" class="button button--ujarak button--border-thin button--text-thick">실시간 자동 매칭</button>
@@ -54,34 +347,10 @@
 				</div>
 				</div>
 <br>
-	<div class="row">
-		<div id="categorySearch" class="col-md-12">
-		<div class="row">
-		<div class="col-md-3">상세 검색 영역 지역</div> 
-		<div class="col-md-9">	<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">서울</button>
-					<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">경기</button>
-					<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">인천</button>
-					<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">부산</button>
-		</div>
-		<div class="col-md-3">인원</div>
-		<div class="col-md-9"> 
-		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">1명</button>
-		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">2명</button>
-		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">3명 이상</button>
-		</div>
-		<div class="col-md-3">성별</div> 
-		<div class="col-md-9">
-		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">여성만</button>
-		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">남성만</button>
-		</div>
-		<div class="col-md-3">흡연여부</div> 
-		<div class="col-md-9">
-		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">흡연 가능</button>
-		<button class="button--cate button--moema button--text-thick button--text-upper button--size-s">흡연 불가</button>
-		</div>
-		</div>
+	
+		
 	</div>
-	</div>
+	
 	</form>
 </div>
 <div id="map"></div>
@@ -93,7 +362,22 @@ window.onload=function()
 {
 		cateBtStatus=false;
 		cate.style.display="none";
+		
+		var url='poolListByJson.do';
+		sendRequest(url, null, callback, 'POST');
+	
 }
+function callback(){
+	   if(XHR.readyState==4){
+	      if(XHR.status==200){
+	         var text = XHR.responseText;
+	         var data = eval('('+text+')');
+	         
+	        data.lists.forEach(viewList);
+	      }
+	   }
+	}
+
 function showCate()
 {
 		if(cateBtStatus==true){
@@ -111,43 +395,82 @@ function showCate()
 </script>
 
 <script src="//apis.daum.net/maps/maps3.js?apikey=140c866172be3f537fee6199c675008a&libraries=services,clusterer"></script>
-	<script>
+<script>
 		
 	var id;
-	$('.input--nao').focus(function(e){
+	$('.input__field--nao').focus(function(e){
 		id=e.target.id
-		
-		initAutocomplete();
+		initAutocomplete(id);
 	})
 
+	
+	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 		    center: new daum.maps.LatLng(37.50864, 127.03013), // 지도의 중심좌표
-		    level: 6, // 지도의 확대 레벨
+		    level: 11, // 지도의 확대 레벨
 		    mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
 		}; 
 
+	
+	
 		// 지도를 생성한다 
 	var map = new daum.maps.Map(mapContainer, mapOption); 
 	
-	var markers=new Array();
-	var infowindows=new Array();
-	
-	
-	var scoordis=document.getElementById('sc').value;
-	 var ecoordis=document.getElementById('ec').value;
-	
-	 var bounds = new daum.maps.LatLngBounds(); 
- 
-	function initAutocomplete() {
-				
-		 var input = /** @type {!HTMLInputElement} */(
-		      document.getElementById(id));
+	  var clusterer = new daum.maps.MarkerClusterer({
+	        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+	        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+	        minLevel: 10 // 클러스터 할 최소 지도 레벨 
+	    });
+
+	function viewList(item,index){
+	  
+	  
+	var scoordi=item.startcoordi.split(',');
+	var ecoordi=item.endcoordi.split(',');
+
+	var startX;
+	var startY;
+	var endX;
+	var endY;
+
+	for(var i=0;i<scoordi.length;i++)
+	{
 		
-		var value=input.id;
-		 
-		var sImgSrc='http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png'
-		var aImgSrc='http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_b.png'
+		if(i==0)
+		{
+			startX=scoordi[i].substring(1,scoordi[i].length);
+
+		}
+		if(i==1)
+		{
+			startY=scoordi[i].substring(0,scoordi[i].length-1);
+
+		}
+	}
+
+	for(var i=0;i<ecoordi.length;i++)
+	{
+		
+		if(i==0)
+		{
+			endX=ecoordi[i].substring(1,ecoordi[i].length);
+
+		}
+		if(i==1)
+		{
+			endY=ecoordi[i].substring(0,ecoordi[i].length-1);
+
+		}
+	}
+	
+	var scoords = new daum.maps.LatLng(startX, startY);
+	var ecoords = new daum.maps.LatLng(endX, endY);
+	
+	
+	
+	var sImgSrc='http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png'
+	var aImgSrc='http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_b.png'
 		
 		imgSrc = 'http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png', // 출발 마커이미지의 주소입니다    
 	    imgSize = new daum.maps.Size(50, 45), // 출발 마커이미지의 크기입니다 
@@ -155,26 +478,169 @@ function showCate()
 	        offset: new daum.maps.Point(15, 43) // 출발 마커이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
 	    };
 
+	 
+		// 마커 이미지를 생성합니다
+			var sMarkerImg = new daum.maps.MarkerImage(sImgSrc, imgSize, imgOption);
+			var eMarkerImg = new daum.maps.MarkerImage(aImgSrc, imgSize, imgOption);
+		
+	  // 결과값으로 받은 위치를 마커로 표시합니다
+    var sMarker = new daum.maps.Marker({
+        map: map,
+        position: scoords,
+        draggable : false,
+        title: item.startspot,
+        image: sMarkerImg
+       
+    });
+	  
+    // 결과값으로 받은 위치를 마커로 표시합니다
+    var eMarker = new daum.maps.Marker({
+        map: map,
+        position: ecoords,
+        draggable : false,
+        title: item.endspot,
+        image: eMarkerImg
+    });
+	
+ // 커스텀 오버레이에 표시할 컨텐츠 입니다
+ // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+ // 별도의 이벤트 메소드를 제공하지 않습니다 
+ var scontent = '<div class="wrap" id="scon'+index+'">' + 
+             '    <div class="info">' + 
+             '        <div class="title">'+
+             				item.pooltype+' / '+item.termtype +
+             '        </div>' + 
+             '        <div class="body">' + 
+             '            <div class="img">' +
+             '                <img class="profile" src="http://s.cmstatic.net/webclient/dres/20160419171121/images/template/profile_60x60.gif" width="73" height="70">' +
+             '           </div>' + 
+             '            <div class="desc">' + 
+             '                <div class="ellipsis">'+item.startspot+'</div>' + 
+             '                <div class="ellipsis">'+item.endspot+'</div>'+ 
+             '                <div><a href="poolEachContent.do?idx='+item.idx+'">상세보기</a></div>' + 
+             '            </div>' + 
+             '        </div>' + 
+             '    </div>' +    
+             '</div>';
+var econtent = '<div class="wrap" id="econ'+index+'">' + 
+             '    <div class="info">' + 
+             '        <div class="title">'+
+             				item.pooltype+' / '+item.termtype + 
+             '        </div>' + 
+             '        <div class="body">' + 
+             '            <div class="img">' +
+             '                <img class="profile" src="http://s.cmstatic.net/webclient/dres/20160419171121/images/template/profile_60x60.gif" width="73" height="70">' +
+             '           </div>' + 
+             '            <div class="desc">' + 
+             '                <div class="ellipsis">'+item.startspot+'</div>' + 
+             '                <div class="ellipsis">'+item.endspot+'</div>'+ 
+             '                <div><a href="poolEachContent.do?idx='+item.idx+'">상세보기</a></div>' + 
+             '            </div>' + 
+             '        </div>' + 
+             '    </div>' +    
+             '</div>';
+
+ // 마커 위에 커스텀오버레이를 표시합니다
+ // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+ 
+ 
+    sMarker.setMap(map);
+    eMarker.setMap(map);
+    
+  
+    clusterer.addMarker(sMarker);
+    clusterer.addMarker(eMarker);
+ 
+    
+    var sOverlay = new daum.maps.CustomOverlay({
+	     content: scontent,
+	     map: map,
+	     position: sMarker.getPosition()       
+	 });
+	 
+	 
+	 sOverlay.setMap(map);
+	 sOverlay.setVisible(false);
+    
+	
+	 
+	 var eOverlay = new daum.maps.CustomOverlay({
+	     content: econtent,
+	     map: map,
+	     position: eMarker.getPosition()       
+	 });
+
+	 eOverlay.setMap(map);
+	 eOverlay.setVisible(false);
+	 
+	 var smarkerOn=false;
+	 var emarkerOn=false;
+	 
+	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+	 daum.maps.event.addListener(sMarker, 'click', function() {
+	    if(!smarkerOn){
+		sOverlay.setVisible(true);
+	    smarkerOn=true;
+	    }
+	    else
+	    {
+	    	sOverlay.setVisible(false);
+		    smarkerOn=false;
+	    }
+	 }); 
+	
+	
+	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+	 daum.maps.event.addListener(eMarker, 'click', function() {
+		 if(!emarkerOn){
+				eOverlay.setVisible(true);
+			    emarkerOn=true;
+			    }
+			    else
+			    {
+			    	eOverlay.setVisible(false);
+				    emarkerOn=false;
+			    }
+	 });
+	
+	
+ 	
+	
+	}
+	
+	var scoordis=document.getElementById('sc').value;
+	 var ecoordis=document.getElementById('ec').value;
+	
+	 var bounds = new daum.maps.LatLngBounds(); 
+
+	 function initAutocomplete(id) {
+			
+		 var input = /** @type {!HTMLInputElement} */(
+		      document.getElementById(id));
+		
+		
+
 		var title='';
 		 
-		 if(value=='ss')
+		 if(input.getAttribute('id')=='ss')
 		 {
 			 title='출발지';
-			 imgSrc=sImgSrc;
+			
 		 }
-		 else if(value=='es')
+		 else if(input.getAttribute('id')=='es')
 		 {
 			 title='도착지';
-			 imgSrc=aImgSrc;
+			 
 		 }
 
 		 
-		// 마커 이미지를 생성합니다
-			var markerImg = new daum.maps.MarkerImage(imgSrc, imgSize, imgOption);
-
+		 
 		  autocomplete = new google.maps.places.Autocomplete(
 			      /** @type {!HTMLInputElement} */(input),
 			      {types: ['geocode']});
+
+
+		  
 
 		 autocomplete.addListener('place_changed', function() {
 		  
@@ -205,15 +671,16 @@ function showCate()
 		     	lng=location.lng();
 		    }
 		    
-		   if(title=='출발지'){
+		    if(title=='출발지'){
 		    	document.getElementById('sc').value=location.toString();
+		    	
 		   }
 		   else if(title=='도착지')
 		   {
 			    document.getElementById('ec').value=location.toString();
+	
 		   }
 		   
-		   window.alert(location+'\n'+address);
 
 			// 주소-좌표 변환 객체를 생성합니다
 		   var geocoder = new daum.maps.services.Geocoder();
@@ -245,10 +712,11 @@ function showCate()
 		        	
 
 		        	 var coord = marker.getPosition();
+		        	 var bounds = map.getBounds();
 		        	 
 			           bounds.extend(coord);
-			           map.setBounds(bound);
-  			
+			      
+			
 		        	 var geocoder = new daum.maps.services.Geocoder();
 		        	 
 		        	 var callback = function(status, result) {
@@ -268,34 +736,26 @@ function showCate()
 
 			           
 		        	 };
-		        	 var bounds = map.getBounds();
+		        	
 	
 		        	 geocoder.coord2detailaddr(coord, callback);
 		        	 
 		   		});
 		        
 		      
-   
+ 
 		           for(var i=0;i<markers.length;i++)
 		           {
-		            	if(markers[i].getTitle()==title)
-		            	{
+		            	
 		            		markers[i].setMap(null);
 		            		/* infowindows[i].close(); */
-		            	 		
-		            	}
+		            	 
 		           } 
-		           markers.push(marker);
+		          
 		          
 		           
-		           // 인포윈도우로 장소에 대한 설명을 표시합니다
-		           /* var infowindow = new daum.maps.InfoWindow({
-		               content: '<div style="padding:5px;">'+title+'</div>'
-		           });
-		           infowindow.open(map, marker);
-		           infowindows.push(infowindow); */
-
 		  });
+	
 }
 </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJz53NRCX_RWtNSeoAbPveANaDjlQF1tU&libraries=places&callback=initAutocomplete"

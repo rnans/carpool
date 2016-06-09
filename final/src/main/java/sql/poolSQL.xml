@@ -8,7 +8,7 @@
 	</select>
 	<insert id="poolMemberShortAdd" parameterType="su.pool.model.PoolDTO">
 		insert into reservationlist
-		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,startcoordi,endcoordi) 
+		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,startcoordi,endcoordi,slat,slng,elat,elng) 
 		values(
 		reservationlist_idx.nextval,
 		#{userid},
@@ -28,12 +28,16 @@
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		#{startcoordi},
-		#{endcoordi}
+		#{endcoordi},
+		#{slat},
+		#{slng},
+		#{elat},
+		#{elng}
 		)
 	</insert>
  	<insert id="poolMemberLongAdd" parameterType="su.pool.model.PoolDTO">
 		insert into reservationlist
-		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,days,startcoordi,endcoordi) 
+		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,days,startcoordi,endcoordi,slat,slng,elat,elng) 
 		values(
 		reservationlist_idx.nextval,
 		#{userid},
@@ -50,16 +54,20 @@
 		'모집중',
 		#{pooltype},
 		#{termtype},
-		TO_date(#{startdate},'yyyy-mm-dd'),
-		TO_date(#{enddate},'yyyy-mm-dd'),
+		TO_date(#{startdate},'yyyy-mm-dd hh24:mi'),
+		TO_date(#{enddate},'yyyy-mm-dd hh24:mi'),
 		#{days},
 		#{startcoordi},
-		#{endcoordi}
+		#{endcoordi},
+		#{slat},
+		#{slng},
+		#{elat},
+		#{elng}
 		)
 	</insert>
 	<insert id="poolMasterShortAdd" parameterType="su.pool.model.PoolDTO">
 		insert into reservationlist
-		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,poolname,caridx,startcoordi,endcoordi) 
+		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,poolname,caridx,startcoordi,endcoordi,slat,slng,elat,elng) 
 		values(
 		reservationlist_idx.nextval,
 		#{userid},
@@ -81,12 +89,16 @@
 		#{poolname},
 		#{caridx},
 		#{startcoordi},
-		#{endcoordi}
+		#{endcoordi},
+		#{slat},
+		#{slng},
+		#{elat},
+		#{elng}
 		)
 	</insert>
  	<insert id="poolMasterLongAdd" parameterType="su.pool.model.PoolDTO">
 		insert into reservationlist
-		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,days,poolname,caridx,startcoordi,endcoordi) 
+		(idx,userid,aim,startspot,endspot,starttime,mannum,pay,smoking,pluscontent,gender,writedate,status,pooltype,termtype,startdate,enddate,days,poolname,caridx,startcoordi,endcoordi,slat,slng,elat,elng) 
 		values(
 		reservationlist_idx.nextval,
 		#{userid},
@@ -103,13 +115,17 @@
 		'모집중',
 		#{pooltype},
 		#{termtype},
-		TO_date(#{startdate},'yyyy-mm-dd'),
-		TO_date(#{enddate},'yyyy-mm-dd'),
+		TO_date(#{startdate},'yyyy-mm-dd hh24:mi'),
+		TO_date(#{enddate},'yyyy-mm-dd hh24:mi'),
 		#{days},
 		#{poolname},
 		#{caridx},
 		#{startcoordi},
-		#{endcoordi}
+		#{endcoordi},
+		#{slat},
+		#{slng},
+		#{elat},
+		#{elng}
 		)
 	</insert>
 	
@@ -165,6 +181,34 @@
 	   (select rownum as rnum,a.* from
 	   (select * from reservationlist order by idx desc)a)b
 	   where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum}
+	</select>
+	
+	<select id="viewAllList2" resultType="su.pool.model.PoolDTO">
+	select 
+			idx,
+			userid,
+			aim,
+			substr(startspot, 6)startspot,
+			substr(endspot,6)endspot,
+			route,
+			startcoordi,
+			endcoordi,
+			routecoordi,
+			to_char(starttime,'YYYY-MM-DD HH24:Mi') starttime,
+			mannum,
+			gender,
+			pay,
+			smoking,
+			pluscontent,
+			to_char(writedate,'yyyy-mm-dd') writedate,
+			status,
+			termtype,
+			pooltype,
+			to_char(startdate,'yyyy-mm-dd') startdate,
+			to_char(enddate,'yyyy-mm-dd') enddate,
+			days,
+			location 
+		from reservationlist
 	</select>
 	
 	<select id="viewShortList" parameterType="Map" resultType="su.pool.model.PoolDTO">
@@ -298,7 +342,7 @@
 			userid,
 			aim,
 			substr(startspot, 6)startspot,
-			substr(endspot,6)endspot,
+			substr(endspot, 6)endspot,
 			route,
 			startcoordi,
 			endcoordi,
@@ -379,5 +423,70 @@
 	</select>
 	<select id="getCarInfo" parameterType="string" resultType="su.carinfo.model.carInfoDTO">
 		select * from carinfo where id=#{id}
+	</select>
+	<select id="cateSearch" parameterType="map" resultType="su.pool.model.PoolDTO">
+		select 
+			idx,
+			userid,
+			aim,
+			substr(startspot, 6)startspot,
+			substr(endspot,6)endspot,
+			route,
+			startcoordi,
+			endcoordi,
+			routecoordi,
+			to_char(starttime,'YYYY-MM-DD HH24:Mi') starttime,
+			mannum,
+			gender,
+			pay,
+			smoking,
+			pluscontent,
+			to_char(writedate,'yyyy-mm-dd') writedate,
+			status,
+			termtype,
+			pooltype,
+			to_char(startdate,'yyyy-mm-dd') startdate,
+			to_char(enddate,'yyyy-mm-dd') enddate,
+			days,
+			location,
+			6371 * ACOS(
+        COS( #{slat} * 0.017453293 )
+        * COS( slat * 0.017453293 )
+        * COS( (slng * 0.017453293) - (#{slng} * 0.017453293))
+        + SIN( #{slat} * 0.017453293 )
+        * SIN( slat * 0.017453293 )
+    ) AS sdistance,
+    6371 * ACOS(
+        COS( #{elat} * 0.017453293 )
+        * COS( elat * 0.017453293 )
+        * COS( (elng * 0.017453293) - (#{elng} * 0.017453293))
+        + SIN( #{elat} * 0.017453293 )
+        * SIN( elat * 0.017453293 )
+    ) AS edistance 
+		from reservationlist where 
+		pooltype like '%'||#{pooltype}||'%' and 
+		termtype like '%'||#{termtype}||'%' and 
+		gender like '%'||#{gender}||'%' and 
+		startspot like '_____'||#{startspot}||'%' and 
+		endspot like '_____'||#{endspot}||'%' and 
+		smoking like '%'||#{smoking}||'%'
+		and 6371 * ACOS(
+        COS( #{slat} * 0.017453293 )
+        * COS( slat * 0.017453293 )
+        * COS( (slng * 0.017453293) - (#{slng} * 0.017453293))
+        + SIN( #{slat} * 0.017453293 )
+        * SIN( slat * 0.017453293 )
+    ) <![CDATA[<=]]> 0.5 and	
+    6371 * ACOS(
+        COS( #{elat} * 0.017453293 )
+        * COS( elat * 0.017453293 )
+        * COS( (elng * 0.017453293) - (#{elng} * 0.017453293))
+        + SIN( #{elat} * 0.017453293 )
+        * SIN( elat * 0.017453293 )
+    ) <![CDATA[<=]]> 0.5
+		
+	</select>
+	<select id="checkPoolName" parameterType="String" resultType="map">
+	select idx from reservationlist where poolname=#{poolname}
 	</select>
 </mapper>

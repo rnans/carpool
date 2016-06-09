@@ -14,7 +14,7 @@ function viewNextPage()
 {
 	var f=document.getElementById("form");
 	var pc=document.getElementById("content");
-	var type='${sessionScope.data.type}'
+	var type='${sessionScope.data.termtype}'
 	
 	if(type=='정기')
 	{
@@ -64,7 +64,7 @@ function initTmap(){
 		}
 		if(i==1)
 		{
-			startX=scoordi[i].substring(0,scoordi[i].length-1);
+			startX=scoordi[i].substring(1,scoordi[i].length-1);
 
 		}
 	}
@@ -79,7 +79,7 @@ function initTmap(){
 		}
 		if(i==1)
 		{
-			endX=ecoordi[i].substring(0,ecoordi[i].length-1);
+			endX=ecoordi[i].substring(1,ecoordi[i].length-1);
 
 		}
 	}
@@ -87,12 +87,11 @@ function initTmap(){
 	var sCoordi= new Tmap.LonLat(startX, startY).transform(pr_4326,pr_3857);
 	var eCoordi = new Tmap.LonLat(endX, endY).transform(pr_4326,pr_3857);
 	
-	
-	
-	window.alert(sCoordi.lat);
-	window.alert(eCoordi);
-	 
-    
+	document.getElementById('sLat').value=startY;
+	document.getElementById('sLng').value=startX;
+	document.getElementById('eLat').value=endY;
+	document.getElementById('eLng').value=endX;
+	    
     searchRoute(sCoordi.lon,sCoordi.lat,eCoordi.lon,eCoordi.lat);
 };
 //경로 정보 로드
@@ -134,10 +133,11 @@ function onDrawnFeatures(e){
 <h2>카풀등록 페이지6</h2>
 
 <form id="form" name="f" action="poolMemberAddConfirm.do" method="get">
-	<div id="div1">
-		<img src="1234.jpg" border="100"><br>
-		<input type="button" name="pf" value="프로필사진수정" align="center">
-	</div>
+<input type="hidden" id="sLat" name="sLat">
+<input type="hidden" id="sLng" name="sLng">
+<input type="hidden" id="eLat" name="eLat">
+<input type="hidden" id="eLng" name="eLng">
+	
 	
 	<div id="div2">
 	
@@ -193,18 +193,13 @@ function onDrawnFeatures(e){
 		</table>
 	</div>
 	
-	<div id="div3">
-		<legend>지도API</legend>
-		<fieldset>
-			<img src="123.jpg" border="200"><br>
-		</fieldset>
+	
 	
 			<p>
 				<input type="button" value="이전">
 				<input type="button" value="완료" onclick="viewNextPage()">
 			</p>
 
-	</div>
 	</form>
 </body>
 </html>

@@ -20,10 +20,10 @@
 
 <meta charset="UTF-8">
 <style>
-#map_div
+ #map_div
 {
-	z-index:-1;
-}
+	
+} 
 </style>
 <title>카풀 상세 보기</title>
 <script src="/final02/js/httpRequest.js"></script>
@@ -115,23 +115,29 @@
 		var param = '?idx='+document.getElementById('idx').value;
 		//alert('param='+param);
 		location.href="payType.do"+param;
-		/*
+		
 		var poolType = '${dto.pooltype}';
+		var termType = '${dto.termtype}';
 		var param = '';
 
 		window.alert(poolType);
 		
-		if (poolType == '타세요') {
+		if (poolType == '탈래요'&&termType=='단기') {
+			var param = '?idx=' + document.getElementById('idx').value ;
+			location.href='upToMemberShort.do' + param;
+		} else if (poolType == '탈래요'&&termType=='정기') {
+			var param = '?idx=' + document.getElementById('idx').value ;
+			location.href='upToMemberLong.do' + param;
+		} 
+		else if (poolType == '타세요'&&termType=='단기') {
 			var param = '?idx=' + document.getElementById('idx').value;
-			window.open('reqToMasterPage.do' + param, 'reqListPopup',
-					'width=480 height=320');
-		} else if (poolType == '탈래요') {
-			var param = '?idx=' + document.getElementById('idx').value
-					+ '&memberid=' + '${sessionScope.sid}';
-			window.open('reqToMemberPage.do' + param, 'reqListPopup2',
-					'width=480 height=320');
+			location.href='upToMasterShort.do' + param;
 		}
- 		*/
+		else if (poolType == '타세요'&&termType=='정기') {
+			var param = '?idx=' + document.getElementById('idx').value;
+			location.href='upToMasterLong.do' + param;
+		}
+ 		
 	}
 
 	function delRate(idx) {
@@ -218,10 +224,12 @@
 					<p>흡연 ${dto.smoking }</p>
 
 					<div>평점 게시판 영역</div>
+					<c:if test="${dto.userid ne sid}">
 					<div>
 						<input type="button" value="찜하기"><input type="button"
 							value="예약하기" onclick="request()">
 					</div>
+					</c:if>
 					<c:if test="${dto.userid eq sid}">
 						<div>
 							<input type="button" value="목록보기"><input type="button"

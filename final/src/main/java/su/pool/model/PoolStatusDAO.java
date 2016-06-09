@@ -16,6 +16,14 @@ public interface PoolStatusDAO
 	
 	public List getMemReqByAimidx(int aimidx);
 	
+	public List getMasShortMatch(PoolDateDTO dto);
+
+	public List getMasLongMatch(PoolDateDTO dto);
+	
+	public List getMemShortMatch(PoolDateDTO dto);
+
+	public List getMemLongMatch(PoolDateDTO dto);
+	
 	public List viewOwnMemberPoolList(int cp, int ls, String id);
 	
 	public List viewOwnMasterPoolList(int cp, int ls, String id);

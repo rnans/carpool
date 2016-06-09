@@ -1,5 +1,6 @@
 package su.pool.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import su.pool.model.PoolDTO;
 import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolStatusDAO;
+import su.pool.model.PoolDateDTO;
 import su.pool.model.*;
 import su.member.model.*;
 
@@ -47,20 +49,20 @@ public class PoolStatusController
 		this.poolStatusDao = poolStatusDao;
 	}
 
-	@RequestMapping("/reqToMasterPage.do")
-	public ModelAndView requestToMasterPage(@RequestParam(value="idx")String idx,@RequestParam(value="cp", defaultValue="1")int cp,HttpSession session)
+	@RequestMapping("/upToMasterShort.do")
+	public ModelAndView requestToMasterShort(@RequestParam(value="idx")String idx,HttpSession session)
 	{
-		String id=(String)session.getAttribute("sid");
+		String memberid=(String)session.getAttribute("sid");
 
-		int totalCnt=poolStatusDao.getOwnMemberTotalCnt(id);
+		int totalCnt=poolStatusDao.getOwnMemberTotalCnt(memberid);
 		int aimidx=Integer.parseInt(idx);
 		
 		ModelAndView mav=new ModelAndView();
 		
 		if(totalCnt==0)
 		{
-			PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(id, aimidx);
-			PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx, 1, id);
+			PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(memberid, aimidx);
+			PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx, 1, memberid);
 			
 			int count=poolStatusDao.makeMemberStatus(memberDto);
 			int count2=poolStatusDao.reqToMaster(masterDto);
@@ -71,68 +73,201 @@ public class PoolStatusController
 		}
 		else
 		{
-			int listSize=10;
-			int pageSize=5;
-			List<PoolDTO> list=poolStatusDao.viewOwnMemberPoolList(cp,listSize,id);
-			String pageStr=
-				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+			List lists=poolStatusDao.getOwnPoolByIdx(aimidx);
+			PoolDateDTO ownDto=(PoolDateDTO)lists.get(0);
 			
-			mav.addObject("list", list);
-			mav.addObject("pageStr",pageStr);
-			mav.addObject("aimidx",aimidx);
-			mav.setViewName("carpool/poolMemberReqList");
+			System.out.println("2. 자기글 가져오기 수행됨");
+			
+			PoolDateDTO aimDto=new PoolDateDTO();
+			
+			aimDto.setUserid(memberid);
+			aimDto.setMannum(ownDto.getMannum());
+			aimDto.setStarttime(ownDto.getStarttime());
+			System.out.println(ownDto.getStarttime());
+			aimDto.setGender(ownDto.getGender());
+			aimDto.setSmoking(ownDto.getSmoking());
+			aimDto.setSlat(Math.round(ownDto.getSlat()*1000000)/1000000.0);
+			aimDto.setSlng(Math.round(ownDto.getSlng()*1000000)/1000000.0);
+			aimDto.setElat(Math.round(ownDto.getElat()*1000000)/1000000.0);
+			aimDto.setElng(Math.round(ownDto.getElng()*1000000)/1000000.0);
+						
+			List ownLists=poolStatusDao.getMemShortMatch(aimDto);
+			ArrayList<PoolDateDTO> ownList=new ArrayList<PoolDateDTO>();
+			
+			System.out.println("3. 매칭된 글 찾기 수행됨");
+			
+			
+			
+			if(ownLists.isEmpty())
+			{
+				mav.addObject("msg","일치하는 <탈래요> 글이 없습니다.");
+				System.out.println("목록 없음");
+			}
+			else
+			{
+				int mans=ownDto.getMannum();
+				int nowmans=mans;
+				String masterid=ownDto.getUserid();
+				
+				String status="수락 대기 중";
+				String members=memberid;
+				System.out.println("목록 있음");
+				
+				for(int i=0;i<ownLists.size();i++){
+				
+					ownList.add((PoolDateDTO)ownLists.get(i));
+										
+					PoolMasterStatusDTO dto=new PoolMasterStatusDTO(aimidx, masterid, mans, nowmans, status, members);
+	
+					int count=poolStatusDao.reqToMaster(dto);
+					
+					PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(memberid, aimidx);
+	
+					int count2=poolStatusDao.makeMemberStatus(memberDto);
+						
+					PoolMemberStatusDTO memberDto2=new PoolMemberStatusDTO(memberid, ownList.get(i).getIdx(), aimidx, mans);
+	
+					int count3=poolStatusDao.reqToMember(memberDto2);	
+					
+					String msg=count+count2+count3>=3?"성공":"실패";
+					
+					System.out.println(msg);
+				}
+				
+				mav.addObject("msg","성공");
+				mav.setViewName("carpool/poolMsg");
+				
+			}
+			
+		
 		}
 		return mav;
-	}
+	}	
 	
-	@RequestMapping("/upToMaster.do")
-	public ModelAndView requestToMaster(@RequestParam(value="idx")String idx,@RequestParam(value="aimidx")String aimidx,HttpSession session)
+	@RequestMapping("/upToMasterLong.do")
+	public ModelAndView requestToMasterLong(@RequestParam(value="idx")String idx,HttpSession session)
 	{
-		String id=(String)session.getAttribute("sid");
+		String memberid=(String)session.getAttribute("sid");
 
-		int ownidx=Integer.parseInt(idx);
-		int addidx=Integer.parseInt(aimidx);
-		
-		
-		
-		//결제처리//
-		
-		List lists=poolStatusDao.getOwnPoolByIdx(ownidx);
-		PoolDateDTO dto=(PoolDateDTO)lists.get(0);
-		
-		PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(id, addidx);
-		
-		int count=poolStatusDao.makeMemberStatus(memberDto);
-	
-		int mans=dto.getMannum();
-				
-		PoolMemberStatusDTO memberDto2=new PoolMemberStatusDTO(id, ownidx, addidx, mans);
-		
-		int count2=poolStatusDao.reqToMember(memberDto2);
-		
-		PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(addidx, mans, id);
-		
-		int count3=poolStatusDao.reqToMaster(masterDto);
-		
-		////////
-		
-		String msg=count+count2+count3>=3?"성공":"실패";
+		int totalCnt=poolStatusDao.getOwnMemberTotalCnt(memberid);
+		int aimidx=Integer.parseInt(idx);
 		
 		ModelAndView mav=new ModelAndView();
 		
-		mav.addObject("msg",msg);
-		mav.setViewName("pay/payType");
-				
-		return mav;
-	}
-	
-	@RequestMapping("/reqToMemberPage.do")
-	public ModelAndView requestToMemberPage(@RequestParam(value="idx")String idx,@RequestParam(value="cp", defaultValue="1")int cp,HttpSession session)
-	{
-		String id=(String)session.getAttribute("sid");
+		if(totalCnt==0)
+		{
+			PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(memberid, aimidx);
+			PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx, 1, memberid);
+			
+			int count=poolStatusDao.makeMemberStatus(memberDto);
+			int count2=poolStatusDao.reqToMaster(masterDto);
+			
+			String msg=count+count2>=2?"성공":"실패";
+			mav.addObject("msg",msg);
+			mav.setViewName("carpool/poolMsg");
+		}
+		else
+		{
+			List lists=poolStatusDao.getOwnPoolByIdx(aimidx);
+			PoolDateDTO ownDto=(PoolDateDTO)lists.get(0);
+			
+			System.out.println("2. 자기글 가져오기 수행됨");
+			
+			PoolDateDTO aimDto=new PoolDateDTO();
+			
+			aimDto.setUserid(memberid);
+			aimDto.setMannum(ownDto.getMannum());
+			aimDto.setStarttime(ownDto.getStarttime());
+			System.out.println(ownDto.getStarttime());
+			aimDto.setGender(ownDto.getGender());
+			aimDto.setSmoking(ownDto.getSmoking());
+			aimDto.setSlat(Math.round(ownDto.getSlat()*1000000)/1000000.0);
+			aimDto.setSlng(Math.round(ownDto.getSlng()*1000000)/1000000.0);
+			aimDto.setElat(Math.round(ownDto.getElat()*1000000)/1000000.0);
+			aimDto.setElng(Math.round(ownDto.getElng()*1000000)/1000000.0);
+			aimDto.setStartdate(ownDto.getStartdate());
+			aimDto.setEnddate(ownDto.getEnddate());
+			
+			String arg=ownDto.getDays();
+			
+			String rtnDays = new String();
+			
+			  for (int i=0 ; i<arg.length(); i++){
+				   
+				   
+				   rtnDays = "%"+ arg.charAt(i);
+				   if(i == arg.length()-1){
+				    
+				     rtnDays = "%"+arg.charAt(i)+"%";
+				    
+				    }
+				   
+			  }
 		
-		int totalCnt=poolStatusDao.getOwnMasterTotalCnt(id);
-		int aimidx=Integer.parseInt(idx);
+			
+			aimDto.setDays(rtnDays);
+			
+			List ownLists=poolStatusDao.getMemLongMatch(aimDto);
+			ArrayList<PoolDateDTO> ownList=new ArrayList<PoolDateDTO>();
+			
+			System.out.println("3. 매칭된 글 찾기 수행됨");
+			
+			
+			
+			if(ownLists.isEmpty())
+			{
+				mav.addObject("msg","일치하는 <탈래요> 글이 없습니다.");
+				System.out.println("목록 없음");
+			}
+			else
+			{
+				int mans=ownDto.getMannum();
+				int nowmans=mans;
+				String masterid=ownDto.getUserid();
+				
+				String status="수락 대기 중";
+				String members=memberid;
+				System.out.println("목록 있음");
+				
+				for(int i=0;i<ownLists.size();i++){
+				
+					ownList.add((PoolDateDTO)ownLists.get(i));
+										
+					PoolMasterStatusDTO dto=new PoolMasterStatusDTO(aimidx, masterid, mans, nowmans, status, members);
+	
+					int count=poolStatusDao.reqToMaster(dto);
+					
+					PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(memberid, aimidx);
+	
+					int count2=poolStatusDao.makeMemberStatus(memberDto);
+						
+					PoolMemberStatusDTO memberDto2=new PoolMemberStatusDTO(memberid, ownList.get(i).getIdx(), aimidx, mans);
+	
+					int count3=poolStatusDao.reqToMember(memberDto2);	
+					
+					String msg=count+count2+count3>=3?"성공":"실패";
+					
+					System.out.println(msg);
+				}
+				
+				mav.addObject("msg","성공");
+				mav.setViewName("carpool/poolMsg");
+				
+			}
+			
+		
+		}
+		return mav;
+	}	
+	
+	@RequestMapping("/upToMemberShort.do")
+	public ModelAndView requestToMember(@RequestParam(value="idx")int idx, HttpSession session)
+	{
+		String masterid=(String)session.getAttribute("sid");
+		
+		int totalCnt=poolStatusDao.getOwnMasterTotalCnt(masterid);
+		
+		System.out.println("1. 전체 가져오기 수행됨");
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -144,56 +279,204 @@ public class PoolStatusController
 		}
 		else
 		{
-			int listSize=10;
-			int pageSize=5;
-			List<PoolDTO> list=poolStatusDao.viewOwnMasterPoolList(cp,listSize,id);
-			String pageStr=
-				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
-			mav.addObject("list", list);
-			mav.addObject("pageStr",pageStr);
-			mav.addObject("aimidx",aimidx);
-			mav.setViewName("carpool/poolMasterReqList");
-		}		
+			int ownidx=idx;
+			
+			List lists=poolStatusDao.getOwnPoolByIdx(ownidx);
+			PoolDateDTO ownDto=(PoolDateDTO)lists.get(0);
+			
+			System.out.println("2. 자기글 가져오기 수행됨");
+			
+			PoolDateDTO aimDto=new PoolDateDTO();
+			
+			aimDto.setUserid(masterid);
+			aimDto.setMannum(ownDto.getMannum());
+			aimDto.setStarttime(ownDto.getStarttime());
+			System.out.println(ownDto.getStarttime());
+			aimDto.setGender(ownDto.getGender());
+			aimDto.setSmoking(ownDto.getSmoking());
+			aimDto.setSlat(Math.round(ownDto.getSlat()*1000000)/1000000.0);
+			aimDto.setSlng(Math.round(ownDto.getSlng()*1000000)/1000000.0);
+			aimDto.setElat(Math.round(ownDto.getElat()*1000000)/1000000.0);
+			aimDto.setElng(Math.round(ownDto.getElng()*1000000)/1000000.0);
+			
+			
+			System.out.println(aimDto.getSlat());
+			System.out.println(aimDto.getSlng());
+			System.out.println(aimDto.getElat());
+			System.out.println(aimDto.getElng());
+			
+			List ownLists=poolStatusDao.getMasShortMatch(aimDto);
+			ArrayList<PoolDateDTO> ownList=new ArrayList<PoolDateDTO>();
+			
+
+			System.out.println("3. 매칭된 글 찾기 수행됨");
+			
+			
+			
+			if(ownLists.isEmpty())
+			{
+				mav.addObject("msg","일치하는 <타세요> 글이 없습니다.");
+				System.out.println("목록 없음");
+			}
+			else
+			{
+				int mans=ownDto.getMannum();
+				int nowmans=mans;
+				String memberid=ownDto.getUserid();
+				
+				String status="수락 대기 중";
+				String members=memberid;
+				System.out.println("목록 있음");
+				
+				for(int i=0;i<ownLists.size();i++){
+				
+					ownList.add((PoolDateDTO)ownLists.get(i));
+					
+					System.out.println(ownList.get(0).getUserid());
+					
+					PoolMasterStatusDTO dto=new PoolMasterStatusDTO(ownList.get(i).getIdx(), masterid, mans, nowmans, status, members);
+	
+					int count=poolStatusDao.reqToMaster(dto);
+					
+					PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(memberid, ownList.get(i).getIdx());
+	
+					int count2=poolStatusDao.makeMemberStatus(memberDto);
+						
+					PoolMemberStatusDTO memberDto2=new PoolMemberStatusDTO(memberid, ownidx, ownList.get(i).getIdx(), mans);
+	
+					int count3=poolStatusDao.reqToMember(memberDto2);	
+					
+					String msg=count+count2+count3>=3?"성공":"실패";
+					
+					System.out.println(msg);
+				}
+				
+				mav.addObject("msg","성공");
+				mav.setViewName("carpool/poolMsg");
+				
+			}
+			
+			
+		}	
+		
 		return mav;
+		
 	}
 	
-	@RequestMapping("/upToMember.do")
-	public ModelAndView requestToMember(@RequestParam(value="aimidx")int aimidx,@RequestParam(value="idx")int idx, HttpSession session)
+	@RequestMapping("/upToMemberLong.do")
+	public ModelAndView requestToMemberLong(@RequestParam(value="idx")int idx, HttpSession session)
 	{
 		String masterid=(String)session.getAttribute("sid");
-		int addidx2=aimidx;
-		int ownidx=idx;
 		
-
-		int mans=poolDao.viewEachContent(aimidx).getMannum();
-
-		int nowmans=mans;
-
-		List lists=poolStatusDao.getOwnPoolByIdx(aimidx);
-		PoolDateDTO pDto=(PoolDateDTO)lists.get(0);
-		String memberid=pDto.getUserid();
+		int totalCnt=poolStatusDao.getOwnMasterTotalCnt(masterid);
 		
-		String status="수락 대기 중";
-		String members=memberid;
-
-		PoolMasterStatusDTO dto=new PoolMasterStatusDTO(ownidx, masterid, mans, nowmans, status, members);
-
-		int count=poolStatusDao.reqToMaster(dto);
-		
-		PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(memberid, ownidx);
-
-		int count2=poolStatusDao.makeMemberStatus(memberDto);
-			
-		PoolMemberStatusDTO memberDto2=new PoolMemberStatusDTO(memberid, addidx2, ownidx, mans);
-
-		int count3=poolStatusDao.reqToMember(memberDto2);	
-
+		System.out.println("1. 전체 가져오기 수행됨");
 		
 		ModelAndView mav=new ModelAndView();
 		
-		String msg=count+count2+count3>=3?"성공":"실패";
-		mav.addObject("msg",msg);
-		mav.setViewName("carpool/poolMsg");
+		if(totalCnt==0)
+		{
+			String msg="<타세요> 글 작성 후에 이용 가능합니다.";
+			mav.addObject("msg",msg);
+			mav.setViewName("carpool/poolMsg");
+		}
+		else
+		{
+			int ownidx=idx;
+			
+			List lists=poolStatusDao.getOwnPoolByIdx(ownidx);
+			PoolDateDTO ownDto=(PoolDateDTO)lists.get(0);
+			
+			System.out.println("2. 자기글 가져오기 수행됨");
+			
+			PoolDateDTO aimDto=new PoolDateDTO();
+			
+			aimDto.setUserid(masterid);
+			aimDto.setMannum(ownDto.getMannum());
+			aimDto.setStarttime(ownDto.getStarttime());
+			System.out.println(ownDto.getStarttime());
+			aimDto.setGender(ownDto.getGender());
+			aimDto.setSmoking(ownDto.getSmoking());
+			aimDto.setSlat(Math.round(ownDto.getSlat()*1000000)/1000000.0);
+			aimDto.setSlng(Math.round(ownDto.getSlng()*1000000)/1000000.0);
+			aimDto.setElat(Math.round(ownDto.getElat()*1000000)/1000000.0);
+			aimDto.setElng(Math.round(ownDto.getElng()*1000000)/1000000.0);
+			aimDto.setStartdate(ownDto.getStartdate());
+			aimDto.setEnddate(ownDto.getEnddate());
+			
+			String arg=ownDto.getDays();
+			
+			String rtnDays = new String();
+			
+			  for (int i=0 ; i<arg.length(); i++){
+				   
+				   
+				   rtnDays = "%"+ arg.charAt(i);
+				   if(i == arg.length()-1){
+				    
+				     rtnDays = "%"+arg.charAt(i)+"%";
+				    
+				    }
+				   
+			  }
+		
+			
+			aimDto.setDays(rtnDays);
+			
+
+			List ownLists=poolStatusDao.getMasLongMatch(aimDto);
+			ArrayList<PoolDateDTO> ownList=new ArrayList<PoolDateDTO>();
+			
+
+			System.out.println("3. 매칭된 글 찾기 수행됨");
+			
+			
+			
+			if(ownLists.isEmpty())
+			{
+				mav.addObject("msg","일치하는 <타세요> 글이 없습니다.");
+				System.out.println("목록 없음");
+			}
+			else
+			{
+				int mans=ownDto.getMannum();
+				int nowmans=mans;
+				String memberid=ownDto.getUserid();
+				
+				String status="수락 대기 중";
+				String members=memberid;
+				System.out.println("목록 있음");
+				
+				for(int i=0;i<ownLists.size();i++){
+				
+					ownList.add((PoolDateDTO)ownLists.get(i));
+					
+					System.out.println(ownList.get(0).getUserid());
+					
+					PoolMasterStatusDTO dto=new PoolMasterStatusDTO(ownList.get(i).getIdx(), masterid, mans, nowmans, status, members);
+	
+					int count=poolStatusDao.reqToMaster(dto);
+					
+					PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(memberid, ownList.get(i).getIdx());
+	
+					int count2=poolStatusDao.makeMemberStatus(memberDto);
+						
+					PoolMemberStatusDTO memberDto2=new PoolMemberStatusDTO(memberid, ownidx, ownList.get(i).getIdx(), mans);
+	
+					int count3=poolStatusDao.reqToMember(memberDto2);	
+					
+					String msg=count+count2+count3>=3?"성공":"실패";
+					
+					System.out.println(msg);
+				}
+				
+				mav.addObject("msg","성공");
+				mav.setViewName("carpool/poolMsg");
+				
+			}
+			
+			
+		}	
 		
 		return mav;
 		

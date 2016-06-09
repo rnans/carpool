@@ -103,7 +103,55 @@ public class PoolController
 	{
 		ModelAndView mav=new ModelAndView();
 		
-		mav.setViewName("/carpool/poolFind");
+		mav.setViewName("carpool/poolFind");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/poolFind.do")
+	public ModelAndView poolFind(String termtype, String pooltype, String smoking, String gender, String startspot, String endspot, String slat, String slng, String elat, String elng)
+	{
+		ModelAndView mav=new ModelAndView();
+			
+		HashMap map=new HashMap();
+		
+		map.put("termtype", termtype);
+		map.put("pooltype", pooltype);
+		map.put("startspot", startspot);
+		map.put("endspot", endspot);
+		map.put("gender", gender);
+		map.put("smoking", smoking);
+		map.put("slat", Math.round(Double.parseDouble(slat)*1000000)/1000000.0);
+		map.put("slng", Math.round(Double.parseDouble(slng)*1000000)/1000000.0);
+		map.put("elat", Math.round(Double.parseDouble(elat)*1000000)/1000000.0);
+		map.put("elng", Math.round(Double.parseDouble(elng)*1000000)/1000000.0);
+		
+		System.out.println(map.get("slat"));
+		System.out.println(map.get("slng"));
+		System.out.println(map.get("elat"));
+		System.out.println(map.get("elng"));
+		
+		List lists=poolDao.poolFind(map);
+		
+		if(lists.isEmpty())
+		{
+			mav.addObject("msg","검색된 결과가 없습니다.");
+			mav.setViewName("/carpool/poolMsg");
+		}
+		else{
+		mav.addObject("list",lists);
+		
+		mav.setViewName("/carpool/poolList");
+		}
+		return mav;
+	}
+	
+	@RequestMapping("/poolListByJson.do")
+	public ModelAndView viewAllListJson()
+	{
+		ModelAndView mav=new ModelAndView("yongJson");
+		
+		mav.addObject("lists", poolDao.viewAllList());
 		
 		return mav;
 	}
@@ -397,6 +445,8 @@ public class PoolController
 		
 		days=days.replace("null", "");
 	
+		System.out.println(days);
+		
 		HashMap<String, String> data=(HashMap<String, String>)session.getAttribute("data");
 		
 		data.put("mannum", mannum);
@@ -473,11 +523,20 @@ public class PoolController
 	public ModelAndView viewMemberAddPage5(HttpServletRequest req, HttpSession session)
 	{
 		String pluscontent=req.getParameter("pluscontent");
+		String sLat=req.getParameter("sLat");
+		String sLng=req.getParameter("sLng");
+		String eLat=req.getParameter("eLat");
+		String eLng=req.getParameter("eLng");
+		
 		
 		HashMap<String, String> data=(HashMap<String, String>)session.getAttribute("data");
 		
 		data.put("pluscontent", pluscontent);
-				
+		data.put("slat",sLat);
+		data.put("slng", sLng);
+		data.put("elat",eLat);
+		data.put("elng",eLng);
+		
 		session.setAttribute("data", data);
 		
 		ModelAndView mav=new ModelAndView();
@@ -506,10 +565,18 @@ public class PoolController
 		String pooltype=data.get("pooltype");
 		String startcoordi=data.get("startcoordi");
 		String endcoordi=data.get("endcoordi");
-
-		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype);
+		double sLat=Double.parseDouble(req.getParameter("sLat"));
+		double sLng=Double.parseDouble(req.getParameter("sLng"));
+		double eLat=Double.parseDouble(req.getParameter("eLat"));
+		double eLng=Double.parseDouble(req.getParameter("eLng"));
+		
+		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype, sLat, sLng, eLat, eLng, " ", " ");
+	
 		
 		int count=poolDao.poolMemberShortAdd(dto);
+		
+		
+		
 		
 		String msg=count>0?"성공":"실패";
 		
@@ -545,10 +612,17 @@ public class PoolController
 		String days=data.get("days");
 		String startcoordi=data.get("startcoordi");
 		String endcoordi=data.get("endcoordi");
+		double sLat=Double.parseDouble(req.getParameter("sLat"));
+		double sLng=Double.parseDouble(req.getParameter("sLng"));
+		double eLat=Double.parseDouble(req.getParameter("eLat"));
+		double eLng=Double.parseDouble(req.getParameter("eLng"));
 		
-		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, startdate, enddate, days, termtype);
+		
+		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, startdate, enddate, days, termtype, sLat, sLng, eLat, eLng, " ", " ");
 		
 		int count=poolDao.poolMemberLongAdd(dto);
+		
+		System.out.println("POST 수행됨");
 		
 		String msg=count>0?"성공":"실패";
 		
@@ -560,6 +634,29 @@ public class PoolController
 		
 		return mav;
 		
+	}
+	
+	@RequestMapping("/checkPoolName.do")
+	public ModelAndView checkPoolName(HttpServletRequest req)
+	{
+		String poolName=req.getParameter("poolname");
+		
+		List lists=poolDao.checkPoolName(poolName);
+
+		ModelAndView mav=new ModelAndView();
+		
+		if(lists.isEmpty())
+		{
+			mav.addObject("msg","사용 가능한 카풀 이름입니다.");
+		}
+		else
+		{
+			mav.addObject("msg","사용 불가능한 카풀 이름입니다.");
+		}
+		
+		mav.setViewName("carpool/msg");
+		
+		return mav;
 	}
 	
 	@RequestMapping(value="/poolMasterAddConfirm.do",method=RequestMethod.GET)
@@ -584,8 +681,12 @@ public class PoolController
 		int caridx=Integer.parseInt(data.get("caridx"));
 		String startcoordi=data.get("startcoordi");
 		String endcoordi=data.get("endcoordi");
+		double sLat=Double.parseDouble(data.get("slat"));
+		double sLng=Double.parseDouble(data.get("slng"));
+		double eLat=Double.parseDouble(data.get("elat"));
+		double eLng=Double.parseDouble(data.get("elng"));
 		
-		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype, caridx, poolname);
+		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype, caridx, poolname, sLat, sLng, eLat, eLng, " ", " ");
 		
 		int count=poolDao.poolMasterShortAdd(dto);
 
@@ -640,8 +741,12 @@ public class PoolController
 		int caridx=Integer.parseInt(data.get("caridx"));
 		String startcoordi=data.get("startcoordi");
 		String endcoordi=data.get("endcoordi");
+		double sLat=Double.parseDouble(data.get("slat"));
+		double sLng=Double.parseDouble(data.get("slng"));
+		double eLat=Double.parseDouble(data.get("elat"));
+		double eLng=Double.parseDouble(data.get("elng"));
 		
-		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, startdate, enddate, days, termtype, caridx, poolname);
+		PoolDTO dto=new PoolDTO(userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, startdate, enddate, days, termtype, caridx, poolname, sLat, sLng, eLat, eLng, " ", " ");
 		
 		int count=poolDao.poolMasterLongAdd(dto);
 		System.out.println(poolname);

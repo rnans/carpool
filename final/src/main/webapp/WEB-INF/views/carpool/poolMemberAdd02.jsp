@@ -167,7 +167,6 @@
 		    	document.getElementById('eLng').value=lng;
 		   }
 		   
-		   window.alert(location+'\n'+address);
 
 			// 주소-좌표 변환 객체를 생성합니다
 		   var geocoder = new daum.maps.services.Geocoder();
@@ -199,9 +198,10 @@
 		        	
 
 		        	 var coord = marker.getPosition();
+		        	 var bounds = map.getBounds();
 		        	 
 			           bounds.extend(coord);
-			           map.setBounds(bound);
+			      
   			
 		        	 var geocoder = new daum.maps.services.Geocoder();
 		        	 
@@ -210,11 +210,11 @@
 		        	     
 		        	         
 		        	    	 if(title=='출발지'){
-		 		 		    	document.getElementById('ss').value=result[0].jibunAddress.name;
+		 		 		    	document.getElementById('ss').value='대한민국 '+result[0].jibunAddress.name;
 		 		 		   }
 		 		 		    else if(title=='도착지')
 		 		 		   {
-		 		 			    document.getElementById('es').value=result[0].jibunAddress.name;
+		 		 			    document.getElementById('es').value='대한민국 '+result[0].jibunAddress.name;
 		 		 		   }
 		 		        	
 		        	    	 
@@ -222,7 +222,7 @@
 
 			           
 		        	 };
-		        	 var bounds = map.getBounds();
+		        	
 	
 		        	 geocoder.coord2detailaddr(coord, callback);
 		        	 
@@ -242,13 +242,6 @@
 		           markers.push(marker);
 		          
 		           
-		           // 인포윈도우로 장소에 대한 설명을 표시합니다
-		           /* var infowindow = new daum.maps.InfoWindow({
-		               content: '<div style="padding:5px;">'+title+'</div>'
-		           });
-		           infowindow.open(map, marker);
-		           infowindows.push(infowindow); */
-
 		  });
 }
 </script>

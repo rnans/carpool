@@ -31,6 +31,7 @@ function viewNextPage()
 </script>
 <script src="/final02/js/httpRequest.js"></script>
 <script src="/final02/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/js/jQuery/jquery.xml2json.js"></script>
 <script src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=2e2fe45c-1baa-3078-b615-2c0b3f71bfe5"></script>
 <script>
 //초기화 함수
@@ -50,8 +51,7 @@ function initTmap(){
 
 	var scoordi='${sessionScope.data.startcoordi}'.split(',');
 	var ecoordi='${sessionScope.data.endcoordi}'.split(',');
-	var rcoordi='${sessionScope.data.routecoordi}'.split(',');
-	
+
 	var startX;
 	var startY;
 	var endX;
@@ -67,7 +67,7 @@ function initTmap(){
 		}
 		if(i==1)
 		{
-			startX=scoordi[i].substring(0,scoordi[i].length-1);
+			startX=scoordi[i].substring(1,scoordi[i].length-1);
 
 		}
 	}
@@ -82,18 +82,19 @@ function initTmap(){
 		}
 		if(i==1)
 		{
-			endX=ecoordi[i].substring(0,ecoordi[i].length-1);
+			endX=ecoordi[i].substring(1,ecoordi[i].length-1);
 
 		}
 	}
 			
 	var sCoordi= new Tmap.LonLat(startX, startY).transform(pr_4326,pr_3857);
 	var eCoordi = new Tmap.LonLat(endX, endY).transform(pr_4326,pr_3857);
-		
-	window.alert(sCoordi.lat);
-	window.alert(rcoordi);
-	 
-    
+	
+	document.getElementById('sLat').value=startY;
+	document.getElementById('sLng').value=startX;
+	document.getElementById('eLat').value=endY;
+	document.getElementById('eLng').value=endX;
+	
     searchRoute(startX,startY,endX,endY);
 };
 //경로 정보 로드
@@ -132,17 +133,16 @@ function onDrawnFeatures(e){
 <body onload="initTmap()">
 //지도 div 정의
 <div id="map_div">
-<input type="button" onclick="show()" value="요청보내기">
 </div>
 
 <h2>카풀등록 페이지6</h2>
 
 <form id="form" name="f" action="poolMasterAdd06.do" method="get">
-	<div id="div1">
-		<img src="1234.jpg" border="100"><br>
-		<input type="button" name="pf" value="프로필사진수정" align="center">
-	</div>
-	
+<input type="text" id="sLat" name="sLat">
+<input type="text" id="sLng" name="sLng">
+<input type="text" id="eLat" name="eLat">
+<input type="text" id="eLng" name="eLng">
+		
 	<div id="div2">
 	
 	<table border="1">
@@ -197,18 +197,13 @@ function onDrawnFeatures(e){
 		</table>
 	</div>
 	
-	<div id="div3">
-		<legend>지도API</legend>
-		<fieldset>
-			<img src="123.jpg" border="200"><br>
-		</fieldset>
 	
 			<p>
 				<input type="button" value="이전">
 				<input type="button" value="등록" onclick="viewNextPage()">
 			</p>
 
-	</div>
+	
 	</form>
 </body>
 </html>
