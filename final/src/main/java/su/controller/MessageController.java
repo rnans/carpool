@@ -156,7 +156,7 @@ public class MessageController {
 		
 		String pageStr=
 		su.Page.SuPage.makePage("messageList.do", totalCnt, listSize, pageSize, cp);
-		
+		//System.out.println("messageNumber="+messageNumber);
 		MessageDTO mDTO = new MessageDTO();
 		
 		ModelAndView mav = new ModelAndView();

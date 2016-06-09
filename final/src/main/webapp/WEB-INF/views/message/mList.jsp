@@ -46,7 +46,7 @@
 	<div class="container" style="margin-top:80px;">
 	<div class="row">
 		<section class="content">
-			<h1>메시지 창고</h1>
+			<h1>MessageBox</h1>
 			<div class="col-md-8 col-md-offset-2">
 				<div class="panel panel-default">
 					<div class="panel-body">
@@ -88,7 +88,7 @@
 												<div class="media-body" style="margin:0px auto;">
 													<span class="media-meta pull-right">${m.senddate} <br> 
 														<c:if test="${m.reading=='읽음'}"><font color="#8C8C8C">읽음</font></c:if>
-														<c:if test="${m.reading=='안읽음'}"><font color="black">안읽음</font></c:if>
+														<c:if test="${m.reading=='안읽음'}"><font color="#6799FF">안읽음</font></c:if>
 													</span>
 													
 													<h4 class="title">
@@ -96,7 +96,7 @@
 														<span class="pull-right pagado">${m.receiveid}</span>
 													</h4>
 									
-													<p class="summary"><a href="javascript:mCon(${m.idx});">${m.content}...</a></p>
+													<p class="summary"><a href="javascript:mCon(${m.idx});"><font color="black">${m.content}...</font></a></p>
 													<div class="mContent"></div>
 												</div>
 											</div>
