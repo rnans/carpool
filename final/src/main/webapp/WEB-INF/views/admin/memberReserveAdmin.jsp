@@ -51,10 +51,13 @@
 </head>
 <script>
 var idx=null;
-function adminMemberReserveDel(){
-	var param="?idx="+idx;
-	window.open('adminMemberReserveDel.do'+param,'adminMemberReserveDel','width=500 height=400 left=500 top=200');
+function memberReserveDel(){
+	this.idx=idx;
+	var params='idx='+idx;
+	sendRequest('adminMemberReserveDel.do', params, null, 'GET');
+	location.reload();
 }
+
 </script>
 <body>
 
@@ -98,9 +101,12 @@ function adminMemberReserveDel(){
 					<td>${list.aimidx }</td>
 					<td>${list.status }</td>
 					<td>${list.mans }</td>
-									<td><button type="submit" class="uButton uButtonPoint" onclick= "javascript:idx='${list.idx}';adminMemberReserveDel();"
+					<td>
+	<a onclick="javascript:idx='${list.idx}';" data-title="MemberReserveDel" data-toggle="modal" data-target="#delete">
+	 <button type="button" class="uButton uButtonPoint"
 		style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
 	삭제</button>
+	</a>
 	</td>
 	
 				</tr>
@@ -118,6 +124,40 @@ function adminMemberReserveDel(){
 </div>
 </div>
 </div>
+<!-- 삭제 모달 -->
+	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
+		aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin: 0px auto;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">삭제</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="alert alert-danger">
+						<span class="glyphicon glyphicon-warning-sign">정말 삭제 하시겠습니까?</span> 
+					</div>
+
+				</div>
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success" onclick="javascript:memberReserveDel();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+<!-- 삭제 모달 -->
 <footer>풋</footer>
 </body>
 </html>

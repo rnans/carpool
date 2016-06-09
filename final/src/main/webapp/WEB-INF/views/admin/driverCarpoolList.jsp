@@ -49,11 +49,17 @@
   max-width: 100%;
 }
 </style>
-<script>
+
+<!-- 드라이버 카풀 삭제 모달 -->
+<script type="text/javascript" src="js/httpRequest.js"></script>
+<script type="text/javascript">
 var idx = null;
-function driverPoolDelForm(){
-	var param = "?idx="+idx;
-	window.open('driverPoolDelForm.do'+param,'driverPoolDelForm','width=500 height=400 left=500 top=200');
+
+function driverPoolDel(){
+	this.idx=idx;
+	var params='idx='+idx;
+	sendRequest('driverPoolDel.do', params, null, 'GET');
+	location.reload();
 }
 </script>
 </head>
@@ -89,11 +95,7 @@ function driverPoolDelForm(){
 					<th>성별</th><!-- gender -->
 					<th>출발지</th> <!-- startspot -->
 					<th>도착지</th> <!-- endspot -->
-					<th>출발시간</th> <!-- starttime -->
-					<th>정기시작일</th> <!-- startdate -->
-					<th>정기종료일</th> <!-- enddate -->
 					<th>정기요일</th> <!-- days -->
-					<th>인원수</th> <!-- mannum -->
 					<th>요금</th> <!-- pay -->
 					<th>예약현황</th> <!-- status -->
 					<th>흡연여부</th> <!-- smoking -->
@@ -116,23 +118,22 @@ function driverPoolDelForm(){
 					<td>${list.aim}</td>
 					<td>${list.termtype}</td>
 					<td>${list.gender}</td>
-					<td>${list.startspot}</td>
-					<td>${list.endspot}</td>
-					<td>${list.starttime}</td>
 					<td>${list.startdate}</td>
 					<td>${list.enddate}</td>
 					<td>${list.days}</td>
-					<td>${list.mannum}</td>
 					<td>${list.pay}</td>
 					<td>${list.status}</td>
 					<td>${list.smoking}</td>
 					<td>${list.pluscontent}</td>
 					<td>${list.writedate}</td>
-						<td><button type="submit" class="uButton uButtonPoint"
-									onclick="javascript:idx='${list.idx}';driverPoolDelForm();"
-									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
-									글삭제</button></td>
-				
+						<td>
+							<a onclick="javascript:idx='${list.idx}';" data-title="DriverPoolDel" data-toggle="modal" data-target="#driverPoolDel">
+							<button type="button" class="uButton uButtonPoint"
+										style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
+										삭제</button>
+							</a>			
+						</td>
+						
 				</tr>
 				</c:forEach>
 				
@@ -146,5 +147,41 @@ function driverPoolDelForm(){
 			</tfoot>
 		</table>
 </div>
+
+<!-- 삭제 모달 -->
+	<div class="modal fade" id="driverPoolDel" tabindex="-1" role="dialog"
+		aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin: 0px auto;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">삭제</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="alert alert-danger">
+						<span class="glyphicon glyphicon-warning-sign">정말 삭제 하시겠습니까?</span> 
+					</div>
+
+				</div>
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success" onclick="javascript:driverPoolDel();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+<!-- 삭제 모달 -->
+
 <footer>풋</footer>
 </html>

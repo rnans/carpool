@@ -13,7 +13,7 @@
 <script src="/final02/js/modernizr.custom2.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 
-
+<!-- 유저카풀목록 삭제 -->
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script type="text/javascript">
 var idx=null;
@@ -105,11 +105,7 @@ function userPoolDel(){
 					<th>성별</th><!-- gender -->
 					<th>출발지</th> <!-- startspot -->
 					<th>도착지</th> <!-- endspot -->
-					<th>출발시간</th> <!-- starttime -->
-					<th>정기시작일</th> <!-- startdate -->
-					<th>정기종료일</th> <!-- enddate -->
 					<th>정기요일</th> <!-- days -->
-					<th>인원수</th> <!-- mannum -->
 					<th>요금</th> <!-- pay -->
 					<th>예약현황</th> <!-- status -->
 					<th>흡연여부</th> <!-- smoking -->
@@ -134,11 +130,7 @@ function userPoolDel(){
 					<td>${list.gender}</td>
 					<td>${list.startspot}</td>
 					<td>${list.endspot}</td>
-					<td>${list.starttime}</td>
-					<td>${list.startdate}</td>
-					<td>${list.enddate}</td>
 					<td>${list.days}</td>
-					<td>${list.mannum}</td>
 					<td>${list.pay}</td>
 					<td>${list.status}</td>
 					<td>${list.smoking}</td>
@@ -146,7 +138,7 @@ function userPoolDel(){
 					<td>${list.writedate}</td>
 					
 							<td>
-								<a onclick="javascript:idx='${list.idx}';" data-title="userPoolDel" data-toggle="modal" data-target="#userPoolDel">
+								<a onclick="javascript:idx='${list.idx}';" data-title="UserPoolDel" data-toggle="modal" data-target="#userPoolDel">
 							<button type="button" class="uButton uButtonPoint"
 									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
 									삭제</button>

@@ -268,6 +268,18 @@ AmCharts.makeChart("chartdiv",
 <!-- 검색 아작스 -->
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script type="text/javascript">
+var idx=null;
+var grade=null;
+//등급관리
+function adminAdd(){
+	this.idx=idx;
+	grade=document.getElementById("grade2").value;
+	var params='idx='+idx+'&grade='+grade;
+	sendRequest('adminAdd.do', params, null, 'GET');
+	location.reload();
+}
+</script>
+<script type="text/javascript">
 
 
 function show(){
@@ -293,26 +305,18 @@ function showResult(){//응답결과함수
 </script>
 <script>
 var idx= null;
-var grade=null;
 //회원탈퇴
 function memberDel(){
 	this.idx=idx;
-	var params='idx='+idx;	
+	var params='idx='+idx;
+	window.alert(params);
 	sendRequest('memberDel.do', params, null, 'GET');
 	location.reload();
 }
 
-//등급관리
-function adminAdd(){
-	this.idx=idx;
-	var grade = document.getElementById('grade');
-	var params='idx='+idx;
-	
-	window.alert(params);
-	sendRequest('adminAdd.do', params, null, 'GET');
-	location.reload();
-}
+
 </script>
+
 </head>
 <body>
 <div>
@@ -388,7 +392,7 @@ function adminAdd(){
 						<td>${list.grade}</td>
 						<td>${list.joindate}</td>
 						<td>
-							<a onclick="javascript:idx='${list.idx}';" data-title="Grade" data-toggle="modal" data-target="#grade">
+							<a onclick="javascript:idx='${list.idx}';grade='${list.grade }'" data-title="Grade" data-toggle="modal" data-target="#grade">
 							<button type="button" class="uButton uButtonPoint"
 									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
 									등급변경</button>
@@ -417,16 +421,15 @@ function adminAdd(){
 </div>
 
 <!-- 삭제 모달 -->
-	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
-		aria-labelledby="edit" aria-hidden="true">
-		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin: 0px auto;">
+	<div class="modal fade" id="delete" tabindex="-1" role="dialog"	aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin-right: 200px;">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 					</button>
-					<h4 class="modal-title custom_align" id="Heading">삭제</h4>
+					<h4 class="modal-title custom_align" id="Heading">회원정보삭제</h4>
 				</div>
 				<div class="modal-body">
 
@@ -452,8 +455,7 @@ function adminAdd(){
 <!-- 삭제 모달 -->
 
 <!-- 등급변경 모달 -->
-	<div class="modal fade" id="grade" tabindex="-1" role="dialog"
-		aria-labelledby="edit" aria-hidden="true">
+	<div class="modal fade" id="grade" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
 		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin: 0px auto;">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -463,43 +465,40 @@ function adminAdd(){
 					</button>
 					<h4 class="modal-title custom_align" id="Heading">등급변경</h4>
 				</div>
-				<div class="modal-body">
-
-					<div class="alert alert-danger">
-						<div id="grade" style="position: relative;">
-					
 				
-				<fieldset>
-					<legend>등급 변경(일반/관리자)</legend>
-					<div>
-						<select name="grade" id="grade">
-							<option value="관리자">관리자</option>
-							<option value="일반">일반</option>
-						</select>
-					</div>
-				</fieldset>
-						</div> 
-					</div>
-
+				<div class="modal-body">
+				
+					<div class="alert alert-danger">
+	
+						<span>
+							
+							<select name="grade" id="grade2">
+								<option value="관리자">관리자</option>
+								<option value="일반">일반</option>
+							</select>
+							
+						</span>
+						
+					</div> 
 				</div>
+
 				<div class="modal-footer ">
-					<button type="submit" class="btn btn-success" onclick="javascript:idx='${list.idx}';grade='${list.grade}';adminAdd();" data-dismiss="modal">
+					<button type="button" class="btn btn-success" onclick="javascript:adminAdd();" data-dismiss="modal">
 						<span class="glyphicon glyphicon-ok-sign"></span> Yes
 					</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">
 						<span class="glyphicon glyphicon-remove"></span> No
 					</button>
 				</div>
+				
 			</div>
+			
 			<!-- /.modal-content -->
 		</div>
 		<!-- /.modal-dialog -->
-		
-	</div>
-
+</div>
 <!-- 등급변경 모달 -->
 
-<footer>풋터푸터</footer>
-<div class="fuck"></div>
+<footer>풋</footer>
 </body>
 </html>

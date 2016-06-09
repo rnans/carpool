@@ -228,10 +228,11 @@ style type ="text/css">.links {
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
 	var idx = null;
-	function oneandoneDelForm() {
-		var param = "?idx=" + idx;
-		window.open('oneandoneDelete.do' + param, 'oneandoneDelForm',
-				'width=500 height=400 left=500 top=200');
+	function oneandoneDel(){
+		this.idx=idx;
+		var params='idx='+idx;
+		sendRequest('oneandoneDelete.do', params, null, 'GET');
+		location.reload();
 	}
 
 	function show() {
@@ -325,9 +326,11 @@ style type ="text/css">.links {
 	 <td>${oneandone.writedate }</td>
 	 <td>${oneandone.state }</td>
 	 <td> 
-	 <button type="submit" class="uButton uButtonPoint" onclick="javascript:idx='${oneandone.idx}';oneandoneDelForm();"
+	 <a onclick="javascript:idx='${oneandone.idx}';" data-title="OneandoneDel" data-toggle="modal" data-target="#delete">
+	 <button type="button" class="uButton uButtonPoint"
 		style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
 	삭제</button>
+	</a>
 	</td>
 	</tr>
 	 </c:forEach>
@@ -343,6 +346,42 @@ style type ="text/css">.links {
 </div>
 
 <hr>
+<!-- 삭제 모달 -->
+	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
+		aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin: 0px auto;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">삭제</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="alert alert-danger">
+						<span class="glyphicon glyphicon-warning-sign">정말 삭제 하시겠습니까?</span> 
+					</div>
+
+				</div>
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success" onclick="javascript:oneandoneDel();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+<!-- 삭제 모달 -->
+<footer>
 풋부분
+</footer>
 </body>
 </html>

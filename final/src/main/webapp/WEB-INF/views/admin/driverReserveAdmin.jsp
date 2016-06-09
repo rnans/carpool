@@ -228,10 +228,14 @@ style type ="text/css">.links {
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
 var idx=null;
-function adminDriverReserveDel(){
-	var param="?idx="+idx;
-	window.open('adminDriverReserveDel.do'+param,'adminDriverReserveDel','width=500 height=400 left=500 top=200');
+
+function driverReserveDel(){
+	this.idx=idx;
+	var params='idx='+idx;
+	sendRequest('adminDriverReserveDel.do', params, null, 'GET');
+	location.reload();
 }
+
 function show(){
 	var search=document.a.search.value;
 	var select=document.a.select.value;
@@ -327,9 +331,12 @@ function showResult(){//응답결과함수
 					<td>${list.members }</td>
 					<td>${list.inmembers }</td>
 					<td>${list.reqcount}</td>
-		<td><button type="submit" class="uButton uButtonPoint" onclick= "javascript:idx='${list.idx}';adminDriverReserveDel();"
+		<td>
+		<a onclick="javascript:idx='${list.idx}';" data-title="DriverReserveDel" data-toggle="modal" data-target="#delete">
+	 <button type="button" class="uButton uButtonPoint"
 		style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
 	삭제</button>
+	</a>
 	</td>
 	
 	</tr>
@@ -348,6 +355,43 @@ function showResult(){//응답결과함수
 </div>
 
 <hr>
+<!-- 삭제 모달 -->
+	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
+		aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin: 0px auto;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">삭제</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="alert alert-danger">
+						<span class="glyphicon glyphicon-warning-sign">정말 삭제 하시겠습니까?</span> 
+					</div>
+
+				</div>
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success" onclick="javascript:driverReserveDel();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+<!-- 삭제 모달 -->
+<footer>
 풋부분
+</footer>
+
 </body>
 </html>
