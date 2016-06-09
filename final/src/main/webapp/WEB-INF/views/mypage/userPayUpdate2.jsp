@@ -544,6 +544,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <script>
 window.onload=function(){
 	checkType1();
+	checkTerm();
 	checkType2();
 	
 }
@@ -564,6 +565,38 @@ function checkType2(){
 	for(var i=0;i<cardtype2.length;i++){
 		if(cardtype2[i].value=='${dto.cardtype2}'){
 			cardtype2[i].selected=true;
+		}
+	}
+}
+function checkTerm(){
+	
+	var cardTerm1=document.getElementById('cardterm1');
+	for(var i=0;i<cardTerm1.length;i++)
+	{
+		if(cardTerm1[i].value=='${dto.cardterm1}'){
+
+			cardTerm1[i].selected=true;
+		}
+	}
+	
+	var cardTerm2=document.getElementById('cardterm2');
+	for(var i=0;i<cardTerm2.length;i++)
+	{
+		if(cardTerm2[i].value=='${dto.cardterm2}'){
+
+			cardTerm2[i].selected=true;
+		}
+	}
+}
+function checkNum(){
+	
+	var cardnum=document.getElementsByName("cardnum");
+	
+	for(var i=0;i<cardnum.length;i++){
+		
+		if(cardnum[i].value<1000 || cardnum[i].value>9999){
+		
+			cardnum[i].value=null;
 		}
 	}
 }
@@ -608,6 +641,7 @@ function checkType2(){
 			<legend>카드정보수정</legend>
 			<form name="cardUpdate" action="cardUpdate.do" method="post">
 			<input type="hidden" name="idx" value="${dto.idx}">
+			<input type="hidden" name="fcardnum" value="${dto.cardnum}">
 			<table border="1" cellspacing="0" align="center" class="table table-hover">
 					
 						<tr>
@@ -622,19 +656,34 @@ function checkType2(){
 						</tr>	
 								<tr>
 							<td>카드번호</td>
-							<td colspan="5"><input type="text" name="cardnum1" style="width:40px;" value="${dto.cardnum1}">-<input type="text" name="cardnum2" style="width:40px;" value="${dto.cardnum2}">-<input type="text" name="cardnum3" style="width:40px;" value="${dto.cardnum3}">-<input type="text" name="cardnum4" style="width:40px;" value="${dto.cardnum4}"></td>
+							<td colspan="5"><input onblur="checkNum()" type="number" name="cardnum" style="width:50px;" value="${dto.cardnum1}" maxlength="4" required>
+							-<input onblur="checkNum()" type="number" name="cardnum" style="width:50px;" value="${dto.cardnum2}" maxlength="4" required>
+							-<input onblur="checkNum()" type="number" name="cardnum" style="width:50px;" value="${dto.cardnum3}" maxlength="4" required>
+							-<input onblur="checkNum()" type="number" name="cardnum" style="width:50px;" value="${dto.cardnum4}" maxlength="4" required></td>
 						</tr>
 						<tr>
 						<td>유효기간</td>
-						<td><input type="text" name="cardterm1" style="width:20px;" value="${dto.cardterm1}">월/<input type="text" name="cardterm2" style="width:40px;" value="${dto.cardterm2}">년</td>
+						<td><select name="cardterm" id="cardterm1" style="width:100px;height:25px;">
+						<option>2016</option><option>2017</option><option>2018</option><option>2019</option>
+						<option>2020</option><option>2021</option><option>2022</option><option>2023</option>
+						<option>2024</option><option>2025</option>
+					</select>년
+					<select name="cardterm" id="cardterm2" style="height:25px;">
+						<option>12</option><option>11</option><option>10</option><option>9</option>
+						<option>8</option><option>7</option><option>6</option><option>5</option>
+						<option>4</option><option>3</option><option>2</option><option>1</option>
+					</select>월
+					</td>
+					<%-- <input type="number" name="cardterm" style="width:30px;" value="${dto.cardterm1}" maxlength="2" required>월
+						/<input type="number" name="cardterm" style="width:30px;" value="${dto.cardterm2}" maxlength="2" required>년 --%>
 						</tr>
 						<tr>
 						<td>카드상이름</td>
-						<td><input type="text" name="cardname" value="${dto.cardname}"></td>
+						<td><input type="text" name="cardname" value="${dto.cardname}" maxlength="10" required></td>
 						</tr>
 						<tr>
-						<td>cvv</td>
-						<td><input type="text" name="cvv" style="width:30px;" value="${dto.cvv}"></td>
+						<td>cvc</td>
+						<td><input type="number" name="cvc" style="width:40px;" value="${dto.cvc}" maxlength="3" required></td>
 						</tr>
 						<tr>
 						<td>개인/법인</td>
@@ -644,11 +693,8 @@ function checkType2(){
             </select></td>
 						</tr>
 						<tr>
-						<td>카드아이디</td>
-						<td><input type="text" name="cardid" value="${dto.cardid}"></td>
-						</tr>
-						<tr>
-						<td colspan="6" align="right"><input type="submit" value="수정"></td>
+						<td colspan="6" align="right"><input type="button" value="취소">
+						<input type="submit" value="수정"></td>
 						</tr>
 					</tbody>
 				</table>

@@ -78,24 +78,40 @@ public class yangMyPageController {
 	public ModelAndView userPayAdd(HttpSession session, yangMypageDTO dto) {
 
 		List<yangMypageDTO> list = yangMyPageDao.allCardInfo();
-		String cardnum = dto.getCardnum1() + "-"+dto.getCardnum2() +"-"+ dto.getCardnum3() + "-"+dto.getCardnum4();
+		String userid = (String) session.getAttribute("sid");
 		int j = 0;
 		if (list.size() == 0) {
 		
 					j=0;
 			}else {
 				for(int i=0;i<list.size();i++){
-					if(list.get(i).getCardnum().equals(cardnum)){
+					if(list.get(i).getCardnum().equals(dto.getCardnum())){
 				j = 1;
 		}}}
 		ModelAndView mav = new ModelAndView();
 		String msg = null;
 		if (j == 0) {
-			String userid = (String) session.getAttribute("sid");
+			
+			String cardImg = "";
+			
+			if(dto.getCardtype1().equals("신한")){
+				cardImg="img/shin.png";
+				dto.setCardimg(cardImg);
+			}else if(dto.getCardtype1().equals("국민")){
+				cardImg="img/kok.png";
+				dto.setCardimg(cardImg);
+			}else if(dto.getCardtype1().equals("농협")){
+				cardImg="img/nong.png";
+				dto.setCardimg(cardImg);
+			}else if(dto.getCardtype1().equals("우리")){
+				cardImg="img/woori.png";
+				dto.setCardimg(cardImg);
+			}else{
+				cardImg="img/noimg.png";
+				dto.setCardimg(cardImg);
+			}
+			
 			dto.setUserid(userid);
-			dto.setCardnum(cardnum);
-			String cardterm = dto.getCardterm1() +"/"+ dto.getCardterm2();
-			dto.setCardterm(cardterm);
 			int result = yangMyPageDao.userPayAdd(dto);
 			msg = result > 0 ? "결제정보 등록 성공" : "결제정보 등록 실패";
 			mav.addObject("msg", msg);
@@ -117,14 +133,14 @@ public class yangMyPageController {
 		String cardnum=dto.getCardnum();
 		StringTokenizer tokens = new StringTokenizer(cardnum);
         
-        dto.setCardnum1(tokens.nextToken("-"));
-        dto.setCardnum2(tokens.nextToken("-"));
-        dto.setCardnum3(tokens.nextToken("-"));
-        dto.setCardnum4(tokens.nextToken("-"));
+        dto.setCardnum1(tokens.nextToken(","));
+        dto.setCardnum2(tokens.nextToken(","));
+        dto.setCardnum3(tokens.nextToken(","));
+        dto.setCardnum4(tokens.nextToken(","));
 		String cardterm=dto.getCardterm();
 		StringTokenizer tokens2 = new StringTokenizer(cardterm);
-		dto.setCardterm1(tokens2.nextToken("/"));
-		dto.setCardterm2(tokens2.nextToken("/"));
+		dto.setCardterm1(tokens2.nextToken(","));
+		dto.setCardterm2(tokens2.nextToken(","));
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("dto", dto);
@@ -134,22 +150,56 @@ public class yangMyPageController {
 	}
 
 	@RequestMapping(value = "/cardUpdate.do", method = RequestMethod.POST)
-	public ModelAndView userPayUpdate(yangMypageDTO dto, @RequestParam(value = "cardnum1") String cardnum1,
-			@RequestParam(value = "cardnum2") String cardnum2, @RequestParam(value = "cardnum3") String cardnum3,
-			@RequestParam(value = "cardnum4") String cardnum4, @RequestParam(value = "cardterm1") String cardterm1,
-			@RequestParam(value = "cardterm2") String cardterm2) {
+	public ModelAndView userPayUpdate(yangMypageDTO dto,HttpSession session,
+			@Param(value="fcardnum")String fcardnum) {
 
-		String cardnum = cardnum1 +"-"+ cardnum2 + "-"+cardnum3 +"-"+ cardnum4;
-		System.out.println(cardnum);
-		dto.setCardnum(cardnum);
-		String cardterm = cardterm1 +"/"+ cardterm2;
-		dto.setCardterm(cardterm);
-		int result = yangMyPageDao.userPayUpdate(dto);
-		String msg = result > 0 ? "결제정보 수정 성공" : "결제정보 수정 실패";
+		
+		List<yangMypageDTO> list = yangMyPageDao.allCardInfo();
+		String userid = (String) session.getAttribute("sid");
+		int j = 0;
+		if (list.size() == 0) {
+		
+					j=0;
+			}else{
+				for(int i=0;i<list.size();i++){
+					if(list.get(i).getCardnum().equals(dto.getCardnum())&&!(fcardnum.equals(dto.getCardnum()))){
+				j = 1;
+		}}}
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("msg", msg);
-		mav.addObject("gopage", "userPayInfo.do");
-		mav.setViewName("mypage/myPageMsg");
+		String msg = null;
+		if (j == 0) {
+			
+			String cardImg = "";
+			
+			if(dto.getCardtype1().equals("신한")){
+				cardImg="img/shin.png";
+				dto.setCardimg(cardImg);
+			}else if(dto.getCardtype1().equals("국민")){
+				cardImg="img/kok.png";
+				dto.setCardimg(cardImg);
+			}else if(dto.getCardtype1().equals("농협")){
+				cardImg="img/nong.png";
+				dto.setCardimg(cardImg);
+			}else if(dto.getCardtype1().equals("우리")){
+				cardImg="img/woori.png";
+				dto.setCardimg(cardImg);
+			}else{
+				cardImg="img/noimg.png";
+				dto.setCardimg(cardImg);
+			}
+			
+			dto.setUserid(userid);
+			int result = yangMyPageDao.userPayUpdate(dto);
+			msg = result > 0 ? "결제정보 수정 성공" : "결제정보 수정 실패";
+			mav.addObject("msg", msg);
+			mav.addObject("gopage", "userPayInfo.do");
+			mav.setViewName("mypage/myPageMsg");
+		} else {
+			msg = "이미 등록된 카드번호 입니다.";
+			mav.addObject("dto", dto);
+			mav.addObject("msg", msg);
+			mav.setViewName("mypage/userPayAdd2");
+		}
 
 		return mav;
 	}

@@ -545,6 +545,18 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 function backPage(){
 	window.location.href = 'userPayInfo.do';
 }
+function checkNum(){
+	
+	var cardnum=document.getElementsByName("cardnum");
+	
+	for(var i=0;i<cardnum.length;i++){
+		
+		if(cardnum[i].value<1000 || cardnum[i].value>9999){
+		
+			cardnum[i].value=null;
+		}
+	}
+}
 </script>
 <c:if test="${!(empty msg)}">
 <script>
@@ -590,12 +602,12 @@ window.alert('${msg}');
 			
 <h2>카드 등록</h2>
 		<legend>카드등록</legend>
-			<form name="userPayAdd" action="cardEnroll.do" method="post">
+			<form name="userPayAdd" action="userPayAdd.do" method="post">
 				<table border="1" cellspacing="0" align="center" class="table table-hover">
 					
 						<tr>
 							<td>카드종류</td>
-							<td><select name="cardType1">
+							<td><select name="cardtype1">
 			 <option value="선택" selected="selected">선택</option>				
             <option value="신한">신한</option>
             <option value="농협">농협</option>
@@ -605,23 +617,38 @@ window.alert('${msg}');
 						</tr>	
 								<tr>
 							<td>카드번호</td>
-							<td colspan="5"><input type="text" name="cardNum" style="width:40px;">-<input type="text" name="cardNum" value="${dto.cardnum2 }" style="width:40px;">-<input type="text" name="cardnum3" value="${dto.cardnum3 }" style="width:40px;">-<input type="text" name="cardnum4" value="${dto.cardnum4 }" style="width:40px;"></td>
+							<td colspan="5"><input onblur="checkNum()" "number" name="cardnum" style="width:50px;" maxlength="4" required>
+							-<input onblur="checkNum()" type="number" name="cardnum" value="${dto.cardnum2 }" style="width:50px;" maxlength="4" required>
+							-<input onblur="checkNum()" type="number" name="cardnum" value="${dto.cardnum3 }" style="width:50px;" maxlength="4" required>
+							-<input onblur="checkNum()" type="number" name="cardnum" value="${dto.cardnum4 }" style="width:50px;" maxlength="4" required></td>
 						</tr>
 						<tr>
 						<td>유효기간</td>
-						<td><input type="text" name="cardTerm" style="width:20px;">월/<input type="text" name="cardterm2" value="${dto.cardterm2} " style="width:40px;">년</td>
+						<td><select name="cardterm" style="width:100px;height:25px;">
+						<option>2016</option><option>2017</option><option>2018</option><option>2019</option>
+						<option>2020</option><option>2021</option><option>2022</option><option>2023</option>
+						<option>2024</option><option>2025</option>
+					</select>년
+					<select name="cardterm" style="height:25px;">
+						<option>12</option><option>11</option><option>10</option><option>9</option>
+						<option>8</option><option>7</option><option>6</option><option>5</option>
+						<option>4</option><option>3</option><option>2</option><option>1</option>
+					</select>월
+					</td>
+						<%-- <td><input type="number" name="cardTerm" style="width:20px;" maxlength="2" required>
+						월/<input type="number" name="cardTerm" value="${dto.cardterm2} " style="width:40px;" maxlength="2" required>년</td> --%>
 						</tr>
 						<tr>
 						<td>카드상이름</td>
-						<td><input type="text" name="cardName" ></td>
+						<td><input type="text" name="cardname" maxlength="10" required></td>
 						</tr>
 						<tr>
-						<td>cvv</td>
-						<td><input type="text" name="cvc" style="width:30px;"></td>
+						<td>cvc</td>
+						<td><input type="number" name="cvc" style="width:40px;" maxlength="3" required></td>
 						</tr>
 						<tr>
 						<td>개인/법인</td>
-						<td><select name="cardType2">
+						<td><select name="cardtype2">
             <option>개인</option>
             <option>법인</option>
             </select></td>

@@ -12,7 +12,7 @@ public class yangMypageDTO {
 	private String cardnum;
 	private String cardterm;
 	private String cardname;
-	private String cvv;
+	private String cvc;
 	private String cardtype2;
 	private String cardid;
 	private String cardnum1;
@@ -21,12 +21,13 @@ public class yangMypageDTO {
 	private String cardnum4;
 	private String cardterm1;
 	private String cardterm2;
+	private String cardimg;
 	public yangMypageDTO() {
 		super();
 	}
 	public yangMypageDTO(int idx, String userid, String cardtype1, String cardnum, String cardterm, String cardname,
-			String cvv, String cardtype2, String cardid, String cardnum1, String cardnum2, String cardnum3,
-			String cardnum4, String cardterm1, String cardterm2) {
+			String cvc, String cardtype2, String cardid, String cardnum1, String cardnum2, String cardnum3,
+			String cardnum4, String cardterm1, String cardterm2, String cardimg) {
 		super();
 		this.idx = idx;
 		this.userid = userid;
@@ -34,7 +35,7 @@ public class yangMypageDTO {
 		this.cardnum = cardnum;
 		this.cardterm = cardterm;
 		this.cardname = cardname;
-		this.cvv = cvv;
+		this.cvc = cvc;
 		this.cardtype2 = cardtype2;
 		this.cardid = cardid;
 		this.cardnum1 = cardnum1;
@@ -43,6 +44,7 @@ public class yangMypageDTO {
 		this.cardnum4 = cardnum4;
 		this.cardterm1 = cardterm1;
 		this.cardterm2 = cardterm2;
+		this.cardimg = cardimg;
 	}
 	public int getIdx() {
 		return idx;
@@ -80,11 +82,11 @@ public class yangMypageDTO {
 	public void setCardname(String cardname) {
 		this.cardname = cardname;
 	}
-	public String getCvv() {
-		return cvv;
+	public String getCvc() {
+		return cvc;
 	}
-	public void setCvv(String cvv) {
-		this.cvv = cvv;
+	public void setCvc(String cvc) {
+		this.cvc = cvc;
 	}
 	public String getCardtype2() {
 		return cardtype2;
@@ -134,5 +136,11 @@ public class yangMypageDTO {
 	public void setCardterm2(String cardterm2) {
 		this.cardterm2 = cardterm2;
 	}
-
+	public String getCardimg() {
+		return cardimg;
+	}
+	public void setCardimg(String cardimg) {
+		this.cardimg = cardimg;
+	}
+	
 }

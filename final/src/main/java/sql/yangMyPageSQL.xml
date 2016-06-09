@@ -7,13 +7,13 @@
 	select * from userpayinfo where userid=#{userid}
 	</select>
 	<insert id="userPayAdd" parameterType="su.yangmypage.model.yangMypageDTO">
-	insert into userpayinfo values(userpayinfo_idx.nextval,#{userid},#{cardtype1},#{cardnum},#{cardterm},#{cardname},#{cvv},#{cardtype2},#{cardid},'사진없음')
+	insert into userpayinfo values(userpayinfo_idx.nextval,#{userid},#{cardtype1},#{cardnum},#{cardterm},#{cardname},#{cvc},#{cardtype2},userpayinfo_cardid.nextval,#{cardimg})
 	</insert>
 	<select id="cardIdxList" parameterType="Integer" resultType="su.yangmypage.model.yangMypageDTO">
 	select * from userpayinfo where idx=#{idx}
 	</select>
 	<update id="cardUpdate" parameterType="su.yangmypage.model.yangMypageDTO">
-	update userpayinfo set cardtype1=#{cardtype1}, cardnum=#{cardnum}, cardterm=#{cardterm}, cardname=#{cardname}, cvv=#{cvv}, cardtype2=#{cardtype2}, cardid=#{cardid} where idx=#{idx}
+	update userpayinfo set cardtype1=#{cardtype1}, cardnum=#{cardnum}, cardterm=#{cardterm}, cardname=#{cardname}, cvc=#{cvc}, cardtype2=#{cardtype2}, cardimg=#{cardimg} where idx=#{idx}
 	</update>
 	<delete id="cardDel" parameterType="su.yangmypage.model.yangMypageDTO">
 	delete from userpayinfo where idx=#{idx} 
