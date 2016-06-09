@@ -30,4 +30,7 @@
 	<select id="rateGetView" parameterType="String" resultType="su.pool.model.PoolRateDTO">
 	select * from rate where aimid=#{userid}
 	</select>
+	<select id="useList" resultType="su.paylist.model.PayListDTO" parameterType="String">
+	select * from payalllist where userid1=#{userid1}
+	</select>
 </mapper>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import su.member.model.MemberDTO;
+import su.paylist.model.PayListDTO;
 import su.pool.model.PoolDTO;
 import su.pool.model.PoolRateDTO;
 
@@ -62,6 +63,11 @@ public class yangMypageDAOImple implements yangMypageDAO {
 	public List<PoolRateDTO> rateSetView(String userid) {
 		
 		List<PoolRateDTO> list=sqlMap.selectList("rateSetView", userid);
+		return list;
+	}
+	public List<PayListDTO> useList(String userid1) {
+		
+		List<PayListDTO> list=sqlMap.selectList("useList", userid1);
 		return list;
 	}
 }

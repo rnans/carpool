@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import su.member.model.MemberDTO;
 import su.mypage.model.MypageDAO;
 import su.mypage.model.MypageDTO;
+import su.paylist.model.PayListDTO;
 import su.pool.model.PoolDTO;
 import su.pool.model.PoolRateDTO;
 import su.upload.model.UploadDAO;
@@ -195,4 +196,17 @@ public class yangMyPageController {
 
 		return mav;
 	}
+	
+	@RequestMapping("/useList.do")
+	public ModelAndView useList(HttpSession session, String sid){
+		String userid1 = (String) session.getAttribute("sid");
+		List<PayListDTO> list = yangMyPageDao.useList(userid1);
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("mypage/useList2");
+		
+		return mav;
+	}
+	
 }
