@@ -237,9 +237,9 @@ section {
 
 /* Header */
 .codrops-header {
-	margin: 0 auto;
+	margin:;
 	padding: 3em 2em;
-	text-align: center;
+	text-align:left;
 }
 
 .codrops-header h1 {
@@ -564,9 +564,9 @@ function allCheck(){
 				<nav class="menu-top">
 					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${sessionScope.sname} 님 마이페이지</span></div>
 					<div class="icon-list">
-						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
-						<a href="#"><i class="fa fa-fw fa-envelope-o"></i></a>
+						<a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
+						<a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
+						<a href="messageList.do"><i class="fa fa-fw fa-envelope-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-comment-o"></i></a>
 					</div>
 				</nav>
@@ -576,7 +576,7 @@ function allCheck(){
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
-					<a href="#">이용내역</a>
+					<a href="useList.do">이용내역</a>
 					<a href="reservationList.do">등록글</a>
 					<a href="rateView.do">평가글</a>
 					<a href="memberleave.do">회원탈퇴</a>
@@ -586,10 +586,11 @@ function allCheck(){
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
-										
+					<h3>wishPoolList</h3>
+					</header>						
 						<div class="codrops-links">
 							
-			<h2>즐겨찾기</h2>
+			
 		
 
 	
@@ -600,20 +601,20 @@ function allCheck(){
 	
 	
 	
-					</div>
-						
+					
 						<nav class="codrops-demos">
-								<legend>즐겨찾는카풀</legend>
+								
 			<form name="wishpool">
-				<table border="1" cellspacing="0" align="center" class="table table-hover">
+				<table border="1" cellspacing="0" align="center" class="table table-striped">
 					<thead>
 						<tr>
-							<th><a href="javascript:allCheck()"><input type="checkbox" id="blankCheckbox1" value="true" aria-label="..."></a></th>
-							<th>번호</th>
-							<th>운전자글번호</th>
-							<th>이용자아이디</th>
-							<th>소속카풀이름</th>
-							<th>파티장</th>
+							<th style="text-align: center;"><a href="javascript:allCheck()"><input type="checkbox" id="blankCheckbox1" value="true" aria-label="..."></a></th>
+							<th style="text-align: center;">번호</th>
+							<th style="text-align: center;">운전자글번호</th>
+							<th style="text-align: center;">이용자아이디</th>
+							<th style="text-align: center;">소속카풀이름</th>
+							<th style="text-align: center;">파티장</th>
+					
 						</tr>	
 					</thead>
 			<tfoot>
@@ -642,14 +643,15 @@ function allCheck(){
 			</c:forEach>
 			</tbody>
 		</table>
-				
+			<p align="center">	
 			<button type="reset" class="btn btn-default" value="취소">취소</button>
 			<button type="submit" class="btn btn-success" value="삭제">삭제</button>
+			</p>
 		</form>		
-							
+				</div>			
 						
 						</nav>
-					</header>
+				
 					<!-- Related demos -->
 					<section class="related">
 					
