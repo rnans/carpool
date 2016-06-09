@@ -14,7 +14,7 @@
 </head>
 <body>
 <%@include file="header.jsp" %>
-
+<%@include file="main.jsp" %>
 <footer>
 
 </footer>
