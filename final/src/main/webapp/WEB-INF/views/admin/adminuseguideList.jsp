@@ -100,9 +100,11 @@
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
 var idx=null;
-function useguideDeleteForm(){
-	var param="?idx="+idx;
-	window.open('useguideDelete.do'+param,'useguideDeleteForm','width=500 height=400 left=500 top=200');
+function useGuideDel(){
+	this.idx=idx;
+	var params='idx='+idx;
+	sendRequest('useguideDelete.do', params, null, 'GET');
+	location.reload();
 }
 </script>
 <body>
@@ -149,9 +151,12 @@ function useguideDeleteForm(){
  <td><a href="${useguideContent}">${useguide.subject }</a></td>
  <td>${useguide.content}</td>
  <td>${useguide.writedate }</td>
- <td><button type="submit" class="uButton uButtonPoint" onclick= "javascript:idx='${useguide.idx}';useguideDeleteForm();"
-		style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff;border:0px;">
+ <td>
+ <a onclick="javascript:idx='${useguide.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete">
+		<button type="button" class="uButton uButtonPoint"
+		style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
 	삭제</button>
+	</a>
 	</td>
 
 </tr>
@@ -169,5 +174,38 @@ function useguideDeleteForm(){
 
 
 <hr>
+<!-- 삭제 모달 -->
+	<div class="modal fade" id="delete" tabindex="-1" role="dialog"	aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin-right: 200px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">회원정보삭제</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="alert alert-danger">
+						<span class="glyphicon glyphicon-warning-sign">정말 탈퇴 시키시겠습니까?</span> 
+					</div>
+
+				</div>
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success" onclick="javascript:useGuideDel();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+<!-- 삭제 모달 -->
 <footer>푸터</footer>
 </html>
