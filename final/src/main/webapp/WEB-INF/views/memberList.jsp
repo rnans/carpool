@@ -17,7 +17,14 @@
         <link rel="stylesheet" type="text/css" href="http://s.cmstatic.net/webclient/dres/20160602183753/css/bandComponent.css?_=20160602183753">
 		<link rel="stylesheet" type="text/css" href="http://s.cmstatic.net/webclient/dres/20160602183753/css/band.css?_=20160602183753">        
         
-
+<script>
+var uid=null;
+function msgOpen(){	
+	
+	window.open('messageWrite.do?uid='+uid,'','width=400, height=270')
+}
+</script>
+<style>
 <style>
 #info .widget {
     min-width: 210px;
@@ -64,7 +71,7 @@
     font-weight: 700;
 }
 #info .widget .scrollWrap {
-    max-height: 330px;
+    max-height: 150px;
     overflow-x: hidden;
     border-top: 1px solid #EEE;
     overflow: hidden;
@@ -140,13 +147,47 @@
     border-top: 1px solid #EEE;
 }
 
+
 </style>
-<aside id="info" data-uiselector="leftSection" data-skin="skin5" style="width: 200px;">
+<div class="commside" style="width: 30%; float: left; height: 100%;">
+  <aside id="info" data-uiselector="leftSection" data-skin="skin5" style="width:200px; padding-left : 170px;padding-top: 50px;">
 	
+	<!-- pool -->
+
+	<div data-viewname="DBandCoverItemView">
+		<div class="uCover aside" data-type="type2">
+			<div class="bandUri">
+				<div class="cover" data-skinfactor="beforeBg">
+					<a href="/#!/band/61355066"><img class="coverImg"
+						src="http://coresos.phinf.naver.net/a/2gegeb_c/18aUd015f6anox25rtzm_5ksoqj.jpg?type=cover_a264"
+						alt=""></a>
+				</div>
+				<div class="bandName">
+					<div class="bandWrap">
+						<p class="uriText">
+							<a href="/#!/band/61355066">123</a>
+						</p>
+						<p class="desc" data-uiselector="bandDescription"
+							style="word-wrap: break-word;">
+							<a href="#" class="more _seeMoreDescBtn" style="display: none;">&nbsp;더보기</a>
+						</p>
+						<p class="member -type2">
+							멤버 2 <a href="/#!/band/61355066/invite" data-icon="invite"
+								data-skinfactor="color">초대</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<br>
+
+
 	<!--  chat -->
 	<div data-uiselector="summaryRegion">
 		<div data-viewname="DBandSummaryItemView">
-			<div data-uiselector="bandChannelsRegion" style="min-height: 270px;" class="widget">
+			<div data-uiselector="bandChannelsRegion" style="min-height: 100px;" class="widget">
 				<div data-viewname="DBandChattingChannelListView">
 					<div class="tit noArrow">
 						<h2>접속중 <font style="color:#F15F5F;">${count}</font></h2>
@@ -164,7 +205,7 @@
 								
 						
 									<li data-viewname="DBandChattingChannelItemView" class="chat">
-										<a href="messageWrite.do?uid=${l.userid}"><span> <img
+										<a href="javascript:uid='${l.userid }';msgOpen();"><span> <img
 												src="http://coresos.phinf.naver.net/a/2gegeb_c/18aUd015f6anox25rtzm_5ksoqj.jpg?type=s150_low"
 												width="38" height="38" data-skinfactor="tBorder">
 										</span> <span><strong title="123">&nbsp;&nbsp;${l.userid}</strong> <span></span></span></a>
@@ -185,3 +226,5 @@
 	</div>
 	<!--  chat end-->
 </aside>
+    
+    </div>     
