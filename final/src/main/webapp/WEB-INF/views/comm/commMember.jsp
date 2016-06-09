@@ -115,7 +115,7 @@ window.onload=function(){
 </div>
 </div>	
 <div style="border : 1px solid #DDD;background-color: #fff; margin-bottom: 20px;" ><!-- 설정 -->
-<h3 class="titleSetting" style=" margin-bottom: 0px; margin-top: 0px;">밴드 정보 관리</h3>
+<h3 class="titleSetting" style=" margin-bottom: 0px; margin-top: 0px;">파티 정보 관리</h3>
 	<ul class="settingList setSmall">
 		<li>
 			<div class="listWrap"> 

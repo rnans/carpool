@@ -118,11 +118,11 @@ function opencostReg(){
 </script>
 <input type="hidden" id="hiddenId" value="${sid}"/>
 <nav class="navbar navbar-default" >
-  <div class="container-fluid" style=" margin-top:46px; text-align: center;">   
+  <div class="container-fluid" style=" margin-top:40px; height:48px;overflow:hidden; text-align: center;">   
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="text-align: center;"  >
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="text-align: center;height: 40px;"  >
       <ul class="nav navbar-nav bar top" style="margin-left: 400px;">
-      	<li><a href="carBookInfo.do"><i class="fa fa-home fa-2x" aria-hidden="true" style=""></i>
+      	<li><a href="carBookInfo.do" style="height:48px; color:#363636; border-bottom: 2px solid #363636;"><i class="fa fa-home fa-2x" aria-hidden="true" style=""></i>
      차계부</a></li>
         <li><a href="cost.do"><i class="fa fa-calculator fa-2x" aria-hidden="true"></i>
      내역</a></li>

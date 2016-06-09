@@ -92,14 +92,25 @@ function checkMain(){
 }
 </script> 
 </head>
-<body>
+<body style="background-color: #F6F6F6;">
 <%@include file="../header.jsp"%>
-<div style="margin-top : 45px;">
-	<div class="container">
-    <div class="row col-md-6 col-md-offset-2 custyle">
-    <p><MARQUEE direction=right><h2 style="margin-top : 65px; text-align: center; color: #00006F;">보다 즐거운 드라이브를 원한다면</h2></MARQUEE><br>
-    <MARQUEE direction=right><h2 style="text-align: center; color: #00006F;">지금 바로 차량등록 하러~~</h2></MARQUEE></p>
-    <table class="table table-striped custab" style="width: 800px; margin-top: 60px;">
+<div style="margin-top : 85px;">
+    <div class="" style="margin: 0px auto;">
+    <p style="font-size:15px; margin-top : 65px;text-align: center;">
+    <font style="color:#5D5D5D;font-weight:bold; ;">    
+<font color="#4374D9" style="font-weight: bolder;">'POOL PARTY'</font>는 내가 가고싶은 곳을 더 쉽게 더 편하게 더 싸게 가게 해주는 카쉐어링 서비스입니다. <br>
+출퇴근, 여행, 가벼운 일탈 까지 이제 <font color="#4374D9" style="font-weight: bolder;">'POOL PARTY'</font>로 연결하세요.<br>
+
+<!-- 누구나 쉽게 카풀을 만들어, 간단하게 파티를 구성하고, 온 오프라인 모두 우리만의 공간에서 모이세요. <br>
+이 모든 것이 <font color="#4374D9" style="font-weight: bolder;">'POOL PARTY'</font> 하나로 간편해집니다 !! -->
+    
+    </font>
+  <table class="table table-striped custab" style="width: 800px; margin:0px auto; margin-top: 40px;background-color: #fff;">
+			<thead>
+			<tr>
+				<th colspan="7"><font color="#4374D9" style="font-weight: bolder;">'PooL PARTY' </font> &nbsp;&nbsp; <font style="font-weight: bolder;">차량 관리</font> </th>
+			</tr>
+			</thead>
 			<tr>
 				<th class="text-center">대표차량</th>
 				<th style="text-align: center;">차량사진</th>
@@ -118,7 +129,7 @@ function checkMain(){
 			<c:forEach var="dto" items="${list }">
 			
 				<tr style="vertical-align: middle;">
-					<td style="vertical-align: middle;" ><input type="radio" style="text-align: center; margin-left: 30px;" name="carid" value="${dto.carid }" onclick="carMain(${dto.idx})"></td>
+					<td><input type="radio" style="margin-left: 30px;" name="carid" value="${dto.carid }" onclick="carMain(${dto.idx})"></td>
 					<td><div id="carImage">
         <img style="width:100px; height:100px;" src="http://localhost:9090/final02/img/${dto.carphoto}">
 		</div></td>
@@ -143,7 +154,7 @@ function checkMain(){
 			</tr>
 
 		</table>
-	</fieldset>
+
 	
 </div>
 
@@ -178,6 +189,7 @@ function checkMain(){
          <!-- /.modal-content -->
       </div>
       <!-- /.modal-dialog -->
+   </div>
    </div>
 </body>
 </html>
