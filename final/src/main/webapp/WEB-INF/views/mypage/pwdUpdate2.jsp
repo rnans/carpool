@@ -557,8 +557,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					  </div>
 					</div>				
 						<p id="cm">
-							<input type="reset" name="reset" value="취소">
-							<input type="submit" name="update" value="비밀번호변경">
+							<button type="reset" name="reset" value="취소" class="btn btn-default">취소</button>
+							<button type="submit" name="update" value="비밀번호변경" class="btn btn-success">비밀번호변경</button>
+							
 						</p>
 						
 						

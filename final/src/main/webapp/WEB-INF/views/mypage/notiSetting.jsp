@@ -675,8 +675,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 										</c:if>
 										<c:if test="${!empty dto}">
 											<p>
-												<input type="reset" name="reset" value="취소" >
-												<input type="button" value="수정" onclick="mappingAction('alarmUpdate');">
+												<button type="reset" name="reset" value="취소" class="btn btn-default">취소</button>
+												<button type="button" value="수정" class="btn btn-success" onclick="mappingAction('alarmUpdate');">수정</button>
 											</p>
 										</c:if>
 										

@@ -595,9 +595,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                   <div class="codrops-links">
    
          
-<h2><a href="javascript:setView()">내가한평가</a>|<a href="javascript:getView()">받은평가</a></h2>
-      
-
+	<h4>
+    <a href="javascript:setView()">내가한평가</a>|<a href="javascript:getView()">내가받은평가</a>
+    </h4>   
          <div id="setView">
             <table border="1" cellspacing="0" align="center" class="table table-striped">
                <thead>

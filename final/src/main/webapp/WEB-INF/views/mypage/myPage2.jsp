@@ -569,7 +569,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
-					<a href="#">이용내역</a>
+					<a href="useList.do">이용내역</a>
 					<a href="reservationList.do">등록글</a>
 					<a href="rateView.do">평가글</a>
 					<a href="memberleave.do">회원탈퇴</a>
@@ -591,7 +591,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<legend>${dto.name}님 정보  ${dto2[1].filename } </legend>		
 <div class="center-block">
 	<div class="row">
-		<div class="col-xs-2">
+		<div class="col-xs-4">
 	
 	ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
 	

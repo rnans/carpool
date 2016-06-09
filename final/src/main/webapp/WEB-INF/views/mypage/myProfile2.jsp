@@ -598,7 +598,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 		<legend>내 정보 수정</legend>
 	<div class="center-block">
 	<div class="row">
-		<div class="col-xs-2">
+		<div class="col-xs-4">
 			ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
 			
 			NAME<input type="text" name="name" class="form-control" value="${dto.name}">
