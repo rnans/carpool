@@ -563,8 +563,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<nav class="menu-top">
 					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
 					<div class="icon-list">
-						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
+						<a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
+						<a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
 						<a href="messageList.do"><i class="fa fa-fw fa-envelope-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-comment-o"></i></a>
 					</div>

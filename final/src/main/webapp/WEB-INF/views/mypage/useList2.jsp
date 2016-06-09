@@ -133,7 +133,7 @@ td.adjacent {
 
 /* Menu Button */
 .menu-button {
-	position: fixed;
+	position: absolute;
 	z-index: 1000;
 	margin: 2em;
 	padding: 0;
@@ -289,9 +289,9 @@ section {
 
 /* Header */
 .codrops-header {
-	margin: 0 auto;
+	margin: ;
 	padding: 3em 2em;
-	text-align: center;
+	text-align:left;
 }
 
 .codrops-header h1 {
@@ -613,9 +613,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<nav class="menu-top">
 					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${sessionScope.sname} 님 마이페이지</span></div>
 					<div class="icon-list">
-						<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-						<a href="#"><i class="fa fa-fw fa-bell-o"></i></a>
-						<a href="#"><i class="fa fa-fw fa-envelope-o"></i></a>
+						<a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
+						<a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
+						<a href="messageList.do"><i class="fa fa-fw fa-envelope-o"></i></a>
 						<a href="#"><i class="fa fa-fw fa-comment-o"></i></a>
 					</div>
 				</nav>
@@ -626,7 +626,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
 					<a href="useList.do">이용내역</a>
-					<a href="#">등록글</a>
+					<a href="reservationList.do">등록글</a>
 					<a href="rateView.do">평가글</a>
 					<a href="memberleave.do">회원탈퇴</a>
 				</nav>
@@ -635,10 +635,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
+					<h3>useList</h3>
+						<nav class="codrops-demos">
 						<div class="codrops-links">
+							
 							<div class="row">
-							<h4>이용내역</h4>
-							  <h3 style="font-size: 30px;">결제내역</h3><hr></hr><hr></hr>
+							
+							  <h3>결제내역</h3>
 							   <table class="table">
 							     <thead class="thead-inverse" style="background-color: #FFFFFF; color: #980000;">
 							  <tr style="font-size: 18px;"> 
@@ -666,20 +669,20 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 							  </c:forEach>
 							  </tbody>
 							</table>
-							<hr></hr><hr></hr>
+							
 						</div>
-						<hr></hr>
+						<hr></hr><hr></hr>
 					<div>
 						<h3>소속카풀</h3>
 						
 					</div>	
 						
-						<nav class="codrops-demos">
+						
 						</nav>
 					</header>
 					<!-- Related demos -->
 					<section class="related">
-					
+					 <a href="index.do"><input type="button" name="main" value="main"></input></a>
 					</section>
 				</div>
 			</div><!-- /content-wrap -->
