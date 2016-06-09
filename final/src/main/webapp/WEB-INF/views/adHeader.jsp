@@ -162,7 +162,7 @@ table tr:hover td {
 
 			<li><a href="adminNoticeList.do">-공지사항</a></li>
 			<li><a href="adminQnaList.do">-Q&A</a></li>
-			<li><a href="adminOneAndOne.do">-1:1안내</a></li>
+			<li><a href="adminOneAndOne.do">-1:1문의</a></li>
 			<li><a href="adminuseguideList.do">-이용안내</a></li>
 
 		</ul></li>

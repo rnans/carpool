@@ -30,7 +30,7 @@ $('.tr').css('display','none');
 	<div class="row">
 	<%@include file="csCenterSubMenu.jsp" %>
 				<div class=".col-md-10" style="display: inline-block; width: 70%; ">		
-				
+			<div style=" padding: 10px; height:960px;">	
 <h3 align="center" style="margin-left: 140px;"> 자주하는질문(Q&A)</h3>	
 
 <table class="table table-list-search" style="margin-left: 70px; margin-top: 60px;"> 
@@ -60,6 +60,7 @@ $('.tr').css('display','none');
 </div>
 		</div>
 	</div>
+</div>
 </div>
 <hr>
 풋부분
