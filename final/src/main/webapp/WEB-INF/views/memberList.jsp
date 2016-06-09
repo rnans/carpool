@@ -252,7 +252,7 @@
 							<div data-uiselector="recommendBandBannerRegion" class="widget proposeBand">
 								<div data-viewname="DBandBannerRecommendBandsCompositeView">
 									<h2 class="tit">
-										<a href="#" data-icon="right" data-uiselector="btnMoveDiscover">이런 밴드는 어때요</a>
+										<a href="#" data-icon="right" data-uiselector="btnMoveDiscover">이런 카풀은 어때요</a>
 									</h2>
 									<div class="dummy" data-uiselector="recommendBandsDummy">
 										<div></div>
