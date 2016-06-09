@@ -557,6 +557,15 @@ function checkNum(){
 		}
 	}
 }
+function checkCvc(){
+	
+	var cvc=document.getElementById("cvc");
+		
+		if(cvc.value<100 || cvc.value>999){
+		
+			cvc.value=null;
+	}
+}
 </script>
 <c:if test="${!(empty msg)}">
 <script>
@@ -644,7 +653,7 @@ window.alert('${msg}');
 						</tr>
 						<tr>
 						<td>cvc</td>
-						<td><input type="number" name="cvc" style="width:40px;" maxlength="3" required></td>
+						<td><input onblur="checkCvc()" type="number" name="cvc" id="cvc" style="width:40px;" maxlength="3" required></td>
 						</tr>
 						<tr>
 						<td>개인/법인</td>

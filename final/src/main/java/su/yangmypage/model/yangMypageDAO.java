@@ -6,6 +6,7 @@ import su.member.model.MemberDTO;
 import su.paylist.model.PayListDTO;
 import su.pool.model.PoolDTO;
 import su.pool.model.PoolRateDTO;
+import su.wishpool.model.WishpoolListDTO;
 
 public interface yangMypageDAO {
 
@@ -19,6 +20,7 @@ public interface yangMypageDAO {
 	public List<PoolRateDTO> rateGetView(String userid);
 	public List<PoolRateDTO> rateSetView(String userid);
 	public List<PayListDTO> useList(String userid1);
+	public List<WishpoolListDTO> listWish(String id);
 	
 	
 	

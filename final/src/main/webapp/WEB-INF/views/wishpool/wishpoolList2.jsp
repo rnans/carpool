@@ -531,11 +531,31 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-
-
-
 </script>
-
+<script>
+function allCheck(){
+	
+	var allCheck=document.getElementById("blankCheckbox1");
+	var oneCheck=document.getElementById("blankCheckbox");
+	
+	if(allCheck.value=='true'){
+		
+		for(var i=0;i<oneCheck.length;i++){
+			window.alert(i);
+			oneCheck[i].checked=true;
+			allCheck.value='false';
+		}
+		
+	}else{
+		
+		for(var i=0;i<oneCheck.length;i++){
+			window.alert(i);
+			oneCheck[i].checked=false;
+			allCheck.value='true';
+		}
+	}
+}
+</script>
 	</head>
 	<body>
 	<%@ include file="../header.jsp" %>
@@ -588,7 +608,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<table border="1" cellspacing="0" align="center" class="table table-hover">
 					<thead>
 						<tr>
-							<th><input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></th>
+							<th><a href="javascript:allCheck()"><input type="checkbox" id="blankCheckbox1" value="true" aria-label="..."></a></th>
 							<th>번호</th>
 							<th>운전자글번호</th>
 							<th>이용자아이디</th>
@@ -605,12 +625,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					</tr>
 			</tfoot>
 			<tbody>
-		<c:if test="${empty lists }">
+		<c:if test="${empty dto}">
 				<td colspan="6" align="center">
 					등록된 즐겨찾기 가 없습니다.
 				</td>
 		</c:if>
-			<c:forEach var="dto" items="${lists }">
+			<c:forEach var="dto" items="${dto }">
 				<tr align="center">
 					<td><input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></td>
 					<td>${dto.idx }</td>

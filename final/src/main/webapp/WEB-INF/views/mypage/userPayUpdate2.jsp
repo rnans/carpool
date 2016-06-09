@@ -600,6 +600,15 @@ function checkNum(){
 		}
 	}
 }
+function checkCvc(){
+	
+	var cvc=document.getElementById("cvc");
+		
+		if(cvc.value<100 || cvc.value>999){
+		
+			cvc.value=null;
+	}
+}
 </script> 
 	</head>
 	
@@ -683,7 +692,7 @@ function checkNum(){
 						</tr>
 						<tr>
 						<td>cvc</td>
-						<td><input type="number" name="cvc" style="width:40px;" value="${dto.cvc}" maxlength="3" required></td>
+						<td><input type="number"  id="cvc" onblur="checkCvc()" name="cvc" style="width:40px;" value="${dto.cvc}" maxlength="3" required></td>
 						</tr>
 						<tr>
 						<td>개인/법인</td>

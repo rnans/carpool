@@ -3,34 +3,58 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.yangMyPage">
-	<select id="allPayInfo" parameterType="String" resultType="su.yangmypage.model.yangMypageDTO">
-	select * from userpayinfo where userid=#{userid}
+
+	<select id="allPayInfo" parameterType="String"
+		resultType="su.yangmypage.model.yangMypageDTO">
+		select * from userpayinfo where userid=#{userid}
 	</select>
+	
 	<insert id="userPayAdd" parameterType="su.yangmypage.model.yangMypageDTO">
-	insert into userpayinfo values(userpayinfo_idx.nextval,#{userid},#{cardtype1},#{cardnum},#{cardterm},#{cardname},#{cvc},#{cardtype2},userpayinfo_cardid.nextval,#{cardimg})
+		insert into userpayinfo
+		values(userpayinfo_idx.nextval,#{userid},#{cardtype1},#{cardnum},#{cardterm},#{cardname},#{cvc},#{cardtype2},userpayinfo_cardid.nextval,#{cardimg})
 	</insert>
-	<select id="cardIdxList" parameterType="Integer" resultType="su.yangmypage.model.yangMypageDTO">
-	select * from userpayinfo where idx=#{idx}
+	
+	<select id="cardIdxList" parameterType="Integer"
+		resultType="su.yangmypage.model.yangMypageDTO">
+		select * from userpayinfo where idx=#{idx}
 	</select>
+	
 	<update id="cardUpdate" parameterType="su.yangmypage.model.yangMypageDTO">
-	update userpayinfo set cardtype1=#{cardtype1}, cardnum=#{cardnum}, cardterm=#{cardterm}, cardname=#{cardname}, cvc=#{cvc}, cardtype2=#{cardtype2}, cardimg=#{cardimg} where idx=#{idx}
+		update userpayinfo set cardtype1=#{cardtype1}, cardnum=#{cardnum},
+		cardterm=#{cardterm}, cardname=#{cardname}, cvc=#{cvc},
+		cardtype2=#{cardtype2}, cardimg=#{cardimg} where idx=#{idx}
 	</update>
+	
 	<delete id="cardDel" parameterType="su.yangmypage.model.yangMypageDTO">
-	delete from userpayinfo where idx=#{idx} 
+		delete from userpayinfo where idx=#{idx}
 	</delete>
+	
 	<select id="cardNum" resultType="su.yangmypage.model.yangMypageDTO">
-	select cardnum from userpayinfo 
+		select cardnum from userpayinfo
 	</select>
-	<select id="reservationList" parameterType="String" resultType="su.pool.model.PoolDTO">
-	select * from reservationlist where userid=#{userid}
+	
+	<select id="reservationList" parameterType="String"
+		resultType="su.pool.model.PoolDTO">
+		select * from reservationlist where userid=#{userid}
 	</select>
-	<select id="rateSetView" parameterType="String" resultType="su.pool.model.PoolRateDTO">
-	select * from rate where userid=#{userid}
+	
+	<select id="rateSetView" parameterType="String"
+		resultType="su.pool.model.PoolRateDTO">
+		select * from rate where userid=#{userid}
 	</select>
-	<select id="rateGetView" parameterType="String" resultType="su.pool.model.PoolRateDTO">
-	select * from rate where aimid=#{userid}
+	
+	<select id="rateGetView" parameterType="String"
+		resultType="su.pool.model.PoolRateDTO">
+		select * from rate where aimid=#{userid}
 	</select>
-	<select id="useList" resultType="su.paylist.model.PayListDTO" parameterType="String">
-	select * from payalllist where userid1=#{userid1}
+	
+	<select id="useList" resultType="su.paylist.model.PayListDTO"
+		parameterType="String">
+		select * from payalllist where userid1=#{userid1}
+	</select>
+	
+	<select id="listWish" parameterType="String"
+		resultType="su.wishpool.model.WishpoolListDTO">
+		select * from wishpool where userid=#{id}
 	</select>
 </mapper>

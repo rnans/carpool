@@ -8,6 +8,7 @@ import su.member.model.MemberDTO;
 import su.paylist.model.PayListDTO;
 import su.pool.model.PoolDTO;
 import su.pool.model.PoolRateDTO;
+import su.wishpool.model.WishpoolListDTO;
 
 public class yangMypageDAOImple implements yangMypageDAO {
 
@@ -68,6 +69,12 @@ public class yangMypageDAOImple implements yangMypageDAO {
 	public List<PayListDTO> useList(String userid1) {
 		
 		List<PayListDTO> list=sqlMap.selectList("useList", userid1);
+		return list;
+	}
+	
+	public List<WishpoolListDTO> listWish(String id) {
+		
+		List<WishpoolListDTO> list=sqlMap.selectList("listWish", id);
 		return list;
 	}
 }

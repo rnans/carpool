@@ -23,6 +23,7 @@ import su.pool.model.PoolDTO;
 import su.pool.model.PoolRateDTO;
 import su.upload.model.UploadDAO;
 import su.upload.model.UploadDTO;
+import su.wishpool.model.WishpoolListDTO;
 import su.yangmypage.model.yangMypageDAO;
 import su.yangmypage.model.yangMypageDTO;
 
@@ -39,13 +40,14 @@ public class yangMyPageController {
 	public void setYangMyPageDao(yangMypageDAO yangMyPageDao) {
 		this.yangMyPageDao = yangMyPageDao;
 	}
-	
+
 	@Autowired
 	private UploadDAO uploadDao;
-	
+
 	public UploadDAO getUploadDao() {
 		return uploadDao;
 	}
+
 	public void setUploadDao(UploadDAO uploadDao) {
 		this.uploadDao = uploadDao;
 	}
@@ -55,13 +57,13 @@ public class yangMyPageController {
 
 		String userid = (String) session.getAttribute("sid");
 		List<yangMypageDTO> dto = yangMyPageDao.allPayInfo(userid);
-		
-		List<UploadDTO> dto2=uploadDao.imgFind(userid);
-		
+
+		List<UploadDTO> dto2 = uploadDao.imgFind(userid);
+
 		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("dto2",dto2);
-		
+
+		mav.addObject("dto2", dto2);
+
 		mav.addObject("dto", dto);
 		mav.setViewName("mypage/userPayInfo2");
 
@@ -81,36 +83,38 @@ public class yangMyPageController {
 		String userid = (String) session.getAttribute("sid");
 		int j = 0;
 		if (list.size() == 0) {
-		
-					j=0;
-			}else {
-				for(int i=0;i<list.size();i++){
-					if(list.get(i).getCardnum().equals(dto.getCardnum())){
-				j = 1;
-		}}}
+
+			j = 0;
+		} else {
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i).getCardnum().equals(dto.getCardnum())) {
+					j = 1;
+				}
+			}
+		}
 		ModelAndView mav = new ModelAndView();
 		String msg = null;
 		if (j == 0) {
-			
+
 			String cardImg = "";
-			
-			if(dto.getCardtype1().equals("신한")){
-				cardImg="img/shin.png";
+
+			if (dto.getCardtype1().equals("신한")) {
+				cardImg = "img/shin.png";
 				dto.setCardimg(cardImg);
-			}else if(dto.getCardtype1().equals("국민")){
-				cardImg="img/kok.png";
+			} else if (dto.getCardtype1().equals("국민")) {
+				cardImg = "img/kok.png";
 				dto.setCardimg(cardImg);
-			}else if(dto.getCardtype1().equals("농협")){
-				cardImg="img/nong.png";
+			} else if (dto.getCardtype1().equals("농협")) {
+				cardImg = "img/nong.png";
 				dto.setCardimg(cardImg);
-			}else if(dto.getCardtype1().equals("우리")){
-				cardImg="img/woori.png";
+			} else if (dto.getCardtype1().equals("우리")) {
+				cardImg = "img/woori.png";
 				dto.setCardimg(cardImg);
-			}else{
-				cardImg="img/noimg.png";
+			} else {
+				cardImg = "img/noimg.png";
 				dto.setCardimg(cardImg);
 			}
-			
+
 			dto.setUserid(userid);
 			int result = yangMyPageDao.userPayAdd(dto);
 			msg = result > 0 ? "결제정보 등록 성공" : "결제정보 등록 실패";
@@ -130,14 +134,14 @@ public class yangMyPageController {
 	public ModelAndView userPayUpdatePage(@RequestParam(value = "idx") int idx) {
 
 		yangMypageDTO dto = yangMyPageDao.idxPayInfo(idx);
-		String cardnum=dto.getCardnum();
+		String cardnum = dto.getCardnum();
 		StringTokenizer tokens = new StringTokenizer(cardnum);
-        
-        dto.setCardnum1(tokens.nextToken(","));
-        dto.setCardnum2(tokens.nextToken(","));
-        dto.setCardnum3(tokens.nextToken(","));
-        dto.setCardnum4(tokens.nextToken(","));
-		String cardterm=dto.getCardterm();
+
+		dto.setCardnum1(tokens.nextToken(","));
+		dto.setCardnum2(tokens.nextToken(","));
+		dto.setCardnum3(tokens.nextToken(","));
+		dto.setCardnum4(tokens.nextToken(","));
+		String cardterm = dto.getCardterm();
 		StringTokenizer tokens2 = new StringTokenizer(cardterm);
 		dto.setCardterm1(tokens2.nextToken(","));
 		dto.setCardterm2(tokens2.nextToken(","));
@@ -150,44 +154,45 @@ public class yangMyPageController {
 	}
 
 	@RequestMapping(value = "/cardUpdate.do", method = RequestMethod.POST)
-	public ModelAndView userPayUpdate(yangMypageDTO dto,HttpSession session,
-			@Param(value="fcardnum")String fcardnum) {
+	public ModelAndView userPayUpdate(yangMypageDTO dto, HttpSession session,
+			@Param(value = "fcardnum") String fcardnum) {
 
-		
 		List<yangMypageDTO> list = yangMyPageDao.allCardInfo();
 		String userid = (String) session.getAttribute("sid");
 		int j = 0;
 		if (list.size() == 0) {
-		
-					j=0;
-			}else{
-				for(int i=0;i<list.size();i++){
-					if(list.get(i).getCardnum().equals(dto.getCardnum())&&!(fcardnum.equals(dto.getCardnum()))){
-				j = 1;
-		}}}
+
+			j = 0;
+		} else {
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i).getCardnum().equals(dto.getCardnum()) && !(fcardnum.equals(dto.getCardnum()))) {
+					j = 1;
+				}
+			}
+		}
 		ModelAndView mav = new ModelAndView();
 		String msg = null;
 		if (j == 0) {
-			
+
 			String cardImg = "";
-			
-			if(dto.getCardtype1().equals("신한")){
-				cardImg="img/shin.png";
+
+			if (dto.getCardtype1().equals("신한")) {
+				cardImg = "img/shin.png";
 				dto.setCardimg(cardImg);
-			}else if(dto.getCardtype1().equals("국민")){
-				cardImg="img/kok.png";
+			} else if (dto.getCardtype1().equals("국민")) {
+				cardImg = "img/kok.png";
 				dto.setCardimg(cardImg);
-			}else if(dto.getCardtype1().equals("농협")){
-				cardImg="img/nong.png";
+			} else if (dto.getCardtype1().equals("농협")) {
+				cardImg = "img/nong.png";
 				dto.setCardimg(cardImg);
-			}else if(dto.getCardtype1().equals("우리")){
-				cardImg="img/woori.png";
+			} else if (dto.getCardtype1().equals("우리")) {
+				cardImg = "img/woori.png";
 				dto.setCardimg(cardImg);
-			}else{
-				cardImg="img/noimg.png";
+			} else {
+				cardImg = "img/noimg.png";
 				dto.setCardimg(cardImg);
 			}
-			
+
 			dto.setUserid(userid);
 			int result = yangMyPageDao.userPayUpdate(dto);
 			msg = result > 0 ? "결제정보 수정 성공" : "결제정보 수정 실패";
@@ -218,47 +223,62 @@ public class yangMyPageController {
 	}
 
 	@RequestMapping("/reservationList.do")
-	public ModelAndView reservationList(HttpSession session){
-		
+	public ModelAndView reservationList(HttpSession session) {
+
 		String userid = (String) session.getAttribute("sid");
 		List<PoolDTO> lists = yangMyPageDao.reservationList(userid);
-		List<UploadDTO> dto2=uploadDao.imgFind(userid);
+		List<UploadDTO> dto2 = uploadDao.imgFind(userid);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", lists);
-		mav.addObject("dto2",dto2);
+		mav.addObject("dto2", dto2);
 		mav.setViewName("mypage/reservationList");
 
 		return mav;
 	}
+
 	@RequestMapping("/rateView.do")
-	public ModelAndView rateView(HttpSession session){
-		
+	public ModelAndView rateView(HttpSession session) {
+
 		String userid = (String) session.getAttribute("sid");
 		List<PoolRateDTO> get = yangMyPageDao.rateGetView(userid);
 		List<PoolRateDTO> set = yangMyPageDao.rateSetView(userid);
-		List<UploadDTO> dto2=uploadDao.imgFind(userid);
-		
+		List<UploadDTO> dto2 = uploadDao.imgFind(userid);
+
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("dto2",dto2);
+		mav.addObject("dto2", dto2);
 		mav.addObject("get", get);
 		mav.addObject("set", set);
 		mav.setViewName("mypage/rateView");
 
 		return mav;
 	}
-	
+
 	@RequestMapping("/useList.do")
-	public ModelAndView useList(HttpSession session, String sid){
+	public ModelAndView useList(HttpSession session, String sid) {
+		
 		String userid1 = (String) session.getAttribute("sid");
 		List<PayListDTO> list = yangMyPageDao.useList(userid1);
-		List<UploadDTO> dto2=uploadDao.imgFind(userid1);
-		
-		ModelAndView mav=new ModelAndView();
+		List<UploadDTO> dto2 = uploadDao.imgFind(userid1);
+
+		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
-		mav.addObject("dto2",dto2);
+		mav.addObject("dto2", dto2);
 		mav.setViewName("mypage/useList2");
+
+		return mav;
+	}
+
+	@RequestMapping("/wishPoolList.do")
+	public ModelAndView listWish(HttpSession session){
+		
+		String id = (String) session.getAttribute("sid");
+		List<WishpoolListDTO> list = yangMyPageDao.listWish(id);
+		List<UploadDTO> dto2=uploadDao.imgFind(id);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("dto", list);
+		mav.addObject("dto2",dto2);
+		mav.setViewName("wishpool/wishpoolList2");
 		
 		return mav;
 	}
-	
 }

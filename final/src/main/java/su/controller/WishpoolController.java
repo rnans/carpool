@@ -43,7 +43,7 @@ public class WishpoolController {
 		this.uploadDao = uploadDao;
 	}
 
-	@RequestMapping("/wishPoolList.do")
+	@RequestMapping("/wi.do")
 	public ModelAndView wishpoollist(HttpSession session){
 		String id=(String)session.getAttribute("sid");
 		ModelAndView mav=new ModelAndView();
