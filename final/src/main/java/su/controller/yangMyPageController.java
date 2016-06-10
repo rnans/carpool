@@ -221,7 +221,7 @@ public class yangMyPageController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("gopage", "userPayInfo.do");
-		mav.setViewName("mypage/myPageMsg");
+		mav.setViewName("mypage/yangMyPageMsg");
 
 		return mav;
 	}
@@ -314,7 +314,7 @@ public class yangMyPageController {
 		}
 		mav.addObject("msg", msg);
 		mav.addObject("gopage", "wishPoolList.do");
-		mav.setViewName("mypage/myPageMsg");
+		mav.setViewName("mypage/yangMyPageMsg");
 
 		return mav;
 	}
