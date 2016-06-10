@@ -535,25 +535,23 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <script>
 function allCheck(){
 	
-	var allCheck=document.getElementById("blankCheckbox1");
-	var oneCheck=document.getElementById("blankCheckbox");
+	var allCheck1=document.getElementById("blankCheckbox1");
+	var oneCheck=document.getElementsByName("idx");
 	
-	if(allCheck.value=='true'){
-		
-		for(var i=0;i<oneCheck.length;i++){
-			window.alert(i);
+		if(allCheck1.checked==true){
+			
+			for(var i=0;i<oneCheck.length;i++){
+				
 			oneCheck[i].checked=true;
-			allCheck.value='false';
-		}
-		
-	}else{
-		
-		for(var i=0;i<oneCheck.length;i++){
-			window.alert(i);
+			
+			}
+		}else if(allCheck1.checked==false){
+			
+			for(var i=0;i<oneCheck.length;i++){
+				
 			oneCheck[i].checked=false;
-			allCheck.value='true';
+			}
 		}
-	}
 }
 </script>
 	</head>
@@ -604,11 +602,11 @@ function allCheck(){
 					
 						<nav class="codrops-demos">
 								
-			<form name="wishpool">
+			<form name="wishpool" action="wishDel.do">
 				<table border="1" cellspacing="0" align="center" class="table table-striped">
 					<thead>
 						<tr>
-							<th style="text-align: center;"><a href="javascript:allCheck()"><input type="checkbox" id="blankCheckbox1" value="true" aria-label="..."></a></th>
+							<th style="text-align: center;"><input type="checkbox" onclick="allCheck()" id="blankCheckbox1" value="true" aria-label="..."></th>
 							<th style="text-align: center;">번호</th>
 							<th style="text-align: center;">운전자글번호</th>
 							<th style="text-align: center;">이용자아이디</th>
@@ -633,7 +631,7 @@ function allCheck(){
 		</c:if>
 			<c:forEach var="dto" items="${dto }">
 				<tr align="center">
-					<td><input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></td>
+					<td><input type="checkbox" name="idx" value="${dto.idx }" aria-label="..."></td>
 					<td>${dto.idx }</td>
 					<td>${dto.aimidx}</td>
 					<td>${dto.userid}</td>

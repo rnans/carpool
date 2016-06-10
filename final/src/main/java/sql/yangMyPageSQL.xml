@@ -57,4 +57,8 @@
 		resultType="su.wishpool.model.WishpoolListDTO">
 		select * from wishpool where userid=#{id}
 	</select>
+	
+	<delete id="wishDel" parameterType="String" >
+	delete from wishpool where idx=#{idx} 
+	</delete>
 </mapper>

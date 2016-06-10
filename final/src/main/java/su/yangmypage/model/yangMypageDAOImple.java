@@ -77,4 +77,9 @@ public class yangMypageDAOImple implements yangMypageDAO {
 		List<WishpoolListDTO> list=sqlMap.selectList("listWish", id);
 		return list;
 	}
+	public int wishDel(String idx) {
+		
+		int count=sqlMap.delete("wishDel", idx);
+		return count;
+	}
 }

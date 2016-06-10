@@ -1,5 +1,7 @@
 package su.controller;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -30,6 +32,8 @@ import su.yangmypage.model.yangMypageDTO;
 @Controller
 public class yangMyPageController {
 
+	private static final int String = 0;
+	private static final int ArrayList = 0;
 	@Autowired
 	private yangMypageDAO yangMyPageDao;
 
@@ -255,7 +259,7 @@ public class yangMyPageController {
 
 	@RequestMapping("/useList.do")
 	public ModelAndView useList(HttpSession session, String sid) {
-		
+
 		String userid1 = (String) session.getAttribute("sid");
 		List<PayListDTO> list = yangMyPageDao.useList(userid1);
 		List<UploadDTO> dto2 = uploadDao.imgFind(userid1);
@@ -269,16 +273,49 @@ public class yangMyPageController {
 	}
 
 	@RequestMapping("/wishPoolList.do")
-	public ModelAndView listWish(HttpSession session){
-		
+	public ModelAndView listWish(HttpSession session) {
+
 		String id = (String) session.getAttribute("sid");
 		List<WishpoolListDTO> list = yangMyPageDao.listWish(id);
-		List<UploadDTO> dto2=uploadDao.imgFind(id);
-		ModelAndView mav=new ModelAndView();
+		List<UploadDTO> dto2 = uploadDao.imgFind(id);
+		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto", list);
-		mav.addObject("dto2",dto2);
+		mav.addObject("dto2", dto2);
 		mav.setViewName("wishpool/wishpoolList2");
-		
+
+		return mav;
+	}
+
+	@RequestMapping("/wishDel.do")
+	public ModelAndView wishDel(@Param(value = "idx") String idx) {
+
+		ModelAndView mav = new ModelAndView();
+
+		String msg = "삭제 성공";
+		if (idx == null) {
+			msg = "삭제할 항목이 없습니다.";
+		} else {
+			StringTokenizer tokens = new StringTokenizer(idx);
+
+			boolean result = true;
+			while (result) {
+				try {
+
+					int del = yangMyPageDao.wishDel(tokens.nextToken(","));
+
+					if (!(del == 1)) {
+						msg = "삭제 실패";
+					}
+				} catch (Exception e) {
+
+					result = false;
+				}
+			}
+		}
+		mav.addObject("msg", msg);
+		mav.addObject("gopage", "wishPoolList.do");
+		mav.setViewName("mypage/myPageMsg");
+
 		return mav;
 	}
 }
