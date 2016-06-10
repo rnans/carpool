@@ -55,7 +55,7 @@ header nav li
 
 #sec0_back
 {
-	background-color: rgba( 6, 183, 217, 0.6 );
+	background-color: #B2EBF4;
 
 }
 
@@ -118,7 +118,7 @@ header nav li
 	weight: 30%;
 	font-size: 30px;
 	margin: 0px auto;
-
+	position : relative;
 	color: #4F2E00;
 	padding: 10px;
 }
