@@ -41,6 +41,8 @@ header nav li
 	text-align: center;
 }
 
+
+
 #section0
 {
 	background-image: url('/semi/img/main.jpg');
@@ -150,7 +152,7 @@ footer p
 
 .input
 {	
-	width: 50%;
+	width: 100%;
 }
 
 textarea {
@@ -172,25 +174,6 @@ textarea:focus {
 
 
 
-input[type='text'], input[type='password'] ,select {
-  background-color: #fff;
-  color: #666;
-  font-size: 24px;
-  padding: 0px 0px;
-  margin: 0px 0px;
-  border: 2px solid #63D4FF;
-  height: 38px;
-  border-radius: 5px;
-  vertical-align:middle;  
-  }
-
-input[type='text']:focus, input[type='password']:focus, select:focus {
-  border: 2px solid #0C517F;
-  background-color: #fff;
-  height: 38px;
-  outline: none;
-  vertical-align:middle;  
-  }
 
 input[type='button'].big
 {
