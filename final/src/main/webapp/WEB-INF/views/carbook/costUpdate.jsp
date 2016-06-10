@@ -40,7 +40,6 @@ p{
     <div class="form-group">
       <label for="inputCostday" class="col-lg-2 control-label">날짜(<font color="red">*</font>)</label>
       <div class="col-lg-10">
-        <input type="text" id="sStartdt" name="sStartdt"  value=""onkeyup="javascript:date_mask(this.form.name, this.name);">
         <input type="text" name="costday" value=${list[0].costday } style="width:150px;" class="form-control" id="costday" placeholder="예)2016-01-01">
       </div>
     </div>

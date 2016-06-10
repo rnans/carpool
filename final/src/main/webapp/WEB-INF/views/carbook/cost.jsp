@@ -200,7 +200,7 @@ function costDel2(){
 						${list.km}&nbsp;km</td>
 						<td class="text-center">
 
-						<a href="javascript:idx='${list.idx}';alert(idx);" class="btn btn-info btn-xs">
+						<a href="javascript:idx='${list.idx}';update();" class="btn btn-info btn-xs">
 						<span class="glyphicon glyphicon-edit" data-title="Edit" data-target="#edit"></span> Edit</a>
 				
 						<a onclick="javascript:idx='${list.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete" class="btn btn-danger btn-xs">

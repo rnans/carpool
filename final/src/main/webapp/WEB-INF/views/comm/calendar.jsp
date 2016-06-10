@@ -248,7 +248,7 @@ a:focus, a:hover {
          <td style=" font-family:verdana, arial; padding:0px;  font-size: 9px; color: #333333" align="left" valign="top" class="day_cell">
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  style="padding: 0px;">
       <ul class="nav navbar-nav bar" style="height: 100%;width: 100%; padding: 0px;">
-      	<li><a href="javascript:startdate=<%=days[i][j] %>;write();" style="position:absolute; font-size:14px; width: 99px;height: 83px; z-index:0;">
+      	<li><a href="javascript:startdate=<%=days[i][j] %>;write();" style="position:absolute; font-size:14px; width: 89px;height: 83px; z-index:0;">
       	<%if(j==0){%><font style="color: #CC0000;"><%}%>
       	<%if(j==6){%><font style="color: #6666CC;"><%}%>
       	<%=days[i][j]%></a> 
