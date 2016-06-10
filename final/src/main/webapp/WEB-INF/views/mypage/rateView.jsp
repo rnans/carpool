@@ -604,10 +604,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
             <table border="1" cellspacing="0" align="center" class="table table-striped">
                <thead>
                   <tr>
-                     <th>userid</th>
-                     <th>rate</th>
-                     <th>content</th>
-                     <th>writedate</th>
+                     <th>아이디</th>
+                     <th>평점</th>
+                     <th>코멘트</th>
+                     <th>작성날짜</th>
                   </tr>   
                </thead>
             <tfoot>
@@ -639,10 +639,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
           <table border="1" cellspacing="0" align="center" class="table table-striped">
                <thead>
                   <tr>
-                     <th>userid</th>
-                     <th>rate</th>
-                     <th>content</th>
-                     <th>writedate</th>
+                     <th>아이디</th>
+                     <th>평점</th>
+                     <th>코멘트</th>
+                     <th>작성날짜</th>
                   </tr>   
                </thead>
             <tfoot>
