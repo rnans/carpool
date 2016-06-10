@@ -6,8 +6,9 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;  
+import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -142,13 +143,32 @@ public class MypageController {
 	}
 	/**비밀번호 변경*/
 	@RequestMapping("/pwdUpdate.do")
-	public ModelAndView PwdUpdate(MypageDTO dto,HttpServletRequest req){
+	public ModelAndView PwdUpdate(MypageDTO dto,HttpServletRequest req,
+			@Param(value="nowpwd")String nowpwd,
+			@Param(value="nowpwd2")String nowpwd2){
 		
-		int result=mypageDao.pwdUpdate(dto);
-		String msg=result>0?"비밀번호수정 완료!":"실패!";
+		String msg=null;
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("gopage","pwdUpdateForm.do");
+		mav.setViewName("mypage/yangMyPageMsg");
+		if(nowpwd2.equals("") || dto.getPwd().equals("") || dto.getPwd2().equals("")){
+			
+			msg="빈칸을 입력하세요.";
+		
+		}else if(!(nowpwd.equals(nowpwd2))){
+		
+			msg="현재 비번이 틀렸습니다.";
+			
+		}else if(dto.getPwd().equals(dto.getPwd2())){
+			
+			
+			int result=mypageDao.pwdUpdate(dto);
+			msg=result>0?"비밀번호수정 완료!":"실패!";
+		}else{
+			
+			msg="새로운 비번을 확인하세요.";
+		}
 		mav.addObject("msg", msg);
-		mav.setViewName("mypage/UpdateMsg");
 		return mav;
 	}
 	
