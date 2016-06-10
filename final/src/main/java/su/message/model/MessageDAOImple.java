@@ -73,6 +73,11 @@ public class MessageDAOImple implements MessageDAO {
 		MessageDTO mDto = sqlMap.selectOne("messageInfo",idx);
 		return mDto;
 	}
+	
+	public List<MessageDTO> alramView(String userid) {
+		List<MessageDTO> list = sqlMap.selectList("alramView", userid);
+		return list;
+	}
 }
 
 	

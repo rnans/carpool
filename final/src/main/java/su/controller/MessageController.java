@@ -147,25 +147,31 @@ public class MessageController {
 		
 		String userid = (String)session.getAttribute("sid");
 		
-		int totalCnt=messageDao.messageTotalCnt(userid);
-		System.out.println(totalCnt);
-		int listSize=10;
-		int pageSize=2;
-		int messageNumber=messageDao.messageNumber(userid);
-		List<MessageDTO> list=messageDao.messageShow(cp,listSize,userid);
-		
-		session.setAttribute("mNum", messageNumber);
-		
-		String pageStr=
-		su.Page.SuPage.makePage("messageList.do", totalCnt, listSize, pageSize, cp);
-		//System.out.println("messageNumber="+messageNumber);
-		MessageDTO mDTO = new MessageDTO();
-		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("lists",list);
-		mav.addObject("messageNumber",messageNumber);
-		mav.addObject("pageStr", pageStr);
-		mav.setViewName("message/mList");
+		
+		if(userid==null){
+			mav.addObject("msg", "로그인후 이용가능합니다.");
+			mav.addObject("gopage", "index.do");
+			mav.setViewName("message/confirmMsg");
+		}else{
+			int totalCnt=messageDao.messageTotalCnt(userid);
+			System.out.println(totalCnt);
+			int listSize=10;
+			int pageSize=2;
+			int messageNumber=messageDao.messageNumber(userid);
+			List<MessageDTO> list=messageDao.messageShow(cp,listSize,userid);
+			
+			session.setAttribute("mNum", messageNumber);
+			
+			String pageStr=
+			su.Page.SuPage.makePage("messageList.do", totalCnt, listSize, pageSize, cp);
+			//System.out.println("messageNumber="+messageNumber);
+			MessageDTO mDTO = new MessageDTO();
+			mav.addObject("lists",list);
+			mav.addObject("messageNumber",messageNumber);
+			mav.addObject("pageStr", pageStr);
+			mav.setViewName("message/mList");
+		}
 		return mav;
 	}
 	
@@ -235,13 +241,32 @@ public class MessageController {
 		return mav;
 	}
 	
-	@RequestMapping("/messageReSend.do")
-	public ModelAndView mrSend(HttpSession session){
+	@RequestMapping("/messageAlram.do")
+	public ModelAndView mAlram(HttpSession session){
 		
 		String userid = (String)session.getAttribute("sid");
+		
+		List<MessageDTO> list = messageDao.alramView(userid);
+		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("");
+		mav.addObject("lists", list);
+		mav.setViewName("message/mAlram");
 		return mav;
 	}
+	/*
+	@RequestMapping("/mWriting.do")
+	public ModelAndView mWriting(HttpSession session){
+		String userid = (String)session.getAttribute("sid");
+		ModelAndView mav = new ModelAndView();
+		
+		if(userid == null){
+			mav.addObject("msg", "로그인후 이용가능합니다.");
+			mav.addObject("gopage", "index.do");
+			mav.setViewName("message/confirmMsg");
+		}else{
+			mav.setViewName("message/mReWrite");
+		}
+		return mav;
+	}*/
 }
 

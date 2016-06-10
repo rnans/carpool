@@ -42,4 +42,7 @@
 	<select id="messageInfo" resultType="su.message.model.MessageDTO">
 		select sendid from message where idx=#{idx}
 	</select>
+	<select id="alramView"  resultType="su.message.model.MessageDTO">
+		select sendid,content from message where receiveid=#{userid} and reading='안읽음'
+	</select>
 </mapper>

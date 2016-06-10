@@ -90,10 +90,13 @@
 				</li>
 				<li><a href="carList.do">차량관리</a></li>
 				<li class="dropdown">
-					<a href="comm.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">쪽지함 <span class="badge">${mNum}</span><span class="caret"></span></a>
+					<a href="messageList.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">쪽지함 <span class="badge">${mNum}</span><span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="">쪽지쓰기</a></li>
 						<li><a href="messageList.do">쪽지함보기</a></li>
+						
+						<li><a href="">최신알림영역</a></li>
+						<li class="divider"></li>
+						<li class="view">새ㅐ 알림이 들어갈 영역</li>
 					</ul>
 				</li>
 			</ul>
@@ -164,6 +167,17 @@ function pwFindCheck(){
 		form.submit();
 	}
 }
+function alram(){
+	sendRequest("messageAlram.do",null, alramResult, 'GET');
+}
+function alramResult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			$('.view').html(XHR.responseText);
+		}
+	}
+}
+alram();
 </script>
 
 <script src="/final02/js/idChecked.js"></script>
