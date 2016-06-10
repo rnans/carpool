@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import su.message.model.*;
+import su.upload.model.UploadDTO;
 
 @Controller
 public class MessageController {
@@ -143,7 +144,8 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/messageList.do")
-	public ModelAndView mList(@RequestParam(value="cp",defaultValue="1")int cp,HttpSession session){
+	public ModelAndView mList(@RequestParam(value="cp",defaultValue="1")int cp,HttpSession session,
+			UploadDTO uDto){
 		
 		String userid = (String)session.getAttribute("sid");
 		
@@ -163,11 +165,15 @@ public class MessageController {
 			
 			session.setAttribute("mNum", messageNumber);
 			
+			//uDto = messageDao.mImage(userid);
+			String mimg = uDto.getFilename();
+			System.out.println("mimg="+mimg);
 			String pageStr=
 			su.Page.SuPage.makePage("messageList.do", totalCnt, listSize, pageSize, cp);
 			//System.out.println("messageNumber="+messageNumber);
 			MessageDTO mDTO = new MessageDTO();
 			mav.addObject("lists",list);
+			//mav.addObject("mImg",mimg);
 			mav.addObject("messageNumber",messageNumber);
 			mav.addObject("pageStr", pageStr);
 			mav.setViewName("message/mList");

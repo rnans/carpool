@@ -90,10 +90,9 @@
 				</li>
 				<li><a href="carList.do">차량관리</a></li>
 				<li class="dropdown">
-					<a href="messageList.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">쪽지함 <span class="badge">${mNum}</span><span class="caret"></span></a>
+					<a href="messageList.do" onclick="alram()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">쪽지함 <span class="badge">${mNum}</span><span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="messageList.do">쪽지함보기</a></li>
-						<hr>
 						<li class="view"></li>
 					</ul>
 				</li>
@@ -175,7 +174,7 @@ function alramResult(){
 		}
 	}
 }
-	alram();
+	
 </script>
 
 <script src="/final02/js/idChecked.js"></script>

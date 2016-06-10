@@ -2,6 +2,8 @@ package su.message.model;
 
 import java.util.List;
 
+import su.upload.model.UploadDTO;
+
 public interface MessageDAO {
 
 	public int messageSend(MessageDTO dto);
@@ -17,5 +19,5 @@ public interface MessageDAO {
 	public int noReadDel(String userid);
 	public MessageDTO messageInfo(int idx);
 	public List<MessageDTO> alramView(String userid);
-	//public u
+	public UploadDTO mImage(String userid);
 }

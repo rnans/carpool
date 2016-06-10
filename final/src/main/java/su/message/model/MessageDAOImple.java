@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import su.upload.model.UploadDTO;
+
 public class MessageDAOImple implements MessageDAO {
 	private SqlSessionTemplate sqlMap;
 
@@ -77,6 +79,11 @@ public class MessageDAOImple implements MessageDAO {
 	public List<MessageDTO> alramView(String userid) {
 		List<MessageDTO> list = sqlMap.selectList("alramView", userid);
 		return list;
+	}
+	
+	public UploadDTO mImage(String userid) {
+		UploadDTO uDto = sqlMap.selectOne("mImage", userid);
+		return uDto;
 	}
 }
 

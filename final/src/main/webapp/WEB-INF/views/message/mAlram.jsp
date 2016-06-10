@@ -14,10 +14,8 @@
 </head>
 <body>
 	<div class="Mpart">
-	<%-- <c:if test="${empty alram}">새로운 알림이 없습니다.</c:if> --%>
 		<table class="Mtpart">
 			
-		
 		<c:forEach var="m" items="${alram}">
 			<tbody class="mView">
 				<tr>
