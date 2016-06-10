@@ -11,11 +11,11 @@ public interface commDAO {
 	
 	public int commWrite(commBBSDTO dto);
 	
-	public List<commBBSDTO> bbsList(); 
+	public List<commBBSDTO> bbsList(String poolname); 
 
 	public int scheWrite(scheDTO dto);
 	
-	public List<scheDTO> scheList();
+	public List<scheDTO> scheList(String poolname);
 		
 	public List<carpoolinfoDTO> commMemberList(String poolname);
 	
@@ -27,7 +27,7 @@ public interface commDAO {
 	
 	public int redel(String idx);
 	
-	public List<commBBSDTO> bbsserch(String search); 
+	public List<commBBSDTO> bbsserch(String search, String poolname); 
 	
 	public int bbsupdate(String idx);
 	public int bbsupdate2(String idx);
@@ -36,7 +36,7 @@ public interface commDAO {
 	
 	public List<UploadDTO> imgList(String poolname);
 	
-	
+	public List<carpoolinfoDTO> poollist(String id);
 	//uploadtest
 	
 }

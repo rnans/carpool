@@ -5,25 +5,25 @@
 <mapper namespace="sql.comm">
 
 	<insert id="commWrite" parameterType="su.comm.model.commBBSDTO">
-		insert into commbbs values(comm_idx.nextval, 'test',
+		insert into commbbs values(comm_idx.nextval, #{poolname},
         #{id}, '남구문', #{content},  sysdate, #{photo}, 0)
 	</insert>
 	
-	<select id="bbsList" resultType="su.comm.model.commBBSDTO">
-			select * from commBBS order by idx desc
+	<select id="bbsList"  parameterType="String" resultType="su.comm.model.commBBSDTO">
+		select * from commBBS where poolname=#{poolname} order by idx desc
 	</select>
 
 	<insert id="scheWrite" parameterType="su.comm.model.scheDTO">
-		insert into schedule values(schedule_idx.nextval,  #{id}, 'test', 
+		insert into schedule values(schedule_idx.nextval,  #{id}, #{commid}, 
 		#{subject, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, #{startday, jdbcType=VARCHAR}, #{stime} ,  #{endday, jdbcType=VARCHAR}, #{etime} , #{banbok, jdbcType=VARCHAR}, sysdate)
 	</insert>
 	
-	<select id="scheList" resultType="su.comm.model.scheDTO">
-			select * from schedule order by idx desc
+	<select id="scheList" parameterType="String" resultType="su.comm.model.scheDTO">
+			select * from schedule where commid=#{poolname} order by idx desc
 	</select>
 	
 	<select id="commmember" parameterType="String" resultType="su.comm.model.carpoolinfoDTO">
-		select * from carpoolinfo where poolname='test'
+		select * from carpoolinfo where poolname=#{poolname}
 	</select>
 	
 	<delete id="commbbsdel" parameterType="String">
@@ -31,7 +31,7 @@
 	</delete>
 	
 	<insert id="reWrite" parameterType="su.comm.model.CommBBSreDTO">
-		insert into commbbs_re values(commbbs_re_idx.nextval, 'test', #{bbsidx},
+		insert into commbbs_re values(commbbs_re_idx.nextval, #{commid}, #{bbsidx},
         #{id},  #{name}, #{content}, sysdate)
 	</insert>
 	
@@ -64,8 +64,8 @@
 	</select>
 	<!-- adminComm -->
 	
-	<select id="bbssearch" parameterType="String" resultType="su.comm.model.commBBSDTO">
-		select * from commbbs where poolname='test' and id like '%'||#{search}||'%' or content like '%'||#{search}||'%'
+	<select id="bbssearch" parameterType="Map" resultType="su.comm.model.commBBSDTO">
+		select * from commbbs where poolname=#{poolname} and (id like '%'||#{search}||'%' or content like '%'||#{search}||'%')
 	</select>
 	
 	<!-- notice -->
@@ -84,6 +84,10 @@
 	
 	<select  id="commimgList" parameterType="String" resultType="su.upload.model.UploadDTO">
 		select * from file_upload where poolname=#{poolname} order by idx asc
+	</select>
+	
+	<select  id="poollist" parameterType="String" resultType="su.comm.model.carpoolinfoDTO">
+		select * from carpoolinfo where id = #{id}
 	</select>
 	
 </mapper>

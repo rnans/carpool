@@ -1,5 +1,6 @@
 package su.comm.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -25,15 +26,17 @@ public class commDAOImple implements commDAO {
 		return count;
 	}
 	//글 띄우기
-	public List<commBBSDTO> bbsList(){
+	public List<commBBSDTO> bbsList(String poolname){
 		
-		List<commBBSDTO> list=sqlMap.selectList("bbsList");		
+		List<commBBSDTO> list=sqlMap.selectList("bbsList", poolname);		
 		return list;
 	}
 	//search
-	public List<commBBSDTO> bbsserch(String search){
-		
-		List<commBBSDTO> list= sqlMap.selectList("bbssearch", search);
+	public List<commBBSDTO> bbsserch(String search, String poolname){
+		HashMap map=new HashMap();
+		map.put("search", search);
+		map.put("poolname", poolname);
+		List<commBBSDTO> list= sqlMap.selectList("bbssearch", map);
 		return list;
 	}
 	
@@ -62,8 +65,8 @@ public class commDAOImple implements commDAO {
 	}
 	
 	//스케쥴글 띄우기
-	public List<scheDTO> scheList(){		
-		List<scheDTO> list=sqlMap.selectList("scheList");		
+	public List<scheDTO> scheList(String poolname){		
+		List<scheDTO> list=sqlMap.selectList("scheList", poolname);		
 		return list;
 	}
 	
@@ -98,6 +101,12 @@ public class commDAOImple implements commDAO {
 	public List<UploadDTO> imgList(String poolname){
 		List<UploadDTO> list=sqlMap.selectList("commimgList", poolname);
 				return list;
+	}
+	
+	public List<carpoolinfoDTO> poollist(String id){
+		
+		List<carpoolinfoDTO> list=sqlMap.selectList("poollist", id);
+		return list;
 	}
 	
 	

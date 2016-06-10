@@ -225,14 +225,13 @@ public class MemberController {
 	/**현재접속인원 수 파악*/
 	
 	@RequestMapping("/memberList.do")
-	public ModelAndView numStatus(){
+	public ModelAndView numStatus(String poolname){
 		
 		int count = statusDao.numStatus();
-	
 		List<StatusDTO> list = statusDao.listStatus();
-		
-		
+				
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("poolname", poolname);
 		mav.addObject("count",count);
 		mav.addObject("lists",list);
 		mav.setViewName("memberList");

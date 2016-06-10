@@ -3,6 +3,7 @@ package su.comm.controller;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,7 +66,7 @@ public class commController {
 	 	
 
 	@RequestMapping("comm.do")
-	public ModelAndView comm(HttpSession session){
+	public ModelAndView comm(HttpSession session, String poolname){
 		ModelAndView mav=new ModelAndView();		
 		String sid=(String)session.getAttribute("sid");
 		
@@ -76,11 +77,13 @@ public class commController {
           return mav;
 
 		}else{			
-			List<commBBSDTO> list=commDao.bbsList();		
-			String commid="test";
+	
+			String commid=poolname;
+			List<commBBSDTO> list=commDao.bbsList(commid);	
 			List<CommBBSreDTO> list2=commDao.reList(commid);
 			int recount=0;
-	
+			
+			mav.addObject("poolname", commid);
 			mav.addObject("recount", recount);
 			mav.addObject("list", list);
 			mav.addObject("list2",list2);
@@ -90,23 +93,21 @@ public class commController {
 	}
 	
 	@RequestMapping("commsearch.do")
-	public ModelAndView commsearch(String search){
+	public ModelAndView commsearch(String search, String poolname){
 		ModelAndView mav=new ModelAndView();		
-		
+			
 			if(search==null||search.equals("")){
-			List<commBBSDTO> list=commDao.bbsList();		
-			String commid="test";
-			List<CommBBSreDTO> list2=commDao.reList(commid);
+			List<commBBSDTO> list=commDao.bbsList(poolname);		
+			List<CommBBSreDTO> list2=commDao.reList(poolname);
 			mav.addObject("list", list);
 			mav.addObject("list2",list2);
 			}else{
-			List<commBBSDTO> list3=commDao.bbsserch(search);
-			String commid="test";
-			List<CommBBSreDTO> list2=commDao.reList(commid);
+			List<commBBSDTO> list3=commDao.bbsserch(search, poolname);
+			List<CommBBSreDTO> list2=commDao.reList(poolname);
 			mav.addObject("list", list3);
 			mav.addObject("list2",list2);
 			}
-
+			mav.addObject("poolname", poolname);
 			mav.setViewName("comm/comm");
 			return mav;
 	}
@@ -141,7 +142,7 @@ public class commController {
 		     String filepath=root_path+attach_path+filename;
 			 String id=(String)session.getAttribute("sid");
 			 
-			 String poolname="test"; //수정요망
+			 String poolname=dto.getPoolname(); //수정요망
 			 
 			 dto2.setId(id); dto2.setFilename(filename); 
 			 dto2.setFilepath(filepath); dto2.setFiletype(filetype);
@@ -159,19 +160,18 @@ public class commController {
 		String msg=count2>0?"글 작성 성공":"글 작성 실패";
 		
 		
-
+		mav.addObject("poolname", dto.getPoolname());
 		mav.addObject("msg", msg);
 		mav.setViewName("comm/commBBSmsg");
-		return mav;
-		
-		
+		return mav;	
 		
 	}
 	
 	@RequestMapping("calendar.do")
-	public ModelAndView calendar(){
+	public ModelAndView calendar(String poolname){
 		ModelAndView mav=new ModelAndView();
-		List<scheDTO> list=commDao.scheList();			
+		List<scheDTO> list=commDao.scheList(poolname);
+		mav.addObject("poolname",poolname);
 		mav.addObject("list", list);
 		mav.setViewName("comm/calendar");
 		return mav;
@@ -181,11 +181,12 @@ public class commController {
 	@RequestMapping("scheWrite.do")
 	public ModelAndView scheWritego(String day, 
 			@RequestParam(value = "month",required = false)String month,
-			@RequestParam(value = "year",required = false)String year	){
+			@RequestParam(value = "year",required = false)String year, String poolname){
 		
 		String day2=year+"-"+month+"-"+day;
 		System.out.println(day2);
-		ModelAndView mav=new ModelAndView();			
+		ModelAndView mav=new ModelAndView();	
+		mav.addObject("poolname", poolname);
 		mav.addObject("day", day2);
 		mav.setViewName("comm/scheWrite");	
 		return mav;
@@ -205,24 +206,25 @@ public class commController {
 	}
 	
 	@RequestMapping("commMember.do")
-	public ModelAndView commMember(HttpSession session){
+	public ModelAndView commMember(HttpSession session, String poolname){
 		
 		String id=(String)session.getAttribute("sid");
-		String poolname="test";
+
 		List<carpoolinfoDTO> list2=commDao.commMemberList(poolname);
 		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("comm/commMember");
+		mav.addObject("poolname", poolname);
 		mav.addObject("memberlist", list2);
 		return mav;
 		
 	}	
 	
 	@RequestMapping("reWrite.do")
-	public ModelAndView reWrite(CommBBSreDTO dto, HttpSession session){
+	public ModelAndView reWrite(CommBBSreDTO dto, HttpSession session,String commid){
 		String id=(String)session.getAttribute("sid");
 		String name=(String)session.getAttribute("sname");
-		dto.setId(id); dto.setName(name);
+		dto.setId(id); dto.setName(name); dto.setCommid(commid);
 		
 		int count=commDao.reWrite(dto);
 		String msg=count>0?"글 작성 성공":"글 작성 실패";
@@ -248,17 +250,17 @@ public class commController {
 	}
 	
 	@RequestMapping("bbsupdate.do")
-	public String commupdate(String idx){
+	public String commupdate(String idx, String poolname){
 		int count=commDao.bbsupdate(idx);
 		if(count>0){System.out.println("성공");}
-		return "redirect:comm.do";
+		return "redirect:comm.do?poolname="+poolname;
 	}
 	
 	@RequestMapping("bbsupdate2.do")
-	public String commupdate2(String idx){
+	public String commupdate2(String idx, String poolname){
 		int count=commDao.bbsupdate2(idx);
 		if(count>0){System.out.println("성공");}
-		return "redirect:comm.do";
+		return "redirect:comm.do?poolname="+poolname;
 	}
 	
 	
@@ -267,20 +269,17 @@ public class commController {
 		return "comm/test";
 	}
 
-	@RequestMapping("commMain.do")
-	public String commmain(){
-		return "comm/commMain";
-	}
+
 	
 	@RequestMapping("gallery.do")
-	public ModelAndView gallery(){
+	public ModelAndView gallery(String poolname){
 		
 		
 		ModelAndView mav=new ModelAndView();
-		String poolname="test";
 		
 		List<UploadDTO> list=commDao.imgList(poolname);
 		mav.addObject("list", list);
+		mav.addObject("poolname", poolname);
 		mav.setViewName("comm/gallery");
 		return mav;
 	}
@@ -292,6 +291,20 @@ public class commController {
 		mav.setViewName("poolList");
 		return mav;
 	}
-	 	
+	
+	@RequestMapping("commMain.do")
+	public ModelAndView commMain(HttpSession session){
+		String id=(String)session.getAttribute("sid");
+		ModelAndView mav=new ModelAndView();
+		
+		List<carpoolinfoDTO> poollist=commDao.poollist(id);
+		
+		mav.addObject("poollist", poollist);
+		
+		mav.setViewName("comm/commMain");
+		return mav;
+		
+	}
+		 	
 
 }
