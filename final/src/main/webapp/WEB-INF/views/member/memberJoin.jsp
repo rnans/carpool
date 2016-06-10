@@ -163,7 +163,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
     			<label for="pwd2" class="col-sm-2 control-label">비밀번호 확인</label>
     		 <div class="col-sm-6">
    				<input type="password" class="form-control" name="pwd2" id="pwd2" placeholder="비밀번호 확인" onblur="pwdCheck()">
-   				 <span id="pwdmsg">영문+숫자 or 영문,숫자로 된 6~18 문자</span>	
+   				 <span id="pwdmsg">영문+숫자 or 영문,숫자로 된 6~18 문자</span>
    			 </div>
    		</div>
    		
