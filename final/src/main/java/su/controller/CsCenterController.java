@@ -95,7 +95,9 @@ public class CsCenterController {
 	public ModelAndView noticeContent(int idx){
 		int result =csnoticeDao.noticeReadnum(idx);
 		List<CsNoticeDTO> list=csnoticeDao.noticeContent(idx);
-		
+		for(int i=0; i<list.size(); i++){
+			list.get(i).getContent().replaceAll("/n", "<br>");
+		}
  		ModelAndView mav=new ModelAndView();
  		mav.addObject("result",result);
 		mav.addObject("list", list);
@@ -139,8 +141,7 @@ public class CsCenterController {
 		mav.addObject("pageStr",pageStr);
 		mav.setViewName("csCenter/oneAndOne");
 		  return mav;
-        }
-    
+        }  
 	}
 	//1:1문의 보기
    @RequestMapping("/oneandoneContent.do")

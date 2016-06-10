@@ -101,7 +101,10 @@ public class AdminCsCenterController {
 	public String noticeWriteForm(){
 		return "admin/noticeWrite";
 	}
-	
+	private void replace() {
+		// TODO Auto-generated method stub
+
+	}
 		@RequestMapping("/noticeWrite.do")
 		public ModelAndView noticeAdd(CsNoticeDTO dto){
 			int result=csnoticeDao.noticeAdd(dto);
