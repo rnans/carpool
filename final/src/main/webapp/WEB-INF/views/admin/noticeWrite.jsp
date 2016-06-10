@@ -17,18 +17,16 @@
 </style>
 </head>
 <body>
-<div>
 <%@include file="../header.jsp" %>
+    <div style="width: 100%; ">
+<div style="width: 20%; margin: 100px 0px 0px 0px">
+		<%@include file="../adHeader.jsp" %>
+		</div>
+<div style="margin: 0px auto; padding-left:150px;display: inline-block; width: 80%;  ">
+ <div align="center" style="margin-left:180px;">
+<h2 >공지사항글쓰기</h2>
+
 </div>
-<div>
-<%@include file="../adHeader.jsp" %>
-</div>
-<br><br><br>
-<div align="center">
-<h3>공지사항 글쓰기</h3>
-</div>
-<div class="container" style="margin: 0px auto;">
-<div class="row">
     
 <div class="col-sm-8 contact-form" style="margin-left: 350px;">
 <form action="noticeWrite.do" id="contact" class="form" role="form" >
@@ -43,8 +41,8 @@
 <br>
 내용
 <br>
-<textarea class="form-control3" id="content" name="content" rows="5"></textarea>
-<br />
+<textarea class="form-control3" id="content" name="content" rows="5" ></textarea>
+<br/>
 <input type="reset" value="다시작성" class="btn btn-primary pull-center" >
 <button class="btn btn-primary pull-center" type="submit">글올리기</button>
 

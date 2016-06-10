@@ -30,7 +30,6 @@ div {
 	padding: 20px 0;
 	border-bottom: solid 1px #ccc;
 }
-
 /* button 
 ---------------------------------------------- */
 .button {
@@ -108,10 +107,11 @@ div {
 	<%@include file="csCenterSubMenu.jsp" %>
 	
 		<div class=".col-md-10"  style="display: inline-block; width: 70%; ">	
+		<div style=" padding: 10px; height:570px;">	
 		<h3 align="center" style="margin-left: 140px;">
 		1:1문의</h3>
 		
-			 <div class="btn-group" role="group" aria-label="..." style="margin-left:940px">
+			 <div class="btn-group" role="group" aria-label="..." style="margin-left:900px">
   <a href="oneAndOneWriteForm.do" class="btn btn-default">문의하기</a>
 </div>
 <table class="table table-list-search" style="margin-left: 70px;"> 
@@ -159,7 +159,7 @@ div {
 		</div>
 	</div>
 	</div>
-
+</div>
 <hr>
 풋부분
 </body>

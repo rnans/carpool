@@ -73,9 +73,11 @@
 					<th>번호</th>
 					<th>결제아이디</th>
 				    <th>모집상태</th>
-					<th>글타입</th>
+					<th>카풀종류</th>
 					<th>기간</th>
 					<th>글제목</th>
+	                <th>결제사</th>
+	                <th>카드번호</th>
 					<th>금액</th>		
 				</tr>				
 			</thead>
@@ -93,6 +95,8 @@
 					<td>${list.pooltype }</td>
 					<td>${list.termtype}</td>
 					<td>${list.poolname}</td>
+					<td>${list.cardtype1 }</td>
+					<td>${list.cardnum }</td>
 					<td>${list.pay }</td>							
 				</tr>
 				</c:forEach>

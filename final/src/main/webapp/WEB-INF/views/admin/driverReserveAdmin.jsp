@@ -275,12 +275,11 @@ function showResult(){//응답결과함수
 
 					<select name="select" style="width: 130px;"
 						class="dropdown-select">
-						<option value="writer">작성자</option>
-						<option value="type">문의유형</option>
-						<option value="status">답변현황</option>
+						<option value="masterid">드라이버ID</option>
+						<option value="status">모집상태</option>
+						<option value="aimidx">예약글번호</option>
 					</select>
 				</div>
-
 				<input type="text" class="search-query" id="search" name="search"
 					style="width: 150px; padding: 0px 0px;">
 				<button type="button" class="btn" onclick="show();">

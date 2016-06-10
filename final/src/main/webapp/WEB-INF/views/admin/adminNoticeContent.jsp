@@ -30,21 +30,17 @@
 </style>
 </head>
 <body>
-<div>헤더
 <%@include file="../header.jsp" %>
+    <div style="width: 100%; ">
+<div style="width: 20%; margin: 100px 0px 0px 0px">
+		<%@include file="../adHeader.jsp" %>
+		</div>
+<div style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;  ">
+ <div align="center" style="margin-left:150px;">
+<h2 >공지사항글보기</h2>
+
 </div>
-<div>메뉴바
-<%@include file="../adHeader.jsp" %>
-</div>
-<br>
-<div align="center">
-<h3>공지사항 글보기</h3>
-</div>
-<br>
-<div class=".col-md-8" style="margin-left:350px; display: inline-block; width: 100%; " >
-<div class="container" style="margin: 0px auto;" >
-<div class="row">
-<div class="col-sm-8 contact-form" style="margin: 0px auto;">
+<div class="col-sm-8 contact-form"  style="margin-left:250px;">
 <form action="NoticeUpdate_ok.do" id="contact" class="form" role="form" >
 <div class="row">
 <div class="col-xs-3 col-md-3 form-group">
@@ -72,7 +68,6 @@
 <br>
 <button class="btn btn-primary pull-left" type="submit">수정하기</button>
 </form>
-</div>
 </div>
 </div>
 </div>

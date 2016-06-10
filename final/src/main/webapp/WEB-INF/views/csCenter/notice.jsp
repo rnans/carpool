@@ -27,10 +27,10 @@ body {
 				
 <%@include file="csCenterSubMenu.jsp" %>
 	<div class=".col-md-10" style="display: inline-block; width: 70%; ">
-
+<div style=" padding: 10px; height:570px;">
 	<h3 align="center" style="margin-left: 140px;">
 	공지사항</h3>
-<table class="table table-list-search" style="margin-top: 60px;margin-left: 70px;"> 
+<table class="table table-list-search" style="margin-top: 40px;margin-left: 70px;"> 
 <thead>
 <tr>
    <th>번호</th>
@@ -70,6 +70,7 @@ body {
 </div>
 		</div>
 	</div>
+</div>
 </div>
 <hr>
 풋부분

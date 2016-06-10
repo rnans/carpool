@@ -97,11 +97,11 @@ function driverPoolDel(){
 					<th>도착지</th> <!-- endspot -->
 					<th>정기요일</th> <!-- days -->
 					<th>요금</th> <!-- pay -->
-					<th>예약현황</th> <!-- status -->
+					<th>모집현황</th> <!-- status -->
 					<th>흡연여부</th> <!-- smoking -->
 					<th>추가내용</th> <!-- pluscontent -->
 					<th>등록일</th> <!-- writedate -->
-					<th>예약취소</th>
+					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody>
