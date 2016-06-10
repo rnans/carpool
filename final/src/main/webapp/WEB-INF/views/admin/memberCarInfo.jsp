@@ -52,27 +52,7 @@
 }
 </style>
 
-<!-- 삭제,차량승인 모달 -->
-<script type="text/javascript" src="js/httpRequest.js"></script>
-<script type="text/javascript">
-var idx = null;
-var confirm= null;
 
-function memberCarDel(){
-	this.idx=idx;
-	var params='idx='+idx;
-	window.alert(params);
-	sendRequest('memberCarDel.do', params, null, 'GET');
-	location.reload();
-}
-function memberCarOk(){
-	this.idx=idx;
-	confirm=document.getElementById("confirm2").value;
-	var params='idx='+idx+'&confirm='+confirm;
-	sendRequest('memberCarOk.do', params, null, 'GET');
-	location.reload();
-}
-</script>
 
 </head>
 <body>
@@ -102,6 +82,7 @@ function memberCarOk(){
 					<th>차종</th><!-- cartype -->
 					<th>차번호</th><!-- carnum -->
 					<th>승인여부</th> <!-- confirm -->
+					<th>인증</th>
 					<th>승인</th>
 					<th>삭제</th>
 				</tr>
@@ -123,6 +104,12 @@ function memberCarOk(){
 							<td>${list.carnum}</td>
 							<td>${list.confirm}</td>
 							<td>
+								  <button type="button" class="uButton uButtonPoint" onclick="javascript:memberCarPhoto('${list.id}');"
+									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
+									사진보기</button> 
+									
+							</td>
+							<td>
 							<a onclick="javascript:idx='${list.idx}';" data-title="Confirm" data-toggle="modal" data-target="#confirm">
 								<button type="button" class="uButton uButtonPoint"
 									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
@@ -141,6 +128,35 @@ function memberCarOk(){
 
 
 					</c:forEach>
+					<!-- 삭제,차량승인 모달 -->
+<script type="text/javascript" src="js/httpRequest.js"></script>
+<script type="text/javascript">
+var idx = null;
+var confirm= null;
+var id=null;
+function memberCarDel(){
+	this.idx=idx;
+	var params='idx='+idx;
+	window.alert(params);
+	sendRequest('memberCarDel.do', params, null, 'GET');
+	location.reload();
+}
+function memberCarOk(){
+	this.idx=idx;
+	confirm=document.getElementById("confirm2").value;
+	var params='idx='+idx+'&confirm='+confirm;
+	sendRequest('memberCarOk.do', params, null, 'GET');
+	location.reload();
+}
+function memberCarPhoto(id){
+	var windowW = 150;  // 창의 가로 길이
+    var windowH = 70;  // 창의 세로 길이
+    var left = Math.ceil((window.screen.width - windowW)/2);
+    var top = Math.ceil((window.screen.height - windowH)/2);
+	window.open('memberCarPhoto.do?id='+id,'memberCarPhoto()', 'top="+top+", left="+left+", height="+windowH+", width="+windowW');
+
+}
+</script>
 				
 			</tbody>
 			<tfoot>
