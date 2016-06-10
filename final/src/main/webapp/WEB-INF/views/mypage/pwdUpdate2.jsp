@@ -52,7 +52,7 @@ function pwdCheck(){
 
 .Mycontainer {
 	background: #373a47;
-	position:  relative;
+	position:  absolute;
 	
 	
 	width:100%;
@@ -580,7 +580,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 				<div class="content">
 					<header class="codrops-header">
 					<h3>비밀번호 변경</h3>
-					</header>
+					<nav class="codrops-demos">
 						<div class="codrops-links">
 							
 	<div id="div2">
@@ -594,7 +594,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 					    
 					    n pwd<input type="password" class="form-control" name="pwd" id="pwd">
 					    pwd<input type="password" class="form-control" name="pwd2" id="pwd2" onblur="pwdCheck()"><br>
-					    <span id="pwdmsg">뚜루뚜루갱</span>
+					    <span id="pwdmsg"></span>
 					  </div>
 					  
 					</div>				
@@ -612,11 +612,11 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 	
 		</div>
 						
-					<nav class="codrops-demos">
+					
 							
 						
 					</nav>
-					
+					</header>
 					<!-- Related demos -->
 					<section class="related">
 					

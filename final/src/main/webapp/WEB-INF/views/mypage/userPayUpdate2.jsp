@@ -33,7 +33,7 @@
 
 .upicontainer {
 	background: #373a47;
-	position:  relative;
+	position:  absolute;
 }
 
 .menu-wrap a {
