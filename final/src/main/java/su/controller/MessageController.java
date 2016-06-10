@@ -245,12 +245,17 @@ public class MessageController {
 	public ModelAndView mAlram(HttpSession session){
 		
 		String userid = (String)session.getAttribute("sid");
+		ModelAndView mav = new ModelAndView();
 		
+		if(userid==null){
+			
+		}else{
 		List<MessageDTO> list = messageDao.alramView(userid);
 		
-		ModelAndView mav = new ModelAndView();
+		
 		mav.addObject("lists", list);
 		mav.setViewName("message/mAlram");
+		}
 		return mav;
 	}
 	/*
