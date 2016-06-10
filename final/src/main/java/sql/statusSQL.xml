@@ -15,4 +15,9 @@
   		<select id="listStatus" parameterType="String" resultType="su.status.model.StatusDTO">
   			select userid from loginstatus order by idx
   		</select>
+  		
+  		<select id="checklogin" parameterType="String" resultType="java.lang.Integer">  		
+  		select count(userid) from loginstatus where userid=#{userid}
+  		</select>
+  		
   </mapper>

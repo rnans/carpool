@@ -35,4 +35,11 @@ public class StatusDAOImple implements StatusDAO {
 		List<StatusDTO> list = sqlMap.selectList("listStatus");
 		return list;
 	}
+	
+	public int logincheck(String userid){
+		System.out.println("1");
+		int checkid=sqlMap.selectOne("checklogin", userid);
+		
+		return checkid;
+	}
 }

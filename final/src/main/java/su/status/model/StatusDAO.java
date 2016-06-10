@@ -8,4 +8,5 @@ public interface StatusDAO {
 	public int loginDel(String userid);
 	public int numStatus();
 	public List<StatusDTO> listStatus();
+	public int logincheck(String userid);
 }

@@ -111,7 +111,12 @@ public class MemberController {
 			
 			int messageNumber=messageDao.messageNumber(userid);
 			session.setAttribute("mNum", messageNumber);
+			
+			int check=statusDao.logincheck(userid);
+			if(check==0){
 			int count = statusDao.loginStatus(sDTO);
+			if(count>0)System.out.println(userid+"님이 로그인");
+			}
 			
 			mav.addObject("name", name);
 			mav.setViewName("member/login_ok");
