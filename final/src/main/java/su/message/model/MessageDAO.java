@@ -17,4 +17,5 @@ public interface MessageDAO {
 	public int noReadDel(String userid);
 	public MessageDTO messageInfo(int idx);
 	public List<MessageDTO> alramView(String userid);
+	public u
 }

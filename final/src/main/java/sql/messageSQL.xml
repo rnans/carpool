@@ -45,4 +45,8 @@
 	<select id="alramView"  resultType="su.message.model.MessageDTO">
 		select sendid,content from message where receiveid=#{userid} and reading='안읽음'
 	</select>
+	
+	<select id="mImage" resultType="su.upload.model.UploadDTO">
+		select filename from file_upload where id=#{sid} and filetype=0
+	</select>
 </mapper>

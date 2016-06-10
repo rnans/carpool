@@ -253,7 +253,7 @@ public class MessageController {
 		List<MessageDTO> list = messageDao.alramView(userid);
 		
 		
-		mav.addObject("lists", list);
+		mav.addObject("alram", list);
 		mav.setViewName("message/mAlram");
 		}
 		return mav;
