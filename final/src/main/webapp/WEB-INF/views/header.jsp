@@ -195,21 +195,22 @@ alram();
 			<div id="loginDiv" class="dialog__content">
 
 				<form name="login" action="login.do" method="post">
-					<section class="content">
-						<span class="input input--hoshi"> <input
-							class="input__field input__field--hoshi" type="text" id="id"
-							name="id"> <label
+					<section class="content" style="width: 470px; min-height: 170px;">
+						<span class="input input--hoshi"> 
+						<input class="input__field input__field--hoshi" type="text" id="id"	name="id"> 
+						<label
 							class="input__label input__label--hoshi input__label--hoshi-color-1"
-							for="id"> <span
-								class="input__label-content input__label-content--hoshi">ID</span>
+							for="id"> 
+							<span class="input__label-content input__label-content--hoshi">ID</span>
 						</label>
-						</span> <span class="input input--hoshi"> <input
-							class="input__field input__field--hoshi" type="password" id="pwd"
-							name="pwd" onkeydown="javascript:onEnterSubmit();"> <label
-							class="input__label input__label--hoshi input__label--hoshi-color-1"
-							for="pwd"> <span
-								class="input__label-content input__label-content--hoshi">PassWord</span>
-						</label>
+						</span> 
+						
+						<span class="input input--hoshi"> 
+						 		<input class="input__field input__field--hoshi" type="password" id="pwd"
+									   name="pwd" onkeydown="javascript:onEnterSubmit();"> 
+							<label class="input__label input__label--hoshi input__label--hoshi-color-1"	for="pwd"> 
+								<span class="input__label-content input__label-content--hoshi">PassWord</span>
+							</label>
 						</span>
 					</section>
 						<div id="a" class="col-md-12">
@@ -235,7 +236,7 @@ alram();
 			<!-- 아이디 찾기 -->
 					<div id="idFind" class="dialog__content" style="display:none;">
 						<form name="idFind" action="idFind.do" method="post">
-							<section class="content">
+							<section class="content" style="width: 470px; min-height: 170px;">
 								<span class="input input--hoshi"> 
 									<input class="input__field input__field--hoshi" type="text" id="name" name="name"> 
 										<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="name">
@@ -264,7 +265,7 @@ alram();
 					<div id="pwFind" class="dialog__content" style="display:none;">
 						<form name="pwFind" action="pwFind.do" method="post">
 							
-							<section class="content">
+							<section class="content" style="width: 470px; min-height: 170px;">
 								<span class="input input--hoshi"> 
 									<input class="input__field input__field--hoshi" type="text" id="id" name="id"> 
 										<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="id">
@@ -291,7 +292,7 @@ alram();
 					</div>
 
 		</div>
-				</div>
+		</div>
 
 		
 		

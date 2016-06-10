@@ -12,7 +12,7 @@
 <body>
 
 <div id="fullpage">
-<section class="section" id="section0"> <!-- 백그라운드 이미지 박혀있음 기본꺼는 -->
+<section class="section" id="section0"  > <!-- 백그라운드 이미지 박혀있음 기본꺼는 -->
 	<div id="sec0_back">
 	<article id="sec0_content">
 	<h1 id="mainTitle">편리한 카풀</h1>
@@ -68,7 +68,7 @@
 		<img src="/semi/img/t3.png">
 		
 		</div>
-		<p id="sub_title3">간단하게 주변 주차장을 찾아 예약하세요!</p>
+		<p id="sub_title3">간단하게 카풀을 찾아 예약하세요!</p>
 	</article>
 	<%@ include file="footer.jsp" %>
 </section>
