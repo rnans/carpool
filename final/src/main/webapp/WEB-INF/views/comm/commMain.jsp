@@ -29,6 +29,7 @@
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script type="text/javascript">
 	var idx=null;
+	var count=0;
 
 	function bbsDel(){
 		this.idx=idx;
@@ -252,6 +253,7 @@ a, a:focus, a:hover {
     border-bottom-width: 2px;
     border-bottom-color: #dddddf;
     background: #fff;
+    margin-right: 20px;
 }
 .uCover .cover {
     position: relative;
@@ -371,7 +373,7 @@ a, a:focus, a:hover {
 	<section class="sMyHomePage" style="width: 70%;margin: 0px auto;">
 		<header style="margin-top: 50px;padding-bottom: 15px;">
 			<h1>
-				내 파티<em data-uiselector="lblBandCount">5</em>
+				내 파티<em class="count" id="count" style="color: #FF1291">0</em> 
 			</h1>
 			<div class="sort">
 				<button type="button" data-icon="uselect-down"
@@ -387,9 +389,16 @@ a, a:focus, a:hover {
 		</header>
 		<div data-uiselector="regionBandList">
 			<ul data-viewname="DBandCollectionView" class="bandList">
-				<li data-viewname="DBandCollectionItemView" data-skin="skin5"><div
+				
+		
+					<c:if test="${not empty poollist[0] }">
+					<script>
+					count=count+1;
+					document.getElementById("count").innerText=count;
+					</script>
+					<li data-viewname="DBandCollectionItemView" data-skin="skin5"><div
 						class="uCover " data-type="type2">
-						<a href="comm.do" class="bandUri" style="text-decoration: none;"><div class="cover"
+						<a href="comm.do?poolname=${poollist[0].poolname }" class="bandUri" style="text-decoration: none;"><div class="cover"
 								data-skinfactor="beforeBg">
 								<img class="coverImg"
 									src="http://coresos.phinf.naver.net/a/2gegeb_c/18aUd015f6anox25rtzm_5ksoqj.jpg?type=cover_a264"
@@ -397,25 +406,59 @@ a, a:focus, a:hover {
 							</div>
 							<div class="bandName">
 								<div class="bandWrap">
-									<span class="uriText">123</span>
+									<span class="uriText">${poollist[0].poolname }</span>
 								</div>
-							</div></a>
-					</div></li>
-					
-				<li data-viewname="DBandCollectionItemView" data-skin="skin1"><div
+							</div>
+						</a>
+						</div>
+					</li>
+				 </c:if>	
+				<c:if test="${not empty poollist[1] }">	
+				<script>
+					count=count+1;
+					document.getElementById("count").innerText=count;
+				</script>
+					<li data-viewname="DBandCollectionItemView" data-skin="skin4"><div
 						class="uCover " data-type="type2">
-						<a href="comm.do" class="bandUri">
-						<div class="cover" 	data-skinfactor="beforeBg">
+						<a href="comm.do?poolname=${poollist[1].poolname }" class="bandUri" style="text-decoration: none;"><div class="cover"
+								data-skinfactor="beforeBg">
 								<img class="coverImg"
-									src="http://coresos.phinf.naver.net/a/2gegeb_f/3afUd0151trt4adnnr0el_5ksoqj.jpg?type=cover_a264"
+									src="http://coresos.phinf.naver.net/a/2gegeb_c/18aUd015f6anox25rtzm_5ksoqj.jpg?type=cover_a264"
 									alt="">
 							</div>
 							<div class="bandName">
 								<div class="bandWrap">
-									<span class="uriText">시민사회</span>
+									<span class="uriText">${poollist[1].poolname }</span>
 								</div>
-							</div></a>
-					</div></li>
+							</div>
+						</a>
+						</div>
+					</li>
+				</c:if>
+				
+				<c:if test="${not empty poollist[2] }">	
+				<script>
+					count=count+1;
+					document.getElementById("count").innerText=count;
+				</script>
+				
+					<li data-viewname="DBandCollectionItemView" data-skin="skin3"><div
+						class="uCover " data-type="type2" style="margin-right: 0px;">
+						<a href="comm.do?poolname=${poollist[2].poolname }" class="bandUri" style="text-decoration: none;"><div class="cover"
+								data-skinfactor="beforeBg">
+								<img class="coverImg"
+									src="http://coresos.phinf.naver.net/a/2gegeb_c/18aUd015f6anox25rtzm_5ksoqj.jpg?type=cover_a264"
+									alt="">
+							</div>
+							<div class="bandName">
+								<div class="bandWrap">
+									<span class="uriText">${poollist[2].poolname }</span>
+								</div>
+							</div>
+						</a>
+						</div>
+					</li>
+				</c:if>
 				
 				<li data-viewname="DBandCollectionItemView"><div class="uCover"
 						data-type="type4">

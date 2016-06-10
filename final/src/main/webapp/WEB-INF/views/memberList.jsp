@@ -153,7 +153,7 @@
 				<div class="bandName">
 					<div class="bandWrap">
 						<p class="uriText">
-							<a href="/#!/band/61355066">123</a>
+							<a href="#">${poolname}</a>
 						</p>
 						<p class="desc" data-uiselector="bandDescription"
 							style="word-wrap: break-word;">

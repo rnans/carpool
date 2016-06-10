@@ -55,7 +55,7 @@ margin: 0 0 0 50px;
 
 </style>
 </head>
-<body style="background-color: #F6F6F6;color: #4C4C4C; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; ">
+<body style="color: #4C4C4C; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; ">
 
 <%@include file="../header.jsp"%>
 
@@ -164,7 +164,7 @@ function opencostReg(){
 
 
 <div id="costdiv" style="margin-top: -5px;">
-<div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;margin-bottom: 15px;">
+<div class="outer" style="margin-top:10px;display: table;width:100%;height:36px;background-color:#4C4C4C;margin-bottom: 15px;">
 <h4 style="padding-left:100px; color: white;font-size: 15px;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;${cardto.cartype } &nbsp; [${cardto.carnum}]</h4>
 
 </div>

@@ -197,7 +197,7 @@ margin: 0 0 0 50px;
       
  </div>
 <div id="costdiv" style="margin-top: -5px;">
-<div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;margin-bottom: 10px;">
+<div class="outer" style="display: table;width:100%;height:36px;background-color:#4C4C4C;margin-top:10px; margin-bottom: 10px;">
        <ul class="nav navbar-nav bar" style="height:36px; font-size:17px; overflow: hidden;">
       	<li  style="min-width:150px;"><a href="graph.do" style="padding-top: 9px;padding-left: 20px;"><i class="fa fa-pie-chart" aria-hidden="true" style="color:white;"></i>
     <font style="color:white;">  비용 그래프</font></a></li>

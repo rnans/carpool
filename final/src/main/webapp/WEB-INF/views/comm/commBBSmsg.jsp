@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
 window.alert('${msg}');
-location.replace("comm.do")
+location.replace("comm.do?poolname=${poolname}")
 </script>

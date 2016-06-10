@@ -382,6 +382,8 @@ tbody {
 		
 		</div>
 		<input type="hidden" name="id" value="${sid}">
+		<input type="hidden" name="commid" value="${poolname}">
+		
 		<div class="btnArea"> 
 			<button type="submit" class="uButton uButtonPoint" style="border:0px;">완료</button>
 		</div>

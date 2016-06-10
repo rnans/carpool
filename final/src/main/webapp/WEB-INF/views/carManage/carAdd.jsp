@@ -194,7 +194,7 @@ function car_num_chk(car_num)
                     <div class="btn btn-default image-preview-input">
                         <span class="glyphicon glyphicon-picture"></span>
                         <span class="image-preview-input-title">차 사진</span>
-                        <input type="file" accept="image/*" name="upload"/> <!-- rename it -->
+                        <input type="file" name="upload"/> <!-- rename it -->
                     </div>
                 </span>
             </div><!-- /input-group image-preview [TO HERE]--> 		
@@ -221,7 +221,7 @@ function car_num_chk(car_num)
                     <div class="btn btn-default image-preview2-input">
                         <span class="glyphicon glyphicon-picture"></span>
                         <span class="image-preview2-input-title">인증 사진</span>
-                        <input type="file" accept="image/*" name="upload2"/> <!-- rename it -->
+                        <input type="file" name="upload2"/> <!-- rename it -->
                     </div>
                 </span>
             </div><!-- /input-group image-preview [TO HERE]--> 		

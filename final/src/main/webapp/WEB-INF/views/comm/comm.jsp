@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" type="text/css" href="CSS/comm.css">
 <link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
 <!DOCTYPE ">
 <html>
 <head>
@@ -393,7 +393,8 @@ h1, h2,h3 {
 		
 	}
 window.onload=function(){
-	sendRequest('memberList.do', null, showResult, 'GET');
+	var params="poolname=${poolname}";
+	sendRequest('memberList.do', params, showResult, 'GET');
 }
 
 
@@ -432,15 +433,15 @@ window.onload=function(){
 	<div id="lnb" data-skin="skin5" style="z-index: 50;">
 		<div data-viewname="DLnbMenuView">
 			<ul class="_joinedLnb">
-				<li><a href="comm.do" data-skinfactor="tBorder color"
+				<li><a href="comm.do?poolname=${poolname}" data-skinfactor="tBorder color"
 					class="_fullArticleLnbBtn _eachLnbMenu on">전체글</a></li>
-				<li><a href="gallery.do"
+				<li><a href="gallery.do?poolname=${poolname}"
 					data-skinfactor="tBorder color"
 					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">사진첩</a></li>
-				<li><a href="calendar.do"
+				<li><a href="calendar.do?poolname=${poolname}"
 					data-skinfactor="tBorder color"
 					class="_calendarLnbBtn _eachLnbMenu _unclickableMenu">일정</a></li>
-				<li><a href="commMember.do"
+				<li><a href="commMember.do?poolname=${poolname}"
 					data-skinfactor="tBorder color"
 					class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
 			</ul>
@@ -462,6 +463,7 @@ window.onload=function(){
 					<label class="gSrOnly" for="input_search">이름, 글내용, 해시태그로 검색</label>
 					<input type="text" id="input_search"
 						placeholder="이름, 글내용, 해시태그로 검색" maxlength="200" name="search">
+					<input type="hidden" name="poolname" value="${poolname }">
 
 					<button type="submit" class="searchbutton" style="right: 15px; background-color: #fff;color: #fff;">
 					<i class="fa fa-search" style="color: #BDBDBD;padding-top: 0px;font-size: 22px;" aria-hidden="true"></i></button>
@@ -573,6 +575,7 @@ window.onload=function(){
 							</label></li>
 						</ul>
 						<input type="hidden" name="id" value="${sid}">
+						<input type="hidden" name="poolname" value="${poolname}">
 						<div class="buttonSubmit">
 							<button type="reset" class="uButton uButtonDefault"
 								style="background: #a1a1a9; min-width: 70px; line-height: 32px; margin: 0 3px; font-size: 13px; color: #fff;">취소</button>
@@ -605,7 +608,7 @@ window.onload=function(){
 						
 						</span>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="bbsupdate2.do?idx=${bbs.idx }" data-uiselector="modifyButton">공지사항 해제</a></li>
+								<li><a href="bbsupdate2.do?idx=${bbs.idx }&poolname=${poolname}" data-uiselector="modifyButton">공지사항 해제</a></li>
 							</ul>
 						</li>
 						</c:if>
@@ -661,7 +664,7 @@ window.onload=function(){
 										aria-hidden="true"></i>
 									</span>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="bbsupdate.do?idx=${bbs.idx }" data-uiselector="modifyButton">공지사항 등록</a></li>
+										<li><a href="bbsupdate.do?idx=${bbs.idx }&poolname=${poolname}" data-uiselector="modifyButton">공지사항 등록</a></li>
 										<li class="divider"></li>
 										<li><a href="#" data-uiselector="modifyButton">글 수정</a></li>
 										<li>
@@ -796,6 +799,7 @@ window.onload=function(){
 									</div>
 								</div>
 								<input type="hidden" name="bbsidx" value="${bbs.idx }">
+								<input type="hidden" name="commid" value="${poolname }">
 								<button type="submit" data-skin="skin5"  data-skinfactor="bg"
 									class="uButton writeSubmit uButtonDefault"
 								    style="border:0; ">보내기</button>
