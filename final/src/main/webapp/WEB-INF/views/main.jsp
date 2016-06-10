@@ -3,8 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon2.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 <link rel="stylesheet" href="/final02/CSS/main.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="/final02/CSS/jquery.fullPage.css">
+<link href="/final02/CSS/hover.css" rel="stylesheet" media="all">
 <script src="/final02/js/jquery.fullPage.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -17,28 +20,48 @@
 	<article id="sec0_content">
 	<h1 id="mainTitle">편리한 카풀</h1>
 	<p id="sub_title">Pool PARTY, 카풀 서비스</p>
-	<div id="third">탈게요
+	<!-- <div id="third">빨리타
 		<br>
 		<a href="#"><img src="/final02/img/pMmber.jpg" id="gg"></a>
 	
 		<img src=""></div>
 	
-	<div id="third">타세요
+	<div id="third">태워줘
 		<br>
 		<a href="#"><img src="/final02/img/pMaster.jpg" id="gg"></a>
 	
-		<img src=""></div>
-	
-	
-	
-	
-	
-	<!-- 타세요 탈게요 넣을부분? start-->
-	<!-- <form name="main_find"action="find.jsp">
-		<input type="text" placeholder="지역명을 입력하세요">
-		<input type="submit" value="검색">
-	</form> -->
-	<!-- 타세요 탈게요 넣을부분 end -->
+		<img src=""></div> -->
+		<div id="third">
+			
+			<div id="div1" class="col-md-6 select" style="text-align: center;">
+				<figure>
+                    <img src="/final02/img/pMmber.jpg" class="center-block" alt=""/>
+                   <a href="poolMemberAdd.do">
+                   <figcaption>
+                      <!-- <h2>탈래요!</h2> -->
+                      <p>카풀을 제공하는 운전자를 구해보세요.<br>
+                      일반 이용자는 '탈래요' 글을 통해 카풀을 제공하는 운전자를 구하실 수 있습니다.</p>
+  
+                   </figcaption>
+                   </a>
+                  </figure>
+			</div>
+			<div id="div2" class="col-md-6 select center-block" style="text-align: center;">
+					<figure>
+                    <img src="/final02/img/pMaster.jpg" class="center-block" alt=""/>
+                   <a href="poolMasterAdd.do">
+                   <figcaption>
+                      <!-- <h2>타세요!</h2> -->
+                      <p>당신의 카풀을 이용할 이용자를 구해보세요.<br>
+                      운전자는 '타세요' 글을 통해 카풀을 이용하고자 하는 이용자를 구하실 수 있습니다.</p>
+  
+                   </figcaption>
+                   </a>
+                  </figure>
+			</div>
+			
+		</div>
+
 	</article>
 	</div>
 </section>
@@ -77,7 +100,7 @@
 	<script>
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
-				sectionsColor: ['#5A5A5A', '#0172BD', '#58D3F7'],
+				sectionsColor: ['#FFFFFF', '#0172BD', '#58D3F7'],
 				scrollBar: true
 			});
 		});
