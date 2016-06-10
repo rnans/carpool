@@ -51,7 +51,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.do" style="margin:0px auto;padding-left:0px;padding-bottom:0px;padding-top:0px;padding-right:20px;"><img src="img/carp.gif" style="width:100px;height:45px;"></a>
+			<a class="navbar-brand" href="index.do" style="margin:0px auto;padding-left:0px;padding-bottom:0px;padding-top:0px;padding-right:20px;"><img src="img/carpoolTest.gif" style="width:100px;height:45px;"></a>
 		</div>
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav navbar-left">
@@ -83,7 +83,7 @@
 				<li class="dropdown">
 					<a href="carBookInfo.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">차계부 <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="carBookInfo.do">차계부</a></li>
+						<li><a href="carBookInfo.do">차계부</aw></li>
 						<li><a href="cost.do">비용</a></li>
 						<li><a href="graph.do">그래프</a></li>
 					</ul>
