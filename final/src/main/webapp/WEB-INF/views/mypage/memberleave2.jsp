@@ -34,11 +34,9 @@
 .Mycontainer {
 	background: #373a47;
 	position:  relative;
-	
-	
-	width:100%;
-	height:100%;
-	overflow: scroll;
+
+	overflow: scroll;	
+
 }
 
 .menu-wrap a {
@@ -535,7 +533,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
-					<h3>MemberLeave</h3>
+					<h3>회원탈퇴</h3>
+					<section class="related">
 					<nav class="codrops-demos">	
 						<div class="codrops-links">
 							
@@ -568,7 +567,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					</nav>
 					</header>
 					<!-- Related demos -->
-					<section class="related">
+					
 					
 					</section>
 				</div>

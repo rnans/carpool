@@ -233,9 +233,9 @@ section {
 
 /* Header */
 .codrops-header {
-	margin: 0 auto;
+	margin:;
 	padding: 3em 2em;
-	text-align: center;
+	text-align:;
 }
 
 .codrops-header h1 {
@@ -603,11 +603,13 @@ window.alert('${msg}');
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
+						<h3>카드 등록</h3>
+						<nav class="codrops-demos">
 						<div class="codrops-links">
 	
 			
-<h2>카드 등록</h2>
-		<legend>카드등록</legend>
+
+		
 			<form name="userPayAdd" action="userPayAdd.do" method="post">
 				<table border="1" cellspacing="0" align="center" class="table table-hover">
 					
@@ -672,7 +674,7 @@ window.alert('${msg}');
 			</form>	
 
 	
-						<nav class="codrops-demos">
+						
 							
 						
 						</nav>

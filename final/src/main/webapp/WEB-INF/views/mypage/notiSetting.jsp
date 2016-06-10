@@ -617,7 +617,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
-					<h3>notiSetting</h3>
+					<h3>알람설정</h3>
 					</header>	
 						<div class="codrops-links">
 							

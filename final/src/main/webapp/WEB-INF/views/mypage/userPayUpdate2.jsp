@@ -232,9 +232,9 @@ section {
 
 /* Header */
 .codrops-header {
-	margin: 0 auto;
+	
 	padding: 3em 2em;
-	text-align: center;
+	text-align:;
 }
 
 .codrops-header h1 {
@@ -637,13 +637,15 @@ function checkCvc(){
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
+						<h3>카드정보수정</h3>
+						<nav class="codrops-demos">
 						<div class="codrops-links">
 	
 			
 
 	
 	<div id="div2">
-			<legend>카드정보수정</legend>
+			
 			<form name="cardUpdate" action="cardUpdate.do" method="post">
 			<input type="hidden" name="idx" value="${dto.idx}">
 			<input type="hidden" name="fcardnum" value="${dto.cardnum}">
@@ -705,7 +707,7 @@ function checkCvc(){
 				</table>
 			</form>
 	
-						<nav class="codrops-demos">
+						
 							
 						
 						</nav>

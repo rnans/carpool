@@ -573,7 +573,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
-					<h3>CardList</h3>
+					<h3>등록된카드</h3>
 						
 						<div class="codrops-links">
 	<nav class="codrops-demos">

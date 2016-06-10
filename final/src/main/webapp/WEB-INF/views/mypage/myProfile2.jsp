@@ -591,7 +591,7 @@ window.onload=function(){
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
-						<h3>MyProfile</h3>
+						<h3>마이프로필</h3>
 					</header>	
 						<div class="codrops-links">
 					

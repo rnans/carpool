@@ -589,7 +589,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
          <div class="content-wrap">
             <div class="content">
                <header class="codrops-header">
-               	<h3>rateList</h3> 
+               	<h3>평가글</h3> 
           <nav class="codrops-demos">    
                   <div class="codrops-links">
    

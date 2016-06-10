@@ -614,7 +614,7 @@ function setRadioChk(e){
 			
 				<div class="content">
 					<header class="codrops-header">
-					<h3>MyPage</h3>
+					<h3>마이페이지</h3>
 					</header>	
 						<div class="codrops-links">
 	

@@ -579,7 +579,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
-					<h3>pwUpdate</h3>
+					<h3>비밀번호 변경</h3>
 					</header>
 						<div class="codrops-links">
 							
