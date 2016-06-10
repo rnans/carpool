@@ -230,6 +230,7 @@ public class commController {
 		String msg=count>0?"글 작성 성공":"글 작성 실패";
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("comm/commBBSmsg");
+		mav.addObject("poolname", commid);
 		mav.addObject("msg", msg);
 		return mav;
 	}

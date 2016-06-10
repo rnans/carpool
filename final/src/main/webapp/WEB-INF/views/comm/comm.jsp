@@ -430,7 +430,7 @@ window.onload=function(){
 	<%@include file="../header.jsp"%>
 	
 	
-	<div id="lnb" data-skin="skin5" style="z-index: 50;">
+	<div id="lnb" data-skin="skin5" style="z-index: 101;">
 		<div data-viewname="DLnbMenuView">
 			<ul class="_joinedLnb">
 				<li><a href="comm.do?poolname=${poolname}" data-skinfactor="tBorder color"
