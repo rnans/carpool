@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import su.upload.model.UploadDTO;
+
 public class AdminCarInfoDAOImple implements AdminCarInfoDAO {
 	
 	private SqlSessionTemplate sqlMap;
@@ -49,6 +51,13 @@ public class AdminCarInfoDAOImple implements AdminCarInfoDAO {
 		
 		int count = sqlMap.update("memberCarOk", map);
 		return count;
+	}
+	
+	/**차인증 사진보기*/
+	public List<UploadDTO> memberCarPhoto(String id) {
+		
+		List<UploadDTO> list= sqlMap.selectList("memberCarPhoto", id);
+		return list;
 	}
 
 }

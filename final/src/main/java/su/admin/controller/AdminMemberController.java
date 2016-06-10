@@ -16,6 +16,7 @@ import su.adminMember.model.AdminCarInfoDTO;
 import su.adminMember.model.AdminMemberDAO;
 import su.adminMember.model.AdminMemberDTO;
 import su.mypage.model.MyAlarmDTO;
+import su.upload.model.UploadDTO;
 
 @Controller
 public class AdminMemberController {
@@ -191,6 +192,17 @@ public class AdminMemberController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.setViewName("admin/adminMsg");
+		
+		return mav;
+	}
+	
+	/**인증사진보기*/
+	@RequestMapping("/memberCarPhoto.do")
+	public ModelAndView memberCarPhoto(@RequestParam(value="id",required=false)String id){
+		List<UploadDTO> list = adCarInfoDao.memberCarPhoto(id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("lists", list);
+		mav.setViewName("admin/carPhoto");
 		
 		return mav;
 	}

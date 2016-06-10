@@ -95,6 +95,10 @@
 		update carinfo set confirm=#{confirm} where idx=#{idx}
 	</update>
 	
+	<select id="memberCarPhoto" parameterType="String" resultType="su.upload.model.UploadDTO">
+		select * from file_upload where id=#{id} and filetype=1
+	</select>
+	
 	<!-- alarm -->
 	<select id="memberAlarm" resultType="su.mypage.model.MyAlarmDTO">
 		select * from
