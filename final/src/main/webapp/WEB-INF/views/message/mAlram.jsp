@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
 
 <style>
@@ -20,7 +21,7 @@
 			<tbody class="mView">
 				<tr>
 					<td>${m.sendid}</td>
-					<td><a href="messageList.do">${m.content}</a></td>
+					<td><a href="messageList.do" style="color: black;">${m.content}</a></td>
 				</tr>
 			</tbody>
 		</c:forEach>
