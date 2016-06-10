@@ -591,7 +591,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 					<div class="row" id="cm">
 					  <div class="col-xs-4">
 					  <input type="hidden" name="nowpwd" value="${dto.pwd}">
-					    	현재 비밀번호<input type="text" class="form-control" name="nowpwd2">
+					    	현재 비밀번호<input type="password" class="form-control" name="nowpwd2">
 					    
 					    	새 비밀번호<input type="password" class="form-control" name="pwd" id="pwd">
 					   		 비밀번호 확인<input type="password" class="form-control" name="pwd2" id="pwd2" onblur="pwdCheck()"><br>

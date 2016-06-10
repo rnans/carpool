@@ -56,7 +56,7 @@
 
 .content {
 	position: relative;
-	background: #E3DDDC;
+	background: #F1F2F2;
 }
 
 /* Overlay */
@@ -537,6 +537,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 	float:left;
 	margin:10px;
 }
+
 
 </style>
 
