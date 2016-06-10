@@ -591,13 +591,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 									<table align="center" class="table table-striped">
 										<thead>
 											<tr>
-												<th>aim</th>
-												<th>endspot</th>
-												<th>status</th>
-												<th>pooltype</th>
-												<th>termtype</th>
-												<th>poolname</th>
-												<th>caridx</th>
+												<th>목적</th>
+												<th>도착지</th>
+												<th>모집상황</th>
+												<th>카풀타입</th>
+												<th>유형</th>
+												<th>카풀명</th>
 											</tr>	
 										</thead>
 									<tfoot>
@@ -606,7 +605,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 										<tbody>
 											<c:if test="${empty list}">
 									<tr>
-										<td colspan="7">등록된 결제정보가 없습니다.</td>
+										<td colspan="6">등록된 결제정보가 없습니다.</td>
 									</tr>
 								</c:if>
 								<c:forEach var="dto" items="${list }">
@@ -617,7 +616,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 										<td>${dto.pooltype}</td>
 										<td>${dto.termtype}</td>
 										<td>${dto.poolname }</td>
-										<td>${dto.caridx }</td>
 											</tr>
 											</c:forEach>
 										</tbody>
