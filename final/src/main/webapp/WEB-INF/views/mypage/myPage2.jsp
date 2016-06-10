@@ -551,7 +551,36 @@ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 </script>
+<script>
+window.onload=function(){
+	
+	var m=document.getElementById('male');
+	var w=document.getElementById('female');
 
+	var sex='${dto.sex}';
+	
+	if(sex=='남성'){
+		
+		m.checked=true;
+	}else{
+		
+		w.checked=true;
+	}
+}
+</script>
+<script type="text/javascript">
+function setRadioChk(e){ 
+   var srcEl = getSrc(e);
+   var radiochk = srcEl.form[srcEl.name]
+    for(var i=0;i<radiochk.length;i++){
+      if(radiochk[i].checked) radiochk[i].onpropertychange = function(e){getSrc(e).click()}
+      else radiochk[i].onclick = function(){return false};
+    }
+  }
+  function getSrc(e){
+    return e? e.target || e.srcElement : event.srcElement;
+  }
+</script>
 	</head>
 	
 	<body>
@@ -615,12 +644,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 	
 	
 	<label class="radio-inline">
-  		<input type="radio" name="sex" id="male" value="남성">
+  		<input type="radio" name="sex" id="male" value="남성" onfocus="setRadioChk(event)">
   		<i class="fa fa-mars" aria-hidden="true"></i>
   		
  	</label>
 	<label class="radio-inline">
-  		<input type="radio" name="sex" id="female" value="여성">
+  		<input type="radio" name="sex" id="female" value="여성" onfocus="setRadioChk(event)">
   		<i class="fa fa-venus" aria-hidden="true"></i>
   		
  	</label><br>

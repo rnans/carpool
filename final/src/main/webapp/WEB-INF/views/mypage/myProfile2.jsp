@@ -541,7 +541,23 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 
 </script>
+<script>
+window.onload=function(){
+	
+	var m=document.getElementById('male');
+	var w=document.getElementById('female');
 
+	var sex='${dto.sex}';
+	
+	if(sex=='남성'){
+		
+		m.checked=true;
+	}else{
+		
+		w.checked=true;
+	}
+}
+</script>
 
 
 
