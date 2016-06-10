@@ -630,17 +630,17 @@ function setRadioChk(e){
 	<div class="row">
 		<div class="col-xs-4">
 	
-	ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
+	아이디<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
 	
-	NAME<input type="text" name="name" class="form-control" value="${dto.name}" readonly>
+	이름<input type="text" name="name" class="form-control" value="${dto.name}" readonly>
 
-    BIRTH<input type="text" name="birth" class="form-control" value="${dto.birth }" readonly>
+          생년월일<input type="text" name="birth" class="form-control" value="${dto.birth }" readonly>
    
-	PHONE<input type="text" name="phonenum" class="form-control" value="${dto.phonenum }" readonly>
+	연락처<input type="text" name="phonenum" class="form-control" value="${dto.phonenum }" readonly>
 
-	ADDR<input type="text" name="addr" class="form-control" value="${dto.addr }" readonly>
+	사는곳<input type="text" name="addr" class="form-control" value="${dto.addr }" readonly>
     
-	EMAIL<input type="text" name="email" class="form-control" value="${dto.email }" readonly>
+	이메일<input type="text" name="email" class="form-control" value="${dto.email }" readonly>
 	
 	
 	<label class="radio-inline">

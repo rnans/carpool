@@ -700,8 +700,8 @@ function checkCvc(){
             </select></td>
 						</tr>
 						<tr>
-						<td colspan="6" align="right"><input type="button" value="취소">
-						<input type="submit" value="수정"></td>
+						<td colspan="6" align="right"><button class="btn btn-default" type="button" value="취소">취소</button>
+						<button class="btn btn-default" type="submit" value="수정">수정</button></td>
 						</tr>
 					</tbody>
 				</table>

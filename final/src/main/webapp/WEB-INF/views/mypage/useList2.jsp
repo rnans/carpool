@@ -635,16 +635,16 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
-					<h3>useList</h3>
+					<h3>이용내역</h3>
 						<nav class="codrops-demos">
 						<div class="codrops-links">
 							
 							<div class="row">
 							
-							  <h3>결제내역</h3>
-							   <table class="table">
-							     <thead class="thead-inverse" style="background-color: #FFFFFF; color: #980000;">
-							  <tr style="font-size: 18px;"> 
+							  <legend>결제내역</legend>
+							   <table class="table table-striped">
+							     <thead class="thead-inverse">
+							  <tr> 
 							    <th style="text-align: center;">카풀 유형</th>
 							    <th style="text-align: center;">카풀 기간</th>
 							    <th style="text-align: center;">카풀 이름</th>
@@ -657,7 +657,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 							  
 							  <tbody>
 							  <c:forEach var="list" items="${list}">
-							  <tr scope="row" style="color: #191919; font-size: 11px; text-align: center;"> 
+							  <tr scope="row" style=" text-align: center;"> 
 							    <td>${list.pooltype }</td>
 							    <td>${list.termtype }</td>
 							    <td>${list.poolname }</td>
@@ -671,9 +671,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 							</table>
 							
 						</div>
-						<hr></hr><hr></hr>
+						
 					<div>
-						<h3>소속카풀</h3>
+						<legend>즐겨찾기</legend>
 						
 					</div>	
 						

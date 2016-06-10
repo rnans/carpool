@@ -666,7 +666,7 @@ window.alert('${msg}');
 						<td><input type="text" name="cardid" value="${dto.cardid} "></td>
 						</tr> --%>
 						<tr>
-						<td colspan="2" align="right"><input type="button" value="취소" onclick="backPage()"><input type="submit" value="등록"></td>		
+						<td colspan="2" align="right"><button class="btn btn-default" type="button" value="취소" onclick="backPage()">취소</button><button class="btn btn-default" type="submit" value="등록">등록</button></td>		
 						</tr>
 					</tbody>
 				</table>

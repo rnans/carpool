@@ -608,13 +608,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<td>${dto.cardterm }</td>
 					<td>${dto.cardtype2 }</td>
 					<td>
-					<a href="cardUpdate.do?idx=${dto.idx}"><input type="button" value="수정"></a>
-					<a href="cardDel.do?idx=${dto.idx}"><input type="button" value="삭제"></a>
+					<a href="cardUpdate.do?idx=${dto.idx}"><button class="btn btn-default btn-xs" type="button" value="수정">수정</button></a>
+					<a href="cardDel.do?idx=${dto.idx}"><button class="btn btn-default btn-xs" type="button" value="삭제">삭제</button></a>
 					</td>
 				</tr>
 			</c:forEach>
 						<tr>
-							<td colspan="7" align="right"><a href="userPayAddPage.do"><input type="button" value="등록"></a></td>
+							<td colspan="7" align="right"><a href="userPayAddPage.do"><button class="btn btn-default" type="button" value="등록">등록</button></a></td>
 						</tr>
 					</tbody>
 				</table>

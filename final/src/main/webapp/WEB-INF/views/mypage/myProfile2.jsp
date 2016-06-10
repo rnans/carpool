@@ -591,7 +591,7 @@ window.onload=function(){
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
-						<h3>마이프로필</h3>
+						<h3>프로필수정</h3>
 					</header>	
 						<div class="codrops-links">
 					
@@ -615,17 +615,17 @@ window.onload=function(){
 	<div class="center-block">
 	<div class="row">
 		<div class="col-xs-4">
-			ID<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
+			아이디<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
 			
-			NAME<input type="text" name="name" class="form-control" value="${dto.name}">
+			이름<input type="text" name="name" class="form-control" value="${dto.name}">
 		
-		    BIRTH<input type="text" name="birth" class="form-control" value="${dto.birth }">
+		          생년월일<input type="text" name="birth" class="form-control" value="${dto.birth }">
 		   
-			PHONE<input type="text" name="phonenum" class="form-control" value="${dto.phonenum }">
+			연락처<input type="text" name="phonenum" class="form-control" value="${dto.phonenum }">
 		
-			ADDR<input type="text" name="addr" class="form-control" value="${dto.addr }">
+			사는곳<input type="text" name="addr" class="form-control" value="${dto.addr }">
 		    
-			EMAIL<input type="text" name="email" class="form-control" value="${dto.email }">
+			이메일<input type="text" name="email" class="form-control" value="${dto.email }">
 			
 			
 			<label class="radio-inline">
