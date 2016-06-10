@@ -19,6 +19,7 @@
 	href="/final02/CSS/poolCommon.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/sambootstrap.css" />
 </head>
 <body>
 	<%@ include file="../header.jsp"%>

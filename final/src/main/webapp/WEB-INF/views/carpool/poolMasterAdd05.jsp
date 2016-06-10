@@ -9,12 +9,22 @@
 <link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/final02//CSS/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="/final02/CSS/_all-skins.min.css">
+
 <script>
 function viewNextPage()
 {
 	var f=document.getElementById("form");
 	var pc=document.getElementById("content");
-	var type='${sessionScope.data.type}'
+	var type='${sessionScope.data.termtype}'
 	
 	if(type=='정기')
 	{
@@ -131,79 +141,113 @@ function onDrawnFeatures(e){
 </script>
 </head>
 <body onload="initTmap()">
-//지도 div 정의
+<%@ include file="../header.jsp" %>
+<section id="mainsection">
+		<div class="col-md-12">
+			<h1 class="main--title">
+				카풀 등록 <small>등록 정보 최종 확인</small>
+			</h1>
+		</div>
 <div id="map_div">
 </div>
-
-<h2>카풀등록 페이지6</h2>
-
+	
+	
 <form id="form" name="f" action="poolMasterAdd06.do" method="get">
-<input type="text" id="sLat" name="sLat">
-<input type="text" id="sLng" name="sLng">
-<input type="text" id="eLat" name="eLat">
-<input type="text" id="eLng" name="eLng">
+<input type="hidden" id="sLat" name="sLat">
+<input type="hidden" id="sLng" name="sLng">
+<input type="hidden" id="eLat" name="eLat">
+<input type="hidden" id="eLng" name="eLng">
 		
-	<div id="div2">
 	
-	<table border="1">
-		
-			
-				
-	
-			
-		<tfoot>
-			<tr>
-				<th><textarea id="content" name="pluscontent" rows="5" cols="50"></textarea> </th>
-				<td></td>
-			</tr>
-		</tfoot>
-			
-			<tbody>
-			<tr>
+	<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">정보 입력 확인</h3>
+
+              
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
 				<th>출발지</th>
 					<td>${sessionScope.data.startspot }</td>
-					<th>경유지</th>
-					<td>${sessionScope.data.route }</td>
+				</tr>
+				<tr>
 					<th>도착지</th>
 					<td>${sessionScope.data.endspot}</td>
-			</tr>
+				</tr>
 				<tr>
 					<th>목적</th>
 					<td>${sessionScope.data.aim }</td>
 				</tr>
+				
+					<c:if test="${sessionScope.data.termtype eq '단기'}">	
+					<tr>
+					<th>출발일시</th>
+					<td>${sessionScope.data.starttime}</td>
+					</tr>
+					</c:if>
+					<c:if test="${sessionScope.data.termtype eq '정기'}">
+					<tr>
+					<th>출발일시</th>
+					<td>${sessionScope.data.starttime}</td>
+					</tr>
+					<tr>
+					<th>종료일시</th>
+					<td>${sessionScope.data.enddate }</td>
+					</tr>
+					<tr>
+					<th>반복</th>
+					<td>${sessionScope.data.days }</td>
+					</tr>
+					</c:if>
+				
 				<tr>
 					<th>인원</th>
 					<td>${sessionScope.data.mannum }</td>
+					</tr>
+					<tr>
 					<th>성별</th>
 					<td>${sessionScope.data.gender }</td>
+					</tr>
+					<tr>
 					<th>흡연</th>
 					<td>${sessionScope.data.smoking }</td>
 				</tr>
 				<tr>
-					<c:if test="${sessionScope.data.termtype eq '단기'}">	
-					<th>출발일시</th>
-					<td>${sessionScope.data.starttime}</td>
-					</c:if>
-					<c:if test="${sessionScope.data.termtype eq '정기'}">
-					<th>출발일시</th>
-					<td>${sessionScope.data.starttime}</td>
-					<th>종료일시</th>
-					<td>${sessionScope.data.enddate }</td>
-					<th>반복</th>
-					<td>${sessionScope.data.days }</td>
-					</c:if>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+				<th>추가 사항</th>
+				<td><textarea class="col-xs-12" id="content" name="pluscontent" rows="5"></textarea></td>
+			</tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-8">
+						<div class="col-xs-4">
+							<button type="button"
+								class="button button--ujarak button--border-thin button--text-thick"
+								onclick="">이전</button>
+						</div>
+						<div class="col-xs-8">
+							<button type="button" onclick="viewNextPage();"
+								class="button button--ujarak button--border-thin button--text-thick button--next">다음</button>
+						</div>
+					</div></div>
+       
+				
+        
+      </div>
 	
 	
-			<p>
-				<input type="button" value="이전">
-				<input type="button" value="등록" onclick="viewNextPage()">
-			</p>
-
+			
 	
 	</form>
+	</section>
 </body>
 </html>

@@ -5,166 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="../favicon.ico">
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700'
+	rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css"
 	href="/final02/CSS/poolCommon.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
-<link rel="stylesheet" type="text/css" href="/final02/CSS/poolForm.css" />
 
+<script src="/final02/js/selectFx.js"></script>
 <script>
+	var scount = 0;
+
 	window.onload = function() {
 
 		document.getElementById("term").style.display = "none";
 		document.getElementById("short").style.display = "none";
-	}
-
-	function setDays() {
-		var days = 30;
-		var d = new Date();
-		var dayEl = document.getElementById('dayEl');
-
-		if (monthEl.value == 1 || monthEl.value == 3 || monthEl.value == 5
-				|| monthEl.value == 7 || monthEl.value == 8
-				|| monthEl.value == 10 || monthEl.value == 12) {
-			days = 31;
-		} else if (monthEl.value == 2) {
-			days = 29;
-		} else {
-
-		}
-
-		for (var i = 1; i <= days; i++) {
-			if (i == d.getDate()) {
-				dayEl.innerHTML += '<option value="'+i+'" selected>' + i
-						+ '</option>';
-			} else {
-				dayEl.innerHTML += '<option value="'+i+'">' + i + '</option>';
-			}
-
-		}
-
-	}
-
-	function setDays2() {
-		var days = 30;
-		var d = new Date();
-		var dayEl = document.getElementById('lsd');
-
-		dayEl.innerHTML = '';
-
-		if (monthEl.value == 1 || monthEl.value == 3 || monthEl.value == 5
-				|| monthEl.value == 7 || monthEl.value == 8
-				|| monthEl.value == 10 || monthEl.value == 12) {
-			days = 31;
-		} else if (monthEl.value == 2) {
-			days = 29;
-		} else {
-
-		}
-
-		for (var i = 1; i <= days; i++) {
-			if (i == d.getDate()) {
-				dayEl.innerHTML += '<option value="'+i+'" selected>' + i
-						+ '</option>';
-			} else {
-				dayEl.innerHTML += '<option value="'+i+'">' + i + '</option>';
-			}
-
-		}
-
-	}
-
-	function viewShort() {
-		document.getElementById("term").style.display = "none";
-		document.getElementById("short").style.display = "block";
 
 		var d = new Date();
 
-		var yearEl = document.getElementById('yearEl');
-		var monthEl = document.getElementById('monthEl');
-		var dayEl = document.getElementById('dayEl');
-		var hourEl = document.getElementById("hourEl");
-
-		yearEl.innerHTML = '';
-		monthEl.innerHTML = '';
-		dayEl.innerHTML = '';
-		hourEl.innerHTML = '';
-
-		for (var i = d.getFullYear(); i < d.getFullYear() + 5; i++) {
-
-			yearEl.innerHTML += '<option>' + i + '</option>';
-
-		}
-
-		for (var i = 1; i <= 12; i++) {
-			if (i == d.getMonth() + 1) {
-				monthEl.innerHTML += '<option value="'+i+'" selected>' + i
-						+ '</option>';
-			}
-
-			monthEl.innerHTML += '<option value="'+i+'">' + i + '</option>';
-
-		}
-
-		setDays();
-
-		for (var i = 1; i <= 12; i++) {
-			if (d.getHours() - 12 > 0) {
-				if (i == (d.getHours() - 12)) {
-					hourEl.innerHTML += '<option value="'+i+'" selected>' + i
-							+ '</option>';
-				}
-				hourEl.innerHTML += '<option value="'+i+'">' + i + '</option>';
-			} else if (i == d.getHours()) {
-				hourEl.innerHTML += '<option value="'+i+'" selected>' + i
-						+ '</option>';
-			} else {
-				hourEl.innerHTML += '<option value="'+i+'">' + i + '</option>';
-			}
-		}
-
-		var apmEl = document.getElementById('apmEl');
-
-		if ((d.getHours() - 12) >= 0) {
-			apmEl.value = '오후';
-		}
-
-	}
-
-	function setDays3() {
-		var days = 30;
-		var d = new Date();
-		var dayEl2 = document.getElementById('led');
-
-		dayEl2.innerHTML = '';
-
-		if (monthEl.value == 1 || monthEl.value == 3 || monthEl.value == 5
-				|| monthEl.value == 7 || monthEl.value == 8
-				|| monthEl.value == 10 || monthEl.value == 12) {
-			days = 31;
-		} else if (monthEl.value == 2) {
-			days = 29;
-		} else {
-
-		}
-
-		for (var i = 1; i <= days; i++) {
-			if (i == d.getDate()) {
-				dayEl2.innerHTML += '<option value="'+i+'" selected>' + i
-						+ '</option>';
-			} else {
-				dayEl2.innerHTML += '<option value="'+i+'">' + i + '</option>';
-			}
-
-		}
-
-	}
-
-	function viewTerm() {
-		document.getElementById("short").style.display = "none";
-		document.getElementById("term").style.display = "block";
-
-		var d = new Date();
+		window.alert(scount);
 
 		var yearEl = document.getElementById('lsy');
 		var monthEl = document.getElementById('lsm');
@@ -224,11 +84,172 @@
 			apmEl.value = '오후';
 		}
 
+		var d = new Date();
+
+		var yearEl = document.getElementById('yearEl');
+		var monthEl = document.getElementById('monthEl');
+		var dayEl = document.getElementById('dayEl');
+		var hourEl = document.getElementById("hourEl");
+
+		yearEl.innerHTML = '';
+		monthEl.innerHTML = '';
+		dayEl.innerHTML = '';
+		hourEl.innerHTML = '';
+
+		for (var i = d.getFullYear(); i < d.getFullYear() + 5; i++) {
+
+			yearEl.innerHTML += '<option>' + i + '</option>';
+
+		}
+
+		for (var i = 1; i <= 12; i++) {
+			if (i == d.getMonth() + 1) {
+				monthEl.innerHTML += '<option value="'+i+'" selected>' + i
+						+ '</option>';
+			}
+
+			monthEl.innerHTML += '<option value="'+i+'">' + i + '</option>';
+
+		}
+
+		setDays();
+
+		for (var i = 1; i <= 12; i++) {
+			if (d.getHours() - 12 > 0) {
+				if (i == (d.getHours() - 12)) {
+					hourEl.innerHTML += '<option value="'+i+'" selected>' + i
+							+ '</option>';
+				}
+				hourEl.innerHTML += '<option value="'+i+'">' + i + '</option>';
+			} else if (i == d.getHours()) {
+				hourEl.innerHTML += '<option value="'+i+'" selected>' + i
+						+ '</option>';
+			} else {
+				hourEl.innerHTML += '<option value="'+i+'">' + i + '</option>';
+			}
+		}
+
+		var apmEl = document.getElementById('apmEl');
+
+		if ((d.getHours() - 12) >= 0) {
+			apmEl.value = '오후';
+		}
+
+		if (scount === 0) {
+			[].slice.call(document.querySelectorAll('select.cs-select'))
+					.forEach(function(el) {
+						new SelectFx(el);
+						scount = scount + 1;
+					});
+
+		}
+
+	}
+
+	function viewShort() {
+		document.getElementById("term").style.display = "none";
+		document.getElementById("short").style.display = "block";
+
+	}
+
+	function viewTerm() {
+		document.getElementById("short").style.display = "none";
+		document.getElementById("term").style.display = "block";
+
+	}
+
+	function setDays3() {
+		var days = 30;
+		var d = new Date();
+		var dayEl2 = document.getElementById('led');
+
+		dayEl2.innerHTML = '';
+
+		if (monthEl.value == 1 || monthEl.value == 3 || monthEl.value == 5
+				|| monthEl.value == 7 || monthEl.value == 8
+				|| monthEl.value == 10 || monthEl.value == 12) {
+			days = 31;
+		} else if (monthEl.value == 2) {
+			days = 29;
+		} else {
+
+		}
+
+		for (var i = 1; i <= days; i++) {
+			if (i == d.getDate()) {
+				dayEl2.innerHTML += '<option value="'+i+'" selected>' + i
+						+ '</option>';
+			} else {
+				dayEl2.innerHTML += '<option value="'+i+'">' + i + '</option>';
+			}
+
+		}
+
+	}
+
+	function setDays() {
+		var days = 30;
+		var d = new Date();
+		var dayEl = document.getElementById('dayEl');
+
+		if (monthEl.value == 1 || monthEl.value == 3 || monthEl.value == 5
+				|| monthEl.value == 7 || monthEl.value == 8
+				|| monthEl.value == 10 || monthEl.value == 12) {
+			days = 31;
+		} else if (monthEl.value == 2) {
+			days = 29;
+		} else {
+
+		}
+
+		for (var i = 1; i <= days; i++) {
+			if (i == d.getDate()) {
+				dayEl.innerHTML += '<option value="'+i+'" selected>' + i
+						+ '</option>';
+			} else {
+				dayEl.innerHTML += '<option value="'+i+'">' + i + '</option>';
+			}
+
+		}
+
+	}
+
+	function setDays2() {
+		var days = 30;
+		var d = new Date();
+		var dayEl = document.getElementById('lsd');
+
+		dayEl.innerHTML = '';
+
+		if (monthEl.value == 1 || monthEl.value == 3 || monthEl.value == 5
+				|| monthEl.value == 7 || monthEl.value == 8
+				|| monthEl.value == 10 || monthEl.value == 12) {
+			days = 31;
+		} else if (monthEl.value == 2) {
+			days = 29;
+		} else {
+
+		}
+
+		for (var i = 1; i <= days; i++) {
+			if (i == d.getDate()) {
+				dayEl.innerHTML += '<option value="'+i+'" selected>' + i
+						+ '</option>';
+			} else {
+				dayEl.innerHTML += '<option value="'+i+'">' + i + '</option>';
+			}
+
+		}
+
 	}
 </script>
 </head>
 <body>
 	<%@ include file="../header.jsp"%>
+	<link rel="stylesheet" type="text/css"
+		href="/final02/CSS/cs-select.css" />
+	<link rel="stylesheet" type="text/css"
+		href="/final02/CSS/cs-skin-border.css" />
 	<section id="mainsection">
 		<div class="col-md-12">
 			<h1 class="main--title">
@@ -251,150 +272,283 @@
 
 
 
-		<div id="short">
-			<form role="form" class="form-inline col-md-12 go-right"
-				name="shortup" action="poolMasterAdd05.do" method="get">
+		<div id="short" class="row">
+
+			<form name="shortup" class="form-horizontal form"
+				action="poolMasterAdd05.do" method="get">
 				<h2>단기 카풀 세부 정보 입력</h2>
 				<p>빠짐 없이 입력해 주세요.</p>
 				<input type="hidden" name="termtype" value="단기">
 
+
 				<div class="row">
-					<div class="form-group col-md-12">
+					<div class="col-md-2">출발 일시</div>
+					<div class="col-md-10">
+						<div class="col-md-2">
+							<select class="cs-select cs-skin-border" id="yearEl" name="sy">
+							</select> 년
+						</div>
+						<div class="col-md-2">
+							<select class="cs-select cs-skin-border" id="monthEl" name="sm"
+								onchange="setDays()">
+							</select> 월
+						</div>
+						<div class="col-md-2">
+							<select class="cs-select cs-skin-border" id="dayEl" name="sd">
+							</select> 일
+						</div>
+						<div class="col-md-2">
+							<select class="cs-select cs-skin-border" id="apmEl" name="sapm">
+								<option value="오전">오전</option>
+								<option value="오후">오후</option>
+							</select> APM
+						</div>
+						<div class="col-md-2">
+							<select class="cs-select cs-skin-border" id="hourEl" name="sh">
+							</select> 시
+						</div>
+						<div class="col-md-2">
+							<select class="cs-select cs-skin-border" name="smi">
+								<option value="00">00</option>
+								<option value="30">30</option>
+							</select> 분
+						</div>
+					</div>
+				</div>
 
-						<div class="col-md-1 control-label">출발 일시</div>
+				<div class="row">
+					<div class="col-md-12">인원과 요금을 입력해주세요.</div>
+					<div class="col-md-6">
 
-						<div class="col-md-11">
-							<div class="col-md-2">
-								<div class="col-md-9">
-									<select class="form-control" id="yearEl" name="sy">
-									</select>
-								</div>
-								<div class="col-md-3">년</div>
-							</div>
-							<div class="col-md-2">
-								<div class="col-md-9">
-									<select class="form-control" id="monthEl" name="sm"
-										onchange="setDays()">
-									</select>
-								</div>
-								<div class="col-md-3">월</div>
-							</div>
-							<div class="col-md-2">
-								<div class="col-md-9">
-									<select class="form-control" id="dayEl" name="sd">
-									</select>
-								</div>
-								<div class="col-md-3">일</div>
-							</div>
-							<div class="col-md-2">
-								<select class="form-control" id="apmEl" name="sapm">
-									<option value="오전">오전</option>
-									<option value="오후">오후</option>
-								</select>
-							</div>
-							<div class="col-md-2">
-								<div class="col-md-9">
-									<select class="form-control" id="hourEl" name="sh">
-									</select>
-								</div>
-								<div class="col-md-2">시</div>
-							</div>
-							<div class="col-md-2">
-								<div class="col-md-9">
-									<select class="form-control" name="smi">
-										<option value="00">00</option>
-										<option value="30">30</option>
-									</select>
-								</div>
-								<div class="col-md-2">분</div>
-							</div>
+						<div class="input input--nao col-md-12">
+							<input class="input__field input__field--nao" type="number"
+								id="mannum" name="mannum" placeholder="인원 수를 입력하세요."><br>
+							<label class="input__label input__label--nao" for="mannum">
+								<span class="input__label-content input__label-content--nao">인원</span>
+							</label>
+							<svg class="graphic graphic--nao" width="300%" height="100%"
+								viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path
+									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
+					</svg>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input input--nao col-md-12">
+							<input class="input__field input__field--nao" type="number"
+								id="pay" name="pay" placeholder="금액을 입력하세요(원)"><br>
+							<label class="input__label input__label--nao" for="pay">
+								<span class="input__label-content input__label-content--nao">요금</span>
+							</label>
+							<svg class="graphic graphic--nao" width="300%" height="100%"
+								viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path
+									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
+					</svg>
+						</div>
+
+					</div>
+
+					<div class="col-md-2">성별</div>
+					<div class="col-md-4">
+						<select class="cs-select cs-skin-border" name="gender">
+							<option>상관없음</option>
+							<option>남성만</option>
+							<option>여성만</option>
+						</select>
+
+					</div>
+
+					<div class="col-md-2" style="vertical-align: middle;">흡연여부</div>
+					<div class="col-md-4">
+						<div class="col-md-6">
+							<input type="radio" name="smoking" value="흡연">흡연
+
+						</div>
+
+						<div class="col-md-6">
+							<input type="radio" name="smoking" value="비흡연"> 비흡연
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group col-md-12">
-
-						<div class="form-group col-md-3">
-							<div class="col-md-4">인원</div>
-							<div class="col-md-6">
-								<input type="number" class="form-control" name="mannum">
-							</div>
-							<div class="col-md-2">명</div>
+					<div class="col-md-4"></div>
+					<div class="col-md-8">
+						<div class="col-md-4">
+							<button type="button"
+								class="button button--ujarak button--border-thin button--text-thick"
+								onclick="">이전</button>
 						</div>
-
-						<div class="form-group col-md-3">
-							<div class="col-md-4">성별</div>
-							<div class="col-md-8">
-								<select class="form-control" name="gender">
-									<option>상관없음</option>
-									<option>남성만</option>
-									<option>여성만</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group col-md-3">
-							<div class="col-md-4">요금</div>
-							<div class="col-md-6">
-								<input class="form-control" type="number" name="pay">
-							</div>
-							<div class="col-md-2">원</div>
-						</div>
-						<div class="form-group col-md-3">
-							<div class="col-md-4">흡연여부</div>
-							<div class="col-md-8">
-								<input type="radio" name="smoking" value="흡연"> 흡연 <input
-									type="radio" name="smoking" value="비흡연"> 비흡연
-
-							</div>
+						<div class="col-md-8">
+							<button type="submit"
+								class="button button--ujarak button--border-thin button--text-thick button--next">다음</button>
 						</div>
 					</div>
 				</div>
-				<p>
-					<input class="form-control" type="button" name="back" value="이전">
-					<input class="form-control" type="submit" name="next" value="다음">
-				</p>
 			</form>
 		</div>
 
 
 
-		<div id="term">
-			<form name="termup" action="poolMasterAdd05.do" method="post">
+		<div id="term" class="row">
+			<form name="termup" class="form-horizontal form"
+				action="poolMasterAdd05.do" method="post">
 				<input type="hidden" name="termtype" value="정기">
-				<div id="div2">
-					기간 <select id="lsy" name="lsy">
-					</select>년 <select id="lsm" name="lsm" onchange="setDays()">
-					</select>월 <select id="lsd" name="lsd">
-					</select>일 ~ <select id="ley" name="ley">
-					</select>년 <select id="lem" name="lem" onchange="setDays2()">
-					</select>월 <select id="led" name="led">
-					</select>일 <br> 시간 <select id="lapm" name="lapm">
-						<option>오전</option>
-						<option>오후</option>
-					</select> <select id="lh" name="lh">
-					</select>시 <select id="lmi" name="lmi">
-						<option value="00">00</option>
-						<option value="30">30</option>
-					</select>분 <br> 반복<input type="checkbox" name="mon" value="월">월
-					<input type="checkbox" name="tue" value="화">화 <input
-						type="checkbox" name="wed" value="수">수 <input
-						type="checkbox" name="thu" value="목">목 <input
-						type="checkbox" name="fri" value="금">금 <input
-						type="checkbox" name="sat" value="토">토 <input
-						type="checkbox" name="sun" value="일">일 <br> 요금<input
-						type="text" name="pay" value="1000">원 <br> 흡연여부<input
-						type="radio" name="smoking" value="흡연">흡연 <input
-						type="radio" name="smoking" value="비흡연">비흡연 <br> 인원<input
-						type="number" name="mannum">명 <br> 성별<select
-						name="gender">
-						<option>상관없음</option>
-						<option>남성만</option>
-						<option>여성만</option>
-					</select>
+				<h2>정기 카풀 세부 정보 입력</h2>
+				<p>빠짐 없이 입력해 주세요.</p>
+				<input type="hidden" name="termtype" value="단기">
+
+				<div class="row">
+					<div class="col-md-1">시작일</div>
+					<div class="col-md-5">
+						<div class="col-md-4">
+							<select class="cs-select cs-skin-border" id="lsy" name="lsy">
+							</select>년
+						</div>
+						<div class="col-md-4">
+							<select class="cs-select cs-skin-border" id="lsm" name="lsm"
+								onchange="setDays()">
+							</select>월
+						</div>
+						<div class="col-md-4">
+							<select class="cs-select cs-skin-border" id="lsd" name="lsd">
+							</select>일
+						</div>
+					</div>
+					<div class="col-md-1">종료일</div>
+					<div class="col-md-5">
+						<div class="col-md-4">
+							<select class="cs-select cs-skin-border" id="ley" name="ley">
+							</select>년
+						</div>
+						<div class="col-md-4">
+							<select class="cs-select cs-skin-border" id="lem" name="lem"
+								onchange="setDays2()">
+							</select>월
+						</div>
+						<div class="col-md-4">
+							<select class="cs-select cs-skin-border" id="led" name="led">
+							</select>일
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-1">출발시간</div>
+					<div class="col-md-5">
+						<div class="col-md-4">
+							<select class="cs-select cs-skin-border" id="lapm" name="lapm">
+								<option>오전</option>
+								<option>오후</option>
+							</select>APM
+						</div>
+						<div class="col-md-4">
+							<select class="cs-select cs-skin-border" id="lh" name="lh">
+							</select>시
+						</div>
+						<div class="col-md-4">
+							<select class="cs-select cs-skin-border" id="lmi" name="lmi">
+								<option value="00">00</option>
+								<option value="30">30</option>
+							</select>분
+						</div>
+					</div>
+					<div class="col-md-1">반복</div>
+					<div class="col-md-5">
+						<div class="col-md-1">
+							<input type="checkbox" name="mon" value="월">월
+						</div>
+						<div class="col-md-1">
+							<input type="checkbox" name="tue" value="화">화
+						</div>
+						<div class="col-md-1">
+							<input type="checkbox" name="wed" value="수">수
+						</div>
+						<div class="col-md-1">
+							<input type="checkbox" name="thu" value="목">목
+						</div>
+						<div class="col-md-1">
+							<input type="checkbox" name="fri" value="금">금
+						</div>
+						<div class="col-md-1">
+							<input type="checkbox" name="sat" value="토">토
+						</div>
+						<div class="col-md-1">
+							<input type="checkbox" name="sun" value="일">일
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">인원과 요금을 입력해주세요.</div>
+					<div class="col-md-6">
+
+						<div class="input input--nao col-md-12">
+							<input class="input__field input__field--nao" type="number"
+								id="mannum" name="mannum" placeholder="인원 수를 입력하세요."><br>
+							<label class="input__label input__label--nao" for="mannum">
+								<span class="input__label-content input__label-content--nao">인원</span>
+							</label>
+							<svg class="graphic graphic--nao" width="300%" height="100%"
+								viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path
+									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
+					</svg>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input input--nao col-md-12">
+							<input class="input__field input__field--nao" type="number"
+								id="pay" name="pay" placeholder="금액을 입력하세요(원)"><br>
+							<label class="input__label input__label--nao" for="pay">
+								<span class="input__label-content input__label-content--nao">요금</span>
+							</label>
+							<svg class="graphic graphic--nao" width="300%" height="100%"
+								viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path
+									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
+					</svg>
+						</div>
+
+					</div>
+
+					<div class="col-md-2">성별</div>
+					<div class="col-md-4">
+						<select class="cs-select cs-skin-border" name="gender">
+							<option>상관없음</option>
+							<option>남성만</option>
+							<option>여성만</option>
+						</select>
+
+					</div>
+
+					<div class="col-md-2" style="vertical-align: middle;">흡연여부</div>
+					<div class="col-md-4">
+						<div class="col-md-6">
+							<input type="radio" name="smoking" value="흡연">흡연
+
+						</div>
+
+						<div class="col-md-6">
+							<input type="radio" name="smoking" value="비흡연"> 비흡연
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4"></div>
+					<div class="col-md-8">
+						<div class="col-md-4">
+							<button type="button"
+								class="button button--ujarak button--border-thin button--text-thick"
+								onclick="">이전</button>
+						</div>
+						<div class="col-md-8">
+							<button type="submit"
+								class="button button--ujarak button--border-thin button--text-thick button--next">다음</button>
+						</div>
+					</div>
 				</div>
 
-				<br> <input type="button" value="이전"> <input
-					type="submit" value="다음">
+
+
 			</form>
 		</div>
 

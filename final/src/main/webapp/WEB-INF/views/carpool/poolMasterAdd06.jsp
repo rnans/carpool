@@ -6,66 +6,98 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
+<link rel="stylesheet" type="text/css"
+	href="/final02/CSS/poolCommon.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 </head>
 <body>
-<%@ include file="../header.jsp" %>
-<fieldset>
-<legend>카풀 등록</legend>
-<script>
-window.onload=function()
-{
-	var type='${sessionScope.data.termtype}';
-	
-	var f=document.getElementById('f');
-	if(type=='정기')
-	{
-		f.method='POST';
-	}
-}
-function checkName()
-{
-	var url='checkPoolName.do'
-	var params='poolname='+document.getElementById('poolname').value;
-	
-	sendRequest(url, params, callback, 'GET');
-	
-	function callback()
-	{
-		   if(XHR.readyState==4){
-			      if(XHR.status==200){
-			         var text = XHR.responseText;
-			         document.getElementById('msg').innerHTML=text;
-			         
-			         
-			      }
-			   }
-	}
-}
-function submitName()
-{
-	if(document.getElementById('msg').innerText=='사용 가능한 카풀 이름입니다.')
-    {
-   	 f.submit();
-    }
-	else
-	{
-		window.alert('사용 가능한 카풀 이름을 입력해 주세요.');
-	}
-}
-</script>
-<form id="f" name="poolNameform" action="poolMasterAddConfirm.do">
-		카풀명<input type="text" id="poolname" name="poolname" placeholder="카폴 이름을 입력하세요." onblur="checkName()"> 
-		<br>
-		<div id="msg"></div>
-		
-	<br>
-	<input type="button" value="이전"> 
-			<input type="button" onclick="submitName()" value="완료">
-			</form> 
-</fieldset>
-			
+	<%@ include file="../header.jsp"%>
+	<fieldset>
+		<legend>카풀 등록</legend>
+		<script>
+			window.onload = function() {
+				var type = '${sessionScope.data.termtype}';
+
+				var f = document.getElementById('f');
+				if (type == '정기') {
+					f.method = 'POST';
+				}
+			}
+			function checkName() {
+				if(document.getElementById('poolname').value==''||document.getElementById('poolname').value==null)
+				{
+					document.getElementById('msg').innerHTML = "카풀 이름은 반드시 입력해야 합니다.";				
+					exit;
+				}
+				var url = 'checkPoolName.do'
+				var params = 'poolname='
+						+ document.getElementById('poolname').value;
+
+				sendRequest(url, params, callback, 'GET');
+
+				function callback() {
+					if (XHR.readyState == 4) {
+						if (XHR.status == 200) {
+							var text = XHR.responseText;
+							document.getElementById('msg').innerHTML = text;
+
+						}
+					}
+				}
+			}
+			function submitName() {
+				if (document.getElementById('msg').innerText == '사용 가능한 카풀 이름입니다.') {
+					f.submit();
+				} else {
+					window.alert('사용 가능한 카풀 이름을 입력해 주세요.');
+				}
+			}
+		</script>
+		<%@ include file="../header.jsp"%>
+		<section id="mainsection">
+			<div class="col-md-12">
+				<h1 class="main--title">
+					카풀 등록 <small>새로 생성된 풀 파티의 이름을 입력해주세요.</small>
+				</h1>
+			</div>
+			<form id="f" name="poolNameform" action="poolMasterAddConfirm.do">
+				<div class="row">
+
+					<div class="input input--nao col-md-12">
+							<input class="input__field input__field--nao" type="text"
+								id="poolname" name="poolname" placeholder="카풀 이름을 입력하세요."><br>
+							<label class="input__label input__label--nao" for="poolname	">
+								<span class="input__label-content input__label-content--nao">카풀 이름</span>
+							</label>
+							<svg class="graphic graphic--nao" width="300%" height="100%"
+								viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path
+									d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
+					</svg>
+						</div>
+					<div id="msg"></div>
+				</div>
+
+				  <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-8">
+						<div class="col-xs-4">
+							<button type="button"
+								class="button button--ujarak button--border-thin button--text-thick"
+								onclick="">이전</button>
+						</div>
+						<div class="col-xs-8">
+							<button type="button" onclick="submitName();"
+								class="button button--ujarak button--border-thin button--text-thick button--next">완료</button>
+						</div>
+					</div></div>
+       
+				
+        
+      </div>
+				
+			</form>
+		</section>
 </body>
 </html>

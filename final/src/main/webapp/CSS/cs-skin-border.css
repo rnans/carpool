@@ -13,8 +13,9 @@ div.cs-skin-border {
 	background: transparent;
 	font-size: 1.3em;
 	font-weight: 700;
-	max-width: 600px;
+	min-width: 150px;	
 	color: #9da8b2;
+
 }
 
 @media screen and (max-width: 30em) {
@@ -76,4 +77,8 @@ div.cs-skin-border {
 .cs-skin-border .cs-options li span:hover,
 .cs-skin-border li.cs-focus span {
 	background: #f5f3ec;
+}
+.cs-options
+{
+	min-height: 100%;
 }

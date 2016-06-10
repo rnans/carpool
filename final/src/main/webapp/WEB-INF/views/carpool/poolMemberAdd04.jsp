@@ -9,6 +9,16 @@
 <link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/final02//CSS/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="/final02/CSS/_all-skins.min.css">
+
 <script>
 function viewNextPage()
 {
@@ -29,6 +39,9 @@ function viewNextPage()
 	
 }
 </script>
+<script src="/final02/js/httpRequest.js"></script>
+<script src="/final02/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/js/jQuery/jquery.xml2json.js"></script>
 <script src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=2e2fe45c-1baa-3078-b615-2c0b3f71bfe5"></script>
 <script>
 //초기화 함수
@@ -48,12 +61,12 @@ function initTmap(){
 
 	var scoordi='${sessionScope.data.startcoordi}'.split(',');
 	var ecoordi='${sessionScope.data.endcoordi}'.split(',');
-	
+
 	var startX;
 	var startY;
 	var endX;
 	var endY;
-	
+
 	for(var i=0;i<scoordi.length;i++)
 	{
 		
@@ -83,7 +96,7 @@ function initTmap(){
 
 		}
 	}
-	
+			
 	var sCoordi= new Tmap.LonLat(startX, startY).transform(pr_4326,pr_3857);
 	var eCoordi = new Tmap.LonLat(endX, endY).transform(pr_4326,pr_3857);
 	
@@ -91,13 +104,14 @@ function initTmap(){
 	document.getElementById('sLng').value=startX;
 	document.getElementById('eLat').value=endY;
 	document.getElementById('eLng').value=endX;
-	    
-    searchRoute(sCoordi.lon,sCoordi.lat,eCoordi.lon,eCoordi.lat);
+	
+    searchRoute(startX,startY,endX,endY);
 };
 //경로 정보 로드
 function searchRoute(startX,startY,endX,endY){
     var routeFormat = new Tmap.Format.KML({extractStyles:true, extractAttributes:true});
     var urlStr = "https://apis.skplanetx.com/tmap/routes?version=1&format=xml";
+    urlStr += "&reqCoordType="+'WGS84GEO';
     urlStr += "&startX="+startX;
     urlStr += "&startY="+startY;
     urlStr += "&endX="+endX;
@@ -127,79 +141,113 @@ function onDrawnFeatures(e){
 </script>
 </head>
 <body onload="initTmap()">
-//지도 div 정의
+<%@ include file="../header.jsp" %>
+<section id="mainsection">
+		<div class="col-md-12">
+			<h1 class="main--title">
+				카풀 등록 <small>등록 정보 최종 확인</small>
+			</h1>
+		</div>
 <div id="map_div">
 </div>
-<h2>카풀등록 페이지6</h2>
-
+	
+	
 <form id="form" name="f" action="poolMemberAddConfirm.do" method="get">
 <input type="hidden" id="sLat" name="sLat">
 <input type="hidden" id="sLng" name="sLng">
 <input type="hidden" id="eLat" name="eLat">
 <input type="hidden" id="eLng" name="eLng">
-	
-	
-	<div id="div2">
-	
-	<table border="1">
 		
-			
-				
 	
-			
-		<tfoot>
-			<tr>
-				<th><textarea id="content" name="pluscontent" rows="5" cols="50"></textarea> </th>
-				<td></td>
-			</tr>
-		</tfoot>
-			
-			<tbody>
-			<tr>
+	<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">정보 입력 확인</h3>
+
+              
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
 				<th>출발지</th>
 					<td>${sessionScope.data.startspot }</td>
-					<th>경유지</th>
-					<td>${sessionScope.data.route }</td>
+				</tr>
+				<tr>
 					<th>도착지</th>
 					<td>${sessionScope.data.endspot}</td>
-			</tr>
+				</tr>
 				<tr>
 					<th>목적</th>
 					<td>${sessionScope.data.aim }</td>
 				</tr>
+				
+					<c:if test="${sessionScope.data.termtype eq '단기'}">	
+					<tr>
+					<th>출발일시</th>
+					<td>${sessionScope.data.starttime}</td>
+					</tr>
+					</c:if>
+					<c:if test="${sessionScope.data.termtype eq '정기'}">
+					<tr>
+					<th>출발일시</th>
+					<td>${sessionScope.data.starttime}</td>
+					</tr>
+					<tr>
+					<th>종료일시</th>
+					<td>${sessionScope.data.enddate }</td>
+					</tr>
+					<tr>
+					<th>반복</th>
+					<td>${sessionScope.data.days }</td>
+					</tr>
+					</c:if>
+				
 				<tr>
 					<th>인원</th>
 					<td>${sessionScope.data.mannum }</td>
+					</tr>
+					<tr>
 					<th>성별</th>
 					<td>${sessionScope.data.gender }</td>
+					</tr>
+					<tr>
 					<th>흡연</th>
 					<td>${sessionScope.data.smoking }</td>
 				</tr>
 				<tr>
-					<c:if test="${sessionScope.data.termtype eq '단기'}">	
-					<th>출발일시</th>
-					<td>${sessionScope.data.starttime}</td>
-					</c:if>
-					<c:if test="${sessionScope.data.termtype eq '정기'}">
-					<th>출발일시</th>
-					<td>${sessionScope.data.starttime}</td>
-					<th>종료일시</th>
-					<td>${sessionScope.data.enddate }</td>
-					<th>반복</th>
-					<td>${sessionScope.data.days }</td>
-					</c:if>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+				<th>추가 사항</th>
+				<td><textarea class="col-xs-12" id="content" name="pluscontent" rows="5"></textarea></td>
+			</tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-8">
+						<div class="col-xs-4">
+							<button type="button"
+								class="button button--ujarak button--border-thin button--text-thick"
+								onclick="">이전</button>
+						</div>
+						<div class="col-xs-8">
+							<button type="button" onclick="viewNextPage();"
+								class="button button--ujarak button--border-thin button--text-thick button--next">등록 완료</button>
+						</div>
+					</div></div>
+       
+				
+        
+      </div>
 	
 	
+			
 	
-			<p>
-				<input type="button" value="이전">
-				<input type="button" value="완료" onclick="viewNextPage()">
-			</p>
-
 	</form>
+	</section>
 </body>
 </html>
