@@ -127,7 +127,7 @@ public class carInfoController {
 			mav.addObject("msg", "이미 등록된 차량 번호입니다.");
 			mav.setViewName("carManage/carAdd");
 		} else {
-			
+			System.out.println("3");
 			MultipartFile upload=req.getFile("upload");
 			MultipartFile upload2=req.getFile("upload2");
 			 copyInto(upload,upload2, request);
@@ -147,7 +147,9 @@ public class carInfoController {
 		    	 dto2.setCarphoto(filename);
 		    	 dto.setFilename(filename); 
 				 dto.setFilepath(filepath); dto.setFiletype(filetype);
-				 int count=uploadDao.upload(dto);
+				 System.out.println("4");
+				 
+				 int count=uploadDao.carupload(dto);
 				 String msg2=count>0?"upload 성공":"upload 실패";
 				 System.out.println(msg2);
 			     System.out.println("id :"+id);
@@ -168,7 +170,7 @@ public class carInfoController {
 		    	 
 		    	 dto.setFilename(filename2); 
 				 dto.setFilepath(filepath2); dto.setFiletype(filetype2);
-				 int count=uploadDao.upload(dto);
+				 int count=uploadDao.carupload(dto);
 		    	 String msg2=count>0?"upload 성공":"upload 실패";
 				 System.out.println(msg2);
 			     System.out.println("id :"+id);
@@ -274,7 +276,7 @@ System.out.println("1");
 		//인증사진
 		     String filename2=upload2.getOriginalFilename();
 			 //파일 타입 프로필=0//차량=1//기타=각자 추가하셈
-			 String filetype2="1";
+			 String filetype2="2";
 		     String filepath2=root_path+attach_path+filename2;
 		
 		     
