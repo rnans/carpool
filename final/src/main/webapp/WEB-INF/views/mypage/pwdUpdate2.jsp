@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+
 <head>
 	<title>가장 편리한 카풀 서비스, 풀파티!</title>
-
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -22,6 +19,25 @@
 		<link rel="stylesheet" type="text/css" href="css/menu_topside.css" />
 		<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+<script type="text/javascript" src="/final02/js/httpRequest.js"></script>
+<script type="text/javascript">
+function pwdCheck(){
+	  var pwd = document.getElementById('pwd').value;
+	  var pwd2 = document.getElementById('pwd2').value;
+	 
+	  if(pwd!=pwd2){
+	   document.getElementById('pwdmsg').style.color = "red";
+	   document.getElementById('pwdmsg').innerHTML = "비밀번호를 다시 확인하세요."; 
+	  }else if(pwd=="" || pwd2==""){
+		  document.getElementById('pwdmsg').style.color= "green";
+		  document.getElementById('pwdmsg').innerHTML = "비밀번호를 입력해주세요.";
+	  }else{
+	   document.getElementById('pwdmsg').style.color = "blue";
+	   document.getElementById('pwdmsg').innerHTML = "비밀번호가 일치합니다.";  
+	  }  
+}
+</script>
 		
 		
 <style>
@@ -499,16 +515,41 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-
-
-
-
 </script>
 
 
+<!-- 회원가입 빈칸입력시 가입방지 jquery -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실행
 
+	var re_pw = /^[a-z0-9_-]{6,18}$/; // 비밀번호 검사식
+	// 선택할 요소를 변수에 할당
+	// 변수에 할당하지 않으면 매번 HTML 요소를 선택해야 하기 때문에 귀찮고 성능에도 좋지 않다
+	// 쉼표를 이용해서 여러 변수를 한 번에 선언할 수 있다
+
+	var 
+		form = $('.form'),  
+		pwd = $('#pwd'); 
+		
+	// 선택한 form에 서밋 이벤트가 발생하면 실행한다
+	// if (사용자 입력 값이 정규식 검사에 의해 참이 아니면) {포함한 코드를 실행}
+	// if 조건절 안의 '정규식.test(검사할값)' 형식은 true 또는 false를 반환한다
+	// if 조건절 안의 검사 결과가 '!= true' 참이 아니면 {...} 실행
+	// 사용자 입력 값이 참이 아니면 alert을 띄운다
+	// 사용자 입력 값이 참이 아니면 오류가 발생한 input으로 포커스를 보낸다
+	// 사용자 입력 값이 참이 아니면 form 서밋을 중단한다
+	form.submit( function() {
+		if(re_pw.test(pwd.val()) != true) { // 비밀번호 검사
+			alert('유효한 PW를 입력해 주세요.');
+			pwd.focus();
+			return false;
+		}
+	});
+</script>
 
 	</head>
+
 	<body>
 	<%@ include file="../header.jsp" %>
 		<div class="Mycontainer">
@@ -544,18 +585,18 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 							
 	<div id="div2">
 		
-			<form name="myprofile" action="pwdUpdate.do" method="">
+			<form role="form" name="myprofile" action="pwdUpdate.do" method="post">
+				<input type="hidden" name="id" value="${dto.id }">
 				<fieldset>
-					
-					
-					<input type="hidden" name="id" value="${dto.id }">
-											
 					<div class="row" id="cm">
 					  <div class="col-xs-4">
 					    pwd<input type="text" class="form-control" name="nowpwd" value="${dto.pwd}">
-					    new pwd<input type="password" class="form-control" name="pwd">
-					    pwd<input type="password" class="form-control" name="pwd2"><br>
+					    
+					    n pwd<input type="password" class="form-control" name="pwd" id="pwd">
+					    pwd<input type="password" class="form-control" name="pwd2" id="pwd2" onblur="pwdCheck()"><br>
+					    <span id="pwdmsg">뚜루뚜루갱</span>
 					  </div>
+					  
 					</div>				
 						<p id="cm">
 							<button type="reset" name="reset" value="취소" class="btn btn-default">취소</button>
@@ -566,7 +607,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						
 					</fieldset>	
 				</form>
-			</div>
+		</div>
 					
 	
 		</div>
@@ -590,8 +631,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <!-- For the demo ad only -->   
 
 
-	</body>
-</html>
+
 			
 			
 </body>

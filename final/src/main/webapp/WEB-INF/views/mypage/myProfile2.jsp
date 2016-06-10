@@ -1,14 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>가장 편리한 카풀 서비스, 풀파티!</title>
-
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
+<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
 		<title>Off-Canvas Menu Effects - Top Side</title>
@@ -589,7 +585,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 	<div id="imgf">
 	 <form id="frm" name="frm" action="uploadimgUpdate.do" method="post" enctype="multipart/form-data">
 		<span>
-  		<img style="width:300px; height:300px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="img-none">
+  		<img style="width:300px; height:300px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
 		</span>	
 			<input type="file" id="file" name="upload">
    			<button type="submit" class="btn btn-success" value="사진올리기">사진올리기</button>
