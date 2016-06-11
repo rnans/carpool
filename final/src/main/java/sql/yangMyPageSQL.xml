@@ -4,61 +4,78 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.yangMyPage">
 
+	<!--모든 카드정보  -->
 	<select id="allPayInfo" parameterType="String"
 		resultType="su.yangmypage.model.yangMypageDTO">
 		select * from userpayinfo where userid=#{userid}
 	</select>
 	
+	<!--카드등록  -->
 	<insert id="userPayAdd" parameterType="su.yangmypage.model.yangMypageDTO">
 		insert into userpayinfo
 		values(userpayinfo_idx.nextval,#{userid},#{cardtype1},#{cardnum},#{cardterm},#{cardname},#{cvc},#{cardtype2},userpayinfo_cardid.nextval,#{cardimg})
 	</insert>
 	
+	<!--idx로 검색한 카드정보  -->
 	<select id="cardIdxList" parameterType="Integer"
 		resultType="su.yangmypage.model.yangMypageDTO">
 		select * from userpayinfo where idx=#{idx}
 	</select>
 	
+	<!--카드정보 수정  -->
 	<update id="cardUpdate" parameterType="su.yangmypage.model.yangMypageDTO">
 		update userpayinfo set cardtype1=#{cardtype1}, cardnum=#{cardnum},
 		cardterm=#{cardterm}, cardname=#{cardname}, cvc=#{cvc},
 		cardtype2=#{cardtype2}, cardimg=#{cardimg} where idx=#{idx}
 	</update>
 	
+	<!--카드정보 삭제  -->
 	<delete id="cardDel" parameterType="su.yangmypage.model.yangMypageDTO">
 		delete from userpayinfo where idx=#{idx}
 	</delete>
 	
+	<!--카드중복(유효성)  -->
 	<select id="cardNum" resultType="su.yangmypage.model.yangMypageDTO">
 		select cardnum from userpayinfo
 	</select>
 	
+	<!--등록글  -->
 	<select id="reservationList" parameterType="String"
 		resultType="su.pool.model.PoolDTO">
 		select * from reservationlist where userid=#{userid}
 	</select>
 	
+	<!--내가 평가한 글  -->
 	<select id="rateSetView" parameterType="String"
 		resultType="su.pool.model.PoolRateDTO">
 		select * from rate where userid=#{userid}
 	</select>
 	
+	<!--평가 받은 글  -->
 	<select id="rateGetView" parameterType="String"
 		resultType="su.pool.model.PoolRateDTO">
 		select * from rate where aimid=#{userid}
 	</select>
 	
+	<!--이용내역  -->
 	<select id="useList" resultType="su.paylist.model.PayListDTO"
 		parameterType="String">
 		select * from payalllist where userid1=#{userid1}
 	</select>
 	
+	<!--즐겨찾기  -->
 	<select id="listWish" parameterType="String"
 		resultType="su.wishpool.model.WishpoolListDTO">
 		select * from wishpool where userid=#{id}
 	</select>
-	
-	<delete id="wishDel" parameterType="String" >
-	delete from wishpool where idx=#{idx} 
+
+	<!--즐겨찾기 삭제 -->
+	<delete id="wishDel" parameterType="su.pool.model.PoolRateDTO">
+		delete from wishpool where idx=#{idx}
 	</delete>
+
+	<!--평가글했던 정보 가져오기 -->
+	<select id="rateIdx" parameterType="int" resultType="su.pool.model.PoolRateDTO">
+		select * from rate where idx=#{idx}
+	</select>
 </mapper>

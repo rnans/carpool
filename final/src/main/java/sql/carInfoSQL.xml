@@ -3,36 +3,63 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sql.carInfo">
+
+	<!--차량 정보  -->
 	<select id="carList" parameterType="String" resultType="su.carinfo.model.carInfoDTO">
-		select * from carInfo where id=#{userid} order by idx desc
+		select *
+		from carInfo where id=#{userid} order by idx desc
 	</select>
+	
+	<!--차량 등록  -->
 	<insert id="carAdd" parameterType="su.carinfo.model.carInfoDTO">
 		insert into carInfo
 		values(carInfo_idx.nextval,#{id},#{driver},'0',#{carnum},#{cartype},#{confirmphoto},'0',#{carphoto},sysdate)
 	</insert>
-	<select id="carIdxList" parameterType="su.carinfo.model.carInfoDTO" resultType="su.carinfo.model.carInfoDTO">
+	
+	<!--idx로 검색한 차량 정보  -->
+	<select id="carIdxList" parameterType="su.carinfo.model.carInfoDTO"
+		resultType="su.carinfo.model.carInfoDTO">
 		select * from carInfo where idx=#{idx}
 	</select>
+	
+	<!--차량 정보 수정  -->
 	<update id="carUpdate" parameterType="su.carinfo.model.carInfoDTO">
-		update carInfo set carType=#{cartype}, confirmPhoto=#{confirmphoto}, confirm='0', carPhoto=#{carphoto} where idx=#{idx}
+		update carInfo set
+		carType=#{cartype}, confirmPhoto=#{confirmphoto}, confirm='0',
+		carPhoto=#{carphoto} where idx=#{idx}
 	</update>
+	
+	<!--차량 정보 삭제  -->
 	<delete id="carDel" parameterType="Integer">
-		delete from carInfo where idx=#{idx} 
+		delete from carInfo where
+		idx=#{idx}
 	</delete>
-	<select id="carNumList" parameterType="su.carinfo.model.carInfoDTO" resultType="su.carinfo.model.carInfoDTO">
-	select * from carinfo where carnum=#{carnum} 
-	</select>
-	<select id="userName" parameterType="String" resultType="su.member.model.MemberDTO">
-	select * from userinfo where id=#{userid}
-	</select>
-	<update id="carIdZero" parameterType="String">
-	update carinfo set carid='0' where id=#{userid}
-	</update>
-	<update id="carIdOne" parameterType="su.carinfo.model.carInfoDTO">
-	update carinfo set carid='1' where idx=#{idx}
-	</update>
-	<select id="carImage" parameterType="String" resultType="su.upload.model.UploadDTO">
-	select * from file_upload where id=#{userid} and filetype='1' order by idx desc
+	
+	<!--차량 번호 중복(유효성)검사  -->
+	<select id="carNumList" parameterType="su.carinfo.model.carInfoDTO"
+		resultType="su.carinfo.model.carInfoDTO">
+		select * from carinfo where carnum=#{carnum}
 	</select>
 	
+	<!--이름 검색 -->
+	<select id="userName" parameterType="String" resultType="su.member.model.MemberDTO">
+		select * from userinfo where id=#{userid}
+	</select>
+	
+	<!--대표 차량  -->
+	<update id="carIdZero" parameterType="String">
+		update carinfo set carid='0' where id=#{userid}
+	</update>
+	
+	<!--대표차량  -->
+	<update id="carIdOne" parameterType="su.carinfo.model.carInfoDTO">
+		update carinfo set carid='1' where idx=#{idx}
+	</update>
+	
+	<!--차량 사진 검색  -->
+	<select id="carImage" parameterType="String" resultType="su.upload.model.UploadDTO">
+		select * from file_upload where id=#{userid} and filetype='1' order by idx
+		desc
+	</select>
+
 </mapper>

@@ -63,7 +63,13 @@ public class yangMyPageController {
 		List<yangMypageDTO> dto = yangMyPageDao.allPayInfo(userid);
 
 		List<UploadDTO> dto2 = uploadDao.imgFind(userid);
-
+		for(int i=0;i<dto.size();i++){
+			String cardNum=dto.get(i).getCardname();
+			for(int j=0;j<4;j++){
+				StringTokenizer tokens=new StringTokenizer(cardNum);
+		
+			}
+		}
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("dto2", dto2);
@@ -316,6 +322,33 @@ public class yangMyPageController {
 		mav.addObject("gopage", "wishPoolList.do");
 		mav.setViewName("mypage/yangMyPageMsg");
 
+		return mav;
+	}
+	
+	@RequestMapping(value = "/rateUpdate.do", method = RequestMethod.GET)
+	public ModelAndView rateUpdateForm(PoolRateDTO dto,HttpSession session){
+		
+		PoolRateDTO list=yangMyPageDao.rateIdx(dto);
+		String id = (String) session.getAttribute("sid");
+		List<UploadDTO> dto2 = uploadDao.imgFind(id);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("dto2", dto2);
+		mav.addObject("list", list);
+		mav.setViewName("mypage/rateUpdate");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/rateUpdate.do", method = RequestMethod.POST)
+	public ModelAndView rateUpdate(PoolRateDTO dto){
+		
+		int result = yangMyPageDao.rateUpdate(dto);
+		String msg=result>0?"수정 성공":"수정 실패";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("gopage", "rateView.do");
+		mav.setViewName("mypage/yangMyPageMsg");
+		
 		return mav;
 	}
 }

@@ -22,6 +22,8 @@ public interface yangMypageDAO {
 	public List<PayListDTO> useList(String userid1);
 	public List<WishpoolListDTO> listWish(String id);
 	public int wishDel(String idx);
+	public PoolRateDTO rateIdx(PoolRateDTO dto);
+	public int rateUpdate(PoolRateDTO dto);
 	
 	
 	

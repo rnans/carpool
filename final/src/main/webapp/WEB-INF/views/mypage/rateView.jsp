@@ -547,6 +547,29 @@ function getView(){
 	document.getElementById("setView").style.display = "none";
 }
 </script>
+<script src="/final02/js/httpRequest.js"></script>
+<script>
+function delRate(idx) {
+	var url = 'rateDel.do';
+	params = 'idx=' + idx
+	sendRequest(url, params, showResult, 'GET')
+	function showResult() {
+		if (XHR.readyState == 4) {
+			if (XHR.status == 200) {
+				var msg = XHR.responseText;
+
+				window.alert(msg);
+				location.reload();
+			}
+		}
+	}
+}
+function upRate(idx){
+	
+	var param="?idx="+idx;
+	location.href="rateUpdate.do"+param;
+}
+</script>
 <script>
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-7243260-2']);
@@ -605,6 +628,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                      <th>평점</th>
                      <th>코멘트</th>
                      <th>작성날짜</th>
+                     <th>수정/삭제</th>
                   </tr>   
                </thead>
             <tfoot>
@@ -613,15 +637,16 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                <tbody>
                   <c:if test="${empty set}">
             <tr>
-               <td colspan="4">등록된 평가글이 없습니다.</td>
+               <td colspan="5">등록된 평가글이 없습니다.</td>
             </tr>
                </c:if>
          <c:forEach var="dto" items="${set }">
             <tr>
-                  <td>${dto.userid }</td>
+                  <td>${dto.aimid }</td>
                   <td>${dto.rate }</td>
                   <td>${dto.content }</td>
                   <td>${dto.writedate }</td>
+                  <td><input type="button" onclick="upRate(${dto.idx})" value="수정"><input type="button" onclick="delRate(${dto.idx})" value="삭제"></td>
             </tr>
          </c:forEach>
                
