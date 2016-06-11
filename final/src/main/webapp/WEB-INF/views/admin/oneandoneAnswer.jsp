@@ -10,15 +10,12 @@
 
 </head>
 <body>
-<div>
+
 <%@include file="../header.jsp" %>
-</div>
-<hr>
-<div>
-	<%@include file="../adHeader.jsp" %>
-		
-</div>
-<br><br>
+    <div style="width: 100%; ">
+<div style="width: 20%; margin: 100px 0px 0px 0px">
+		<%@include file="../adHeader.jsp" %>
+		</div>
 <div align="center">
 <h3>1:1문의 답변 달기</h3>
 </div>
@@ -52,6 +49,7 @@
 	<button class="btn btn-primary pull-right" type="submit">답변달기</button>
 	<input type="reset" value="다시작성" class="btn btn-primary pull-right" >
 	</form>
+	</div>
 	</div>
 	</div>
 	</div>

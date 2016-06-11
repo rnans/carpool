@@ -10,13 +10,11 @@
 
 </head>
 <body>
-<div>헤더
 <%@include file="../header.jsp" %>
-</div>
-<div>메뉴바
-<%@include file="../adHeader.jsp" %>
-</div>
-<br><br><br><br><br><br>
+    <div style="width: 100%; ">
+<div style="width: 20%; margin: 100px 0px 0px 0px">
+		<%@include file="../adHeader.jsp" %>
+		</div>
 <div align="center">
 <h3>이용안내</h3>
 </div>
@@ -44,7 +42,7 @@
 </div>
 </div>
 </div>
-
+</div>
 
 <hr>
 

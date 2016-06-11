@@ -16,13 +16,9 @@
 		<%@include file="../adHeader.jsp" %>
 		</div>
 <div style="margin: 0px auto; padding-left:200px;display: inline-block; width: 80%;  ">
- <div align="center" style="margin-left:100px;">
+ <div align="center" style="margin-left:150px; margin-bottom: 30px;">
 <h2 >Q&A글보기</h2>
-<div class=".col-md-8" style="margin-left:230px; display: inline-block; width: 100%; " >
-<div class="container" style="margin: 0px auto;">
-<div class="row">
-    
-<div class="col-sm-8 contact-form" style="margin: 0px auto;">
+<div class="col-sm-8 contact-form" style="margin-left: 160px;">
 <form action="qnaUpdate_ok.do" id="contact" class="form" role="form" >
 <div class="row">
 <div class="col-xs-6 col-md-6 form-group">
@@ -43,9 +39,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+
 <hr>
 
 <div>풋부분</div>

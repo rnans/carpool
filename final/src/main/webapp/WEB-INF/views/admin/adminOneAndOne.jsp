@@ -277,7 +277,7 @@ style type ="text/css">.links {
 						class="dropdown-select">
 						<option value="writer">작성자</option>
 						<option value="type">문의유형</option>
-						<option value="status">답변현황</option>
+						<option value="state">답변현황</option>
 					</select>
 				</div>
 
@@ -289,10 +289,7 @@ style type ="text/css">.links {
 						width="20" height="20" alt="Magnifier tool free icon"
 						title="Magnifier tool free icon"></i>
 				</button>
-
-
 			</div>
-
 		</form>
 	</div>
 <div id="spans" >
@@ -344,7 +341,6 @@ style type ="text/css">.links {
 </div>
 </div>
 </div>
-
 <hr>
 <!-- 삭제 모달 -->
 	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
@@ -363,7 +359,6 @@ style type ="text/css">.links {
 					<div class="alert alert-danger">
 						<span class="glyphicon glyphicon-warning-sign">정말 삭제 하시겠습니까?</span> 
 					</div>
-
 				</div>
 				<div class="modal-footer ">
 					<button type="button" class="btn btn-success" onclick="javascript:oneandoneDel();" data-dismiss="modal">
@@ -378,7 +373,6 @@ style type ="text/css">.links {
 		</div>
 		<!-- /.modal-dialog -->
 	</div>
-
 <!-- 삭제 모달 -->
 <footer>
 풋부분
