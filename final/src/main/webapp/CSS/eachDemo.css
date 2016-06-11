@@ -16,7 +16,7 @@
 
 
 body {
-	background: #fff;
+	background: rgb(240, 240, 240);
 	color: #69606b;
 	font-weight: 400;
 	font-size: 22px;
@@ -36,6 +36,10 @@ body {
 	color: #5c554c;
 }
 
+.demo-2
+{
+	background-color: rgb(240, 240, 240);
+}
 .demo-6 {
 	background: #f1f1f1;
 }

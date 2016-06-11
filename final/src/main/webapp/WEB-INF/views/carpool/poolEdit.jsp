@@ -390,14 +390,14 @@ function setDays2()
 
 function viewShort()
 {
-	document.getElementById("longTerm").style.visibility = "hidden";
-	document.getElementById("shortTerm").style.visibility = "visible";
+	document.getElementById("longTerm").style.display = "none";
+	document.getElementById("shortTerm").style.display = "block";
 }
 
 function viewLong()
 {
-	document.getElementById("longTerm").style.visibility = "visible";
-	document.getElementById("shortTerm").style.visibility = "hidden";
+	document.getElementById("longTerm").style.display = "block";
+	document.getElementById("shortTerm").style.display = "none";
 }
 </script>
 </head>
@@ -417,7 +417,6 @@ function viewLong()
 <h1>(타세요 / 태워주세요 태그) 카폴 수정하기</h1>
 <div>프로필 사진 영역</div>
 <div>출발지 <input type="text" name="startspot" value="${dto.startspot }"></div>
-<div>경유지 <input type="text" name="route" value="${dto.route }"></div>
 <div>도착지 <input type="text" name="endspot" value="${dto.endspot }"></div>
 <div>타입<input type="radio" id="short" name="termtype" value="단기" onclick="viewShort()">단기 
 		<input type="radio" id="long" name="termtype" value="정기" onclick="viewLong()">정기
@@ -467,8 +466,6 @@ function viewLong()
 <textarea rows="5" cols="50" name="pluscontent">
 ${dto.pluscontent}</textarea>
 </div>
-<div>평점 게시판 영역
-</div>
 <div><input type="button" value="목록보기"><input type="submit" value="수정하기"></div>
 </form>
 </div>
@@ -484,10 +481,9 @@ ${dto.pluscontent}</textarea>
 <h1>(타세요 / 태워주세요 태그) 카폴 수정하기</h1>
 <div>프로필 사진 영역</div>
 <div>출발지 <input type="text" name="startspot" value="${dto.startspot }"></div>
-<div>경유지 <input type="text" name="route" value="${dto.route }"></div>
 <div>도착지 <input type="text" name="endspot" value="${dto.endspot }"></div>
-<div>타입<input type="radio" id="short" name="termtype" value="단기">단기 
-		<input type="radio" id="long" name="termtype" value="정기">정기
+<div>타입<input type="radio" id="short" name="termtype" onclick="viewShort()" value="단기">단기 
+		<input type="radio" id="long" name="termtype" onclick="viewLong()"value="정기">정기
 		</div>
 
 
@@ -554,9 +550,8 @@ ${dto.pluscontent}</textarea>
 <textarea rows="5" cols="50" name="pluscontent">
 ${dto.pluscontent}</textarea>
 </div>
-<div>평점 게시판 영역
-</div>
-<div><input type="button" value="목록보기"><input type="submit" value="수정하기"></div>
+
+<div><input type="button" value="취소"><input type="submit" value="수정완료"></div>
          
          
          </form>

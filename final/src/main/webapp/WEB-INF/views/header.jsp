@@ -21,6 +21,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <link href="/final02/CSS/cssReset.css" rel="stylesheet" type="text/css" />
+<link href="/final02/fonts/font-awesome-4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
 
 <!-- 텍스트상자 -->
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set1.css" />
@@ -56,7 +57,7 @@
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav navbar-left">
 				<li class="dropdown">
-					<a href="poolMain.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">카풀<span class="badge">0</span><span class="caret"></a>
+					<a href="poolMain.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">카풀</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="poolAdd.do">등록하기</a></li>
 						<li class="divider"></li>
@@ -72,7 +73,7 @@
 					</ul>
 				</li>
 				<li class="dropdown">
-					<a href="comm.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">커뮤니티 <span class="badge">0</span><span class="caret"></span></a>
+					<a href="comm.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">커뮤니티</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="commMain.do">전체글</a></li>
 						<li class="divider"></li>

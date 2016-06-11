@@ -5,7 +5,8 @@
 <html>
 <head>
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" type="text/css" href="/final02/CSS/poolCommon.css" />
+<link rel="stylesheet" type="text/css"
+	href="/final02/CSS/poolCommon.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 <link rel="stylesheet" type="text/css"
@@ -13,17 +14,27 @@
 <link rel="stylesheet" type="text/css" href="/final02/CSS/eachDemo.css" />
 <link rel="stylesheet" type="text/css"
 	href="/final02/CSS/eachComponent.css" />
-	
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/final02//CSS/AdminLTE.min.css">
+<!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+<link rel="stylesheet" href="/final02/CSS/_all-skins.min.css">
+
 <!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 
 <meta charset="UTF-8">
 <style>
- #map_div
-{
+#map_div {
 	
-} 
+}
 </style>
 <title>카풀 상세 보기</title>
 <script src="/final02/js/httpRequest.js"></script>
@@ -71,7 +82,7 @@
 		var content = conEl.value;
 
 		for (var i = 0; i < selEl.options.length; i++) {
-			if (selEl.options[i].selected){
+			if (selEl.options[i].selected) {
 				rate = selEl.options[i].value;
 			}
 		}
@@ -112,32 +123,30 @@
 				'width=480 height=320');
 	}
 	function request() {
-		var param = '?idx='+document.getElementById('idx').value;
+		var param = '?idx=' + document.getElementById('idx').value;
 		//alert('param='+param);
-		location.href="payType.do"+param;
-		
+		location.href = "payType.do" + param;
+
 		var poolType = '${dto.pooltype}';
 		var termType = '${dto.termtype}';
 		var param = '';
 
 		window.alert(poolType);
-		
-		if (poolType == '탈래요'&&termType=='단기') {
-			var param = '?idx=' + document.getElementById('idx').value ;
-			location.href='upToMemberShort.do' + param;
-		} else if (poolType == '탈래요'&&termType=='정기') {
-			var param = '?idx=' + document.getElementById('idx').value ;
-			location.href='upToMemberLong.do' + param;
-		} 
-		else if (poolType == '타세요'&&termType=='단기') {
+
+		if (poolType == '탈래요' && termType == '단기') {
 			var param = '?idx=' + document.getElementById('idx').value;
-			location.href='upToMasterShort.do' + param;
-		}
-		else if (poolType == '타세요'&&termType=='정기') {
+			location.href = 'upToMemberShort.do' + param;
+		} else if (poolType == '탈래요' && termType == '정기') {
 			var param = '?idx=' + document.getElementById('idx').value;
-			location.href='upToMasterLong.do' + param;
+			location.href = 'upToMemberLong.do' + param;
+		} else if (poolType == '타세요' && termType == '단기') {
+			var param = '?idx=' + document.getElementById('idx').value;
+			location.href = 'upToMasterShort.do' + param;
+		} else if (poolType == '타세요' && termType == '정기') {
+			var param = '?idx=' + document.getElementById('idx').value;
+			location.href = 'upToMasterLong.do' + param;
 		}
- 		
+
 	}
 
 	function delRate(idx) {
@@ -184,114 +193,183 @@
 </head>
 <body onload="initTmap()" class="demo-2">
 	<%@ include file="../header.jsp"%>
-		<div id="eachContainer" class="container intro-effect-fadeout">
-			<!-- Top Navigation -->
-			<header class="header">
-				<div class="bg-img">
-					<div id="map_div"></div>
-				</div>
-				<div class="title">
-					<h1>${dto.startspot }</h1>
-					<h1 style="text-align: center"><img src="/final02/img/down-arrow.png"></h1>
-					<h1>${dto.endspot }</h1>
-					<h2><img src="/final02/img/team.png"> &nbsp;&nbsp;<strong>${dto.mannum}명</strong> <img src="/final02/img/won.png"> &nbsp;&nbsp;${dto.pay }</h2>
-					<h3>
-						by <strong>${dto.userid }</strong> &#8212; 진행 상태 <strong>${dto.status }</strong>
-						on <strong>${dto.starttime }</strong>
-					</h3>
-				</div>
-			</header>
-			<button class="trigger" data-info="상세 보기">
-				<span>Trigger</span>
-			</button>
-			<article class="content">
-				<div>
-					<h3>(타세요 / 태워주세요 태그) 카폴 상세 보기</h3>
-					<input type="hidden" id="idx" name="idx" value="${dto.idx}">
-					<p>프로필 사진 영역</p>
-					<p>진행 상태 ${dto.status}</p>
-					<p>출발지 ${dto.startspot}</p>
-					<p>도착지 ${dto.endspot }</p>
-					<p>출발 일시 ${dto.starttime }</p>
-					<c:if test="${dto.termtype eq '정기' }">
-						<p>종료 일시 ${dto.enddate }</p>
-						<p>반복 ${dto.days }</p>
-					</c:if>
-					<p>목적 ${dto.aim }</p>
-					<p>인원 ${dto.mannum }</p>
-					<p>비용 ${dto.pay }</p>
-					<p>성별 ${dto.gender }</p>
-					<p>흡연 ${dto.smoking }</p>
 
-					<div>평점 게시판 영역</div>
-					<c:if test="${dto.userid ne sid}">
-					<div>
-						<input type="button" value="찜하기"><input type="button"
-							value="예약하기" onclick="request()">
+	<div id="eachContainer" class="container intro-effect-fadeout">
+		<!-- Top Navigation -->
+		<header class="header">
+			<div class="bg-img">
+				<div id="map_div"></div>
+			</div>
+			<div class="title">
+				<h1>${dto.startspot }</h1>
+				<h1 style="text-align: center">
+					<img src="/final02/img/down-arrow.png">
+				</h1>
+				<h1>${dto.endspot }</h1>
+				<h2>
+					<img src="/final02/img/team.png"> &nbsp;&nbsp;<strong>${dto.mannum}명</strong>
+					<img src="/final02/img/won.png"> &nbsp;&nbsp;${dto.pay }
+				</h2>
+				<h3>
+					by <strong>${dto.userid }</strong> &#8212; 진행 상태 <strong>${dto.status }</strong>
+					on <strong>${dto.starttime }</strong>
+				</h3>
+			</div>
+		</header>
+		<button class="trigger" data-info="상세 보기">
+			<span>상세 보기</span>
+		</button>
+		<article class="content">
+			<div style="background-color: #fff">
+				<div class="row">
+					<div class="col-md-12" style="margin-top: 5%; margin-bottom: 5%">
+						<h1>
+							카풀 상세 보기 <small>${dto.pooltype }</small>
+							<a href="poolList.do"><i class="fa fa-bars pull-right" aria-hidden="true"></i></a>
+							<c:if test="${dto.userid eq sid }">
+							<a
+								href="runDel()"><i class="fa fa-trash-o pull-right" aria-hidden="true"></i></a><a href="javascript:showEdit()"><i
+								class="fa fa-pencil-square-o pull-right" aria-hidden="true"></i></a>
+							</c:if>
+						</h1>
 					</div>
-					</c:if>
-					<c:if test="${dto.userid eq sid}">
-						<div>
-							<input type="button" value="목록보기"><input type="button"
-								value="수정하기" onclick="showEdit()"><input type="button"
-								value="삭제하기" onclick="runDel()">
-						</div>
-					</c:if>
-					<div>
-						<input type="button" value="쪽지보내기"
-							onclick="javascript:userid='${dto.userid}';message();">
-					</div>
-					<a href="messageShow.do?sid=${sid }">목록</a>
-					<div>
-						댓글
-						<c:if test="${empty rDtos}">
-							<div>${msg}</div>
-						</c:if>
-						<table>
-							<tbody id="tB">
-								<c:forEach var="rDtos" items="${rDtos}">
-									<tr id="tr${rDtos.idx}">
-										<td>${rDtos.rate }</td>
-										<td>${rDtos.userid}</td>
-										<td>${rDtos.content }</td>
-										<td>${rDtos.writedate }</td>
-										<td><c:if test="${rDtos.userid eq sid}">
-												<a href="javascript:modiRate(${rDtos.idx})">수정</a>
-												<a href="javascript:delRate(${rDtos.idx})">삭제</a>
-											</c:if></td>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">상세 정보</h3>
+
+
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body table-responsive no-padding">
+								<table class="table table-hover">
+									<tr>
+										<th>진행 상태</th>
+										<td>${dto.status}</td>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+									<tr>
+										<th>출발지</th>
+										<td>${dto.startspot}</td>
+									</tr>
+									<tr>
+										<th>도착지</th>
+										<td>${dto.endspot }</td>
+									</tr>
+									<tr>
+										<th>출발 일시</th>
+										<td>${dto.starttime }</td>
+									</tr>
+									<c:if test="${dto.termtype eq '정기' }">
+										<tr>
+											<th>종료 일시</th>
+											<td>${dto.enddate }</td>
+										</tr>
+										<tr>
+											<th>반복</th>
+											<td>${dto.days }</td>
+										</tr>
+									</c:if>
+									<tr>
+										<th>목적</th>
+										<td>${dto.aim }</td>
+									</tr>
+									<tr>
+										<th>인원</th>
+										<td>${dto.mannum }</td>
+									</tr>
+									<tr>
+										<th>비용</th>
+										<td>${dto.pay }</td>
+									</tr>
+									<tr>
+										<th>성별</th>
+										<td>${dto.gender }</td>
+									</tr>
+									<tr>
+										<th>흡연</th>
+										<td>${dto.smoking }</td>
+									</tr>
+
+								</table>
+								<input type="hidden" id="idx" name="idx" value="${dto.idx}">
+							</div>
+						</div>
 					</div>
 				</div>
-				
-				
-					<c:if test="${sid ne dto.userid}">
-						<div>
-							댓글 달기
-							<form name="reply" action="rateWrite.do">
-								<input type="hidden" name="aimid" value="${dto.userid}">
-								<select id="rate" name="rate">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-								<textarea id="content" name="content"></textarea>
-								<input type="button" onclick="rateReq();" value="평가하기">
-							</form>
-						</div>
+				<div class="row">
+					<div class="col-xs-12">
+
+						<c:if test="${dto.userid ne sid}">
+							<div class="row">
+								<div class="col-xs-4"></div>
+								<div class="col-xs-8">
+									<div class="col-xs-4">
+										<button type="button"
+											class="button button--ujarak button--border-thin button--text-thick"
+											onclick="">찜하기</button>
+									</div>
+									<div class="col-xs-8">
+										<button type="button" onclick="request();"
+											class="button button--ujarak button--border-thin button--text-thick button--next">예약하기</button>
+									</div>
+								</div>
+							</div>
+						</c:if>
+
+						
+					</div>
+				</div>
+				<div>
+					<input type="button" value="쪽지보내기"
+						onclick="javascript:userid='${dto.userid}';message();"> 댓글
+					<c:if test="${empty rDtos}">
+						<div>${msg}</div>
 					</c:if>
-				
-			</article>
+					<table>
+						<tbody id="tB">
+							<c:forEach var="rDtos" items="${rDtos}">
+								<tr id="tr${rDtos.idx}">
+									<td>${rDtos.rate }</td>
+									<td>${rDtos.userid}</td>
+									<td>${rDtos.content }</td>
+									<td>${rDtos.writedate }</td>
+									<td><c:if test="${rDtos.userid eq sid}">
+											<a href="javascript:modiRate(${rDtos.idx})">수정</a>
+											<a href="javascript:delRate(${rDtos.idx})">삭제</a>
+										</c:if></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-				
-		</div>
 
-		<!-- /container -->
+			<c:if test="${sid ne dto.userid}">
+				<div>
+					댓글 달기
+					<form name="reply" action="rateWrite.do">
+						<input type="hidden" name="aimid" value="${dto.userid}"> <select
+							id="rate" name="rate">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+						<textarea id="content" name="content"></textarea>
+						<input type="button" onclick="rateReq();" value="평가하기">
+					</form>
+				</div>
+			</c:if>
+		</article>
 
+
+	</div>
+
+	<!-- /container -->
 
 </body>
 <script src="/final02/js/jquery-1.12.4.min.js"></script>
@@ -349,7 +427,6 @@
 		var sCoordi = new Tmap.LonLat(startX, startY).transform(pr_4326,
 				pr_3857);
 		var eCoordi = new Tmap.LonLat(endX, endY).transform(pr_4326, pr_3857);
-
 
 		searchRoute(startX, startY, endX, endY);
 	};

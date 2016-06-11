@@ -47,7 +47,6 @@ function editMans(idx, mans, aimidx)
 </head>
 <body>
 <%@ include file="../header.jsp" %>
-<%@ include file="poolSubmenu.jsp" %>
 <section>
 <article>
 <h1>예약 진행 상황 보기</h1>
