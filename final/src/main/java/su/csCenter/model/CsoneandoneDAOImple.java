@@ -99,6 +99,18 @@ public class CsoneandoneDAOImple implements CsoneandoneDAO {
 				List<CsoneandoneDTO> list=
 						sqlMap.selectList("oneandoneStateSearch",map);
 						return list;
+		 }		 
+		 public int typetotalCnt(String search){
+			 int count=sqlMap.selectOne("typetotalCnt", search);
+			 return count;
+		 }
+		 public int writertotalCnt(String search){
+			 int count=sqlMap.selectOne("writertotalCnt", search);
+			 return count;
+		 }
+		 public int statetotalCnt(String search){
+			 int count=sqlMap.selectOne("statetotalCnt", search);
+			 return count;
 		 }
 	}
 

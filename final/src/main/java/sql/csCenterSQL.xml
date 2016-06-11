@@ -90,7 +90,15 @@
    (select * from oneandone order by idx desc)a)b
    where rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} and state=#{search}
    	</select>
-	
+		<select id="writertotalCnt"  parameterType="String" resultType="int">
+		select count(*) from oneandone where writer=#{search}
+	</select>
+		<select id="statetotalCnt"  parameterType="String" resultType="int">
+		select count(*) from oneandone where state=#{search}
+	</select>
+		<select id="typetotalCnt"  parameterType="String" resultType="int">
+		select count(*) from oneandone where type=#{search}
+	</select>
 	<!-- qna -->
 	 <select id="qnaList" parameterType="Map" resultType="su.csCenter.model.CsQnaDTO">
 	select * from

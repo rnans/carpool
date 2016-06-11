@@ -184,11 +184,8 @@ public class AdminCsCenterController {
 			int listSize=10;
 			int pageSize=5;
 			
-			
 					List<CsoneandoneDTO> list=csoneandoneDao.adminoneandoneList(cp,listSize);
-					mav.addObject("list", list);
-				
-				
+					mav.addObject("list", list);							
 			String pageStr=
 				su.Page.SuPage.makePage("adminOneAndOne.do", totalCnt, listSize, pageSize, cp);
 		
@@ -202,25 +199,32 @@ public class AdminCsCenterController {
 					 String select=req.getParameter("select");
 					String search=req.getParameter("search");
 			    	ModelAndView mav=new ModelAndView();
-					int totalCnt=csoneandoneDao.adminoneandoneTotalCnt();
+					int totalCnt=0;
 					int listSize=10;
-					int pageSize=5;
-					
+					int pageSize=5;				
 					if(select.equals("type")){
 					List<CsoneandoneDTO> list=csoneandoneDao.oneandoneTypeSearch(cp,listSize,search);
+					 totalCnt=csoneandoneDao.typetotalCnt(search);
+					 String pageStr=
+								su.Page.SuPage.makePage("oneandoneSearch.do", totalCnt, listSize, pageSize, cp);					
+							mav.addObject("pageStr",pageStr);
 					mav.addObject("list", list);
 					}else if(select.equals("writer")){
 						List<CsoneandoneDTO> list=csoneandoneDao.oneandoneWriterSearch(cp,listSize,search);
+						 totalCnt=csoneandoneDao.writertotalCnt(search);
+							String pageStr=
+									su.Page.SuPage.makePage("oneandoneSearch.do", totalCnt, listSize, pageSize, cp);					
+								mav.addObject("pageStr",pageStr);
 						mav.addObject("list", list);
 					}else if(select.equals("state")){
 						List<CsoneandoneDTO> list=csoneandoneDao.oneandoneStateSearch(cp,listSize,search);
+						totalCnt=csoneandoneDao.statetotalCnt(search);
+						String pageStr=
+								su.Page.SuPage.makePage("oneandoneSearch.do", totalCnt, listSize, pageSize, cp);					
+							mav.addObject("pageStr",pageStr);
 						mav.addObject("list", list);
 					}
 					
-					String pageStr=
-						su.Page.SuPage.makePage("oneandoneSearch.do", totalCnt, listSize, pageSize, cp);
-					
-					mav.addObject("pageStr",pageStr);
 					mav.setViewName("admin/oneandoneSearch");
 					  return mav;
 		        }

@@ -13,6 +13,15 @@
     	<select id="adminPoolDriverTotalCnt" resultType="int">
 		select count(*) from poolmasterstatus
 	</select>
+	  	<select id="masterIdTotalCnt" resultType="int">
+		select count(*) from poolmasterstatus masterid=#{search}
+	</select>
+	  	<select id="statusTotalCnt" resultType="int">
+		select count(*) from poolmasterstatus status=#{search}
+	</select>
+	  	<select id="aimidxTotalCnt" resultType="int">
+		select count(*) from poolmasterstatus aimidx=#{search}
+	</select>
 	<delete id="amdinDriverReserveDel" parameterType="su.adminReserve.model.AdminPoolMasterStatusDTO">
 	delete from poolmasterstatus where idx=#{idx}
 	</delete>

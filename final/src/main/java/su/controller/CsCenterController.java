@@ -148,6 +148,9 @@ public class CsCenterController {
    public ModelAndView oneandoneContent(int idx){
 	   
 	   List<CsoneandoneDTO> list=csoneandoneDao.oneandoneContent(idx);
+		for(int i=0; i<list.size(); i++){
+			list.get(i).getContent().replaceAll("/n", "<br>");
+		}
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
 		mav.setViewName("csCenter/oneandoneContent");

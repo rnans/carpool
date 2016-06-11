@@ -77,7 +77,7 @@ public class AdminReserveController {
 		String select=req.getParameter("select");
 		String search=req.getParameter("search");
 		ModelAndView mav=new ModelAndView();
-		int totalCnt=adminPoolStatusDao.adminPoolDriverTotalCnt();
+		int totalCnt=0;
 		int listSize=10;
 		int pageSize=5;
 		if(select.equals("masterid")){

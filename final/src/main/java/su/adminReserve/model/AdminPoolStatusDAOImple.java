@@ -64,6 +64,18 @@ public class AdminPoolStatusDAOImple implements AdminPoolStatusDAO {
 				sqlMap.selectList("adminDriverStatusList",map);
 				return list;
 	}
+	public int masterIdTotalCnt(String search){
+		int count =sqlMap.selectOne("masterIdTotalCnt",search);
+		return count;
+	}
+	public int aimidxTotalCnt(String search){
+		int count =sqlMap.selectOne("aimidxTotalCnt",search);
+		return count;
+	}
+	public int statusTotalCnt(String search){
+		int count=sqlMap.selectOne("statusTotalCnt",search);
+		return count;
+	}
 	
 	//멤버
 	public List<AdminPoolMemberStatusDTO> adminPoolMemberList(int cp,int ls){
