@@ -144,7 +144,7 @@ table tr:hover td {
 <div style="position: fixed;display:block;  height: 100%; ">
 <ul id="sidebar" class="nav navbar-nav side-nav"
 	style="position: absolute; left: 0px; " >
-	<li class="active" ><a href="index.do"><i
+	<li class="active" ><a href="memberInfo.do"><i
 			class="fa fa-fw fa-dashboard"></i> 관리자페이지</a></li>
 	<li><a href="javascript:;" data-toggle="collapse"
 		data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i> 회원관리 <i
