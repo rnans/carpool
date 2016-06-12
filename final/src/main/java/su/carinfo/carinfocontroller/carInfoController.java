@@ -77,6 +77,7 @@ public class carInfoController {
 	   	   fos.write(bytes);
 		      fos.close();
 	    	 }
+	    	 
 	    	 if(confirmName==null){
 	    		
 	    	 }else{
@@ -142,7 +143,7 @@ public class carInfoController {
 			 
 	
 		     if(filename.equals("")||filename==null){
-		    	 dto2.setCarphoto("사진없음.png");
+		    	 dto2.setCarphoto("사진없음");
 		     }else{
 		    	 dto2.setCarphoto(filename);
 		    	 dto.setFilename(filename); 
@@ -165,7 +166,7 @@ public class carInfoController {
 		     System.out.println("시작");
 		     System.out.println(filename2);
 		     if(filename2.equals("")||filename2==null){
-		    	 dto2.setConfirmphoto("사진없음.png");
+		    	 dto2.setConfirmphoto("사진없음");
 		     }else{
 		    	 dto2.setConfirmphoto(filename2);
 		    	 
@@ -264,11 +265,12 @@ System.out.println("1");
 			 
 	
 		     if(filename.equals("")||filename==null){
-		    	 dto2.setConfirmphoto("사진없음");
+		    	 dto2.setCarphoto("사진없음");
 		     }else{
 		    	 dto2.setCarphoto(filename);
 		    	 dto.setFilename(filename); 
 				 dto.setFilepath(filepath); dto.setFiletype(filetype);
+				 dto.setPoolname("");
 				 int count=uploadDao.upload(dto);
 				 String msg2=count>0?"upload 성공":"upload 실패";
 				 System.out.println(msg2);
@@ -290,6 +292,7 @@ System.out.println("1");
 		    	 
 		    	 dto.setFilename(filename2); 
 				 dto.setFilepath(filepath2); dto.setFiletype(filetype2);
+				 dto.setPoolname("");
 				 int count=uploadDao.upload(dto);
 		    	 String msg2=count>0?"upload 성공":"upload 실패";
 				 System.out.println(msg2);
