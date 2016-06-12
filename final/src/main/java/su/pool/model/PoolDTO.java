@@ -937,6 +937,70 @@ public class PoolDTO
 	public void setPoint(String point) {
 		this.point = point;
 	}
+
+
+
+	public PoolDTO(int idx, String userid, String aim, String startspot, String endspot, String startcoordi,
+			String endcoordi, String starttime, int mannum, String gender, int pay, String smoking, String pluscontent,
+			String pooltype, String termtype, double slat, double slng, double elat, double elng, String path,
+			String point) {
+		super();
+		this.idx = idx;
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.termtype = termtype;
+		this.slat = slat;
+		this.slng = slng;
+		this.elat = elat;
+		this.elng = elng;
+		this.path = path;
+		this.point = point;
+	}
+
+
+
+	public PoolDTO(int idx, String userid, String aim, String startspot, String endspot, String startcoordi,
+			String endcoordi, String starttime, int mannum, String gender, int pay, String smoking, String pluscontent,
+			String pooltype, String startdate, String enddate, String days, String termtype, double slat, double slng,
+			double elat, double elng, String path, String point) {
+		super();
+		this.idx = idx;
+		this.userid = userid;
+		this.aim = aim;
+		this.startspot = startspot;
+		this.endspot = endspot;
+		this.startcoordi = startcoordi;
+		this.endcoordi = endcoordi;
+		this.starttime = starttime;
+		this.mannum = mannum;
+		this.gender = gender;
+		this.pay = pay;
+		this.smoking = smoking;
+		this.pluscontent = pluscontent;
+		this.pooltype = pooltype;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.days = days;
+		this.termtype = termtype;
+		this.slat = slat;
+		this.slng = slng;
+		this.elat = elat;
+		this.elng = elng;
+		this.path = path;
+		this.point = point;
+	}
+	
 	
 	
 

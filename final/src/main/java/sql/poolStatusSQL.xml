@@ -6,6 +6,9 @@
 	<select id="getOwnPoolByIdx" parameterType="int" resultType="su.pool.model.PoolDateDTO">
 	select * from reservationlist where idx=#{idx}
 	</select>
+	<select id="getOwnPoolCount" parameterType="String" resultType="int">
+	select count(*) from reservationlist where userid=#{userid}
+	</select>
 	<select id="viewOwnMemberPool" parameterType="map" resultType="su.pool.model.PoolDateDTO">
 	select * from
 	 (select rownum as rnum,a.* from
@@ -121,6 +124,11 @@
 	and 
 	aimidx = (select aimidx from poolmasterstatus where aimidx=#{aimidx})
  	</update>
+ 	<update id="chgMemStatusConfirm" parameterType="map">
+	update poolmemberstatus set
+	status='결제 완료'
+	where aimidx = #{aimidx} and memberid=#{userid}
+ 	</update>
  	<update id="chgAllMemStatus" parameterType="map">
  	update poolmemberstatus set
  	status='결제 대기'
@@ -130,7 +138,7 @@
  	</update>
  	<update id="chgMasStatus" parameterType="int">
  	update poolmasterstatus set
- 	status='예약 완료'
+ 	status='모집 완료'
  	where idx=#{idx} and mans=nowmans
  	</update>
  	<delete id="delMemReq" parameterType="su.pool.model.PoolMemberStatusDTO">

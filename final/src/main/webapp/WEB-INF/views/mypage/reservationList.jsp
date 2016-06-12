@@ -535,9 +535,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 }
 </style>
 <script>
-function upPool(idx){
+function upPool(idx, termtype){
 	
-	var param='?idx='+idx;
+	var param='?idx='+idx+'&termtype='+termtype;
 	location.href='poolEditForm.do'+param;
 }
 function delPool(idx){
@@ -625,7 +625,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 										<td style="font-size: 13px;">${dto.pooltype}</td>
 										<td style="font-size: 13px;">${dto.termtype}</td>
 										<td style="font-size: 13px;">${dto.poolname }</td>
-										<td><button class="btn btn-default btn-xs" type="button" onclick="upPool(${dto.idx})" value="수정">수정</button> <button class="btn btn-default btn-xs" type="button" onclick="delPool(${dto.idx})" value="삭제">삭제</button></td>
+										<td><button class="btn btn-default btn-xs" type="button" onclick="upPool(${dto.idx}, '${dto.termtype }')" value="수정">수정</button> <button class="btn btn-default btn-xs" type="button" onclick="delPool(${dto.idx})" value="삭제">삭제</button></td>
 										
 									</tr>	
 											</c:forEach>

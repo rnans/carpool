@@ -15,7 +15,9 @@ import su.pay.model.PayDAO;
 import su.pay.model.PayDTO;
 import su.paylist.model.PayListDAO;
 import su.paylist.model.PayListDTO;
+import su.pool.model.PoolDAO;
 import su.pool.model.PoolDTO;
+import su.pool.model.PoolStatusDAO;
 
 
 @Controller
@@ -41,6 +43,17 @@ public class PayController {
 		this.plDao = plDao;
 	}
 	
+	@Autowired
+	private PoolStatusDAO poolStatusDao;
+	
+	
+	
+	public PoolStatusDAO getPoolStatusDao() {
+		return poolStatusDao;
+	}
+	public void setPoolStatusDao(PoolStatusDAO poolStatusDao) {
+		this.poolStatusDao = poolStatusDao;
+	}
 	@RequestMapping("/payType.do")
 	public ModelAndView payType(
 			@RequestParam("idx")int idx){
@@ -152,6 +165,9 @@ public class PayController {
 		pDTO.setUserid(userid);
 		int result=payDao.cardEnroll(pDTO);
 		int count = plDao.payEnrollList(plistDto);
+		
+		int aimidx=Integer.parseInt(ridx);
+		int count2= poolStatusDao.chgMemStatusConfirm(aimidx, userid);
 		System.out.println("test");
 		String msg = "";
 		
@@ -206,8 +222,10 @@ public class PayController {
 		plistDto.setCardtype1(cardType1);
 		plistDto.setCardnum(cardNum);
 		int count = plDao.payEnrollList(plistDto);
+		int aimidx=Integer.parseInt(ridx);
+		int count2= poolStatusDao.chgMemStatusConfirm(aimidx, userid);
 		
-		String msg = count>0?"결제가 정상적으로 처리되었습니다.":"결제가 실패하였습니다.";
+		String msg = count+count2>1?"결제가 정상적으로 처리되었습니다.":"결제가 실패하였습니다.";
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg",msg);

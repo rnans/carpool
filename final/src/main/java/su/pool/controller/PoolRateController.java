@@ -37,7 +37,7 @@ public class PoolRateController {
 		String id=(String)session.getAttribute("sid");
 		String name=(String)session.getAttribute("sname");
 		
-		List res=poolRateDao.getListByUserid(id);
+		List res=poolRateDao.checkRate(id, dto.getAimid());
 		
 		ModelAndView mav=new ModelAndView();
 		String msg="";

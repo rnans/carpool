@@ -343,10 +343,8 @@
 			aim,
 			substr(startspot, 6)startspot,
 			substr(endspot, 6)endspot,
-			route,
 			startcoordi,
 			endcoordi,
-			routecoordi,
 			to_char(starttime,'YYYY-MM-DD HH24:MI') starttime,
 			mannum,
 			gender,
@@ -360,7 +358,11 @@
 			to_char(startdate,'yyyy-mm-dd') startdate,
 			to_char(enddate,'yyyy-mm-dd') enddate,
 			days,
-			location 
+			location,
+			slat,
+			slng,
+			elat,
+			elng 
 		from reservationlist where idx=#{idx}
 	</select>
 	
@@ -370,7 +372,8 @@
 		aim=#{aim},
 		startspot=#{startspot},
 		endspot=#{endspot},
-		route=#{route},
+		startcoordi=#{startcoordi},
+		endcoordi=#{endcoordi},
 		starttime=TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		mannum=#{mannum},
 		gender=#{gender},
@@ -379,7 +382,11 @@
 		pluscontent=#{pluscontent},
 		termtype=#{termtype},
 		startdate=TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
-		enddate=TO_date(#{starttime},'yyyy-mm-dd hh24:mi') 
+		enddate=TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
+		slat=#{slat},
+		slng=#{slng},
+		elat=#{elat},
+		elng=#{elng}
 		where idx=#{idx}
 	</update>
 	
@@ -389,7 +396,6 @@
 		aim=#{aim},
 		startspot=#{startspot},
 		endspot=#{endspot},
-		route=#{route},
 		starttime=TO_date(#{starttime},'yyyy-mm-dd hh24:mi'),
 		mannum=#{mannum},
 		gender=#{gender},
@@ -399,7 +405,11 @@
 		termtype=#{termtype},
 		startdate=TO_date(#{startdate},'yyyy-mm-dd'),
 		enddate=TO_date(#{enddate},'yyyy-mm-dd'),
-		days=#{days} 
+		days=#{days},
+		slat=#{slat},
+		slng=#{slng},
+		elat=#{elat},
+		elng=#{elng}
 		where idx=#{idx}
 	</update>
 	

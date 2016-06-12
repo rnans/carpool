@@ -12,6 +12,8 @@ public interface PoolStatusDAO
 	
 	public int getOwnMasReqTotalCnt(String id);
 	
+	public int getOwnPoolCount(String userid);
+	
 	public String getMembers(int addidx);
 	
 	public List getMemReqByAimidx(int aimidx);
@@ -51,6 +53,8 @@ public interface PoolStatusDAO
 	public int chgMemStatus(int idx, String members, int aimidx);
 	
 	public int chgAllMemStatus(int idx, int aimidx);
+	
+	public int chgMemStatusConfirm(int aimidx, String userid);
 	
 	public int delMemReq(PoolMemberStatusDTO dto);
 	

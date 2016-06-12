@@ -103,6 +103,11 @@ public class UploadController {
 		 if(check==null||check.equals("")){
 			 
 			 dto.setFilepath(filepath); dto.setFiletype(filetype);
+			if(dto.getPoolname()==null||dto.getPoolname().equals(""))
+			{
+				dto.setPoolname(" ");
+			}
+			 
 			 int count=uploadDao.upload(dto);
 			 String msg=count>0?"O":"X";
 			 System.out.println(msg);

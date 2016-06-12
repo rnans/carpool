@@ -19,6 +19,11 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public int getOwnPoolCount(String userid) {
+		// TODO Auto-generated method stub
+		return sqlMap.selectOne("getOwnPoolCount",userid);
+	}
+	
 	public List getMasShortMatch(PoolDateDTO dto) {
 		// TODO Auto-generated method stub
 		return sqlMap.selectList("getMasShortMatch",dto);
@@ -173,6 +178,15 @@ public class PoolStatusDAOImple implements PoolStatusDAO {
 		map.put("idx", idx);
 		
 		return sqlMap.update("chgAllMemStatus",map);
+	}
+	
+	public int chgMemStatusConfirm(int aimidx, String userid) {
+		Map map=new HashMap();
+		
+		map.put("aimidx", aimidx);
+		map.put("userid", userid);
+		
+		return sqlMap.update("chgMemStatusConfirm",map);
 	}
 	
 	public int delMemReq(PoolMemberStatusDTO dto) {

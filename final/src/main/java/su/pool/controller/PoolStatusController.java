@@ -100,8 +100,15 @@ public class PoolStatusController
 			
 			if(ownLists.isEmpty())
 			{
-				mav.addObject("msg","일치하는 <탈래요> 글이 없습니다.");
-				System.out.println("목록 없음");
+				PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(memberid, aimidx);
+				PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx, 1, memberid);
+				
+				int count=poolStatusDao.makeMemberStatus(memberDto);
+				int count2=poolStatusDao.reqToMaster(masterDto);
+				
+				String msg=count+count2>=2?"성공":"실패";
+				mav.addObject("msg",msg);
+				mav.setViewName("carpool/poolMsg");
 			}
 			else
 			{
@@ -136,11 +143,11 @@ public class PoolStatusController
 				
 				mav.addObject("msg","성공");
 				mav.addObject("ridx",idx);
-				mav.setViewName("carpool/poolMsg");
+				
 				
 			}
 			
-		
+			mav.setViewName("carpool/poolMsg");
 		}
 		return mav;
 	}	
@@ -217,8 +224,15 @@ public class PoolStatusController
 			
 			if(ownLists.isEmpty())
 			{
-				mav.addObject("msg","일치하는 <탈래요> 글이 없습니다.");
-				System.out.println("목록 없음");
+				PoolMemberStatusDTO memberDto=new PoolMemberStatusDTO(memberid, aimidx);
+				PoolMasterStatusDTO masterDto=new PoolMasterStatusDTO(aimidx, 1, memberid);
+				
+				int count=poolStatusDao.makeMemberStatus(memberDto);
+				int count2=poolStatusDao.reqToMaster(masterDto);
+				
+				String msg=count+count2>=2?"성공":"실패";
+				mav.addObject("msg",msg);
+				mav.setViewName("carpool/poolMsg");
 			}
 			else
 			{
@@ -253,11 +267,11 @@ public class PoolStatusController
 				
 				mav.addObject("msg","성공");
 				mav.addObject("ridx",idx);
-				mav.setViewName("carpool/poolMsg");
+				
 				
 			}
 			
-		
+			mav.setViewName("carpool/poolMsg");
 		}
 		return mav;
 	}	
@@ -354,11 +368,11 @@ public class PoolStatusController
 				}
 				
 				mav.addObject("msg","성공");
-				mav.setViewName("carpool/poolMsg");
+				
 				
 			}
 			
-			
+			mav.setViewName("carpool/poolMsg");
 		}	
 		
 		return mav;
@@ -473,10 +487,10 @@ public class PoolStatusController
 				}
 				
 				mav.addObject("msg","성공");
-				mav.setViewName("carpool/poolMsg");
+				
 				
 			}
-			
+			mav.setViewName("carpool/poolMsg");
 			
 		}	
 		

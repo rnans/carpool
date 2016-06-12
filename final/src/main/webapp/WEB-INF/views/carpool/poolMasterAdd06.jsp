@@ -10,11 +10,10 @@
 	href="/final02/CSS/poolCommon.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
+<link rel="stylesheet" type="text/css"
+	href="/final02/CSS/menu_topexpand.css" />
 </head>
 <body>
-	<%@ include file="../header.jsp"%>
-	<fieldset>
-		<legend>카풀 등록</legend>
 		<script>
 			window.onload = function() {
 				var type = '${sessionScope.data.termtype}';
@@ -55,7 +54,34 @@
 			}
 		</script>
 		<%@ include file="../header.jsp"%>
-		<section id="mainsection">
+			<div class="menu-wrap">
+		<nav class="menu">
+			<div class="icon-list">
+				<a href="poolAdd.do"><i class="fa fa-pencil" aria-hidden="true"></i><span>등록하기</span></a>
+				<a href="poolFindForm.do"><i class="fa fa-search"
+					aria-hidden="true"></i><span>검색하기</span></a> <a
+					href="poolMasterList.do"><i class="fa fa-car"
+					aria-hidden="true"></i><span>타세요</span></a> <a href="poolMemberList.do"><i
+					class="fa fa-thumbs-up" aria-hidden="true"></i><span>탈래요</span></a> <a
+					href="shortPoolList.do"><i class="fa fa-clock-o"
+					aria-hidden="true"></i><span>단기 카풀</span></a> <a href="longPoolList.do"><i
+					class="fa fa-calendar" aria-hidden="true"></i><span>정기 카풀</span></a> <a
+					href="poolStatus.do"><i class="fa fa-th-list"
+					aria-hidden="true"></i><span>예약 현황</span></a> <a
+					href="poolMasReqList.do"><i class="fa fa-user-plus"
+					aria-hidden="true"></i><span>가입 요청 현황</span></a>
+			</div>
+		</nav>
+	</div>
+	<button class="menu-button" id="open-button"></button>
+
+
+
+	<section id="mainsection">
+
+
+			<div class="content-wrap">
+				<div class="content">
 			<div class="col-md-12">
 				<h1 class="main--title">
 					카풀 등록 <small>새로 생성된 풀 파티의 이름을 입력해주세요.</small>
@@ -66,7 +92,7 @@
 
 					<div class="input input--nao col-md-12">
 							<input class="input__field input__field--nao" type="text"
-								id="poolname" name="poolname" placeholder="카풀 이름을 입력하세요."><br>
+								id="poolname" name="poolname" onblur="checkName()" placeholder="카풀 이름을 입력하세요."><br>
 							<label class="input__label input__label--nao" for="poolname	">
 								<span class="input__label-content input__label-content--nao">카풀 이름</span>
 							</label>
@@ -95,9 +121,13 @@
        
 				
         
-      </div>
+      
 				
 			</form>
+			</div>
+			</div>
 		</section>
 </body>
+<script src="/final02/js/menu-classie.js"></script>
+<script src="/final02/js/menu-main.js"></script>
 </html>

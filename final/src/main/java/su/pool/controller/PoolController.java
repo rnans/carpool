@@ -2,6 +2,7 @@ package su.pool.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,6 +25,7 @@ import su.pool.model.PoolInfoDTO;
 import su.pool.model.PoolLocDTO;
 import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
+import su.pool.model.PoolRateAvgDTO;
 import su.pool.model.PoolRateDAO;
 import su.pool.model.PoolStatusDAO;
 import su.carinfo.model.carInfoDAO;
@@ -801,6 +803,12 @@ public class PoolController
 		
 		List res=poolRateDao.getListByAimid(dto.getUserid());
 
+		MemberDTO mDTO=poolDao.getAllUserInfo(dto.getUserid());
+		
+		int pCount=poolStatusDao.getOwnPoolCount(dto.getUserid());
+		
+		PoolRateAvgDTO avgDTO=new PoolRateAvgDTO();
+		
 		ModelAndView mav=new ModelAndView();
 		
 		if(res.isEmpty())
@@ -810,10 +818,15 @@ public class PoolController
 		else
 		{
 			mav.addObject("rDtos",res);
+			avgDTO=poolRateDao.getAvrRateByAimid(dto.getUserid());
 		}
 		
 		
 		mav.addObject("dto",dto);
+		mav.addObject("mDTO",mDTO);
+		mav.addObject("pCount",pCount);
+		mav.addObject("avg",avgDTO);
+
 		
 		mav.setViewName("carpool/poolEachContent");
 		
@@ -821,7 +834,7 @@ public class PoolController
 	}
 	
 	@RequestMapping("/poolEditForm.do")
-	public ModelAndView viewEditForm(@RequestParam(value="idx")int idx, HttpSession session)
+	public ModelAndView viewEditForm(@RequestParam(value="termtype")String termtype, @RequestParam(value="idx")int idx, HttpSession session)
 	{
 		String id=(String)session.getAttribute("sid");
 		
@@ -829,11 +842,17 @@ public class PoolController
 		
 		ModelAndView mav=new ModelAndView();
 				
-		if(id.equals(dto.getUserid()))
+		if(id.equals(dto.getUserid())&&termtype.equals("단기"))
 		{
 			mav.addObject("dto",dto);
 			
-			mav.setViewName("carpool/poolEdit");
+			mav.setViewName("carpool/poolEditShort");
+		}
+		else if(id.equals(dto.getUserid())&&termtype.equals("정기"))
+		{
+			mav.addObject("dto",dto);
+			
+			mav.setViewName("carpool/poolEditLong");
 		}
 		else
 		{
@@ -851,7 +870,7 @@ public class PoolController
 		String aim=req.getParameter("aim");
 		String startspot=req.getParameter("startspot");
 		String endspot=req.getParameter("endspot");
-		String route=req.getParameter("route");
+		
 		int mannum=Integer.parseInt(req.getParameter("mannum"));
 		String gender=req.getParameter("gender");
 		String smoking=req.getParameter("smoking");
@@ -859,7 +878,14 @@ public class PoolController
 		int pay=Integer.parseInt(req.getParameter("pay"));
 		String pluscontent=req.getParameter("pluscontent");
 		String termtype=req.getParameter("termtype");
-				
+		String startcoordi=req.getParameter("startcoordi");
+		String endcoordi=req.getParameter("endcoordi");
+		double sLat=Double.parseDouble(req.getParameter("sLat"));
+		double sLng=Double.parseDouble(req.getParameter("sLng"));
+		double eLat=Double.parseDouble(req.getParameter("eLat"));
+		double eLng=Double.parseDouble(req.getParameter("eLng"));
+		String pooltype=req.getParameter("pooltype");
+		
 		String sh=req.getParameter("sh");
 		
 		int h=Integer.parseInt(sh);
@@ -875,9 +901,7 @@ public class PoolController
 				
 		String starttime=req.getParameter("sy")+'-'+req.getParameter("sm")+'-'+req.getParameter("sd")+" "+h+":"+req.getParameter("smi");
 		
-			
-		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, termtype);
-
+		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, termtype, sLat, sLng, eLat, eLng, " ", " ");
 			
 		int count=poolDao.poolShortEdit(dto);
 		
@@ -885,9 +909,6 @@ public class PoolController
 		
 		List lists=poolDao.getPoolInfo(idx);
 		
-		PoolDateDTO pDto=(PoolDateDTO)lists.get(0);
-		
-		String pooltype=pDto.getPooltype();
 		
 		if(pooltype.equals("탈래요"))
 		{
@@ -907,7 +928,7 @@ public class PoolController
 			count2=poolStatusDao.editMasMans(idx,mannum);
 		}
 		
-		String msg=count+count2>1?"성공":"실패";
+		String msg=count+count2>=1?"성공":"실패";
 		
 		
 		ModelAndView mav=new ModelAndView();
@@ -935,7 +956,15 @@ public class PoolController
 		int pay=Integer.parseInt(req.getParameter("pay"));
 		String pluscontent=req.getParameter("pluscontent");
 		String termtype=req.getParameter("termtype");
-				
+		String startcoordi=req.getParameter("startcoordi");
+		String endcoordi=req.getParameter("endcoordi");
+		double sLat=Double.parseDouble(req.getParameter("sLat"));
+		double sLng=Double.parseDouble(req.getParameter("sLng"));
+		double eLat=Double.parseDouble(req.getParameter("eLat"));
+		double eLng=Double.parseDouble(req.getParameter("eLng"));
+		String pooltype=req.getParameter("pooltype");
+		
+		
 		String lh=req.getParameter("lh");
 		int h=Integer.parseInt(lh);
 		
@@ -958,8 +987,7 @@ public class PoolController
 				
 		System.out.println(idx+"/"+enddate+"/"+smoking+"/"+termtype+"/"+days);
 		
-		PoolDTO dto=new PoolDTO(idx, userid, aim, startspot, endspot, route, starttime, mannum, gender, pay, smoking, pluscontent, startdate, enddate, days, termtype);
-				
+		PoolDTO dto =new PoolDTO(idx, userid, aim, startspot, endspot, startcoordi, endcoordi, starttime, mannum, gender, pay, smoking, pluscontent, pooltype, startdate, enddate, days, termtype, sLat, sLng, eLat, eLng, " ", " ");
 		int count=poolDao.poolLongEdit(dto);
 		
 
@@ -967,9 +995,6 @@ public class PoolController
 		
 		List lists=poolDao.getPoolInfo(idx);
 		
-		PoolDateDTO pDto=(PoolDateDTO)lists.get(0);
-		
-		String pooltype=pDto.getPooltype();
 		
 		if(pooltype.equals("탈래요"))
 		{

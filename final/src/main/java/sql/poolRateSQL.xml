@@ -6,11 +6,24 @@
 	<select id="viewAllRateList">
 	select * from rate
 	</select>
+	<select id="getAvrRateByAimid" parameterType="String" resultType="su.pool.model.PoolRateAvgDTO">
+	select avg(rate)avg, 
+	count(*)count,
+	round((count(case when rate=1 then 1 end)/count(*))*100)r1,
+	round((count(case when rate=2 then 1 end)/count(*))*100)r2,
+	round((count(case when rate=3 then 1 end)/count(*))*100)r3,
+	round((count(case when rate=4 then 1 end)/count(*))*100)r4,
+	round((count(case when rate=5 then 1 end)/count(*))*100)r5
+	from rate where aimid=#{aimid} 
+	</select>
 	<select id="getListByUserid" parameterType="String" resultType="su.pool.model.PoolRateDTO">
-	select * from rate where userid=#{userid}
+	select * from rate where userid=#{userid} order by idx desc
+	</select>
+	<select id="checkRate" parameterType="String" resultType="su.pool.model.PoolRateDTO">
+	select * from rate where userid=#{userid} and aimid=#{aimid}
 	</select>
 	<select id="getListByAimid" parameterType="String" resultType="su.pool.model.PoolRateDTO">
-	select * from rate where aimid=#{aimid}
+	select * from rate where aimid=#{aimid} order by idx desc
 	</select>
 	<insert id="poolRateWrite" parameterType="su.pool.model.PoolRateDTO">
 	insert into rate values

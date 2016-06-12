@@ -12,7 +12,8 @@
 	href="/final02/CSS/poolCommon.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
-
+<link rel="stylesheet" type="text/css"
+	href="/final02/CSS/menu_topexpand.css" />
 <script src="/final02/js/selectFx.js"></script>
 <script>
 	var scount = 0;
@@ -250,7 +251,34 @@
 		href="/final02/CSS/cs-select.css" />
 	<link rel="stylesheet" type="text/css"
 		href="/final02/CSS/cs-skin-border.css" />
+	<div class="menu-wrap">
+		<nav class="menu">
+			<div class="icon-list">
+				<a href="poolAdd.do"><i class="fa fa-pencil" aria-hidden="true"></i><span>등록하기</span></a>
+				<a href="poolFindForm.do"><i class="fa fa-search"
+					aria-hidden="true"></i><span>검색하기</span></a> <a
+					href="poolMasterList.do"><i class="fa fa-car"
+					aria-hidden="true"></i><span>타세요</span></a> <a href="poolMemberList.do"><i
+					class="fa fa-thumbs-up" aria-hidden="true"></i><span>탈래요</span></a> <a
+					href="shortPoolList.do"><i class="fa fa-clock-o"
+					aria-hidden="true"></i><span>단기 카풀</span></a> <a href="longPoolList.do"><i
+					class="fa fa-calendar" aria-hidden="true"></i><span>정기 카풀</span></a> <a
+					href="poolStatus.do"><i class="fa fa-th-list"
+					aria-hidden="true"></i><span>예약 현황</span></a> <a
+					href="poolMasReqList.do"><i class="fa fa-user-plus"
+					aria-hidden="true"></i><span>가입 요청 현황</span></a>
+			</div>
+		</nav>
+	</div>
+	<button class="menu-button" id="open-button"></button>
+
+
+
 	<section id="mainsection">
+
+
+			<div class="content-wrap">
+				<div class="content">
 		<div class="col-md-12">
 			<h1 class="main--title">
 				카풀 등록 <small>카풀 상세 정보 입력</small>
@@ -551,7 +579,10 @@
 
 			</form>
 		</div>
-
+	</div>
+	</div>
 	</section>
 </body>
+<script src="/final02/js/menu-classie.js"></script>
+<script src="/final02/js/menu-main.js"></script>
 </html>

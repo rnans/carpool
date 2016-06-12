@@ -69,7 +69,7 @@
 						<li><a href="longPoolList.do">정기 카풀</a></li>
 						<li class="divider"></li>
 						<li><a href="poolStatus.do">예약 현황</a></li>
-						
+						<li><a href="poolMasReqList.do">파티 가입 요청 현황</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
