@@ -304,12 +304,25 @@ $(function() {
     });  
 });
 
+$(document).on('click', '#close-preview2', function(){ 
+    $('.image-preview2').popover('hide');
+    // Hover befor close the preview
+    $('.image-preview2').hover(
+        function () {
+           $('.image-preview2').popover('show');
+        }, 
+         function () {
+           $('.image-preview2').popover('hide');
+        }
+    );    
+});
+
 $(function() {
     // Create the close button
     var closebtn = $('<button/>', {
         type:"button",
         text: 'x',
-        id: 'close-preview',
+        id: 'close-preview2',
         style: 'font-size: initial;',
     });
     closebtn.attr("class","close pull-right");
@@ -342,12 +355,12 @@ $(function() {
         reader.onload = function (e) {
             $(".image-preview2-input-title").text("바꾸기");
             $(".image-preview2-clear").show();
-            $(".image-preview2-filename").val(file.name);            
+            $(".image-preview2-filename").val(file.name);
             img.attr('src', e.target.result);
             $(".image-preview2").attr("data-content",$(img)[0].outerHTML).popover("show");
-        }        
+        }
         reader.readAsDataURL(file);
-    });  
+    });
 });
    </script>   
    

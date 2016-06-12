@@ -329,6 +329,8 @@ function memberDel(){
 	<div id="chartdiv2" style="width: 35%; height: 400px; background-color: #FFFFFF;  display: inline-block;"></div>
 <div class=""  style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
 
+
+<a href="adminMain.do">adminMain</a>
 	
  
 

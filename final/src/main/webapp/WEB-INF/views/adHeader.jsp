@@ -143,7 +143,7 @@ table tr:hover td {
 </style>
 <div style="position: fixed;display:block;  height: 100%; ">
 <ul id="sidebar" class="nav navbar-nav side-nav"
-	style="position: absolute; left: 0px; " >
+	style="position: absolute; left: 0px; padding-top: 60px;" >
 	<li class="active" ><a href="memberInfo.do"><i
 			class="fa fa-fw fa-dashboard"></i> 관리자페이지</a></li>
 	<li><a href="javascript:;" data-toggle="collapse"

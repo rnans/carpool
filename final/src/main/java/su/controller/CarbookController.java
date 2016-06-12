@@ -288,15 +288,29 @@ import su.carinfo.model.carInfoDTO;
 	   
 	   @RequestMapping("/graph.do")
 	   public ModelAndView graph(HttpSession session, String carnum){
-		   String id=(String)session.getAttribute("sid");
-		   
+		   String id=(String)session.getAttribute("sid");		   
+		   ModelAndView mav=new ModelAndView();
+		   if(id==null){
+				mav.addObject("msg", "로그인후 이용가능합니다.");
+				mav.addObject("gopage", "index.do");
+				mav.setViewName("carManage/carMsg");
+			} else {
+
 		   List<carInfoDTO> carlist=CarCostDao.carnum(id);
+		 
+		   if(carlist.isEmpty()){
+					mav.addObject("msg", "차량등록 후 이용가능합니다. 차량등록 페이지로 이동합니다.");
+					mav.addObject("gopage", "carList.do");
+					mav.setViewName("carManage/carMsg");
+		   } else {
+			   
+		   
 		   if(carnum==null||carnum.equals("")){
 			   carnum=carlist.get(0).getCarnum();
 		   }
 		   System.out.println(id);
-		   ModelAndView mav=new ModelAndView();
-		   
+		  
+			
 		   String costsum=CarCostDao.CarCostSum(carnum);
 		   String kmsum=CarCostDao.CarKmSum(carnum);
 		   String jooyusum=CarCostDao.CarJooyuSum(carnum);
@@ -316,7 +330,8 @@ import su.carinfo.model.carInfoDTO;
 			
 			mav.setViewName("carbook/graph");
 			System.out.println(carnum);
-	      
+			}
+		   }
 		   return mav;
 	   }
 	   
