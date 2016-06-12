@@ -73,24 +73,31 @@
 	</article>
 </section>
 <section class="section" id="section2">
-	<article>
+	<article >
 		<h2 id="mainTitle3">사용 방법</h2>
-		<div id="third" >STEP 1
-		<br>
-		<img src="/final02/img/01.png" style="width: 20%; height: 20%;">
+		<div id="third">
+			STEP 1
+			<br>
+			<img src="/final02/img/01.png" style="width: 20%; height: 20%; display: inline-block;">
+		
+			<img src="">
+		
+		
+		STEP 2
+			<br>
+			<img src="/final02/img/02.png" style="width: 20%; height: 20%; display: inline-block;">
+			<img src="">
 	
-		<img src=""></div>
-		<div id="third">STEP 2
-		<br>
-		<img src="/final02/img/02.png" style="width: 20%; height: 20%;">
 		
-		</div>
-		<div id="third">STEP 3
-		<br>
-		<img src="/final02/img/03.png" style="width: 20%; height: 20%;">
 		
-		</div>
+		STEP 3
+		<br>
+		<img src="/final02/img/03.png" style="width: 20%; height: 20%; display: inline-block;">
+		<img src="">
+	
+	
 		<p id="sub_title3">간단하게 카풀을 찾아 예약하세요!</p>
+		</div>
 	</article>
 	<%@ include file="footer.jsp" %>
 </section>
@@ -99,7 +106,7 @@
 	<script>
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
-				sectionsColor: ['#F6F6F6', '#0172BD', '#58D3F7'],
+				sectionsColor: ['#DAD9FF', '#0172BD', '#58D3F7'],
 				scrollBar: true
 			});
 		});

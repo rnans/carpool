@@ -153,14 +153,17 @@ function idFindCheck(){
 	var form = document.idFind;
 	if(form.name.value=="" || form.phonenum.value==""){
 		alert("이름 혹은 전화번호를 입력해 주세요.");
+		return false;
 	}else if(form.name.value!="" && form.phonenum.value!=""){
 		form.submit();
 	}
+	return false;
 }
 function pwFindCheck(){
 	var form = document.pwFind;
 	if(form.id.value==""||form.phonenum.value==""){
 		alert("아이디 혹은 전화번호를 입력해 주세요.");
+		return false;
 	}else if(form.id.value!="" && form.phonenum.value!=""){
 		form.submit();
 	}
