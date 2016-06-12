@@ -598,7 +598,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
             </nav>
             <nav class="menu-side">
               		<a href="myPage.do">마이페이지</a>
-					<a href="">소속카풀</a>
+					<a href="affiliationList.do">소속카풀</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
@@ -623,7 +623,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
          <div id="setView">
             <table border="1" cellspacing="0" align="center" class="table table-striped">
                <thead>
-                  <tr>
+                  <tr style="font-size: 15px;">
                      <th>아이디</th>
                      <th>평점</th>
                      <th>코멘트</th>
@@ -637,15 +637,15 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                <tbody>
                   <c:if test="${empty set}">
             <tr>
-               <td colspan="5">등록된 평가글이 없습니다.</td>
+               <td colspan="5" style="text-align: center;">등록된 평가글이 없습니다.</td>
             </tr>
                </c:if>
          <c:forEach var="dto" items="${set }">
             <tr>
-                  <td>${dto.aimid }</td>
-                  <td>${dto.rate }</td>
-                  <td>${dto.content }</td>
-                  <td>${dto.writedate }</td>
+                  <td style="font-size: 13px;">${dto.aimid }</td>
+                  <td style="font-size: 13px;">${dto.rate }</td>
+                  <td style="font-size: 13px;">${dto.content }</td>
+                  <td style="font-size: 13px;">${dto.writedate }</td>
                   <td><input type="button" onclick="upRate(${dto.idx})" value="수정"><input type="button" onclick="delRate(${dto.idx})" value="삭제"></td>
             </tr>
          </c:forEach>

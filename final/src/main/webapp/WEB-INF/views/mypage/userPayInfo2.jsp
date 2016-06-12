@@ -334,7 +334,7 @@ section {
 	max-width: 100%;
 }
 
-.related a img {
+. a img {
 	max-width: 100%;
 	opacity: 0.8;
 	border-radius: 20px/100px;
@@ -559,7 +559,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</nav>
 				<nav class="menu-side">
 					<a href="myPage.do">마이페이지</a>
-					<a href="">소속카풀</a>
+					<a href="affiliationList.do">소속카풀</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
@@ -581,13 +581,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<table style="" class="table table-striped">
 					<thead class="tb">
 						<tr>
-							<th style="text-align: center;">번호</th>
-							<th style="text-align: center;">카드아이디</th>
-							<th style="text-align: center;">카드종류</th>
-							<th style="text-align: center;">카드번호</th>
-							<th style="text-align: center;">유효기간</th>
-							<th style="text-align: center;">개인/법인</th>
-							<th style="text-align: center;">수정/삭제</th>
+							<th style="text-align: center; font-size: 13px;">번호</th>
+							<th style="text-align: center; font-size: 13px;">카드아이디</th>
+							<th style="text-align: center; font-size: 13px;">카드종류</th>
+							<th style="text-align: center; font-size: 13px;">카드번호</th>
+							<th style="text-align: center; font-size: 13px;">유효기간</th>
+							<th style="text-align: center; font-size: 13px;">개인/법인</th>
+							<th style="text-align: center; font-size: 13px;">수정/삭제</th>
 						</tr>	
 					</thead>
 				<tfoot>
@@ -601,15 +601,15 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			</c:if>
 			<c:forEach var="dto" items="${dto }">
 				<tr>
-					<td>${dto.idx }</td>
-					<td>${dto.cardid }</td>
-					<td>${dto.cardtype1 }</td>
-					<td>${dto.cardnum }</td>
-					<td>${dto.cardterm }</td>
-					<td>${dto.cardtype2 }</td>
+					<td style="font-size: 13px;">${dto.idx }</td>
+					<td style="font-size: 13px;">${dto.cardid }</td>
+					<td style="font-size: 13px;">${dto.cardtype1 }</td>
+					<td style="font-size: 13px;">${dto.cardnum }</td>
+					<td style="font-size: 13px;">${dto.cardterm }</td>
+					<td style="font-size: 13px;">${dto.cardtype2 }</td>
 					<td>
-					<a href="cardUpdate.do?idx=${dto.idx}"><button class="btn btn-default btn-xs" type="button" value="수정">수정</button></a>
-					<a href="cardDel.do?idx=${dto.idx}"><button class="btn btn-default btn-xs" type="button" value="삭제">삭제</button></a>
+					<a href="cardUpdate.do?idx=${dto.idx}"><button  class="btn btn-default btn-xs" type="button" value="수정">수정</button></a>
+					<a href="cardDel.do?idx=${dto.idx}"><button  class="btn btn-default btn-xs" type="button" value="삭제">삭제</button></a>
 					</td>
 				</tr>
 			</c:forEach>

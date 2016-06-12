@@ -621,7 +621,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</nav>
 				<nav class="menu-side">
 					<a href="myPage.do">마이페이지</a>
-					<a href="">소속카풀</a>
+					<a href="affiliationList.do">소속카풀</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
@@ -644,7 +644,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 							  <legend>결제내역</legend>
 							   <table class="table table-striped">
 							     <thead class="thead-inverse">
-							  <tr> 
+							  <tr style="font-size: 15px;"> 
 							    <th style="text-align: center;">카풀 유형</th>
 							    <th style="text-align: center;">카풀 기간</th>
 							    <th style="text-align: center;">카풀 이름</th>
@@ -658,13 +658,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 							  <tbody>
 							  <c:forEach var="list" items="${list}">
 							  <tr scope="row" style=" text-align: center;"> 
-							    <td>${list.pooltype }</td>
-							    <td>${list.termtype }</td>
-							    <td>${list.poolname }</td>
-							    <td>${list.pay }</td>
-							    <td>${list.userid1 }</td>
-							    <td>${list.cardtype1 }</td>
-							    <td>${list.cardnum }</td>
+							    <td style="font-size: 13px;">${list.pooltype }</td>
+							    <td style="font-size: 13px;">${list.termtype }</td>
+							    <td style="font-size: 13px;">${list.poolname }</td>
+							    <td style="font-size: 13px;">${list.pay }</td>
+							    <td style="font-size: 13px;">${list.userid1 }</td>
+							    <td style="font-size: 13px;">${list.cardtype1 }</td>
+							    <td style="font-size: 13px;">${list.cardnum }</td>
 							  </tr>
 							  </c:forEach>
 							  </tbody>

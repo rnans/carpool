@@ -129,7 +129,7 @@ function checkMain(){
 			<c:forEach var="dto" items="${list }">
 			
 				<tr style="vertical-align: middle;">
-					<td><input type="radio" style="margin-left: 30px;" name="carid" value="${dto.carid }" onclick="carMain(${dto.idx})"></td>
+					<td><input type="radio" style="margin-left: 30px; margin-top: 40px;" name="carid" value="${dto.carid }" onclick="carMain(${dto.idx})"></td>
 					<td><div id="carImage">
         <img style="width:100px; height:100px;" src="http://localhost:9090/final02/img/${dto.carphoto}">
 		</div></td>

@@ -576,7 +576,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</nav>
 				<nav class="menu-side">
 					<a href="myPage.do">마이페이지</a>
-					<a href="">소속카풀</a>
+					<a href="affiliationList.do">소속카풀</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
@@ -598,7 +598,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 								<form name="myprofile">
 									<table align="center" class="table table-striped">
 										<thead>
-											<tr>
+											<tr style="font-size: 15px;">
 												<th>목적</th>
 												<th>도착지</th>
 												<th>모집상황</th>
@@ -614,17 +614,17 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 										<tbody>
 											<c:if test="${empty list}">
 									<tr>
-										<td colspan="7">등록된 글이 없습니다.</td>
+										<td colspan="7" style="text-align: center;">등록된 글이 없습니다.</td>
 									</tr>
 								</c:if>
 								<c:forEach var="dto" items="${list }">
 									<tr>
-										<td>${dto.aim }</td>
-										<td>${dto.endspot }</td>
-										<td>${dto.status }</td>
-										<td>${dto.pooltype}</td>
-										<td>${dto.termtype}</td>
-										<td>${dto.poolname }</td>
+										<td style="font-size: 13px;">${dto.aim }</td>
+										<td style="font-size: 13px;">${dto.endspot }</td>
+										<td style="font-size: 13px;">${dto.status }</td>
+										<td style="font-size: 13px;">${dto.pooltype}</td>
+										<td style="font-size: 13px;">${dto.termtype}</td>
+										<td style="font-size: 13px;">${dto.poolname }</td>
 										<td><input type="button" onclick="upPool(${dto.idx})" value="수정"><input type="button" onclick="delPool(${dto.idx})" value="삭제"></td>
 											</tr>
 											</c:forEach>
