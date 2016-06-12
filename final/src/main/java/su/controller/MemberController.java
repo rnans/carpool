@@ -21,6 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import su.comm.model.carpoolinfoDTO;
+import su.comm.model.commDAO;
 import su.member.model.MemberDAO;
 import su.member.model.MemberDTO;
 import su.message.model.MessageDAO;
@@ -61,6 +63,15 @@ public class MemberController {
 	}
 	public void setUploadDao(UploadDAO uploadDao) {
 		this.uploadDao = uploadDao;
+	}
+	
+	@Autowired
+	private commDAO commDao;			
+	public commDAO getCommDao() {
+		return commDao;
+	}
+	public void setCommDao(commDAO commDao) {
+		this.commDao = commDao;
 	}
 	
 //	@Autowired
@@ -291,15 +302,25 @@ public class MemberController {
 	/**현재접속인원 수 파악*/
 	
 	@RequestMapping("/memberList.do")
-	public ModelAndView numStatus(String poolname){
+	public ModelAndView numStatus(String poolname,String color, HttpSession session){
 		
 		int count = statusDao.numStatus();
 		List<StatusDTO> list = statusDao.listStatus();
-				
+		List<UploadDTO> list3=messageDao.mImage();
+		
+		String id=(String)session.getAttribute("sid");
+		List<carpoolinfoDTO> poollist=commDao.poollist(id);
+		
+
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("poollist", poollist);
+		
 		mav.addObject("poolname", poolname);
+		mav.addObject("color",color);
 		mav.addObject("count",count);
 		mav.addObject("lists",list);
+		mav.addObject("imglist", list3);
 		mav.setViewName("memberList");
 		return mav;
 	}

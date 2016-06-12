@@ -86,6 +86,10 @@
 		select * from file_upload where poolname=#{poolname} order by idx asc
 	</select>
 	
+	<select id="profileList" resultType="su.upload.model.UploadDTO">
+		select * from file_upload where filetype=0
+	</select>
+	
 	<select  id="poollist" parameterType="String" resultType="su.comm.model.carpoolinfoDTO">
 		select * from carpoolinfo where id = #{id}
 	</select>

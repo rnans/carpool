@@ -103,6 +103,12 @@ public class commDAOImple implements commDAO {
 				return list;
 	}
 	
+	public List<UploadDTO> imgList2(){
+		List<UploadDTO> list=sqlMap.selectList("profileList");
+		return list;
+		
+	}
+	
 	public List<carpoolinfoDTO> poollist(String id){
 		
 		List<carpoolinfoDTO> list=sqlMap.selectList("poollist", id);

@@ -36,6 +36,8 @@ public interface commDAO {
 	
 	public List<UploadDTO> imgList(String poolname);
 	
+	public List<UploadDTO> imgList2();
+	
 	public List<carpoolinfoDTO> poollist(String id);
 	//uploadtest
 	

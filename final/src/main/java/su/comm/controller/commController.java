@@ -66,7 +66,7 @@ public class commController {
 	 	
 
 	@RequestMapping("comm.do")
-	public ModelAndView comm(HttpSession session, String poolname){
+	public ModelAndView comm(HttpSession session, String poolname, String color, UploadDTO dto){
 		ModelAndView mav=new ModelAndView();		
 		String sid=(String)session.getAttribute("sid");
 		
@@ -81,12 +81,15 @@ public class commController {
 			String commid=poolname;
 			List<commBBSDTO> list=commDao.bbsList(commid);	
 			List<CommBBSreDTO> list2=commDao.reList(commid);
+			List<UploadDTO> list3=commDao.imgList2();
 			int recount=0;
 			
+			mav.addObject("color", color);			
 			mav.addObject("poolname", commid);
 			mav.addObject("recount", recount);
 			mav.addObject("list", list);
 			mav.addObject("list2",list2);
+			mav.addObject("imglist", list3);
 			mav.setViewName("comm/comm");
 			return mav;	
 		}	
@@ -168,10 +171,11 @@ public class commController {
 	}
 	
 	@RequestMapping("calendar.do")
-	public ModelAndView calendar(String poolname){
+	public ModelAndView calendar(String poolname, String color){
 		ModelAndView mav=new ModelAndView();
 		List<scheDTO> list=commDao.scheList(poolname);
 		mav.addObject("poolname",poolname);
+		mav.addObject("color",color);
 		mav.addObject("list", list);
 		mav.setViewName("comm/calendar");
 		return mav;
@@ -206,7 +210,7 @@ public class commController {
 	}
 	
 	@RequestMapping("commMember.do")
-	public ModelAndView commMember(HttpSession session, String poolname){
+	public ModelAndView commMember(HttpSession session, String poolname, String color){
 		
 		String id=(String)session.getAttribute("sid");
 
@@ -215,6 +219,7 @@ public class commController {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("comm/commMember");
 		mav.addObject("poolname", poolname);
+		mav.addObject("color",color);
 		mav.addObject("memberlist", list2);
 		return mav;
 		
@@ -273,13 +278,14 @@ public class commController {
 
 	
 	@RequestMapping("gallery.do")
-	public ModelAndView gallery(String poolname){
+	public ModelAndView gallery(String poolname, String color){
 		
 		
 		ModelAndView mav=new ModelAndView();
 		
 		List<UploadDTO> list=commDao.imgList(poolname);
 		mav.addObject("list", list);
+		mav.addObject("color", color);
 		mav.addObject("poolname", poolname);
 		mav.setViewName("comm/gallery");
 		return mav;
@@ -295,9 +301,10 @@ public class commController {
 	
 	@RequestMapping("commMain.do")
 	public ModelAndView commMain(HttpSession session){
-		String id=(String)session.getAttribute("sid");
+		
 		ModelAndView mav=new ModelAndView();
 		
+		String id=(String)session.getAttribute("sid");
 		List<carpoolinfoDTO> poollist=commDao.poollist(id);
 		
 		mav.addObject("poollist", poollist);
