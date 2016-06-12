@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import su.member.model.MemberDTO;
 import su.paylist.model.PayListDTO;
 import su.pool.model.PoolDTO;
+import su.pool.model.PoolInfoDTO;
 import su.pool.model.PoolRateDTO;
 import su.wishpool.model.WishpoolListDTO;
 
@@ -104,4 +105,16 @@ public class yangMypageDAOImple implements yangMypageDAO {
 		int count=sqlMap.update("editRateByIdx",dto);
 		return count;
 		}
+	//소속카풀리스트
+	public List<PoolDTO> affiliationList(String userid) {
+		
+		List<PoolDTO> list=sqlMap.selectList("affiliationList", userid);
+		return list;
+	}
+	//소속카풀탈퇴
+	public int affiliationDel(PoolInfoDTO dto) {
+
+		int count=sqlMap.delete("affiliationDel", dto);
+		return count;
+	}
 }

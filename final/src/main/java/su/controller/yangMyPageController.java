@@ -22,6 +22,7 @@ import su.mypage.model.MypageDAO;
 import su.mypage.model.MypageDTO;
 import su.paylist.model.PayListDTO;
 import su.pool.model.PoolDTO;
+import su.pool.model.PoolInfoDTO;
 import su.pool.model.PoolRateDTO;
 import su.upload.model.UploadDAO;
 import su.upload.model.UploadDTO;
@@ -347,6 +348,33 @@ public class yangMyPageController {
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("gopage", "rateView.do");
+		mav.setViewName("mypage/yangMyPageMsg");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/affiliationList.do")
+	public ModelAndView affiliationList(HttpSession session){
+		
+		String userid = (String) session.getAttribute("sid");
+		List<PoolDTO> list = yangMyPageDao.affiliationList(userid);
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("mypage/affiliationList");
+		
+		return mav;
+	}
+	@RequestMapping("/affiliationDel.do")
+	public ModelAndView affiliationDel(HttpSession session,PoolInfoDTO dto){
+		
+		String id = (String) session.getAttribute("sid");
+		dto.setId(id);
+		int result = yangMyPageDao.affiliationDel(dto);
+		 String msg=result>0?"탈퇴 성공":"탈퇴 실패";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("gopage", "affiliationList.do");
 		mav.setViewName("mypage/yangMyPageMsg");
 		
 		return mav;

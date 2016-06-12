@@ -601,7 +601,7 @@ window.onload=function(){
 	<div id="imgf">
 	 <form id="frm" name="frm" action="uploadimgUpdate.do" method="post" enctype="multipart/form-data">
 		<span>
-  		<img style="width:300px; height:300px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
+  		<img style="width:300px; height:300px;" src="http://localhost:9090/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
 		</span>	
 			<input type="file" id="file" name="upload">
    			<button type="submit" class="btn btn-success" value="사진올리기">사진올리기</button>

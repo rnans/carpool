@@ -5,6 +5,7 @@ import java.util.List;
 import su.member.model.MemberDTO;
 import su.paylist.model.PayListDTO;
 import su.pool.model.PoolDTO;
+import su.pool.model.PoolInfoDTO;
 import su.pool.model.PoolRateDTO;
 import su.wishpool.model.WishpoolListDTO;
 
@@ -24,6 +25,8 @@ public interface yangMypageDAO {
 	public int wishDel(String idx);
 	public PoolRateDTO rateIdx(PoolRateDTO dto);
 	public int rateUpdate(PoolRateDTO dto);
+	public List<PoolDTO> affiliationList(String userid);
+	public int affiliationDel(PoolInfoDTO dto);
 	
 	
 	
