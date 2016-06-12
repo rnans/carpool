@@ -620,7 +620,7 @@ function setRadioChk(e){
 						<div class="codrops-links">
 	
 		<div id="imgf">
-			<img style="width:300px; height:300px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
+			<img style="width:300px; height:300px;" src="http://localhost:9090/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
 		</div>
 		
 		<div>
