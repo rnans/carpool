@@ -420,10 +420,13 @@ window.onload=function(){
 	var uid=null;
 	function msgOpen(){	
 		
-		window.open('messageWrite.do?uid='+uid,'','width=400, height=270')
+		window.open('messageWrite.do?uid='+uid,'','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+', width=410px,height=260px')
 	}
 
-	
+	function sex(sendid){
+		var param = '?sendid='+sendid;
+		window.open('profile.do'+param,'','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+',width=321, height=443px' )
+	}
 </script>
 <body  style="background-color: #F6F6F6;padding-top: 110px;" >
 
@@ -646,7 +649,7 @@ window.onload=function(){
 					
 						<c:forEach var="img" items="${imglist}">
 						<c:if test="${img.id==bbs.id}">
-						<a href="#" data-uiselector="Img"> <img class="profileImg"
+						<a href="javascript:sex('${bbs.id }')" data-uiselector="Img"> <img class="profileImg"
 							src="http://localhost:9090/final02/img/${img.filename}"
 							alt="by남구문">
 						</a>

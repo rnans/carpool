@@ -14,8 +14,8 @@
 <body>
 
 <div id="fullpage">
-<section class="section" id="section0"> <!-- 백그라운드 이미지 박혀있음 기본꺼는 -->
-	<article id="sec0_content" style="background-image: url('http://localhost:9090/final02/img/comm2.jpg') ;">
+<section class="section" id="section0" style="background-image: url('http://localhost:9090/final02/img/comm2.jpg'); opacity:10%; "> <!-- 백그라운드 이미지 박혀있음 기본꺼는 -->
+	<article id="sec0_content" >
 	<h1 id="mainTitle">편리한 카풀</h1>
 	<p id="sub_title">Pool PARTY, 카풀 서비스</p>
 	<!-- <div id="third">빨리타

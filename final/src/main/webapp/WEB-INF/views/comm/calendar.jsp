@@ -89,7 +89,7 @@ function write(){
 	var day=startdate;
 	var year=<%=intYear%>;
 	var params='day='+day+'&'+'month='+month+'&year='+year+'&poolname=${poolname}';
-	window.open('scheWrite.do?'+params,'','width=515, height=595')
+	window.open('scheWrite.do?'+params,'','left='+(screen.availWidth-500)/2+',top='+(screen.availHeight-700)/2+', width=515, height=595')
 }
 
 var uid=null;
