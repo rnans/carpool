@@ -145,7 +145,6 @@ function checkMain(){
 						<span class="glyphicon glyphicon-remove"></span> Del</a>
 						</td>
 					</tr>
-				
 			</c:forEach>
 			<tr>
 			<!--  <td colspan="7" align="right"><input type="button" value="등록" onclick="location.href='carAdd.do'"></td>-->

@@ -14,9 +14,8 @@
 <body>
 
 <div id="fullpage">
-<section class="section" id="section0"  > <!-- 백그라운드 이미지 박혀있음 기본꺼는 -->
-	<div id="sec0_back">
-	<article id="sec0_content">
+<section class="section" id="section0"> <!-- 백그라운드 이미지 박혀있음 기본꺼는 -->
+	<article id="sec0_content" style="background-image: url('http://localhost:9090/final02/img/comm2.jpg') ;">
 	<h1 id="mainTitle">편리한 카풀</h1>
 	<p id="sub_title">Pool PARTY, 카풀 서비스</p>
 	<!-- <div id="third">빨리타
@@ -62,7 +61,7 @@
 		</div>
 
 	</article>
-	</div>
+
 </section>
 <section class="section" id="section1">
 	<article>
@@ -76,27 +75,29 @@
 	<article >
 		<h2 id="mainTitle3">사용 방법</h2>
 		<div id="third">
+		<div style="float: left; display: inline-block;width: 33%;">
 			STEP 1
 			<br>
-			<img src="/final02/img/01.png" style="width: 20%; height: 20%; display: inline-block;">
+			<img src="/final02/img/01.png" style="width: 300px;height: 300px;pad">
 		
 			<img src="">
-		
-		
+		</div>
+			<div style="float: left;display: inline-block;width: 33%;">
 		STEP 2
 			<br>
-			<img src="/final02/img/02.png" style="width: 20%; height: 20%; display: inline-block;">
+			<img src="/final02/img/02.png" style="width: 300px;height: 300px;">
 			<img src="">
 	
-		
-		
+		</div>
+			<div style="float: left;display: inline-block;width: 33%;">
 		STEP 3
 		<br>
-		<img src="/final02/img/03.png" style="width: 20%; height: 20%; display: inline-block;">
+		<img src="/final02/img/03.png" style="width: 300px;height: 300px;">
 		<img src="">
-	
-	
+	</div><br>
+		<div style="width: 100%;display: block;">
 		<p id="sub_title3">간단하게 카풀을 찾아 예약하세요!</p>
+		</div>
 		</div>
 	</article>
 	<%@ include file="footer.jsp" %>
@@ -106,7 +107,7 @@
 	<script>
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
-				sectionsColor: ['#DAD9FF', '#0172BD', '#58D3F7'],
+				sectionsColor: ['white', '#0172BD', '#58D3F7'],
 				scrollBar: true
 			});
 		});

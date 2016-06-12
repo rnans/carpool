@@ -174,15 +174,15 @@ footer a,footer a:hover{
 	<div id="lnb" data-skin="skin5">
 		<div data-viewname="DLnbMenuView">
 			<ul class="_joinedLnb">
-				<li><a href="comm.do?poolname=${poolname}" data-skinfactor="tBorder color"
+				<li><a href="comm.do?poolname=${poolname}&color=${color}" data-skinfactor="tBorder color"
 					class="_calendarLnbBtn _eachLnbMenu _unclickableMenu">전체글</a></li>
-				<li><a href="commMain.do?poolname=${poolname}"
+				<li><a href="commMain.do?poolname=${poolname}&color=${color}"
 					data-skinfactor="tBorder color"
 					class="_fullArticleLnbBtn _eachLnbMenu on">사진첩</a></li>
-				<li><a href="calendar.do?poolname=${poolname}"
+				<li><a href="calendar.do?poolname=${poolname}&color=${color}"
 					data-skinfactor="tBorder color"
 					class="_calendarLnbBtn _eachLnbMenu _unclickableMenu">일정</a></li>
-				<li><a href="commMember.do?poolname=${poolname}"
+				<li><a href="commMember.do?poolname=${poolname}&color=${color}"
 					data-skinfactor="tBorder color"
 					class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
 			</ul>

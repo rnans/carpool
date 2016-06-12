@@ -393,7 +393,7 @@ h1, h2,h3 {
 		
 	}
 window.onload=function(){
-	var params="poolname=${poolname}";
+	var params="poolname=${poolname}&color=${color}";
 	sendRequest('memberList.do', params, showResult, 'GET');
 }
 
@@ -433,15 +433,15 @@ window.onload=function(){
 	<div id="lnb" data-skin="skin5" style="z-index: 101;">
 		<div data-viewname="DLnbMenuView">
 			<ul class="_joinedLnb">
-				<li><a href="comm.do?poolname=${poolname}" data-skinfactor="tBorder color"
+				<li><a href="comm.do?poolname=${poolname}&color=${color}" data-skinfactor="tBorder color"
 					class="_fullArticleLnbBtn _eachLnbMenu on">전체글</a></li>
-				<li><a href="gallery.do?poolname=${poolname}"
+				<li><a href="gallery.do?poolname=${poolname}&color=${color}"
 					data-skinfactor="tBorder color"
 					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">사진첩</a></li>
-				<li><a href="calendar.do?poolname=${poolname}"
+				<li><a href="calendar.do?poolname=${poolname}&color=${color}"
 					data-skinfactor="tBorder color"
 					class="_calendarLnbBtn _eachLnbMenu _unclickableMenu">일정</a></li>
-				<li><a href="commMember.do?poolname=${poolname}"
+				<li><a href="commMember.do?poolname=${poolname}&color=${color}"
 					data-skinfactor="tBorder color"
 					class="_memberLnbBtn _eachLnbMenu _unclickableMenu">멤버</a></li>
 			</ul>
@@ -643,10 +643,16 @@ window.onload=function(){
 			<div data-viewname="DPostLayoutView" class="postout">
 				<div class="cPost " data-uiselector="postMainWrap">
 					<div class="postMain" data-uiselector="postRegion">
-
+					
+						<c:forEach var="img" items="${imglist}">
+						<c:if test="${img.id==bbs.id}">
 						<a href="#" data-uiselector="Img"> <img class="profileImg"
-							src="http://s.cmstatic.net/webclient/dres/20160419171121/images/template/profile_60x60.gif"
-							alt="남구문"></a>
+							src="http://localhost:9090/final02/img/${img.filename}"
+							alt="by남구문">
+						</a>
+						</c:if>
+						</c:forEach>
+						
 						<div class="profileText">
 							<div class="textName" style="height: 45px; padding-top: 0px;"> <strong class="name onlyName" style="font-size:14px;">
 									<br>&nbsp;&nbsp;${bbs.id }</strong>
@@ -685,7 +691,7 @@ window.onload=function(){
 										<div data-viewname="DPostPhotoListView" class="uWidget" style="margin-left: auto;margin-right: auto;">
 											<div style="text-align: center;">
 												<img src="http://localhost:9090/final02/img/${bbs.photo}"
-													alt="">
+													alt="" style="max-width: 500px;max-height: 300px;">
 											</div>
 										</div>
 									</div>

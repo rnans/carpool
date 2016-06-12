@@ -132,15 +132,59 @@
     padding: 0 10px 14px;
     border-top: 1px solid #EEE;
 }
-
-
 </style>
 
+
+<c:if test="${color=='2'}">
+<style>
+
+[data-skin=skin5] [data-skinFactor~=tBg], [data-skin=skin5] [data-skinFactor~=bg], [data-skin=skin5] [data-skinFactor~=beforeBg]:before, [data-skin=skin5] [data-skinFactor~=afterBg]:after, [data-skin=skin5]#header:before, [data-skin=skin5][data-skinFactor~=bg] {
+    background-color: #9370f0!important;
+}
+[data-skin=skin5] [data-skinFactor~=tBorder], [data-skin=skin5] [data-skinFactor~=border], [data-skin=skin5] [data-skinFactor~=beforeBorder]:before, [data-skin=skin5] [data-skinFactor~=afterBorder]:after {
+    border-color: #9370f0!important;
+}
+
+[data-skin=skin5] [data-skinFactor~=color], [data-skin=skin5] [data-skinFactor~=beforeColor]:before, [data-skin=skin5] [data-skinFactor~=afterColor]:after, [data-skin=skin5] [data-skinFactor~=bColor], [data-skin=skin5] [data-skinFactor~=bBeforeColor]:before, [data-skin=skin5] [data-skinFactor~=bAfterColor]:after {
+    color: #9370f0!important;
+}
+
+</style>
+</c:if>
+
+<c:if test="${color==3}">
+<style>
+
+[data-skin=skin5] [data-skinFactor~=tBg], [data-skin=skin5] [data-skinFactor~=bg], [data-skin=skin5] [data-skinFactor~=beforeBg]:before, [data-skin=skin5] [data-skinFactor~=afterBg]:after, [data-skin=skin5]#header:before, [data-skin=skin5][data-skinFactor~=bg] {
+    background-color: #32b0e5!important;
+}
+[data-skin=skin5] [data-skinFactor~=tBorder], [data-skin=skin5] [data-skinFactor~=border], [data-skin=skin5] [data-skinFactor~=beforeBorder]:before, [data-skin=skin5] [data-skinFactor~=afterBorder]:after {
+    border-color: #32b0e5!important;
+}
+
+[data-skin=skin5] [data-skinFactor~=color], [data-skin=skin5] [data-skinFactor~=beforeColor]:before, [data-skin=skin5] [data-skinFactor~=afterColor]:after, [data-skin=skin5] [data-skinFactor~=bColor], [data-skin=skin5] [data-skinFactor~=bBeforeColor]:before, [data-skin=skin5] [data-skinFactor~=bAfterColor]:after {
+    color: #32b0e5!important;
+}
+
+</style>
+</c:if>
+<style>
+#banner .widget ul li .abc{
+    display: block;
+    position: absolute;
+    width: 32px;
+    height: 4px;
+    bottom: 5px;
+    content: '';
+    background-color: #ff5b72;
+}
+</style>
 
    <div class="commside" style="width: 30%; float: left; height: 100%;">
   <aside id="info" data-uiselector="leftSection" data-skin="skin5" style="min-width:210px;max-width:210px;float: right; margin-right: 30px;">
 
 	<!-- pool -->
+	
 
 	<div data-viewname="DBandCoverItemView">
 		<div class="uCover aside" data-type="type2">
@@ -160,7 +204,7 @@
 							<a href="#" class="more _seeMoreDescBtn" style="display: none;">&nbsp;더보기</a>
 						</p>
 						<p class="member -type2">
-							멤버 2 <a href="/#!/band/61355066/invite" data-icon="invite"
+							멤버 ${color } <a href="/#!/band/61355066/invite" data-icon="invite"
 								data-skinfactor="color">초대</a>
 						</p>
 					</div>
@@ -193,10 +237,16 @@
 								
 						
 									<li data-viewname="DBandChattingChannelItemView" class="chat">
-										<a href="javascript:uid='${l.userid }';msgOpen();"><span> <img
-												src="http://coresos.phinf.naver.net/a/2gegeb_c/18aUd015f6anox25rtzm_5ksoqj.jpg?type=s150_low"
+									<c:forEach var="img" items="${imglist}"> 
+										<c:if test="${img.id==l.userid }">
+										<a href="javascript:uid='${l.userid }';msgOpen();"><span> 
+									
+										<img src="http://localhost:9090/final02/img/${img.filename}"
 												width="38" height="38" data-skinfactor="tBorder">
+										
 										</span> <span><strong title="123">&nbsp;&nbsp;${l.userid}</strong> <span></span></span></a>
+										</c:if>
+									</c:forEach>
 									</li>
 						   	</c:forEach>
 
@@ -224,6 +274,9 @@
 								<div data-viewname="DBandBannerView">
 									<div class="tit _myBandListTitle" data-skin="skin5">
 										<h2>내 카풀</h2>
+										
+
+									
 									</div>
 									<div class="dummy" data-uiselector="dummy">
 										<div></div>
@@ -236,10 +289,10 @@
 										<div class="nano has-scrollbar">
 											<div class="nano-content" tabindex="0" style="right: -17px;">
 												<ul data-uiselector="bandList">
-													<li data-viewname="DBandBannerItemView" data-skin="skin5" class=""><a href="#"><span data-skinfactor="beforeBg"></span> <span><strong title="">가입된 카풀1</strong> </span></a></li>
-													<li data-viewname="DBandBannerItemView" data-skin="skin4" class=""><a href="#"><span data-skinfactor="beforeBg"></span> <span><strong title="">가입된 카풀2</strong> </span></a></li>
-													<li data-viewname="DBandBannerItemView" data-skin="skin3" class=""><a href="#"><span data-skinfactor="beforeBg"></span> <span><strong title="">가입된 카풀3</strong> </span></a></li>
-													<li data-viewname="DBandBannerItemView" data-skin="skin2" class=""><a href="#"><span data-skinfactor="beforeBg"></span> <span><strong title="">가입된 카풀4</strong> </span></a></li>
+													<li data-viewname="DBandBannerItemView" data-skin="skin5" class=""><a href="comm.do?poolname=${poollist[0].poolname }"><span class="abc" style="width:32px;"></span> <span><strong title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${poollist[0].poolname }</strong> </span></a></li>
+													<c:if test="${not empty poollist[1]}"><li data-viewname="DBandBannerItemView" data-skin="skin4" class=""><a href="comm.do?poolname=${poollist[1].poolname }&color=2"><span data-skinfactor="beforeBg"></span> <span><strong title="">${poollist[1].poolname }</strong> </span></a></li></c:if>
+													<c:if test="${not empty poollist[2]}"><li data-viewname="DBandBannerItemView" data-skin="skin3" class=""><a href="comm.do?poolname=${poollist[2].poolname }&color=3"><span data-skinfactor="beforeBg"></span> <span><strong title="">${poollist[2].poolname }</strong> </span></a></li></c:if>
+													
 												</ul>
 											</div>
 											<div class="nano-pane" style="display: block;">

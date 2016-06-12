@@ -420,7 +420,7 @@ a, a:focus, a:hover {
 				</script>
 					<li data-viewname="DBandCollectionItemView" data-skin="skin4"><div
 						class="uCover " data-type="type2">
-						<a href="comm.do?poolname=${poollist[1].poolname }" class="bandUri" style="text-decoration: none;"><div class="cover"
+						<a href="comm.do?poolname=${poollist[1].poolname }&color=2" class="bandUri" style="text-decoration: none;"><div class="cover"
 								data-skinfactor="beforeBg">
 								<img class="coverImg"
 									src="http://coresos.phinf.naver.net/a/2gegeb_c/18aUd015f6anox25rtzm_5ksoqj.jpg?type=cover_a264"
@@ -444,7 +444,7 @@ a, a:focus, a:hover {
 				
 					<li data-viewname="DBandCollectionItemView" data-skin="skin3"><div
 						class="uCover " data-type="type2" style="margin-right: 0px;">
-						<a href="comm.do?poolname=${poollist[2].poolname }" class="bandUri" style="text-decoration: none;"><div class="cover"
+						<a href="comm.do?poolname=${poollist[2].poolname }&color=3" class="bandUri" style="text-decoration: none;"><div class="cover"
 								data-skinfactor="beforeBg">
 								<img class="coverImg"
 									src="http://coresos.phinf.naver.net/a/2gegeb_c/18aUd015f6anox25rtzm_5ksoqj.jpg?type=cover_a264"
