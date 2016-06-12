@@ -592,6 +592,30 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 }
 </style>
 
+<script>
+function allCheck(){
+	
+	var allCheck1=document.getElementById("blankCheckbox1");
+	var oneCheck=document.getElementsByName("idx");
+	
+		if(allCheck1.checked==true){
+			
+			for(var i=0;i<oneCheck.length;i++){
+				
+			oneCheck[i].checked=true;
+			
+			}
+		}else if(allCheck1.checked==false){
+			
+			for(var i=0;i<oneCheck.length;i++){
+				
+			oneCheck[i].checked=false;
+			}
+		}
+}
+</script>
+
+
 
 
 	</head>
@@ -632,9 +656,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 							<div class="row">
 							
 							  <legend>결제내역</legend>
+							<form name="useList" action="useDel.do"> 
 							   <table class="table table-striped">
 							     <thead class="thead-inverse">
-							  <tr style="font-size: 15px;"> 
+							  <tr> 
+							    <th style="text-align: center;"><input type="checkbox" onclick="allCheck()" id="blankCheckbox1" value="true" aria-label="..."></th>
 							    <th style="text-align: center;">카풀 유형</th>
 							    <th style="text-align: center;">카풀 기간</th>
 							    <th style="text-align: center;">카풀 이름</th>
@@ -648,22 +674,24 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 							  <tbody>
 							  <c:forEach var="list" items="${list}">
 							  <tr scope="row" style=" text-align: center;"> 
-							    <td style="font-size: 13px;">${list.pooltype }</td>
-							    <td style="font-size: 13px;">${list.termtype }</td>
-							    <td style="font-size: 13px;">${list.poolname }</td>
-							    <td style="font-size: 13px;">${list.pay }</td>
-							    <td style="font-size: 13px;">${list.userid1 }</td>
-							    <td style="font-size: 13px;">${list.cardtype1 }</td>
-							    <td style="font-size: 13px;">${list.cardnum }</td>
+							    <td><input type="checkbox" name="idx" value="${dto.idx }" aria-label="..."></td>	
+							    <td>${list.pooltype }</td>
+							    <td>${list.termtype }</td>
+							    <td>${list.poolname }</td>
+							    <td>${list.pay }</td>
+							    <td>${list.userid1 }</td>
+							    <td>${list.cardtype1 }</td>
+							    <td>${list.cardnum }</td>
 							  </tr>
 							  </c:forEach>
 							  </tbody>
 							</table>
-							
+								<button type="submit" class="btn btn-success" value="삭제">삭제</button>
+						</form>
 						</div>
 						
 					<div>
-						<legend>즐겨찾기</legend>
+					
 						
 					</div>	
 						
@@ -672,7 +700,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 					</header>
 					<!-- Related demos -->
 					<section class="related">
-					 <a href="index.do"><input type="button" name="main" value="main"></input></a>
+					
 					</section>
 				</div>
 			</div><!-- /content-wrap -->
