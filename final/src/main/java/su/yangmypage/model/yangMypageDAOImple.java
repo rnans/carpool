@@ -117,4 +117,11 @@ public class yangMypageDAOImple implements yangMypageDAO {
 		int count=sqlMap.delete("affiliationDel", dto);
 		return count;
 	}
+	public int uselistDel(yangMypageDTO dto) {
+		int count=sqlMap.delete("uselistDel", dto);
+		return count;
+	}
+	
+	
+	
 }
