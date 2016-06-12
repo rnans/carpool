@@ -142,7 +142,7 @@ public class carInfoController {
 			 
 	
 		     if(filename.equals("")||filename==null){
-		    	 dto2.setCarphoto("사진없음");
+		    	 dto2.setCarphoto("사진없음.png");
 		     }else{
 		    	 dto2.setCarphoto(filename);
 		    	 dto.setFilename(filename); 
@@ -162,9 +162,10 @@ public class carInfoController {
 			 String filetype2="1";
 		     String filepath2=root_path+attach_path+filename2;
 		
-		     
+		     System.out.println("시작");
+		     System.out.println(filename2);
 		     if(filename2.equals("")||filename2==null){
-		    	 dto2.setConfirmphoto("사진없음");
+		    	 dto2.setConfirmphoto("사진없음.png");
 		     }else{
 		    	 dto2.setConfirmphoto(filename2);
 		    	 
@@ -177,8 +178,10 @@ public class carInfoController {
 			     System.out.println("filename2:"+filename2);
 			     System.out.println("filepath2:"+filepath2);
 		     }
+		     System.out.println("쿼리실행");
 		 	int result = carInfoDao.carAdd(dto2);
-		 	
+		 	System.out.println("dd");
+		 	System.out.println("t사진"+dto2.getCarphoto());
 		 	if(result>0){
 		
 			mav.addObject("msg", "차량등록 성공");
