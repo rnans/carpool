@@ -108,13 +108,18 @@ div {
 	
 		<div class=".col-md-10"  style="display: inline-block; width: 70%; ">	
 		<div style=" padding: 10px; height:570px;">	
-		<h3 align="center" style="margin-left: 140px;">
-		1:1문의</h3>
+	<div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                           1:1문의
+                        </h1>
+                    </div>
+                </div>
 		
-			 <div class="btn-group" role="group" aria-label="..." style="margin-left:900px">
+			 <div class="btn-group" role="group" aria-label="..." style="margin-left:840px">
   <a href="oneAndOneWriteForm.do" class="btn btn-default">문의하기</a>
 </div>
-<table class="table table-list-search" style="margin-left: 70px;"> 
+<table class="table table-list-search" > 
 <thead>
 <tr>
    <th>번호</th>
@@ -161,6 +166,6 @@ div {
 	</div>
 </div>
 <hr>
-풋부분
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

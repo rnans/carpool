@@ -261,7 +261,7 @@ style type ="text/css">.links {
 </div>
 <div id="wrapper">
         <div id="page-wrapper">
-
+      
             <div class="container-fluid">
    <div class="row">
                     <div class="col-lg-12">
@@ -275,7 +275,7 @@ style type ="text/css">.links {
 			class="form-search form-horizontal" action="oneandoneSearch.do">
 
 			<div class="container"
-				style="margin-top:10px;margin-bottom:15px; margin-left:780px; display: inline-block; width: 320px; height: 28px;">
+				style="margin-top:10px;margin-bottom:15px; margin-left:790px; display: inline-block; width: 320px; height: 28px;">
 				<div class="dropdown2" style=" width: 100px; border: 0; top: 10px;">
 
 					<select name="select" style="width: 130px;"
@@ -348,8 +348,8 @@ style type ="text/css">.links {
 </div>
 </div>
 </div>
-</div>
-<hr>
+
+
 <!-- 삭제 모달 -->
 	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
 		aria-labelledby="edit" aria-hidden="true">

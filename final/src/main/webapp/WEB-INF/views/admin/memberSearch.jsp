@@ -17,7 +17,7 @@ function adminAddForm(){
 
 
 <div>
-<table border="1" cellspacing="0" width="800" id="a">
+<table  border="1" style="margin: 0px auto;"id="a">
 			<thead>
 				<tr>
 					<th>구분</th>

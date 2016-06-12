@@ -28,22 +28,26 @@
 </style>
 </head>
 <body>
-<div>
-<%@include file="../header.jsp" %>
-</div>
 
-<hr><br>
+<%@include file="../header.jsp" %>
+
 <c:if test="${empty list }">
 <h3>글이 누락되었거나 사라졌습니다.</h3>
 </c:if>
-<div class="container"  style=" margin: 0px 0px 0px 0px">
+<div class="container"  style=" margin: 50px 0px 0px 0px">
 	<div class="row">
 	<%@include file="csCenterSubMenu.jsp" %>
-		<div class="" style="padding-left:130px; display: inline-block; width: 60%;  ">	
-		<br>
+				<div class=".col-md-10" style="display: inline-block; width: 70%; ">		
+			<div style=" padding: 10px; height:570px;">	
+<div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                   1:1문의
+                        </h1>
+                    </div>
+                </div>
 
 <div class="row">
-<h3 align="center">   공지사항</h3>
 <div class="form-group" style="width: 50%;float: left; padding-right: 30px;">
 글번호<input class="form-control" id="idx" name="idx"  value="${list[0].idx }"type="text" required autofocus readonly="readonly"/>
 </div>
@@ -59,20 +63,21 @@
 조회수<input class="form-control" id="readnum" name="readnum" value="${list[0].readnum }" type="text" required autofocus readonly="readonly"/>
 </div>
 <div class="form-group" style="width: 100%; ">
-제목<input class="form-control" id="subject" name="subject" value="${list[0].subject }" type="text" required autofocus />
+제목<input class="form-control" id="subject" name="subject" value="${list[0].subject }" type="text" required autofocus readonly="readonly" />
 </div>
 </div>
 <div class="row">
 내용
 <br>
-<textarea class="form-control2" id="content" name="content" style="width: 100%; padding-left: 30px; padding-right: 30px;">${list[0].content }</textarea>
+<textarea class="form-control2" id="content" name="content" style="width: 100%; padding-left: 30px; padding-right: 30px;" readonly="readonly">${list[0].content }</textarea>
 <br />
 <a href="csCenter.do"><button class="btn btn-primary full-right" >목록으로</button></a>
 </div>
 </div>
 </div>
 </div>
+</div>
 <hr>
-<div>풋부분</div>
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

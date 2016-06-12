@@ -274,7 +274,7 @@ function showResult(){//응답결과함수
 			class="form-search form-horizontal" action="oneandoneSearch.do">
 
 			<div class=""
-				style="margin-top:10px;margin-bottom:15px; margin-left:790px; display: inline-block; width: 320px; height: 28px;">
+				style="margin-top:10px;margin-bottom:15px; margin-left:795px; display: inline-block; width: 320px; height: 28px;">
 				<div class="dropdown2" style=" width: 100px; border: 0; top: 10px;">
 
 					<select name="select" style="width: 130px;"

@@ -21,20 +21,26 @@ textarea {
 </style>
 </head>
 <body>
-<div>
+
 <%@include file="../header.jsp" %>
-</div>
-<hr>
-<br>
+
+
 <c:if test="${empty list }">
 <h3>글이 누락되었거나 사라졌습니다.</h3>
 </c:if>
-<div class="container"  style=" margin: 0px 0px 0px 0px">
+<div class="container"  style=" margin: 50px 0px 0px 0px">
 	<div class="row">
 	<%@include file="csCenterSubMenu.jsp" %>
-		<div class="" style="width: 60%; padding-left:130px; display: inline-block;">	
+				<div class=".col-md-10" style="display: inline-block; width: 70%; ">		
+			<div style=" padding: 10px; height:570px;">	
+<div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                    공지사항
+                        </h1>
+                    </div>
+                </div>
 <div class="row" >
-<h3 align="center">   1:1문의내역</h3>
 <div class="form-group" style="width: 50%; float: left; padding-right: 30px;">
 글번호<input class="form-control" id="idx" name="idx"  value="${list[0].idx }"type="text" required autofocus readonly="readonly"/>
 </div>
@@ -64,8 +70,9 @@ textarea {
 </div>
 </div>
 </div>
+</div>
 <hr>
 
-<div>풋</div>
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

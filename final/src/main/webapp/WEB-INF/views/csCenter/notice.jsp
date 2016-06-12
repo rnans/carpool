@@ -18,9 +18,6 @@ body {
 <body>
 
 <%@include file="../header.jsp" %>
-
-
-
 <div>
 <div class="container" style=" margin: 50px 0px 0px 0px; ">
 	<div class="row">
@@ -28,9 +25,14 @@ body {
 <%@include file="csCenterSubMenu.jsp" %>
 	<div class=".col-md-10" style="display: inline-block; width: 70%; ">
 <div style=" padding: 10px; height:570px;">
-	<h3 align="center" style="margin-left: 140px;">
-	공지사항</h3>
-<table class="table table-list-search" style="margin-top: 40px;margin-left: 70px;"> 
+	<div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                           공지사항
+                        </h1>
+                    </div>
+                </div>
+<table class="table table-list-search" style="margin-top: 20px;"> 
 <thead>
 <tr>
    <th>번호</th>
@@ -73,6 +75,6 @@ body {
 </div>
 </div>
 <hr>
-풋부분
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

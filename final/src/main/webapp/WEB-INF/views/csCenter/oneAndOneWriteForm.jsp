@@ -96,6 +96,6 @@
 </fieldset>
 <hr> --%>	
 	
-풋부분
+<%@ include file="../footer.jsp" %>
 </body>
 </html>
