@@ -55,7 +55,6 @@ public class AdminMemberController {
 		int sexTotalCnt=adMemberDao.memberSexTotalCnt(search);
 		int listSize=15;
 		int pageSize=5;
-		
 		if(select.equals("id")){
 		List<AdminMemberDTO> list=adMemberDao.memberIdSearch(cp, listSize, search);
 		

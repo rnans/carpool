@@ -211,7 +211,7 @@ public class MemberController {
 			mav.setViewName("member/login_ok");
 		}else{
 			mav.addObject("msg", "아이디가 없거나 비밀번호가 잘못되었습니다.");
-			mav.addObject("loc", "loginForm.do");
+			mav.addObject("loc", "index.do");
 			mav.setViewName("member/memberMsg");
 		}
 		return mav;
