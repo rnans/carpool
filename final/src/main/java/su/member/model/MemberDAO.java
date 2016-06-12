@@ -2,6 +2,8 @@ package su.member.model;
 
 import java.util.List;
 
+import su.upload.model.UploadDTO;
+
 public interface MemberDAO {
 
 	public int memberJoin(MemberDTO dto);

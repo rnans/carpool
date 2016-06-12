@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import su.upload.model.UploadDTO;
+
 public class MemberDAOImple implements MemberDAO {
 
 	
@@ -109,5 +111,4 @@ public class MemberDAOImple implements MemberDAO {
 		String result = dto.getPwd();
 		return result;
 	}
-
 }

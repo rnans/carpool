@@ -8,7 +8,7 @@
       (message_idx.nextval,#{sendid},#{receiveid},#{content},sysdate,'안읽음')
    </insert>
    <select id="messageShow" resultType="su.message.model.MessageDTO">
-    select * from message where receiveid=#{sid}
+    select * from message where receiveid=#{sid} order by senddate desc
    </select>
     	<select id="messageTotalCnt" resultType="int">
 		select count(*) from message where receiveid=#{sid}
@@ -48,5 +48,13 @@
 	
 	<select id="mImage" resultType="su.upload.model.UploadDTO">
 		select id,filename from file_upload where filetype=0
+	</select>
+	
+	<select id="profile" resultType="su.member.model.MemberDTO">
+		select name,email,addr from userinfo where id=#{sendid}
+	</select>
+	
+	<select id="proImg" resultType="su.upload.model.UploadDTO">
+		select filename from file_upload where id=#{sendid} and filetype=0
 	</select>
 </mapper>

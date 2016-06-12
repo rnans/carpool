@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
+import su.member.model.MemberDTO;
 import su.message.model.*;
 import su.upload.model.UploadDTO;
 
@@ -264,20 +263,20 @@ public class MessageController {
 		}
 		return mav;
 	}
-	/*
-	@RequestMapping("/mWriting.do")
-	public ModelAndView mWriting(HttpSession session){
-		String userid = (String)session.getAttribute("sid");
-		ModelAndView mav = new ModelAndView();
+	
+	@RequestMapping("/profile.do")
+	public ModelAndView profile(
+			@RequestParam("sendid")String sendid){
 		
-		if(userid == null){
-			mav.addObject("msg", "로그인후 이용가능합니다.");
-			mav.addObject("gopage", "index.do");
-			mav.setViewName("message/confirmMsg");
-		}else{
-			mav.setViewName("message/mReWrite");
-		}
+		List<MemberDTO> list = messageDao.profile(sendid);
+		UploadDTO uDTO = messageDao.proImg(sendid);
+		
+		ModelAndView mav= new ModelAndView();
+		mav.addObject("lists", list);
+		mav.addObject("uDTO", uDTO);
+		mav.addObject("sendid", sendid);
+		mav.setViewName("message/profile");
 		return mav;
-	}*/
+	}
 }
 

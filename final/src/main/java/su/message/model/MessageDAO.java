@@ -2,6 +2,7 @@ package su.message.model;
 
 import java.util.List;
 
+import su.member.model.MemberDTO;
 import su.upload.model.UploadDTO;
 
 public interface MessageDAO {
@@ -20,4 +21,6 @@ public interface MessageDAO {
 	public MessageDTO messageInfo(int idx);
 	public List<MessageDTO> alramView(String userid);
 	public List<UploadDTO> mImage();
+	public List<MemberDTO> profile(String sendid);
+	public UploadDTO proImg(String sendid);
 }

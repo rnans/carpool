@@ -52,6 +52,10 @@ var sendid=null;
 		window.open('messageReWrite.do'+param,'mrWrite','width=450,height=270');
 		
 	}
+	function profile(sendid){
+		var param='?sendid='+sendid;
+		window.open('profile.do'+param,'profile','width=280,height=350');
+	}
 	
 </script>
 <style>
@@ -60,7 +64,7 @@ var sendid=null;
 </head>
 <body>
 	<%@ include file="../header.jsp" %>
-	<div class="container" style="margin-top:100px;width: 70%;">
+	<div class="container" style="margin-top:100px;width: 100%;">
 	<div class="row">
 		<section class="content">
 			<div class="col-md-8 col-md-offset-2">
@@ -100,10 +104,10 @@ var sendid=null;
 													<c:param name="sendid">${m.sendid}</c:param>
 													<c:param name="midx">${m.idx}</c:param>
 											</c:url> --%>
-											<div class="media">
+											<div class="media" style="padding-left:0px">
 											<c:forEach var="i" items="${uDTO}">
 												<c:if test="${i.id==m.sendid}">
-													<a href="#" class="pull-left">
+													<a href="javascript:profile('${m.sendid}')" class="pull-left">
 														<img src="http://localhost:9090/final02/img/${i.filename}" class="media-photo">
 													</a>
 												</c:if>
@@ -119,7 +123,7 @@ var sendid=null;
 														<span class="pull-right pagado">${m.receiveid}</span>
 													</h4>
 																	<!-- javascript:mCon(${m.idx}); -->
-														<p class="summary"><a href="#edit" data-title="Edit" data-toggle="modal" onmouseover="javascript:idx='${m.idx}';content='${m.content}';sendid='${m.sendid}';read();"><font color="black" id="" >${m.content}...</font></a></p>
+														<p class="summary" style="width:400px;"><a href="#edit" data-title="Edit" data-toggle="modal" onmouseover="javascript:idx='${m.idx}';content='${m.content}';sendid='${m.sendid}';read();"><font color="black" id="" >${m.content}...</font></a></p>
 													<div class="mContent"></div>
 												</div>
 											</div>
