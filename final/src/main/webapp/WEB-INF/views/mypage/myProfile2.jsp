@@ -592,7 +592,7 @@ window.onload=function(){
 				<div class="content">
 					<header class="codrops-header">
 						<h3>프로필수정</h3>
-					</header>	
+						
 						<div class="codrops-links">
 					
 					
@@ -652,7 +652,7 @@ window.onload=function(){
 							
 						
 						</nav>
-				
+				</header>
 					<!-- Related demos -->
 					<section class="related">
 					

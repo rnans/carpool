@@ -646,7 +646,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                   <td style="font-size: 13px;">${dto.rate }</td>
                   <td style="font-size: 13px;">${dto.content }</td>
                   <td style="font-size: 13px;">${dto.writedate }</td>
-                  <td><input type="button" onclick="upRate(${dto.idx})" value="수정"><input type="button" onclick="delRate(${dto.idx})" value="삭제"></td>
+                  <td><button class="btn btn-default btn-xs" type="button" onclick="upRate(${dto.idx})" value="수정">수정</button> <button class="btn btn-default btn-xs" type="button" onclick="delRate(${dto.idx})" value="삭제">삭제</button></td>
             </tr>
          </c:forEach>
                
