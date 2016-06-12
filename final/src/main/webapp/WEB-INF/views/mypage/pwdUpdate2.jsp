@@ -506,16 +506,6 @@ body #cdawrap {
 </style>
 
 
-<script>
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-7243260-2']);
-_gaq.push(['_trackPageview']);
-(function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
 
 
 <!-- 회원가입 빈칸입력시 가입방지 jquery -->
@@ -555,7 +545,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:50px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
 						<a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -591,9 +581,9 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 					<div class="row" id="cm">
 					  <div class="col-xs-4">
 					  <input type="hidden" name="nowpwd" value="${dto.pwd}">
-					    	현재 비밀번호<input type="password" class="form-control" name="nowpwd2">
+					    	현재 비밀번호<input type="password" class="form-control" name="nowpwd2" onblur="pwdCheck()">
 					    
-					    	새 비밀번호<input type="password" class="form-control" name="pwd" id="pwd">
+					    	새 비밀번호<input type="password" class="form-control" name="pwd" id="pwd" onblur="pwdCheck()">
 					   		 비밀번호 확인<input type="password" class="form-control" name="pwd2" id="pwd2" onblur="pwdCheck()"><br>
 					    <span id="pwdmsg"></span>
 					  </div>

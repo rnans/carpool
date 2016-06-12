@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>가장 편리한 카풀 서비스, 풀파티!</title>
+
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -22,7 +23,7 @@
 		
 	
 <style>
-.upicontainer, 
+.Mycontainer, 
 .content-wrap {
 	overflow: hidden;
 	width: 100%;
@@ -31,7 +32,7 @@
 	margin-top: 25px ;
 }
 
-.upicontainer {
+.Mycontainer {
 	background: #373a47;
 	position:  absolute;
 }
@@ -232,9 +233,9 @@ section {
 
 /* Header */
 .codrops-header {
-	
+	margin: ;
 	padding: 3em 2em;
-	text-align:;
+	text-align: left;
 }
 
 .codrops-header h1 {
@@ -251,12 +252,15 @@ section {
 	padding-top: 0.325em;
 }
 
+
+
 .codrops-links {
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 0.69em;
 	line-height: 2.2;
-	padding: 1.61em 5em;
+	padding: 1.61em 5em;	
+	
 }
 
 .codrops-links a {
@@ -513,43 +517,43 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 //
 //
 .center-block {
-  display: block;
-  margin-left: 0px auto;
-  margin-right: 0px auto;
-  
+	display: block;
+    margin-right: 0 auto;
+    margin-left: 0 auto;
+ 
 }
 
 // Usage as a mixin
 .element {
   .center-block();
-}
+} 
 
+#my{
+	color:white;
+}
 </style>
-<script>
-window.onload=function(){
-	
-	checkRate();
-}
-function checkRate(){
-	
-	var rate=document.getElementById('rate');
-	for(var i=0;i<rate.length;i++)
-	{
-		if(rate[i].value=='${list.rate}'){
 
-			rate[i].selected=true;
-		}
-	}
-}
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-7243260-2']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
 </script>
+
+
 	</head>
 	
 	<body>
 	<%@ include file="../header.jsp" %>
-		<div class="upicontainer">
+		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:50px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span> 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${sessionScope.sname} 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
 						<a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -559,7 +563,7 @@ function checkRate(){
 				</nav>
 				<nav class="menu-side">
 					<a href="myPage.do">마이페이지</a>
-					<a href="notiSetting.do?id=${sessionScope.sid}">알람설정</a>
+					<a href="notiSetting.do?id=${sessionScope.sid}">소속카풀</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
@@ -573,52 +577,72 @@ function checkRate(){
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
-						<h3>카드정보수정</h3>
-						<nav class="codrops-demos">
+					<h3>내가 소속된 카풀목록</h3>
+					</header>	
 						<div class="codrops-links">
-	
-			
-
-	
-	<div id="div2">
-			
-			<form name="rateUpdate" action="rateUpdate.do" method="post">
-			<input type="hidden" name="idx" value="${list.idx}">
-			<table border="1" cellspacing="0" align="center" class="table table-hover">
-					
-					<tr>
-						<td>평가 받는 아이디</td>
-						<td><input type="text" value="${list.aimid }" readonly></td>
-					</tr>
-					<tr>
-						<td>평점</td>
-						<td>
-						<select id="rate" name="rate">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-						</td>
-					</tr>
-					<tr>
-						<td>코멘트</td>
-						<td><textarea name="content">${list.content }</textarea></td>
-					</tr>
+							
+				<form name="wishpool" action="wishDel.do">
+				<table border="1" cellspacing="0" align="center" class="table table-striped">
+					<thead>
 						<tr>
-						<td colspan="6" align="right"><button class="btn btn-default" type="button" value="취소">취소</button>
-						<button class="btn btn-default" type="submit" value="수정">수정</button></td>
-						</tr>
-					</tbody>
-				</table>
-			</form>
-	
+							<th style="text-align: center;">번호</th>
+					
+							<th style="text-align: center;">카풀이름</th>
+							<th style="text-align: center;">단기/정기</th>
+							<th style="text-align: center;">이름</th>
+							<th style="text-align: center;">연락처</th>
+							<th style="text-align: center;">이메일</th>
+							<th style="text-align: center;">성별</th>
+							<th style="text-align: center;">생일</th>
+							<th style="text-align: center;">등급</th>
+					
+						</tr>	
+					</thead>
+			<tfoot>
+					<tr>
+						<td colspan="5" align="center">
+							 ${pageStr }
+						</td>
+						<td><a></a></td>
+					</tr>
+			</tfoot>
+			<tbody>
+		<c:if test="${empty dto}">
+				<td colspan="9" align="center">
+					등록된 즐겨찾기 가 없습니다.
+				</td>
+		</c:if>
+			<c:forEach var="dto" items="${dto }">
+				<tr align="center">
+					
+					<td>${dto.idx }</td>
+					
+					<td>${dto.poolname}</td>
+					<td>${dto.termtype}</td>
+					<td>${dto.name}</td>
+					<td>${dto.phonenum}</td>
+					<td>${dto.eamil}</td>
+					<td>${dto.sex}</td>
+					<td>${dto.birth}</td>
+					<td>${dto.grade}</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+			<p align="center">	
+			<button type="reset" class="btn btn-default" value="취소">취소</button>
+			<button type="submit" class="btn btn-success" value="삭제">삭제</button>
+			</p>
+		</form>	
 						
+													
+						</div>
+						
+						<nav class="codrops-demos">
 							
 						
 						</nav>
-					</header>
+					
 					<!-- Related demos -->
 					<section class="related">
 					

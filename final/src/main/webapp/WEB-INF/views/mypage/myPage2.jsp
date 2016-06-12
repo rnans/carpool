@@ -589,7 +589,7 @@ function setRadioChk(e){
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:50px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
 						<a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -599,7 +599,7 @@ function setRadioChk(e){
 				</nav>
 				<nav class="menu-side">
 					<a href="myPage.do">마이페이지</a>
-					<a href="notiSetting.do?id=${sessionScope.sid}">알람설정</a>
+					<a href="staPoolList.do?id=${sessionScope.sid}">소속카풀</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
