@@ -265,7 +265,11 @@ System.out.println("1");
 			 
 	
 		     if(filename.equals("")||filename==null){
-		    	 dto2.setCarphoto("사진없음");
+		    	 if(dto2.getCarphoto()==null){
+		    		 dto2.setCarphoto("사진없음");
+		    	 }else{
+		    	 dto2.setCarphoto(dto2.getCarphoto());
+		    	 }
 		     }else{
 		    	 dto2.setCarphoto(filename);
 		    	 dto.setFilename(filename); 
@@ -286,7 +290,11 @@ System.out.println("1");
 		
 		     
 		     if(filename2.equals("")||filename2==null){
-		    	 dto2.setConfirmphoto("사진없음");
+		    	 if(dto2.getConfirmphoto()==null){
+		    		 dto2.setConfirmphoto("사진없음");
+		    	 }else{
+		    	 dto2.setConfirmphoto(dto2.getConfirmphoto());
+		    	 }
 		     }else{
 		    	 dto2.setConfirmphoto(filename2);
 		    	 

@@ -222,6 +222,8 @@ function car_num_chk(car_num)
                         <span class="glyphicon glyphicon-picture"></span>
                         <span class="image-preview2-input-title">인증 사진</span>
                         <input type="file" name="upload2"/> <!-- rename it -->
+                       
+                        
                     </div>
                 </span>
             </div><!-- /input-group image-preview [TO HERE]--> 		

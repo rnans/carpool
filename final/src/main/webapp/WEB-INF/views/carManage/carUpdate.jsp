@@ -161,6 +161,7 @@ window.alert('${msg}');
                     <div class="btn btn-default image-preview-input">
                         <span class="glyphicon glyphicon-picture"></span>
                         <span class="image-preview-input-title">차 사진</span>
+                        <input type="hidden" name="carphoto" value="${idxList.carphoto }">
                         <input type="file" name="upload"/> <!-- rename it -->
                     </div>
                 </span>
@@ -188,6 +189,7 @@ window.alert('${msg}');
                     <div class="btn btn-default image-preview2-input">
                         <span class="glyphicon glyphicon-picture"></span>
                         <span class="image-preview2-input-title">인증 사진</span>
+                        <input type="hidden" name="confirmphoto" value="${idxList.confirmphoto }">
                         <input type="file" name="upload2"/> <!-- rename it -->
                     </div>
                 </span>
