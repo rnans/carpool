@@ -165,15 +165,16 @@ public class MessageController {
 			
 			session.setAttribute("mNum", messageNumber);
 			
-			//uDto = messageDao.mImage(userid);
-			String mimg = uDto.getFilename();
-			System.out.println("mimg="+mimg);
+			List<UploadDTO> uDTO = messageDao.mImage();
+			
+			System.out.println("uDTO="+uDTO);
+		
 			String pageStr=
 			su.Page.SuPage.makePage("messageList.do", totalCnt, listSize, pageSize, cp);
 			//System.out.println("messageNumber="+messageNumber);
 			MessageDTO mDTO = new MessageDTO();
 			mav.addObject("lists",list);
-			//mav.addObject("mImg",mimg);
+			mav.addObject("uDTO",uDTO);
 			mav.addObject("messageNumber",messageNumber);
 			mav.addObject("pageStr", pageStr);
 			mav.setViewName("message/mList");

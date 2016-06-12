@@ -101,9 +101,13 @@ var sendid=null;
 													<c:param name="midx">${m.idx}</c:param>
 											</c:url> --%>
 											<div class="media">
-												<a href="#" class="pull-left">
-													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
-												</a>
+											<c:forEach var="i" items="${uDTO}">
+												<c:if test="${i.id==m.sendid}">
+													<a href="#" class="pull-left">
+														<img src="http://localhost:9090/final02/img/${i.filename}" class="media-photo">
+													</a>
+												</c:if>
+											</c:forEach>
 												<div class="media-body" style="margin:0px auto;">
 													<span class="media-meta pull-right">${m.senddate} <br> 
 														<c:if test="${m.reading=='읽음'}"><font color="#8C8C8C">읽음</font></c:if>

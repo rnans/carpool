@@ -85,6 +85,11 @@ public class MessageDAOImple implements MessageDAO {
 		UploadDTO uDto = sqlMap.selectOne("mImage", userid);
 		return uDto;
 	}
+	
+	public List<UploadDTO> mImage() {
+		List<UploadDTO> list = sqlMap.selectList("mImage");
+		return list;
+	}
 }
 
 	

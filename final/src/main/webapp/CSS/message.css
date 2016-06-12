@@ -105,7 +105,9 @@ body {
 	color: #F0AD4E;
 }
 .table-filter .media-photo {
-	width: 40px;
+	width: 50px;
+	height:50px;
+	margin-right:10px;
 }
 .table-filter .media-body {
     display: block;

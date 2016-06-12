@@ -47,6 +47,6 @@
 	</select>
 	
 	<select id="mImage" resultType="su.upload.model.UploadDTO">
-		select filename from file_upload where id=#{sid} and filetype=0
+		select id,filename from file_upload where filetype=0
 	</select>
 </mapper>
