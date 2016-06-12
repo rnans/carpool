@@ -489,4 +489,7 @@
 	<select id="checkPoolName" parameterType="String" resultType="map">
 	select idx from reservationlist where poolname=#{poolname}
 	</select>
+	<select id="poolCount" parameterType="int" resultType="int">
+	select count(idx) from reservationlist
+	</select>
 </mapper>

@@ -49,4 +49,17 @@ public class CsNoticeDAOImple implements CsNoticeDAO {
 			int count=sqlMap.delete("noticeDelete", idx);
 			return count;
 	  }
+	  public String newNoticeDate(int idx){
+		  String date=sqlMap.selectOne("newNoticeDate",idx);
+		  return date;
+	  }
+	  public String newNoticeSubject(int idx){
+		  String subject=sqlMap.selectOne("newNoticeSubject",idx);
+		  return subject;
+		  
+	  }
+	  public int newNoticeIdx(){
+		  int idx=sqlMap.selectOne("newNoticeIdx");
+		  return idx;
+	  }
 }

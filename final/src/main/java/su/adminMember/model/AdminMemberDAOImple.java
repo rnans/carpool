@@ -52,7 +52,11 @@ public class AdminMemberDAOImple implements AdminMemberDAO {
 		int count = sqlMap.update("adminAdd", map);
 		return count;
 	}
-	
+	/**멤버 인원수*/
+	public int memberCount(){
+		int count = sqlMap.selectOne("memberCount");
+		return count;
+	}
 	/**검색창 기능*/
 	public int memberIdTotalCnt(String search) {
 		int count = sqlMap.selectOne("memberIdTotalCnt", search);

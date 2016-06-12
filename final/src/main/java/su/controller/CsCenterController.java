@@ -103,8 +103,7 @@ public class CsCenterController {
 		mav.addObject("list", list);
 		mav.setViewName("csCenter/noticeContent");
 		return mav;
-	}
-		
+	}	
 	//qna 리스트
 	@RequestMapping("/qnaList.do")
 	public ModelAndView qnaList(@RequestParam(value="cp",defaultValue="1")int cp){
@@ -166,7 +165,6 @@ public class CsCenterController {
 		mav.setViewName("csCenter/oneandoneMsg");
 		return mav;
    }
-
 	@RequestMapping("oneAndOneWriteForm.do")
 	public String oneAndOneWriteForm(){
 		return "csCenter/oneAndOneWriteForm";

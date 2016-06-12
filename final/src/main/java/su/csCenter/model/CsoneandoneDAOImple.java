@@ -112,6 +112,22 @@ public class CsoneandoneDAOImple implements CsoneandoneDAO {
 			 int count=sqlMap.selectOne("statetotalCnt", search);
 			 return count;
 		 }
+		 public String newOneandoneDate(int idx){
+			 String date=sqlMap.selectOne("newOneandoneDate",idx);
+			 return date;
+		 }
+		  public String newOneandoneSubject(int idx){
+			  String subject=sqlMap.selectOne("newOneandoneSubject",idx);
+			  return subject;
+		  }
+		  public int newOneandoneIdx(){
+			  int idx=sqlMap.selectOne("newOneandoneIdx");
+			  return idx;
+		  }
+		  public int oneandoneCount(){
+			  int count=sqlMap.selectOne("oneandoneCount");
+			  return count;
+		  }
 	}
 
 

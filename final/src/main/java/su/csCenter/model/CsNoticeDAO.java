@@ -11,4 +11,7 @@ public interface CsNoticeDAO {
 	  public int noticeAdd(CsNoticeDTO dto);
 	  public int noticeUpdate(CsNoticeDTO dto);
 	  public int noticeDelete(int idx);
+	  public int newNoticeIdx();
+	  public String newNoticeDate(int idx);
+	  public String newNoticeSubject(int idx);
 }

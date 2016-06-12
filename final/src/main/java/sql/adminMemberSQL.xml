@@ -22,7 +22,10 @@
 	<update id="adminAdd" parameterType="su.adminMember.model.AdminMemberDTO">
 		update userinfo set grade=#{grade} where idx=#{idx}
 	</update>
+	<select id="memberCount" resultType="int" parameterType="int">
+	select count(idx) from userinfo
 	
+	</select>
 	<!-- ///////////////////////////////////////Search////////////////////////////////////// -->
 	<select id="memberIdTotalCnt" resultType="int">
 		select count(*) from userinfo where id=#{search}

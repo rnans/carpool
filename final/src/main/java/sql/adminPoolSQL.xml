@@ -19,15 +19,35 @@
    (select rownum as rnum,a.* from
    (select * from reservationlist order by idx desc)a)b
    where pooltype='타세요' and rnum<![CDATA[>=]]>#{startnum} and rnum<![CDATA[<=]]>#{endnum} 
-
 	</select>
-	
 	<select id="driverTotalCnt" resultType="int">
 		select count(*) from reservationlist where pooltype='타세요'
 	</select>
-	
 	<delete id="adminPoolDel" parameterType="su.adminPool.model.AdminUserPoolDTO">
 		delete from reservationlist where idx=#{idx}
 	</delete>
-	
+	   <select id="newPoolDate"  resultType="String">
+       select writedate from reservationlist where idx=#{idx2}
+      </select>
+        <select id="newPoolType" resultType="String">
+       select pooltype from reservationlist where idx=#{idx2}
+      </select>
+        <select id="newPoolName"  resultType="String">
+       select poolname from reservationlist where idx=#{idx2}
+      </select>
+        <select id="newPoolDate2"  resultType="String">
+       select writedate from reservationlist where idx=#{idx3}
+      </select>
+        <select id="newPoolType2" resultType="String">
+       select pooltype from reservationlist where idx=#{idx3}
+      </select>
+        <select id="newPoolName2"  resultType="String">
+       select poolname from reservationlist where idx=#{idx3}
+      </select>
+        <select id="newPoolIdx" parameterType="int" resultType="int">
+       select max(idx) from reservationlist
+      </select>
+      <select id="new2PoolIdx" parameterType="int" resultType="int">
+       select max(idx-2) from reservationlist
+      </select>
 </mapper>

@@ -129,6 +129,8 @@ public class AdminCsCenterController {
 			mav.setViewName("admin/adminQnaList");
 			return mav;
 		}
+	
+	
 		//qna글쓰기
 		@RequestMapping("/qnaWrite.do")
 		public String qnaWrite(){

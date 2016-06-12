@@ -58,6 +58,42 @@ public class AdminUserPoolDAOImple implements AdminUserPoolDAO {
 		List<AdminUserPoolDTO> list = sqlMap.selectList("driverPoolList", map);
 		return list;
 	}
+	public String newPoolDate(int idx){
+		String date=sqlMap.selectOne("newPoolDate",idx);
+		return date;
+	}
+	public String newPoolName(int idx){
+		String name=sqlMap.selectOne("newPoolName", idx);
+		return name;
+	}
+	public String newPoolType(int idx){
+		String type=sqlMap.selectOne("newPoolType", idx);
+		return type;
+	}
+	public String newPoolDate2(int idx){
+		String date=sqlMap.selectOne("newPoolDate2",idx);
+		return date;
+	}
+	public String newPoolName2(int idx){
+		String name=sqlMap.selectOne("newPoolName2", idx);
+		return name;
+	}
+	public String newPoolType2(int idx){
+		String type=sqlMap.selectOne("newPoolType2", idx);
+		return type;
+	}
+	public int newPoolIdx(){
+		int idx=sqlMap.selectOne("newPoolIdx");
+		return idx;
+	}
+	public int new2PoolIdx(){
+		int idx=sqlMap.selectOne("new2PoolIdx");
+		return idx;
+	}
+	public int poolCount(){
+		int count=sqlMap.selectOne("poolCount");
+		return count;
+	}
 	
 
 }

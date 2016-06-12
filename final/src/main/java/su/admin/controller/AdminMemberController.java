@@ -98,27 +98,12 @@ public class AdminMemberController {
 		ModelAndView mav = new ModelAndView();
 		List<AdminMemberDTO> list = adMemberDao.memberinfo(cp, listSize);
 		String pageStr = su.Page.SuPage.makePage("memberInfo.do", totalCnt, listSize, pageSize, cp);
-		int man = adMemberDao.memberSexMan();
-		int woman = adMemberDao.memberSexWoman();
-		int seoul = adMemberDao.memberAddrSeoul();
-		int gyeonggi=adMemberDao.memberAddrGyeonggi();
-		int inchean = adMemberDao.memberAddrInchean();
-		int busan = adMemberDao.memberAddrBusan();
-		int etc = adMemberDao.memberAddrEtc();
-		
-		mav.addObject("man", man);
-		mav.addObject("woman", woman);
-		mav.addObject("seoul", seoul);
-		mav.addObject("gyeonggi", gyeonggi);
-		mav.addObject("inchean", inchean);
-		mav.addObject("busan", busan);
-		mav.addObject("etc", etc);
 		mav.addObject("lists", list);
 		mav.addObject("pageStr", pageStr);
 		mav.setViewName("admin/memberInfo");
 		return mav;
 	}
-	
+
 	/**회원삭제*/
 	@RequestMapping("/memberDel.do")
 	public ModelAndView memberDel(@RequestParam("idx")int idx){

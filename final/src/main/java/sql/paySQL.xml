@@ -21,7 +21,7 @@
  	<insert id="payAllList" parameterType="su.paylist.model.PayListDTO">
  		insert into payAllList
  		values(payAllList_idx.nextval,#{userid},
- 		#{status},#{pooltype},#{termtype},#{poolname},#{pay},#{userid1},#{cardtype1},#{cardnum})
+ 		#{status},#{pooltype},#{termtype},#{poolname},#{pay},#{userid1},#{cardtype1},#{cardnum},sysdate)
  	</insert> 
   	<select id="adminPayList" resultType="su.paylist.model.PayListDTO">
  	select * from
@@ -35,5 +35,17 @@
 	</select> 
  	<select id="payInfoList" resultType="su.pool.model.PoolDTO">
  		select * from reservationList where idx=#{ridx}
+ 	</select>
+ 	<select id="paylistCount" resultType="int" parameterType="int">
+ 	select max(idx) from  payalllist
+ 	</select>
+ 	<select id="payCount" resultType="int" parameterType="int">
+ 	select max(idx) from  payalllist
+ 	</select>
+ 	<select id="payDate" resultType="String" >
+ 	select paydate from payalllist where idx=#{idx4}
+ 	</select>
+ 	<select id="payPay" resultType="int">
+ 	select pay from payalllist where idx=#{idx4}
  	</select>
 </mapper>

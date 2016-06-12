@@ -33,6 +33,18 @@
 	  <delete id="noticeDelete" parameterType="su.csCenter.model.CsNoticeDTO">
        delete from notice where idx=#{idx}
       </delete>
+      <select id="newNoticeDate" resultType="String">
+       select writedate from notice where idx=#{idx}
+      </select>
+        <select id="newNoticeSubject" resultType="String">
+       select subject from notice where idx=#{idx}
+      </select>
+        
+        <select id="newNoticeIdx" parameterType="int" resultType="int">
+       select max(idx) from notice
+      </select>
+     
+     
 	
 	<!-- oneandone -->
 	 <update id="noticereadnum" parameterType="su.csCenter.model.CsoneandoneDTO">
@@ -99,6 +111,18 @@
 		<select id="typetotalCnt"  parameterType="String" resultType="int">
 		select count(*) from oneandone where type=#{search}
 	</select>
+	   <select id="newOneandoneDate"  resultType="String">
+       select writedate from oneandone where idx=#{idx1}
+      </select>
+        <select id="newOneandoneSubject" resultType="String">
+       select subject from oneandone where idx=#{idx1}
+      </select>
+        <select id="newOneandoneIdx" parameterType="int" resultType="int">
+       select max(idx) from oneandone
+      </select>
+      <select id="oneandoneCount" parameterType="int" resultType="int">
+      select count(idx) from oneandone
+      </select>
 	<!-- qna -->
 	 <select id="qnaList" parameterType="Map" resultType="su.csCenter.model.CsQnaDTO">
 	select * from

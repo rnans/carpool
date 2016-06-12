@@ -12,10 +12,5 @@ public class IndexController
 		return "index";
 	}
 	
-	@RequestMapping("adminMain.do")
-	public String viewadmin()
-	{
-		return "admin/adminMain";
-	}
 	
 }

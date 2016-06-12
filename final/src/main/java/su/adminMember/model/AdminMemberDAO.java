@@ -12,7 +12,7 @@ public interface AdminMemberDAO {
 	
 	public int memberDel(int idx);
 	public int adminAdd(int idx, String grade);
-	
+	public int memberCount();
 	//그래프 성별
 	public int memberSexMan();
 	public int memberSexWoman();

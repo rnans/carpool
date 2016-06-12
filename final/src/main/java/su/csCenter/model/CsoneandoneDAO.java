@@ -20,5 +20,9 @@ public interface CsoneandoneDAO {
 	 public int typetotalCnt(String search);
 	 public int writertotalCnt(String search);
 	 public int statetotalCnt(String search);
+	 public int newOneandoneIdx();
+	 public String newOneandoneDate(int idx);
+	  public String newOneandoneSubject(int idx);
+	  public int oneandoneCount();
 	 
 }
