@@ -559,7 +559,7 @@ function checkRate(){
 				</nav>
 				<nav class="menu-side">
 					<a href="myPage.do">마이페이지</a>
-					<a href="notiSetting.do?id=${sessionScope.sid}">알람설정</a>
+					<a href="">소속카풀</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">등록된카드</a>
 					<a href="wishPoolList.do">즐겨찾기(카풀)</a>
