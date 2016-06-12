@@ -96,7 +96,7 @@
 	</update>
 	
 	<select id="memberCarPhoto" parameterType="String" resultType="su.upload.model.UploadDTO">
-		select * from file_upload where id=#{id} and filetype=1
+		select * from file_upload where id=#{id} and filetype=2
 	</select>
 	
 	<!-- alarm -->
