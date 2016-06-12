@@ -54,7 +54,7 @@ var sendid=null;
 	}
 	function profile(sendid){
 		var param='?sendid='+sendid;
-		window.open('profile.do'+param,'profile','width=280,height=350');
+		window.open('profile.do'+param,'profile','width=370,height=460;');
 	}
 	
 </script>
