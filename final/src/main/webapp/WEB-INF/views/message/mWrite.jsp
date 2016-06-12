@@ -9,7 +9,7 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="robots" content="noindex">
 <link rel="shortcut icon"
-	href="http://s.cmstatic.net/webclient/res/20160608160250/images/favicon.ico">
+	href="http://s.cmstatic.net/webclient/res/20160608160250/images/favicon.ico" >
 
 <link rel="stylesheet" type="text/css"
 	href="http://s.cmstatic.net/webclient/dres/20160608160250/css/bandComponent.css?_=20160608160250">
