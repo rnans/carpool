@@ -168,102 +168,10 @@
     .search-query:focus + button {
         z-index: 3;   
     }
-#chartdiv {float:right; padding:auto; overflow:hidden; clear:both; margin-left:170px;}
-#chartdiv2 {float:right; padding:auto; overflow: hidden; margin-left:170px;}
 table a{clear:both; padding: auto; margin:10px 5px; clear:both;}
 </style>
 
- <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">	
-<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
-<script type="text/javascript" src="http://www.amcharts.com/lib/3/pie.js"></script>
-
-<!-- 그래프1 -->
-<script type="text/javascript">
-AmCharts.makeChart("chartdiv",
-		
-			{
-				"type": "pie",
-				"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
-				"colors": [
-					"#368AFF","#FF5AFF"
-						],
-				"titleField": "category",
-				"valueField": "column-1",
-				"allLabels": [],
-				"balloon": {},
-			    "legend": {
-				"enabled": true,
-				"align": "center",
-				"color": "#1414CF",
-				"markerType": "circle",
-				"rollOverColor": "#0000FF"
-
-				
-			},
-				"titles": [],
-				
-				"dataProvider": [
-					{
-						"category": "남성",
-						"column-1": "${man}"
-						
-					},
-					{
-						"category": "여성",
-						"column-1": "${woman}"
-					}	
-			]
-	}
-);
-</script>
-
-<!-- 그래프2 -->
-<script type="text/javascript">
-			AmCharts.makeChart("chartdiv2",
-					{
-						"type": "pie",
-						"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
-						"titleField": "category",
-						"valueField": "column-1",
-						"theme": "light",
-						"allLabels": [],
-						"balloon": {},
-						"colors": [
-									"#495fba","#e8d685","#ae85c9","#c9f0e1","#d48652","#629b6d","#719dc3","#719dc3"
-										],
-						"legend": {
-							"enabled": true,
-							"align": "center",
-							"markerType": "circle"
-						},
-						"titles": [],
-						"dataProvider": [
-							{
-							"category": "서울특별시",
-							"column-1": "${seoul}"
-						},
-						{
-							"category": "인천광역시",
-							"column-1": "${inchean}"
-						},
-						{
-							"category": "부산광역시",
-							"column-1": "${busan}"
-						},
-						{
-							"category": "경기도",
-							"column-1": "${gyeonggi}"
-						},
-						{
-							"category": "기타",
-							"column-1": "${etc}"
-						}
-						]
-					}
-				);
-		</script>
-
+ 
 <script src="/final02/js/jquery-1.12.4.min.js"></script>
 <!-- 검색 아작스 -->
 <script type="text/javascript" src="js/httpRequest.js"></script>
@@ -299,9 +207,6 @@ function showResult(){//응답결과함수
 		}
 	}
 }
-
-
-
 </script>
 <script>
 var idx= null;
@@ -321,24 +226,26 @@ function memberDel(){
 <body>
 
 <%@include file="../header.jsp" %>
+
 <div style="width: 100%; ">
-<div style="width: 20%; margin: 100px 0px 0px 0px">
+<div style="width: 20%; margin: 60px 0px 0px 0px">
 <%@include file="../adHeader.jsp" %>
 </div>
-    <div id="chartdiv" style="width: 35%; height: 400px; background-color: #FFFFFF;  display: inline-block; margin-left: 5px;"></div>
-	<div id="chartdiv2" style="width: 35%; height: 400px; background-color: #FFFFFF;  display: inline-block;"></div>
-<div class=""  style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
+<div id="wrapper">
+        <div id="page-wrapper">
 
-
-<a href="adminMain.do">adminMain</a>
-	
- 
-
-        <div class="" >
+            <div class="container-fluid">
+   <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                            회원관리 <small>회원정보관리</small>
+                        </h1>
+                    </div>
+                </div>
             <form id="custom-search-form" name="a" class="form-search form-horizontal " action="memberSearch.do">
-               
+ 
 						<div class="container"
-						style="margin-top:10px;margin-bottom:15px; margin-left:730px; display: inline-block; width: 320px; height: 28px;">
+						style="margin-top:10px;margin-bottom:15px; margin-left:790px; display: inline-block; width: 320px; height: 28px;">
 							<div class="dropdown2" style=" width: 100px; border: 0; top: 10px;">
 								<select name="select" class="dropdown-select" style="width: 130px;">
 									<option value="id">아이디</option>
@@ -420,7 +327,7 @@ function memberDel(){
 		</div>
 </div>
 </div>
-
+</div>
 <!-- 삭제 모달 -->
 	<div class="modal fade" id="delete" tabindex="-1" role="dialog"	aria-labelledby="edit" aria-hidden="true">
 		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin-right: 200px;">

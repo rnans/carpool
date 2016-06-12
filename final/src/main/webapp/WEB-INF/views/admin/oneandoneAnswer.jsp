@@ -10,18 +10,25 @@
 
 </head>
 <body>
-
 <%@include file="../header.jsp" %>
-    <div style="width: 100%; ">
-<div style="width: 20%; margin: 100px 0px 0px 0px">
-		<%@include file="../adHeader.jsp" %>
-		</div>
-<div align="center">
-<h3>1:1문의 답변 달기</h3>
+<div style="width: 100%; ">
+<div style="width: 20%; margin: 60px 0px 0px 0px">
+<%@include file="../adHeader.jsp" %>
 </div>
+<div id="wrapper">
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+   <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                            고객센터 <small>1:1문의답변</small>
+                        </h1>
+                    </div>
+                </div>
 <div class="container" style="width: 100%; margin: 0px 0px 0px 0px">
 	
-	<div class=".col-md-8" style="margin-left:450px; display: inline-block; width: 100%;">
+	<div class=".col-md-8" style="display: inline-block; width: 100%;padding-left: 150px;">
 	<div class="container">
 	<div class="row">
 	<div class="col-sm-8 contact-form" style="margin: 0px auto;">
@@ -49,6 +56,9 @@
 	<button class="btn btn-primary pull-right" type="submit">답변달기</button>
 	<input type="reset" value="다시작성" class="btn btn-primary pull-right" >
 	</form>
+	</div>
+	</div>
+	</div>
 	</div>
 	</div>
 	</div>

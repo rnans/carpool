@@ -108,18 +108,22 @@ function qnaDel(){
 </script>
 <body>
 <%@include file="../header.jsp" %>
-       <div style="width: 100%; ">
-        <div style="width: 20%; margin: 100px 0px 0px 0px">
-		<%@include file="../adHeader.jsp" %>
-		</div>
-		
-<div class="" style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%; ">
-<div>
-<div align="center" style="margin-left:180px;">
-    <h2 >고객센터관리</h2>
-        <h4>자주묻는질문(Q&A)</h4>
-         </div>
-  <div class="btn-group" role="group" aria-label="..." style="margin-left:928px;">
+<div style="width: 100%; ">
+<div style="width: 20%; margin: 60px 0px 0px 0px">
+<%@include file="../adHeader.jsp" %>
+</div>
+<div id="wrapper">
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+   <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                            고객센터 <small>Q&A</small>
+                        </h1>
+                    </div>
+                </div>
+  <div class="btn-group" role="group" aria-label="..." style="margin-left:980px;">
   <a href="qnaWrite.do" class="btn btn-default">글쓰기</a>
 </div>
 <table border="1" style="margin: 0px auto;" >
@@ -169,6 +173,9 @@ function qnaDel(){
  </tfoot>
 </table>
 
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

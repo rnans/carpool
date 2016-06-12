@@ -254,23 +254,27 @@ function showResult(){//응답결과함수
 }
 </script>
 <body>
-
 <%@include file="../header.jsp" %>
-    <div style="width: 100%; ">
-<div style="width: 20%; margin: 100px 0px 0px 0px;">
+<div style="width: 100%; ">
+<div style="width: 20%; margin: 60px 0px 0px 0px">
 <%@include file="../adHeader.jsp" %>
 </div>
-<div class="" style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
- <div>
- <div align="center" style="margin-left:180px;">
-<h2 >예약및결제관리</h2>
-<h4 >드라이버 예약</h4>
-</div>
+<div id="wrapper">
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+   <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                            예약및결제관리 <small>드라이버예약</small>
+                        </h1>
+                    </div>
+                </div>
 		<form id="custom-search-form" name="a"
 			class="form-search form-horizontal" action="oneandoneSearch.do">
 
 			<div class=""
-				style="margin-top:10px;margin-bottom:15px; margin-left:730px; display: inline-block; width: 320px; height: 28px;">
+				style="margin-top:10px;margin-bottom:15px; margin-left:790px; display: inline-block; width: 320px; height: 28px;">
 				<div class="dropdown2" style=" width: 100px; border: 0; top: 10px;">
 
 					<select name="select" style="width: 130px;"
@@ -349,6 +353,7 @@ function showResult(){//응답결과함수
 				</tr>
 				</tfoot>
 	</table>
+</div>
 </div>
 </div>
 </div>

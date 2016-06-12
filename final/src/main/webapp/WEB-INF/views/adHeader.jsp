@@ -144,10 +144,10 @@ table tr:hover td {
 <div style="position: fixed;display:block;  height: 100%; ">
 <ul id="sidebar" class="nav navbar-nav side-nav"
 	style="position: absolute; left: 0px; padding-top: 60px;" >
-	<li class="active" ><a href="memberInfo.do"><i
+	<li class="active" ><a href="adminMain.do"><i
 			class="fa fa-fw fa-dashboard"></i> 관리자페이지</a></li>
 	<li><a href="javascript:;" data-toggle="collapse"
-		data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i> 회원관리 <i
+		data-target="#demo1"><i class="fa fa-user"></i> 회원관리 <i
 			class="fa fa-fw fa-caret-down"></i></a>
 		<ul id="demo1" class="collapse">
 
@@ -156,7 +156,7 @@ table tr:hover td {
 			<li><a href="memberAlarm.do">-회원알림관리</a></li>
 		</ul></li>
 	<li><a href="javascript:;" data-toggle="collapse"
-		data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> 고객센터관리 <i
+		data-target="#demo2"><i class="fa fa-pencil-square-o fa-5v"></i> 고객센터관리 <i
 			class="fa fa-fw fa-caret-down"></i></a>
 		<ul id="demo2" class="collapse">
 
@@ -164,17 +164,16 @@ table tr:hover td {
 			<li><a href="adminQnaList.do">-Q&A</a></li>
 			<li><a href="adminOneAndOne.do">-1:1문의</a></li>
 			<li><a href="adminuseguideList.do">-이용안내</a></li>
-
 		</ul></li>
 	<li><a href="javascript:;" data-toggle="collapse"
-		data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> 카풀게시물관리
+		data-target="#demo3"><i class="fa fa-car fa-v"></i> 카풀게시물관리
 			<i class="fa fa-fw fa-caret-down"></i></a>
 		<ul id="demo3" class="collapse">
 			<li><a href=" driverPoolList.do">-드라이버</a></li>
 			<li><a href="userPoolList.do">-사용자</a></li>
 		</ul></li>
 	<li><a href="javascript:;" data-toggle="collapse"
-		data-target="#demo4"><i class="fa fa-fw fa-arrows-v"></i> 예약및결제관리
+		data-target="#demo4"><i class="fa fa-credit-card-alt fa-v"></i> 예약및결제관리
 			<i class="fa fa-fw fa-caret-down"></i></a>
 		<ul id="demo4" class="collapse">
 			<li><a href="driverReserveList.do">-드라이버예약관리</a></li>
@@ -182,7 +181,7 @@ table tr:hover td {
 			<li><a href="payMentList.do">-결제관리</a></li>
 		</ul></li>
 	<li><a href="javascript:;" data-toggle="collapse"
-		data-target="#demo5"><i class="fa fa-fw fa-arrows-v"></i> 커뮤니티관리 <i
+		data-target="#demo5"><i class="fa fa-users"></i> 커뮤니티관리 <i
 			class="fa fa-fw fa-caret-down"></i></a>
 		<ul id="demo5" class="collapse">
 			<li><a href="memberCommList.do">-커뮤니티관리</a></li>

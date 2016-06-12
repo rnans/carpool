@@ -71,20 +71,22 @@ function userPoolDel(){
 
 </head>
 <body>
-	<%@include file="../header.jsp"%>
- <div style="width: 100%; ">
-<div style="width: 100%; margin: 100px 0px 0px 0px">
+<%@include file="../header.jsp" %>
+<div style="width: 100%; ">
+<div style="width: 20%; margin: 60px 0px 0px 0px">
 <%@include file="../adHeader.jsp" %>
 </div>
+<div id="wrapper">
+        <div id="page-wrapper">
 
-
-	<div  style="width: 100%; margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
-	<div align="center"
-		style="margin-left:180px; margin-bottom: 25px;">
-		<h2 align="center">카풀게시물관리</h2>
-		<h4 align="center">사용자</h4>
-	
-	</div>
+            <div class="container-fluid">
+   <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                            카풀게시물관리 <small>사용자</small>
+                        </h1>
+                    </div>
+                </div>
 	<div>
 	
 		<table border="1" style="margin: 0px auto;">
@@ -153,7 +155,8 @@ function userPoolDel(){
 </div>
 </div>
 </div>
-
+</div>
+</div>
 <!-- 삭제 모달 -->
 	<div class="modal fade" id="userPoolDel" tabindex="-1" role="dialog"
 		aria-labelledby="edit" aria-hidden="true">

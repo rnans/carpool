@@ -51,20 +51,22 @@
 </style>
 </head>
 <body>
-
 <%@include file="../header.jsp" %>
-
- <div style="width: 100%; ">
-<div style="width: 100%; margin: 100px 0px 0px 0px">
+<div style="width: 100%; ">
+<div style="width: 20%; margin: 60px 0px 0px 0px">
 <%@include file="../adHeader.jsp" %>
 </div>
+<div id="wrapper">
+        <div id="page-wrapper">
 
-<div  style="width: 100%; margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;">
-	<div align="center"
-		style="margin-left:180px; margin-bottom: 25px;">
-		<h2 align="center">회원관리</h2>
-		<h4 align="center">회원알람관리</h4>
-	</div>
+            <div class="container-fluid">
+   <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                            회원관리<small>회원알람</small>
+                        </h1>
+                    </div>
+                </div>
 	
 <div>
 		<table border="1" style="margin: 0px auto;">
@@ -105,6 +107,8 @@
 		</table>
 	</div>
 	</div>
+</div>
+</div>
 </div>
 <footer>풋</footer>
 </body>

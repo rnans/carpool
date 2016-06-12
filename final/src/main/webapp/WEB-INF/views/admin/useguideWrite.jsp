@@ -11,17 +11,23 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-    <div style="width: 100%; ">
-<div style="width: 20%; margin: 100px 0px 0px 0px">
-		<%@include file="../adHeader.jsp" %>
-		</div>
-<div style="margin: 0px auto; padding-left:292px;display: inline-block; width: 80%;  ">
- <div align="center" style="margin-left:180px;">
-<h2 >이용안내글쓰기</h2>
-
+<div style="width: 100%; ">
+<div style="width: 20%; margin: 60px 0px 0px 0px">
+<%@include file="../adHeader.jsp" %>
 </div>
+<div id="wrapper">
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+   <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
+                            고객센터 <small>이용안내글쓰기</small>
+                        </h1>
+                    </div>
+                </div>
     
-<div class="col-sm-8 contact-form" style="margin-left:250px;">
+<div class="col-sm-8 contact-form" style="margin-left:190px;">
 <form action="useguideWrite_ok.do" id="contact" class="form" role="form" >
 <div class="row">
 <div class="col-xs-6 col-md-6 form-group">
@@ -37,7 +43,8 @@
 </div>
 </div>
 </div>
-
+</div>
+</div>
 
 
 <hr>
