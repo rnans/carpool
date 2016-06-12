@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="CSS/message.css">
 <script src="js/message.js"></script>
 <script type="text/javascript" src="js/httpRequest.js"></script>

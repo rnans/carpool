@@ -33,7 +33,7 @@
 			<p class="nickname"></p>
 			<div class="info">
 				<span class="birthday" data-icon="email">${p.email}</span> <span
-					class="tel">010-4712-5977</span>
+					class="addr">${p.addr}</span>
 			</div>
 		</c:forEach>
 		<ul class="functionBtn">
@@ -45,10 +45,6 @@
 	</div>
 	<footer>
 		<div class="memberManager"></div>
-		<button type="button" class="btnLyClose" data-icon="layer-close"
-			data-uiselector="btnClose">
-			<span class="gSrOnly">레이어닫기</span>
-		</button>
 	</footer>
 </article>
 </body>
