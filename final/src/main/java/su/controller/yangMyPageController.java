@@ -278,6 +278,20 @@ public class yangMyPageController {
 
 		return mav;
 	}
+	@RequestMapping("/useDel.do")
+	public ModelAndView uselistDel(yangMypageDTO dto) {
+
+		int result = yangMyPageDao.uselistDel(dto);
+		String msg = result > 0 ? "결제내역 삭제 성공" : "결제내역 삭제 실패";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("gopage", "useList.do");
+		mav.setViewName("mypage/yangMyPageMsg");
+
+		return mav;
+	}
+	
+	
 
 	@RequestMapping("/wishPoolList.do")
 	public ModelAndView listWish(HttpSession session) {
