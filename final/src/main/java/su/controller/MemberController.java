@@ -1,8 +1,12 @@
 package su.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import su.member.model.MemberDAO;
@@ -20,6 +26,8 @@ import su.member.model.MemberDTO;
 import su.message.model.MessageDAO;
 import su.status.model.StatusDAO;
 import su.status.model.StatusDTO;
+import su.upload.model.UploadDAO;
+import su.upload.model.UploadDTO;
 
 
 @Controller
@@ -45,6 +53,51 @@ public class MemberController {
 	public void setMessageDao(MessageDAO messageDao) {
 		this.messageDao = messageDao;
 	}
+	
+	@Autowired
+	private UploadDAO uploadDao;	
+	public UploadDAO getUploadDao() {
+		return uploadDao;
+	}
+	public void setUploadDao(UploadDAO uploadDao) {
+		this.uploadDao = uploadDao;
+	}
+	
+//	@Autowired
+//	private MypageDAO mypageDao;
+//	
+//
+//
+//	public MypageDAO getMypageDao() {
+//		return mypageDao;
+//	}
+//	public void setMypageDao(MypageDAO mypageDao) {
+//		this.mypageDao = mypageDao;
+//	}
+
+	String root_path=null;
+	 String attach_path=null;
+	 
+	 private void copyInto(MultipartFile upload, HttpServletRequest request){
+	     System.out.println("올린파일명:"+upload.getOriginalFilename());
+	   
+	     //경로
+	    root_path = request.getSession().getServletContext().getRealPath("/");  
+	    attach_path = "img/";
+
+	     try {
+	      byte[] bytes=upload.getBytes();
+	      File outFile=
+	            new File(root_path+attach_path+upload.getOriginalFilename());
+	      FileOutputStream fos= 
+	                       new FileOutputStream(outFile);
+	      fos.write(bytes);
+	      fos.close();
+	   } catch (IOException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	   }
+	  }
 
 	@RequestMapping(value="/memberJoin.do", method=RequestMethod.GET)
 	public String memberJoinForm(){
@@ -64,13 +117,38 @@ public class MemberController {
 
 	/**회원가입*/
 	@RequestMapping(value="/memberJoin.do", method=RequestMethod.POST)
-	public ModelAndView memberJoin(MemberDTO dto){
+	public ModelAndView memberJoin(MemberDTO dto, 
+			HttpSession session, UploadDTO dto2){
+		
 		
 		ModelAndView mav = new ModelAndView();
 		
 		int result = memberDao.memberJoin(dto);
 		
 		String msg = result>0?"카풀서비스 가입에 성공하셨습니다.":"회원가입에 실패하셨습니다.";
+		
+		if(result>0){
+
+			 
+			 String filename="basic.jpg";
+			 //파일 타입 프로필=0//차량=1//기타=각자 추가하셈
+			 String filetype="0";
+		     String filepath="http://localhost:9090/final02/img/"+filename;
+			 String id=dto.getId();
+			 
+			 dto2.setId(id); 
+			 
+		    	 dto2.setFilename(filename); 
+				 dto2.setFilepath(filepath); dto2.setFiletype(filetype);
+				 
+				 int count=uploadDao.carupload(dto2);
+				 String msg2=count>0?"upload 성공":"upload 실패";
+				 System.out.println(msg2);
+			     System.out.println("id :"+id);
+			     System.out.println("filename:"+filename);
+			     System.out.println("filepath:"+filepath);
+		  
+		}
 		
 		mav.addObject("msg", msg);
 		mav.addObject("loc", "index.do");

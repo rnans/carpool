@@ -84,9 +84,12 @@ public class UploadController {
 			HttpSession session, UploadDTO dto){
 				
 		 MultipartFile upload=req.getFile("upload");
-		 copyInto(upload, request);
 		 
 		 String filename=upload.getOriginalFilename();
+		 if(filename.equals("")||filename==null){
+			 
+		 }else{
+		 copyInto(upload, request);
 		 //파일 타입 프로필=0//차량=1//기타=각자 추가하셈
 		 String id=(String)session.getAttribute("sid");
 		 String filetype="0";
@@ -110,7 +113,7 @@ public class UploadController {
 		 int count=uploadDao.fileUpdate(dto);
 		 String msg=count>0?"upload 성공":"upload 실패";
 		 System.out.println(msg);
-	    }
+	    }}
 		 return "upload/uploadMsg";
 	}
 	
