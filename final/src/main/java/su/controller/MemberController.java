@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.omg.CORBA.Request;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -248,20 +248,14 @@ public class MemberController {
 		return "redirect:/index.do";
 	}
 	
-	/**아이디 찾기 폼이동*/
-	@RequestMapping("/idFindForm.do")
-	public String idFindForm(){
-		return "member/idFind";
-	}
-	
 	/**아이디 찾기*/
-	@RequestMapping(value="/idFind.do", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/idFind.do", method={RequestMethod.POST,RequestMethod.GET })
 	public ModelAndView idFind(@RequestParam(value="name", required=false)String name, 
 			@RequestParam(value="phonenum", required=false)String phonenum){
 		ModelAndView mav = new ModelAndView();
 		String id = memberDao.idFind(name, phonenum);
 		
-		if(id==null){
+		if(id==null || phonenum==null){
 			mav.addObject("msg", "이름 및 전화번호를 제대로 입력해주세요.");
 			mav.addObject("loc", "idFind.do");
 			mav.setViewName("member/memberMsg");
@@ -272,12 +266,6 @@ public class MemberController {
 			mav.setViewName("member/memberMsg");
 		}
 		return mav;
-	}
-	
-	/**비밀번호 찾기 폼이동*/
-	@RequestMapping("/pwFindForm.do")
-	public String pwFindForm(){
-		return "member/pwFind";
 	}
 	
 	/**비밀번호 찾기*/
