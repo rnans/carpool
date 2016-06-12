@@ -81,7 +81,7 @@ public class yangMyPageController {
 	}
 
 	@RequestMapping("/userPayAddPage.do")
-	public String userPayAddPage() {
+	public String userPayAddForm() {
 
 		return "mypage/userPayAdd2";
 	}
@@ -141,7 +141,7 @@ public class yangMyPageController {
 	}
 
 	@RequestMapping(value = "/cardUpdate.do", method = RequestMethod.GET)
-	public ModelAndView userPayUpdatePage(@RequestParam(value = "idx") int idx) {
+	public ModelAndView userPayUpdateForm(@RequestParam(value = "idx") int idx) {
 
 		yangMypageDTO dto = yangMyPageDao.idxPayInfo(idx);
 		String cardnum = dto.getCardnum();

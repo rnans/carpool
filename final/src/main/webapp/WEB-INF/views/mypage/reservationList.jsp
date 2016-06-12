@@ -534,7 +534,19 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 	color:white;
 }
 </style>
+<script>
+function upPool(idx){
+	
+	var param='?idx='+idx;
+	location.href='poolEditForm.do'+param;
+}
+function delPool(idx){
 
+	var param='?idx='+idx;
+
+	location.href='poolDel.do'+param;
+}
+</script>
 
 <script>
 var _gaq = _gaq || [];
@@ -593,6 +605,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 												<th>카풀타입</th>
 												<th>유형</th>
 												<th>카풀명</th>
+												<th>수정/삭제</th>
 											</tr>	
 										</thead>
 									<tfoot>
@@ -601,7 +614,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 										<tbody>
 											<c:if test="${empty list}">
 									<tr>
-										<td colspan="6">등록된 결제정보가 없습니다.</td>
+										<td colspan="7">등록된 글이 없습니다.</td>
 									</tr>
 								</c:if>
 								<c:forEach var="dto" items="${list }">
@@ -612,6 +625,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 										<td>${dto.pooltype}</td>
 										<td>${dto.termtype}</td>
 										<td>${dto.poolname }</td>
+										<td><input type="button" onclick="upPool(${dto.idx})" value="수정"><input type="button" onclick="delPool(${dto.idx})" value="삭제"></td>
 											</tr>
 											</c:forEach>
 										</tbody>
