@@ -648,18 +648,36 @@ function allCheck(){
 			<button class="menu-button" id="open-button">Open Menu</button>
 			<div class="content-wrap">
 				<div class="content">
-					<header class="codrops-header">
-					<h3>이용내역</h3>
-						<nav class="codrops-demos">
-						<div class="codrops-links">
+				
+				
+				<div data-uiselector="bandNoticeRegion" style="width: 70%;margin: 0px auto;padding-top: 30px;min-height: 650px;">
+			<div data-viewname="DBandBoardNoticeView" class="noticeWrap"
+						style="display: block;  margin-bottom: 15px; min-height:400px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;">
+					
+						<h2 class="tit" style="
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+    margin-top: 0px;
+   margin-bottom: 0px;
+">결제 내역</h2>			
+							<div class="row" style="width: 100%;margin: 0px auto;">
 							
-							<div class="row">
-							
-							  <legend>결제내역</legend>
 							<form name="useList" action="useDel.do"> 
 							   <table class="table table-striped">
 							     <thead class="thead-inverse">
-							  <tr> 
+							  <tr style="background-color: #D4F4FA;">  
 							    <th style="text-align: center;"><input type="checkbox" onclick="allCheck()" id="blankCheckbox1" value="true" aria-label="..."></th>
 							    <th style="text-align: center;">카풀 유형</th>
 							    <th style="text-align: center;">카풀 기간</th>
@@ -686,22 +704,19 @@ function allCheck(){
 							  </c:forEach>
 							  </tbody>
 							</table>
-								<button type="submit" class="btn btn-success" value="삭제">삭제</button>
+								<button type="submit" class="btn btn-success" value="삭제" style="position: absolute; right: 300px; bottom: 250px;">삭제</button>
 						</form>
 						</div>
 						
 					<div>
 					
 						
-					</div>	
+					
 						
 						
 						</nav>
 					</header>
 					<!-- Related demos -->
-					<section class="related">
-					
-					</section>
 				</div>
 			</div><!-- /content-wrap -->
 		</div><!-- /container -->
