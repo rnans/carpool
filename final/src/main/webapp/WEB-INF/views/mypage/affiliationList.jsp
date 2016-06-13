@@ -583,13 +583,35 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
          <button class="menu-button" id="open-button">Open Menu</button>
          <div class="content-wrap">
             <div class="content">
-               <header class="codrops-header">
-               <h3>내가 소속된 카풀목록</h3>
-               </header>   
-                  <div class="codrops-links">
+            
+            
+            
+            	<div data-uiselector="bandNoticeRegion" style="width: 90%;margin: 0px auto;padding-top: 30px;min-height: 500px;">
+					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
+						style="display: block;  margin-bottom: 15px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;min-height: 300px;">
+					
+						<h2 class="tit" style="
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+    margin-top: 0px;
+   
+">나의 카풀 목록</h2>
+             
                      
             <form name="wishpool" action="wishDel.do">
-            <table border="1" cellspacing="0" align="center" class="table table-striped" style="width: 1300px;">
+            <table border="1" cellspacing="0" align="center" class="table table-striped" style="width: 100%; margin: 0px auto; padding-left: 10px;">
                <thead>
                   <tr>               
                      <th style="text-align: center; font-size: 13px;" >카풀이름</th>
@@ -610,7 +632,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                   <td colspan="10" align="center">
                       ${pageStr }
                   </td>
-                  <td><a></a></td>
+                  
                </tr>
          </tfoot>
          <tbody>
@@ -640,10 +662,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                                        
                   </div>
                   
-                  <nav class="codrops-demos">
-                     
-                  
-                  </nav>
+                 </div>
                
                <!-- Related demos -->
                <section class="related">

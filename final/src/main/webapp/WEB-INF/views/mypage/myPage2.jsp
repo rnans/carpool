@@ -624,8 +624,7 @@ function setRadioChk(e){
 						style="display: block;  margin-bottom: 15px;
     border: 1px solid #D5D5D5;
     border-radius: 2px;
-    background: #FFF;
-    padding-top: 20px;">
+    background: #FFF;">
 					
 						<h2 class="tit" style="
     position: relative;

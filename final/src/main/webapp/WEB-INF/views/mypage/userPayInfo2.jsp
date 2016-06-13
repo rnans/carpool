@@ -572,15 +572,40 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<button class="menu-button" id="open-button">Open Menu</button>
 			<div class="content-wrap">
 				<div class="content">
-					<header class="codrops-header">
-					<h3>등록된카드</h3>
+				
+				<div data-uiselector="bandNoticeRegion" style="width: 70%;margin: 0px auto;padding-top: 30px;min-height: 650px;">
+					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
+						style="display: block;  margin-bottom: 15px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;">
+					
+						<h2 class="tit" style="
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+    margin-top: 0px;
+   
+">카드 정보</h2>
+				
+				
+				<!--  -->
+
 						
 						<div class="codrops-links">
-	<nav class="codrops-demos">
+
 			<form name="myprofile">
 				<table style="" class="table table-striped">
 					<thead class="tb">
-						<tr>
+						<tr style="background-color:#D1B2FF;">
 							<th style="text-align: center; font-size: 13px;">번호</th>
 							<th style="text-align: center; font-size: 13px;">카드아이디</th>
 							<th style="text-align: center; font-size: 13px;">카드종류</th>
@@ -596,7 +621,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<tbody style="text-align: center;">
 						<c:if test="${empty dto}">
 				<tr>
-					<td colspan="7">등록된 결제정보가 없습니다.</td>
+					<td colspan="7"><Font style="font-size: 18px;">등록된 결제정보가 없습니다.</Font></td>
 				</tr>
 			</c:if>
 			<c:forEach var="dto" items="${dto }">
@@ -618,16 +643,15 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						</tr>
 					</tbody>
 				</table>
-				<p align="center">
-					<a href="#"><1 2 3 4 5></a>
-				</p>
+
 			</form>
 				</div>		
 						
-							
 						
-						</nav>
-					</header>
+						
+						
+					
+					<!--  -->
 					<!-- Related demos -->
 					<section class="related">
 					
@@ -635,6 +659,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</div>
 			</div><!-- /content-wrap -->
 		</div><!-- /container -->
+		</div>
+		</div>
 		<script src="js/classie.js"></script>
 		<script src="js/main.js"></script>
 		

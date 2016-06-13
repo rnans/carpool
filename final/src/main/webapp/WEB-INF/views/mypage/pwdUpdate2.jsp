@@ -575,8 +575,7 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 						style="display: block;  margin-bottom: 15px;
     border: 1px solid #D5D5D5;
     border-radius: 2px;
-    background: #FFF;
-    padding-top: 20px;">
+    background: #FFF;">
 					
 						<h2 class="tit" style="
     position: relative;
