@@ -674,7 +674,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
          <div id="setView">
             <table border="1" cellspacing="0" align="center" class="table table-striped">
                <thead>
-                  <tr style="font-size: 15px;">
+                  <tr>
                      <th>아이디</th>
                      <th>평점</th>
                      <th>코멘트</th>
@@ -724,7 +724,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                <tbody>
                   <c:if test="${empty get}">
             <tr>
-               <td colspan="4">등록된 평가글이 없습니다.</td>
+               <td colspan="5" style="text-align: center;">등록된 평가글이 없습니다.</td>
             </tr>
                </c:if>
          <c:forEach var="dto2" items="${get }">
@@ -737,9 +737,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
          </c:forEach>
                	</tbody>
             </table>
-            <p align="center">
-              
-            </p>
+          
          </div> 
          </div>
                   
