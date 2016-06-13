@@ -47,8 +47,10 @@ public class commController {
 	     System.out.println("올린파일명:"+upload.getOriginalFilename());
 	   
 	     //경로
-	    root_path = "d:/home/site/wwwroot/bin/apache-tomcat-8.0.33/webapps/final02/";  
+
+	    root_path = request.getSession().getServletContext().getRealPath("/");  
 	    attach_path = "img/";
+
 
 	     try {
 	      byte[] bytes=upload.getBytes();
@@ -301,17 +303,25 @@ public class commController {
 	
 	@RequestMapping("commMain.do")
 	public ModelAndView commMain(HttpSession session){
-		
+		String sid=(String)session.getAttribute("sid");
+
 		ModelAndView mav=new ModelAndView();
 		
-		String id=(String)session.getAttribute("sid");
-		List<carpoolinfoDTO> poollist=commDao.poollist(id);
+		if(sid==null||sid.equals("")){
+            String msg="로그인후 이용 바랍니다.";
+            mav.addObject("msg", msg);
+            mav.setViewName("csCenter/oneandonefailMsg");
+          return mav;
+
+		}else{		
+
+		List<carpoolinfoDTO> poollist=commDao.poollist(sid);
 		
 		mav.addObject("poollist", poollist);
 		
 		mav.setViewName("comm/commMain");
 		return mav;
-		
+		}
 	}
 		 	
 
