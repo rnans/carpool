@@ -482,9 +482,6 @@ body #cdawrap {
 #my{
 	color:white;
 }
-.center-block{
-	
-}
 </style>
 
 
@@ -562,31 +559,14 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
    	
 ">회원탈퇴</h2>
 								
-					
-					
-					
-					
-					
-					
-					
-					
-				
-				
-				
-				
-				
-			<section class="related">
-					<nav class="codrops-demos">	
-						<div class="codrops-links">		
-							
-				
+		
 	<form name="memberDel" action="memDel.do">
 			
 		<ul>
 				
 			<div class="center-block">	
 				<div class="row">
-					<div class="col-xs-4">
+					<div class="col-xs-4" style="text-align:center;">
 						PWD<input type="password"  name="pwd" class="form-control">
 					
 						<p>
@@ -598,11 +578,14 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 		</ul>
 							
 	</form>
-			
+		
 	
 </div>
-						
+</div>						
 					
+								<section class="related">
+					<nav class="codrops-demos">	
+						<div class="codrops-links">		
 							
 						
 					</nav>

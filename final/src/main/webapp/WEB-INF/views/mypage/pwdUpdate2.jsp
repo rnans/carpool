@@ -20,24 +20,7 @@
 		<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 
-<script type="text/javascript" src="/final02/js/httpRequest.js"></script>
-<script type="text/javascript">
-function pwdCheck(){
-	  var pwd = document.getElementById('pwd').value;
-	  var pwd2 = document.getElementById('pwd2').value;
-	 
-	  if(pwd!=pwd2){
-	   document.getElementById('pwdmsg').style.color = "red";
-	   document.getElementById('pwdmsg').innerHTML = "비밀번호를 다시 확인하세요."; 
-	  }else if(pwd=="" || pwd2==""){
-		  document.getElementById('pwdmsg').style.color= "green";
-		  document.getElementById('pwdmsg').innerHTML = "비밀번호를 입력해주세요.";
-	  }else{
-	   document.getElementById('pwdmsg').style.color = "blue";
-	   document.getElementById('pwdmsg').innerHTML = "비밀번호가 일치합니다.";  
-	  }  
-}
-</script>
+
 		
 		
 <style>
@@ -504,39 +487,6 @@ body #cdawrap {
 	color:white;
 }
 </style>
-
-
-
-
-<!-- 회원가입 빈칸입력시 가입방지 jquery -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
-jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실행
-
-	var re_pw = /^[a-z0-9_-]{6,18}$/; // 비밀번호 검사식
-	// 선택할 요소를 변수에 할당
-	// 변수에 할당하지 않으면 매번 HTML 요소를 선택해야 하기 때문에 귀찮고 성능에도 좋지 않다
-	// 쉼표를 이용해서 여러 변수를 한 번에 선언할 수 있다
-
-	var 
-		form = $('.form'),  
-		pwd = $('#pwd'); 
-		
-	// 선택한 form에 서밋 이벤트가 발생하면 실행한다
-	// if (사용자 입력 값이 정규식 검사에 의해 참이 아니면) {포함한 코드를 실행}
-	// if 조건절 안의 '정규식.test(검사할값)' 형식은 true 또는 false를 반환한다
-	// if 조건절 안의 검사 결과가 '!= true' 참이 아니면 {...} 실행
-	// 사용자 입력 값이 참이 아니면 alert을 띄운다
-	// 사용자 입력 값이 참이 아니면 오류가 발생한 input으로 포커스를 보낸다
-	// 사용자 입력 값이 참이 아니면 form 서밋을 중단한다
-	form.submit( function() {
-		if(re_pw.test(pwd.val()) != true) { // 비밀번호 검사
-			alert('유효한 PW를 입력해 주세요.');
-			pwd.focus();
-			return false;
-		}
-	});
-</script>
 
 	</head>
 
