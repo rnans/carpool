@@ -69,6 +69,6 @@ $('.tr').css('display','none');
 </div>
 </div>
 <hr>
-<%@ include file="../footer.jsp" %>
+
 </body>
 </html>

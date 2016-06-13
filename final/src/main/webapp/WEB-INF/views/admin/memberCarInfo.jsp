@@ -105,14 +105,14 @@
 							<td>${list.confirm}</td>
 							<td>
 								  <button type="button" class="uButton uButtonPoint" onclick="javascript:memberCarPhoto('${list.id}');"
-									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
+									style="background: #6799FF; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
 									사진보기</button> 
 									
 							</td>
 							<td>
 							<a onclick="javascript:idx='${list.idx}';" data-title="Confirm" data-toggle="modal" data-target="#confirm">
 								<button type="button" class="uButton uButtonPoint"
-									style="background: #FF5A5A; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
+									style="background:  #3DB7CC;; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
 									승인</button>
 							</a>
 							</td>
