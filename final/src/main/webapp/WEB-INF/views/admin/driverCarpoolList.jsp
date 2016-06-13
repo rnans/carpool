@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>가장 편리한 카풀 서비스, 풀파티!</title>
 <style type="text/css">
 .links {
   *zoom: 1;
@@ -107,7 +107,7 @@ function driverPoolDel(){
 			<tbody>
 				<c:if test="${empty lists}">
 					<tr  class="even">
-						<td colspan="19" align="center">등록된 드라이버 카풀이 없습니다.</td>
+						<td colspan="15" align="center">등록된 드라이버 카풀이 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:forEach var="list" items="${lists}">
@@ -140,7 +140,7 @@ function driverPoolDel(){
 			</tbody>
 			<tfoot>
 				<tr  class="even">
-					<td colspan="20" align="center">
+					<td colspan="15" align="center">
 						${pageStr}
 					</td>
 				</tr>

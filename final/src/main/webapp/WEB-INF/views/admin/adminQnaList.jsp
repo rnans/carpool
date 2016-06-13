@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>가장 편리한 카풀 서비스, 풀파티!</title>
 <style type="text/css">
 .button {
   display: inline-block;
@@ -177,8 +177,7 @@ function qnaDel(){
 </div>
 </div>
 </div>
-</div>
-</div>
+
 <hr>
 
 <!-- 삭제 모달 -->
@@ -215,6 +214,6 @@ function qnaDel(){
 	</div>
 
 <!-- 삭제 모달 -->
-<footer>푸터</footer>
+
 </body>
 </html>

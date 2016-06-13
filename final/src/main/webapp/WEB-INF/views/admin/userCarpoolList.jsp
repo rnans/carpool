@@ -6,24 +6,14 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>가장 편리한 카풀 서비스, 풀파티!</title>
 <link rel="stylesheet" type="text/css" href="/final02/CSS/dialog-sally.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/dialog.css" />
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src="/final02/js/modernizr.custom2.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 
-<!-- 유저카풀목록 삭제 -->
-<script type="text/javascript" src="js/httpRequest.js"></script>
-<script type="text/javascript">
-var idx=null;
-function userPoolDel(){
-	this.idx=idx;
-	var params='idx='+idx;	
-	sendRequest('userPoolDel.do', params, null, 'GET')
-	location.reload();
-}
-</script>
+
 <style type="text/css">
 .links {
   *zoom: 1;
@@ -70,6 +60,18 @@ function userPoolDel(){
 
 
 </head>
+<!-- 유저카풀목록 삭제 -->
+<script type="text/javascript" src="js/httpRequest.js"></script>
+<script type="text/javascript">
+var idx=null;
+
+function userPoolDel(){
+	this.idx=idx;
+	var params='idx='+idx;	
+	sendRequest('userPoolDel.do', params, null, 'GET')
+	location.reload();
+}
+</script>
 <body>
 <%@include file="../header.jsp" %>
 <div style="width: 100%; ">
@@ -112,7 +114,7 @@ function userPoolDel(){
 			<tbody>
 				<c:if test="${empty lists}">
 					<tr class="even">
-						<td colspan="19" align="center">등록된 이용자 카풀이 없습니다.</td>
+						<td colspan="15" align="center">등록된 이용자 카풀이 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:forEach var="list" items="${lists}">
@@ -123,15 +125,14 @@ function userPoolDel(){
 					<td>${list.aim}</td>
 					<td>${list.termtype}</td>
 					<td>${list.gender}</td>
-					<td>${list.startspot}</td>
-					<td>${list.endspot}</td>
+					<td>${list.startdate}</td>
+					<td>${list.enddate}</td>
 					<td>${list.days}</td>
 					<td>${list.pay}</td>
 					<td>${list.status}</td>
 					<td>${list.smoking}</td>
 					<td>${list.pluscontent}</td>
-					<td>${list.writedate}</td>
-					
+					<td>${list.writedate}</td>					
 							<td>
 								<a onclick="javascript:idx='${list.idx}';" data-title="UserPoolDel" data-toggle="modal" data-target="#userPoolDel">
 							<button type="button" class="uButton uButtonPoint"
@@ -146,7 +147,7 @@ function userPoolDel(){
 			</tbody>
 			<tfoot>
 				<tr  class="even">
-					<td colspan="20" align="center">
+					<td colspan="15" align="center">
 						${pageStr} 
 					</td>
 				</tr>

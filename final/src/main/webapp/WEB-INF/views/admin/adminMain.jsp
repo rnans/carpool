@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>가장 편리한 카풀 서비스, 풀파티!</title>
 <style type="text/css">
 #chartdiv {float:right; padding:auto; overflow:hidden; clear:both; margin-left:170px;}
 #chartdiv2 {float:right; padding:auto; overflow: hidden; margin-left:170px;}
@@ -320,44 +320,45 @@ AmCharts.makeChart("chartdiv",
                                               
                                             </tr>
                                             <tr>
+                                            
                                                 <td>7</td>
-                                                <td>16/06/14 10:14:46</td>
+                                                <td>2016-06-14 10:14:46.0</td>
                                                 <td>4000원</td>
                                                
                                             </tr>
                                             <tr>
                                                 <td>6</td>
-                                                <td>16/06/13 18:26:52</td>
+                                                <td>2016-06-13 17:24:06.0</td>
                                                 <td>16000원</td>
                                                
                                             </tr>
                                             <tr>
                                                 <td>5</td>
-                                                <td>16/06/13 14:42:43</td>
+                                                <td>2016-06-13 15:04:40.0</td>
                                                 <td>13000원</td>
                                                
                                             </tr>
                                             <tr>
                                                 <td>4</td>
-                                                <td>16/06/12 20:43:36</td>
+                                                <td>2016-06-12 20:24:12.0</td>
                                                 <td>3000원</td>
                                                
                                             </tr>
                                             <tr>
                                                 <td>3</td>
-                                                <td>16/06/12 15:23:16</td>
+                                                <td>2016-06-12 16:42:26.0</td>
                                                 <td>5000원</td>
                                                
                                             </tr>
                                             <tr>
                                                 <td>2</td>
-                                                <td>16/06/11 19:13:24</td>
+                                                <td>2016-06-11 17:14:11.0</td>
                                                 <td>7000원</td>
                                                 
                                             </tr>
                                             <tr>
                                                 <td>1</td>
-                                                <td>16/06/11 17:43:23</td>
+                                                <td>2016-06-11 10:14:46.0</td>
                                                 <td>10000원</td>
                                                
                                             </tr>

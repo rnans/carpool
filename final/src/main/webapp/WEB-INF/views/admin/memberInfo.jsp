@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>가장 편리한 카풀 서비스, 풀파티!</title>
 
 <style>
 .dropdown2 {

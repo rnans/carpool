@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>가장 편리한 카풀 서비스, 풀파티!</title>
 <link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
 <link href="/final02/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
@@ -42,7 +42,7 @@
 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
-                   1:1문의
+                   공지사항
                         </h1>
                     </div>
                 </div>

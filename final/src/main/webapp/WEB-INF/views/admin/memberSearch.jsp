@@ -4,15 +4,17 @@
 
 
 <script>
-var idx=null;
-function memberDelForm(){
-	var param="?idx="+idx;
-	window.open('memberDelForm.do'+param,'memberDelForm','width=500 height=400 left=500 top=200');
+var idx= null;
+//회원탈퇴
+function memberDel(){
+	this.idx=idx;
+	var params='idx='+idx;
+	window.alert(params);
+	sendRequest('memberDel.do', params, null, 'GET');
+	location.reload();
 }
-function adminAddForm(){
-	var param="?idx="+idx;
-	window.open('adminAddForm.do'+param,'adminAddForm','width=500 height=400 left=500 top=200');
-}
+
+
 </script>
 
 
@@ -55,10 +57,17 @@ function adminAddForm(){
 							${list.joindate}
 						</td>
 						<td>
-							<input type="button" value="등급조정" onclick="javascript:idx='${list.idx}';adminAddForm();">
+							<a onclick="javascript:idx='${list.idx}';grade='${list.grade }'" data-title="Grade" data-toggle="modal" data-target="#grade">
+							<button type="button" class="uButton uButtonPoint"
+									style="background: #3DB7CC; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
+									등급변경</button>
+							</a>
 						</td>
 						<td>
-							<input type="button" value="탈퇴시키기" onclick="javascript:idx='${list.idx}';memberDelForm();">
+							<a onclick="javascript:idx='${list.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete">
+							<button type="button" class="uButton uButtonPoint"
+									style="background: #6799FF; min-width: 60px; line-height: 20px; margin: 0 3px; font-size: 13px; color: #fff; border: 0px;">
+									회원탈퇴</button></a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -72,4 +81,80 @@ function adminAddForm(){
 				</tr>
 			</tfoot>
 		</table>
+</div>
+<div class="modal fade" id="delete" tabindex="-1" role="dialog"	aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin-right: 200px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">회원정보삭제</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="alert alert-danger">
+						<span class="glyphicon glyphicon-warning-sign">정말 탈퇴 시키시겠습니까?</span> 
+					</div>
+
+				</div>
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success" onclick="javascript:memberDel();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+<!-- 삭제 모달 -->
+
+<!-- 등급변경 모달 -->
+	<div class="modal fade" id="grade" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px; margin: 0px auto;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">등급변경</h4>
+				</div>
+				
+				<div class="modal-body">
+				
+					<div class="alert alert-danger">
+	
+						<span>
+							
+							<select name="grade" id="grade2">
+								<option value="관리자">관리자</option>
+								<option value="일반">일반</option>
+							</select>
+							
+						</span>
+						
+					</div> 
+				</div>
+
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-success" onclick="javascript:adminAdd();" data-dismiss="modal">
+						<span class="glyphicon glyphicon-ok-sign"></span> Yes
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> No
+					</button>
+				</div>
+				
+			</div>
+			
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
 </div>

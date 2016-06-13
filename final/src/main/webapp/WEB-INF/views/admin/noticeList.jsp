@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>가장 편리한 카풀 서비스, 풀파티!</title>
 <style type="text/css">
 .button {
   display: inline-block;
@@ -120,7 +120,7 @@ function noticeDel(){
    <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header" style="margin-top: 20px;border-bottom: 5px solid #eeeeeee;">
-                            고객센터 <small>1:1문의</small>
+                            고객센터 <small>공지사항</small>
                         </h1>
                     </div>
                 </div>
@@ -177,7 +177,6 @@ function noticeDel(){
 </div>
 
 
-<hr>
 
 <!-- 삭제 모달 -->
 	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
@@ -213,6 +212,7 @@ function noticeDel(){
 	</div>
 
 <!-- 삭제 모달 -->
-<footer>푸터</footer>
+<hr>
+<h2 style="margin: 0px auto;">풋</h2>
 </body>
 </html>
