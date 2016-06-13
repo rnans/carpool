@@ -542,6 +542,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 </style>
 
 
+
 <script>
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-7243260-2']);
@@ -586,6 +587,7 @@ function setRadioChk(e){
 	
 	<body>
 	<%@ include file="../header.jsp" %>
+
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
@@ -614,10 +616,34 @@ function setRadioChk(e){
 			<div class="content-wrap">
 			
 				<div class="content">
-					<header class="codrops-header">
-					<h3>마이페이지</h3>
-					</header>	
-						<div class="codrops-links">
+
+
+
+				<div data-uiselector="bandNoticeRegion" style="width: 60%;margin: 0px auto;padding-top: 30px;">
+					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
+						style="display: block;  margin-bottom: 15px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;
+    padding-top: 20px;">
+					
+						<h2 class="tit" style="
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+    margin-top: 0px;
+   
+">프로필</h2>
+				
+				<div class="codrops-links">
 	
 		<div id="imgf">
 			<img style="width:300px; height:300px;" src="http://localhost:9090/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
@@ -665,7 +691,13 @@ function setRadioChk(e){
 </form>
 	
 </div>
-</div>					
+</div>	
+						
+					</div>
+				</div>
+				<!-- - -->
+							
+<!-- aa -->			
 	
 						<nav class="codrops-demos">
 							

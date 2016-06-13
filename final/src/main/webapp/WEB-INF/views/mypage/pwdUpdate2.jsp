@@ -565,26 +565,51 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 					<a href="memberleave.do">회원탈퇴</a>
 				</nav>
 			</div>
+			
+			
 			<button class="menu-button" id="open-button">Open Menu</button>
 			<div class="content-wrap">
 				<div class="content">
-					<header class="codrops-header">
-					<h3>비밀번호 변경</h3>
+				<div data-uiselector="bandNoticeRegion" style="width: 40%;margin: 0px auto;padding-top: 30px;">
+					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
+						style="display: block;  margin-bottom: 15px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;
+    padding-top: 20px;">
+					
+						<h2 class="tit" style="
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+    margin-top: 0px;
+   
+">비밀번호 변경</h2>
+				
+				<!--  -->
+					
 					<nav class="codrops-demos">
-						<div class="codrops-links">
-							
-	<div id="div2">
+				
+	
 		
 			<form role="form" name="myprofile" action="pwdUpdate.do" method="post">
 				<input type="hidden" name="id" value="${dto.id }">
-				<fieldset>
+				
 					<div class="row" id="cm">
-					  <div class="col-xs-4">
+					  <div class="col-xs-6">
 					  <input type="hidden" name="nowpwd" value="${dto.pwd}">
-					    	현재 비밀번호<input type="password" class="form-control" name="nowpwd2">
+					    	<Font style=" font-size: 13px; color: #333;font-weight: bold;">현재 비밀번호</Font><input type="password" class="form-control" name="nowpwd2" style="width: 200px;">
 					    
-					    	새 비밀번호<input type="password" class="form-control" name="pwd" id="pwd" onblur="pwdCheck()">
-					   		 비밀번호 확인<input type="password" class="form-control" name="pwd2" id="pwd2" onblur="pwdCheck()"><br>
+					    	<Font style=" font-size: 13px; color: #333;font-weight: bold;">새 비밀번호</Font><input type="password" class="form-control" name="pwd" id="pwd" onblur="pwdCheck()" style="width: 200px;">
+					   		<Font style=" font-size: 13px; color: #333;font-weight: bold;"> 비밀번호 확인</Font><input type="password" class="form-control" name="pwd2" id="pwd2" onblur="pwdCheck()" style="width: 200px;"><br>
 					    <span id="pwdmsg"></span>
 					  </div>
 					  
@@ -594,11 +619,9 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 							<button type="submit" name="update" value="비밀번호변경" class="btn btn-success">비밀번호변경</button>
 							
 						</p>
-						
-						
-					</fieldset>	
+
 				</form>
-		</div>
+		
 					
 	
 		</div>
@@ -607,11 +630,14 @@ jQuery( function($) { // HTML 문서를 모두 읽으면 포함한 코드를 실
 							
 						
 					</nav>
-					</header>
+					
 					<!-- Related demos -->
 					<section class="related">
 					
 					</section>
+					
+					</div>
+					<!-- 1 -->
 				</div>
 			</div><!-- /content-wrap -->
 		</div><!-- /container -->
