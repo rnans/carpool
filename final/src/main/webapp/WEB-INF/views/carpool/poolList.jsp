@@ -46,7 +46,7 @@
 			<div class="content">
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="main--title">
+						<h1 class="main--title" style="margin-top: 20px; margin-bottom: 10px;">
 							카풀 보기<small>원하시는 카풀을 찾아보세요.</small>
 						</h1>
 					</div>
@@ -103,6 +103,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 	</section>
 	<script src="/final02/js/jquery-1.12.4.min.js"></script>

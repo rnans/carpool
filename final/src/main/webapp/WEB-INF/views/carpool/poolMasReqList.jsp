@@ -157,17 +157,18 @@ function viewMyPool(i)
 		</div>
 		</div>
 
-
-		<c:forEach var="dtos2" items="${maslist }">
+		
+		<c:forEach var="dtos2" items="${maslist }" varStatus="i">
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="box">
+					
 						<div class="box-header">
-						<c:forEach var="pDTO" items="${pList}">
-							<h3 class="box-title">${pDTO.poolname } 요청 진행 상황</h3>
-						</c:forEach>
+						
+							<h3 class="box-title">요청 진행 상황</h3>
+				
 						</div>
-
+						
 						<!-- /.box-header -->
 						<div class="box-body table-responsive no-padding">
 							<table class="table table-hover">
@@ -221,6 +222,7 @@ function viewMyPool(i)
 								</tfoot>
 							</table>
 						</div>
+						
 					</div>
 				</div>
 			</div>

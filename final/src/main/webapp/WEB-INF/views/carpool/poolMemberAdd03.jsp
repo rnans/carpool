@@ -25,8 +25,6 @@
 
 		var d = new Date();
 
-		window.alert(scount);
-
 		var yearEl = document.getElementById('lsy');
 		var monthEl = document.getElementById('lsm');
 

@@ -484,7 +484,6 @@
 				if (XHR.status == 200) {
 					var msg = XHR.responseText;
 
-					window.alert(msg);
 					location.reload();
 				}
 			}
@@ -509,7 +508,6 @@
 				if (XHR.status == 200) {
 					var msg = XHR.responseText;
 
-					window.alert(msg);
 					location.reload();
 				}
 			}
@@ -570,7 +568,6 @@
 				if (XHR.status == 200) {
 					var msg = XHR.responseText;
 
-					window.alert(msg);
 					location.reload();
 				}
 			}
@@ -755,7 +752,7 @@
 								<div class="widget-user-image">
 									<c:forEach var="img" items="${lists}">
 										<c:if test="${img.id==dto.userid}">
-										<img class="img-circle" src="img/${img.filename}"
+										<img class="img-circle" style="width:90px; height:90px;" src="img/${img.filename}"
 											alt="User Avatar">
 										</c:if>
 									</c:forEach>
@@ -902,7 +899,7 @@
 									<div id="con${rDtos.idx}" class="testimonial-section">${rDtos.content }</div>
 									<div class="testimonial-desc">
 										<c:forEach var="img" items="${lists}">
-											<c:if test="${rDTO.userid==img.id}">
+											<c:if test="${rDtos.userid==img.id}">
 											<img
 												src="img/${img.filename}"
 												alt="" />
@@ -927,10 +924,10 @@
 								<div id="tb-testimonial"
 									class="testimonial testimonial-info-filled">
 									
-									<div id="con${rDTos.idx}" class="testimonial-section">${rDtos.content }</div>
+									<div id="con${rDtos.idx}" class="testimonial-section">${rDtos.content }</div>
 									<div class="testimonial-desc">
 										<c:forEach var="img" items="${lists}">
-											<c:if test="${rDTO.userid==img.id}">
+											<c:if test="${rDtos.userid==img.id}">
 											<img
 												src="img/${img.filename}"
 												alt="" />
@@ -1033,11 +1030,6 @@
 	//초기화 함수
 	function initTmap() {
 
-		document.getElementById('inputRate').style.display='table-cell';
-
-		document.getElementById('inputCan').style.display='none';
-		
-		document.getElementById('inputEdit').style.display='none';
 		
 		map = new Tmap.Map({
 			div : 'map_div',
@@ -1120,6 +1112,8 @@
 	function onDrawnFeatures(e) {
 		map.zoomToExtent(this.getDataExtent());
 	}
+	
+
 </script>
 <script src="/final02/js/eachClassie.js"></script>
 <script>
@@ -1260,6 +1254,12 @@
 			toggle('reveal');
 		});
 	})();
+
+	document.getElementById('inputRate').style.display='table-cell';
+
+	document.getElementById('inputCan').style.display='none';
+	
+	document.getElementById('inputEdit').style.display='none';
 </script>
 <script src="/final02/js/menu-classie.js"></script>
 <script src="/final02/js/menu-main.js"></script>

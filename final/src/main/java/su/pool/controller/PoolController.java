@@ -1,5 +1,6 @@
 package su.pool.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ import su.pool.model.PoolMasterStatusDTO;
 import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolRateAvgDTO;
 import su.pool.model.PoolRateDAO;
+import su.pool.model.PoolRateDTO;
 import su.pool.model.PoolStatusDAO;
 import su.upload.model.UploadDTO;
 import su.carinfo.model.carInfoDAO;
@@ -95,12 +97,6 @@ public class PoolController
 		this.poolRateDao = poolRateDao;
 	}
 
-	@RequestMapping("/poolMain.do")
-	public String viewMainpage()
-	{
-		return "carpool/poolMain";
-	}
-	
 	@RequestMapping("/poolFindForm.do")
 	public ModelAndView viewFindPage()
 	{
@@ -155,6 +151,7 @@ public class PoolController
 		ModelAndView mav=new ModelAndView("yongJson");
 		
 		mav.addObject("lists", poolDao.viewAllList());
+		mav.addObject("imgList",poolDao.proImg1());
 		
 		return mav;
 	}
@@ -172,9 +169,11 @@ public class PoolController
 		try
 		{
 			MemberDTO dto=poolDao.getAllUserInfo(userid);
-		
+			List imgList=poolDao.proImg1();
+			
 			mav.setViewName("carpool/poolMemberAdd01");
 			mav.addObject("dto",dto);
+			mav.addObject("imgList",imgList);
 			return mav;
 		
 		}
@@ -182,7 +181,7 @@ public class PoolController
 		{
 			String msg="로그인 후에 이용 가능합니다.";
 			mav.setViewName("/carpool/poolMsg");
-			mav.addObject("url","/index.do");
+			mav.addObject("url","index.do");
 			mav.addObject("msg",msg);
 			return mav;
 		}
@@ -200,20 +199,29 @@ public class PoolController
 	public ModelAndView viewMasterAddPage(HttpSession session) {
 		String userid = (String) session.getAttribute("sid");
 
-		MemberDTO dto = poolDao.getAllUserInfo(userid);
 
 		ModelAndView mav = new ModelAndView();
 
-		if (dto == null) {
-			String msg = "로그인 후에 이용 가능합니다.";
-			mav.setViewName("carpool/poolMsg");
-			mav.addObject("url","/index.do");
-			mav.addObject("msg", msg);
-		} else {
+		try
+		{
+			MemberDTO dto=poolDao.getAllUserInfo(userid);
+			List imgList=poolDao.proImg1();
+			
 			mav.setViewName("carpool/poolMasterAdd01");
-			mav.addObject("dto", dto);
+			mav.addObject("dto",dto);
+			mav.addObject("imgList",imgList);
+			return mav;
+		
 		}
-		return mav;
+		catch(Exception e)
+		{
+			String msg="로그인 후에 이용 가능합니다.";
+			mav.setViewName("/carpool/poolMsg");
+			mav.addObject("url","index.do");
+			mav.addObject("msg",msg);
+			return mav;
+		}
+		
 	}
 	
 	@RequestMapping("/poolMasterAdd02.do")
@@ -225,22 +233,43 @@ public class PoolController
 		
 		List lists=poolDao.getCarInfo(userid);
 		
-
+		int i=0;
+		
+		carInfoDTO dto3=new carInfoDTO();
+		
+		dto3=null;
+		
+		for(i=0;i<lists.size();i++)
+		{
+			carInfoDTO dto2=(carInfoDTO)lists.get(i);
+			
+			if(dto2.getCarid().equals("1"))
+			{
+				dto3=dto2;
+			}
+		}
+		
+		
 		ModelAndView mav=new ModelAndView();
 		
 		if(lists.isEmpty())
 		{
 			mav.addObject("msg","등록된 차량이 없습니다. 차량을 등록해주세요.");
 			mav.addObject("url","carAdd.do");
+			mav.setViewName("carpool/poolMsg");
+		}
+		else if(dto3==null||dto3.equals(""))
+		{
+			mav.addObject("msg","대표 차량이 없습니다. 대표 차량을 설정해주세요.");
+			mav.addObject("url","carList.do");
+			mav.setViewName("carpool/poolMsg");
+		}
+		else{
+		
+		mav.addObject("dto",dto3);
+		mav.setViewName("carpool/poolMasterAdd02");
 		}
 		
-		carInfoDTO dto2=(carInfoDTO)lists.get(0);
-		
-		
-		mav.addObject("dto",dto2);
-		
-		mav.setViewName("carpool/poolMasterAdd02");
-
 		return mav;
 		
 	}
@@ -822,6 +851,8 @@ public class PoolController
 		
 		List<UploadDTO> list = poolDao.proImg1();
 		
+		
+		
 		PoolRateAvgDTO avgDTO=new PoolRateAvgDTO();
 		
 		ModelAndView mav=new ModelAndView();
@@ -965,7 +996,6 @@ public class PoolController
 		String aim=req.getParameter("aim");
 		String startspot=req.getParameter("startspot");
 		String endspot=req.getParameter("endspot");
-		String route=req.getParameter("route");
 		int mannum=Integer.parseInt(req.getParameter("mannum"));
 		String gender=req.getParameter("gender");
 		String smoking=req.getParameter("smoking");
