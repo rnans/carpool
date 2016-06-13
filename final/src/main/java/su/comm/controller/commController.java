@@ -47,7 +47,7 @@ public class commController {
 	     System.out.println("올린파일명:"+upload.getOriginalFilename());
 	   
 	     //경로
-	    root_path = request.getSession().getServletContext().getRealPath("/");  
+	    root_path = "d:/home/site/wwwroot/bin/apache-tomcat-8.0.33/webapps/final02/";  
 	    attach_path = "img/";
 
 	     try {
