@@ -693,9 +693,9 @@ window.onload=function(){
 									<div class="_attachmentPhotosRegion" style="margin-left: auto;margin-right: auto;">
 										<div data-viewname="DPostPhotoListView" class="uWidget" style="margin-left: auto;margin-right: auto;">
 											<div style="text-align: center;">
-												<img src="http://localhost:9090/final02/img/${bbs.photo}"
+												<img src="http://192.168.50.86:9090/final02/img/${bbs.photo}"
 													alt="" style="max-width: 500px;max-height: 300px;">
-											</div>
+											</div> 
 										</div>
 									</div>
 									<!--  -->
