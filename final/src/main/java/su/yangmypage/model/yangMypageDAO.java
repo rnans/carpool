@@ -27,7 +27,7 @@ public interface yangMypageDAO {
 	public int rateUpdate(PoolRateDTO dto);
 	public List<PoolDTO> affiliationList(String userid);
 	public int affiliationDel(PoolInfoDTO dto);
-	public int uselistDel(yangMypageDTO dto);
+	public int uselistDel(String idx);
 	
 	
 }

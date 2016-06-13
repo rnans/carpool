@@ -674,7 +674,7 @@ function allCheck(){
 							  <tbody>
 							  <c:forEach var="list" items="${list}">
 							  <tr scope="row" style=" text-align: center;"> 
-							    <td><input type="checkbox" name="idx" value="${dto.idx }" aria-label="..."></td>	
+							    <td><input type="checkbox" name="idx" value="${list.idx }" aria-label="..."></td>	
 							    <td>${list.pooltype }</td>
 							    <td>${list.termtype }</td>
 							    <td>${list.poolname }</td>

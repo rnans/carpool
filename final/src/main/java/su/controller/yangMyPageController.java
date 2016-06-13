@@ -64,13 +64,7 @@ public class yangMyPageController {
 		List<yangMypageDTO> dto = yangMyPageDao.allPayInfo(userid);
 
 		List<UploadDTO> dto2 = uploadDao.imgFind(userid);
-		for(int i=0;i<dto.size();i++){
-			String cardNum=dto.get(i).getCardname();
-			for(int j=0;j<4;j++){
-				StringTokenizer tokens=new StringTokenizer(cardNum);
 		
-			}
-		}
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("dto2", dto2);
@@ -279,11 +273,29 @@ public class yangMyPageController {
 		return mav;
 	}
 	@RequestMapping("/useDel.do")
-	public ModelAndView uselistDel(yangMypageDTO dto) {
+	public ModelAndView uselistDel(@Param(value = "idx") String idx) {
 
-		int result = yangMyPageDao.uselistDel(dto);
-		String msg = result > 0 ? "결제내역 삭제 성공" : "결제내역 삭제 실패";
 		ModelAndView mav = new ModelAndView();
+		String msg = "삭제 성공";
+		if (idx == null) {
+			msg = "삭제할 항목이 없습니다.";
+		} else {
+			StringTokenizer tokens = new StringTokenizer(idx);
+
+			boolean result = true;
+			while (result) {
+				try {
+
+					int del = yangMyPageDao.uselistDel(tokens.nextToken(","));
+					if (!(del == 1)) {
+						msg = "삭제 실패";
+					}
+				} catch (Exception e) {
+
+					result = false;
+				}
+			}
+		}
 		mav.addObject("msg", msg);
 		mav.addObject("gopage", "useList.do");
 		mav.setViewName("mypage/yangMyPageMsg");

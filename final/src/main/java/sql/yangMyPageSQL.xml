@@ -63,7 +63,7 @@
 		select * from payalllist where userid1=#{userid1}
 	</select>
 		<!-- 이용내역(결제내역 삭제) -->
-	<delete id="useDel" parameterType="su.paylist.model.PayListDTO">
+	<delete id="useListDel" parameterType="String">
 		delete from payalllist where idx=#{idx}
 	</delete>
 	
@@ -74,7 +74,7 @@
 	</select>
 
 	<!--즐겨찾기 삭제 -->
-	<delete id="wishDel" parameterType="su.pool.model.PoolRateDTO">
+	<delete id="wishDel" parameterType="String">
 		delete from wishpool where idx=#{idx}
 	</delete>
 
