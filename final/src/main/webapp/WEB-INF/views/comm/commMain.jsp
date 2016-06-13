@@ -370,6 +370,7 @@ a, a:focus, a:hover {
 	</div>
 	<br><br><br><br>
 	<!--  -->
+	
 	<section class="sMyHomePage" style="width: 70%;margin: 0px auto;">
 		<header style="margin-top: 50px;padding-bottom: 15px;">
 			<h1>
