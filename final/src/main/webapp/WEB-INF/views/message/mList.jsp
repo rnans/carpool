@@ -84,7 +84,7 @@ var sendid=null;
 						</div>
 						
 						<div class="table-container">
-						<div class=""><c:if test="${empty lists}">받은 쪽지가 없습니다.</c:if></div>
+						<div class="" style="position: absolute;bottom: 70px;left: 150px;"><c:if test="${empty lists}">&nbsp;&nbsp;&nbsp;받은 쪽지가 없네요.</c:if></div>
 						
 						<table class="table table-filter">
 							<c:forEach var="m" items="${lists}">
