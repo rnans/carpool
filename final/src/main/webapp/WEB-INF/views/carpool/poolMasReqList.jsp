@@ -149,19 +149,14 @@ function viewMyPool(i)
 
 			<div class="content-wrap">
 				<div class="content">
-
+		<div class="row">
 		<div class="col-md-12">
 			<h1 class="main--title">
 				파티 가입 요청<small>현재 가입 요청중인 멤버 정보를 보여드립니다.</small>
 			</h1>
 		</div>
-		<article>
-			<div id="tab">
-				<a href="ownMasterPoolList.do">파티 오너</a> <a
-					href="ownMemberPoolList.do">파티 멤버</a> <a href="poolMasReqList.do">파티
-					참여 멤버 관리</a>
-			</div>
-		</article>
+		</div>
+
 
 		<c:forEach var="dtos2" items="${maslist }">
 			<div class="row">

@@ -5,8 +5,7 @@
 <html>
 <head>
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" type="text/css"
-	href="/final02/CSS/poolCommon.css" />
+
 <link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
 <link rel="stylesheet" type="text/css" href="/final02/CSS/set2.css" />
 <link rel="stylesheet" type="text/css"
@@ -25,7 +24,8 @@
 <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="/final02/CSS/_all-skins.min.css">
-
+<link rel="stylesheet" type="text/css"
+	href="/final02/CSS/menu_topexpand.css" />
 <!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -596,6 +596,32 @@
 </head>
 <body onload="initTmap()" class="demo-2">
 	<%@ include file="../header.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="/final02/CSS/poolCommon.css" />
+<div class="menu-wrap">
+		<nav class="menu">
+			<div class="icon-list">
+				<a href="poolAdd.do"><i class="fa fa-pencil" aria-hidden="true"></i><span>등록하기</span></a>
+				<a href="poolFindForm.do"><i class="fa fa-search"
+					aria-hidden="true"></i><span>검색하기</span></a> <a
+					href="poolMasterList.do"><i class="fa fa-car"
+					aria-hidden="true"></i><span>타세요</span></a> <a href="poolMemberList.do"><i
+					class="fa fa-thumbs-up" aria-hidden="true"></i><span>탈래요</span></a> <a
+					href="shortPoolList.do"><i class="fa fa-clock-o"
+					aria-hidden="true"></i><span>단기 카풀</span></a> <a href="longPoolList.do"><i
+					class="fa fa-calendar" aria-hidden="true"></i><span>정기 카풀</span></a> <a
+					href="poolStatus.do"><i class="fa fa-th-list"
+					aria-hidden="true"></i><span>예약 현황</span></a> <a
+					href="poolMasReqList.do"><i class="fa fa-user-plus"
+					aria-hidden="true"></i><span>가입 요청 현황</span></a>
+			</div>
+		</nav>
+	</div>
+	<button class="menu-button" id="open-button"></button>
+
+
+
+
 
 	<div id="eachContainer" class="container intro-effect-fadeout">
 		<!-- Top Navigation -->
@@ -604,17 +630,18 @@
 				<div id="map_div"></div>
 			</div>
 			<div class="title">
-				<h1>${dto.startspot }</h1>
+				<h1><span>${dto.startspot }</span></h1>
 				<h1 style="text-align: center">
 					<img src="/final02/img/down-arrow.png">
 				</h1>
-				<h1>${dto.endspot }</h1>
+				<h1><span>${dto.endspot }</span></h1>
 				<h2>
 					<img src="/final02/img/team.png"> &nbsp;&nbsp;<strong>${dto.mannum}명</strong>
 					<img src="/final02/img/won.png"> &nbsp;&nbsp;${dto.pay }
 				</h2>
 				<h3>
-					by <strong>${dto.userid }</strong> &#8212; 진행 상태 <strong>${dto.status }</strong>
+					by <strong>${dto.userid }</strong> &#8212; 진행 상태 <i
+					class="fa fa-calendar" aria-hidden="true"></i><strong>${dto.status }</strong>
 					on <strong>${dto.starttime }</strong>
 				</h3>
 			</div>
@@ -973,7 +1000,6 @@
 
 
 
-
 	<!-- /container -->
 
 </body>
@@ -1212,4 +1238,6 @@
 		});
 	})();
 </script>
+<script src="/final02/js/menu-classie.js"></script>
+<script src="/final02/js/menu-main.js"></script>
 </html>

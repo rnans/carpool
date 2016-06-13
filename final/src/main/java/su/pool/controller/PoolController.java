@@ -787,7 +787,7 @@ public class PoolController
 		int pageSize=5;
 		List<PoolDTO> list=poolDao.viewAllList(cp,listSize);
 		String pageStr=
-			su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+			su.Page.SuBPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("pageStr",pageStr);
@@ -1067,7 +1067,7 @@ public class PoolController
 			int pageSize=5;
 			List<PoolDTO> list=poolDao.viewShortList(cp,listSize);
 			String pageStr=
-				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+				su.Page.SuBPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list", list);
 			mav.addObject("pageStr",pageStr);
@@ -1084,7 +1084,7 @@ public class PoolController
 			int pageSize=5;
 			List<PoolDTO> list=poolDao.viewLongList(cp,listSize);
 			String pageStr=
-				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+				su.Page.SuBPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list", list);
 			mav.addObject("pageStr",pageStr);
@@ -1101,7 +1101,7 @@ public class PoolController
 			int pageSize=5;
 			List<PoolDTO> list=poolDao.viewMemberList(cp,listSize);
 			String pageStr=
-				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+				su.Page.SuBPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list", list);
 			mav.addObject("pageStr",pageStr);
@@ -1118,7 +1118,7 @@ public class PoolController
 			int pageSize=5;
 			List<PoolDTO> list=poolDao.viewMasterList(cp,listSize);
 			String pageStr=
-				su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+				su.Page.SuBPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list", list);
 			mav.addObject("pageStr",pageStr);

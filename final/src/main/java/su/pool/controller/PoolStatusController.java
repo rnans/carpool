@@ -508,7 +508,7 @@ public class PoolStatusController
 		int pageSize=5;
 		List<PoolDTO> list=poolStatusDao.viewOwnMemberPoolList(cp,listSize,id);
 		String pageStr=
-			su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+			su.Page.SuBPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("pageStr",pageStr);
@@ -526,7 +526,7 @@ public class PoolStatusController
 		int pageSize=5;
 		List<PoolDTO> list=poolStatusDao.viewOwnMasterPoolList(cp, listSize, id);
 		String pageStr=
-			su.Page.SuPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
+			su.Page.SuBPage.makePage("poolList.do", totalCnt, listSize, pageSize, cp);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("pageStr",pageStr);
@@ -545,7 +545,7 @@ public class PoolStatusController
 		List<PoolDTO> memlist=poolStatusDao.viewOwnMemReqPoolList(cp, ls, id);
 		
 		String pageStr=
-			su.Page.SuPage.makePage("poolStatus.do", totalCnt, ls, pageSize, cp);
+			su.Page.SuBPage.makePage("poolStatus.do", totalCnt, ls, pageSize, cp);
 		
 	
 		ModelAndView mav=new ModelAndView();
@@ -571,7 +571,7 @@ public class PoolStatusController
 		
 		
 		String pageStr2=
-				su.Page.SuPage.makePage("poolMasReqList.do", totalCnt2, ls2, pageSize2, cp);
+				su.Page.SuBPage.makePage("poolMasReqList.do", totalCnt2, ls2, pageSize2, cp);
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("maslist", maslist);

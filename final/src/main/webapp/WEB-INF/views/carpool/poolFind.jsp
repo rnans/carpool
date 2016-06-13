@@ -298,10 +298,20 @@ function findList()
 			<div class="content-wrap">
 				<div class="content">
 
-<div id="search" class="col-md-12">
-	<div class="col-md-12"><h1 style="    margin-top: 20px;
-    margin-bottom: 10px;">카풀 검색<small>원하시는 카풀을 찾아드립니다.</small></h1></div>
+<div id="search">
+	<!-- <div class="col-md-12"><h1 style="    margin-top: 20px;
+    margin-bottom: 10px;">카풀 검색<small>원하시는 카풀을 찾아드립니다.</small></h1></div> -->
+    
+    <div class="row">
+    <div class="col-md-12">
+			<h1 class="main--title" style="    margin-top: 20px;
+    margin-bottom: 10px;">
+				카풀 검색<small>원하시는 카풀을 찾아드립니다.</small>
+			</h1>
+		</div>
+	</div>
 	<form name="search" id="sForm" action="search.do">
+	<div class="row">
 	<div class="input input--nao col-md-12">
 					<input  class="input__field input__field--nao" type="text" id="ss" name="startspot"><br> <input type="hidden" id="sc"
 			name="startcoordi">
@@ -323,6 +333,7 @@ function findList()
 						<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
 					</svg>
 				</div>
+		</div>
 				<div id="categorySearch" class="col-md-12">
 		<div class="row">
 		<div class="col-md-3 col-xd-3">카풀 유형</div> 
