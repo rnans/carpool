@@ -13,11 +13,24 @@ import org.springframework.web.servlet.ModelAndView;
 import su.adminReserve.model.AdminPoolMasterStatusDTO;
 import su.adminReserve.model.AdminPoolMemberStatusDTO;
 import su.adminReserve.model.AdminPoolStatusDAO;
+import su.member.model.MemberDTO;
 import su.pool.model.PoolDAO;
 import su.pool.model.PoolDTO;
+import su.pool.model.PoolRateAvgDTO;
+import su.pool.model.PoolRateDAO;
+import su.pool.model.PoolStatusDAO;
 
 @Controller
 public class AdminReserveController {
+	@Autowired
+	private PoolStatusDAO poolStatusDao;
+	
+	public PoolStatusDAO getPoolStatusDao() {
+		return poolStatusDao;
+	}
+	public void setPoolStatusDao(PoolStatusDAO poolStatusDao) {
+		this.poolStatusDao = poolStatusDao;
+	}
 	@Autowired
 	private AdminPoolStatusDAO adminPoolStatusDao;
 	
@@ -34,6 +47,14 @@ public class AdminReserveController {
 	}
 	public void setPoolDao(PoolDAO poolDao) {
 		this.poolDao = poolDao;
+	}
+	@Autowired
+	private PoolRateDAO poolRateDao;
+	public PoolRateDAO getPoolRateDao() {
+		return poolRateDao;
+	}
+	public void setPoolRateDao(PoolRateDAO poolRateDao) {
+		this.poolRateDao = poolRateDao;
 	}
 	//드라이버 예약관련 리스트
 	@RequestMapping("/driverReserveList.do")
@@ -66,12 +87,40 @@ public class AdminReserveController {
 
 	@RequestMapping("/adminAimidxContent.do")
 	public ModelAndView adminAimidxContent(@RequestParam(value="idx")int idx){
-		PoolDTO dto=poolDao.viewEachContent(idx);
+PoolDTO dto=poolDao.viewEachContent(idx);
+		
+		List res=poolRateDao.getListByAimid(dto.getUserid());
+
+		MemberDTO mDTO=poolDao.getAllUserInfo(dto.getUserid());
+		
+		int pCount=poolStatusDao.getOwnPoolCount(dto.getUserid());
+		
+		PoolRateAvgDTO avgDTO=new PoolRateAvgDTO();
+		
 		ModelAndView mav=new ModelAndView();
+		
+		if(res.isEmpty())
+		{
+			mav.addObject("msg","등록된 평가가 없습니다.");
+		}
+		else
+		{
+			mav.addObject("rDtos",res);
+			avgDTO=poolRateDao.getAvrRateByAimid(dto.getUserid());
+		}
+		
+		
 		mav.addObject("dto",dto);
-		mav.setViewName("admin/adminAimidxContent");
+		mav.addObject("mDTO",mDTO);
+		mav.addObject("pCount",pCount);
+		mav.addObject("avg",avgDTO);
+
+		
+		mav.setViewName("carpool/poolEachContent");
+		
 		return mav;
 	}
+	
 	@RequestMapping("/adminDriverReserveSearch.do")
 	public ModelAndView adminDriverReserveSearch(@RequestParam(value="cp",defaultValue="1")int cp,HttpServletRequest req){
 		String select=req.getParameter("select");

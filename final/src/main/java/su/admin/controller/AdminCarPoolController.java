@@ -44,7 +44,7 @@ public class AdminCarPoolController {
 	@RequestMapping("/userPoolList.do")
 	public ModelAndView userPoolList(@RequestParam(value="cp", defaultValue="1")int cp){
 		int totalCnt = adUserPoolDao.userPoolTotalCnt();
-		int listSize = 10;
+		int listSize = 20;
 		int pageSize = 5;
 		
 		ModelAndView mav = new ModelAndView();
