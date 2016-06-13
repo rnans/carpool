@@ -117,6 +117,7 @@ public class AdminMainController {
 		mav.addObject("poolcount",poolcount);
 		mav.addObject("oneandonecount", oneandonecount);
 		mav.addObject("paylistcount",paylistcount);
+		mav.addObject("idx1", idx1);
 		mav.setViewName("admin/adminMain");
 		return mav;
 	}
