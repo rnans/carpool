@@ -527,6 +527,33 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 #my{
 	color:white;
 }
+.bt2 {
+	float:;
+	min-width: 400px;
+	max-width: 400px;
+	display: block;
+	margin: 1em;
+	padding: 1em 2em;
+	border: none;
+	background: none;
+	color: inherit;
+	vertical-align:middle;
+	position: inherit;
+	z-index: 1;
+	margin-left:0px;
+	padding-left:0px;
+}
+
+.bt2:focus {
+	outline: none;
+}
+
+.bt2 > span {
+	vertical-align: middle;
+}
+.bt2--size-s {
+	font-size: 14px;
+}
 
 </style>
 
@@ -617,9 +644,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                   <div class="codrops-links">
    
          
-	<h4>
-    <a href="javascript:setView()">내가한평가</a>|<a href="javascript:getView()">내가받은평가</a>
-    </h4>   
+	<div class="bt2">
+    <a href="javascript:setView()"><button class="button button--ujarak" value="내가한평가">내가한평가</button></a>
+     <a href="javascript:getView()"><button class="button button--ujarak" value="내가한평가">내가받은평가</button></a>
+   	</div>
+      
          <div id="setView">
             <table border="1" cellspacing="0" align="center" class="table table-striped">
                <thead>
@@ -642,10 +671,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                </c:if>
          <c:forEach var="dto" items="${set }">
             <tr>
-                  <td style="font-size: 13px;">${dto.aimid }</td>
-                  <td style="font-size: 13px;">${dto.rate }</td>
-                  <td style="font-size: 13px;">${dto.content }</td>
-                  <td style="font-size: 13px;">${dto.writedate }</td>
+                  <td>${dto.aimid }</td>
+                  <td>${dto.rate }</td>
+                  <td>${dto.content }</td>
+                  <td>${dto.writedate }</td>
                   <td><button class="btn btn-default btn-xs" type="button" onclick="upRate(${dto.idx})" value="수정">수정</button> <button class="btn btn-default btn-xs" type="button" onclick="delRate(${dto.idx})" value="삭제">삭제</button></td>
             </tr>
          </c:forEach>
@@ -653,7 +682,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                </tbody>
             </table>
             <p align="center">
-               <a href="#"><1 2 3 4 5></a>
+              
             </p>
          </div>
          
@@ -687,7 +716,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                	</tbody>
             </table>
             <p align="center">
-               <a href="#"><1 2 3 4 5></a>
+              
             </p>
          </div> 
          </div>
