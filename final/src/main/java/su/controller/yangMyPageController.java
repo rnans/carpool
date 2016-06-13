@@ -391,8 +391,9 @@ public class yangMyPageController {
 		
 		String userid = (String) session.getAttribute("sid");
 		List<PoolDTO> list = yangMyPageDao.affiliationList(userid);
-		
+		List<UploadDTO> dto2 = uploadDao.imgFind(userid);
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("dto2",dto2);
 		mav.addObject("list", list);
 		mav.setViewName("mypage/affiliationList");
 		
@@ -403,6 +404,7 @@ public class yangMyPageController {
 		
 		String id = (String) session.getAttribute("sid");
 		dto.setId(id);
+		
 		int result = yangMyPageDao.affiliationDel(dto);
 		 String msg=result>0?"탈퇴 성공":"탈퇴 실패";
 		ModelAndView mav=new ModelAndView();
