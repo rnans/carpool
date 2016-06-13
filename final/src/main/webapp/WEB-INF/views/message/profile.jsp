@@ -26,7 +26,7 @@
 		<h1>프로필 보기</h1>
 	</header>
 	<div class="main">
-		<div class="iprofile"><img src="http://localhost:9090/final02/img/${uDTO.filename}" class="ipro"></div>
+		<div class="iprofile"><img src="img/${uDTO.filename}" class="ipro"></div>
 		
 		<c:forEach var="p" items="${lists}">
 			<strong class="name">${p.name}</strong>

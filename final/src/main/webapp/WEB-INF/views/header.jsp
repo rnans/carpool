@@ -84,13 +84,7 @@
 					</ul>
 				</li>
 				<li><a href="carList.do">차량관리</a></li>
-				<li class="dropdown">
-					<a href="messageList.do" onclick="alram()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">쪽지함 <span class="badge">${mNum}</span><span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="messageList.do">쪽지함보기</a></li>
-						<li class="view"></li>
-					</ul>
-				</li>
+				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -105,8 +99,18 @@
 				</li>
 				<c:if test="${!empty sessionScope.sid}">
 				<li class="active"><a href="myPage.do">${sessionScope.sid}님 로그인</a> </li>
+				<li class="dropdown">
+					<a href="messageList.do" onclick="alram()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					<img src="img/message.png" style="height:20px;">
+					<span class="badge">${mNum}</span><span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="messageList.do"><img src="img/message1.png" style="height:20px;">쪽지함</a></li>
+						<li class="view"></li>
+					</ul>
+				</li>
 				<li><a href="logout.do">로그아웃</a></li>
 				</c:if>
+				
 				<c:if test="${empty sessionScope.sid }">
 				<li class="active">
 				<!-- 로그인버튼 -->
