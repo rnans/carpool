@@ -202,7 +202,7 @@ function alramResult(){
 						
 						<span class="input input--hoshi"> 
 						 		<input class="input__field input__field--hoshi" type="password" id="pwd"
-									   name="pwd" onkeydown="javascript:onEnterSubmit();"> 
+									   name="pwd" onkeydown="javascript:onEnterSubmit();" style="width: 360px;">  
 							<label class="input__label input__label--hoshi input__label--hoshi-color-1"	for="pwd"> 
 								<span class="input__label-content input__label-content--hoshi">PassWord</span>
 							</label>
