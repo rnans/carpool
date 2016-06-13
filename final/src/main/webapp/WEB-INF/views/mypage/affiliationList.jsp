@@ -560,7 +560,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
       <div class="Mycontainer">
          <div class="menu-wrap">
             <nav class="menu-top">
-               <div class="profile"><img style="width:50px;height:60px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${sessionScope.sname} 님 마이페이지</span></div>
+               <div class="profile"><img style="width:50px;height:50px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${sessionScope.sname} 님 마이페이지</span></div>
                <div class="icon-list">
                   <a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
                   <a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -569,8 +569,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                </div>
             </nav>
             <nav class="menu-side">
-               <a href="myPage.do">마이페이지</a>
-               <a href="notiSetting.do?id=${sessionScope.sid}">소속카풀</a>
+               <a href="myPage.do">프로필</a>
+               <a href="affiliationList.do">소속카풀</a>	
                <a href="pwdUpdateForm.do">비밀번호변경</a>
                <a href="userPayInfo.do">등록된카드</a>
                <a href="wishPoolList.do">즐겨찾기(카풀)</a>
@@ -606,10 +606,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
     color: #333;
     text-decoration: none!important;
     margin-top: 0px;
+    
    
 ">나의 카풀 목록</h2>
              
-                     
+                    
             <form name="wishpool" action="wishDel.do">
             <table border="1" cellspacing="0" align="center" class="table table-striped" style="width: 100%; margin: 0px auto; padding-left: 10px;">
                <thead>

@@ -518,7 +518,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					</div>
 				</nav>
 				<nav class="menu-side">
-					<a href="myPage.do">마이페이지</a>
+					<a href="myPage.do">프로필</a>
 					<a href="affiliationList.do">소속카풀</a>
 					<a href="pwdUpdateForm.do">비밀번호변경</a>
 					<a href="userPayInfo.do">등록된카드</a>
@@ -533,7 +533,45 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<div class="content-wrap">
 				<div class="content">
 					<header class="codrops-header">
-					<h3>회원탈퇴</h3>
+					
+	
+
+				<div data-uiselector="bandNoticeRegion" style="width: 60%;margin: 0px auto;padding-top: 30px;">
+					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
+						style="display: block;  margin-bottom: 15px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;">
+					
+						<h2 class="tit" style="
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+    margin-top: 0px;
+   	
+">회원탈퇴</h2>
+								
+					
+					
+					
+					
+					
+					
+					
+					
+				
+				
+				
+				
+				
 					<section class="related">
 					<nav class="codrops-demos">	
 						<div class="codrops-links">
