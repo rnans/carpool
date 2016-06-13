@@ -639,9 +639,47 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
          <div class="content-wrap">
             <div class="content">
                <header class="codrops-header">
-               	<h3>평가글</h3> 
-          <nav class="codrops-demos">    
+               	 
+         
+   
+   <div data-uiselector="bandNoticeRegion" style="width: 70%;margin: 0px auto;padding-top: 30px;min-height: 650px;">
+					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
+						style="display: block;  margin-bottom: 15px; min-height: 400px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;">
+					
+						<h2 class="tit" style="
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+    margin-top: 0px;
+   
+">평가글</h2>
+				
+   
+   
+   
+   
+   
+   
+   
+   
+    <nav class="codrops-demos">    
                   <div class="codrops-links">
+   
+   
+   
+   
+   
    
          
 	<div class="bt2">
@@ -722,8 +760,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
          </div>
                   
                   
-                     
-                  
+      </div>               
+     </div>      
                   </nav>
               </header>
                <!-- Related demos -->
