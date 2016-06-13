@@ -87,7 +87,7 @@
 	<select id="affiliationList" parameterType="String" resultType="su.pool.model.PoolDTO">
 	select a.poolname, a.userid, a.aim, a.startspot, a.endspot, a.termtype, a.pay, a.startdate, a.enddate from(Select reservationlist.*,carpoolinfo.id
 From carpoolinfo INNER JOIN reservationlist
-ON carpoolinfo.poolname = reservationlist.poolname)a where id=#{userid} and userid!=#{userid}
+ON carpoolinfo.poolname = reservationlist.poolname)a where id=#{userid}
 	
 	</select>
 	
