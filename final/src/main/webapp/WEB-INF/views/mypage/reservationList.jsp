@@ -589,11 +589,29 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			<button class="menu-button" id="open-button">Open Menu</button>
 			<div class="content-wrap">
 				<div class="content">
-					<header class="codrops-header">
-					<h3>등록글</h3>
-					<nav class="codrops-demos">
-								
-						<div class="codrops-links">
+	<div data-uiselector="bandNoticeRegion" style="width: 70%;margin: 0px auto;padding-top: 30px;min-height: 650px;">
+					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
+						style="display: block;  margin-bottom: 15px; min-height: 400px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;">
+					
+						<h2 class="tit" style="
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+    margin-top: 0px;
+   
+">나의 등록 글</h2>
+				
 							
 								<form name="myprofile">
 									<table align="center" class="table table-striped">
@@ -631,9 +649,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 											</c:forEach>
 										</tbody>
 									</table>
-									<p align="center">
-										<a href="#"><1 2 3 4 5></a>
-									</p>
+
 								</form>
 		
 
@@ -642,13 +658,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						</div>
 						
 						
-						
-						</nav>
-					</header>
+						</div>
 					<!-- Related demos -->
-					<section class="related">
-					
-					</section>
+			
 				</div>
 			</div><!-- /content-wrap -->
 		</div><!-- /container -->

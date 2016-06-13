@@ -586,7 +586,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
             
             
             
-            	<div data-uiselector="bandNoticeRegion" style="width: 90%;margin: 0px auto;padding-top: 30px;min-height: 500px;">
+            	<div data-uiselector="bandNoticeRegion" style="width: 85%;margin: 0px auto;padding-top: 30px;min-height: 500px;">
 					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
 						style="display: block;  margin-bottom: 15px;
     border: 1px solid #D5D5D5;

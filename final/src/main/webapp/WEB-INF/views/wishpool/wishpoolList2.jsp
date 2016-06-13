@@ -58,7 +58,7 @@
 
 .content {
 	position: relative;
-	background: #E3DDDC;
+	background: #f6f6f6;
 }
 
 /* Overlay */
@@ -531,8 +531,7 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-</script>
-<script>
+
 function allCheck(){
 	
 	var allCheck1=document.getElementById("blankCheckbox1");
@@ -583,24 +582,31 @@ function allCheck(){
 			<button class="menu-button" id="open-button">Open Menu</button>
 			<div class="content-wrap">
 				<div class="content">
-					<header class="codrops-header">
-					<h3>즐겨찾는 카풀</h3>
-					</header>						
-						<div class="codrops-links">
-							
-			
-		
-
-	
-
-		
-		
-
-	
-	
-	
+				
+				
+			<div data-uiselector="bandNoticeRegion" style="width: 70%;margin: 0px auto;padding-top: 30px;min-height: 650px;">
+			<div data-viewname="DBandBoardNoticeView" class="noticeWrap"
+						style="display: block;  margin-bottom: 15px; min-height:400px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;">
 					
-						<nav class="codrops-demos">
+						<h2 class="tit" style="
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+    margin-top: 0px;
+   
+">즐겨찾기</h2>
+			
 								
 			<form name="wishpool" action="wishDel.do">
 				<table border="1" cellspacing="0" align="center" class="table table-striped">
