@@ -728,10 +728,17 @@ window.onload=function(){
 							<div data-viewname="DCommentLayoutView" class="cComment">
 								<div class="writeInfo">
 									<span class="nameWrap"><label class="name">${re.name }</label>
-										</span> 
-										<a href="#" class="thum" data-uiselector="authorProfile">
-										<img src="http://s.cmstatic.net/webclient/dres/20160602183753/images/template/profile_60x60.gif"
-										alt="남구문"></a>
+										</span>
+										
+					<c:forEach var="img" items="${imglist}">
+						<c:if test="${img.id==re.id}">
+						<a href="javascript:sex('${bbs.id }')"  class="thum" data-uiselector="authorProfile"> 
+						<img src="http://localhost:9090/final02/img/${img.filename}" 
+						style="width: 45px;height: 45px;">
+						</a>
+						</c:if>
+					</c:forEach> 
+									
 								</div>
 								<div class="commentBody" style="padding-top: 5px;">
 									<p class="txt">${re.content }</p>
