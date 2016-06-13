@@ -259,36 +259,39 @@ AmCharts.makeChart("chartdiv",
                             <div class="panel-body">
                                 <div class="list-group">
                                     <a href="#" class="list-group-item">
-                                        <span class="badge">${noticedate}</span>
-                                        <i class="fa fa-fw fa-calendar"></i>${noticesubject}
+                                        <span class="badge">1분전</span>
+                                        ${noticesubject}
                                     </a>
                                       <a href="#" class="list-group-item">
-                                        <span class="badge">2016-06-13 17:43:32</span>
-                                         [이벤트]첫이용 고객에게 이벤트를진행합니다.
+                                       
+                                        <span class="badge">3분전</span>
+                                          [1:1문의]${oneandonesubject }
                                     </a>
                                     <a href="#" class="list-group-item">
-                                        <span class="badge">${oneandonedate }</span>
-                                       [1:1문의]${oneandonesubject }
-                                    </a>
+                                     
+                                        <span class="badge">5분전</span>
+                                   [${pooltype }]${poolname }
+                                      </a>
                                         <a href="#" class="list-group-item">
-                                        <span class="badge">2016-06-12 18:42:12</span>
-                                        [1:1문의]예약관력 문의입니다.
+                                         
+                                        <span class="badge">7분전</span>
+                                      [${pooltype2 }]${poolname2 }
                                     </a>
                                     <a href="#" class="list-group-item">
-                                        <span class="badge">${pooldate }</span>
-                                      [${pooltype }]${poolname }
+                                        <span class="badge">하루전</span>
+                                       [이벤트]첫오픈 기념 이벤트가 진행됩니다.
                                     </a>
                                        <a href="#" class="list-group-item">
-                                        <span class="badge">${pooldate2 }</span>
-                                      [${pooltype2 }]${poolname2 } 
+                                        <span class="badge">하루전</span>
+                                     [이용안내]카풀 등록방법
                                     </a> 
                                     <a href="#" class="list-group-item">
-                                        <span class="badge">2016-06-12 15:43:23</span>
-                                        [타세요]인천 계양구~서울강남 운행합니다~
+                                        <span class="badge">하루전</span>
+                                       [이용안내]카풀 이용방법입니다.
                                     </a>
                                     <a href="#" class="list-group-item">
-                                        <span class="badge">2016-06-11 16:34:13</span>
-                                     [탈래요]서울강남~인천 계양구 타고싶어요!
+                                        <span class="badge">하루전</span>
+                                     [Q&A]비밀번호변경은 어디서하나요?
                                     </a>
                                 </div>
                                 <div class="text-right">

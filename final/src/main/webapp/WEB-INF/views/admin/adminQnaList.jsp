@@ -123,7 +123,7 @@ function qnaDel(){
                         </h1>
                     </div>
                 </div>
-  <div class="btn-group" role="group" aria-label="..." style="margin-left:980px;">
+  <div class="btn-group" role="group" aria-label="..." style="margin-left:990px;">
   <a href="qnaWrite.do" class="btn btn-default">글쓰기</a>
 </div>
 <table border="1" style="margin: 0px auto;" >

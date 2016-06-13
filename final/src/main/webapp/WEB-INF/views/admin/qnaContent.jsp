@@ -49,8 +49,5 @@
 </div>
 </div>
 
-<hr>
-
-<div>풋부분</div>
 </body>
 </html>
