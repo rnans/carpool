@@ -84,7 +84,7 @@
 				<li class="dropdown">
 					<a href="carBookInfo.do" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">차계부 <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="carBookInfo.do">차계부</aw></li>
+						<li><a href="carBookInfo.do">차계부</a></li>
 						<li><a href="cost.do">비용</a></li>
 						<li><a href="graph.do">그래프</a></li>
 					</ul>
@@ -120,7 +120,7 @@
 				<li><a href="memberJoin.do">회원가입</a></li>
 				</c:if>
 				<c:if test="${sessionScope.grade eq '관리자'}">
-				<li><a href="memberInfo.do">관리자페이지</a></li>
+				<li><a href="adminMain.do">관리자페이지</a></li>
 				</c:if>
 			</ul>
 			<!-- 검색상자(다른 거로 대체할거임) -->
