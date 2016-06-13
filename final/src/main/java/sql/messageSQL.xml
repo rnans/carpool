@@ -57,4 +57,7 @@
 	<select id="proImg" resultType="su.upload.model.UploadDTO">
 		select filename from file_upload where id=#{sendid} and filetype=0
 	</select>
+	<select id="proImg1" resultType="su.upload.model.UploadDTO">
+		select id,filename from file_upload where filetype='0'
+	</select>
 </mapper>

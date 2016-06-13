@@ -123,7 +123,7 @@
 </style>
 </head>
 <body>	
-	<div class="section" style="width:500px; margin: 0px auto;">
+	<div class="section" style="width:460px; margin: 0px auto;">
 	
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

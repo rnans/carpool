@@ -597,6 +597,10 @@
 		document.getElementById('inputEdit').style.display='table-cell';
 		
 	}
+	function message(userid){
+		param = '?uid='+userid;
+		window.open('messageWrite.do'+param,'mrWrite','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+',width=450, height=270px');
+	}
 	
 	
 </script>
@@ -749,8 +753,12 @@
 									<h5 class="widget-user-desc">${mDTO.addr }</h5>
 								</div>
 								<div class="widget-user-image">
-									<img class="img-circle" src="/final02/img/basic.jpg"
-										alt="User Avatar">
+									<c:forEach var="img" items="${lists}">
+										<c:if test="${img.id==dto.userid}">
+										<img class="img-circle" src="img/${img.filename}"
+											alt="User Avatar">
+										</c:if>
+									</c:forEach>
 								</div>
 								<div class="box-footer">
 									<div class="row">
@@ -773,7 +781,7 @@
 										</div>
 										<div class="col-sm-4 border-right">
 											<div class="description-block">
-												<a href="messageWrite.do?uid=${dto.userid}">
+												<a href="javascript:message('${dto.userid}')">
 													<h5 class="description-header">
 														<i class="fa fa-paper-plane" aria-hidden="true"></i>
 													</h5> <span class="description-text"> 쪽지보내기</span>
@@ -893,9 +901,13 @@
 									class="testimonial testimonial-primary-filled">
 									<div id="con${rDtos.idx}" class="testimonial-section">${rDtos.content }</div>
 									<div class="testimonial-desc">
-										<img
-											src="https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100"
-											alt="" />
+										<c:forEach var="img" items="${lists}">
+											<c:if test="${rDTO.userid==img.id}">
+											<img
+												src="img/${img.filename}"
+												alt="" />
+											</c:if>
+										</c:forEach>
 										<div class="testimonial-writer">
 											<div class="testimonial-writer-name">${rDtos.userid}</div>
 											<div class="testimonial-writer-designation">${rDtos.writedate }</div>
@@ -917,9 +929,13 @@
 									
 									<div id="con${rDTos.idx}" class="testimonial-section">${rDtos.content }</div>
 									<div class="testimonial-desc">
-										<img
-											src="https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100"
-											alt="" />
+										<c:forEach var="img" items="${lists}">
+											<c:if test="${rDTO.userid==img.id}">
+											<img
+												src="img/${img.filename}"
+												alt="" />
+											</c:if>
+										</c:forEach>
 										<div class="testimonial-writer">
 											<div class="testimonial-writer-name">${rDtos.userid}</div>
 											<div class="testimonial-writer-designation">${rDtos.writedate }</div>

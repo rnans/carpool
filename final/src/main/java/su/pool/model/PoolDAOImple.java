@@ -4,6 +4,7 @@ import java.util.*;
 
 import su.csCenter.model.CsNoticeDTO;
 import su.member.model.*;
+import su.upload.model.UploadDTO;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -209,5 +210,10 @@ public class PoolDAOImple implements PoolDAO {
 	public List checkPoolName(String poolname) {
 		// TODO Auto-generated method stub
 		return sqlMap.selectList("checkPoolName",poolname);
+	}
+	
+	public List<UploadDTO> proImg1() {
+		List<UploadDTO> list = sqlMap.selectList("proImg1");
+		return list;
 	}
 }

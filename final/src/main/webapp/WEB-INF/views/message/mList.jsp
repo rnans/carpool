@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="CSS/message.css">
+<link rel="stylesheet" type="text/css" href="CSS/footer.css">
 <script src="js/message.js"></script>
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
@@ -163,6 +164,5 @@ var sendid=null;
   </div>
       <!-- /.modal-dialog --> 
     </div>
-	<%-- //<%@include file="../footer.jsp" %> --%>
 </body>
 </html>

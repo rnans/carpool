@@ -2,6 +2,7 @@ package su.pool.model;
 
 import java.util.*;
 import su.member.model.*;
+import su.upload.model.UploadDTO;
 
 public interface PoolDAO 
 {
@@ -56,4 +57,6 @@ public interface PoolDAO
 	public List poolFind(HashMap map);
 	
 	public List checkPoolName(String poolname);
+	
+	public List<UploadDTO> proImg1();
 }

@@ -278,5 +278,7 @@ public class MessageController {
 		mav.setViewName("message/profile");
 		return mav;
 	}
+	
+	
 }
 

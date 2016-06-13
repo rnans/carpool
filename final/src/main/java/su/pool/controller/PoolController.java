@@ -28,6 +28,7 @@ import su.pool.model.PoolMemberStatusDTO;
 import su.pool.model.PoolRateAvgDTO;
 import su.pool.model.PoolRateDAO;
 import su.pool.model.PoolStatusDAO;
+import su.upload.model.UploadDTO;
 import su.carinfo.model.carInfoDAO;
 import su.carinfo.model.carInfoDTO;
 import su.member.model.*;
@@ -532,7 +533,7 @@ public class PoolController
 	}
 	
 	@RequestMapping("/poolMasterAdd06.do")
-	public ModelAndView viewMemberAddPage5(HttpServletRequest req, HttpSession session)
+	public ModelAndView viewMasterAddPage6(HttpServletRequest req, HttpSession session)
 	{
 		String pluscontent=req.getParameter("pluscontent");
 		String sLat=req.getParameter("sLat");
@@ -819,6 +820,8 @@ public class PoolController
 		
 		int pCount=poolStatusDao.getOwnPoolCount(dto.getUserid());
 		
+		List<UploadDTO> list = poolDao.proImg1();
+		
 		PoolRateAvgDTO avgDTO=new PoolRateAvgDTO();
 		
 		ModelAndView mav=new ModelAndView();
@@ -833,7 +836,7 @@ public class PoolController
 			avgDTO=poolRateDao.getAvrRateByAimid(dto.getUserid());
 		}
 		
-		
+		mav.addObject("lists", list);
 		mav.addObject("dto",dto);
 		mav.addObject("mDTO",mDTO);
 		mav.addObject("pCount",pCount);

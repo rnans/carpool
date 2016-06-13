@@ -112,7 +112,7 @@ video#bgvid {
 </section>
 <section class="section" id="section1" style="background-image:url('/final02/img/subbus.jpg'); opacity:100%; ">
 	<article>
-		<h2 id="mainTitle2">지옥철, 지옥버스 지긋지긋하시죠?</h2>
+		<h2 id="mainTitle2"style="color: black;">지옥철, 지옥버스 지긋지긋하시죠?</h2>
 		<p id="sub_title2">당신의 소중한 시간을 지켜드립니다.
 		<br>즐거운 이동, 저희 카풀파티에서 느껴보세요!</p>
 	</article>
@@ -146,7 +146,7 @@ video#bgvid {
 		</div>
 		</div>
 	</article>
-	<%@ include file="footer.jsp" %>
+	
 </section>
 </div>
 </body>
