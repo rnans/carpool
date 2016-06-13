@@ -37,7 +37,8 @@ var aMans;
 
 function payfor(idx)
 {
-	location.href='payType.do?idx='+idx;
+	param='?idx='+idx;
+	window.open('payType.do'+param,'payType','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+',width=570, height=600px' )
 }
 
 function editMans(idx, mans, aimidx)
