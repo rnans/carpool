@@ -200,7 +200,7 @@ public class yangMyPageController {
 
 			dto.setUserid(userid);
 			int result = yangMyPageDao.userPayUpdate(dto);
-			msg = result > 0 ? "결제정보 수정 성공" : "결제정보 수정 실패";
+			msg = result > 0 ? "카드정보 수정 성공" : "카드정보 수정 실패";
 			mav.addObject("msg", msg);
 			mav.addObject("gopage", "userPayInfo.do");
 			mav.setViewName("mypage/yangMyPageMsg");
@@ -218,7 +218,7 @@ public class yangMyPageController {
 	public ModelAndView cardDel(yangMypageDTO dto) {
 
 		int result = yangMyPageDao.userPayDel(dto);
-		String msg = result > 0 ? "결제정보 삭제 성공" : "결제정보 삭제 실패";
+		String msg = result > 0 ? "카드정보 삭제 성공" : "카드정보 삭제 실패";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("gopage", "userPayInfo.do");
