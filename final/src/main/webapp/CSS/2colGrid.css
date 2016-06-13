@@ -51,6 +51,9 @@ body {
 .main-content h1,h2,h3
 {
 	margin: 2px auto;
+	height: 60px;
+	overflow: hidden;
+	
 }
 
 footer {

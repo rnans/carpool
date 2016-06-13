@@ -71,7 +71,8 @@
 
 					<div id="row">
 
-						<div id="div1" class="col-md-6 select">
+						<div id="div1" class="col-md-6 select center-block">
+							
 							<figure>
 								<img src="/final02/img/pMember.jpg" class="center-block" alt="" />
 								<a href="poolMemberAdd.do">

@@ -464,6 +464,13 @@
 
 		var content = conEl.value;
 
+		var sid='${sid}';
+		
+		if(sid==null||sid=="")
+		{
+			window.alert('로그인이 필요합니다.')
+			exit;
+		}
 		
 
 		var url = 'rateWrite.do';
@@ -640,9 +647,9 @@
 					<img src="/final02/img/won.png"> &nbsp;&nbsp;${dto.pay }
 				</h2>
 				<h3>
-					by <strong>${dto.userid }</strong> &#8212; 진행 상태 <i
-					class="fa fa-calendar" aria-hidden="true"></i><strong>${dto.status }</strong>
-					on <strong>${dto.starttime }</strong>
+					by <strong>${dto.userid }</strong> &#8212; 진행 상태 <strong>${dto.status }</strong>
+					on <i
+					class="fa fa-calendar" aria-hidden="true"></i><strong>${dto.starttime }</strong>
 				</h3>
 			</div>
 		</header>

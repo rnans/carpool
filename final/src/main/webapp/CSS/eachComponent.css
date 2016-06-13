@@ -1261,6 +1261,7 @@ button.trigger span::before {
 .title span
 {
 	background: #47a3da;
+	line-height: 1.5;
 	color: #fff;
 }
 

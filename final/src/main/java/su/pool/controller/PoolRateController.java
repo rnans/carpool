@@ -37,9 +37,17 @@ public class PoolRateController {
 		String id=(String)session.getAttribute("sid");
 		String name=(String)session.getAttribute("sname");
 		
+
+		ModelAndView mav=new ModelAndView();
+		
+		if(id.equals("")||id==null)
+		{
+			mav.addObject("msg","로그인 후 이용 가능합니다.");
+			
+		}
+		
 		List res=poolRateDao.checkRate(id, dto.getAimid());
 		
-		ModelAndView mav=new ModelAndView();
 		String msg="";
 		
 		

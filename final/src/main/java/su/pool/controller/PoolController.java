@@ -181,6 +181,7 @@ public class PoolController
 		{
 			String msg="로그인 후에 이용 가능합니다.";
 			mav.setViewName("/carpool/poolMsg");
+			mav.addObject("url","/index.do");
 			mav.addObject("msg",msg);
 			return mav;
 		}
@@ -205,6 +206,7 @@ public class PoolController
 		if (dto == null) {
 			String msg = "로그인 후에 이용 가능합니다.";
 			mav.setViewName("carpool/poolMsg");
+			mav.addObject("url","/index.do");
 			mav.addObject("msg", msg);
 		} else {
 			mav.setViewName("carpool/poolMasterAdd01");
@@ -221,10 +223,18 @@ public class PoolController
 		int count=myPageDao.myProfileUpdate(dto);
 		
 		List lists=poolDao.getCarInfo(userid);
+		
 
+		ModelAndView mav=new ModelAndView();
+		
+		if(lists.isEmpty())
+		{
+			mav.addObject("msg","등록된 차량이 없습니다. 차량을 등록해주세요.");
+			mav.addObject("url","carAdd.do");
+		}
+		
 		carInfoDTO dto2=(carInfoDTO)lists.get(0);
 		
-		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("dto",dto2);
 		
@@ -585,6 +595,7 @@ public class PoolController
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("msg",msg);
+		mav.addObject("url","poolList.do");
 		
 		mav.setViewName("carpool/poolMsg");
 		
@@ -631,6 +642,7 @@ public class PoolController
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("msg",msg);
+		mav.addObject("url","poolList.do");
 		
 		mav.setViewName("carpool/poolMsg");
 		
@@ -711,7 +723,7 @@ public class PoolController
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("msg",msg);
-		
+		mav.addObject("url","poolList.do");
 		mav.setViewName("carpool/poolMsg");
 		
 		return mav;
@@ -773,7 +785,7 @@ public class PoolController
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("msg",msg);
-		
+		mav.addObject("url","poolList.do");
 		mav.setViewName("carpool/poolMsg");
 		
 		return mav;
@@ -856,7 +868,7 @@ public class PoolController
 		}
 		else
 		{
-			mav.setViewName("redirect:carpool/poolMain");
+			mav.setViewName("redirect:poolList.do");
 		}
 		
 		return mav;
@@ -934,6 +946,7 @@ public class PoolController
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("msg", msg);
+		mav.addObject("url","poolList.do");
 		
 		mav.setViewName("carpool/poolMsg");
 	
@@ -1020,7 +1033,7 @@ public class PoolController
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("msg", msg);
-		
+		mav.addObject("url","poolList.do");
 		mav.setViewName("carpool/poolMsg");
 		
 		return mav;
@@ -1043,7 +1056,7 @@ public class PoolController
 			String msg=count>0?"성공":"실패";
 			
 			mav.addObject("msg",msg);
-			
+			mav.addObject("url","poolList.do");
 			mav.setViewName("/carpool/poolMsg");
 			
 			return mav;
@@ -1053,7 +1066,7 @@ public class PoolController
 			String msg="자신이 쓴 글만 지울 수 있습니다.";
 			
 			mav.addObject("msg",msg);
-			
+			mav.addObject("url","poolList.do");
 			mav.setViewName("/carpool/poolMsg");
 			
 			return mav;

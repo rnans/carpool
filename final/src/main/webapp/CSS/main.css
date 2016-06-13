@@ -61,6 +61,7 @@ header nav li
 
 #section0 h1
 {
+	font-family: NanumsquareR;
 	font-size: 80px;
 	text-shadow: aqua;
 	color: #4F2E00;
@@ -83,13 +84,20 @@ header nav li
 	padding: 10px;
 }
 
+#mainTitle
+{
+	
+	font-family: NanumSquareR;
+}
+
 #mainTitle2
 {
 	font-size: 72px;
 	text-shadow: aqua;
 	color: #fff;
 	margin: 0px auto;
-
+	
+	font-family: NanumSquareR;
 	padding: 15px;
 }
 
@@ -109,6 +117,7 @@ header nav li
 	color: #4F2E00;
 	margin: 0px auto;
 
+	font-family: NanumSquareR;
 	padding: 15px;
 }
 

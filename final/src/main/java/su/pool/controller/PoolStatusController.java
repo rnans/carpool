@@ -1,6 +1,7 @@
 package su.pool.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -67,8 +68,9 @@ public class PoolStatusController
 			int count=poolStatusDao.makeMemberStatus(memberDto);
 			int count2=poolStatusDao.reqToMaster(masterDto);
 			
-			String msg=count+count2>=2?"성공":"실패";
+			String msg=count+count2>=0?"성공":"실패";
 			mav.addObject("msg",msg);
+			mav.addObject("url","poolStatus.do");
 			mav.setViewName("carpool/poolMsg");
 		}
 		else
@@ -106,7 +108,8 @@ public class PoolStatusController
 				int count=poolStatusDao.makeMemberStatus(memberDto);
 				int count2=poolStatusDao.reqToMaster(masterDto);
 				
-				String msg=count+count2>=2?"성공":"실패";
+				String msg=count+count2>=0?"성공":"실패";
+				mav.addObject("url","poolStatus.do");
 				mav.addObject("msg",msg);
 				mav.setViewName("carpool/poolMsg");
 			}
@@ -136,8 +139,8 @@ public class PoolStatusController
 	
 					int count3=poolStatusDao.reqToMember(memberDto2);	
 					
-					String msg=count+count2+count3>=3?"성공":"실패";
-					
+					String msg=count+count2+count3>=1?"성공":"실패";
+					mav.addObject("url","poolStatus.do");
 					System.out.println(msg);
 				}
 				
@@ -170,8 +173,9 @@ public class PoolStatusController
 			int count=poolStatusDao.makeMemberStatus(memberDto);
 			int count2=poolStatusDao.reqToMaster(masterDto);
 			
-			String msg=count+count2>=2?"성공":"실패";
+			String msg=count+count2>=0?"성공":"실패";
 			mav.addObject("msg",msg);
+			mav.addObject("url","poolStatus.do");
 			mav.setViewName("carpool/poolMsg");
 		}
 		else
@@ -230,8 +234,9 @@ public class PoolStatusController
 				int count=poolStatusDao.makeMemberStatus(memberDto);
 				int count2=poolStatusDao.reqToMaster(masterDto);
 				
-				String msg=count+count2>=2?"성공":"실패";
+				String msg=count+count2>=0?"성공":"실패";
 				mav.addObject("msg",msg);
+				mav.addObject("url","poolStatus.do");
 				mav.setViewName("carpool/poolMsg");
 			}
 			else
@@ -260,8 +265,9 @@ public class PoolStatusController
 	
 					int count3=poolStatusDao.reqToMember(memberDto2);	
 					
-					String msg=count+count2+count3>=3?"성공":"실패";
 					
+					String msg=count+count2+count3>=0?"성공":"실패";
+					mav.addObject("url","poolStatus.do");
 					System.out.println(msg);
 				}
 				
@@ -291,6 +297,7 @@ public class PoolStatusController
 		{
 			String msg="<타세요> 글 작성 후에 이용 가능합니다.";
 			mav.addObject("msg",msg);
+			mav.addObject("url","poolStatus.do");
 			mav.setViewName("carpool/poolMsg");
 		}
 		else
@@ -333,6 +340,7 @@ public class PoolStatusController
 			{
 				mav.addObject("msg","일치하는 <타세요> 글이 없습니다.");
 				System.out.println("목록 없음");
+				mav.addObject("url","poolStatus.do");
 			}
 			else
 			{
@@ -362,9 +370,10 @@ public class PoolStatusController
 	
 					int count3=poolStatusDao.reqToMember(memberDto2);	
 					
-					String msg=count+count2+count3>=3?"성공":"실패";
+					String msg=count+count2+count3>=0?"성공":"실패";
 					
 					System.out.println(msg);
+					mav.addObject("url","poolStatus.do");
 				}
 				
 				mav.addObject("msg","성공");
@@ -395,6 +404,7 @@ public class PoolStatusController
 			String msg="<타세요> 글 작성 후에 이용 가능합니다.";
 			mav.addObject("msg",msg);
 			mav.setViewName("carpool/poolMsg");
+			mav.addObject("url","poolStatus.do");
 		}
 		else
 		{
@@ -451,6 +461,7 @@ public class PoolStatusController
 			if(ownLists.isEmpty())
 			{
 				mav.addObject("msg","일치하는 <타세요> 글이 없습니다.");
+				mav.addObject("url","poolList.do");
 				System.out.println("목록 없음");
 			}
 			else
@@ -487,6 +498,7 @@ public class PoolStatusController
 				}
 				
 				mav.addObject("msg","성공");
+				mav.addObject("url","poolStatus.do");
 				
 				
 			}
@@ -552,7 +564,6 @@ public class PoolStatusController
 		mav.addObject("memlist", memlist);
 		mav.addObject("pageStr",pageStr);
 
-		mav.setViewName("carpool/poolList");
 	
 		
 		mav.setViewName("carpool/poolStatus");
@@ -567,15 +578,22 @@ public class PoolStatusController
 		int totalCnt2=poolStatusDao.getOwnMasReqTotalCnt(id);
 		int ls2=10;
 		int pageSize2=5;
-		List<PoolDTO> maslist=poolStatusDao.viewOwnMasReqPoolList(cp, ls2, id);
+		List<PoolMasterStatusDTO> maslist=poolStatusDao.viewOwnMasReqPoolList(cp, ls2, id);
+		List pList=new ArrayList();
 		
+		for(int i=0;i<maslist.size();i++)
+		{
 		
+		PoolDateDTO pDTO=(PoolDateDTO)(poolStatusDao.getOwnPoolByIdx(maslist.get(i).getAimidx()).get(0));
+			pList.add(i, pDTO);
+		}
 		String pageStr2=
 				su.Page.SuBPage.makePage("poolMasReqList.do", totalCnt2, ls2, pageSize2, cp);
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("maslist", maslist);
 		mav.addObject("pageStr",pageStr2);
+		mav.addObject("pList",pList);
 		
 		String msgEl=(String)req.getAttribute("msgEl");
 		
@@ -627,7 +645,8 @@ public class PoolStatusController
 		String msg=count+count2>=2?"'성공'":"'실패'";
 		
 		mav.addObject("msg",msg);
-		mav.setViewName("redirect:poolMasReqList.do");
+		mav.addObject("url","poolMasReqList.do");
+		mav.setViewName("/carpool/poolMsg");
 		
 		return mav;
 	}
@@ -659,8 +678,9 @@ public class PoolStatusController
 		
 		req.setAttribute("msgEl", msgEl);
 		
-		mav.addObject("msgEl",msgEl);
-		mav.setViewName("redirect:poolMasReqList.do");
+		mav.addObject("msg",msg);
+		mav.addObject("url","poolMasReqList.do");
+		mav.setViewName("/carpool/poolMsg");
 		
 		return mav;
 	}
@@ -673,7 +693,7 @@ public class PoolStatusController
 		ModelAndView mav=new ModelAndView();
 		
 		String msg=count>0?"성공":"실패";
-		String url="/poolStatus.do";
+		String url="poolStatus.do";
 		
 		mav.addObject("msg", msg);
 		mav.addObject("url",url);
@@ -692,7 +712,7 @@ public class PoolStatusController
 		ModelAndView mav=new ModelAndView();
 		
 		String msg=count+count2>1?"성공":"실패";
-		String url="/poolMasReqList.do";
+		String url="poolMasReqList.do";
 		
 		mav.addObject("msg", msg);
 		mav.addObject("url",url);
@@ -713,7 +733,7 @@ public class PoolStatusController
 		ModelAndView mav=new ModelAndView();
 		
 		String msg=count+count2>1?"성공":"실패";
-		String url="/poolMemReqList.do";
+		String url="poolMemReqList.do";
 		
 		mav.addObject("msg", msg);
 		mav.addObject("url",url);
@@ -734,7 +754,7 @@ public class PoolStatusController
 		ModelAndView mav=new ModelAndView();
 		
 		String msg=count+count2>1?"성공":"실패";
-		String url="/poolMemReqList.do";
+		String url="oolMemReqList.do";
 		
 		mav.addObject("msg", msg);
 		mav.addObject("url",url);

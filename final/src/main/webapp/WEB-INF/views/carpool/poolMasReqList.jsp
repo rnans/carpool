@@ -163,7 +163,9 @@ function viewMyPool(i)
 				<div class="col-xs-12">
 					<div class="box">
 						<div class="box-header">
-							<h3 class="box-title">PoolName 요청 진행 상황</h3>
+						<c:forEach var="pDTO" items="${pList}">
+							<h3 class="box-title">${pDTO.poolname } 요청 진행 상황</h3>
+						</c:forEach>
 						</div>
 
 						<!-- /.box-header -->

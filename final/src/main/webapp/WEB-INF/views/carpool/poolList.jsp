@@ -62,7 +62,7 @@
 							<c:param name="idx">${dtos.idx }</c:param>
 						</c:url>
 						<c:if test="${i.count%2==0}">
-						
+
 						</c:if>
 						<div class="col-md-6 col-sm-6 portfolio-item">
 							<div class="innerDiv">
@@ -80,28 +80,30 @@
 								</div>
 								<p class="text-right">
 									<span class="glyphicon glyphicon-calenda" aria-hidden="true"></span>
-									${dtos.termtype} <span class="text-right"><i class="fa fa-users" aria-hidden="true"></i> ${dtos.mannum }/ <i class="fa fa-krw" aria-hidden="true"></i> ${dtos.pay }</span>
+									${dtos.termtype} <span class="text-right"><i
+										class="fa fa-users" aria-hidden="true"></i> ${dtos.mannum }/ <i
+										class="fa fa-krw" aria-hidden="true"></i> ${dtos.pay }</span>
 								</p>
 								<p class="text-right">
-								<i
-					class="fa fa-calendar" aria-hidden="true"></i><span class="glyphicon glyphicon-calenda" aria-hidden="true"> ${dtos.starttime}</span>
+									<i class="fa fa-calendar" aria-hidden="true"></i><span
+										class="glyphicon glyphicon-calenda" aria-hidden="true">
+										${dtos.starttime}</span>
 								</p>
 							</div>
 						</div>
 						<c:if test="${i.count%2==0}">
-					
-					</c:if>
-				</c:forEach>
-				   <!-- Pagination -->
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-				${pageStr }
-				</ul>
-				</div>
+
+						</c:if>
+					</c:forEach>
+					<!-- Pagination -->
+					<div class="row text-center">
+						<div class="col-lg-12">
+							<ul class="pagination">${pageStr}
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
 	</section>
 	<script src="/final02/js/jquery-1.12.4.min.js"></script>
 	<script

@@ -10,14 +10,61 @@
 <script src="/final02/js/jquery.fullPage.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+  
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+
+}
+#sec0_content
+{
+	z-index:500;
+	opacity: 1;
+	
+}
+.titles
+{
+	background: rgba(0, 138, 230, 0.7);
+}
+#section0
+{
+	z-index: 50;
+	   opacity: 0.8;
+}
+#section1
+{
+	z-index:50;
+}
+#section2
+{
+	z-index:50;
+}
+</style>
 </head>
 <body>
 
 <div id="fullpage">
-<section class="section" id="section0" style="background-image: url('http://localhost:9090/final02/img/comm2.jpg'); opacity:10%; "> <!-- 백그라운드 이미지 박혀있음 기본꺼는 -->
+<section class="section" id="section0" > <!-- 백그라운드 이미지 박혀있음 기본꺼는 -->
+	
+	<video autoplay loop id="bgvid">
+    <source src="/final02/video/main.mp4" type="video/mp4">
+	</video>
 	<article id="sec0_content" >
+	<div class="titles">
 	<h1 id="mainTitle">편리한 카풀</h1>
 	<p id="sub_title">Pool PARTY, 카풀 서비스</p>
+	</div>
 	<!-- <div id="third">빨리타
 		<br>
 		<a href="#"><img src="/final02/img/pMmber.jpg" id="gg"></a>
@@ -63,15 +110,14 @@
 	</article>
 
 </section>
-<section class="section" id="section1">
+<section class="section" id="section1" style="background-image:url('/final02/img/subbus.jpg'); opacity:100%; ">
 	<article>
-		<img class="logo" src="/semi/img/logo.jpg">
 		<h2 id="mainTitle2">지옥철, 지옥버스 지긋지긋하시죠?</h2>
 		<p id="sub_title2">당신의 소중한 시간을 지켜드립니다.
 		<br>즐거운 이동, 저희 카풀파티에서 느껴보세요!</p>
 	</article>
 </section>
-<section class="section" id="section2">
+<section class="section" id="section2" style="background-color: #58D3F7">
 	<article >
 		<h2 id="mainTitle3">사용 방법</h2>
 		<div id="third">

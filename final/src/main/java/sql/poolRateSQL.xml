@@ -7,7 +7,7 @@
 	select * from rate
 	</select>
 	<select id="getAvrRateByAimid" parameterType="String" resultType="su.pool.model.PoolRateAvgDTO">
-	select avg(rate)avg, 
+	select round(avg(rate),1)avg, 
 	count(*)count,
 	round((count(case when rate=1 then 1 end)/count(*))*100)r1,
 	round((count(case when rate=2 then 1 end)/count(*))*100)r2,
