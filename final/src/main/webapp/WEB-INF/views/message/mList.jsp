@@ -30,7 +30,8 @@ var sendid=null;
 	function mCon(idx){
 		var param = '?idx='+idx;
 		location.reload();
-		window.open('messageContent.do'+param,'mCon','width=450,height=270');
+		//window.open('messageContent.do'+param,'mCon','width=450,height=270');
+		window.open('messageContent.do'+param,'mCon','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+',width=570, height=270px' );
 	}
 	function allDel(){
 		if(confirm("메시지를 모두 삭제 하시겠습니까?")){
@@ -49,12 +50,13 @@ var sendid=null;
 	function Test(idx){
 		var param = '?idx='+idx;
 		location.reload();
-		window.open('messageReWrite.do'+param,'mrWrite','width=450,height=270');
+		//window.open('messageReWrite.do'+param,'mrWrite','width=450,height=270');
+		window.open('messageReWrite.do'+param,'mrWrite','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+',width=450, height=270px' );
 		
 	}
 	function profile(sendid){
 		var param='?sendid='+sendid;
-		window.open('profile.do'+param,'profile','width=370,height=460;');
+		window.open('profile.do'+param,'','left='+(screen.availWidth-360)/2+',top='+(screen.availHeight-500)/2+',width=321, height=443px' );
 	}
 	
 </script>
@@ -161,6 +163,6 @@ var sendid=null;
   </div>
       <!-- /.modal-dialog --> 
     </div>
-
+	<%-- //<%@include file="../footer.jsp" %> --%>
 </body>
 </html>

@@ -10,6 +10,40 @@
 <script src="js/httpRequest.js"></script>
 <link rel="stylesheet" type="text/css" href="CSS/set1.css" />
 <link rel="stylesheet" type="text/css" href="CSS/pay.css" />
+<style>
+	#rig2{
+		text-align: right;
+	}
+	#rig2 a{
+		color: black;
+	}
+.button{
+	float: none;
+	margin:0 auto;
+}
+
+</style>
+<script src="/final02/js/httpRequest.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.3.js"></script>
+<script src="/final02/bootstrap/js/bootstrap.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<link href="/final02/CSS/cssReset.css" rel="stylesheet" type="text/css" />
+<link href="/final02/fonts/font-awesome-4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+<!-- 텍스트상자 -->
+<link rel="stylesheet" type="text/css" href="/final02/CSS/set1.css" />
+
+<!-- 로그인 버튼 -->
+<link rel="stylesheet" type="text/css" href="/final02/CSS/buttons.css" />
+
+<!-- 로그인 모달사용 -->
+<link rel="stylesheet" type="text/css" href="/final02/CSS/dialog-sally.css" />
+<link rel="stylesheet" type="text/css" href="/final02/CSS/dialog.css" />
+
+
+<link href="/final02/CSS/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="/final02/CSS/menu.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/pay.js"></script>
 <script>
 
@@ -44,7 +78,9 @@
 		location.href="sample_crossplatform.rms";
 	}
 </script>
+
 <style>
+
 	.ownCard{display:none;}
 	.newCard{display:none;}
 	input[type=text]{height:15px;}
@@ -83,12 +119,11 @@
 	.btn.active span.glyphicon {opacity: 1;}
 	.btn-group{margin-top:20px;}
 	hr{border:3px; }
+	
 </style>
 </head>
 <body>	
-	<%@ include file="../header.jsp" %>
 	<div class="section" style="width:500px; margin: 0px auto;">
-	<h3>결제 정보창 페이지</h3>
 	
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

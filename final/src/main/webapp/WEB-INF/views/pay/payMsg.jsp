@@ -2,5 +2,6 @@
     pageEncoding="UTF-8"%>
 <script>
 	window.alert('${msg}');
-	location.href="index.do";
+	window.self.close();
+	window.opener.location.href="index.do";
 </script>
