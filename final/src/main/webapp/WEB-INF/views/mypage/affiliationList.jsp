@@ -653,8 +653,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                <td style="font-size: 13px;">${dto.pay}</td>
                <td style="font-size: 13px;">${dto.startdate}</td>
                <td style="font-size: 13px;">${dto.enddate}</td>
-               <td> <button type="button" onclick="poolDel('${dto.poolname}')"   value="탈퇴">탈퇴</button></td>
-            </tr>
+               <td><button class="btn btn-default btn-xs" type="button" onclick="poolDel(${dto.poolname})" value="탈퇴">탈퇴</button></td>
+            </tr> 
          </c:forEach>
          </tbody>
       </table>
