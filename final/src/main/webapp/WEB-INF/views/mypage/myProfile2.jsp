@@ -590,10 +590,32 @@ window.onload=function(){
 			<button class="menu-button" id="open-button">Open Menu</button>
 			<div class="content-wrap">
 				<div class="content">
-					<header class="codrops-header">
-						<h3>프로필수정</h3>
+				
+				
+				<div data-uiselector="bandNoticeRegion" style="width: 60%;min-height:600px; margin: 0px auto;padding-top: 30px;">
+					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
+						style="display: block;  margin-bottom: 15px; min-height:460px;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    background: #FFF;">
+					
+						<h2 class="tit" style="
+    position: relative;
+    height: 43px;
+    padding: 0 0 0 20px;
+    line-height: 43px;
+    background: #FDFDFD;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 4px 4px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none!important;
+    margin-top: 0px;
+   
+">프로필</h2>
 						
-						<div class="codrops-links">
+						
 					
 					
 	
@@ -610,10 +632,9 @@ window.onload=function(){
 	</div>
 <div>
 	<form name="myprofile" action="myProfileUpdate.do">
-	<fieldset>
+	
 		
 	<div class="center-block">
-	<div class="row">
 		<div class="col-xs-4">
 			아이디<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
 			
@@ -641,25 +662,21 @@ window.onload=function(){
 				</p>
 			</div>
 		</div>	
-	</div>
+	
 				
-		</fieldset>
+	
 	</form>
 	
 	</div>
 </div>						
-						<nav class="codrops-demos">
-							
-						
-						</nav>
-				</header>
+			</div>			
 					<!-- Related demos -->
 					<section class="related">
 					
 					</section>
-				</div>
-			</div><!-- /content-wrap -->
-		</div><!-- /container -->
+			</div></div>	</div>
+		<!-- /content-wrap -->
+		<!-- /container -->
 		<script src="js/classie.js"></script>
 		<script src="js/main.js"></script>
 		
