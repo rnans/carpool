@@ -629,7 +629,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<td style="font-size: 13px;">${dto.idx }</td>
 					<td style="font-size: 13px;">${dto.cardid }</td>
 					<td style="font-size: 13px;">${dto.cardtype1 }</td>
-					<td style="font-size: 13px;">${dto.cardnum }</td>
+					<td style="font-size: 13px;">${dto.cardnum1 }-${dto.cardnum2 }-${dto.cardnum3 }-${dto.cardnum4 }</td>
 					<td style="font-size: 13px;">${dto.cardterm }</td>
 					<td style="font-size: 13px;">${dto.cardtype2 }</td>
 					<td>

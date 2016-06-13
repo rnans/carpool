@@ -63,6 +63,13 @@ public class yangMyPageController {
 		String userid = (String) session.getAttribute("sid");
 		List<yangMypageDTO> dto = yangMyPageDao.allPayInfo(userid);
 
+		for(int i=0;i<dto.size();i++){
+		StringTokenizer tokens=new StringTokenizer(dto.get(i).getCardnum());
+			dto.get(i).setCardnum1(tokens.nextToken(","));
+			dto.get(i).setCardnum2(tokens.nextToken(","));
+			dto.get(i).setCardnum3(tokens.nextToken(","));
+			dto.get(i).setCardnum4(tokens.nextToken(","));
+		}
 		List<UploadDTO> dto2 = uploadDao.imgFind(userid);
 		
 		ModelAndView mav = new ModelAndView();
