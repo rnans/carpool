@@ -59,7 +59,7 @@
 	position: relative;
 	width:100%;
 	height:100%;
-	background: #E3DDDC;
+	background: #F6F6F6;
 	
 	
 }

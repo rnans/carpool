@@ -54,7 +54,7 @@
 
 .content {
 	position: relative;
-	background: #E3DDDC;
+	background: #F6F6F6;
 }
 
 /* Overlay */

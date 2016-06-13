@@ -55,7 +55,7 @@
 
 .content {
    position: relative;
-   background: #E3DDDC;
+   background: #F6F6F6;
 }
 
 /* Overlay */
@@ -555,7 +555,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
    </head>
    
-   <body>
+   <body style="    background-color: #F6F6F6;">
    <%@ include file="../header.jsp" %>
       <div class="Mycontainer">
          <div class="menu-wrap">
