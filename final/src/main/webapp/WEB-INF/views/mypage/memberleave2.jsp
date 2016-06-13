@@ -482,6 +482,9 @@ body #cdawrap {
 #my{
 	color:white;
 }
+.center-block{
+	
+}
 </style>
 
 
@@ -572,9 +575,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				
 				
 				
-					<section class="related">
+			<section class="related">
 					<nav class="codrops-demos">	
-						<div class="codrops-links">
+						<div class="codrops-links">		
 							
 				
 	<form name="memberDel" action="memDel.do">

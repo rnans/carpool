@@ -638,9 +638,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
          <button class="menu-button" id="open-button">Open Menu</button>
          <div class="content-wrap">
             <div class="content">
-               <header class="codrops-header">
-               	 
-         
+             
    
    <div data-uiselector="bandNoticeRegion" style="width: 70%;margin: 0px auto;padding-top: 30px;min-height: 650px;">
 					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
@@ -665,23 +663,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
    
 ">평가글</h2>
 				
-   
-   
-   
-   
-   
-   
-   
-   
-    <nav class="codrops-demos">    
-                  <div class="codrops-links">
-   
-   
-   
-   
-   
-   
-         
+
+
+ <div class="codrops-links">
 	<div class="bt2">
     <a href="javascript:setView()"><button class="button button--ujarak" value="내가한평가">내가한평가</button></a>
      <a href="javascript:getView()"><button class="button button--ujarak" value="내가한평가">내가받은평가</button></a>
@@ -763,9 +747,17 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
       </div>               
      </div>      
                 
+                
+                
+                
+                
+                   
+         	 
+    				<nav class="codrops-demos">		
                   </nav>
-              
-              </header>
+                 <header class="codrops-header">
+         	 </header>
+             
                <!-- Related demos -->
                <section class="related">
                
