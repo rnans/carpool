@@ -145,7 +145,8 @@ body{
 }
 @media (min-width: 480px) {
 .gal-container .modal-dialog {
-    width: 55%;
+    width: 50%;
+    height:70%;
     margin: 50 auto;
 }
 }

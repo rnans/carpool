@@ -206,7 +206,7 @@ margin: 0 0 0 50px;
         <li  style="min-width:150px;"><a href="graph2.do" style="padding-top: 9px;padding-left: 20px;"><i class="fa fa-line-chart" aria-hidden="true" style="color:white;"></i>
      <font style="color:white;"> 거리 그래프</font></a></li>
         <li style="min-width:150px;"><a href="#" style="padding-top: 9px;padding-left: 20px;"><i class="fa fa-bar-chart" aria-hidden="true" style="color:white;"></i>
-   <font style="color:white;">임시 그래프</font>  </a></li> 
+   <font style="color:white;">기간별 그래프</font>  </a></li> 
       </ul>
 </div>
 

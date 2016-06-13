@@ -361,7 +361,7 @@ a, a:focus, a:hover {
 	<div id="topBar" data-uiselector="gnbMenu">
 		<div class="inner">
 			<a href="#" data-uiselector="btnMyBands" data-icon="home-on"
-				data-status="active" style="text-decoration: none;">파티 홈</a> <a href="#" style="text-decoration: none;"
+				data-status="active" style="text-decoration: none;">파티 홈</a> <a href="poolFindForm.do" style="text-decoration: none;"
 				data-uiselector="btnDiscover" data-icon="search02">파티 찾기</a> <a
 				href="#" data-uiselector="btnMore" data-icon="more-basic" style="text-decoration: none;">더보기</a>
 			<a href="#" data-icon-a="download2"
@@ -463,7 +463,7 @@ a, a:focus, a:hover {
 				
 				<li data-viewname="DBandCollectionItemView"><div class="uCover"
 						data-type="type4">
-						<a href="#" class="bandUri" style="text-decoration: none;"><div class="cover">
+						<a href="poolAdd.do" class="bandUri" style="text-decoration: none;"><div class="cover">
 								<img class="coverImg"
 									src="http://s.cmstatic.net/webclient/dres/20160602183753/images/template/empty_cover_img.png"
 									alt="">
