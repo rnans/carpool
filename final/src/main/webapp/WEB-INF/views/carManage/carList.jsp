@@ -519,7 +519,22 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 }
 
 </style>
-
+<script>
+window.onload=function(){
+   checkMain();
+}
+function checkMain(){
+   
+   var cars=document.getElementsByName('carid');
+   
+   for(var i=0;i<cars.length;i++)
+   {
+      if(cars[i].value==1){
+         cars[i].checked=true;
+      }
+   }
+}
+</script> 
 
 <script>
 var _gaq = _gaq || [];
@@ -530,27 +545,11 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-
-function allCheck(){
-	
-	var allCheck1=document.getElementById("blankCheckbox1");
-	var oneCheck=document.getElementsByName("idx");
-	
-		if(allCheck1.checked==true){
-			
-			for(var i=0;i<oneCheck.length;i++){
-				
-			oneCheck[i].checked=true;
-			
-			}
-		}else if(allCheck1.checked==false){
-			
-			for(var i=0;i<oneCheck.length;i++){
-				
-			oneCheck[i].checked=false;
-			}
-		}
-}
+function carMain(idx){
+	   
+	   var param="?idx="+idx;
+	   window.location.href = 'carMain.do'+param;
+	}
 </script>
 	</head>
 	<body>
