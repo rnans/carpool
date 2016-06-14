@@ -513,7 +513,7 @@ window.onload=function(){
 			<div>
 				<div class="previewHead">
 					<div class="previewTitle">
-						<strong>사진</strong> <em class="num1">2</em><em class="num2">/50</em>
+						<strong>사진</strong> <em class="num1"></em><em class="num2">/50</em>
 					</div>
 					<button type="button" class="previewDelete" data-icon="pc-waste" onclick="document.getElementById('picclick').click();"
 						data-uiselector="btnRemoveAllMedia" >
@@ -650,7 +650,7 @@ window.onload=function(){
 						<c:forEach var="img" items="${imglist}">
 						<c:if test="${img.id==bbs.id}">
 						<a href="javascript:sex('${bbs.id }')" data-uiselector="Img"> <img class="profileImg"
-							src="http://partypool2.azurewebsites.net/final02/img/${img.filename}"
+							src="http://pool.sarte.kr/final02/img/${img.filename}"
 							alt="by남구문">
 						</a>
 						</c:if>
@@ -693,7 +693,7 @@ window.onload=function(){
 									<div class="_attachmentPhotosRegion" style="margin-left: auto;margin-right: auto;">
 										<div data-viewname="DPostPhotoListView" class="uWidget" style="margin-left: auto;margin-right: auto;">
 											<div style="text-align: center;">
-												<img src="http://partypool2.azurewebsites.net/final02/img/${bbs.photo}"
+												<img src="http://pool.sarte.kr/final02/img/${bbs.photo}"
 													alt="" style="max-width: 500px;max-height: 300px;">
 											</div> 
 										</div>
@@ -733,7 +733,7 @@ window.onload=function(){
 					<c:forEach var="img" items="${imglist}">
 						<c:if test="${img.id==re.id}">
 						<a href="javascript:sex('${bbs.id }')"  class="thum" data-uiselector="authorProfile"> 
-						<img src="http://partypool2.azurewebsites.net/final02/img/${img.filename}" 
+						<img src="http://pool.sarte.kr/final02/img/${img.filename}" 
 						style="width: 45px;height: 45px;">
 						</a>
 						</c:if>
