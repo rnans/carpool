@@ -241,7 +241,7 @@
 										<c:if test="${img.id==l.userid }">
 										<a href="javascript:uid='${l.userid }';msgOpen();"><span> 
 									
-										<img src="http://localhost:9090/final02/img/${img.filename}"
+										<img src="http://pool.sarte.kr/final02/img/${img.filename}"
 												width="38" height="38" data-skinfactor="tBorder">
 										
 										</span> <span><strong title="123">&nbsp;&nbsp;${l.userid}</strong> <span></span></span></a>
