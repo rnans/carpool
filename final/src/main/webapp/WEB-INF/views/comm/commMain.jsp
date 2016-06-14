@@ -402,7 +402,7 @@ a, a:focus, a:hover {
 						<a href="comm.do?poolname=${poollist[0].poolname }" class="bandUri" style="text-decoration: none;"><div class="cover"
 								data-skinfactor="beforeBg">
 								<img class="coverImg"
-									src="http://coresos.phinf.naver.net/a/2gegeb_c/18aUd015f6anox25rtzm_5ksoqj.jpg?type=cover_a264"
+									src="http://localhost:9090/final02/img/${carimg.car0}"
 									alt="">
 							</div>
 							<div class="bandName">
