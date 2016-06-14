@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import su.pool.model.PoolDTO;
 import su.upload.model.UploadDTO;
 
 
@@ -113,6 +114,18 @@ public class commDAOImple implements commDAO {
 		
 		List<carpoolinfoDTO> list=sqlMap.selectList("poollist", id);
 		return list;
+	}
+	
+	public List<PoolDTO> carlist(String poolname){
+		List<PoolDTO> list=sqlMap.selectList("carlist", poolname);
+		return list;
+		
+	}
+	
+	public String carimg2(int caridx){
+		
+		String carimg=sqlMap.selectOne("carimg2", caridx);
+		return carimg;
 	}
 	
 	

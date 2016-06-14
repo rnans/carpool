@@ -17,6 +17,7 @@ import su.comm.model.carpoolinfoDTO;
 import su.comm.model.commBBSDTO;
 import su.comm.model.commDAO;
 import su.comm.model.scheDTO;
+import su.pool.model.PoolDTO;
 import su.upload.model.UploadDTO;
 
 import java.io.File;
@@ -316,8 +317,18 @@ public class commController {
 		}else{		
 
 		List<carpoolinfoDTO> poollist=commDao.poollist(sid);
+		HashMap map=new HashMap();
+		for(int i=0;i<poollist.size();i++){
+			List<PoolDTO> carlist=commDao.carlist(poollist.get(i).getPoolname());
+			
+			String carimg=commDao.carimg2(carlist.get(0).getCaridx());
+			map.put("car"+i, carimg);
+		}
+		
+		System.out.println(map.get("car0"));
 		
 		mav.addObject("poollist", poollist);
+		mav.addObject("carimg", map);
 		
 		mav.setViewName("comm/commMain");
 		return mav;

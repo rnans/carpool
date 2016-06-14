@@ -94,4 +94,13 @@
 		select * from carpoolinfo where id = #{id}
 	</select>
 	
+	
+	<select  id="carlist" parameterType="String" resultType="su.pool.model.PoolDTO">
+	select poolname, caridx from reservationlist where pooltype='타세요' and poolname=#{poolname}
+	</select>
+	
+		<select id="carimg2" parameterType="Integer" resultType="String">
+		select carphoto from carinfo where idx=#{caridx}
+	</select>
+	
 </mapper>

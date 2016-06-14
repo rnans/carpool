@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import su.pool.model.PoolDTO;
 import su.upload.model.UploadDTO;
 
 
@@ -40,5 +41,9 @@ public interface commDAO {
 	
 	public List<carpoolinfoDTO> poollist(String id);
 	//uploadtest
+	
+	public List<PoolDTO> carlist(String poolname);
+	
+	public String carimg2(int caridx);
 	
 }
