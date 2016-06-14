@@ -208,14 +208,15 @@ footer a,footer a:hover{
       <div class="box">
        <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#1">
-          <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+        
+          	<img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="1" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document" style="position: absolute; margin-left: auto; margin-right: auto; ">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+              <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
                   <h4>This is Upload by ${list[i].id}</h4>
@@ -236,14 +237,14 @@ footer a,footer a:hover{
       <div class="box">
        <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#2">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+         <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="2" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="position: absolute; left:0px; ">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+            <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
                   <h4>This is Upload by ${list[i].id}</h4>
@@ -266,14 +267,14 @@ footer a,footer a:hover{
       <div class="box">
        <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#3">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+          <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="3" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document" style="position: absolute; right:100px;">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-                  <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+               <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
                   <h4>This is Upload by ${list[i].id}</h4>
@@ -294,14 +295,14 @@ footer a,footer a:hover{
       <div class="box">
        <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#4">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+          <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="4" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="position: absolute; left:0px; ">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+            <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
                   <h4>This is Upload by ${list[i].id}</h4>
@@ -323,14 +324,14 @@ footer a,footer a:hover{
       <div class="box">
        <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#5">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+          <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="5" tabindex="-1" role="dialog">
           <div class="modal-dialog"  role="document"  style="position: absolute; left:0px; ">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+                 <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
                   <h4>This is Upload by ${list[i].id}</h4>
@@ -352,14 +353,14 @@ footer a,footer a:hover{
       <div class="box">
        <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#6">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+          <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="6" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="left:0px;">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-                <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+             <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
                   <h4>This is Upload by ${list[i].id}</h4>
@@ -381,14 +382,14 @@ footer a,footer a:hover{
       <div class="box">
       <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#7">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+          <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="7" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="left:0px;">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-                <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+                 <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
                   <h4>This is Upload by ${list[i].id}</h4>
@@ -409,14 +410,14 @@ footer a,footer a:hover{
       <div class="box">
        <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#8">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+          <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="8" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="left:0px;">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+               <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
                   <h4>This is Upload by ${list[i].id}</h4>
@@ -437,14 +438,14 @@ footer a,footer a:hover{
       <div class="box">
        <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#9">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+         <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="9" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="left:0px;">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+		 <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
                   <h4>This is Upload by ${list[i].id}</h4>
@@ -465,14 +466,14 @@ footer a,footer a:hover{
       <div class="box">
         <c:if test="${!(empty list[i].filename)}">
         <a href="#" data-toggle="modal" data-target="#10">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+           <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
         </a>
         <div class="modal fade" id="10" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document"  style="left:0px;">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
               <div class="modal-body">
-               <img src="http://partypool2.azurewebsites.net/final02/img/${list[i].filename}">
+         <img src="http://pool.sarte.kr/final02/img/${list[i].filename}">
               </div>
                 <div class="col-md-12 description">
                    <h4>This is Upload by ${list[i].id}</h4>
