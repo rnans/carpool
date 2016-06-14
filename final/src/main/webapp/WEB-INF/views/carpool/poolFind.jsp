@@ -270,7 +270,7 @@
 				<form name="search" id="sForm" action="search.do">
 					<div class="row">
 						<div class="input input--nao col-md-12">
-							<input class="input__field input__field--nao" type="text" id="ss"
+							<input class="input__field input__field--nao" required="required" type="text" id="ss"
 								name="startspot"><br> <input type="hidden" id="sc"
 								name="startcoordi"> <label
 								class="input__label input__label--nao" for="ss"> <span
@@ -284,7 +284,7 @@
 						</div>
 						<br>
 						<div class="input input--nao col-md-12">
-							<input class="input__field input__field--nao" type="text" id="es"
+							<input class="input__field input__field--nao" required="required" type="text" id="es"
 								name="endspot"><br> <input type="hidden" id="ec"
 								name="endcoordi"> <label
 								class="input__label input__label--nao" for="es"> <span

@@ -23,7 +23,7 @@ AmCharts.makeChart("chartdiv",
 				"type": "pie",
 				"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 				"colors": [
-					"#368AFF","#FF5AFF"
+					"#428bca","#d9534f"
 						],
 				"titleField": "category",
 				"valueField": "column-1",
@@ -67,7 +67,7 @@ AmCharts.makeChart("chartdiv",
 						"allLabels": [],
 						"balloon": {},
 						"colors": [
-									"#495fba","#e8d685","#ae85c9","#c9f0e1","#d48652","#629b6d","#719dc3","#719dc3"
+									"#428bca","#d9534f","#5cb85c","#f0ad4e","rgb(51, 153, 255)","rgb(0, 115, 230)","rgb(57, 0, 230)","rgb(172, 0, 230)"
 										],
 						"legend": {
 							"enabled": true,

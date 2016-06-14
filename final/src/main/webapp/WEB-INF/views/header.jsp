@@ -40,11 +40,21 @@
 
 <script>
 </script>
+<style>
+.container--header
+{
+padding-left: 15px;
+padding-right: 15px;
+margin-right: auto;
+margin-left: auto;
+display: block;
 
+}
+</style>
 <header>
 
 <nav class="navbar navbar-findcond navbar-fixed-top">
-    <div class="container">
+    <div class="container--header">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
 				<span class="sr-only">Toggle navigation</span>

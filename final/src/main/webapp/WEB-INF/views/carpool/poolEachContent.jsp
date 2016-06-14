@@ -752,7 +752,7 @@
 								<div class="widget-user-image">
 									<c:forEach var="img" items="${lists}">
 										<c:if test="${img.id==dto.userid}">
-										<img class="img-circle" style="width:90px; height:90px;" src="img/${img.filename}"
+										<img class="img-circle" style="width:90px; height:90px;" src="http://partypool2.azurewebsites.net/final02/img/${img.filename}"
 											alt="User Avatar">
 										</c:if>
 									</c:forEach>
@@ -929,7 +929,7 @@
 										<c:forEach var="img" items="${lists}">
 											<c:if test="${rDtos.userid==img.id}">
 											<img
-												src="img/${img.filename}"
+												src="http://partypool2.azurewebsites.net/final02/img/${img.filename}"
 												alt="" />
 											</c:if>
 										</c:forEach>

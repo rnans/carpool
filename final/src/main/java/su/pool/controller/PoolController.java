@@ -110,8 +110,12 @@ public class PoolController
 	@RequestMapping("/poolFind.do")
 	public ModelAndView poolFind(String termtype, String pooltype, String smoking, String gender, String startspot, String endspot, String slat, String slng, String elat, String elng)
 	{
+
+		
 		ModelAndView mav=new ModelAndView();
-			
+		
+		try{	
+		
 		HashMap map=new HashMap();
 		
 		map.put("termtype", termtype);
@@ -135,13 +139,21 @@ public class PoolController
 		if(lists.isEmpty())
 		{
 			mav.addObject("msg","검색된 결과가 없습니다.");
+			mav.addObject("url", "poolFindForm.do");
 			mav.setViewName("/carpool/poolMsg");
 		}
 		else{
 		mav.addObject("list",lists);
-		
 		mav.setViewName("/carpool/poolList");
 		}
+	}
+	catch(Exception e)
+	{
+		mav.addObject("msg","다시 시도해 주세요.");
+		mav.addObject("url", "poolFindForm.do");
+		mav.setViewName("/carpool/poolMsg");
+	}
+		
 		return mav;
 	}
 	
@@ -226,6 +238,9 @@ public class PoolController
 	
 	@RequestMapping("/poolMasterAdd02.do")
 	public ModelAndView viewMasterAddPage2(HttpSession session,HttpServletRequest req,MypageDTO dto){
+		
+		
+		
 		
 		String userid = (String) session.getAttribute("sid");
 
