@@ -101,8 +101,11 @@ public class carInfoController {
 		
 		String userid = (String) session.getAttribute("sid");
 		MemberDTO dto2=carInfoDao.username(userid);
+		List<UploadDTO> dto3=uploadDao.imgFind(userid);
 		dto.setDriver(dto2.getName());
+		
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("dto3",dto3);
 		mav.addObject("dto", dto);
 		mav.setViewName("carManage/carAdd");
 		return mav;
@@ -219,6 +222,8 @@ public class carInfoController {
 				mav.addObject("carImage",dto);*/
 			
 			List<carInfoDTO> lists = carInfoDao.carAllList(userid);
+			List<UploadDTO> dto2=uploadDao.imgFind(userid);
+			mav.addObject("dto2",dto2);
 			mav.addObject("list", lists);
 			mav.setViewName("carManage/carList");
 		}
