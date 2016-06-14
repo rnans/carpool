@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>가장 편리한 카풀 서비스, 풀파티!</title>
-
 
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
@@ -56,7 +55,7 @@
 
 .content {
 	position: relative;
-	background: #F1F2F2;
+	background: #f6f6f6;
 }
 
 /* Overlay */
@@ -187,6 +186,7 @@
 }
 
 
+
 /***/
 @import url(http://fonts.googleapis.com/css?family=Raleway:200,400,700,800);
 @font-face {
@@ -234,9 +234,9 @@ section {
 
 /* Header */
 .codrops-header {
-
+	margin:;
 	padding: 3em 2em;
-	text-align: left;
+	text-align:left;
 }
 
 .codrops-header h1 {
@@ -253,15 +253,12 @@ section {
 	padding-top: 0.325em;
 }
 
-
-
 .codrops-links {
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 0.69em;
 	line-height: 2.2;
-	padding: 1.61em 5em;	
-	
+	padding: 1.61em 5em;
 }
 
 .codrops-links a {
@@ -515,32 +512,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 @media screen and (max-width: 460px){ 
 	body #cdawrap { display: none; }
 }
-//
-//
-.center-block {
-	display: block;
-    margin-right: 0 auto;
-    margin-left: 0 auto;
- 
-}
-
-// Usage as a mixin
-.element {
-  .center-block();
-} 
-
 #my{
 	color:white;
 }
 
-#imgf{
-	float:left;
-	margin:10px;
-}
-
-
 </style>
-
 
 
 <script>
@@ -552,47 +528,36 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-</script>
-<script>
-window.onload=function(){
-	
-	var m=document.getElementById('male');
-	var w=document.getElementById('female');
 
-	var sex='${dto.sex}';
+function allCheck(){
 	
-	if(sex=='남성'){
-		
-		m.checked=true;
-	}else{
-		
-		w.checked=true;
-	}
+	var allCheck1=document.getElementById("blankCheckbox1");
+	var oneCheck=document.getElementsByName("idx");
+	
+		if(allCheck1.checked==true){
+			
+			for(var i=0;i<oneCheck.length;i++){
+				
+			oneCheck[i].checked=true;
+			
+			}
+		}else if(allCheck1.checked==false){
+			
+			for(var i=0;i<oneCheck.length;i++){
+				
+			oneCheck[i].checked=false;
+			}
+		}
 }
 </script>
-<script type="text/javascript">
-function setRadioChk(e){ 
-   var srcEl = getSrc(e);
-   var radiochk = srcEl.form[srcEl.name]
-    for(var i=0;i<radiochk.length;i++){
-      if(radiochk[i].checked) radiochk[i].onpropertychange = function(e){getSrc(e).click()}
-      else radiochk[i].onclick = function(){return false};
-    }
-  }
-  function getSrc(e){
-    return e? e.target || e.srcElement : event.srcElement;
-  }
-</script>
 	</head>
-	
 	<body>
 	<%@ include file="../header.jsp" %>
-
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:50px;" src="http:/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
-					<div class="icon-list">                                        
+					<div class="profile"><img style="width:50px;height:50px;" src="http://localhost:8080/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${sessionScope.sname} 님 마이페이지</span></div>
+					<div class="icon-list">
 						<a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
 						<a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
 						<a href="messageList.do"><i class="fa fa-fw fa-envelope-o"></i></a>
@@ -613,97 +578,109 @@ function setRadioChk(e){
 				</nav>
 			</div>
 			<button class="menu-button" id="open-button">Open Menu</button>
-			
 			<div class="content-wrap">
-			
 				<div class="content">
+				<div style="margin-top : 85px;">
+    <div class="" style="margin: 0px auto;">
+    <p style="font-size:15px; margin-top : 65px;text-align: center;">
+    <font style="color:#5D5D5D;font-weight:bold; ;">    
+<font color="#4374D9" style="font-weight: bolder;">'POOL PARTY'</font>는 내가 가고싶은 곳을 더 쉽게 더 편하게 더 싸게 가게 해주는 카쉐어링 서비스입니다. <br>
+출퇴근, 여행, 가벼운 일탈 까지 이제 <font color="#4374D9" style="font-weight: bolder;">'POOL PARTY'</font>로 연결하세요.<br>
 
-
-
-				<div data-uiselector="bandNoticeRegion" style="width: 60%;margin: 0px auto;padding-top: 30px;">
-					<div data-viewname="DBandBoardNoticeView" class="noticeWrap" 
-						style="display: block;  margin-bottom: 15px;
-    border: 1px solid #D5D5D5;
-    border-radius: 2px;
-    background: #FFF;">
-					
-						<h2 class="tit" style="
-    position: relative;
-    height: 43px;
-    padding: 0 0 0 20px;
-    line-height: 43px;
-    background: #FDFDFD;
-    border-bottom: 1px solid #E5E5E5;
-    border-radius: 4px 4px 0 0;
-    font-size: 18px;
-    font-weight: 700;
-    color: #333;
-    text-decoration: none!important;
-    margin-top: 0px;
-   
-">프로필</h2>
-				
-				<div class="codrops-links">
-	
-		<div id="imgf">
-			<img style="width:300px; height:300px;" src="/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
-		</div>
-		
-		<div>
-			<form name="f" action="myProfile.do">
-			
-						
-<div class="center-block">
-	<div class="row">
-		<div class="col-xs-4">
-	
-	아이디<input type="text"  name="id" class="form-control" value="${dto.id}" readonly>
-	
-	이름<input type="text" name="name" class="form-control" value="${dto.name}" readonly>
-
-          생년월일<input type="text" name="birth" class="form-control" value="${dto.birth }" readonly>
-   
-	연락처<input type="text" name="phonenum" class="form-control" value="${dto.phonenum }" readonly>
-
-	사는곳<input type="text" name="addr" class="form-control" value="${dto.addr }" readonly>
+<!-- 누구나 쉽게 카풀을 만들어, 간단하게 파티를 구성하고, 온 오프라인 모두 우리만의 공간에서 모이세요. <br>
+이 모든 것이 <font color="#4374D9" style="font-weight: bolder;">'POOL PARTY'</font> 하나로 간편해집니다 !! -->
     
-	이메일<input type="text" name="email" class="form-control" value="${dto.email }" readonly>
-	
-	
-	<label class="radio-inline">
-  		<input type="radio" name="sex" id="male" value="남성" onfocus="setRadioChk(event)">
-  		<i class="fa fa-mars" aria-hidden="true"></i>
-  		
- 	</label>
-	<label class="radio-inline">
-  		<input type="radio" name="sex" id="female" value="여성" onfocus="setRadioChk(event)">
-  		<i class="fa fa-venus" aria-hidden="true"></i>
-  		
- 	</label><br>
-	
-	<button type="submit" class="btn btn-primary" value="프로필수정">프로필수정</button>
-	
-			</div>
-		</div>
-	</div>	
-		
-	
-</form>
+    </font>
+  <table class="table table-striped custab" style="width: 800px; margin:0px auto; margin-top: 40px;background-color: #fff;">
+			<thead>
+			<tr>
+				<th colspan="7"><font color="#4374D9" style="font-weight: bolder;">'PooL PARTY' </font> &nbsp;&nbsp; <font style="font-weight: bolder;">차량 관리</font> </th>
+			</tr>
+			</thead>
+			<tr>
+				<th class="text-center">대표차량</th>
+				<th style="text-align: center;">차량사진</th>
+				<th class="text-center">운전자</th>
+				<th class="text-center">차량번호</th>
+				<th class="text-center">차량종류</th>
+				<th class="text-center">인증여부</th>
+				<th class="text-center">관리</th>
+			</tr>
+
+			<c:if test="${empty list}">
+				<tr>
+					<td colspan="7" style="text-align: center;">등록된 차량이 없습니다.</td>
+				</tr>
+			</c:if>
+			<c:forEach var="dto" items="${list }">
+			
+				<tr style="vertical-align: middle;">
+					<td><input type="radio" style="margin-left: 30px; margin-top: 40px;" name="carid" value="${dto.carid }" onclick="carMain(${dto.idx})"></td>
+					<td><div id="carImage">
+        <img style="width:100px; height:100px;" src="http:/final02/img/${dto.carphoto}">
+		</div></td>
+					<td style="vertical-align: middle;" class="text-center">${dto.driver }</td>
+					<td style="vertical-align: middle;" class="text-center">${dto.carnum }</td>
+					<td style="vertical-align: middle;" class="text-center">${dto.cartype }</td>
+					<td style="vertical-align: middle;" class="text-center"><c:if test="${dto.confirm eq 0 }">미인증된 차량입니다.</c:if><c:if test="${dto.confirm eq 1 }">인증된 차량입니다.</c:if></td>
+						<td style="vertical-align: middle;" class="text-center">
+						<a href="carUpdate.do?idx=${dto.idx}"  class="btn btn-info btn-xs">
+						<span class="glyphicon glyphicon-edit"></span> Edit</a>
+						 
+						<a href="#" onclick="javascript:idx='${dto.idx}';" data-title="Delete" data-toggle="modal" data-target="#delete" class="btn btn-danger btn-xs">
+						<span class="glyphicon glyphicon-remove"></span> Del</a>
+						</td>
+					</tr>
+			</c:forEach>
+			<tr>
+			<!--  <td colspan="7" align="right"><input type="button" value="등록" onclick="location.href='carAdd.do'"></td>-->
+			<td colspan="7" align="right"><a href="carAdd.do"><span><img src="http://image005.flaticon.com/1/svg/64/64522.svg" width="24" height="24" alt="Plus Circular Button free icon" title="Plus Circular Button free icon">
+			</span>등록</a></td>
+			</tr>
+
+		</table>
+
 	
 </div>
-</div>	
-						
-					</div>
-				</div>
-				<!-- - -->
-							
-<!-- aa -->			
-	
-						<nav class="codrops-demos">
-							
+
+
+   <div class="modal fade" id="delete" tabindex="-1" role="dialog"
+      aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog" style="position:absolute; width: 350px;padding-top: 150px;">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"
+                  aria-hidden="true">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+               </button>
+               <h4 class="modal-title custom_align" id="Heading">삭제</h4>
+            </div>
+            <div class="modal-body">
+
+               <div class="alert alert-danger">
+                  <span class="glyphicon glyphicon-warning-sign"></span> 삭제하시겠습니까?
+               </div>
+
+            </div>
+            <div class="modal-footer ">
+               <button type="button" class="btn btn-success" onclick="javascript:carDel();" data-dismiss="modal">
+                  <span class="glyphicon glyphicon-ok-sign"></span> Yes
+               </button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">
+                  <span class="glyphicon glyphicon-remove"></span> No
+               </button>
+            </div>
+         </div>
+         <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+				
+				
+		
+				</div>			
 						
 						</nav>
-					
+				
 					<!-- Related demos -->
 					<section class="related">
 					
@@ -718,7 +695,7 @@ function setRadioChk(e){
 <!-- For the demo ad only -->   
 
 
-	
+			
 			
 </body>
 </html>
