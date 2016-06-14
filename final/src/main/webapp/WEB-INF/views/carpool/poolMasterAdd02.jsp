@@ -43,6 +43,7 @@
 
 			<div class="content-wrap">
 				<div class="content">
+				<div class="row">
 		<div class="col-md-12">
 			<h1 class="main--title">
 				카풀 등록 <small>본인 차량 정보를 확인해주세요.</small>
@@ -52,7 +53,7 @@
 			<form name="carInfo" action="poolMasterAdd03.do">
 
 				<div id="div2" class="col-md-4 profile--div">
-					<img src='이미지 경로명' />
+					<img style="width:300px; height:300px;" src="/final02/img/${dto.carphoto }"/>
 
 				</div>
 				<div id="div1" class="col-md-8">
@@ -118,7 +119,7 @@
 
 				</div>
 			</form>
-		</div>
+		</div></div>
 		</div>
 		</div>
 	</section>

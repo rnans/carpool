@@ -58,7 +58,7 @@
 
 			<div class="content-wrap">
 				<div class="content">
-				
+				<div class="row">
 		<div id="search" class="col-md-12">
 		<br>
 		<br>
@@ -68,7 +68,7 @@
 							일반 이용자와 운전자는 각각 카풀을 모집하는 글을 올리실 수 있습니다. <br>모집 글 유형을 선택해주세요.
 						</p>
 					</div>
-
+</div>
 					<div id="row">
 
 						<div id="div1" class="col-md-6 select center-block">

@@ -171,10 +171,12 @@ function onDrawnFeatures(e){
 
 			<div class="content-wrap">
 				<div class="content">
+								<div class="row">
 		<div class="col-md-12">
 			<h1 class="main--title">
 				카풀 등록 <small>등록 정보 최종 확인</small>
 			</h1>
+		</div>
 		</div>
 <div id="map_div">
 </div>

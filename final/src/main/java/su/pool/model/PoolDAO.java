@@ -59,4 +59,5 @@ public interface PoolDAO
 	public List checkPoolName(String poolname);
 	
 	public List<UploadDTO> proImg1();
+	
 }

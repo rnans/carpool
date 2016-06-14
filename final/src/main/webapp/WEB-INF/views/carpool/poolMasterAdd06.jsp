@@ -82,10 +82,12 @@
 
 			<div class="content-wrap">
 				<div class="content">
+				<div class="row">
 			<div class="col-md-12">
 				<h1 class="main--title">
 					카풀 등록 <small>새로 생성된 풀 파티의 이름을 입력해주세요.</small>
 				</h1>
+			</div>
 			</div>
 			<form id="f" name="poolNameform" action="poolMasterAddConfirm.do">
 				<div class="row">

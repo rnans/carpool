@@ -277,10 +277,12 @@
 
 			<div class="content-wrap">
 				<div class="content">
+				<div class="row">
 		<div class="col-md-12">
 			<h1 class="main--title">
 				카풀 등록 <small>카풀 상세 정보 입력</small>
 			</h1>
+		</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6">

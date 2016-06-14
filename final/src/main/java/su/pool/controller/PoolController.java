@@ -620,7 +620,7 @@ public class PoolController
 		
 		
 		
-		String msg=count>0?"성공":"실패";
+		String msg=count>0?"카풀 게시글이 등록되었습니다.":"다시 시도해 주세요.";
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -667,7 +667,7 @@ public class PoolController
 		
 		System.out.println("POST 수행됨");
 		
-		String msg=count>0?"성공":"실패";
+		String msg=count>0?"카풀 게시글이 등록되었습니다.":"다시 시도해 주세요.";
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -748,7 +748,7 @@ public class PoolController
 		
 		int count3=poolStatusDao.makeCarpoolInfo(pInfoDto);
 
-		String msg=count+count2+count3>=3?"성공":"실패";
+		String msg=count+count2+count3>=3?"카풀 게시글이 등록되었습니다.":"다시 시도해 주세요.";
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -810,7 +810,7 @@ public class PoolController
 		int count3=poolStatusDao.makeCarpoolInfo(pInfoDto);
 		
 		
-		String msg=count+count2+count3>=3?"성공":"실패";
+		String msg=count+count2+count3>=3?"카풀 게시글이 등록되었습니다.":"다시 시도해 주세요.";
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -900,10 +900,7 @@ public class PoolController
 			
 			mav.setViewName("carpool/poolEditLong");
 		}
-		else
-		{
-			mav.setViewName("redirect:poolList.do");
-		}
+		
 		
 		return mav;
 	}
@@ -974,15 +971,12 @@ public class PoolController
 			count2=poolStatusDao.editMasMans(idx,mannum);
 		}
 		
-		String msg=count+count2>=1?"성공":"실패";
 		
 		
 		ModelAndView mav=new ModelAndView();
 		
-		mav.addObject("msg", msg);
-		mav.addObject("url","poolList.do");
 		
-		mav.setViewName("carpool/poolMsg");
+		mav.setViewName("redirect:poolEachContent.do?idx="+idx);
 	
 		
 		return mav;
@@ -1061,13 +1055,10 @@ public class PoolController
 		}
 
 		
-		String msg=count+count2>1?"성공":"실패";
-
 		ModelAndView mav=new ModelAndView();
 		
-		mav.addObject("msg", msg);
-		mav.addObject("url","poolList.do");
-		mav.setViewName("carpool/poolMsg");
+
+		mav.setViewName("redirect:poolEachContent.do?idx="+idx);
 		
 		return mav;
 	}
@@ -1086,7 +1077,7 @@ public class PoolController
 		{
 			int count=poolDao.poolDel(idx);
 			
-			String msg=count>0?"성공":"실패";
+			String msg=count>0?"삭제되었습니다.":"다시 시도해 주세요.";
 			
 			mav.addObject("msg",msg);
 			mav.addObject("url","poolList.do");

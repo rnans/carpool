@@ -50,6 +50,11 @@ video#bgvid {
 {
 	z-index:50;
 }
+#titles2
+{
+	padding: 10px 10px;
+	background-color: #rgb(32, 32, 96);
+}
 </style>
 </head>
 <body>
@@ -111,11 +116,11 @@ video#bgvid {
 
 </section>
 <section class="section" id="section1" style="background-image:url('/final02/img/subbus.jpg'); opacity:100%; ">
-	<article>
-		<h2 id="mainTitle2"style="color: black;">지옥철, 지옥버스 지긋지긋하시죠?</h2>
+	<div>
+		<h2 id="mainTitle2"style="background-color: rgba(32, 32, 96, 0.7); color:#fff">지옥철, 지옥버스 지긋지긋하시죠?</h2>
 		<p id="sub_title2">당신의 소중한 시간을 지켜드립니다.
 		<br>즐거운 이동, 저희 카풀파티에서 느껴보세요!</p>
-	</article>
+	</div>
 </section>
 <section class="section" id="section2" style="background-color: #58D3F7">
 	<article >

@@ -189,11 +189,13 @@
 
 			<div class="content-wrap">
 				<div class="content">
+				<div class="row">
 		<div class="col-md-12">
 			<h1 class="main--title">
 				${dto.pooltype } 카풀 수정 <small>${dto.termtype }카풀 요청 글을
 					수정합니다.</small>
 			</h1>
+		</div>
 		</div>
 		<article>
 			<div>
