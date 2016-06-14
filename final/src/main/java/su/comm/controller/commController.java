@@ -69,7 +69,7 @@ public class commController {
 	 	
 
 	@RequestMapping("comm.do")
-	public ModelAndView comm(HttpSession session, String poolname, String color, UploadDTO dto){
+	public ModelAndView comm(HttpSession session, String poolname, String color, UploadDTO dto,String carimg){
 		ModelAndView mav=new ModelAndView();		
 		String sid=(String)session.getAttribute("sid");
 		
@@ -86,7 +86,7 @@ public class commController {
 			List<CommBBSreDTO> list2=commDao.reList(commid);
 			List<UploadDTO> list3=commDao.imgList2();
 			int recount=0;
-			
+			mav.addObject("carimg", carimg);
 			mav.addObject("color", color);			
 			mav.addObject("poolname", commid);
 			mav.addObject("recount", recount);
@@ -174,12 +174,13 @@ public class commController {
 	}
 	
 	@RequestMapping("calendar.do")
-	public ModelAndView calendar(String poolname, String color){
+	public ModelAndView calendar(String poolname, String color, String carimg){
 		ModelAndView mav=new ModelAndView();
 		List<scheDTO> list=commDao.scheList(poolname);
 		mav.addObject("poolname",poolname);
 		mav.addObject("color",color);
 		mav.addObject("list", list);
+		mav.addObject("carimg", carimg);
 		mav.setViewName("comm/calendar");
 		return mav;
 		
@@ -213,7 +214,7 @@ public class commController {
 	}
 	
 	@RequestMapping("commMember.do")
-	public ModelAndView commMember(HttpSession session, String poolname, String color){
+	public ModelAndView commMember(HttpSession session, String poolname, String color, String carimg){
 		
 		String id=(String)session.getAttribute("sid");
 
@@ -221,6 +222,7 @@ public class commController {
 		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("comm/commMember");
+		mav.addObject("carimg", carimg);
 		mav.addObject("poolname", poolname);
 		mav.addObject("color",color);
 		mav.addObject("memberlist", list2);
@@ -262,6 +264,7 @@ public class commController {
 	public String commupdate(String idx, String poolname){
 		int count=commDao.bbsupdate(idx);
 		if(count>0){System.out.println("성공");}
+		System.out.println(poolname);
 		return "redirect:comm.do?poolname="+poolname;
 	}
 	
@@ -281,14 +284,14 @@ public class commController {
 
 	
 	@RequestMapping("gallery.do")
-	public ModelAndView gallery(String poolname, String color){
-		
-		
+	public ModelAndView gallery(String poolname, String color, String carimg){
+				
 		ModelAndView mav=new ModelAndView();
 		
 		List<UploadDTO> list=commDao.imgList(poolname);
 		mav.addObject("list", list);
 		mav.addObject("color", color);
+		mav.addObject("carimg", carimg);
 		mav.addObject("poolname", poolname);
 		mav.setViewName("comm/gallery");
 		return mav;
