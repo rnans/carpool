@@ -605,7 +605,11 @@ function checkCvc(){
 			cvc.value=null;
 	}
 }
+function backPage(){
+	window.location.href = 'userPayInfo.do';
+}
 </script> 
+
 	</head>
 	
 	<body>
@@ -731,7 +735,7 @@ function checkCvc(){
             </select></td>
 						</tr>
 						<tr>
-						<td colspan="6" align="right"><button class="btn btn-default" type="button" value="취소">취소</button>
+						<td colspan="6" align="right"><button class="btn btn-default" type="button" onclick="backPage()" value="취소">취소</button>
 						<button class="btn btn-default" type="submit" value="수정">수정</button></td>
 						</tr>
 					</tbody>
