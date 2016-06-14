@@ -170,7 +170,7 @@ function opencostReg(){
 </div>
 <div style="float:left; height:225px; width: 48%; margin-right: 7px;" >
 <c:if test="${cartdto.carphoto=='사진없음'}"><img style="width:100%;height:100%;" src="http://pool.sarte.kr/final02/img/nocarimg.jpg"></c:if>
-<c:if test="${cartdto.carphoto!='사진없음'}"><img style="width:100%;height:100%;" src="http://pool.sarte.kr/final02/img//${cardto.carphoto}"></c:if>
+<c:if test="${cartdto.carphoto!='사진없음'}"><img style="width:100%;height:100%;" src="http://pool.sarte.kr/final02/img/${cardto.carphoto}"></c:if>
 </div>
 <div style="float:right; height:225px; width: 48%; margin-left: 7px;" >
 			<fieldset style="">
