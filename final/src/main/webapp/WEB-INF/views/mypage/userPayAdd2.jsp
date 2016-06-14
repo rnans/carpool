@@ -524,7 +524,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 .element {
   .center-block();
 }
-
+#my{
+	color:white;
+}
 </style>
 
 
@@ -579,7 +581,7 @@ window.alert('${msg}');
 		<div class="upicontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:50px;" src="http://partypool2.azurewebsites.net/final02/img/${dto2[0].filename}" alt="프로필사진"/><span>${sessionScope.sname } 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:50px;" src="http://partypool2.azurewebsites.net/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${sessionScope.sname } 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
 						<a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
