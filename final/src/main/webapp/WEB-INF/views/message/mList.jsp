@@ -111,7 +111,7 @@ var sendid=null;
 											<c:forEach var="i" items="${uDTO}">
 												<c:if test="${i.id==m.sendid}">
 													<a href="javascript:profile('${m.sendid}')" class="pull-left">
-														<img src="http://partypool2.azurewebsites.net/final02/img/${i.filename}" class="media-photo">
+														<img src="http://pool.sarte.kr/final02/img/${i.filename}" class="media-photo">
 													</a>
 												</c:if>
 											</c:forEach>
