@@ -20,7 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="css/menu_topside.css" />
 		<link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		
+		<link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
 	
 <style>
 .Mycontainer, 

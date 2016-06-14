@@ -302,7 +302,7 @@ public class MemberController {
 	/**현재접속인원 수 파악*/
 	
 	@RequestMapping("/memberList.do")
-	public ModelAndView numStatus(String poolname,String color, HttpSession session){
+	public ModelAndView numStatus(String poolname,String color, String carimg,HttpSession session){
 		
 		int count = statusDao.numStatus();
 		List<StatusDTO> list = statusDao.listStatus();
@@ -319,6 +319,7 @@ public class MemberController {
 		mav.addObject("poolname", poolname);
 		mav.addObject("color",color);
 		mav.addObject("count",count);
+		mav.addObject("carimg",carimg);
 		mav.addObject("lists",list);
 		mav.addObject("imglist", list3);
 		mav.setViewName("memberList");

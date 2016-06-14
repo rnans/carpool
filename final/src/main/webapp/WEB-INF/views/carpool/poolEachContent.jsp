@@ -752,8 +752,9 @@
 								<div class="widget-user-image">
 									<c:forEach var="img" items="${lists}">
 										<c:if test="${img.id==dto.userid}">
-										<img class="img-circle" style="width:90px; height:90px;" src="http://partypool2.azurewebsites.net/final02/img/${img.filename}"
-											alt="User Avatar">
+										<img class="img-circle" style="width:90px; height:90px;" src="http://pool.sarte.kr/final02/img/${img.filename}"
+											alt="
+tar">
 										</c:if>
 									</c:forEach>
 								</div>
@@ -901,7 +902,7 @@
 										<c:forEach var="img" items="${lists}">
 											<c:if test="${rDtos.userid==img.id}">
 											<img
-												src="img/${img.filename}"
+												src="http://pool.sarte.kr/final02/img/${img.filename}"
 												alt="" />
 											</c:if>
 										</c:forEach>
@@ -928,8 +929,8 @@
 									<div class="testimonial-desc">
 										<c:forEach var="img" items="${lists}">
 											<c:if test="${rDtos.userid==img.id}">
-											<img
-												src="http://partypool2.azurewebsites.net/final02/img/${img.filename}"
+											<imgf
+												src="http://pool.sarte.kr/final02/img/${img.filename}"
 												alt="" />
 											</c:if>
 										</c:forEach>

@@ -53,7 +53,7 @@
 			<form name="carInfo" action="poolMasterAdd03.do">
 
 				<div id="div2" class="col-md-4 profile--div">
-					<img style="width:300px; height:300px;" src="http://partypool2.azurewebsites.net/final02/img/${dto.carphoto }"/>
+					<img style="width:300px; height:300px;" src="http://pool.sarte.kr/final02/img/${dto.carphoto }"/>
 
 				</div>
 				<div id="div1" class="col-md-8">

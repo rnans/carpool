@@ -562,6 +562,7 @@ h2{
 
 </style>
 <script type="text/javascript" src="js/previewmodule.js"></script>
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
 	<script type="text/javascript">
 	function getNameFromPath(strFilepath) {
 		var objRE = new RegExp(/([^\/\\]+)$/);

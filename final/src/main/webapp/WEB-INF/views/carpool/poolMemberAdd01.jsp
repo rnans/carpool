@@ -75,7 +75,7 @@
 								<c:forEach var="iDto" items="${imgList}">
 									<c:if test="${dto.id==iDto.id}">
 										<img style="width: 300px; height: 300px"
-											src="http://partypool2.azurewebsites.net/final02/img/${iDto.filename}" />
+											src="http://pool.sarte.kr/final02/img/${iDto.filename}" />
 									</c:if>
 								</c:forEach>
 
