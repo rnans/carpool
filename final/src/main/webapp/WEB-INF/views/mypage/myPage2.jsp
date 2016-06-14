@@ -591,7 +591,7 @@ function setRadioChk(e){
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:50px;" src="http://partypool2.azurewebsites.net/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:50px;" src="http://pool.sarte.kr/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
 					<div class="icon-list">                                        
 						<a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
 						<a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -646,7 +646,7 @@ function setRadioChk(e){
 				<div class="codrops-links">
 	
 		<div id="imgf">
-			<img style="width:300px; height:300px;" src="http://partypool2.azurewebsites.net/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
+			<img style="width:300px; height:300px;" src="http://pool.sarte.kr/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
 		</div>
 		
 		<div>

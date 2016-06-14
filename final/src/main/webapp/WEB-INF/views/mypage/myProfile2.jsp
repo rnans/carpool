@@ -567,7 +567,7 @@ window.onload=function(){
 		<div class="Mycontainer">
 			<div class="menu-wrap">
 				<nav class="menu-top">
-					<div class="profile"><img style="width:50px;height:50px;" src="http://partypool2.azurewebsites.net/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
+					<div class="profile"><img style="width:50px;height:50px;" src="http://pool.sarte.kr/final02/img/${dto2[0].filename}" alt="프로필사진"/><span id="my">${dto.name} 님 마이페이지</span></div>
 					<div class="icon-list">
 						<a href="wishPoolList.do"><i class="fa fa-star-o"></i></a>
 						<a href="notiSetting.do?id=${sessionScope.sid }"><i class="fa fa-fw fa-bell-o"></i></a>
@@ -624,7 +624,7 @@ window.onload=function(){
 	<div id="imgf">
 	 <form id="frm" name="frm" action="uploadimgUpdate.do" method="post" enctype="multipart/form-data">
 		<span>
-  		<img style="width:300px; height:300px;" src="http://partypool2.azurewebsites.net/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
+  		<img style="width:300px; height:300px;" src="http://pool.sarte.kr/final02/img/${dto2[0].filename}" alt="프사" class="img-thumbnail">
 		</span>	
 			<input type="file" id="file" name="upload">
    			<button type="submit" class="btn btn-success" value="사진올리기">사진올리기</button>
