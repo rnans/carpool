@@ -124,7 +124,7 @@ function useGuideDel(){
                         </h1>
                     </div>
                 </div>
-  <div class="btn-group" role="group" aria-label="..." style="margin-left:980px;">
+  <div class="btn-group" role="group" aria-label="..." style="margin-left:985px;">
   <a href="useguideWrite.do" class="btn btn-default">글쓰기</a>
 </div>
  

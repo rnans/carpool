@@ -59,6 +59,14 @@
 .link-effect-3 a:hover::before {
   max-width: 100%;
 }
+th
+{
+	width: 125px;
+}
+td
+{
+	width: 125px;
+	}
 </style>
 </head>
 <body>
@@ -94,31 +102,30 @@
 				</tr>
 	</table>
 
-		<c:forEach var="list" items="${list3}" varStatus="status">
-		<div class="accordion" id="accordion2" style="margin-bottom: 0px;">
+		<c:forEach var="list" items="${list}" varStatus="status">
+		<div class="accordion" id="accordion2" >
 		<table border="1" style="margin: 0px auto; height: 80px;">
 				
-				<c:forEach var="list3" items="${list2}">
+				<c:forEach var="list3" items="${list3}">
 				
 				<c:if test="${list.poolname==list3.poolname}">
 				
 				<tr>
-					<td>
+					<td >
 						${status.count}
-					</td>
-				
+					</td>			
 					<td>
 						<div class="accordion-heading">
 							<a class="accordion-toggle" data-toggle="collapse"
 								href=".${list.poolname}"> ${list.poolname} </a>
 						</div>	
 					</td>
-					<td>${list.aim }</td>
-					<td>${list.pay }</td>
-					<td>${list.smoking }</td>
-					<td>${list.gender }</td>
-					<td>${list.termtype }</td>
-					<td>${list.status }</td>
+					<td>${list3.aim }</td>
+					<td>${list3.pay }</td>
+					<td>${list3.smoking }</td>
+					<td>${list3.gender }</td>
+					<td>${list3.termtype }</td>
+					<td>${list3.status }</td>
 				</tr>
 				</c:if>
 				
@@ -132,7 +139,7 @@
 				<div id="collapseOne" class="${list.poolname} accordion-body collapse">
 							<div class="accordion-inner" style="margin-top: 0px;">
 							
-							<table border="1" style="margin: 0px auto; height: 120px;">
+							<table border="1" style="margin: 0px auto; height: 80px;">
 							<tr>
 										<th>구분</th>
 										<th>카풀명</th>
