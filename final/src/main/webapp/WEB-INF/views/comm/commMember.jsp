@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="./bootstrap/css/font-awesome.min.css">
 <script type="text/javascript">
 window.onload=function(){
-	var params="poolname=${poolname}&color=${color}";
-	sendRequest('memberList.do', params, showResult, 'GET')
+	var params="poolname=${poolname}&color=${color}&carimg=${carimg}";
+	sendRequest('memberList.do', params, showResult, 'GET');
 }
 
 	
@@ -40,15 +40,15 @@ window.onload=function(){
 	<div id="lnb" data-skin="skin5" style="z-index: 50;"> 
 		<div data-viewname="DLnbMenuView">
 			<ul class="_joinedLnb">
-				<li><a href="comm.do?poolname=${poolname}&color=${color}" data-skinfactor="tBorder color"
+				<li><a href="comm.do?poolname=${poolname}&color=${color}&carimg=${carimg}" data-skinfactor="tBorder color"
 					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">전체글</a></li>
-				<li><a href="gallery.do?poolname=${poolname}&color=${color}"
+				<li><a href="gallery.do?poolname=${poolname}&color=${color}&carimg=${carimg}"
 					data-skinfactor="tBorder color"
 					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">사진첩</a></li>
-				<li><a href="calendar.do?poolname=${poolname}&color=${color}"
+				<li><a href="calendar.do?poolname=${poolname}&color=${color}&carimg=${carimg}"
 					data-skinfactor="tBorder color"
 					class="_albumLnbBtn _eachLnbMenu _unclickableMenu">일정</a></li>
-				<li><a href="commMember.do?poolname=${poolname}&color=${color}"
+				<li><a href="commMember.do?poolname=${poolname}&color=${color}&carimg=${carimg}"
 					data-skinfactor="tBorder color"
 					class="_fullArticleLnbBtn _eachLnbMenu on">멤버</a></li>
 			</ul>

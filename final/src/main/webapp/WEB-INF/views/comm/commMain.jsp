@@ -399,10 +399,10 @@ a, a:focus, a:hover {
 					</script>
 					<li data-viewname="DBandCollectionItemView" data-skin="skin5"><div
 						class="uCover " data-type="type2">
-						<a href="comm.do?poolname=${poollist[0].poolname }" class="bandUri" style="text-decoration: none;"><div class="cover"
+						<a href="comm.do?poolname=${poollist[0].poolname}&carimg=${carimg.car0}" class="bandUri" style="text-decoration: none;"><div class="cover"
 								data-skinfactor="beforeBg">
 								<img class="coverImg"
-									src="http://pool.sarte.kr/final02/img/${carimg.car0}"
+									src="http://partypool2.azurewebsites.net/final02/img/${carimg.car0}"
 									alt="">
 							</div>
 							<div class="bandName">
@@ -421,10 +421,10 @@ a, a:focus, a:hover {
 				</script>
 					<li data-viewname="DBandCollectionItemView" data-skin="skin4"><div
 						class="uCover " data-type="type2">
-						<a href="comm.do?poolname=${poollist[1].poolname }&color=2" class="bandUri" style="text-decoration: none;"><div class="cover"
+						<a href="comm.do?poolname=${poollist[1].poolname }&color=2&carimg=${carimg.car1}" class="bandUri" style="text-decoration: none;"><div class="cover"
 								data-skinfactor="beforeBg">
 								<img class="coverImg"
-									src="http://pool.sarte.kr/final02/img/${carimg.car1}"
+									src="http://partypool2.azurewebsites.net/final02/img/${carimg.car1}"
 									alt="">
 							</div>
 							<div class="bandName">
@@ -445,10 +445,10 @@ a, a:focus, a:hover {
 				
 					<li data-viewname="DBandCollectionItemView" data-skin="skin3"><div
 						class="uCover " data-type="type2" style="margin-right: 0px;">
-						<a href="comm.do?poolname=${poollist[2].poolname }&color=3" class="bandUri" style="text-decoration: none;"><div class="cover"
+						<a href="comm.do?poolname=${poollist[2].poolname }&color=3&carimg=${carimg.car2}" class="bandUri" style="text-decoration: none;"><div class="cover"
 								data-skinfactor="beforeBg">
 								<img class="coverImg"
-									src="http://pool.sarte.kr/final02/img/${carimg.car2}"
+									src="http://partypool2.azurewebsites.net/final02/img/${carimg.car2}"
 									alt="">
 							</div>
 							<div class="bandName">

@@ -191,7 +191,7 @@
 			<div class="bandUri">
 				<div class="cover" data-skinfactor="beforeBg">
 					<a href="/#!/band/61355066"><img class="coverImg"
-						src="http://coresos.phinf.naver.net/a/2gegeb_c/18aUd015f6anox25rtzm_5ksoqj.jpg?type=cover_a264"
+						src="http://pool.sarte.kr/final02/img/${carimg}"
 						alt=""></a>
 				</div>
 				<div class="bandName">
